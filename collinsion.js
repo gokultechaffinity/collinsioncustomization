@@ -380,9 +380,8 @@ jQuery(document).ready(function ($) {
           $("#save_and_continue1").removeAttr("data-target");
           $("#save_and_continue1").removeAttr("data-toggle");
         } else if (today > bday) {
-          console.log("Entered final");
-          //   $("#save_and_continue1").attr("data-target", "#agreementModal");
-          // $("#save_and_continue1").attr("data-toggle", "modal");
+          $("#save_and_continue1").attr("data-target", "#agreementModal");
+          $("#save_and_continue1").attr("data-toggle", "modal");
           clearError([
             "helpdesk_ticket_custom_field_cf_date_of_birth_2321673",
             "helpdesk_ticket_custom_field_cf_policy_number_2321673",
