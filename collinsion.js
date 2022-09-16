@@ -368,7 +368,6 @@ jQuery(document).ready(function ($) {
         $("#helpdesk_ticket_custom_field_cf_policy_number_2321673").val()
           .length >= 7
       ) {
-        console.log("Entered in sucess  step 1--->");
         birthdate = $(
           "#helpdesk_ticket_custom_field_cf_date_of_birth_2321673"
         ).val();
@@ -381,7 +380,6 @@ jQuery(document).ready(function ($) {
           $("#save_and_continue1").removeAttr("data-target");
           $("#save_and_continue1").removeAttr("data-toggle");
         } else if (today > bday) {
-          console.log("Entered in sucess  step 2 final--->");
           $("#save_and_continue1").attr("data-target", "#agreementModal");
           $("#save_and_continue1").attr("data-toggle", "modal");
           clearError([
