@@ -327,21 +327,21 @@ jQuery(document).ready(function ($) {
   }
 
   $(".ins-col-test").click(function () {
-    var attr1 = $(this).attr("aria-expanded");
-
-    if (attr1 == "true") {
+    //condition 1 -
+    if ($(this).children(":first").hasClass("fa-pen")) {
+      //do nothing
+    }else{
+    //condition - 2
+    if ($(this).attr("aria-expanded")) {
       $(this).children(":first").removeClass("fa-minus");
       $(this).children(":first").addClass("fa-plus");
+      //condition - 3
     } else {
       if ($(this).attr("data-toggle")) {
         $(this).children(":first").removeClass("fa-plus");
         $(this).children(":first").addClass("fa-minus");
-      } else {
-        if ($(this).children(":first").hasClass("fa-pen")) {
-          //do nothing
-        }
       }
-    }
+    }}
   });
 
   function open_next(section_number) {
