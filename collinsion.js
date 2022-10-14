@@ -337,8 +337,9 @@ jQuery(document).ready(function ($) {
         $(this).children(":first").removeClass("fa-plus");
         $(this).children(":first").addClass("fa-minus");
       } else {
-        //do nothing
-        console.log("Open condition right here!");
+        if ($(this).children(":first").hasClass("fa-pen")) {
+          //do nothing
+        }
       }
     }
   });
