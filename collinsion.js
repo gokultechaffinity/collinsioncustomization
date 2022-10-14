@@ -606,10 +606,7 @@ jQuery(document).ready(function ($) {
       open_next(1);
     }
 
-
-
     //change to pencil icon - first remove class that changes between plus and minus
-    $("#section-1-button").removeClass("ins-col-test");
 
     $("#section-1-button").children(":first").removeClass("fa-plus");
     $("#section-1-button").children(":first").removeClass("fas");
