@@ -329,28 +329,29 @@ jQuery(document).ready(function ($) {
   $(".ins-col-test").click(function () {
     //store this variable for checking if aria-expanded == true/false
     var attr1 = $(this).attr('aria-expanded');
+    console.log(attr1);
 
     if ($(this).children(":first").hasClass("fa-pen")) 
     {
       //do nothing
     }else
     {
-    if ($(this).children(":first").hasClass("fa-minus") && attr1 === true) 
+    if ($(this).children(":first").hasClass("fa-minus") && attr1 == "true") 
     {
       //do nothing
     } else 
     {
-      if ($(this).children(":first").hasClass("fa-minus") && attr1 ===  false) 
+      if ($(this).children(":first").hasClass("fa-minus") && attr1 ==  "false") 
       {
         $(this).children(":first").removeClass("fa-minus");
         $(this).children(":first").addClass("fa-plus");
       } else {
-        if ($(this).children(":first").hasClass("fa-plus") && attr1 === false) 
+        if ($(this).children(":first").hasClass("fa-plus") && attr1 == "false") 
         {
           //do nothing
         }else
         {
-          if ($(this).children(":first").hasClass("fa-plus") && attr1 === false)
+          if ($(this).children(":first").hasClass("fa-plus") && attr1 == "false")
           {
             $(this).children(":first").removeClass("fa-plus");
             $(this).children(":first").addClass("fa-minus");
