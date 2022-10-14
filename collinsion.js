@@ -331,7 +331,6 @@ jQuery(document).ready(function ($) {
     if ($(this).children(":first").hasClass("fa-pen")) 
     {
       //do nothing
-      console.log("Remain Pencil");
     }else{
     //condition - 2
     if ($(this).children(":first").hasClass("fa-minus")) 
