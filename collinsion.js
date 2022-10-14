@@ -330,14 +330,15 @@ jQuery(document).ready(function ($) {
     //condition 1 -
     if ($(this).children(":first").hasClass("fa-pen")) {
       //do nothing
+      console.log("Remain Pencil");
     }else{
     //condition - 2
-    if ($(this).attr("aria-expanded")) {
+    if ($(this).children(":first").hasClass("fa-minus")) {
       $(this).children(":first").removeClass("fa-minus");
       $(this).children(":first").addClass("fa-plus");
       //condition - 3
     } else {
-      if ($(this).attr("data-toggle")) {
+      if ($(this).children(":first").hasClass("fa-plus")) {
         $(this).children(":first").removeClass("fa-plus");
         $(this).children(":first").addClass("fa-minus");
       }
