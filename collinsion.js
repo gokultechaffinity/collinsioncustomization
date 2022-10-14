@@ -328,16 +328,19 @@ jQuery(document).ready(function ($) {
 
   $(".ins-col-test").click(function () {
     //condition 1 -
-    if ($(this).children(":first").hasClass("fa-pen")) {
+    if ($(this).children(":first").hasClass("fa-pen")) 
+    {
       //do nothing
       console.log("Remain Pencil");
     }else{
     //condition - 2
-    if ($(this).children(":first").hasClass("fa-minus")) {
+    if ($(this).children(":first").hasClass("fa-minus")) 
+    {
       $(this).children(":first").removeClass("fa-minus");
       $(this).children(":first").addClass("fa-plus");
       //condition - 3
-    } else {
+    } else 
+    {
       if ($(this).children(":first").hasClass("fa-plus")) {
         $(this).children(":first").removeClass("fa-plus");
         $(this).children(":first").addClass("fa-minus");
