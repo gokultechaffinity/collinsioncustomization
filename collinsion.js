@@ -346,7 +346,7 @@ jQuery(document).ready(function ($) {
         $(id).children(":first").removeClass("fa-plus");
       }
     }else {
-      if ( $(thiids).children(":first").hasClass("fa-minus") ) {
+      if ( $(id).children(":first").hasClass("fa-minus") ) {
         if (attr1 == false){
           $(id).children(":first").removeClass("fas");
           $(id).children(":first").removeClass("fa-minus");
