@@ -339,20 +339,16 @@ jQuery(document).ready(function ($) {
       //do nothing
     }else
     {
-      if  ( $(id).children(":first").hasClass("fa-plus") )  
+      if  ( $(id).children(":first").hasClass("fa-plus") && attr1 == true )  
     {
-      if (attr1 == true){
-        $(id).children(":first").removeClass("fas");
-        $(id).children(":first").removeClass("fa-plus");
-      }
-    }else {
-      if ( $(id).children(":first").hasClass("fa-minus") ) {
-        if (attr1 == false){
-          $(id).children(":first").removeClass("fas");
-          $(id).children(":first").removeClass("fa-minus");
-        }
-      }
-    } 
+      //change to minus
+      $(id).children(":first").removeClass("fa-plus");
+      $(id).children(":first").addClass("fa-minus");
+    }else if (( $(id).children(":first").hasClass("fa-minus") && attr1 == false )) {
+      //change to plus
+      $(id).children(":first").removeClass("fa-minus");
+      $(id).children(":first").addClass("fa-plus");
+    }
   }
   });
 
