@@ -339,17 +339,20 @@ jQuery(document).ready(function ($) {
     {
       if  ( $("#"+id).children(":first").hasClass("fa-plus") && attr1 == true )  
     {
+      console.log("change to minus");
       //change to minus
-      console.log($("#"+id).children(":first").removeClass("fas"));
-      console.log($("#"+id).children(":first").removeClass("fa-plus"));
-      console.log($("#"+id).children(":first").addClass("fas"));
-      console.log($("#"+id).children(":first").addClass("fa-minus"));
-    }else if (( $("#"+id).children(":first").hasClass("fa-minus") && attr1 == false )) {
+      $(("#"+id)).children("span").removeClass("fas");
+      $(("#"+id)).children("span").removeClass("fa-plus");
+      $(("#"+id)).children("span").addClass("fas");
+      $(("#"+id)).children("span").addClass("fa-minus");
+    }else if (( $("#"+id).children("span").hasClass("fa-minus") && attr1 == false )) {
+
+      console.log("change to plus");
       //change to plus
-      console.log($("#"+id).children(":first").removeClass("fas"));
-      console.log($("#"+id).children(":first").removeClass("fa-minus"));
-      console.log($("#"+id).children(":first").addClass("fas"));
-      console.log($("+"+id).children(":first").addClass("fa-plus"));
+      $(("#"+id)).children(":first").removeClass("fas");
+      $(("#"+id)).children(":first").removeClass("fa-minus");
+      $(("#"+id)).children(":first").addClass("fas");
+      $(("#"+id)).children(":first").addClass("fa-plus");
     }
   }
   });
