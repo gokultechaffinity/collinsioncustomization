@@ -330,23 +330,26 @@ jQuery(document).ready(function ($) {
     //store this variable for checking if aria-expanded == true/false
     var attr1 = $(this).attr('aria-expanded');
     console.log(attr1);
+    //get element id
+    var id = $(this).attr('id');
+    console.log(id);
 
-    if ($(this).children(":first").hasClass("fa-pen")) 
+    if ($(id).children(":first").hasClass("fa-pen")) 
     {
       //do nothing
     }else
     {
-      if  ( $(this).children(":first").hasClass("fa-plus") )  
+      if  ( $(id).children(":first").hasClass("fa-plus") )  
     {
       if (attr1 == true){
-        $(this).children(":first").removeClass("fas");
-        $(this).children(":first").removeClass("fa-plus");
+        $(id).children(":first").removeClass("fas");
+        $(id).children(":first").removeClass("fa-plus");
       }
     }else {
-      if ( $(this).children(":first").hasClass("fa-minus") ) {
+      if ( $(thiids).children(":first").hasClass("fa-minus") ) {
         if (attr1 == false){
-          $(this).children(":first").removeClass("fas");
-          $(this).children(":first").removeClass("fa-minus");
+          $(id).children(":first").removeClass("fas");
+          $(id).children(":first").removeClass("fa-minus");
         }
       }
     } 
