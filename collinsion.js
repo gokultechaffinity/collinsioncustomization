@@ -346,7 +346,7 @@ jQuery(document).ready(function ($) {
       $(("#"+id)).children("span").removeClass("fa-plus");
       $(("#"+id)).children("span").addClass("fas");
       $(("#"+id)).children("span").addClass("fa-minus");
-    }else if ( $("#"+id).children("span").hasClass("fa-minus")   && attr1 == true ) {
+    }else if ( $("#"+id).children("span").hasClass("fa-minus")   && attr1 == false ) {
 
       console.log("change to plus");
       console.log(attr1);
