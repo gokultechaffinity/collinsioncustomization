@@ -342,8 +342,14 @@ jQuery(document).ready(function ($) {
         $(this).children(":first").removeClass("fa-plus");
         $(this).children(":first").addClass("fa-minus");
       }
-    }
-    
+    }else {
+      if ( $(this).children(":first").hasClass("fa-minus") ) {
+        if (attr1 == false){
+          $(this).children(":first").removeClass("fa-minus");
+          $(this).children(":first").addClass("fa-plus");
+        }
+      }
+    } 
   }
   });
 
