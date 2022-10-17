@@ -330,7 +330,7 @@ jQuery(document).ready(function ($) {
      //get element id
      var id = $(this).attr('id');
     //store this variable for checking if aria-expanded == true/false
-    var attr1 = $(id).attr('aria-expanded');
+    var attr1 = $("#"+id).attr('aria-expanded');
     
     if ($("#"+id).children(":first").hasClass("fa-pen")) 
     {
@@ -340,6 +340,7 @@ jQuery(document).ready(function ($) {
       if  ( $("#"+id).children(":first").hasClass("fa-plus") )  
     {
       console.log("change to minus");
+      console.log(attr1);
       //change to minus
       $(("#"+id)).children("span").removeClass("fas");
       $(("#"+id)).children("span").removeClass("fa-plus");
@@ -348,6 +349,7 @@ jQuery(document).ready(function ($) {
     }else if (( $("#"+id).children("span").hasClass("fa-minus")  )) {
 
       console.log("change to plus");
+      console.log(attr1);
       //change to plus
       $(("#"+id)).children(":first").removeClass("fas");
       $(("#"+id)).children(":first").removeClass("fa-minus");
