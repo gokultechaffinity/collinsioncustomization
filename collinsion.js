@@ -336,29 +336,14 @@ jQuery(document).ready(function ($) {
       //do nothing
     }else
     {
-    if ($(this).children(":first").hasClass("fa-minus") && attr1 == false ) 
+      if  ( $(this).children(":first").hasClass("fa-plus") )  
     {
-      //do nothing
-    } else 
-    {
-      if ($(this).children(":first").hasClass("fa-minus") && attr1 ==  true) 
-      {
-        $(this).children(":first").removeClass("fa-minus");
-        $(this).children(":first").addClass("fa-plus");
-      } else {
-        if ($(this).children(":first").hasClass("fa-plus") && attr1 == true) 
-        {
-          //do nothing
-        }else
-        {
-          if ($(this).children(":first").hasClass("fa-plus") && attr1 == true)
-          {
-            $(this).children(":first").removeClass("fa-plus");
-            $(this).children(":first").addClass("fa-minus");
-          }
-        }
+      if (attr1 == true){
+        $(this).children(":first").removeClass("fa-plus");
+        $(this).children(":first").addClass("fa-minus");
       }
     }
+    
   }
   });
 
