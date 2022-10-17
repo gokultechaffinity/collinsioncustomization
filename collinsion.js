@@ -337,7 +337,7 @@ jQuery(document).ready(function ($) {
       //do nothing
     }else
     {
-      if  ( $("#"+id).children(":first").hasClass("fa-plus") && attr1 == true )  
+      if  ( $("#"+id).children(":first").hasClass("fa-plus") )  
     {
       console.log("change to minus");
       //change to minus
@@ -345,7 +345,7 @@ jQuery(document).ready(function ($) {
       $(("#"+id)).children("span").removeClass("fa-plus");
       $(("#"+id)).children("span").addClass("fas");
       $(("#"+id)).children("span").addClass("fa-minus");
-    }else if (( $("#"+id).children("span").hasClass("fa-minus") && attr1 == false )) {
+    }else if (( $("#"+id).children("span").hasClass("fa-minus")  )) {
 
       console.log("change to plus");
       //change to plus
