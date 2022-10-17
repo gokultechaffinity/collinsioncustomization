@@ -337,14 +337,14 @@ jQuery(document).ready(function ($) {
       //do nothing
     }else
     {
-      if  ( $(id).children(":first").hasClass("fa-plus") && attr1 == true )  
+      if  ( $(id).children(":first").hasClass("fa-plus") && attr1 == false )  
     {
       //change to minus
       $(id).children(":first").removeClass("fas");
       $(id).children(":first").removeClass("fa-plus");
       $(id).children(":first").addClass("fas");
       $(id).children(":first").addClass("fa-minus");
-    }else if (( $(id).children(":first").hasClass("fa-minus") && attr1 == false )) {
+    }else if (( $(id).children(":first").hasClass("fa-minus") && attr1 == true )) {
       //change to plus
       $(id).children(":first").removeClass("fas");
       $(id).children(":first").removeClass("fa-minus");
