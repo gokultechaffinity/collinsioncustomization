@@ -370,7 +370,7 @@ jQuery(document).ready(function ($) {
         console.log("Remain")
         //do nothing
   
-      }else if (($("#" + id).children(":first").hasClass("fa-plus") && ($("#" + id).hasClass('collapsed'))))
+      }else if ($("#" + id).children(":first").hasClass("fa-plus") && ($("#" + id).hasClass('collapsed')))
       {
         //do nothing
         console.log("Remain")
