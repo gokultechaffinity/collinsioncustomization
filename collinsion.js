@@ -348,10 +348,11 @@ jQuery(document).ready(function ($) {
         $("#" + id)
           .children(":first")
           .hasClass("fa-plus")
-      ) {
+      ) { if (attr1 === true) 
+        {
         console.log("change to minus");
         console.log(attr1);
-        //change to minus
+
         $("#" + id)
           .children("span")
           .removeClass("fas");
@@ -364,26 +365,34 @@ jQuery(document).ready(function ($) {
         $("#" + id)
           .children("span")
           .addClass("fa-minus");
+      }
+       
+        //change to minus
+        
       } else if (
         $("#" + id)
           .children("span")
           .hasClass("fa-minus")
       ) {
-        console.log("change to plus");
-        console.log(attr1);
-        //change to plus
+        if (attr1 === true) {
+          console.log("change to plus");
+          console.log(attr1);
+
+          //change to plus
         $("#" + id)
-          .children(":first")
-          .removeClass("fas");
-        $("#" + id)
-          .children(":first")
-          .removeClass("fa-minus");
-        $("#" + id)
-          .children(":first")
-          .addClass("fas");
-        $("#" + id)
-          .children(":first")
-          .addClass("fa-plus");
+        .children(":first")
+        .removeClass("fas");
+      $("#" + id)
+        .children(":first")
+        .removeClass("fa-minus");
+      $("#" + id)
+        .children(":first")
+        .addClass("fas");
+      $("#" + id)
+        .children(":first")
+        .addClass("fa-plus");
+        }
+        
       }
     }
   });
