@@ -336,7 +336,6 @@ jQuery(document).ready(function ($) {
     {
       if ($("#" + id).children(":first").hasClass("fa-plus") && attr1 == "true") 
       {
-        console.log("Change to minus");
         $("#" + id)
           .children("span")
           .removeClass("fas");
@@ -351,7 +350,6 @@ jQuery(document).ready(function ($) {
           .addClass("fa-minus");
       } else if ($("#" + id).children(":first").hasClass("fa-minus") && attr1 == "false") 
       {
-        console.log("Change to plus");
         $("#" + id)
         .children(":first")
         .removeClass("fas");
