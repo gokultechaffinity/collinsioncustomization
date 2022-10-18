@@ -334,7 +334,6 @@ jQuery(document).ready(function ($) {
     {
       if ($("#" + id).children(":first").hasClass("fa-plus") && ($("#" + id).hasClass('collapsed')) && $("#" + id).attr('data-toggle'))
       {
-        console.log("PLUS -> MINUS")
         $("#" + id)
           .children(":first")
           .removeClass("fas");
@@ -349,7 +348,6 @@ jQuery(document).ready(function ($) {
           .addClass("fa-minus");
       } else if ($("#" + id).children(":first").hasClass("fa-minus") && (!$("#" + id).hasClass('collapsed')) && $("#" + id).attr('data-toggle') )
       {
-        console.log("MINUS -> PLUS")
         $("#" + id)
         .children(":first")
         .removeClass("fas");
@@ -363,7 +361,11 @@ jQuery(document).ready(function ($) {
         .children(":first")
         .addClass("fa-plus");
       }
+    }else if ($("#" + id).children(":first").hasClass("fa-minus") && ($("#" + id).hasClass('collapsed')) && $("#" + id).attr('data-toggle') )
+    {
+      //do nothing
     }
+  
   });
 
   function open_next(section_number) {
