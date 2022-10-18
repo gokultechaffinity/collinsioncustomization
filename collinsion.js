@@ -329,8 +329,6 @@ jQuery(document).ready(function ($) {
   $(".ins-col-test").click(function () {
     //get element id
     var id = $(this).attr("id");
-    //store this variable for checking if aria-expanded == true/false
-    var attr1 = $("#" + id).attr("aria-expanded");
 
     if (!($("#" + id).children(":first").hasClass("fa-pen"))) 
     {
@@ -365,16 +363,6 @@ jQuery(document).ready(function ($) {
         .children(":first")
         .addClass("fa-plus");
       }
-      // else if ($("#" + id).children(":first").hasClass("fa-minus") && attr1 == "true")
-      // {
-      //   console.log("Remain")
-      //   //do nothing
-  
-      // }else if ($("#" + id).children(":first").hasClass("fa-plus") && attr1 == "true")
-      // {
-      //   //do nothing
-      //   console.log("Remain")
-      // }
     }
   });
 
