@@ -1,6 +1,10 @@
 jQuery(document).ready(function ($) {
-  $("#helpdesk_ticket_subject").hide();
-  $("label[for='helpdesk_ticket_subject']").hide();
+
+  //$("#helpdesk_ticket_subject").hide();
+  //$("label[for='helpdesk_ticket_subject']").hide();
+
+  $("#helpdesk_ticket_subject").closest(".form-group").hide();
+
   $("button.new-ticket-submit-button")
     .hide()
     .after(
@@ -328,37 +332,60 @@ jQuery(document).ready(function ($) {
   }
 
   $(".ins-col-test").click(function () {
-     //get element id
-     var id = $(this).attr('id');
+    //get element id
+    var id = $(this).attr("id");
     //store this variable for checking if aria-expanded == true/false
-    var attr1 = $("#"+id).attr('aria-expanded');
-    
-    if ($("#"+id).children(":first").hasClass("fa-pen")) 
-    {
-      //do nothing
-    }else
-    {
-      if  ( $("#"+id).children(":first").hasClass("fa-plus"))  
-    {
-      console.log("change to minus");
-      console.log(attr1);
-      //change to minus
-      $(("#"+id)).children("span").removeClass("fas");
-      $(("#"+id)).children("span").removeClass("fa-plus");
-      $(("#"+id)).children("span").addClass("fas");
-      $(("#"+id)).children("span").addClass("fa-minus");
-    }else if ( $("#"+id).children("span").hasClass("fa-minus")) 
-    {
+    var attr1 = $("#" + id).attr("aria-expanded");
 
-      console.log("change to plus");
-      console.log(attr1);
-      //change to plus
-      $(("#"+id)).children(":first").removeClass("fas");
-      $(("#"+id)).children(":first").removeClass("fa-minus");
-      $(("#"+id)).children(":first").addClass("fas");
-      $(("#"+id)).children(":first").addClass("fa-plus");
+    if (
+      $("#" + id)
+        .children(":first")
+        .hasClass("fa-pen")
+    ) {
+      //do nothing
+    } else {
+      if (
+        $("#" + id)
+          .children(":first")
+          .hasClass("fa-plus")
+      ) {
+        console.log("change to minus");
+        console.log(attr1);
+        //change to minus
+        $("#" + id)
+          .children("span")
+          .removeClass("fas");
+        $("#" + id)
+          .children("span")
+          .removeClass("fa-plus");
+        $("#" + id)
+          .children("span")
+          .addClass("fas");
+        $("#" + id)
+          .children("span")
+          .addClass("fa-minus");
+      } else if (
+        $("#" + id)
+          .children("span")
+          .hasClass("fa-minus")
+      ) {
+        console.log("change to plus");
+        console.log(attr1);
+        //change to plus
+        $("#" + id)
+          .children(":first")
+          .removeClass("fas");
+        $("#" + id)
+          .children(":first")
+          .removeClass("fa-minus");
+        $("#" + id)
+          .children(":first")
+          .addClass("fas");
+        $("#" + id)
+          .children(":first")
+          .addClass("fa-plus");
+      }
     }
-  }
   });
 
   function open_next(section_number) {
@@ -631,8 +658,6 @@ jQuery(document).ready(function ($) {
 
     $("#section-1-button").children(":first").addClass("fa-solid");
     $("#section-1-button").children(":first").addClass("fa-pen");
-
-
   });
   //____________________________________________________SECTION 1 End - Your Policy______________________________________________
   //continue section 2
@@ -7386,7 +7411,7 @@ jQuery(document).ready(function ($) {
       .then((response) => response.text())
       .then(function (result) {
         console.log(result);
-        // $(".new-ticket-submit-button").trigger("click");
+        $(".new-ticket-submit-button").trigger("click");
         if (JSON.parse(result).status == 401) {
           getJWTToken(fieldId);
         }
