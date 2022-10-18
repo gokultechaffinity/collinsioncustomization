@@ -334,7 +334,7 @@ jQuery(document).ready(function ($) {
 
     if (!($("#" + id).children(":first").hasClass("fa-pen"))) 
     {
-      if ($("#" + id).children(":first").hasClass("fa-plus") && attr1 == "true") 
+      if ($("#" + id).children(":first").hasClass("fa-plus") && attr1 == "false") 
       {
         $("#" + id)
           .children("span")
@@ -348,7 +348,7 @@ jQuery(document).ready(function ($) {
         $("#" + id)
           .children("span")
           .addClass("fa-minus");
-      } else if ($("#" + id).children(":first").hasClass("fa-minus") && attr1 == "false") 
+      } else if ($("#" + id).children(":first").hasClass("fa-minus") && attr1 == "true") 
       {
         $("#" + id)
         .children(":first")
