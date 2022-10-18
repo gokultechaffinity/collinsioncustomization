@@ -366,9 +366,33 @@ jQuery(document).ready(function ($) {
       else if ($("#" + id).children(":first").hasClass("fa-minus") && attr1 == "true") 
       {
         //do nothing
+        $("#" + id)
+        .children(":first")
+        .removeClass("fas");
+      $("#" + id)
+        .children(":first")
+        .removeClass("fa-minus");
+      $("#" + id)
+        .children(":first")
+        .addClass("fas");
+      $("#" + id)
+        .children(":first")
+        .addClass("fa-minus");
       }else if (($("#" + id).children(":first").hasClass("fa-plus") && attr1 == "false")) 
       {
         //do nothing
+        $("#" + id)
+        .children(":first")
+        .removeClass("fas");
+      $("#" + id)
+        .children(":first")
+        .removeClass("fa-plus");
+      $("#" + id)
+        .children(":first")
+        .addClass("fas");
+      $("#" + id)
+        .children(":first")
+        .addClass("fa-plus");
       }
     }
   });
