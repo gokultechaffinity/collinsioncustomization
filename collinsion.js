@@ -332,9 +332,39 @@ jQuery(document).ready(function ($) {
     //store this variable for checking if aria-expanded == true/false
     var attr1 = $("#" + id).attr("aria-expanded");
 
-    if (!($("#" + id).children(":first").hasClass("fa-pen"))) {
-      //do nothing
-      console.log("PLus or minus state");
+    if (!($("#" + id).children(":first").hasClass("fa-pen"))) 
+    {
+      if ($("#" + id).children(":first").hasClass("fa-plus") && attr1 == "true") 
+      {
+        console.log("Change to minus");
+        $("#" + id)
+          .children("span")
+          .removeClass("fas");
+        $("#" + id)
+          .children("span")
+          .removeClass("fa-plus");
+        $("#" + id)
+          .children("span")
+          .addClass("fas");
+        $("#" + id)
+          .children("span")
+          .addClass("fa-minus");
+      } else if ($("#" + id).children(":first").hasClass("fa-minus") && attr1 == "false") 
+      {
+        console.log("Change to plus");
+        $("#" + id)
+        .children(":first")
+        .removeClass("fas");
+      $("#" + id)
+        .children(":first")
+        .removeClass("fa-minus");
+      $("#" + id)
+        .children(":first")
+        .addClass("fas");
+      $("#" + id)
+        .children(":first")
+        .addClass("fa-plus");
+      }
     }
   });
 
