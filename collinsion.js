@@ -334,7 +334,7 @@ jQuery(document).ready(function ($) {
 
     if (!($("#" + id).children(":first").hasClass("fa-pen"))) 
     {
-      if ($("#" + id).children(":first").hasClass("fa-plus") && attr1 == "false") 
+      if ($("#" + id).children(":first").hasClass("fa-plus") && attr1 == "true") 
       {
         $("#" + id)
           .children(":first")
@@ -348,7 +348,7 @@ jQuery(document).ready(function ($) {
         $("#" + id)
           .children(":first")
           .addClass("fa-minus");
-      } else if ($("#" + id).children(":first").hasClass("fa-minus") && attr1 == "true") 
+      } else if ($("#" + id).children(":first").hasClass("fa-minus") && attr1 == "false") 
       {
         $("#" + id)
         .children(":first")
@@ -362,6 +362,13 @@ jQuery(document).ready(function ($) {
       $("#" + id)
         .children(":first")
         .addClass("fa-plus");
+      }
+      else if ($("#" + id).children(":first").hasClass("fa-minus") && attr1 == "true") 
+      {
+        //do nothing
+      }else if (($("#" + id).children(":first").hasClass("fa-plus") && attr1 == "false")) 
+      {
+        //do nothing
       }
     }
   });
