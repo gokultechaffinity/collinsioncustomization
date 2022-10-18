@@ -369,7 +369,7 @@ jQuery(document).ready(function ($) {
           .children("span")
           .hasClass("fa-minus")
       ) {
-        if (attr1 === true) {
+        if (attr1 === false) {
           console.log("change to plus");
           console.log(attr1);
 
