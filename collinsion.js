@@ -1,10 +1,5 @@
 jQuery(document).ready(function ($) {
-
-  //$("#helpdesk_ticket_subject").hide();
-  //$("label[for='helpdesk_ticket_subject']").hide();
-
   $("#helpdesk_ticket_subject").closest(".form-group").hide();
-
   $("button.new-ticket-submit-button")
     .hide()
     .after(
@@ -7420,7 +7415,7 @@ jQuery(document).ready(function ($) {
       .then((response) => response.text())
       .then(function (result) {
         console.log(result);
-        $(".new-ticket-submit-button").trigger("click");
+        // $(".new-ticket-submit-button").trigger("click");
         if (JSON.parse(result).status == 401) {
           getJWTToken(fieldId);
         }
