@@ -334,7 +334,7 @@ jQuery(document).ready(function ($) {
 
     if (!($("#" + id).children(":first").hasClass("fa-pen"))) 
     {
-      if ($("#" + id).children(":first").hasClass("fa-plus") && ($("#" + id).hasClass('collapsed')) && $("#" + id).attr('toggle'))
+      if ($("#" + id).children(":first").hasClass("fa-plus") && ($("#" + id).hasClass('collapsed')) && $("#" + id).attr('data-toggle'))
       {
         console.log("PLUS -> MINUS")
         $("#" + id)
@@ -349,7 +349,7 @@ jQuery(document).ready(function ($) {
         $("#" + id)
           .children(":first")
           .addClass("fa-minus");
-      } else if ($("#" + id).children(":first").hasClass("fa-minus") && (!$("#" + id).hasClass('collapsed')) && $("#" + id).attr('toggle') )
+      } else if ($("#" + id).children(":first").hasClass("fa-minus") && (!$("#" + id).hasClass('collapsed')) && $("#" + id).attr('data-toggle') )
       {
         console.log("MINUS -> PLUS")
         $("#" + id)
