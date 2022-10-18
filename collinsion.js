@@ -365,12 +365,12 @@ jQuery(document).ready(function ($) {
         .children(":first")
         .addClass("fa-plus");
       }
-      else if ($("#" + id).children(":first").hasClass("fa-minus") && attr1 == "true") 
+      else if ($("#" + id).children(":first").hasClass("fa-minus") && (!$("#" + id).hasClass('collapsed')))
       {
         console.log("Remain")
         //do nothing
   
-      }else if (($("#" + id).children(":first").hasClass("fa-plus") && attr1 == "false")) 
+      }else if (($("#" + id).children(":first").hasClass("fa-plus") && ($("#" + id).hasClass('collapsed'))))
       {
         //do nothing
         console.log("Remain")
