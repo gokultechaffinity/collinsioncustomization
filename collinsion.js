@@ -334,21 +334,21 @@ jQuery(document).ready(function ($) {
 
     if (!($("#" + id).children(":first").hasClass("fa-pen"))) 
     {
-      if ($("#" + id).children(":first").hasClass("fa-plus") && attr1 == "false") 
+      if ($("#" + id).children(":first").hasClass("fa-plus") && attr1 == "true") 
       {
         $("#" + id)
-          .children("span")
+          .children(":first")
           .removeClass("fas");
         $("#" + id)
-          .children("span")
+          .children(":first")
           .removeClass("fa-plus");
         $("#" + id)
-          .children("span")
+          .children(":first")
           .addClass("fas");
         $("#" + id)
-          .children("span")
+          .children(":first")
           .addClass("fa-minus");
-      } else if ($("#" + id).children(":first").hasClass("fa-minus") && attr1 == "true") 
+      } else if ($("#" + id).children(":first").hasClass("fa-minus") && attr1 == "false") 
       {
         $("#" + id)
         .children(":first")
