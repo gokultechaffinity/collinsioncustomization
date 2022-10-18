@@ -334,7 +334,7 @@ jQuery(document).ready(function ($) {
 
     if (!($("#" + id).children(":first").hasClass("fa-pen"))) 
     {
-      if ($("#" + id).children(":first").hasClass("fa-plus") && ($("#" + id).hasClass('collapsed')))
+      if ($("#" + id).children(":first").hasClass("fa-plus") && ($("#" + id).hasClass('collapsed')) && $("#" + id).attr('toggle'))
       {
         console.log("PLUS -> MINUS")
         $("#" + id)
@@ -349,7 +349,7 @@ jQuery(document).ready(function ($) {
         $("#" + id)
           .children(":first")
           .addClass("fa-minus");
-      } else if ($("#" + id).children(":first").hasClass("fa-minus") && (!$("#" + id).hasClass('collapsed')))
+      } else if ($("#" + id).children(":first").hasClass("fa-minus") && (!$("#" + id).hasClass('collapsed')) && $("#" + id).attr('toggle') )
       {
         console.log("MINUS -> PLUS")
         $("#" + id)
@@ -365,16 +365,16 @@ jQuery(document).ready(function ($) {
         .children(":first")
         .addClass("fa-plus");
       }
-      else if ($("#" + id).children(":first").hasClass("fa-minus") && attr1 == "true")
-      {
-        console.log("Remain")
-        //do nothing
+      // else if ($("#" + id).children(":first").hasClass("fa-minus") && attr1 == "true")
+      // {
+      //   console.log("Remain")
+      //   //do nothing
   
-      }else if ($("#" + id).children(":first").hasClass("fa-plus") && attr1 == "true")
-      {
-        //do nothing
-        console.log("Remain")
-      }
+      // }else if ($("#" + id).children(":first").hasClass("fa-plus") && attr1 == "true")
+      // {
+      //   //do nothing
+      //   console.log("Remain")
+      // }
     }
   });
 
