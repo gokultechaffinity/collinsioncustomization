@@ -1,5 +1,6 @@
 jQuery(document).ready(function ($) {
   $("#helpdesk_ticket_subject").hide();
+  $("label[for='helpdesk_ticket_subject']").hide();
   $("button.new-ticket-submit-button")
     .hide()
     .after(
