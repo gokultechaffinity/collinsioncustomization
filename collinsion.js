@@ -351,7 +351,7 @@ jQuery(document).ready(function ($) {
           .addClass("fa-minus");
       } else if ($("#" + id).children(":first").hasClass("fa-minus") && attr1 == "true") 
       {
-        console.log("PLUS -> MINUS")
+        console.log("MINUS -> PLUS")
         $("#" + id)
         .children(":first")
         .removeClass("fas");
