@@ -45,13 +45,14 @@ jQuery(document).ready(function ($) {
 
   $(".form-group.helpdesk_ticket_email").hide();
 
-  //bank API dependancies
+  //bank API dependancies - for Columbus Italy and VHI
   if  ($("#title").hasClass("VHI"))
   {
     //hide sort code
     $('label[for="helpdesk_ticket_custom_field_cf_sort_code659991_2321673"]').hide();
     $("#helpdesk_ticket_custom_field_cf_sort_code659991_2321673").hide();
 
+  //bank API dependancies - for all other schemes
   }else if ($("#title").hasClass("CollinsonUK")) {
     //hide iban
     $('label[for="helpdesk_ticket_custom_field_cf_iban_number_2321673"]').hide();
