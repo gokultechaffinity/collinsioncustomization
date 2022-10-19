@@ -338,35 +338,14 @@ jQuery(document).ready(function ($) {
           .children(":first")
           .removeClass("fa-plus")
           .addClass("fa-minus");
-        // $("#" + id)
-        //   .children(":first")
-        //   .removeClass("fa-plus");
-        // $("#" + id)
-        //   .children(":first")
-          
-        // $("#" + id)
-        //   .children(":first")
-        //   .addClass("fa-minus");
       } else if ($("#" + id).children(":first").hasClass("fa-minus") && (!$("#" + id).hasClass('collapsed')) && $("#" + id).attr('data-toggle') )
       {
-        $("#" + id)
-        .children(":first")
-        .removeClass("fas");
+       
       $("#" + id)
         .children(":first")
-        .removeClass("fa-minus");
-      $("#" + id)
-        .children(":first")
-        .addClass("fas");
-      $("#" + id)
-        .children(":first")
-        .addClass("fa-plus");
+        .removeClass("fa-minus").addClass("fa-plus");
       }
-    }else if ($("#" + id).children(":first").hasClass("fa-minus") && ($("#" + id).hasClass('collapsed')) && $("#" + id).attr('data-toggle') )
-    {
-      //do nothing
     }
-  
   });
 
   function open_next(section_number) {
