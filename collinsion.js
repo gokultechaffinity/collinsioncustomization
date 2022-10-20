@@ -57,6 +57,11 @@ jQuery(document).ready(function ($) {
     //hide iban
     $('label[for="helpdesk_ticket_custom_field_cf_iban_number_2321673"]').hide();
     $("#helpdesk_ticket_custom_field_cf_iban_number_2321673").hide();
+
+  }else if ($("#title").hasClass("ColumbusItaly")) {
+    //hide sort code
+    $('label[for="helpdesk_ticket_custom_field_cf_sort_code659991_2321673"]').hide();
+    $("#helpdesk_ticket_custom_field_cf_sort_code659991_2321673").hide();
   }
 
   //____________________________________________________SECTION 1 Start - Your Policy______________________________________________
