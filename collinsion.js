@@ -78,10 +78,20 @@ jQuery(document).ready(function ($) {
   ).parentElement;
   // add for-section-1 tag
   DOBParent.classList.add("for-section-1");
+
   //add save and continue button - add section 1
+  if  ($("#title").hasClass("ColumbusItaly"))
+  {
+    $(
+      '<button id="save_and_continue1" class="btn btn-primary for-section-1 save_and_continue" type="button">Trova la politica</button>'
+    ).insertAfter("#helpdesk_ticket_custom_field_cf_date_of_birth_2321673");
+  }
+  else
+  {
   $(
     '<button id="save_and_continue1" class="btn btn-primary for-section-1 save_and_continue" type="button">Find Policy</button>'
   ).insertAfter("#helpdesk_ticket_custom_field_cf_date_of_birth_2321673");
+}
   //____________________________________________________SECTION 2 Start -  About You______________________________________________
   //identify Email Parent DIV
   var EmailParent = document.getElementById(
@@ -99,9 +109,19 @@ jQuery(document).ready(function ($) {
   ).parentElement;
   NumberParent.classList.add("for-section-2");
   //save and continue section 2
+  if  ($("#title").hasClass("ColumbusItaly"))
+  {
+    $(
+      '<button id="save_and_continue2" class="btn btn-primary for-section-2 save_and_continue" type="button" >Salva e continua</button>'
+    ).insertAfter("#helpdesk_ticket_custom_field_cf_mobile_number_2321673");
+  }
+  else
+  {
+  
   $(
     '<button id="save_and_continue2" class="btn btn-primary for-section-2 save_and_continue" type="button" >Save & Continue</button>'
   ).insertAfter("#helpdesk_ticket_custom_field_cf_mobile_number_2321673");
+}
   //____________________________________________________SECTION 3 Start - About Your Trip ____________________________________________
   //Destination
   var DestinationParent = document.getElementById(
@@ -134,21 +154,43 @@ jQuery(document).ready(function ($) {
     ".form-group.helpdesk_ticket_custom_field_cf_reason_for_claim_2321673"
   ).addClass("for-section-3");
   //save and coninue for Section 3
+  if  ($("#title").hasClass("ColumbusItaly"))
+  {
+    $(
+      '<button id="save_and_continue3" class="btn btn-primary for-section-3 save_and_continue" type="button" >Salva e continua</button>'
+    ).insertAfter(
+      ".form-group.helpdesk_ticket_custom_field_cf_reason_for_claim_2321673.for-section-3"
+    );
+  }
+  else
+  {
   $(
     '<button id="save_and_continue3" class="btn btn-primary for-section-3 save_and_continue" type="button" >Save & Continue</button>'
   ).insertAfter(
     ".form-group.helpdesk_ticket_custom_field_cf_reason_for_claim_2321673.for-section-3"
   );
-
+  }
   //____________________________________________________SECTION 4 Start - Tell us what happened____________________________________________
   $(
     ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper"
   ).addClass("for-section-4");
+  
+  if  ($("#title").hasClass("ColumbusItaly"))
+  {
+    $(
+      '<button id="save_and_continue4" class="btn btn-primary for-section-4 save_and_continue" type="button">Salva e continua</button>'
+    ).insertAfter(
+      ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper"
+    );
+  }
+  else
+  {
   $(
     '<button id="save_and_continue4" class="btn btn-primary for-section-4 save_and_continue" type="button">Save &amp; Continue</button>'
   ).insertAfter(
     ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper"
   );
+}
   //____________________________________________________SECTION 5 Start - Your Documents____________________________________________
   //for-section-5 attachment group
   //___________________________________new_section 5_______________________________________________________
@@ -159,9 +201,19 @@ jQuery(document).ready(function ($) {
     ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper"
   );
   $(".form-group.attachments-container").addClass("for-section-5");
+  
+  if  ($("#title").hasClass("ColumbusItaly"))
+  {
+    $(
+      '<button class="save_and_continue5 btn btn-primary for-section-5 save_and_continue" type="button" >Salva e continua</button>'
+    ).insertAfter(".form-group.attachments-container.for-section-5");
+  }
+  else
+  {
   $(
     '<button class="save_and_continue5 btn btn-primary for-section-5 save_and_continue" type="button" >Save & Continue</button>'
   ).insertAfter(".form-group.attachments-container.for-section-5");
+}
   $("#mock-doc").remove();
   $(".save_and_continue5").first().hide();
 
@@ -184,10 +236,18 @@ jQuery(document).ready(function ($) {
   ).parentElement;
   ibanNumber.classList.add("for-section-6");
   //save and continue 6
+  if  ($("#title").hasClass("ColumbusItaly"))
+  {
+    $(
+      '<button id="save_and_continue6" class="btn btn-primary for-section-6 save_and_continue" type="button" >Save & Continue</button>'
+    ).insertAfter(SortCodeParent);
+  }
+  else
+  {
   $(
     '<button id="save_and_continue6" class="btn btn-primary for-section-6 save_and_continue" type="button" >Save & Continue</button>'
   ).insertAfter(SortCodeParent);
-
+  }
   //____________________________________________________SECTION 7 Start - Summary Section____________________________________________
   $("#helpdesk_ticket_form_id").addClass("for-section-7");
   $(".form-group.helpdesk_ticket_email").addClass("for-section-7");
