@@ -203,6 +203,17 @@ jQuery(document).ready(function ($) {
     $(".invalid-feedback." + ID).addClass("d-block");
     $(".invalid-feedback." + ID).text(errorMessage);
   }
+  //include italy
+  var italy_titles =  [
+    "La tua politica",
+    "A proposito di te",
+    "Sul tuo viaggio",
+    "Raccontaci cosa è successo",
+    "I tuoi documenti",
+    "I tuoi dati di pagamento",
+    "Il riepilogo del tuo reclamo",
+  ];
+   //include italy
 
   var titles = [
     "Your policy",
@@ -240,11 +251,20 @@ jQuery(document).ready(function ($) {
         "</div>"
     ).insertBefore("#collapseSection" + number);
   }
-
-  //invoke!
+  //check if Italian Portal for headings
+  if ($("#title").hasClass("ColumbusItaly"))
+  {
+    for (var i = 0; i < italy_titles.length; ++i) {
+      thisDiv(i + 1, italy_titles[i]);
+    }
+  }else
+  {
+    //invoke for English portals
   for (var i = 0; i < titles.length; ++i) {
     thisDiv(i + 1, titles[i]);
   }
+  }
+  
 
   function checkedfilled(list_of_elements) {
     result = true;
