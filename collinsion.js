@@ -1,10 +1,19 @@
 jQuery(document).ready(function ($) {
   $("#helpdesk_ticket_subject").closest(".form-group").hide();
+  if  ($("#title").hasClass("ColumbusItaly"))
+  {
+    $("button.new-ticket-submit-button")
+    .hide()
+    .after(
+      '<span class="btn fw-primary-button new-ticket-submit-button new-ticket-dummy">Sottoscrivi</span>'
+    );
+  }else{
   $("button.new-ticket-submit-button")
     .hide()
     .after(
       '<span class="btn fw-primary-button new-ticket-submit-button new-ticket-dummy">Submit</span>'
-    );
+    );}
+
   let AuthorizationKey = "";
   let ClaimInitiatedNumber = "";
   let bankResult = "";
