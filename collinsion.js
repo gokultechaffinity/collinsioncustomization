@@ -274,12 +274,12 @@ jQuery(document).ready(function ($) {
   }
   //include italy
   var italy_titles =  [
-    "La tua politica",
-    "A proposito di te",
-    "Sul tuo viaggio",
-    "Raccontaci cosa è successo",
+    "In merito alla tua polizza",
+    "Su di te",
+    "Riguardo al tuo viaggio",
+    "Che cosa è accaduto",
     "I tuoi documenti",
-    "I tuoi dati di pagamento",
+    "I tuoi dettagli bancari",
     "Il riepilogo del tuo reclamo",
   ];
    //include italy
