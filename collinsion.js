@@ -55,27 +55,7 @@ jQuery(document).ready(function ($) {
   $(".form-group.helpdesk_ticket_email").hide();
 
   //bank API dependancies - for Columbus Italy and VHI
-  if ($("#title").hasClass("VHI")) {
-    //hide sort code
-    $(
-      'label[for="helpdesk_ticket_custom_field_cf_sort_code659991_2321673"]'
-    ).hide();
-    $("#helpdesk_ticket_custom_field_cf_sort_code659991_2321673").hide();
-
-    //bank API dependancies - for all other schemes
-  } else if ($("#title").hasClass("CollinsonUK")) {
-    //hide iban
-    $(
-      'label[for="helpdesk_ticket_custom_field_cf_iban_number_2321673"]'
-    ).hide();
-    $("#helpdesk_ticket_custom_field_cf_iban_number_2321673").hide();
-  } else if ($("#title").hasClass("ColumbusItaly")) {
-    //hide sort code
-    $(
-      'label[for="helpdesk_ticket_custom_field_cf_sort_code659991_2321673"]'
-    ).hide();
-    $("#helpdesk_ticket_custom_field_cf_sort_code659991_2321673").hide();
-  }
+  
 
   //____________________________________________________SECTION 1 Start - Your Policy______________________________________________
   $("#new_helpdesk_ticket").wrapAll('<div id="accordion">');
@@ -220,18 +200,35 @@ jQuery(document).ready(function ($) {
     "helpdesk_ticket_custom_field_cf_name_of_account_holder_2321673"
   ).parentElement;
   accHolderParent.classList.add("for-section-6");
-  // var SortCodeParent = document.getElementById(
-  //   "helpdesk_ticket_custom_field_cf_sort_code659991_2321673"
-  // ).parentElement;
+  //check portal here
+  if (("#title").hasClass("VHI")){
+    //Name of acc holder - put in section 6
+    var accHolderParent = document.getElementById(
+      "helpdesk_ticket_custom_field_cf_name_of_account_holder_2321673"
+    ).parentElement;
+    accHolderParent.classList.add("for-section-6");
+    //IBAN
+    var ibanNumber = document.getElementById(
+      "helpdesk_ticket_custom_field_cf_iban_number_2321673"
+    ).parentElement;
+    ibanNumber.classList.add("for-section-6");
+  } else if (("#title").hasClass("EasyJet")) {
+    //Name of acc holder - put in section 6
+    var accHolderParent = document.getElementById(
+      "helpdesk_ticket_custom_field_cf_name_of_account_holder_2321673"
+    ).parentElement;
+    //acount number
+    var AccNumParent = document.getElementById(
+      "helpdesk_ticket_custom_field_cf_account_number_2321673"
+    ).parentElement;
+    AccNumParent.classList.add("for-section-6");
+     //sort code
+  var SortCodeParent = document.getElementById(
+    "helpdesk_ticket_custom_field_cf_sort_code659991_2321673"
+  ).parentElement;
   SortCodeParent.classList.add("for-section-6");
-  var AccNumParent = document.getElementById(
-    "helpdesk_ticket_custom_field_cf_account_number_2321673"
-  ).parentElement;
-  AccNumParent.classList.add("for-section-6");
-  var ibanNumber = document.getElementById(
-    "helpdesk_ticket_custom_field_cf_iban_number_2321673"
-  ).parentElement;
-  ibanNumber.classList.add("for-section-6");
+  }
+
   //save and continue 6
   if ($("#title").hasClass("ColumbusItaly")) {
     $(
