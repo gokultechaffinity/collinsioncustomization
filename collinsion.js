@@ -201,7 +201,7 @@ jQuery(document).ready(function ($) {
   ).parentElement;
   accHolderParent.classList.add("for-section-6");
   //check portal here
-  if (("#title").hasClass("VHI")){
+  if ($("#title").hasClass("VHI")){
     //Name of acc holder - put in section 6
     var accHolderParent = document.getElementById(
       "helpdesk_ticket_custom_field_cf_name_of_account_holder_2321673"
@@ -212,7 +212,7 @@ jQuery(document).ready(function ($) {
       "helpdesk_ticket_custom_field_cf_iban_number_2321673"
     ).parentElement;
     ibanNumber.classList.add("for-section-6");
-  } else if (("#title").hasClass("EasyJet")) {
+  } else if ($("#title").hasClass("EasyJet")) {
     //Name of acc holder - put in section 6
     var accHolderParent = document.getElementById(
       "helpdesk_ticket_custom_field_cf_name_of_account_holder_2321673"
