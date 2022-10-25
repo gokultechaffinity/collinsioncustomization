@@ -60,17 +60,32 @@ jQuery(document).ready(function ($) {
   //____________________________________________________SECTION 1 Start - Your Policy______________________________________________
   $("#new_helpdesk_ticket").wrapAll('<div id="accordion">');
   //identify Policy Number Parent DIV
-  var PolicyNumberParent = document.getElementById(
-    "helpdesk_ticket_custom_field_cf_policy_number_2321673"
-  ).parentElement;
-  // add for-section-1 tag
-  PolicyNumberParent.classList.add("for-section-1");
-  //identify DOB Parent DIV
-  var DOBParent = document.getElementById(
-    "helpdesk_ticket_custom_field_cf_date_of_birth_2321673"
-  ).parentElement;
-  // add for-section-1 tag
-  DOBParent.classList.add("for-section-1");
+
+  //check for portal
+  if ($("#title").hasClass("VHI")){
+    var PolicyNumberParent = document.getElementById(
+      "helpdesk_ticket_custom_field_cf_policy_number_2321673"
+    ).parentElement;
+    PolicyNumberParent.classList.add("for-section-1");
+
+    var DOBParent = document.getElementById(
+      "helpdesk_ticket_custom_field_cf_date_of_birth_2321673"
+    ).parentElement;
+    DOBParent.classList.add("for-section-1");
+    
+  } else if ($("#title").hasClass("EasyJet")) {
+    var PolicyNumberParent = document.getElementById(
+      "helpdesk_ticket_custom_field_cf_policy_number_2321673"
+    ).parentElement;
+    PolicyNumberParent.classList.add("for-section-1");
+    
+    var PostcodeParent = document.getElementById(
+      "helpdesk_ticket_custom_field_cf_postcode68273_2321673"
+    ).parentElement;
+    PostcodeParent.classList.add("for-section-1");
+
+  }
+  
 
   //add save and continue button - add section 1
   if ($("#title").hasClass("ColumbusItaly")) {
@@ -200,7 +215,7 @@ jQuery(document).ready(function ($) {
     "helpdesk_ticket_custom_field_cf_name_of_account_holder_2321673"
   ).parentElement;
   accHolderParent.classList.add("for-section-6");
-  //check portal here
+  //check for portal
   if ($("#title").hasClass("VHI")){
     //Name of acc holder - put in section 6
     var accHolderParent = document.getElementById(
