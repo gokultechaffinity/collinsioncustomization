@@ -543,7 +543,8 @@ jQuery(document).ready(function ($) {
             let dateOfBirth = $(
               "#helpdesk_ticket_custom_field_cf_date_of_birth_2321673"
             ).val();
-            getPolicyDetails(postcode, dateOfBirth, "#save_and_continue1");
+            //POST CODE VALIDATION below
+            //getPolicyDetails(postcode, dateOfBirth, "#save_and_continue1");
             $("#save_and_continue1").attr("data-target", "#agreementModal");
             $("#save_and_continue1").attr("data-toggle", "modal");
             clearError([
