@@ -83,10 +83,8 @@ jQuery(document).ready(function ($) {
       "helpdesk_ticket_custom_field_cf_postcode68273_2321673"
     ).parentElement;
     PostcodeParent.classList.add("for-section-1");
-
   }
   
-
   //add save and continue button - add section 1
   if ($("#title").hasClass("ColumbusItaly")) {
     $(
@@ -528,45 +526,20 @@ jQuery(document).ready(function ($) {
         //check LENGTH OF POLICY NUMBER - 7 DIGITS
         if (
           $("#helpdesk_ticket_custom_field_cf_postcode68273_2321673").val()
-            .length >= 7
+            .length >= 6
         ) {
-          birthdate = $(
-            "#helpdesk_ticket_custom_field_cf_date_of_birth_2321673"
-          ).val();
-          bday = new Date(birthdate);
-          if (today < bday) {
-            addErrorMessage(
-              "helpdesk_ticket_custom_field_cf_date_of_birth_2321673",
-              "Invalid Birthday"
-            );
-            $("#save_and_continue1").removeAttr("data-target");
-            $("#save_and_continue1").removeAttr("data-toggle");
-          } else if (today > bday) {
-            let postcode = $(
-              "#helpdesk_ticket_custom_field_cf_postcode68273_2321673"
-            ).val();
-            let dateOfBirth = $(
-              "#helpdesk_ticket_custom_field_cf_date_of_birth_2321673"
-            ).val();
-            //POST CODE VALIDATION below
-            //getPolicyDetails(postcode, dateOfBirth, "#save_and_continue1");
-            $("#save_and_continue1").attr("data-target", "#agreementModal");
-            $("#save_and_continue1").attr("data-toggle", "modal");
-            clearError([
-              "helpdesk_ticket_custom_field_cf_date_of_birth_2321673",
-              "helpdesk_ticket_custom_field_cf_postcode68273_2321673",
-            ]);
+           
           } else {
             addErrorMessage(
-              "helpdesk_ticket_custom_field_cf_date_of_birth_2321673",
-              "Invalid Birthday"
+              "helpdesk_ticket_custom_field_cf_postcode68273_2321673",
+              "Invalid Postcode length"
             );
             $("#save_and_continue1").removeAttr("data-target");
             $("#save_and_continue1").removeAttr("data-toggle");
           }
         }
-      }
-      if ($("#cb").prop("checked") == true) {
+
+         if ($("#cb").prop("checked") == true) {
         $("#continue").attr("data-dismiss", "modal");
         //grey out continue - opposite - for different schemes
         if ($("#title").hasClass("VHI")) {
@@ -584,6 +557,7 @@ jQuery(document).ready(function ($) {
         $("#continue").css("background-color", "grey");
         $("#continue").removeAttr("data-dismiss");
       }
+
     }
     else if ($("#title").hasClass("VHI")) {
     if (
