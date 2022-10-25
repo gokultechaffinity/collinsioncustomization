@@ -220,9 +220,9 @@ jQuery(document).ready(function ($) {
     "helpdesk_ticket_custom_field_cf_name_of_account_holder_2321673"
   ).parentElement;
   accHolderParent.classList.add("for-section-6");
-  var SortCodeParent = document.getElementById(
-    "helpdesk_ticket_custom_field_cf_sort_code659991_2321673"
-  ).parentElement;
+  // var SortCodeParent = document.getElementById(
+  //   "helpdesk_ticket_custom_field_cf_sort_code659991_2321673"
+  // ).parentElement;
   SortCodeParent.classList.add("for-section-6");
   var AccNumParent = document.getElementById(
     "helpdesk_ticket_custom_field_cf_account_number_2321673"
