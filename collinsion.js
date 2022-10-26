@@ -526,26 +526,31 @@ jQuery(document).ready(function ($) {
         //check LENGTH OF POLICY NUMBER - 7 DIGITS
         if (
           $("#helpdesk_ticket_custom_field_cf_policy_number_2321673").val()
-            .length >= 7 && $("#helpdesk_ticket_custom_field_cf_postcode68273_2321673").val()
-            .length >= 6
-        ) {
-          $("#save_and_continue1").attr("data-target", "#agreementModal");
-          $("#save_and_continue1").attr("data-toggle", "modal");
-          clearError([
-            "helpdesk_ticket_custom_field_cf_postcode68273_2321673",
-            "helpdesk_ticket_custom_field_cf_policy_number_2321673",
-          ]);
-          } else {
-            addErrorMessage(
+            .length < 7 ) 
+            {
+              addErrorMessage(
               "helpdesk_ticket_custom_field_cf_policy_number_2321673",
-              "Invalid Value length"
-            );
-            addErrorMessage(
-              "helpdesk_ticket_custom_field_cf_postcode68273_2321673",
-              "Invalid Value length"
+              "Policy Number must be at least 7 digits."
             );
             $("#save_and_continue1").removeAttr("data-target");
             $("#save_and_continue1").removeAttr("data-toggle");
+
+            }else if ($("#helpdesk_ticket_custom_field_cf_postcode68273_2321673").val()
+            .length < 6) {
+              addErrorMessage(
+              "helpdesk_ticket_custom_field_cf_postcode68273_2321673",
+              "Postcode must be at least 6 characters."
+            );
+            $("#save_and_continue1").removeAttr("data-target");
+            $("#save_and_continue1").removeAttr("data-toggle");
+            
+        } else {
+            $("#save_and_continue1").attr("data-target", "#agreementModal");
+            $("#save_and_continue1").attr("data-toggle", "modal");
+            clearError([
+              "helpdesk_ticket_custom_field_cf_postcode68273_2321673",
+              "helpdesk_ticket_custom_field_cf_policy_number_2321673",
+            ]);
           }
         }
 
