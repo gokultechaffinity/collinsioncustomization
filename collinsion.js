@@ -29,7 +29,7 @@ jQuery(document).ready(function ($) {
       redirect: "follow",
     };
     fetch(
-      "https://claim-sandbox.collinsonnis.com/authenticate?qyjo=techaffinity&ovgb=cTkdpBQe02QvMkwZ0jCB",
+      "https://claim-api-lower.collinsonnis.com/authenticate",
       requestOptions
     )
       .then((response) => response.text())
