@@ -251,8 +251,13 @@ jQuery(document).ready(function ($) {
   if ($("#title").hasClass("ColumbusItaly")) {
     $(
       '<button id="save_and_continue6" class="btn btn-primary for-section-6 save_and_continue" type="button" >Salva e continua</button>'
-    ).insertAfter(SortCodeParent);
-  } else {
+    ).insertAfter(ibanNumber);
+  } else  if ($("#title").hasClass("VHI")){
+    $(
+      '<button id="save_and_continue6" class="btn btn-primary for-section-6 save_and_continue" type="button" >Save & Continue</button>'
+    ).insertAfter(ibanNumber);
+  }
+  else if ($("#title").hasClass("EasyJet")){
     $(
       '<button id="save_and_continue6" class="btn btn-primary for-section-6 save_and_continue" type="button" >Save & Continue</button>'
     ).insertAfter(SortCodeParent);
