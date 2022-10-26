@@ -525,14 +525,20 @@ jQuery(document).ready(function ($) {
       } else {
         //check LENGTH OF POLICY NUMBER - 7 DIGITS
         if (
-          $("#helpdesk_ticket_custom_field_cf_postcode68273_2321673").val()
+          $("#helpdesk_ticket_custom_field_cf_policy_number_2321673").val()
+            .length >= 7 && $("#helpdesk_ticket_custom_field_cf_postcode68273_2321673").val()
             .length >= 6
         ) {
-           
+          $("#save_and_continue1").attr("data-target", "#agreementModal");
+          $("#save_and_continue1").attr("data-toggle", "modal");
           } else {
             addErrorMessage(
+              "helpdesk_ticket_custom_field_cf_policy_number_2321673",
+              "Invalid Value length"
+            );
+            addErrorMessage(
               "helpdesk_ticket_custom_field_cf_postcode68273_2321673",
-              "Invalid Postcode length"
+              "Invalid Value length"
             );
             $("#save_and_continue1").removeAttr("data-target");
             $("#save_and_continue1").removeAttr("data-toggle");
