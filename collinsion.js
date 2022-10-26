@@ -739,7 +739,15 @@ jQuery(document).ready(function ($) {
       //ad attribute to dismiss modal
       $("#continue").attr("data-dismiss", "modal");
       //grey out continue - opposite
-      $("#continue").css("background-color", "#38133E");
+      if ($("#title").hasClass("VHI")) {
+        $("#continue").css("background-color", "#38133E");
+      } else if ($("#title").hasClass("EasyJet")) {
+        $("#continue").css("background-color", "#FF6600");
+      } else if ($("#title").hasClass("CollinsonUK")) {
+        $("#continue").css("background-color", "#FFFFFF");
+      } else if ($("#title").hasClass("ColumbusItaly")) {
+        $("#continue").css("background-color", "#083050");
+      }
     } else {
       $("#continue").removeAttr("data-dismiss");
       //grey out continue
