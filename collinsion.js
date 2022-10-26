@@ -531,6 +531,10 @@ jQuery(document).ready(function ($) {
         ) {
           $("#save_and_continue1").attr("data-target", "#agreementModal");
           $("#save_and_continue1").attr("data-toggle", "modal");
+          clearError([
+            "helpdesk_ticket_custom_field_cf_postcode68273_2321673",
+            "helpdesk_ticket_custom_field_cf_policy_number_2321673",
+          ]);
           } else {
             addErrorMessage(
               "helpdesk_ticket_custom_field_cf_policy_number_2321673",
