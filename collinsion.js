@@ -543,8 +543,18 @@ jQuery(document).ready(function ($) {
             );
             $("#save_and_continue1").removeAttr("data-target");
             $("#save_and_continue1").removeAttr("data-toggle");
-            
+
         } else {
+
+            //create variables for invoke
+            let policyNumber = $(
+              "#helpdesk_ticket_custom_field_cf_policy_number_2321673"
+            ).val();
+            let postCode = $(
+              "#helpdesk_ticket_custom_field_cf_policy_number_2321673"
+            ).val();
+            //getPolicy INVOKE HERE!!
+            //
             $("#save_and_continue1").attr("data-target", "#agreementModal");
             $("#save_and_continue1").attr("data-toggle", "modal");
             clearError([
