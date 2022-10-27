@@ -62,7 +62,7 @@ jQuery(document).ready(function ($) {
   //identify Policy Number Parent DIV
 
   //check for portal
-  if ($("#title").hasClass("VHI")){
+  if ($("#title").hasClass("VHI") || $("#title").hasClass("ColumbusItaly")){
     var PolicyNumberParent = document.getElementById(
       "helpdesk_ticket_custom_field_cf_policy_number_2321673"
     ).parentElement;
@@ -219,7 +219,7 @@ jQuery(document).ready(function ($) {
   ).parentElement;
   accHolderParent.classList.add("for-section-6");
   //check for portal
-  if ($("#title").hasClass("VHI")){
+  if ($("#title").hasClass("VHI") || $("#title").hasClass("ColumbusItaly")){
     //Name of acc holder - put in section 6
     var accHolderParent = document.getElementById(
       "helpdesk_ticket_custom_field_cf_name_of_account_holder_2321673"
@@ -589,7 +589,7 @@ jQuery(document).ready(function ($) {
       }
 
     }
-    else if ($("#title").hasClass("VHI")) {
+    else if ($("#title").hasClass("VHI") || $("#title").hasClass("ColumbusItaly") ) {
     if (
       $("#helpdesk_ticket_custom_field_cf_policy_number_2321673").val() == "" ||
       $("#helpdesk_ticket_custom_field_cf_date_of_birth_2321673").val() == ""
