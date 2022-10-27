@@ -24,8 +24,8 @@ jQuery(document).ready(function ($) {
   let succesStatus = [200, 201, 202, 203, 204, 205, 206, 207, 208, 226];
   getJWTToken();
   function getJWTToken(fieldId) {
-    var test=false;
-var contentType;
+    var flag=false;
+var statusCode;
 var requestOptions = {
       method: "POST",
       redirect: "follow",
@@ -37,21 +37,21 @@ var requestOptions = {
       
 .then((response) => {
         console.log("response -->",response);
-      contentType = response.status;
+      statusCode = response.status;
      if (!response.ok) {
-       test=true;
+      flag=true;
      }
      return response.json();
   })
       .then(function (result) {
       console.log("--Policy details->",result)
-            console.log("--Policy details->",test)
+            console.log("--Policy details->",flag)
       AuthorizationKey = result.token
        if (fieldId) {
           $(fieldId).trigger("click");
         }
-       if(test) {
-          console.log("Please refresh the page ",contentType);
+       if(flag) {
+          console.log("Please refresh the page ",statusCode);
         }
       })
       .catch((error) => console.log(error));
@@ -5437,6 +5437,8 @@ var requestOptions = {
     }
   });
   function getUploadFiles(files, fieldId) {
+let statusCode;
+    let flag=false;
     var formdata = new FormData();
     var myHeaders = new Headers();
     myHeaders.append("Cache-Control", "no-cache");
@@ -5463,14 +5465,14 @@ var requestOptions = {
         console.log(response);
     statusCode = response.status;
      if (!response.ok) {
-       test=true;
+       flag=true;
      }
      return response.json();
   })
       .then(function (result) {
-      console.log("--Policy details->",result)
-            console.log("--Policy details->",test)
-          if(test){
+      console.log("-- details->",result)
+          if(flag){
+ console.log("-- flag->",flag)
               if(statusCode==401){
                   console.log("unauthorized")
                   getJWTToken(fieldId);
