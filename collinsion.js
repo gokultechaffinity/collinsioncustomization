@@ -691,74 +691,151 @@ var requestOptions = {
     }
     }
   });
-
-  function getPolicyDetails(policyNumber, dateOfBirth, fieldId) {
-    console.log("---> policy inside token", AuthorizationKey);
-    var myHeaders = new Headers();
-    myHeaders.append("Cache-Control", "no-cache");
-    myHeaders.append("Authorization", AuthorizationKey);
-    var requestOptions = {
+   function getPolicyDetails(policyNumber, dateOfBirth, fieldId) {
+      console.log("---> policy inside token", AuthorizationKey);
+      var flag=false;
+      let statusCode;
+      var myHeaders = new Headers();
+      myHeaders.append("Cache-Control", "no-cache");
+      myHeaders.append("Authorization", AuthorizationKey);
+        var requestOptions = {
       method: "GET",
       headers: myHeaders,
       redirect: "follow",
     };
     fetch(
-      "https://claim-api-lower.collinsonnis.com/api/policy?policyNumber=" +
+        "https://claim-api-lower.collinsonnis.com/api/policy?policyNumber=" +
         policyNumber +
         "%25&dob=" +
         dateOfBirth,
       requestOptions
-    )
-      .then((response) => response.text())
+    )  .then((response) => {
+        console.log(response);
+        statusCode = response.status;
+     if (!response.ok) {
+        flag=true;
+     }
+     return response.json();
+  })
       .then(function (result) {
-        if (JSON.parse(result).status != 401) {
-          //diable
-          // $("#section-2-button").removeClass("disabled")
-          // $("#section-2-button").addClass("disabled")
-          buildPolicyUI(result);
-        } else {
-          getJWTToken(fieldId);
-          console.log("Please try again after sometime");
-          // $("#save_and_continue1").trigger("click");
-        }
+          console.log("Policy details",result)
+          if(flag) {
+            console.log("Need to show error ",statusCode);
+            if(statusCode==401){
+                console.log("error",result.error)
+                getJWTToken(fieldId);
+            }else if(statusCode==404){
+                console.log("error 404 -->",result.body)
+            }
+          }else{
+            buildPolicyUI(result);
+          }
       })
-      .catch((error) => console.log("error", error));
-  }
-  function buildPolicyUI(policyData) {
-    let policyDetails = JSON.parse(policyData).Insured;
-    console.log(policyDetails);
-    let InternalPolicyNumber = JSON.parse(policyData).InternalPolicyNumber;
-    let options = "";
-    options +=
-      '<div class="form-group"><label class="form-label"> Name(s) of the Insured</label>';
-    policyDetails.forEach(function (element, index) {
+      .catch((error) => console.log(error));
+    }
+    function buildPolicyUI(policyData) {
+      let policyDetails = policyData.Insured;
+      console.log(policyDetails);
+      let InternalPolicyNumber = policyData.InternalPolicyNumber;
+      let options = "";
       options +=
-        '<div class="list-claim"><input type="checkbox" class="check-box" id=' +
-        index +
-        ' name="insured_1" data-isPolicyHolder=' +
-        element.IsPolicyHolder +
-        " value=" +
-        element.FirstName +
-        " data-clientId=" +
-        element.ClientId +
-        " data-PolicyNumber=" +
-        InternalPolicyNumber +
-        "><span>" +
-        " " +
-        element.FirstName +
-        " " +
-        element.LastName +
-        "</span></div>";
-    });
-    options += "</div>";
-    $(".list-policy-names").remove();
-    $("#collapseSection2 .card-body").prepend(
-      "<div class='list-policy-names'>" + options + "</div>"
-    );
-    $("#collapseSection2 .list-policy-names .form-group").append(
-      "<div class='invalid-feedback check-finder'></div>"
-    );
-  }
+        '<div class="form-group"><label class="form-label"> Name(s) of the Insured</label>';
+      policyDetails.forEach(function (element, index) {
+        options +=
+          '<div class="list-claim"><input type="checkbox" class="check-box" id=' +
+          index +
+          ' name="insured_1" data-isPolicyHolder=' +
+          element.IsPolicyHolder +
+          " value=" +
+          element.FirstName +
+          " data-clientId=" +
+          element.ClientId +
+          " data-PolicyNumber=" +
+          InternalPolicyNumber +
+          "><span>" +
+          " " +
+          element.FirstName +
+          " " +
+          element.LastName +
+          "</span></div>";
+      });
+      options += "</div>";
+      $(".list-policy-names").remove();
+      $("#collapseSection2 .card-body").prepend(
+        "<div class='list-policy-names'>" + options + "</div>"
+      );
+      $("#collapseSection2 .list-policy-names .form-group").append(
+        "<div class='invalid-feedback check-finder'></div>"
+      );
+    }
+
+//   function getPolicyDetails(policyNumber, dateOfBirth, fieldId) {
+//     console.log("---> policy inside token", AuthorizationKey);
+//     var myHeaders = new Headers();
+//     myHeaders.append("Cache-Control", "no-cache");
+//     myHeaders.append("Authorization", AuthorizationKey);
+//     var requestOptions = {
+//       method: "GET",
+//       headers: myHeaders,
+//       redirect: "follow",
+//     };
+//     fetch(
+//       "https://claim-api-lower.collinsonnis.com/api/policy?policyNumber=" +
+//         policyNumber +
+//         "%25&dob=" +
+//         dateOfBirth,
+//       requestOptions
+//     )
+//       .then((response) => response.text())
+//       .then(function (result) {
+//         if (JSON.parse(result).status != 401) {
+//           //diable
+//           // $("#section-2-button").removeClass("disabled")
+//           // $("#section-2-button").addClass("disabled")
+//           buildPolicyUI(result);
+//         } else {
+//           getJWTToken(fieldId);
+//           console.log("Please try again after sometime");
+//           // $("#save_and_continue1").trigger("click");
+//         }
+//       })
+//       .catch((error) => console.log("error", error));
+//   }
+//   function buildPolicyUI(policyData) {
+//     let policyDetails = JSON.parse(policyData).Insured;
+//     console.log(policyDetails);
+//     let InternalPolicyNumber = JSON.parse(policyData).InternalPolicyNumber;
+//     let options = "";
+//     options +=
+//       '<div class="form-group"><label class="form-label"> Name(s) of the Insured</label>';
+//     policyDetails.forEach(function (element, index) {
+//       options +=
+//         '<div class="list-claim"><input type="checkbox" class="check-box" id=' +
+//         index +
+//         ' name="insured_1" data-isPolicyHolder=' +
+//         element.IsPolicyHolder +
+//         " value=" +
+//         element.FirstName +
+//         " data-clientId=" +
+//         element.ClientId +
+//         " data-PolicyNumber=" +
+//         InternalPolicyNumber +
+//         "><span>" +
+//         " " +
+//         element.FirstName +
+//         " " +
+//         element.LastName +
+//         "</span></div>";
+//     });
+//     options += "</div>";
+//     $(".list-policy-names").remove();
+//     $("#collapseSection2 .card-body").prepend(
+//       "<div class='list-policy-names'>" + options + "</div>"
+//     );
+//     $("#collapseSection2 .list-policy-names .form-group").append(
+//       "<div class='invalid-feedback check-finder'></div>"
+//     );
+//   }
   //on click of agreement check box- check if checked or not- if checked enable continue button otherwise disable
   $("#cb").click(function () {
     if ($("#cb").prop("checked") == true) {
