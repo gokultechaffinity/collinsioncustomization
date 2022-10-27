@@ -285,7 +285,7 @@ jQuery(document).ready(function ($) {
     "Che cosa è accaduto",
     "I tuoi documenti",
     "I tuoi dettagli bancari",
-    "Il riepilogo del tuo reclamo",
+    "Descrizione del tuo sinistro",
   ];
   //include italy
 
