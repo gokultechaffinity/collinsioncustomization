@@ -4654,7 +4654,7 @@ jQuery(document).ready(function ($) {
         for (let i = 0; i < $("input[name='insured_1']:checked").length; i++) {
           claimObject = {};
           claimObject["incidentCountryCode"] =
-            countryPortal.SagaPostOfficeColumbusUK;
+            countryPortal.VHI;
 
           claimObject["incidentDate"] = $(
             "#helpdesk_ticket_custom_field_cf_your_incident_date_2321673"
@@ -5393,7 +5393,7 @@ jQuery(document).ready(function ($) {
       let sortCode = $(
         "#helpdesk_ticket_custom_field_cf_sort_code659991_2321673"
       ).val();
-      let countryCode = countryPortal.SagaPostOfficeColumbusUK;
+      let countryCode = countryPortal.VHI;
       console.log(accountNumber, iBanNumber, sortCode, countryCode);
       //method one params
       //iBan
