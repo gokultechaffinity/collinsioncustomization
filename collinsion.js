@@ -24,7 +24,9 @@ jQuery(document).ready(function ($) {
   let succesStatus = [200, 201, 202, 203, 204, 205, 206, 207, 208, 226];
   getJWTToken();
   function getJWTToken(fieldId) {
-    var requestOptions = {
+    var test=false;
+var contentType;
+var requestOptions = {
       method: "POST",
       redirect: "follow",
     };
@@ -32,17 +34,29 @@ jQuery(document).ready(function ($) {
       "https://claim-api-lower.collinsonnis.com/authenticate",
       requestOptions
     )
-      .then((response) => response.text())
-      .then((result) => {
-        AuthorizationKey = JSON.parse(result).token;
-        console.log("--->", AuthorizationKey);
-        if (fieldId) {
+      
+.then((response) => {
+        console.log("response -->",response);
+      contentType = response.status;
+     if (!response.ok) {
+       test=true;
+     }
+     return response.json();
+  })
+      .then(function (result) {
+      console.log("--Policy details->",result)
+            console.log("--Policy details->",test)
+      AuthorizationKey = result.token
+       if (fieldId) {
           $(fieldId).trigger("click");
         }
-        //ValidateBankMethodOne()
-        // ValidateBankMethodTwo()
+       if(test) {
+          console.log("Please refresh the page ",contentType);
+        }
       })
-      .catch((error) => console.log("error", error));
+      .catch((error) => console.log(error));
+ 
+   
   }
   //email verification function
   function isEmail(email) {
