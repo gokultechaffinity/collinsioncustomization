@@ -682,7 +682,7 @@ jQuery(document).ready(function ($) {
       redirect: "follow",
     };
     fetch(
-      "https://claim-sandbox.collinsonnis.com/api/policy?policyNumber=" +
+      "https://claim-api-lower.collinsonnis.com/api/policy?policyNumber=" +
         policyNumber +
         "%25&dob=" +
         dateOfBirth,
@@ -4815,7 +4815,7 @@ jQuery(document).ready(function ($) {
       redirect: "follow",
     };
 
-    fetch("https://claim-sandbox.collinsonnis.com/api/claim", requestOptions)
+    fetch("https://claim-api-lower.collinsonnis.com/api/claim", requestOptions)
       .then((response) => response.text())
       .then(function (result) {
         console.log(result);
@@ -5358,7 +5358,7 @@ jQuery(document).ready(function ($) {
     };
     console.log("--->", requestOptions);
     fetch(
-      "https://claim-sandbox.collinsonnis.com/api/claim/uploadFiles",
+      "https://claim-api-lower.collinsonnis.com/api/claim/uploadFiles",
       requestOptions
     )
       .then((response) => response.text())
@@ -5507,7 +5507,7 @@ jQuery(document).ready(function ($) {
       redirect: "follow",
     };
     fetch(
-      "https://claim-sandbox.collinsonnis.com/api/bank/validateBankAccount?iBan=" +
+      "https://claim-api-lower.collinsonnis.com/api/bank/validateBankAccount?iBan=" +
         iBanNumber +
         "&countryCode=" +
         countryCode,
@@ -5539,7 +5539,7 @@ jQuery(document).ready(function ($) {
       redirect: "follow",
     };
     fetch(
-      "https://claim-sandbox.collinsonnis.com/api/bank/validateBankAccount?accountNumber=" +
+      "https://claim-api-lower.collinsonnis.com/api/bank/validateBankAccount?accountNumber=" +
         accountNumber +
         "&sortCode=" +
         sortCode +
@@ -7588,7 +7588,7 @@ jQuery(document).ready(function ($) {
     };
 
     fetch(
-      "https://claim-sandbox.collinsonnis.com/api/claim/submission",
+      "https://claim-api-lower.collinsonnis.com/api/claim/submission",
       requestOptions
     )
       .then((response) => response.text())
