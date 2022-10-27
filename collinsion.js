@@ -500,9 +500,16 @@ jQuery(document).ready(function ($) {
     //START SUMMARY SECTION
     if ($("#summary_intro").length) {
     } else {
-      $(
-        '<p id="summary_intro">Please take a moment to double check your information - accuracy helps us process your claim quickly.</p>'
-      ).insertBefore(".form-group.helpdesk_ticket_email.for-section-7");
+
+      if ($("#title").hasClass("ColumbusItaly")) {
+        $(
+          "<p id='summary_intro'>Ti preghiamo di dedicare un momento a ricontrollare le tue informazioni: l'accuratezza ci aiuta a elaborare rapidamente la tua richiesta</p>"
+        ).insertBefore(".form-group.helpdesk_ticket_email.for-section-7");
+      }else{
+        $(
+          '<p id="summary_intro">Please take a moment to double check your information - accuracy helps us process your claim quickly.</p>'
+        ).insertBefore(".form-group.helpdesk_ticket_email.for-section-7");
+      }
     }
   }
 
