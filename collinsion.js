@@ -5459,14 +5459,34 @@ var requestOptions = {
       "https://claim-api-lower.collinsonnis.com/api/claim/uploadFiles",
       requestOptions
     )
-      .then((response) => response.text())
+ .then((response) => {
+        console.log(response);
+    statusCode = response.status;
+     if (!response.ok) {
+       test=true;
+     }
+     return response.json();
+  })
       .then(function (result) {
-        console.log("sucessfilly uploaded ----->", result);
-        if (JSON.parse(result).status == 401) {
-          getJWTToken(fieldId);
-        }
+      console.log("--Policy details->",result)
+            console.log("--Policy details->",test)
+          if(test){
+              if(statusCode==401){
+                  console.log("unauthorized")
+                  getJWTToken(fieldId);
+              }
+          }
+        
       })
-      .catch((error) => console.log("error", error));
+      .catch((error) => console.log(error));
+//       .then((response) => response.text())
+//       .then(function (result) {
+//         console.log("sucessfilly uploaded ----->", result);
+//         if (JSON.parse(result).status == 401) {
+//           getJWTToken(fieldId);
+//         }
+//       })
+//       .catch((error) => console.log("error", error));
   }
   //____________________________________________________SECTION 5 End - Your Documents____________________________________________
   //____________________________________________________________________________________________________________________
