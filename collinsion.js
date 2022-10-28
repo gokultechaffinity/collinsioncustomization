@@ -5654,30 +5654,44 @@ let statusCode;
     open_next(6);
   });
   function ValidateBankMethodOne(iBanNumber, countryCode, fieldId) {
-    var myHeaders = new Headers();
-    myHeaders.append("Cache-Control", "no-cache");
-    myHeaders.append("Authorization", AuthorizationKey);
-    var requestOptions = {
-      method: "GET",
-      headers: myHeaders,
-      redirect: "follow",
-    };
-    fetch(
-      "https://claim-api-lower.collinsonnis.com/api/bank/validateBankAccount?iBan=" +
-        iBanNumber +
-        "&countryCode=" +
-        countryCode,
-      requestOptions
-    )
-      .then((response) => response.text())
+    let flag=false;
+        let statusCode;
+      var myHeaders = new Headers();
+      myHeaders.append("Cache-Control", "no-cache");
+      myHeaders.append("Authorization", AuthorizationKey);
+      var requestOptions = {
+        method: "GET",
+        headers: myHeaders,
+        redirect: "follow",
+      };
+      fetch(
+        "https://claim-api-lower.collinsonnis.com/api/bank/validateBankAccount?iBan=" +
+          iBanNumber +
+          "&countryCode=" +
+          countryCode,
+        requestOptions
+      )
+      .then((response) => {
+        console.log("response -->",response);
+      statusCode = response.status;
+     if (!response.ok) {
+       flag=true;
+     }
+     return response.json();
+  })
       .then(function (result) {
-        console.log("bank detils validate method one -->", result);
-        bankResult = result;
-        if (JSON.parse(result).status == 401) {
-          getJWTToken(fieldId);
+      console.log("--->",result,statusCode)
+       if(flag) {
+          console.log("Please refresh the page ",statusCode,result);
+          if(statusCode==401){
+            getJWTToken(fieldId);
+          }
+        }else{
+            console.log("--sucesss-")
         }
       })
-      .catch((error) => console.log("error", error));
+      .catch((error) => console.log("error -->",error));
+
   }
 
   function ValidateBankMethodTwo(
@@ -5686,6 +5700,8 @@ let statusCode;
     countryCode,
     fieldId
   ) {
+ let flag=false;
+        let statusCode;
     var myHeaders = new Headers();
     myHeaders.append("Cache-Control", "no-cache");
     myHeaders.append("Authorization", AuthorizationKey);
@@ -5703,15 +5719,35 @@ let statusCode;
         countryCode,
       requestOptions
     )
-      .then((response) => response.text())
+  .then((response) => {
+        console.log("response -->",response);
+      statusCode = response.status;
+     if (!response.ok) {
+       flag=true;
+     }
+     return response.json();
+  })
       .then(function (result) {
-        console.log("bank detils validate method two -->", result);
-        bankResult = result;
-        if (JSON.parse(result).status == 401) {
-          getJWTToken(fieldId);
+      console.log("--->",result,statusCode)
+       if(flag) {
+          console.log("Please refresh the page ",statusCode,result);
+          if(statusCode==401){
+            getJWTToken(fieldId);
+          }
+        }else{
+            console.log("--sucesss-")
         }
       })
-      .catch((error) => console.log("error", error));
+      .catch((error) => console.log("error -->",error));
+//       .then((response) => response.text())
+//       .then(function (result) {
+//         console.log("bank detils validate method two -->", result);
+//         bankResult = result;
+//         if (JSON.parse(result).status == 401) {
+//           getJWTToken(fieldId);
+//         }
+//       })
+//       .catch((error) => console.log("error", error));
   }
 
   $(".new-ticket-dummy").click(function () {
