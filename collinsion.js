@@ -4898,50 +4898,86 @@ var requestOptions = {
     }
   });
   function createClaimRequest(claimObject, fieldId) {
-    $(".claim-number").empty();
-    var myHeaders = new Headers();
-    myHeaders.append("Cache-Control", "no-cache");
-    myHeaders.append("Authorization", AuthorizationKey);
-    myHeaders.append("Content-Type", "application/json");
-
-    var raw = JSON.stringify(claimObject);
-
-    var requestOptions = {
-      method: "POST",
-      headers: myHeaders,
-      body: raw,
-      redirect: "follow",
-    };
-
-    fetch("https://claim-api-lower.collinsonnis.com/api/claim", requestOptions)
-      .then((response) => response.text())
+          let flag=false;
+let statusCode;
+      $(".claim-number").empty();
+      var myHeaders = new Headers();
+      myHeaders.append("Cache-Control", "no-cache");
+      myHeaders.append("Authorization", AuthorizationKey);
+      myHeaders.append("Content-Type", "application/json");
+  
+      var raw = JSON.stringify(claimObject);
+  
+      var requestOptions = {
+        method: "POST",
+        headers: myHeaders,
+        body: raw,
+        redirect: "follow",
+      };
+  
+      fetch("https://claim-api-lower.collinsonnis.com/api/claim", requestOptions)
+      .then((response) => {
+        console.log(response.ok,response.status,response);
+     statusCode = response.status;
+     if (!response.ok) {
+         console.log("inside error ",response.status);
+       flag=true;
+     }
+     return response.json();
+  })
       .then(function (result) {
-        console.log(result);
-        console.log(typeof result);
-        if (JSON.parse(result).status == 401) {
-          getJWTToken(fieldId);
-          console.log("unauthorized token please try again sometime");
-        } else if (JSON.parse(result).status == 500) {
-          console.log("Internal Server Error");
-        } else if (JSON.parse(result).status == 400) {
-          $(".claim-number").empty();
-          $(".claim-number").append(
-            "Unable to create claim as per one claim per policy per day rule"
-          );
-          console.log(
-            "Unable to create claim as per one claim per policy per day rule"
-          );
-        } else {
-          console.log("else show claim number-->", JSON.parse(result));
-          ClaimInitiatedNumber = JSON.parse(result).ClaimNumber;
-          $("#helpdesk_ticket_subject").val(ClaimInitiatedNumber);
-          $(".claim-number").empty();
-          $(".claim-number").append(
-            `Your ClaimNumber is ${ClaimInitiatedNumber}`
-          );
-        }
+      console.log("--->",result)
+          if(flag){
+              console.log("error--->",result.status)
+              if(statusCode==401){
+                   getJWTToken(fieldId);
+              }else if(statusCode==500){
+console.log("error--->",result)
+console.log("Internal server error")
+               }else if(statusCode==400){
+console.log("error--->",result)
+console.log("Unable to create claim as per one claim per policy per day rule")
+               }
+          }else{
+                        ClaimInitiatedNumber = result.ClaimNumber;
+              console.log(ClaimInitiatedNumber)
+            $("#helpdesk_ticket_subject").val(ClaimInitiatedNumber);
+            $(".claim-number").empty();
+            $(".claim-number").append(
+              `Your ClaimNumber is ${ClaimInitiatedNumber}`
+            );
+          }
+        
       })
-      .catch((error) => console.log("error", error));
+      .catch((error) => console.log("errror -->",error));
+        // .then((response) => response.text())
+        // .then(function (result) {
+        //   console.log(result);
+        //   console.log(typeof result);
+        //   if (JSON.parse(result).status == 401) {
+        //     getJWTToken(fieldId);
+        //     console.log("unauthorized token please try again sometime");
+        //   } else if (JSON.parse(result).status == 500) {
+        //     console.log("Internal Server Error");
+        //   } else if (JSON.parse(result).status == 400) {
+        //     $(".claim-number").empty();
+        //     $(".claim-number").append(
+        //       "Unable to create claim as per one claim per policy per day rule"
+        //     );
+        //     console.log(
+        //       "Unable to create claim as per one claim per policy per day rule"
+        //     );
+        //   } else {
+        //     console.log("else show claim number-->", JSON.parse(result));
+        //     ClaimInitiatedNumber = JSON.parse(result).ClaimNumber;
+        //     $("#helpdesk_ticket_subject").val(ClaimInitiatedNumber);
+        //     $(".claim-number").empty();
+        //     $(".claim-number").append(
+        //       `Your ClaimNumber is ${ClaimInitiatedNumber}`
+        //     );
+        //   }
+        // })
+        // .catch((error) => console.log("error", error));
   }
   //do modal popup with claims statement
   $("#next").click(function () {
