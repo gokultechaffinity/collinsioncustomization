@@ -7770,30 +7770,69 @@ let statusCode;
     return temp;
   }
   function createSubmitClaim(body, fieldId) {
-    var myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-    myHeaders.append("Authorization", AuthorizationKey);
-    var raw = JSON.stringify(body);
-    var requestOptions = {
-      method: "POST",
-      headers: myHeaders,
-      body: raw,
-      redirect: "follow",
-    };
-
-    fetch(
-      "https://claim-api-lower.collinsonnis.com/api/claim/submission",
-      requestOptions
-    )
-      .then((response) => response.text())
+let flag=false;
+let statusCode;
+  var myHeaders = new Headers();
+      myHeaders.append("Content-Type", "application/json");
+      myHeaders.append("Authorization", AuthorizationKey);
+      var raw = JSON.stringify(body);
+      var requestOptions = {
+        method: "POST",
+        headers: myHeaders,
+        body: raw,
+        redirect: "follow",
+      };
+  
+      fetch(
+        "https://claim-api-lower.collinsonnis.com/api/claim/submission",
+        requestOptions
+      )
+    .then((response) => {
+        console.log("response -->",response);
+      statusCode = response.status;
+     if (!response.ok) {
+       flag=true;
+     }
+     return response.text();
+  })
       .then(function (result) {
-        console.log(result);
-        // $(".new-ticket-submit-button").trigger("click");
-        if (JSON.parse(result).status == 401) {
-          getJWTToken(fieldId);
+      console.log("--->",result,statusCode)
+       if(flag) {
+          if(statusCode==401){
+            getJWTToken(fieldId);
+          }else if(statusCode==400){
+             console.log("--field miised getting senario->",result) 
+          }
+        }else{
+            console.log("--sucesss-")
+           // $(".new-ticket-submit-button").trigger("click");
         }
       })
-      .catch((error) => console.log("error", error));
+      .catch((error) => console.log("error -->",error));
+//     var myHeaders = new Headers();
+//     myHeaders.append("Content-Type", "application/json");
+//     myHeaders.append("Authorization", AuthorizationKey);
+//     var raw = JSON.stringify(body);
+//     var requestOptions = {
+//       method: "POST",
+//       headers: myHeaders,
+//       body: raw,
+//       redirect: "follow",
+//     };
+
+//     fetch(
+//       "https://claim-api-lower.collinsonnis.com/api/claim/submission",
+//       requestOptions
+//     )
+//       .then((response) => response.text())
+//       .then(function (result) {
+//         console.log(result);
+//         // $(".new-ticket-submit-button").trigger("click");
+//         if (JSON.parse(result).status == 401) {
+//           getJWTToken(fieldId);
+//         }
+//       })
+//       .catch((error) => console.log("error", error));
   }
   $("#cb2").click(function () {
     console.log("checkbox changed!");
