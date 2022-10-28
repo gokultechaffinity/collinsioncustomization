@@ -5688,6 +5688,7 @@ let statusCode;
           }
         }else{
             console.log("--sucesss-")
+ bankResult = result;
         }
       })
       .catch((error) => console.log("error -->",error));
@@ -5735,6 +5736,7 @@ let statusCode;
             getJWTToken(fieldId);
           }
         }else{
+ bankResult = result;
             console.log("--sucesss-")
         }
       })
