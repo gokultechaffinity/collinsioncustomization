@@ -5801,7 +5801,7 @@ let statusCode;
     console.log(bankResult);
     console.log(typeof bankResult);
     if (bankResult) {
-      let bankInfo = JSON.parse(bankResult);
+      let bankInfo = bankResult;
       console.log("response sucessfull");
       let bankDetails = {};
       bankDetails["AccountHolder"] = $(
