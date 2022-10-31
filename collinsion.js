@@ -649,8 +649,8 @@ jQuery(document).ready(function ($) {
             ).val();
             getPolicyDetails(policyNumber, dateOfBirth, "#save_and_continue1");
             //changes started for error
-            $("#save_and_continue1").attr("data-target", "#agreementModal");
-            $("#save_and_continue1").attr("data-toggle", "modal");
+            // $("#save_and_continue1").attr("data-target", "#agreementModal");
+            // $("#save_and_continue1").attr("data-toggle", "modal");
             clearError([
               "helpdesk_ticket_custom_field_cf_date_of_birth_2321673",
               "helpdesk_ticket_custom_field_cf_policy_number_2321673",
@@ -716,6 +716,9 @@ jQuery(document).ready(function ($) {
         statusCode = response.status;
         if (!response.ok) {
           flag = true;
+        } else {
+          $("#save_and_continue1").attr("data-target", "#agreementModal");
+          $("#save_and_continue1").attr("data-toggle", "modal");
         }
         return response.json();
       })
@@ -735,8 +738,8 @@ jQuery(document).ready(function ($) {
         } else {
           let element = ["api_call_failed_1"];
           clearError(element);
-          $("#save_and_continue1").attr("data-target", "#agreementModal");
-          $("#save_and_continue1").attr("data-toggle", "modal");
+          //   $("#save_and_continue1").attr("data-target", "#agreementModal");
+          //   $("#save_and_continue1").attr("data-toggle", "modal");
           buildPolicyUI(result);
         }
       })
