@@ -731,10 +731,11 @@ jQuery(document).ready(function ($) {
             console.log("error 404 -->", result.body);
           }
         } else {
-          clearError("api_call_failed_1");
-          buildPolicyUI(result);
+          let element = ["api_call_failed_1"];
+          clearError(element);
           $("#save_and_continue1").attr("data-target", "#agreementModal");
           $("#save_and_continue1").attr("data-toggle", "modal");
+          buildPolicyUI(result);
         }
       })
       .catch((error) => console.log(error));
