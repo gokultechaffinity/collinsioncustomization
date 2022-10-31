@@ -1,6 +1,10 @@
 jQuery(document).ready(function ($) {
   $("#helpdesk_ticket_subject").closest(".form-group").hide();
-$("#helpdesk_ticket_custom_field_cf_date_of_birth_2321673").closest(".form-group").append('<div class="invalid-feedback api_call_failed_1">API call failed</div>')
+  $("#helpdesk_ticket_custom_field_cf_date_of_birth_2321673")
+    .closest(".form-group")
+    .append(
+      '<div class="invalid-feedback api_call_failed_1">API call failed</div>'
+    );
   if ($("#title").hasClass("ColumbusItaly")) {
     $("button.new-ticket-submit-button")
       .hide()
@@ -25,9 +29,9 @@ $("#helpdesk_ticket_custom_field_cf_date_of_birth_2321673").closest(".form-group
   let succesStatus = [200, 201, 202, 203, 204, 205, 206, 207, 208, 226];
   getJWTToken();
   function getJWTToken(fieldId) {
-    var flag=false;
-var statusCode;
-var requestOptions = {
+    var flag = false;
+    var statusCode;
+    var requestOptions = {
       method: "POST",
       redirect: "follow",
     };
@@ -35,29 +39,26 @@ var requestOptions = {
       "https://claim-api-lower.collinsonnis.com/authenticate",
       requestOptions
     )
-      
-.then((response) => {
-        console.log("response -->",response);
-      statusCode = response.status;
-     if (!response.ok) {
-      flag=true;
-     }
-     return response.json();
-  })
+      .then((response) => {
+        console.log("response -->", response);
+        statusCode = response.status;
+        if (!response.ok) {
+          flag = true;
+        }
+        return response.json();
+      })
       .then(function (result) {
-      console.log("--Policy details->",result)
-            console.log("--Policy details->",flag)
-      AuthorizationKey = result.token
-       if (fieldId) {
+        console.log("--Policy details->", result);
+        console.log("--Policy details->", flag);
+        AuthorizationKey = result.token;
+        if (fieldId) {
           $(fieldId).trigger("click");
         }
-       if(flag) {
-          console.log("Please refresh the page ",statusCode);
+        if (flag) {
+          console.log("Please refresh the page ", statusCode);
         }
       })
       .catch((error) => console.log(error));
- 
-   
   }
   //email verification function
   function isEmail(email) {
@@ -70,14 +71,13 @@ var requestOptions = {
   $(".form-group.helpdesk_ticket_email").hide();
 
   //bank API dependancies - for Columbus Italy and VHI
-  
 
   //____________________________________________________SECTION 1 Start - Your Policy______________________________________________
   $("#new_helpdesk_ticket").wrapAll('<div id="accordion">');
   //identify Policy Number Parent DIV
 
   //check for portal
-  if ($("#title").hasClass("VHI") || $("#title").hasClass("ColumbusItaly")){
+  if ($("#title").hasClass("VHI") || $("#title").hasClass("ColumbusItaly")) {
     var PolicyNumberParent = document.getElementById(
       "helpdesk_ticket_custom_field_cf_policy_number_2321673"
     ).parentElement;
@@ -87,30 +87,28 @@ var requestOptions = {
       "helpdesk_ticket_custom_field_cf_date_of_birth_2321673"
     ).parentElement;
     DOBParent.classList.add("for-section-1");
-    
   } else if ($("#title").hasClass("EasyJet")) {
     var PolicyNumberParent = document.getElementById(
       "helpdesk_ticket_custom_field_cf_policy_number_2321673"
     ).parentElement;
     PolicyNumberParent.classList.add("for-section-1");
-    
+
     var PostcodeParent = document.getElementById(
       "helpdesk_ticket_custom_field_cf_postcode68273_2321673"
     ).parentElement;
     PostcodeParent.classList.add("for-section-1");
   }
-  
+
   //add save and continue button - add section 1
   if ($("#title").hasClass("ColumbusItaly")) {
     $(
       '<button id="save_and_continue1" class="btn btn-primary for-section-1 save_and_continue" type="button">Trova la politica</button>'
     ).insertAfter("#helpdesk_ticket_custom_field_cf_date_of_birth_2321673");
-  }else if ($("#title").hasClass("EasyJet")) {
+  } else if ($("#title").hasClass("EasyJet")) {
     $(
       '<button id="save_and_continue1" class="btn btn-primary for-section-1 save_and_continue" type="button">Find Policy</button>'
     ).insertAfter("#helpdesk_ticket_custom_field_cf_postcode68273_2321673");
-  }
-  else {
+  } else {
     $(
       '<button id="save_and_continue1" class="btn btn-primary for-section-1 save_and_continue" type="button">Find Policy</button>'
     ).insertAfter("#helpdesk_ticket_custom_field_cf_date_of_birth_2321673");
@@ -234,7 +232,7 @@ var requestOptions = {
   ).parentElement;
   accHolderParent.classList.add("for-section-6");
   //check for portal
-  if ($("#title").hasClass("VHI") || $("#title").hasClass("ColumbusItaly")){
+  if ($("#title").hasClass("VHI") || $("#title").hasClass("ColumbusItaly")) {
     //Name of acc holder - put in section 6
     var accHolderParent = document.getElementById(
       "helpdesk_ticket_custom_field_cf_name_of_account_holder_2321673"
@@ -255,11 +253,11 @@ var requestOptions = {
       "helpdesk_ticket_custom_field_cf_account_number_2321673"
     ).parentElement;
     AccNumParent.classList.add("for-section-6");
-     //sort code
-  var SortCodeParent = document.getElementById(
-    "helpdesk_ticket_custom_field_cf_sort_code659991_2321673"
-  ).parentElement;
-  SortCodeParent.classList.add("for-section-6");
+    //sort code
+    var SortCodeParent = document.getElementById(
+      "helpdesk_ticket_custom_field_cf_sort_code659991_2321673"
+    ).parentElement;
+    SortCodeParent.classList.add("for-section-6");
   }
 
   //save and continue 6
@@ -267,12 +265,11 @@ var requestOptions = {
     $(
       '<button id="save_and_continue6" class="btn btn-primary for-section-6 save_and_continue" type="button" >Salva e continua</button>'
     ).insertAfter(ibanNumber);
-  } else  if ($("#title").hasClass("VHI")){
+  } else if ($("#title").hasClass("VHI")) {
     $(
       '<button id="save_and_continue6" class="btn btn-primary for-section-6 save_and_continue" type="button" >Save & Continue</button>'
     ).insertAfter(ibanNumber);
-  }
-  else if ($("#title").hasClass("EasyJet")){
+  } else if ($("#title").hasClass("EasyJet")) {
     $(
       '<button id="save_and_continue6" class="btn btn-primary for-section-6 save_and_continue" type="button" >Save & Continue</button>'
     ).insertAfter(SortCodeParent);
@@ -515,12 +512,11 @@ var requestOptions = {
     //START SUMMARY SECTION
     if ($("#summary_intro").length) {
     } else {
-
       if ($("#title").hasClass("ColumbusItaly")) {
         $(
           "<p id='summary_intro'>Ti preghiamo di dedicare un momento a ricontrollare le tue informazioni: l'accuratezza ci aiuta a elaborare rapidamente la tua richiesta</p>"
         ).insertBefore(".form-group.helpdesk_ticket_email.for-section-7");
-      }else{
+      } else {
         $(
           '<p id="summary_intro">Please take a moment to double check your information - accuracy helps us process your claim quickly.</p>'
         ).insertBefore(".form-group.helpdesk_ticket_email.for-section-7");
@@ -536,9 +532,10 @@ var requestOptions = {
   //section 1 continue
   //on CHANGE OF DATE OF BIRTH - check any of the two inputs is empty, if it is remove attr, else add it
   $("#save_and_continue1").click(function () {
-    if ($("#title").hasClass("EasyJet")){
+    if ($("#title").hasClass("EasyJet")) {
       if (
-        $("#helpdesk_ticket_custom_field_cf_policy_number_2321673").val() == "" ||
+        $("#helpdesk_ticket_custom_field_cf_policy_number_2321673").val() ==
+          "" ||
         $("#helpdesk_ticket_custom_field_cf_postcode68273_2321673").val() == ""
       ) {
         addErrorMessage(
@@ -553,46 +550,45 @@ var requestOptions = {
         //check LENGTH OF POLICY NUMBER - 7 DIGITS
         if (
           $("#helpdesk_ticket_custom_field_cf_policy_number_2321673").val()
-            .length < 7 ) 
-            {
-              addErrorMessage(
-              "helpdesk_ticket_custom_field_cf_policy_number_2321673",
-              "Policy Number must be at least 7 digits."
-            );
-            $("#save_and_continue1").removeAttr("data-target");
-            $("#save_and_continue1").removeAttr("data-toggle");
-
-            }else if ($("#helpdesk_ticket_custom_field_cf_postcode68273_2321673").val()
-            .length < 6) {
-              addErrorMessage(
-              "helpdesk_ticket_custom_field_cf_postcode68273_2321673",
-              "Postcode must be at least 6 characters."
-            );
-            $("#save_and_continue1").removeAttr("data-target");
-            $("#save_and_continue1").removeAttr("data-toggle");
-
+            .length < 7
+        ) {
+          addErrorMessage(
+            "helpdesk_ticket_custom_field_cf_policy_number_2321673",
+            "Policy Number must be at least 7 digits."
+          );
+          $("#save_and_continue1").removeAttr("data-target");
+          $("#save_and_continue1").removeAttr("data-toggle");
+        } else if (
+          $("#helpdesk_ticket_custom_field_cf_postcode68273_2321673").val()
+            .length < 6
+        ) {
+          addErrorMessage(
+            "helpdesk_ticket_custom_field_cf_postcode68273_2321673",
+            "Postcode must be at least 6 characters."
+          );
+          $("#save_and_continue1").removeAttr("data-target");
+          $("#save_and_continue1").removeAttr("data-toggle");
         } else {
+          //create variables for invoke
+          let policyNumber = $(
+            "#helpdesk_ticket_custom_field_cf_policy_number_2321673"
+          ).val();
+          let postCode = $(
+            "#helpdesk_ticket_custom_field_cf_policy_number_2321673"
+          ).val();
+          //getPolicy INVOKE HERE!!
 
-            //create variables for invoke
-            let policyNumber = $(
-              "#helpdesk_ticket_custom_field_cf_policy_number_2321673"
-            ).val();
-            let postCode = $(
-              "#helpdesk_ticket_custom_field_cf_policy_number_2321673"
-            ).val();
-            //getPolicy INVOKE HERE!!
-            
-            //
-            $("#save_and_continue1").attr("data-target", "#agreementModal");
-            $("#save_and_continue1").attr("data-toggle", "modal");
-            clearError([
-              "helpdesk_ticket_custom_field_cf_postcode68273_2321673",
-              "helpdesk_ticket_custom_field_cf_policy_number_2321673",
-            ]);
-          }
+          //
+          $("#save_and_continue1").attr("data-target", "#agreementModal");
+          $("#save_and_continue1").attr("data-toggle", "modal");
+          clearError([
+            "helpdesk_ticket_custom_field_cf_postcode68273_2321673",
+            "helpdesk_ticket_custom_field_cf_policy_number_2321673",
+          ]);
         }
+      }
 
-         if ($("#cb").prop("checked") == true) {
+      if ($("#cb").prop("checked") == true) {
         $("#continue").attr("data-dismiss", "modal");
         //grey out continue - opposite - for different schemes
         if ($("#title").hasClass("VHI")) {
@@ -610,237 +606,242 @@ var requestOptions = {
         $("#continue").css("background-color", "grey");
         $("#continue").removeAttr("data-dismiss");
       }
-
-    }
-    else if ($("#title").hasClass("VHI") || $("#title").hasClass("ColumbusItaly") ) {
-    if (
-      $("#helpdesk_ticket_custom_field_cf_policy_number_2321673").val() == "" ||
-      $("#helpdesk_ticket_custom_field_cf_date_of_birth_2321673").val() == ""
+    } else if (
+      $("#title").hasClass("VHI") ||
+      $("#title").hasClass("ColumbusItaly")
     ) {
-      addErrorMessage(
-        "helpdesk_ticket_custom_field_cf_policy_number_2321673",
-        "Please fill in all fields"
-      );
-      addErrorMessage(
-        "helpdesk_ticket_custom_field_cf_date_of_birth_2321673",
-        "Please fill in all fields"
-      );
-    } else {
-      //check LENGTH OF POLICY NUMBER - 7 DIGITS
       if (
-        $("#helpdesk_ticket_custom_field_cf_policy_number_2321673").val()
-          .length >= 7
+        $("#helpdesk_ticket_custom_field_cf_policy_number_2321673").val() ==
+          "" ||
+        $("#helpdesk_ticket_custom_field_cf_date_of_birth_2321673").val() == ""
       ) {
-        birthdate = $(
-          "#helpdesk_ticket_custom_field_cf_date_of_birth_2321673"
-        ).val();
-        bday = new Date(birthdate);
-        if (today < bday) {
-          addErrorMessage(
-            "helpdesk_ticket_custom_field_cf_date_of_birth_2321673",
-            "Invalid Birthday"
-          );
-          $("#save_and_continue1").removeAttr("data-target");
-          $("#save_and_continue1").removeAttr("data-toggle");
-        } else if (today > bday) {
-          let policyNumber = $(
-            "#helpdesk_ticket_custom_field_cf_policy_number_2321673"
-          ).val();
-          let dateOfBirth = $(
+        addErrorMessage(
+          "helpdesk_ticket_custom_field_cf_policy_number_2321673",
+          "Please fill in all fields"
+        );
+        addErrorMessage(
+          "helpdesk_ticket_custom_field_cf_date_of_birth_2321673",
+          "Please fill in all fields"
+        );
+      } else {
+        //check LENGTH OF POLICY NUMBER - 7 DIGITS
+        if (
+          $("#helpdesk_ticket_custom_field_cf_policy_number_2321673").val()
+            .length >= 7
+        ) {
+          birthdate = $(
             "#helpdesk_ticket_custom_field_cf_date_of_birth_2321673"
           ).val();
-          getPolicyDetails(policyNumber, dateOfBirth, "#save_and_continue1");
-          //changes started for error
-        //   $("#save_and_continue1").attr("data-target", "#agreementModal");
-        //   $("#save_and_continue1").attr("data-toggle", "modal");
-          clearError([
-            "helpdesk_ticket_custom_field_cf_date_of_birth_2321673",
-            "helpdesk_ticket_custom_field_cf_policy_number_2321673",
-          ]);
+          bday = new Date(birthdate);
+          if (today < bday) {
+            addErrorMessage(
+              "helpdesk_ticket_custom_field_cf_date_of_birth_2321673",
+              "Invalid Birthday"
+            );
+            $("#save_and_continue1").removeAttr("data-target");
+            $("#save_and_continue1").removeAttr("data-toggle");
+          } else if (today > bday) {
+            let policyNumber = $(
+              "#helpdesk_ticket_custom_field_cf_policy_number_2321673"
+            ).val();
+            let dateOfBirth = $(
+              "#helpdesk_ticket_custom_field_cf_date_of_birth_2321673"
+            ).val();
+            getPolicyDetails(policyNumber, dateOfBirth, "#save_and_continue1");
+            //changes started for error
+            //   $("#save_and_continue1").attr("data-target", "#agreementModal");
+            //   $("#save_and_continue1").attr("data-toggle", "modal");
+            clearError([
+              "helpdesk_ticket_custom_field_cf_date_of_birth_2321673",
+              "helpdesk_ticket_custom_field_cf_policy_number_2321673",
+            ]);
+          } else {
+            addErrorMessage(
+              "helpdesk_ticket_custom_field_cf_date_of_birth_2321673",
+              "Invalid Birthday"
+            );
+            $("#save_and_continue1").removeAttr("data-target");
+            $("#save_and_continue1").removeAttr("data-toggle");
+          }
         } else {
           addErrorMessage(
-            "helpdesk_ticket_custom_field_cf_date_of_birth_2321673",
-            "Invalid Birthday"
+            "helpdesk_ticket_custom_field_cf_policy_number_2321673",
+            "Policy Number must be at least 7 digits."
           );
           $("#save_and_continue1").removeAttr("data-target");
           $("#save_and_continue1").removeAttr("data-toggle");
         }
+      }
+      if ($("#cb").prop("checked") == true) {
+        $("#continue").attr("data-dismiss", "modal");
+        //grey out continue - opposite - for different schemes
+        if ($("#title").hasClass("VHI")) {
+          $("#continue").css("background-color", "#38133E");
+        } else if ($("#title").hasClass("EasyJet")) {
+          $("#continue").css("background-color", "#FF6600");
+        } else if ($("#title").hasClass("CollinsonUK")) {
+          $("#continue").css("background-color", "#FFFFFF");
+        } else if ($("#title").hasClass("ColumbusItaly")) {
+          $("#continue").css("background-color", "#083050");
+        }
       } else {
-        addErrorMessage(
-          "helpdesk_ticket_custom_field_cf_policy_number_2321673",
-          "Policy Number must be at least 7 digits."
-        );
-        $("#save_and_continue1").removeAttr("data-target");
-        $("#save_and_continue1").removeAttr("data-toggle");
+        $("#continue").removeAttr("data-dismiss");
+        //grey out continue
+        $("#continue").css("background-color", "grey");
+        $("#continue").removeAttr("data-dismiss");
       }
-    }
-    if ($("#cb").prop("checked") == true) {
-      $("#continue").attr("data-dismiss", "modal");
-      //grey out continue - opposite - for different schemes
-      if ($("#title").hasClass("VHI")) {
-        $("#continue").css("background-color", "#38133E");
-      } else if ($("#title").hasClass("EasyJet")) {
-        $("#continue").css("background-color", "#FF6600");
-      } else if ($("#title").hasClass("CollinsonUK")) {
-        $("#continue").css("background-color", "#FFFFFF");
-      } else if ($("#title").hasClass("ColumbusItaly")) {
-        $("#continue").css("background-color", "#083050");
-      }
-    } else {
-      $("#continue").removeAttr("data-dismiss");
-      //grey out continue
-      $("#continue").css("background-color", "grey");
-      $("#continue").removeAttr("data-dismiss");
-    }
     }
   });
-   function getPolicyDetails(policyNumber, dateOfBirth, fieldId) {
-      console.log("---> policy inside token", AuthorizationKey);
-      var flag=false;
-      let statusCode;
-      var myHeaders = new Headers();
-      myHeaders.append("Cache-Control", "no-cache");
-      myHeaders.append("Authorization", AuthorizationKey);
-        var requestOptions = {
+  function getPolicyDetails(policyNumber, dateOfBirth, fieldId) {
+    console.log("---> policy inside token", AuthorizationKey);
+    var flag = false;
+    let statusCode;
+    var myHeaders = new Headers();
+    myHeaders.append("Cache-Control", "no-cache");
+    myHeaders.append("Authorization", AuthorizationKey);
+    var requestOptions = {
       method: "GET",
       headers: myHeaders,
       redirect: "follow",
     };
     fetch(
-        "https://claim-api-lower.collinsonnis.com/api/policy?policyNumber=" +
+      "https://claim-api-lower.collinsonnis.com/api/policy?policyNumber=" +
         policyNumber +
         "%25&dob=" +
         dateOfBirth,
       requestOptions
-    )  .then((response) => {
+    )
+      .then((response) => {
         console.log(response);
         statusCode = response.status;
-     if (!response.ok) {
-        flag=true;
-     }
-     return response.json();
-  })
+        if (!response.ok) {
+          flag = true;
+        }
+        return response.json();
+      })
       .then(function (result) {
-          console.log("Policy details",result)
-          if(flag) {
-            console.log("Need to show error ",statusCode);
-            if(statusCode==401){
-                console.log("error",result.error)
-                getJWTToken(fieldId);
-            }else if(statusCode==404){
-                console.log("error 404 -->",result.body)
-            }
-          }else{
-            buildPolicyUI(result);
-            $("#save_and_continue1").attr("data-target", "#agreementModal");
-            $("#save_and_continue1").attr("data-toggle", "modal");
+        console.log("Policy details", result);
+        if (flag) {
+          console.log("Need to show error ", statusCode);
+          if (statusCode == 401) {
+            console.log("error", result.error);
+            getJWTToken(fieldId);
+          } else if (statusCode == 404) {
+            addErrorMessage("api_call_failed_1", result.body);
+            console.log("error 404 -->", result.body);
           }
+        } else {
+          clearError("api_call_failed_1");
+          buildPolicyUI(result);
+          $("#save_and_continue1").attr("data-target", "#agreementModal");
+          $("#save_and_continue1").attr("data-toggle", "modal");
+        }
       })
       .catch((error) => console.log(error));
-    }
-    function buildPolicyUI(policyData) {
-      let policyDetails = policyData.Insured;
-      console.log(policyDetails);
-      let InternalPolicyNumber = policyData.InternalPolicyNumber;
-      let options = "";
+  }
+  function buildPolicyUI(policyData) {
+    let policyDetails = policyData.Insured;
+    console.log(policyDetails);
+    let InternalPolicyNumber = policyData.InternalPolicyNumber;
+    let options = "";
+    options +=
+      '<div class="form-group"><label class="form-label"> Name(s) of the Insured</label>';
+    policyDetails.forEach(function (element, index) {
       options +=
-        '<div class="form-group"><label class="form-label"> Name(s) of the Insured</label>';
-      policyDetails.forEach(function (element, index) {
-        options +=
-          '<div class="list-claim"><input type="checkbox" class="check-box" id=' +
-          index +
-          ' name="insured_1" data-isPolicyHolder=' +
-          element.IsPolicyHolder +
-          " value=" +
-          element.FirstName +
-          " data-clientId=" +
-          element.ClientId +
-          " data-PolicyNumber=" +
-          InternalPolicyNumber +
-          "><span>" +
-          " " +
-          element.FirstName +
-          " " +
-          element.LastName +
-          "</span></div>";
-      });
-      options += "</div>";
-      $(".list-policy-names").remove();
-      $("#collapseSection2 .card-body").prepend(
-        "<div class='list-policy-names'>" + options + "</div>"
-      );
-      $("#collapseSection2 .list-policy-names .form-group").append(
-        "<div class='invalid-feedback check-finder'></div>"
-      );
-    }
+        '<div class="list-claim"><input type="checkbox" class="check-box" id=' +
+        index +
+        ' name="insured_1" data-isPolicyHolder=' +
+        element.IsPolicyHolder +
+        " value=" +
+        element.FirstName +
+        " data-clientId=" +
+        element.ClientId +
+        " data-PolicyNumber=" +
+        InternalPolicyNumber +
+        "><span>" +
+        " " +
+        element.FirstName +
+        " " +
+        element.LastName +
+        "</span></div>";
+    });
+    options += "</div>";
+    $(".list-policy-names").remove();
+    $("#collapseSection2 .card-body").prepend(
+      "<div class='list-policy-names'>" + options + "</div>"
+    );
+    $("#collapseSection2 .list-policy-names .form-group").append(
+      "<div class='invalid-feedback check-finder'></div>"
+    );
+  }
 
-//   function getPolicyDetails(policyNumber, dateOfBirth, fieldId) {
-//     console.log("---> policy inside token", AuthorizationKey);
-//     var myHeaders = new Headers();
-//     myHeaders.append("Cache-Control", "no-cache");
-//     myHeaders.append("Authorization", AuthorizationKey);
-//     var requestOptions = {
-//       method: "GET",
-//       headers: myHeaders,
-//       redirect: "follow",
-//     };
-//     fetch(
-//       "https://claim-api-lower.collinsonnis.com/api/policy?policyNumber=" +
-//         policyNumber +
-//         "%25&dob=" +
-//         dateOfBirth,
-//       requestOptions
-//     )
-//       .then((response) => response.text())
-//       .then(function (result) {
-//         if (JSON.parse(result).status != 401) {
-//           //diable
-//           // $("#section-2-button").removeClass("disabled")
-//           // $("#section-2-button").addClass("disabled")
-//           buildPolicyUI(result);
-//         } else {
-//           getJWTToken(fieldId);
-//           console.log("Please try again after sometime");
-//           // $("#save_and_continue1").trigger("click");
-//         }
-//       })
-//       .catch((error) => console.log("error", error));
-//   }
-//   function buildPolicyUI(policyData) {
-//     let policyDetails = JSON.parse(policyData).Insured;
-//     console.log(policyDetails);
-//     let InternalPolicyNumber = JSON.parse(policyData).InternalPolicyNumber;
-//     let options = "";
-//     options +=
-//       '<div class="form-group"><label class="form-label"> Name(s) of the Insured</label>';
-//     policyDetails.forEach(function (element, index) {
-//       options +=
-//         '<div class="list-claim"><input type="checkbox" class="check-box" id=' +
-//         index +
-//         ' name="insured_1" data-isPolicyHolder=' +
-//         element.IsPolicyHolder +
-//         " value=" +
-//         element.FirstName +
-//         " data-clientId=" +
-//         element.ClientId +
-//         " data-PolicyNumber=" +
-//         InternalPolicyNumber +
-//         "><span>" +
-//         " " +
-//         element.FirstName +
-//         " " +
-//         element.LastName +
-//         "</span></div>";
-//     });
-//     options += "</div>";
-//     $(".list-policy-names").remove();
-//     $("#collapseSection2 .card-body").prepend(
-//       "<div class='list-policy-names'>" + options + "</div>"
-//     );
-//     $("#collapseSection2 .list-policy-names .form-group").append(
-//       "<div class='invalid-feedback check-finder'></div>"
-//     );
-//   }
+  //   function getPolicyDetails(policyNumber, dateOfBirth, fieldId) {
+  //     console.log("---> policy inside token", AuthorizationKey);
+  //     var myHeaders = new Headers();
+  //     myHeaders.append("Cache-Control", "no-cache");
+  //     myHeaders.append("Authorization", AuthorizationKey);
+  //     var requestOptions = {
+  //       method: "GET",
+  //       headers: myHeaders,
+  //       redirect: "follow",
+  //     };
+  //     fetch(
+  //       "https://claim-api-lower.collinsonnis.com/api/policy?policyNumber=" +
+  //         policyNumber +
+  //         "%25&dob=" +
+  //         dateOfBirth,
+  //       requestOptions
+  //     )
+  //       .then((response) => response.text())
+  //       .then(function (result) {
+  //         if (JSON.parse(result).status != 401) {
+  //           //diable
+  //           // $("#section-2-button").removeClass("disabled")
+  //           // $("#section-2-button").addClass("disabled")
+  //           buildPolicyUI(result);
+  //         } else {
+  //           getJWTToken(fieldId);
+  //           console.log("Please try again after sometime");
+  //           // $("#save_and_continue1").trigger("click");
+  //         }
+  //       })
+  //       .catch((error) => console.log("error", error));
+  //   }
+  //   function buildPolicyUI(policyData) {
+  //     let policyDetails = JSON.parse(policyData).Insured;
+  //     console.log(policyDetails);
+  //     let InternalPolicyNumber = JSON.parse(policyData).InternalPolicyNumber;
+  //     let options = "";
+  //     options +=
+  //       '<div class="form-group"><label class="form-label"> Name(s) of the Insured</label>';
+  //     policyDetails.forEach(function (element, index) {
+  //       options +=
+  //         '<div class="list-claim"><input type="checkbox" class="check-box" id=' +
+  //         index +
+  //         ' name="insured_1" data-isPolicyHolder=' +
+  //         element.IsPolicyHolder +
+  //         " value=" +
+  //         element.FirstName +
+  //         " data-clientId=" +
+  //         element.ClientId +
+  //         " data-PolicyNumber=" +
+  //         InternalPolicyNumber +
+  //         "><span>" +
+  //         " " +
+  //         element.FirstName +
+  //         " " +
+  //         element.LastName +
+  //         "</span></div>";
+  //     });
+  //     options += "</div>";
+  //     $(".list-policy-names").remove();
+  //     $("#collapseSection2 .card-body").prepend(
+  //       "<div class='list-policy-names'>" + options + "</div>"
+  //     );
+  //     $("#collapseSection2 .list-policy-names .form-group").append(
+  //       "<div class='invalid-feedback check-finder'></div>"
+  //     );
+  //   }
   //on click of agreement check box- check if checked or not- if checked enable continue button otherwise disable
   $("#cb").click(function () {
     if ($("#cb").prop("checked") == true) {
@@ -4756,8 +4757,7 @@ var requestOptions = {
         let claimObject = {};
         for (let i = 0; i < $("input[name='insured_1']:checked").length; i++) {
           claimObject = {};
-          claimObject["incidentCountryCode"] =
-            countryPortal.VHI;
+          claimObject["incidentCountryCode"] = countryPortal.VHI;
 
           claimObject["incidentDate"] = $(
             "#helpdesk_ticket_custom_field_cf_your_incident_date_2321673"
@@ -4903,86 +4903,87 @@ var requestOptions = {
     }
   });
   function createClaimRequest(claimObject, fieldId) {
-          let flag=false;
-let statusCode;
-      $(".claim-number").empty();
-      var myHeaders = new Headers();
-      myHeaders.append("Cache-Control", "no-cache");
-      myHeaders.append("Authorization", AuthorizationKey);
-      myHeaders.append("Content-Type", "application/json");
-  
-      var raw = JSON.stringify(claimObject);
-  
-      var requestOptions = {
-        method: "POST",
-        headers: myHeaders,
-        body: raw,
-        redirect: "follow",
-      };
-  
-      fetch("https://claim-api-lower.collinsonnis.com/api/claim", requestOptions)
+    let flag = false;
+    let statusCode;
+    $(".claim-number").empty();
+    var myHeaders = new Headers();
+    myHeaders.append("Cache-Control", "no-cache");
+    myHeaders.append("Authorization", AuthorizationKey);
+    myHeaders.append("Content-Type", "application/json");
+
+    var raw = JSON.stringify(claimObject);
+
+    var requestOptions = {
+      method: "POST",
+      headers: myHeaders,
+      body: raw,
+      redirect: "follow",
+    };
+
+    fetch("https://claim-api-lower.collinsonnis.com/api/claim", requestOptions)
       .then((response) => {
-        console.log(response.ok,response.status,response);
-     statusCode = response.status;
-     if (!response.ok) {
-         console.log("inside error ",response.status);
-       flag=true;
-     }
-     return response.json();
-  })
+        console.log(response.ok, response.status, response);
+        statusCode = response.status;
+        if (!response.ok) {
+          console.log("inside error ", response.status);
+          flag = true;
+        }
+        return response.json();
+      })
       .then(function (result) {
-      console.log("--->",result)
-          if(flag){
-              console.log("error--->",result.status)
-              if(statusCode==401){
-                   getJWTToken(fieldId);
-              }else if(statusCode==500){
-console.log("error--->",result)
-console.log("Internal server error")
-               }else if(statusCode==400){
-console.log("error--->",result)
-console.log("Unable to create claim as per one claim per policy per day rule")
-               }
-          }else{
-                        ClaimInitiatedNumber = result.ClaimNumber;
-              console.log(ClaimInitiatedNumber)
-            $("#helpdesk_ticket_subject").val(ClaimInitiatedNumber);
-            $(".claim-number").empty();
-            $(".claim-number").append(
-              `Your ClaimNumber is ${ClaimInitiatedNumber}`
+        console.log("--->", result);
+        if (flag) {
+          console.log("error--->", result.status);
+          if (statusCode == 401) {
+            getJWTToken(fieldId);
+          } else if (statusCode == 500) {
+            console.log("error--->", result);
+            console.log("Internal server error");
+          } else if (statusCode == 400) {
+            console.log("error--->", result);
+            console.log(
+              "Unable to create claim as per one claim per policy per day rule"
             );
           }
-        
+        } else {
+          ClaimInitiatedNumber = result.ClaimNumber;
+          console.log(ClaimInitiatedNumber);
+          $("#helpdesk_ticket_subject").val(ClaimInitiatedNumber);
+          $(".claim-number").empty();
+          $(".claim-number").append(
+            `Your ClaimNumber is ${ClaimInitiatedNumber}`
+          );
+        }
       })
-      .catch((error) => console.log("errror -->",error));
-        // .then((response) => response.text())
-        // .then(function (result) {
-        //   console.log(result);
-        //   console.log(typeof result);
-        //   if (JSON.parse(result).status == 401) {
-        //     getJWTToken(fieldId);
-        //     console.log("unauthorized token please try again sometime");
-        //   } else if (JSON.parse(result).status == 500) {
-        //     console.log("Internal Server Error");
-        //   } else if (JSON.parse(result).status == 400) {
-        //     $(".claim-number").empty();
-        //     $(".claim-number").append(
-        //       "Unable to create claim as per one claim per policy per day rule"
-        //     );
-        //     console.log(
-        //       "Unable to create claim as per one claim per policy per day rule"
-        //     );
-        //   } else {
-        //     console.log("else show claim number-->", JSON.parse(result));
-        //     ClaimInitiatedNumber = JSON.parse(result).ClaimNumber;
-        //     $("#helpdesk_ticket_subject").val(ClaimInitiatedNumber);
-        //     $(".claim-number").empty();
-        //     $(".claim-number").append(
-        //       `Your ClaimNumber is ${ClaimInitiatedNumber}`
-        //     );
-        //   }
-        // })
-        // .catch((error) => console.log("error", error));
+      .catch((error) => console.log("errror -->", error));
+    // .then((response) => response.text())
+    // .then(function (result) {
+    //   console.log(result);
+    //   console.log(typeof result);
+    //   if (JSON.parse(result).status == 401) {
+    //     getJWTToken(fieldId);
+    //     console.log("unauthorized token please try again sometime");
+    //   } else if (JSON.parse(result).status == 500) {
+    //     console.log("Internal Server Error");
+    //   } else if (JSON.parse(result).status == 400) {
+    //     $(".claim-number").empty();
+    //     $(".claim-number").append(
+    //       "Unable to create claim as per one claim per policy per day rule"
+    //     );
+    //     console.log(
+    //       "Unable to create claim as per one claim per policy per day rule"
+    //     );
+    //   } else {
+    //     console.log("else show claim number-->", JSON.parse(result));
+    //     ClaimInitiatedNumber = JSON.parse(result).ClaimNumber;
+    //     $("#helpdesk_ticket_subject").val(ClaimInitiatedNumber);
+    //     $(".claim-number").empty();
+    //     $(".claim-number").append(
+    //       `Your ClaimNumber is ${ClaimInitiatedNumber}`
+    //     );
+    //   }
+    // })
+    // .catch((error) => console.log("error", error));
   }
   //do modal popup with claims statement
   $("#next").click(function () {
@@ -5478,8 +5479,8 @@ console.log("Unable to create claim as per one claim per policy per day rule")
     }
   });
   function getUploadFiles(files, fieldId) {
-let statusCode;
-    let flag=false;
+    let statusCode;
+    let flag = false;
     var formdata = new FormData();
     var myHeaders = new Headers();
     myHeaders.append("Cache-Control", "no-cache");
@@ -5502,34 +5503,33 @@ let statusCode;
       "https://claim-api-lower.collinsonnis.com/api/claim/uploadFiles",
       requestOptions
     )
- .then((response) => {
+      .then((response) => {
         console.log(response);
-    statusCode = response.status;
-     if (!response.ok) {
-       flag=true;
-     }
-     return response.json();
-  })
+        statusCode = response.status;
+        if (!response.ok) {
+          flag = true;
+        }
+        return response.json();
+      })
       .then(function (result) {
-      console.log("-- details->",result)
-          if(flag){
- console.log("-- flag->",flag)
-              if(statusCode==401){
-                  console.log("unauthorized")
-                  getJWTToken(fieldId);
-              }
+        console.log("-- details->", result);
+        if (flag) {
+          console.log("-- flag->", flag);
+          if (statusCode == 401) {
+            console.log("unauthorized");
+            getJWTToken(fieldId);
           }
-        
+        }
       })
       .catch((error) => console.log(error));
-//       .then((response) => response.text())
-//       .then(function (result) {
-//         console.log("sucessfilly uploaded ----->", result);
-//         if (JSON.parse(result).status == 401) {
-//           getJWTToken(fieldId);
-//         }
-//       })
-//       .catch((error) => console.log("error", error));
+    //       .then((response) => response.text())
+    //       .then(function (result) {
+    //         console.log("sucessfilly uploaded ----->", result);
+    //         if (JSON.parse(result).status == 401) {
+    //           getJWTToken(fieldId);
+    //         }
+    //       })
+    //       .catch((error) => console.log("error", error));
   }
   //____________________________________________________SECTION 5 End - Your Documents____________________________________________
   //____________________________________________________________________________________________________________________
@@ -5659,45 +5659,44 @@ let statusCode;
     open_next(6);
   });
   function ValidateBankMethodOne(iBanNumber, countryCode, fieldId) {
-    let flag=false;
-        let statusCode;
-      var myHeaders = new Headers();
-      myHeaders.append("Cache-Control", "no-cache");
-      myHeaders.append("Authorization", AuthorizationKey);
-      var requestOptions = {
-        method: "GET",
-        headers: myHeaders,
-        redirect: "follow",
-      };
-      fetch(
-        "https://claim-api-lower.collinsonnis.com/api/bank/validateBankAccount?iBan=" +
-          iBanNumber +
-          "&countryCode=" +
-          countryCode,
-        requestOptions
-      )
+    let flag = false;
+    let statusCode;
+    var myHeaders = new Headers();
+    myHeaders.append("Cache-Control", "no-cache");
+    myHeaders.append("Authorization", AuthorizationKey);
+    var requestOptions = {
+      method: "GET",
+      headers: myHeaders,
+      redirect: "follow",
+    };
+    fetch(
+      "https://claim-api-lower.collinsonnis.com/api/bank/validateBankAccount?iBan=" +
+        iBanNumber +
+        "&countryCode=" +
+        countryCode,
+      requestOptions
+    )
       .then((response) => {
-        console.log("response -->",response);
-      statusCode = response.status;
-     if (!response.ok) {
-       flag=true;
-     }
-     return response.json();
-  })
+        console.log("response -->", response);
+        statusCode = response.status;
+        if (!response.ok) {
+          flag = true;
+        }
+        return response.json();
+      })
       .then(function (result) {
-      console.log("--->",result,statusCode)
-       if(flag) {
-          console.log("Please refresh the page ",statusCode,result);
-          if(statusCode==401){
+        console.log("--->", result, statusCode);
+        if (flag) {
+          console.log("Please refresh the page ", statusCode, result);
+          if (statusCode == 401) {
             getJWTToken(fieldId);
           }
-        }else{
-            console.log("--sucesss-")
- bankResult = result;
+        } else {
+          console.log("--sucesss-");
+          bankResult = result;
         }
       })
-      .catch((error) => console.log("error -->",error));
-
+      .catch((error) => console.log("error -->", error));
   }
 
   function ValidateBankMethodTwo(
@@ -5706,8 +5705,8 @@ let statusCode;
     countryCode,
     fieldId
   ) {
- let flag=false;
-        let statusCode;
+    let flag = false;
+    let statusCode;
     var myHeaders = new Headers();
     myHeaders.append("Cache-Control", "no-cache");
     myHeaders.append("Authorization", AuthorizationKey);
@@ -5725,36 +5724,36 @@ let statusCode;
         countryCode,
       requestOptions
     )
-  .then((response) => {
-        console.log("response -->",response);
-      statusCode = response.status;
-     if (!response.ok) {
-       flag=true;
-     }
-     return response.json();
-  })
+      .then((response) => {
+        console.log("response -->", response);
+        statusCode = response.status;
+        if (!response.ok) {
+          flag = true;
+        }
+        return response.json();
+      })
       .then(function (result) {
-      console.log("--->",result,statusCode)
-       if(flag) {
-          console.log("Please refresh the page ",statusCode,result);
-          if(statusCode==401){
+        console.log("--->", result, statusCode);
+        if (flag) {
+          console.log("Please refresh the page ", statusCode, result);
+          if (statusCode == 401) {
             getJWTToken(fieldId);
           }
-        }else{
- bankResult = result;
-            console.log("--sucesss-")
+        } else {
+          bankResult = result;
+          console.log("--sucesss-");
         }
       })
-      .catch((error) => console.log("error -->",error));
-//       .then((response) => response.text())
-//       .then(function (result) {
-//         console.log("bank detils validate method two -->", result);
-//         bankResult = result;
-//         if (JSON.parse(result).status == 401) {
-//           getJWTToken(fieldId);
-//         }
-//       })
-//       .catch((error) => console.log("error", error));
+      .catch((error) => console.log("error -->", error));
+    //       .then((response) => response.text())
+    //       .then(function (result) {
+    //         console.log("bank detils validate method two -->", result);
+    //         bankResult = result;
+    //         if (JSON.parse(result).status == 401) {
+    //           getJWTToken(fieldId);
+    //         }
+    //       })
+    //       .catch((error) => console.log("error", error));
   }
 
   $(".new-ticket-dummy").click(function () {
@@ -7775,69 +7774,69 @@ let statusCode;
     return temp;
   }
   function createSubmitClaim(body, fieldId) {
-let flag=false;
-let statusCode;
-  var myHeaders = new Headers();
-      myHeaders.append("Content-Type", "application/json");
-      myHeaders.append("Authorization", AuthorizationKey);
-      var raw = JSON.stringify(body);
-      var requestOptions = {
-        method: "POST",
-        headers: myHeaders,
-        body: raw,
-        redirect: "follow",
-      };
-  
-      fetch(
-        "https://claim-api-lower.collinsonnis.com/api/claim/submission",
-        requestOptions
-      )
-    .then((response) => {
-        console.log("response -->",response);
-      statusCode = response.status;
-     if (!response.ok) {
-       flag=true;
-     }
-     return response.text();
-  })
+    let flag = false;
+    let statusCode;
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    myHeaders.append("Authorization", AuthorizationKey);
+    var raw = JSON.stringify(body);
+    var requestOptions = {
+      method: "POST",
+      headers: myHeaders,
+      body: raw,
+      redirect: "follow",
+    };
+
+    fetch(
+      "https://claim-api-lower.collinsonnis.com/api/claim/submission",
+      requestOptions
+    )
+      .then((response) => {
+        console.log("response -->", response);
+        statusCode = response.status;
+        if (!response.ok) {
+          flag = true;
+        }
+        return response.text();
+      })
       .then(function (result) {
-      console.log("--->",result,statusCode)
-       if(flag) {
-          if(statusCode==401){
+        console.log("--->", result, statusCode);
+        if (flag) {
+          if (statusCode == 401) {
             getJWTToken(fieldId);
-          }else if(statusCode==400){
-             console.log("--field miised getting senario->",result) 
+          } else if (statusCode == 400) {
+            console.log("--field miised getting senario->", result);
           }
-        }else{
-            console.log("--sucesss-")
-           // $(".new-ticket-submit-button").trigger("click");
+        } else {
+          console.log("--sucesss-");
+          // $(".new-ticket-submit-button").trigger("click");
         }
       })
-      .catch((error) => console.log("error -->",error));
-//     var myHeaders = new Headers();
-//     myHeaders.append("Content-Type", "application/json");
-//     myHeaders.append("Authorization", AuthorizationKey);
-//     var raw = JSON.stringify(body);
-//     var requestOptions = {
-//       method: "POST",
-//       headers: myHeaders,
-//       body: raw,
-//       redirect: "follow",
-//     };
+      .catch((error) => console.log("error -->", error));
+    //     var myHeaders = new Headers();
+    //     myHeaders.append("Content-Type", "application/json");
+    //     myHeaders.append("Authorization", AuthorizationKey);
+    //     var raw = JSON.stringify(body);
+    //     var requestOptions = {
+    //       method: "POST",
+    //       headers: myHeaders,
+    //       body: raw,
+    //       redirect: "follow",
+    //     };
 
-//     fetch(
-//       "https://claim-api-lower.collinsonnis.com/api/claim/submission",
-//       requestOptions
-//     )
-//       .then((response) => response.text())
-//       .then(function (result) {
-//         console.log(result);
-//         // $(".new-ticket-submit-button").trigger("click");
-//         if (JSON.parse(result).status == 401) {
-//           getJWTToken(fieldId);
-//         }
-//       })
-//       .catch((error) => console.log("error", error));
+    //     fetch(
+    //       "https://claim-api-lower.collinsonnis.com/api/claim/submission",
+    //       requestOptions
+    //     )
+    //       .then((response) => response.text())
+    //       .then(function (result) {
+    //         console.log(result);
+    //         // $(".new-ticket-submit-button").trigger("click");
+    //         if (JSON.parse(result).status == 401) {
+    //           getJWTToken(fieldId);
+    //         }
+    //       })
+    //       .catch((error) => console.log("error", error));
   }
   $("#cb2").click(function () {
     console.log("checkbox changed!");
