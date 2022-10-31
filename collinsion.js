@@ -1,5 +1,6 @@
 jQuery(document).ready(function ($) {
   $("#helpdesk_ticket_subject").closest(".form-group").hide();
+$("#helpdesk_ticket_custom_field_cf_date_of_birth_2321673").closest(".form-group").append('<div class="invalid-feedback api_call_failed_1">API call failed</div>')
   if ($("#title").hasClass("ColumbusItaly")) {
     $("button.new-ticket-submit-button")
       .hide()
