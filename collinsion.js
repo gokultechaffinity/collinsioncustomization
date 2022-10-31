@@ -5,6 +5,18 @@ jQuery(document).ready(function ($) {
     .append(
       '<div class="invalid-feedback api_call_failed_1">API call failed</div>'
     );
+  $(
+    "#invalid-feedback helpdesk_ticket_custom_field_cf_reason_for_claim_2321673"
+  )
+    .closest(".form-group")
+    .append(
+      '<div class="invalid-feedback api_call_failed_1">API call failed</div>'
+    );
+  $("#attachments_list")
+    .closest(".form-group")
+    .append(
+      '<div class="invalid-feedback api_call_failed_1">API call failed</div>'
+    );
   if ($("#title").hasClass("ColumbusItaly")) {
     $("button.new-ticket-submit-button")
       .hide()
@@ -4942,14 +4954,26 @@ jQuery(document).ready(function ($) {
             getJWTToken(fieldId);
           } else if (statusCode == 500) {
             console.log("error--->", result);
+            addErrorMessage(
+              "helpdesk_ticket_custom_field_cf_reason_for_claim_2321673",
+              "Internal Server Error"
+            );
             console.log("Internal server error");
           } else if (statusCode == 400) {
+            addErrorMessage(
+              "helpdesk_ticket_custom_field_cf_reason_for_claim_2321673",
+              result
+            );
             console.log("error--->", result);
             console.log(
               "Unable to create claim as per one claim per policy per day rule"
             );
           }
         } else {
+          let ele = [
+            "helpdesk_ticket_custom_field_cf_reason_for_claim_2321673",
+          ];
+          clearError(ele);
           ClaimInitiatedNumber = result.ClaimNumber;
           console.log(ClaimInitiatedNumber);
           $("#helpdesk_ticket_subject").val(ClaimInitiatedNumber);
@@ -5414,6 +5438,8 @@ jQuery(document).ready(function ($) {
   $(".save_and_continue5").click(function () {
     var elem = document.getElementById("files_list");
     if (elem.files.length) {
+      let ele = ["api_call_failed_1"];
+      clearError(ele);
       var files = [];
       var fileSize = [];
       for (var i = 0; i < elem.files.length; ++i) {
@@ -5425,6 +5451,8 @@ jQuery(document).ready(function ($) {
       }, 0);
       console.log("sum tottal--->", sum);
       if (sum <= 4200000) {
+        let ele = ["api_call_failed_1"];
+        clearError(ele);
         if ($("#section_5_header").length) {
           update_section_5();
         } else {
@@ -5436,8 +5464,8 @@ jQuery(document).ready(function ($) {
         console.log(
           " --------- Need to show error max file size should not more than 4 MB ----------------"
         );
+        addErrorMessage("api_call_failed_1", "File size cannot exceed 4 MB");
       }
-      console.log();
       function add_section_5() {
         $(
           "<strong id='section_5_header'>" + titles[4] + "</strong>"
@@ -5479,6 +5507,10 @@ jQuery(document).ready(function ($) {
         }
       }
     } else {
+      addErrorMessage(
+        "api_call_failed_1",
+        "Please Upload the File. It is Mandatory"
+      );
       console.log(" --------- Need to show error message ----------------");
     }
   });
@@ -5749,15 +5781,6 @@ jQuery(document).ready(function ($) {
         }
       })
       .catch((error) => console.log("error -->", error));
-    //       .then((response) => response.text())
-    //       .then(function (result) {
-    //         console.log("bank detils validate method two -->", result);
-    //         bankResult = result;
-    //         if (JSON.parse(result).status == 401) {
-    //           getJWTToken(fieldId);
-    //         }
-    //       })
-    //       .catch((error) => console.log("error", error));
   }
 
   $(".new-ticket-dummy").click(function () {
