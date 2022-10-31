@@ -580,6 +580,7 @@ var requestOptions = {
               "#helpdesk_ticket_custom_field_cf_policy_number_2321673"
             ).val();
             //getPolicy INVOKE HERE!!
+            
             //
             $("#save_and_continue1").attr("data-target", "#agreementModal");
             $("#save_and_continue1").attr("data-toggle", "modal");
@@ -648,8 +649,9 @@ var requestOptions = {
             "#helpdesk_ticket_custom_field_cf_date_of_birth_2321673"
           ).val();
           getPolicyDetails(policyNumber, dateOfBirth, "#save_and_continue1");
-          $("#save_and_continue1").attr("data-target", "#agreementModal");
-          $("#save_and_continue1").attr("data-toggle", "modal");
+          //changes started for error
+        //   $("#save_and_continue1").attr("data-target", "#agreementModal");
+        //   $("#save_and_continue1").attr("data-toggle", "modal");
           clearError([
             "helpdesk_ticket_custom_field_cf_date_of_birth_2321673",
             "helpdesk_ticket_custom_field_cf_policy_number_2321673",
@@ -729,6 +731,8 @@ var requestOptions = {
             }
           }else{
             buildPolicyUI(result);
+            $("#save_and_continue1").attr("data-target", "#agreementModal");
+            $("#save_and_continue1").attr("data-toggle", "modal");
           }
       })
       .catch((error) => console.log(error));
