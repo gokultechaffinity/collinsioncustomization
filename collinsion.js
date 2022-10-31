@@ -741,7 +741,10 @@ jQuery(document).ready(function ($) {
           //   $("#save_and_continue1").attr("data-target", "#agreementModal");
           //   $("#save_and_continue1").attr("data-toggle", "modal");
           buildPolicyUI(result);
-          $("#agreementModal").modal("show");
+          setTimeout(() => {
+            console.log("enters");
+            $("#agreementModal").modal("show");
+          }, "500");
         }
       })
       .catch((error) => console.log(error));
