@@ -649,8 +649,8 @@ jQuery(document).ready(function ($) {
             ).val();
             getPolicyDetails(policyNumber, dateOfBirth, "#save_and_continue1");
             //changes started for error
-            //   $("#save_and_continue1").attr("data-target", "#agreementModal");
-            //   $("#save_and_continue1").attr("data-toggle", "modal");
+            $("#save_and_continue1").attr("data-target", "#agreementModal");
+            $("#save_and_continue1").attr("data-toggle", "modal");
             clearError([
               "helpdesk_ticket_custom_field_cf_date_of_birth_2321673",
               "helpdesk_ticket_custom_field_cf_policy_number_2321673",
@@ -728,6 +728,8 @@ jQuery(document).ready(function ($) {
             getJWTToken(fieldId);
           } else if (statusCode == 404) {
             addErrorMessage("api_call_failed_1", result.body);
+            $("#save_and_continue1").removeAttr("data-target");
+            $("#save_and_continue1").removeAttr("data-toggle");
             console.log("error 404 -->", result.body);
           }
         } else {
