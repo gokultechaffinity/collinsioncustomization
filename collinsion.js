@@ -973,6 +973,7 @@ jQuery(document).ready(function ($) {
 
     $("#section-1-button").children(":first").addClass("fa-solid");
     $("#section-1-button").children(":first").addClass("fa-pen");
+    $("#section-1-button").css("background-color","#524954");
   });
   //____________________________________________________SECTION 1 End - Your Policy______________________________________________
   //continue section 2
@@ -1080,6 +1081,7 @@ jQuery(document).ready(function ($) {
 
           if ($("#section_2_header").length) {
             update_section_2();
+
           } else {
             add_section_2();
           }
