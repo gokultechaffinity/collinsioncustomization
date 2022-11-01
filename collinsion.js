@@ -23,6 +23,10 @@ jQuery(document).ready(function ($) {
     .before(
       '<div class="invalid-feedback common_error">Please fill in all fields</div>'
     );
+
+  $("#cancel-claim-model").click(function () {
+    jQuery(".modal").trigger("click");
+  });
   if ($("#title").hasClass("ColumbusItaly")) {
     $("button.new-ticket-submit-button")
       .hide()
