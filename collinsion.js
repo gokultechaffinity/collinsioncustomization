@@ -5076,6 +5076,10 @@ jQuery(document).ready(function ($) {
     $("#section-3-button").children(":first").removeClass("fa-minus");
     $("#section-3-button").children(":first").addClass("fa-check");
 
+    $("#section-1-button").css('background-color','#4DC367')
+    $("#section-2-button").css('background-color','#4DC367')
+    $("#section-3-button").css('background-color','#4DC367')
+
   });
   //____________________________________________________________________________________________________________________
   $("#save_and_continue4").click(function () {
