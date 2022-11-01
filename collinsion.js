@@ -989,6 +989,7 @@ jQuery(document).ready(function ($) {
     var len = document.querySelectorAll(
       '.list-policy-names input[type="checkbox"]:checked'
     ).length;
+
     if (len <= 0) {
       addErrorMessage("check-finder", "Please select at least one client");
     } else {
@@ -1011,6 +1012,15 @@ jQuery(document).ready(function ($) {
           //close current, open next
           if (len != 0) {
             open_next(2);
+
+            $("#section-2-button").children(":first").removeClass("fa-plus");
+            $("#section-2-button").children(":first").removeClass("fa-minus");
+            $("#section-2-button").children(":first").removeClass("fas");
+        
+            $("#section-2-button").children(":first").addClass("fa-solid");
+            $("#section-2-button").children(":first").addClass("fa-pen");
+            $("#section-2-button").css("background-color","#524954");
+        
           }
 
           //remove errors
