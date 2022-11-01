@@ -665,6 +665,8 @@ jQuery(document).ready(function ($) {
             let dateOfBirth = $(
               "#helpdesk_ticket_custom_field_cf_date_of_birth_2321673"
             ).val();
+            jQuery("#model-error-msg").addClass("d-none");
+            jQuery("#model-sucess-msg").addClass("d-none");
             getPolicyDetails(policyNumber, dateOfBirth, "#save_and_continue1");
             //changes started for error
             $("#save_and_continue1").attr("data-target", "#agreementModal");
@@ -745,7 +747,6 @@ jQuery(document).ready(function ($) {
             console.log("error", result.error);
             getJWTToken(fieldId);
           } else if (statusCode == 404) {
-            jQuery("#model-sucess-msg").addClass("d-none");
             jQuery("#model-error-msg").removeClass("d-none");
             jQuery("#model-error-msg .ins-modal-body-content").text(
               result.body
@@ -759,7 +760,7 @@ jQuery(document).ready(function ($) {
           let element = ["api_call_failed_1"];
           clearError(element);
           buildPolicyUI(result);
-          jQuery("#model-error-msg").addClass("d-none");
+
           jQuery("#model-sucess-msg").removeClass("d-none");
           //   setTimeout(() => {
           //     console.log("enters");
@@ -4800,6 +4801,8 @@ jQuery(document).ready(function ($) {
           claimObject["internalPolicyNumber"] = $("#" + i).attr(
             "data-PolicyNumber"
           );
+          jQuery("#claim-error-msg").addClass("d-none");
+          jQuery("#claim-sucess-msg").addClass("d-none");
           createClaimRequest(claimObject, "#save_and_continue3");
         }
         // we will make an api call to claim and sucess response open
@@ -4966,6 +4969,8 @@ jQuery(document).ready(function ($) {
           if (statusCode == 401) {
             getJWTToken(fieldId);
           } else if (statusCode == 500) {
+            jQuery("#claim-error-msg").removeClass("d-none");
+            jQuery("#claim-error-msg .claim-desc-message").text(result);
             console.log("error--->", result);
             addErrorMessage(
               "helpdesk_ticket_custom_field_cf_reason_for_claim_2321673",
@@ -4973,6 +4978,8 @@ jQuery(document).ready(function ($) {
             );
             console.log("Internal server error");
           } else if (statusCode == 400) {
+            jQuery("#claim-error-msg").removeClass("d-none");
+            jQuery("#claim-error-msg .claim-desc-message").text(result);
             addErrorMessage(
               "helpdesk_ticket_custom_field_cf_reason_for_claim_2321673",
               result
@@ -4987,6 +4994,7 @@ jQuery(document).ready(function ($) {
             "helpdesk_ticket_custom_field_cf_reason_for_claim_2321673",
           ];
           clearError(ele);
+          jQuery("#claim-sucess-msg").removeClass("d-none");
           ClaimInitiatedNumber = result.ClaimNumber;
           console.log(ClaimInitiatedNumber);
           $("#helpdesk_ticket_subject").val(ClaimInitiatedNumber);
