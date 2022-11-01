@@ -5293,8 +5293,16 @@ jQuery(document).ready(function ($) {
       add_section_4();
       console.log("add section ---->");
     }
+
+
     //close current section. open next
     open_next(4);
+    $("#section-4-button").children(":first").removeClass("fa-minus");
+    $("#section-4-button").children(":first").removeClass("fa-plus");
+    $("#section-4-button").children(":first").addClass("fa-pen");
+    $("#section-4-button").css("background-color","#524954");
+  
+
   });
   //____________________________________________________SECTION 3 End - About Your Trip____________________________________________
   //_________________________________________________reasonForClaimObj_________________________________________
