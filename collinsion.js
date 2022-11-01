@@ -5053,8 +5053,29 @@ jQuery(document).ready(function ($) {
   //do modal popup with claims statement
   $("#next").click(function () {
     $("#ClaimAPIModal").modal("toggle");
+
+
     //close current, open next
     open_next(3);
+
+    //remove edit from first three sections
+
+    $("#section-1-button").removeAttr("data-toggle");
+    $("#section-2-button").removeAttr("data-toggle");
+    $("#section-3-button").removeAttr("data-toggle");
+
+    $("#section-1-button").children(":first").removeClass("fa-plus");
+    $("#section-1-button").children(":first").removeClass("fa-minus");
+    $("#section-1-button").children(":first").addClass("fa-check");
+
+    $("#section-2-button").children(":first").removeClass("fa-plus");
+    $("#section-2-button").children(":first").removeClass("fa-minus");
+    $("#section-2-button").children(":first").addClass("fa-check");
+
+    $("#section-3-button").children(":first").removeClass("fa-plus");
+    $("#section-3-button").children(":first").removeClass("fa-minus");
+    $("#section-3-button").children(":first").addClass("fa-check");
+
   });
   //____________________________________________________________________________________________________________________
   $("#save_and_continue4").click(function () {
