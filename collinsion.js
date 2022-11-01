@@ -5529,7 +5529,17 @@ jQuery(document).ready(function ($) {
           add_section_5();
         }
         getUploadFiles(files, ".save_and_continue5");
+        /////////////////////////////////
         open_next(5);
+
+        $("#section-4-button").css("background-color","#4DC367");
+        $("#section-5-button").css("background-color","#4DC367");
+        $("#section-4-button").children(":first").removeClass("fa-pen");
+        $("#section-5-button").children(":first").removeClass("fa-minus");
+        $("#section-5-button").children(":first").removeClass("fa-plus");
+        $("#section-4-button").children(":first").addClass("fa-check");
+        $("#section-5-button").children(":first").addClass("fa-check");
+
       } else {
         console.log(
           " --------- Need to show error max file size should not more than 4 MB ----------------"
