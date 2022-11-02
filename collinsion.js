@@ -5777,7 +5777,7 @@ jQuery(document).ready(function ($) {
     open_next(6);
 
     $("#section-6-button").css("background-color","#4DC367");
-    $("#section-6-button").children(":first").removeClass("fa-pen");
+    $("#section-6-button").children(":first").removeClass("fa-plus");
     $("#section-6-button").children(":first").removeClass("fa-minus");
     $("#section-6-button").children(":first").addClass("fa-check");
     $("#section-6-button").removeAttr("data-toggle");
