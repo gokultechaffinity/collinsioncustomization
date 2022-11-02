@@ -5539,7 +5539,9 @@ jQuery(document).ready(function ($) {
         $("#section-5-button").children(":first").removeClass("fa-plus");
         $("#section-4-button").children(":first").addClass("fa-check");
         $("#section-5-button").children(":first").addClass("fa-check");
-
+        
+        $("#section-4-button").removeAttr("data-toggle");
+        $("#section-5-button").removeAttr("data-toggle");
       } else {
         console.log(
           " --------- Need to show error max file size should not more than 4 MB ----------------"
@@ -5778,6 +5780,7 @@ jQuery(document).ready(function ($) {
     $("#section-6-button").children(":first").removeClass("fa-pen");
     $("#section-6-button").children(":first").removeClass("fa-minus");
     $("#section-6-button").children(":first").addClass("fa-check");
+    $("#section-6-button").removeAttr("data-toggle");
 
   });
   function ValidateBankMethodOne(iBanNumber, countryCode, fieldId) {
