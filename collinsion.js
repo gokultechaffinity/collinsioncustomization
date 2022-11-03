@@ -101,7 +101,7 @@ jQuery(document).ready(function ($) {
   //check for portal
   if ($("#title").hasClass("VHI") || $("#title").hasClass("ColumbusItaly")) {
     var PolicyNumberParent = document.getElementById(
-      "helpdesk_ticket_custom_field_cf_policy_number_2321673"
+      "helpdesk_ticket_custom_field_cf_policy_number454080_2321673"
     ).parentElement;
     PolicyNumberParent.classList.add("for-section-1");
 
@@ -111,7 +111,7 @@ jQuery(document).ready(function ($) {
     DOBParent.classList.add("for-section-1");
   } else if ($("#title").hasClass("EasyJet")) {
     var PolicyNumberParent = document.getElementById(
-      "helpdesk_ticket_custom_field_cf_policy_number_2321673"
+      "helpdesk_ticket_custom_field_cf_policy_number454080_2321673"
     ).parentElement;
     PolicyNumberParent.classList.add("for-section-1");
 
@@ -556,12 +556,12 @@ jQuery(document).ready(function ($) {
   $("#save_and_continue1").click(function () {
     if ($("#title").hasClass("EasyJet")) {
       if (
-        $("#helpdesk_ticket_custom_field_cf_policy_number_2321673").val() ==
+        $("#helpdesk_ticket_custom_field_cf_policy_number454080_2321673").val() ==
           "" ||
         $("#helpdesk_ticket_custom_field_cf_postcode68273_2321673").val() == ""
       ) {
         addErrorMessage(
-          "helpdesk_ticket_custom_field_cf_policy_number_2321673",
+          "helpdesk_ticket_custom_field_cf_policy_number454080_2321673",
           "Please fill in all fields"
         );
         addErrorMessage(
@@ -571,11 +571,11 @@ jQuery(document).ready(function ($) {
       } else {
         //check LENGTH OF POLICY NUMBER - 7 DIGITS
         if (
-          $("#helpdesk_ticket_custom_field_cf_policy_number_2321673").val()
+          $("#helpdesk_ticket_custom_field_cf_policy_number454080_2321673").val()
             .length < 7
         ) {
           addErrorMessage(
-            "helpdesk_ticket_custom_field_cf_policy_number_2321673",
+            "helpdesk_ticket_custom_field_cf_policy_number454080_2321673",
             "Policy Number must be at least 7 digits."
           );
           $("#save_and_continue1").removeAttr("data-target");
@@ -593,10 +593,10 @@ jQuery(document).ready(function ($) {
         } else {
           //create variables for invoke
           let policyNumber = $(
-            "#helpdesk_ticket_custom_field_cf_policy_number_2321673"
+            "#helpdesk_ticket_custom_field_cf_policy_number454080_2321673"
           ).val();
           let postCode = $(
-            "#helpdesk_ticket_custom_field_cf_policy_number_2321673"
+            "#helpdesk_ticket_custom_field_cf_policy_number454080_2321673"
           ).val();
           //getPolicy INVOKE HERE!!
 
@@ -605,7 +605,7 @@ jQuery(document).ready(function ($) {
           $("#save_and_continue1").attr("data-toggle", "modal");
           clearError([
             "helpdesk_ticket_custom_field_cf_postcode68273_2321673",
-            "helpdesk_ticket_custom_field_cf_policy_number_2321673",
+            "helpdesk_ticket_custom_field_cf_policy_number454080_2321673",
           ]);
         }
       }
@@ -633,12 +633,12 @@ jQuery(document).ready(function ($) {
       $("#title").hasClass("ColumbusItaly")
     ) {
       if (
-        $("#helpdesk_ticket_custom_field_cf_policy_number_2321673").val() ==
+        $("#helpdesk_ticket_custom_field_cf_policy_number454080_2321673").val() ==
           "" ||
         $("#helpdesk_ticket_custom_field_cf_date_of_birth_2321673").val() == ""
       ) {
         addErrorMessage(
-          "helpdesk_ticket_custom_field_cf_policy_number_2321673",
+          "helpdesk_ticket_custom_field_cf_policy_number454080_2321673",
           "Please fill in all fields"
         );
         addErrorMessage(
@@ -648,7 +648,7 @@ jQuery(document).ready(function ($) {
       } else {
         //check LENGTH OF POLICY NUMBER - 7 DIGITS
         if (
-          $("#helpdesk_ticket_custom_field_cf_policy_number_2321673").val()
+          $("#helpdesk_ticket_custom_field_cf_policy_number454080_2321673").val()
             .length >= 7
         ) {
           birthdate = $(
@@ -664,7 +664,7 @@ jQuery(document).ready(function ($) {
             $("#save_and_continue1").removeAttr("data-toggle");
           } else if (today > bday) {
             let policyNumber = $(
-              "#helpdesk_ticket_custom_field_cf_policy_number_2321673"
+              "#helpdesk_ticket_custom_field_cf_policy_number454080_2321673"
             ).val();
             let dateOfBirth = $(
               "#helpdesk_ticket_custom_field_cf_date_of_birth_2321673"
@@ -677,7 +677,7 @@ jQuery(document).ready(function ($) {
             $("#save_and_continue1").attr("data-toggle", "modal");
             clearError([
               "helpdesk_ticket_custom_field_cf_date_of_birth_2321673",
-              "helpdesk_ticket_custom_field_cf_policy_number_2321673",
+              "helpdesk_ticket_custom_field_cf_policy_number454080_2321673",
             ]);
           } else {
             addErrorMessage(
@@ -689,7 +689,7 @@ jQuery(document).ready(function ($) {
           }
         } else {
           addErrorMessage(
-            "helpdesk_ticket_custom_field_cf_policy_number_2321673",
+            "helpdesk_ticket_custom_field_cf_policy_number454080_2321673",
             "Policy Number must be at least 7 digits."
           );
           $("#save_and_continue1").removeAttr("data-target");
@@ -5875,7 +5875,7 @@ jQuery(document).ready(function ($) {
   $(".new-ticket-dummy").click(function () {
     console.log("submit claim entered ");
     let policyNumber = $(
-      "#helpdesk_ticket_custom_field_cf_policy_number_2321673"
+      "#helpdesk_ticket_custom_field_cf_policy_number454080_2321673"
     ).val();
     // claimnumber we can use global stored value
     console.log("Main ");
