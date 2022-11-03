@@ -122,7 +122,7 @@ jQuery(document).ready(function ($) {
   }
    else if ($("#title").hasClass("CollinsonUK")) {
     var PolicyNumberParent = document.getElementById(
-      "helpdesk_ticket_custom_field_cf_date_of_birth_2321673"
+      "helpdesk_ticket_custom_field_cf_policy_number454080_2321673"
     ).parentElement;
     PolicyNumberParent.classList.add("for-section-1");
 
