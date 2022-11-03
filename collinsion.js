@@ -120,6 +120,17 @@ jQuery(document).ready(function ($) {
     ).parentElement;
     PostcodeParent.classList.add("for-section-1");
   }
+   else if ($("#title").hasClass("CollinsonUK")) {
+    var PolicyNumberParent = document.getElementById(
+      "helpdesk_ticket_custom_field_cf_date_of_birth_2321673"
+    ).parentElement;
+    PolicyNumberParent.classList.add("for-section-1");
+
+    var PostcodeParent = document.getElementById(
+      "helpdesk_ticket_custom_field_cf_postcode68273_2321673"
+    ).parentElement;
+    PostcodeParent.classList.add("for-section-1");
+  }
 
   //add save and continue button - add section 1
   if ($("#title").hasClass("ColumbusItaly")) {
@@ -130,7 +141,7 @@ jQuery(document).ready(function ($) {
     $(
       '<button id="save_and_continue1" class="btn btn-primary for-section-1 save_and_continue" type="button">Find Policy</button>'
     ).insertAfter("#helpdesk_ticket_custom_field_cf_postcode68273_2321673");
-  } else {
+  } else if ($("#title").hasClass("CollinsonUK")) {
     $(
       '<button id="save_and_continue1" class="btn btn-primary for-section-1 save_and_continue" type="button">Find Policy</button>'
     ).insertAfter("#helpdesk_ticket_custom_field_cf_date_of_birth_2321673");
