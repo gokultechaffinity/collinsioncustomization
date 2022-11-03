@@ -5591,7 +5591,7 @@ jQuery(document).ready(function ($) {
     } else {
       addErrorMessage(
         "api_call_failed_1",
-        "Please Upload the File. It is Mandatory"
+        "Please Upload the File."
       );
       console.log(" --------- Need to show error message ----------------");
     }
@@ -7928,34 +7928,10 @@ jQuery(document).ready(function ($) {
           let ele = ["common_error"];
           clearError(ele);
           console.log("--sucesss-");
-          // $(".new-ticket-submit-button").trigger("click");
+           $(".new-ticket-submit-button").trigger("click");
         }
       })
       .catch((error) => console.log("error -->", error));
-    //     var myHeaders = new Headers();
-    //     myHeaders.append("Content-Type", "application/json");
-    //     myHeaders.append("Authorization", AuthorizationKey);
-    //     var raw = JSON.stringify(body);
-    //     var requestOptions = {
-    //       method: "POST",
-    //       headers: myHeaders,
-    //       body: raw,
-    //       redirect: "follow",
-    //     };
-
-    //     fetch(
-    //       "https://claim-api-lower.collinsonnis.com/api/claim/submission",
-    //       requestOptions
-    //     )
-    //       .then((response) => response.text())
-    //       .then(function (result) {
-    //         console.log(result);
-    //         // $(".new-ticket-submit-button").trigger("click");
-    //         if (JSON.parse(result).status == 401) {
-    //           getJWTToken(fieldId);
-    //         }
-    //       })
-    //       .catch((error) => console.log("error", error));
   }
   $("#cb2").click(function () {
     console.log("checkbox changed!");
