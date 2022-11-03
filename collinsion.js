@@ -297,6 +297,22 @@ jQuery(document).ready(function ($) {
     ).parentElement;
     SortCodeParent.classList.add("for-section-6");
   }
+    else if ($("#title").hasClass("CollinsonUK")) {
+    //Name of acc holder - put in section 6
+    var accHolderParent = document.getElementById(
+      "helpdesk_ticket_custom_field_cf_name_of_account_holder_2321673"
+    ).parentElement;
+    //acount number
+    var AccNumParent = document.getElementById(
+      "helpdesk_ticket_custom_field_cf_account_number_2321673"
+    ).parentElement;
+    AccNumParent.classList.add("for-section-6");
+    //sort code
+    var SortCodeParent = document.getElementById(
+      "helpdesk_ticket_custom_field_cf_sort_code659991_2321673"
+    ).parentElement;
+    SortCodeParent.classList.add("for-section-6");
+  }
 
   //save and continue 6
   if ($("#title").hasClass("ColumbusItaly")) {
@@ -308,6 +324,11 @@ jQuery(document).ready(function ($) {
       '<button id="save_and_continue6" class="btn btn-primary for-section-6 save_and_continue" type="button" >Save & Continue</button>'
     ).insertAfter(ibanNumber);
   } else if ($("#title").hasClass("EasyJet")) {
+    $(
+      '<button id="save_and_continue6" class="btn btn-primary for-section-6 save_and_continue" type="button" >Save & Continue</button>'
+    ).insertAfter(SortCodeParent);
+  }
+  else if ($("#title").hasClass("CollinsonUK")) {
     $(
       '<button id="save_and_continue6" class="btn btn-primary for-section-6 save_and_continue" type="button" >Save & Continue</button>'
     ).insertAfter(SortCodeParent);
@@ -570,7 +591,7 @@ jQuery(document).ready(function ($) {
   //section 1 continue
   //on CHANGE OF DATE OF BIRTH - check any of the two inputs is empty, if it is remove attr, else add it
   $("#save_and_continue1").click(function () {
-    if ($("#title").hasClass("EasyJet")) {
+    if ($("#title").hasClass("EasyJet") || $("#title").hasClass("CollinsonUK")){
       if (
         $("#helpdesk_ticket_custom_field_cf_policy_number454080_2321673").val() ==
           "" ||
