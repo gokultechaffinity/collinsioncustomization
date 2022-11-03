@@ -126,8 +126,8 @@ jQuery(document).ready(function ($) {
     ).parentElement;
     PolicyNumberParent.classList.add("for-section-1");
 
-    var PostcodeParent = document.getElementById(
-      "helpdesk_ticket_custom_field_cf_postcode68273_2321673"
+    var DOBParent = document.getElementById(
+      "helpdesk_ticket_custom_field_cf_date_of_birth_2321673"
     ).parentElement;
     PostcodeParent.classList.add("for-section-1");
   }
