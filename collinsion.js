@@ -109,6 +109,11 @@ jQuery(document).ready(function ($) {
       "helpdesk_ticket_custom_field_cf_date_of_birth_2321673"
     ).parentElement;
     DOBParent.classList.add("for-section-1");
+
+    var ClaimNumberParent = document.getElementById("helpdesk_ticket_custom_field_cf_claim_number_2321673"
+    ).parentElement;
+    ClaimNumberParent.classList.add("for-section-1");
+
   } else if ($("#title").hasClass("EasyJet")) {
     var PolicyNumberParent = document.getElementById(
       "helpdesk_ticket_custom_field_cf_policy_number454080_2321673"
@@ -119,6 +124,10 @@ jQuery(document).ready(function ($) {
       "helpdesk_ticket_custom_field_cf_postcode68273_2321673"
     ).parentElement;
     PostcodeParent.classList.add("for-section-1");
+
+    var ClaimNumberParent = document.getElementById("helpdesk_ticket_custom_field_cf_claim_number_2321673"
+    ).parentElement;
+    ClaimNumberParent.classList.add("for-section-1");
   }
    else if ($("#title").hasClass("CollinsonUK")) {
     var PolicyNumberParent = document.getElementById(
@@ -130,26 +139,30 @@ jQuery(document).ready(function ($) {
       "helpdesk_ticket_custom_field_cf_date_of_birth_2321673"
     ).parentElement;
     DOBParent.classList.add("for-section-1");
+
+    var ClaimNumberParent = document.getElementById("helpdesk_ticket_custom_field_cf_claim_number_2321673"
+    ).parentElement;
+    ClaimNumberParent.classList.add("for-section-1");
   }
 
   //add save and continue button - add section 1
   if ($("#title").hasClass("ColumbusItaly")) {
     $(
       '<button id="save_and_continue1" class="btn btn-primary for-section-1 save_and_continue" type="button">Trova la politica</button>'
-    ).insertAfter("#helpdesk_ticket_custom_field_cf_date_of_birth_2321673");
+    ).insertAfter("#helpdesk_ticket_custom_field_cf_claim_number_2321673");
   } else if ($("#title").hasClass("EasyJet")) {
     $(
       '<button id="save_and_continue1" class="btn btn-primary for-section-1 save_and_continue" type="button">Find Policy</button>'
-    ).insertAfter("#helpdesk_ticket_custom_field_cf_postcode68273_2321673");
+    ).insertAfter("#helpdesk_ticket_custom_field_cf_claim_number_2321673");
   } else if ($("#title").hasClass("CollinsonUK")) {
     $(
       '<button id="save_and_continue1" class="btn btn-primary for-section-1 save_and_continue" type="button">Find Policy</button>'
-    ).insertAfter("#helpdesk_ticket_custom_field_cf_date_of_birth_2321673");
+    ).insertAfter("#helpdesk_ticket_custom_field_cf_claim_number_2321673");
   }
    else if ($("#title").hasClass("VHI")) {
     $(
       '<button id="save_and_continue1" class="btn btn-primary for-section-1 save_and_continue" type="button">Find Policy</button>'
-    ).insertAfter("#helpdesk_ticket_custom_field_cf_date_of_birth_2321673");
+    ).insertAfter("#helpdesk_ticket_custom_field_cf_claim_number_2321673");
   }
   //____________________________________________________SECTION 2 Start -  About You______________________________________________
   //identify Email Parent DIV
