@@ -609,6 +609,8 @@ jQuery(document).ready(function ($) {
         $("#helpdesk_ticket_custom_field_cf_policy_number454080_2321673").val() ==
           "" ||
         $("#helpdesk_ticket_custom_field_cf_postcode68273_2321673").val() == ""
+        ||
+        $("#helpdesk_ticket_custom_field_cf_claim_number_2321673").val() == ""
       ) {
         addErrorMessage(
           "helpdesk_ticket_custom_field_cf_policy_number454080_2321673",
@@ -616,6 +618,10 @@ jQuery(document).ready(function ($) {
         );
         addErrorMessage(
           "helpdesk_ticket_custom_field_cf_postcode68273_2321673",
+          "Please fill in all fields"
+        );
+        addErrorMessage(
+          "helpdesk_ticket_custom_field_cf_claim_number_2321673",
           "Please fill in all fields"
         );
       } else {
@@ -648,6 +654,9 @@ jQuery(document).ready(function ($) {
           let postCode = $(
             "#helpdesk_ticket_custom_field_cf_policy_number454080_2321673"
           ).val();
+          let claimNumber = $(
+            "#helpdesk_ticket_custom_field_cf_claim_number_2321673"
+          ).val();
           //getPolicy INVOKE HERE!!
 
           //
@@ -656,6 +665,7 @@ jQuery(document).ready(function ($) {
           clearError([
             "helpdesk_ticket_custom_field_cf_postcode68273_2321673",
             "helpdesk_ticket_custom_field_cf_policy_number454080_2321673",
+            "helpdesk_ticket_custom_field_cf_claim_number_2321673"
           ]);
         }
       }
@@ -686,6 +696,8 @@ jQuery(document).ready(function ($) {
         $("#helpdesk_ticket_custom_field_cf_policy_number454080_2321673").val() ==
           "" ||
         $("#helpdesk_ticket_custom_field_cf_date_of_birth_2321673").val() == ""
+        ||
+        $("#helpdesk_ticket_custom_field_cf_claim_number_2321673").val() == ""
       ) {
         addErrorMessage(
           "helpdesk_ticket_custom_field_cf_policy_number454080_2321673",
@@ -693,6 +705,10 @@ jQuery(document).ready(function ($) {
         );
         addErrorMessage(
           "helpdesk_ticket_custom_field_cf_date_of_birth_2321673",
+          "Please fill in all fields"
+        );
+        addErrorMessage(
+          "helpdesk_ticket_custom_field_cf_claim_number_2321673",
           "Please fill in all fields"
         );
       } else {
