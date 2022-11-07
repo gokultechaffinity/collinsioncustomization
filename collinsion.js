@@ -282,9 +282,9 @@ jQuery(document).ready(function ($) {
       $(
         '<button class="save_and_continue5 btn btn-primary for-section-5 save_and_continue" type="button" >Save & Continue</button>'
       ).insertAfter(".form-group.attachments-container.for-section-5");
-      $(
-        '<button class="save_draft_5 btn btn-primary for-section-5 " type="button" >Save Draft</button>'
-      ).insertAfter(".form-group.attachments-container.for-section-5");
+    //   $(
+    //     '<button class="save_draft_5 btn btn-primary for-section-5 " type="button" >Save Draft</button>'
+    //   ).insertAfter(".form-group.attachments-container.for-section-5");
     }
     $("#mock-doc").remove();
     $(".save_and_continue5").first().hide();
@@ -5255,7 +5255,7 @@ jQuery(document).ready(function ($) {
   
     });
     //____________________________________________________________________________________________________________________
-    $(".save_draft_4").click(function () {
+    $("#save_draft_4").click(function () {
         $(".new-ticket-submit-button").trigger("click");
     });
     $("#save_and_continue4").click(function () {
