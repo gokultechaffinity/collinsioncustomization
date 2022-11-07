@@ -257,6 +257,11 @@ jQuery(document).ready(function ($) {
       ).insertAfter(
         ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper"
       );
+      $(
+        '<button id="save_draft_4" class="btn btn-primary for-section-4 " type="button">Save Draft</button>'
+      ).insertAfter(
+        ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper"
+      );
     }
     //____________________________________________________SECTION 5 Start - Your Documents____________________________________________
     //for-section-5 attachment group
@@ -276,6 +281,9 @@ jQuery(document).ready(function ($) {
     } else {
       $(
         '<button class="save_and_continue5 btn btn-primary for-section-5 save_and_continue" type="button" >Save & Continue</button>'
+      ).insertAfter(".form-group.attachments-container.for-section-5");
+      $(
+        '<button class="save_draft_5 btn btn-primary for-section-5 " type="button" >Save Draft</button>'
       ).insertAfter(".form-group.attachments-container.for-section-5");
     }
     $("#mock-doc").remove();
@@ -5247,6 +5255,9 @@ jQuery(document).ready(function ($) {
   
     });
     //____________________________________________________________________________________________________________________
+    $(".save_draft_4").click(function () {
+        $(".new-ticket-submit-button").trigger("click");
+    });
     $("#save_and_continue4").click(function () {
       function add_section_4() {
         $("<strong id='section_4_header'>" + titles[3] + "</strong>").insertAfter(
@@ -5670,6 +5681,9 @@ jQuery(document).ready(function ($) {
   
     //____________________________________________________________________________________________________________________
     //section 5 continue
+    $(".save_draft_5").click(function () {
+        $(".new-ticket-submit-button").trigger("click");
+    });
     $(".save_and_continue5").click(function () {
       var elem = document.getElementById("files_list");
       if (elem.files.length) {
