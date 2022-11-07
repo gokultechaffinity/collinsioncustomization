@@ -284,7 +284,7 @@ jQuery(document).ready(function ($) {
       ).insertAfter(".form-group.attachments-container.for-section-5");
       $(
         '<button class="save_draft_5 btn btn-primary for-section-5 " type="button" >Save Draft</button>'
-         ).insertAfter("#attachments_list");
+         ).insertAfter(".attachments-container");
     }
     $("#mock-doc").remove();
     $(".save_and_continue5").first().hide();
