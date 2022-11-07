@@ -282,9 +282,10 @@ jQuery(document).ready(function ($) {
       $(
         '<button class="save_and_continue5 btn btn-primary for-section-5 save_and_continue" type="button" >Save & Continue</button>'
       ).insertAfter(".form-group.attachments-container.for-section-5");
-      $(
-        '<button class="save_draft_5 btn btn-primary for-section-5 " type="button" >Save Draft</button>'
-         ).insertAfter(".attachments-container");
+    //   $(
+    //     '<button class="save_draft_5 btn btn-primary for-section-5 " type="button" >Save Draft</button>'
+    //      ).insertAfter(".form-group.attachments-container.for-section-5");
+    jQuery(".attachments-container.for-section-5").after('<button class="save_draft_5 btn btn-primary for-section-5 " type="button">Save Draft</button>');
     }
     $("#mock-doc").remove();
     $(".save_and_continue5").first().hide();
@@ -6058,14 +6059,14 @@ jQuery(document).ready(function ($) {
             }
             if(statusCode == 500){
                 console.log("Please refresh the page ", statusCode, result);  
-                // addErrorMessage(
-                //     "helpdesk_ticket_custom_field_cf_iban_number_2321673",
-                //     result
-                //   ); 
+                addErrorMessage(
+                    "helpdesk_ticket_custom_field_cf_iban_number_2321673",
+                    result
+                  ); 
                }
           } else {
-            // let ele = ["helpdesk_ticket_custom_field_cf_iban_number_2321673"];
-            // clearError(ele);
+            let ele = ["helpdesk_ticket_custom_field_cf_iban_number_2321673"];
+            clearError(ele);
             bankResult = result;
             console.log("--sucesss-");
           }
