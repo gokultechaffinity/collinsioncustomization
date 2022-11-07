@@ -286,7 +286,7 @@ jQuery(document).ready(function ($) {
     //     '<button class="save_draft_5 btn btn-primary for-section-5 " type="button" >Save Draft</button>'
     //      ).insertAfter(".form-group.attachments-container.for-section-5");
     console.log("------- entered-------")
-     jQuery(".attachments-container.for-section-5").after('<button class="save_draft_5 btn btn-primary for-section-5 " type="button">Save Draft</button>');
+     jQuery(".attachments-container.for-section-5").after('<button class="save_draft_5 btn btn-primary for-section-5 " type="button">Save Draft 1</button>');
     }
     $("#mock-doc").remove();
     $(".save_and_continue5").first().hide();
