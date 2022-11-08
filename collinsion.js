@@ -53,9 +53,9 @@ jQuery(document).ready(function ($) {
     SagaPostOfficeColumbusUK: "GB",
     VHI: "IE",
   };
-  let domainURL="claim-sandbox.collinsonnis.com";
+  let domainURL="claim-proxy-lower.collinsonnis.com";
 //"claim-proxy-lower.collinsonnis.com";
-
+//"claim-sandbox.collinsonnis.com";
   let succesStatus = [200, 201, 202, 203, 204, 205, 206, 207, 208, 226];
   getJWTToken();
   function getJWTToken(fieldId) {
