@@ -5226,6 +5226,7 @@ jQuery(document).ready(function ($) {
           $("input[name='insured_1']:checked").each(function (index) {
             if (index == 0) {
                 saveDetails["MainContactClientId"] = $(this).attr("data-clientid");
+                nameArray.push($(this).val()+" "+$(this).attr("data-lastname"))
             } else {
                 checkArray.push($(this).attr("data-clientid"));
             }
@@ -5236,6 +5237,9 @@ jQuery(document).ready(function ($) {
         console.log(saveDetails.MainContactClientId)
         console.log(saveDetails.OtherInsuredClientIds)
         console.log(nameArray);
+        $("#helpdesk_ticket_custom_field_cf_mainclientid_2321673").val(saveDetails.MainContactClientId);
+ $("#helpdesk_ticket_custom_field_cf_otherclientid_2321673").val(saveDetails.OtherInsuredClientIds);
+ $("#helpdesk_ticket_custom_field_cf_claimnames_2321673").val(nameArray);
         // $(".new-ticket-submit-button").trigger("click");
     });
     $("#save_and_continue4").click(function () {
