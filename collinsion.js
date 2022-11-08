@@ -972,7 +972,7 @@ jQuery(document).ready(function ($) {
           element.IsPolicyHolder +
           " value=" +
           element.FirstName +
-          " " +
+          " data-lastName=" +
           element.LastName +
           " data-clientId=" +
           element.ClientId +
