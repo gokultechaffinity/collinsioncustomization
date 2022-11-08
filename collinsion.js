@@ -5240,7 +5240,7 @@ jQuery(document).ready(function ($) {
         $("#helpdesk_ticket_custom_field_cf_mainclientid_2321673").val(saveDetails.MainContactClientId);
  $("#helpdesk_ticket_custom_field_cf_otherclientid_2321673").val(saveDetails.OtherInsuredClientIds);
  $("#helpdesk_ticket_custom_field_cf_claimnames_2321673").val(nameArray);
-        // $(".new-ticket-submit-button").trigger("click");
+         $(".new-ticket-submit-button").trigger("click");
     });
     $("#save_and_continue4").click(function () {
       function add_section_4() {
@@ -5666,7 +5666,44 @@ jQuery(document).ready(function ($) {
     //____________________________________________________________________________________________________________________
     //section 5 continue
     $(".save_draft_5").click(function () {
-        $(".new-ticket-submit-button").trigger("click");
+        let saveDetail={};
+        var checksArray = [];
+        var namesArray=[];
+        if ($("input[data-ispolicyholder='true']:checked").length) {
+            saveDetail["MainContactClientId"] = $(
+            "input[data-ispolicyholder='true']:checked"
+          ).attr("data-clientId");
+          $("input[name='insured_1']:checked").each(function () {
+            checksArray.push($(this).attr("data-clientid"));
+            namesArray.push($(this).val()+" "+$(this).attr("data-lastname"))
+          });
+          checksArray = checksArray.filter(function (val) {
+            return saveDetail["MainContactClientId"].indexOf(val) == -1;
+          });
+          checksArray = checksArray.filter(
+            (val) => !saveDetail["MainContactClientId"].includes(val)
+          );
+          
+          saveDetail["OtherInsuredClientIds"] = checksArray;
+        } else {
+          $("input[name='insured_1']:checked").each(function (index) {
+            if (index == 0) {
+                saveDetail["MainContactClientId"] = $(this).attr("data-clientid");
+                namesArray.push($(this).val()+" "+$(this).attr("data-lastname"))
+            } else {
+                checksArray.push($(this).attr("data-clientid"));
+            }
+          });
+          saveDetail["OtherInsuredClientIds"] = checksArray;
+        }
+        console.log("---------",saveDetail);
+        console.log(saveDetail.MainContactClientId)
+        console.log(saveDetail.OtherInsuredClientIds)
+        console.log(namesArray);
+        $("#helpdesk_ticket_custom_field_cf_mainclientid_2321673").val(saveDetail.MainContactClientId);
+ $("#helpdesk_ticket_custom_field_cf_otherclientid_2321673").val(saveDetail.OtherInsuredClientIds);
+ $("#helpdesk_ticket_custom_field_cf_claimnames_2321673").val(namesArray);
+        // $(".new-ticket-submit-button").trigger("click");
     });
     $(".save_and_continue5").click(function () {
       var elem = document.getElementById("files_list");
