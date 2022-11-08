@@ -5212,7 +5212,7 @@ jQuery(document).ready(function ($) {
           ).attr("data-clientId");
           $("input[name='insured_1']:checked").each(function () {
             checkArray.push($(this).attr("data-clientid"));
-            nameArray.push($(this).val())
+            nameArray.push($(this).val()+" "+$(this).attr("data-lastname"))
           });
           checkArray = checkArray.filter(function (val) {
             return saveDetails["MainContactClientId"].indexOf(val) == -1;
@@ -5232,9 +5232,10 @@ jQuery(document).ready(function ($) {
           });
           saveDetails["OtherInsuredClientIds"] = checkArray;
         }
+        console.log("---------",saveDetails);
         console.log(saveDetails.MainContactClientId)
         console.log(saveDetails.OtherInsuredClientIds)
-        console.log(saveDetails);
+        console.log(nameArray);
         // $(".new-ticket-submit-button").trigger("click");
     });
     $("#save_and_continue4").click(function () {
