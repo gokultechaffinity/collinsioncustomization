@@ -972,6 +972,8 @@ jQuery(document).ready(function ($) {
           element.IsPolicyHolder +
           " value=" +
           element.FirstName +
+          " " +
+          element.LastName +
           " data-clientId=" +
           element.ClientId +
           " data-PolicyNumber=" +
@@ -5201,7 +5203,39 @@ jQuery(document).ready(function ($) {
     });
     //____________________________________________________________________________________________________________________
     $("#save_draft_4").click(function () {
-        $(".new-ticket-submit-button").trigger("click");
+        let saveDetails={};
+        var checkArray = [];
+        var nameArray=[];
+        if ($("input[data-ispolicyholder='true']:checked").length) {
+            saveDetails["MainContactClientId"] = $(
+            "input[data-ispolicyholder='true']:checked"
+          ).attr("data-clientId");
+          $("input[name='insured_1']:checked").each(function () {
+            checkArray.push($(this).attr("data-clientid"));
+            nameArray.push($(this).val())
+          });
+          checkArray = checkArray.filter(function (val) {
+            return saveDetails["MainContactClientId"].indexOf(val) == -1;
+          });
+          checkArray = checkArray.filter(
+            (val) => !saveDetails["MainContactClientId"].includes(val)
+          );
+          
+          saveDetails["OtherInsuredClientIds"] = checkArray;
+        } else {
+          $("input[name='insured_1']:checked").each(function (index) {
+            if (index == 0) {
+                saveDetails["MainContactClientId"] = $(this).attr("data-clientid");
+            } else {
+                checkArray.push($(this).attr("data-clientid"));
+            }
+          });
+          saveDetails["OtherInsuredClientIds"] = checkArray;
+        }
+        console.log(saveDetails.MainContactClientId)
+        console.log(saveDetails.OtherInsuredClientIds)
+        console.log(saveDetails);
+        // $(".new-ticket-submit-button").trigger("click");
     });
     $("#save_and_continue4").click(function () {
       function add_section_4() {
