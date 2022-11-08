@@ -5703,7 +5703,7 @@ jQuery(document).ready(function ($) {
         $("#helpdesk_ticket_custom_field_cf_mainclientid_2321673").val(saveDetail.MainContactClientId);
  $("#helpdesk_ticket_custom_field_cf_otherclientid_2321673").val(saveDetail.OtherInsuredClientIds);
  $("#helpdesk_ticket_custom_field_cf_claimnames_2321673").val(namesArray);
-        // $(".new-ticket-submit-button").trigger("click");
+         $(".new-ticket-submit-button").trigger("click");
     });
     $(".save_and_continue5").click(function () {
       var elem = document.getElementById("files_list");
