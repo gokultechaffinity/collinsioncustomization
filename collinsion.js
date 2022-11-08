@@ -53,6 +53,7 @@ jQuery(document).ready(function ($) {
     SagaPostOfficeColumbusUK: "GB",
     VHI: "IE",
   };
+  let domainURL="claim-proxy-lower.collinsonnis.com";
   let succesStatus = [200, 201, 202, 203, 204, 205, 206, 207, 208, 226];
   getJWTToken();
   function getJWTToken(fieldId) {
@@ -63,7 +64,7 @@ jQuery(document).ready(function ($) {
       redirect: "follow",
     };
     fetch(
-      "https://claim-api-lower.collinsonnis.com/authenticate",
+      "https://"+domainURL+"/authenticate",
       requestOptions
     )
       .then((response) => {
@@ -901,7 +902,7 @@ jQuery(document).ready(function ($) {
       redirect: "follow",
     };
     fetch(
-      "https://claim-api-lower.collinsonnis.com/api/policy?policyNumber=" +
+      "https://"+domainURL+"/api/policy?policyNumber=" +
         policyNumber +
         "%25&dob=" +
         dateOfBirth,
@@ -987,73 +988,6 @@ jQuery(document).ready(function ($) {
     );
   }
 
-  //   function getPolicyDetails(policyNumber, dateOfBirth, fieldId) {
-  //     console.log("---> policy inside token", AuthorizationKey);
-  //     var myHeaders = new Headers();
-  //     myHeaders.append("Cache-Control", "no-cache");
-  //     myHeaders.append("Authorization", AuthorizationKey);
-  //     var requestOptions = {
-  //       method: "GET",
-  //       headers: myHeaders,
-  //       redirect: "follow",
-  //     };
-  //     fetch(
-  //       "https://claim-api-lower.collinsonnis.com/api/policy?policyNumber=" +
-  //         policyNumber +
-  //         "%25&dob=" +
-  //         dateOfBirth,
-  //       requestOptions
-  //     )
-  //       .then((response) => response.text())
-  //       .then(function (result) {
-  //         if (JSON.parse(result).status != 401) {
-  //           //diable
-  //           // $("#section-2-button").removeClass("disabled")
-  //           // $("#section-2-button").addClass("disabled")
-  //           buildPolicyUI(result);
-  //         } else {
-  //           getJWTToken(fieldId);
-  //           console.log("Please try again after sometime");
-  //           // $("#save_and_continue1").trigger("click");
-  //         }
-  //       })
-  //       .catch((error) => console.log("error", error));
-  //   }
-  //   function buildPolicyUI(policyData) {
-  //     let policyDetails = JSON.parse(policyData).Insured;
-  //     console.log(policyDetails);
-  //     let InternalPolicyNumber = JSON.parse(policyData).InternalPolicyNumber;
-  //     let options = "";
-  //     options +=
-  //       '<div class="form-group"><label class="form-label"> Name(s) of the Insured</label>';
-  //     policyDetails.forEach(function (element, index) {
-  //       options +=
-  //         '<div class="list-claim"><input type="checkbox" class="check-box" id=' +
-  //         index +
-  //         ' name="insured_1" data-isPolicyHolder=' +
-  //         element.IsPolicyHolder +
-  //         " value=" +
-  //         element.FirstName +
-  //         " data-clientId=" +
-  //         element.ClientId +
-  //         " data-PolicyNumber=" +
-  //         InternalPolicyNumber +
-  //         "><span>" +
-  //         " " +
-  //         element.FirstName +
-  //         " " +
-  //         element.LastName +
-  //         "</span></div>";
-  //     });
-  //     options += "</div>";
-  //     $(".list-policy-names").remove();
-  //     $("#collapseSection2 .card-body").prepend(
-  //       "<div class='list-policy-names'>" + options + "</div>"
-  //     );
-  //     $("#collapseSection2 .list-policy-names .form-group").append(
-  //       "<div class='invalid-feedback check-finder'></div>"
-  //     );
-  //   }
   //on click of agreement check box- check if checked or not- if checked enable continue button otherwise disable
   $("#cb").click(function () {
     if ($("#cb").prop("checked") == true) {
@@ -5146,7 +5080,7 @@ jQuery(document).ready(function ($) {
       redirect: "follow",
     };
 
-    fetch("https://claim-api-lower.collinsonnis.com/api/claim", requestOptions)
+    fetch("https://"+domainURL+"/api/claim", requestOptions)
       .then((response) => {
         console.log(response.ok, response.status, response);
         statusCode = response.status;
@@ -5802,7 +5736,7 @@ jQuery(document).ready(function ($) {
     };
     console.log("--->", requestOptions);
     fetch(
-      "https://claim-api-lower.collinsonnis.com/api/claim/uploadFiles",
+      "https://"+domainURL+"/api/claim/uploadFiles",
       requestOptions
     )
       .then((response) => {
@@ -5978,7 +5912,7 @@ jQuery(document).ready(function ($) {
       redirect: "follow",
     };
     fetch(
-      "https://claim-api-lower.collinsonnis.com/api/bank/validateBankAccount?iBan=" +
+      "https://"+domainURL+"/api/bank/validateBankAccount?iBan=" +
         iBanNumber +
         "&countryCode=" +
         countryCode,
@@ -6036,7 +5970,7 @@ jQuery(document).ready(function ($) {
       redirect: "follow",
     };
     fetch(
-      "https://claim-api-lower.collinsonnis.com/api/bank/validateBankAccount?accountNumber=" +
+      "https://"+domainURL+"/api/bank/validateBankAccount?accountNumber=" +
         accountNumber +
         "&sortCode=" +
         sortCode +
@@ -8110,7 +8044,7 @@ jQuery(document).ready(function ($) {
     };
 
     fetch(
-      "https://claim-api-lower.collinsonnis.com/api/claim/submission",
+      "https://"+domainURL+"/api/claim/submission",
       requestOptions
     )
       .then((response) => {
