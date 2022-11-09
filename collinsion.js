@@ -754,9 +754,16 @@ jQuery(document).ready(function ($) {
               let dateOfBirth = $(
                 "#helpdesk_ticket_custom_field_cf_date_of_birth_2321673"
               ).val();
+              let claimNumberCheck=$(
+                "#helpdesk_ticket_custom_field_cf_claim_number_2321673"
+              ).val();
               jQuery("#model-error-msg").addClass("d-none");
               jQuery("#model-sucess-msg").addClass("d-none");
+              if(claimNumberCheck){
+getClaimStatus(claimNumberCheck,"#save_and_continue1")
+              }else{
               getPolicyDetails(policyNumber, dateOfBirth, "#save_and_continue1");
+              }
               //changes started for error
               $("#save_and_continue1").attr("data-target", "#agreementModal");
               $("#save_and_continue1").attr("data-toggle", "modal");
@@ -956,6 +963,31 @@ jQuery(document).ready(function ($) {
           }
         })
         .catch((error) => console.log(error));
+    }
+    function getClaimStatus(claimId,fieldId){
+var myHeaders = new Headers();
+    myHeaders.append("Cache-Control", "no-cache");
+    myHeaders.append("Authorization", AuthorizationKey);
+    var requestOptions = {
+      method: "GET",
+      headers: myHeaders,
+      redirect: "follow",
+    };
+    fetch(
+      "https://"+domainURL+"/api/claim/"+claimId+"/status",
+      requestOptions
+    )
+      .then((response) => response.text())
+      .then(function (result) {
+        console.log("claim status  -->",result);
+      let claimStatus=JSON.parse(result).ClaimStatus;
+        if (JSON.parse(result).status == 401) {
+          getJWTToken(fieldId);
+        }else{
+            console.log("claim status  -->",claimStatus);
+        }
+      })
+      .catch((error) => console.log("error", error));
     }
     function buildPolicyUI(policyData) {
       let policyDetails = policyData.Insured;
