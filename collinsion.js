@@ -985,6 +985,10 @@ var myHeaders = new Headers();
           getJWTToken(fieldId);
         }else{
             console.log("claim status  -->",claimStatus);
+            jQuery("#model-status-msg").removeClass("d-none");
+            jQuery("#model-status-msg .ins-modal-body-content").text(
+                claimStatus
+            );
         }
       })
       .catch((error) => console.log("error", error));
