@@ -763,6 +763,7 @@ jQuery(document).ready(function ($) {
                 $("#agreementModal").addClass("loader-text")
 getClaimStatus(claimNumberCheck,"#save_and_continue1")
               }else{
+                jQuery("#model-status-msg").addClass("d-none");
             $("#agreementModal").addClass("loader-text")
               getPolicyDetails(policyNumber, dateOfBirth, "#save_and_continue1");
               }
