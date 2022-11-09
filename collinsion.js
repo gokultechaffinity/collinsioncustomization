@@ -760,8 +760,10 @@ jQuery(document).ready(function ($) {
               jQuery("#model-error-msg").addClass("d-none");
               jQuery("#model-sucess-msg").addClass("d-none");
               if(claimNumberCheck){
+                $("#agreementModal").addClass("loader-text")
 getClaimStatus(claimNumberCheck,"#save_and_continue1")
               }else{
+            $("#agreementModal").addClass("loader-text")
               getPolicyDetails(policyNumber, dateOfBirth, "#save_and_continue1");
               }
               //changes started for error
@@ -929,6 +931,7 @@ getClaimStatus(claimNumberCheck,"#save_and_continue1")
           return response.json();
         })
         .then(function (result) {
+            $("#agreementModal").removeClass("loader-text")
           console.log("Policy details", result);
           if (flag) {
             console.log("Need to show error ", statusCode);
@@ -979,6 +982,7 @@ var myHeaders = new Headers();
     )
       .then((response) => response.text())
       .then(function (result) {
+        $("#agreementModal").removeClass("loader-text")
         console.log("claim status  -->",result);
       let claimStatus=JSON.parse(result).ClaimStatus;
         if (JSON.parse(result).status == 401) {
