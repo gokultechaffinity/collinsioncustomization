@@ -4978,6 +4978,7 @@ var myHeaders = new Headers();
             );
             jQuery("#claim-error-msg").addClass("d-none");
             jQuery("#claim-sucess-msg").addClass("d-none");
+            $("#ClaimAPIModal").addClass("loader-text")
             createClaimRequest(claimObject, "#save_and_continue3");
           }
           // we will make an api call to claim and sucess response open
@@ -5138,6 +5139,7 @@ var myHeaders = new Headers();
           return response.json();
         })
         .then(function (result) {
+            $("#ClaimAPIModal").removeClass("loader-text")
           console.log("--->", result);
           if (flag) {
             console.log("error--->", result.status);
