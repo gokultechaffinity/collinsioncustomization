@@ -6022,7 +6022,7 @@ var myHeaders = new Headers();
       $("#section-6-button").children(":first").removeClass("fa-plus");
       $("#section-6-button").children(":first").removeClass("fa-minus");
       $("#section-6-button").children(":first").addClass("fa-check");
-      $("#section-6-button").removeAttr("data-toggle");
+      //$("#section-6-button").removeAttr("data-toggle");
   
     });
     function ValidateBankMethodOne(iBanNumber, countryCode, fieldId) {
