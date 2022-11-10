@@ -627,9 +627,10 @@ jQuery(document).ready(function ($) {
           $("#helpdesk_ticket_custom_field_cf_policy_number454080_2321673").val() ==
             "" ||
           $("#helpdesk_ticket_custom_field_cf_postcode68273_2321673").val() == ""
-          ||
-          $("#helpdesk_ticket_custom_field_cf_claim_number_2321673").val() == ""
+         
         ) {
+            // ||
+            // $("#helpdesk_ticket_custom_field_cf_claim_number_2321673").val() == ""
           addErrorMessage(
             "helpdesk_ticket_custom_field_cf_policy_number454080_2321673",
             "Please fill in all fields"
@@ -638,10 +639,10 @@ jQuery(document).ready(function ($) {
             "helpdesk_ticket_custom_field_cf_postcode68273_2321673",
             "Please fill in all fields"
           );
-          addErrorMessage(
-            "helpdesk_ticket_custom_field_cf_claim_number_2321673",
-            "Please fill in all fields"
-          );
+        //   addErrorMessage(
+        //     "helpdesk_ticket_custom_field_cf_claim_number_2321673",
+        //     "Please fill in all fields"
+        //   );
         } else {
           //check LENGTH OF POLICY NUMBER - 7 DIGITS
           if (
