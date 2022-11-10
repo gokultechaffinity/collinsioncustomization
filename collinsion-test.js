@@ -676,7 +676,14 @@ jQuery(document).ready(function ($) {
               "#helpdesk_ticket_custom_field_cf_claim_number_2321673"
             ).val();
             //getPolicy INVOKE HERE!!
-  
+            if(claimNumber){
+                $("#agreementModal").addClass("loader-text")
+              getClaimStatus(claimNumber,"#save_and_continue1")
+              }else{
+                jQuery("#model-status-msg").addClass("d-none");
+              $("#agreementModal").addClass("loader-text");
+              getPolicyDetailsByPostcode(policyNumber,postCode,"#save_and_continue1")
+              }
             //
             $("#save_and_continue1").attr("data-target", "#agreementModal");
             $("#save_and_continue1").attr("data-toggle", "modal");
@@ -968,6 +975,70 @@ getClaimStatus(claimNumberCheck,"#save_and_continue1")
         })
         .catch((error) => console.log(error));
     }
+    function getPolicyDetailsByPostcode(policyNumber, postCode, fieldId) {
+        console.log("---> policy inside token", AuthorizationKey);
+        var flag = false;
+        let statusCode;
+        var myHeaders = new Headers();
+        myHeaders.append("Cache-Control", "no-cache");
+        myHeaders.append("Authorization", AuthorizationKey);
+        var requestOptions = {
+          method: "GET",
+          headers: myHeaders,
+          redirect: "follow",
+        };
+        fetch(
+          "https://"+domainURL+"/api/policy?policyNumber=" +
+          policyNumber+
+            "%25&postCode=" +
+            postCode,
+          requestOptions
+        )
+          .then((response) => {
+            console.log(response);
+            statusCode = response.status;
+            if (!response.ok) {
+              flag = true;
+            }
+            return response.json();
+          })
+          .then(function (result) {
+              $("#agreementModal").removeClass("loader-text")
+            console.log("Policy details", result);
+            if (flag) {
+              console.log("Need to show error ", statusCode);
+              if (statusCode == 401) {
+                console.log("error", result.error);
+                getJWTToken(fieldId);
+              } else if (statusCode == 404) {
+                jQuery("#model-error-msg").removeClass("d-none");
+                jQuery("#model-error-msg .ins-modal-body-content").text(
+                  result.body
+                );
+                addErrorMessage("api_call_failed_1", result.body);
+                $("#save_and_continue1").removeAttr("data-target");
+                $("#save_and_continue1").removeAttr("data-toggle");
+                console.log("error 404 -->", result.body);
+              }else if(statusCode == 403){
+                console.log("--->", result.message, statusCode);
+                jQuery("#model-error-msg").removeClass("d-none");
+                jQuery("#model-error-msg .ins-modal-body-content").text(
+                  result.message
+                );
+                addErrorMessage("api_call_failed_1", result.message);
+                $("#save_and_continue1").removeAttr("data-target");
+                $("#save_and_continue1").removeAttr("data-toggle");
+              }
+            } else {
+              let element = ["api_call_failed_1"];
+              clearError(element);
+              buildPolicyUI(result);
+    
+              jQuery("#model-sucess-msg").removeClass("d-none");
+            }
+          })
+          .catch((error) => console.log(error));
+      }
     function getClaimStatus(claimId,fieldId){
 var myHeaders = new Headers();
     myHeaders.append("Cache-Control", "no-cache");
