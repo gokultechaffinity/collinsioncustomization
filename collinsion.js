@@ -5783,8 +5783,8 @@ var myHeaders = new Headers();
           $("#section-4-button").children(":first").addClass("fa-check");
           $("#section-5-button").children(":first").addClass("fa-check");
           
-          $("#section-4-button").removeAttr("data-toggle");
-          $("#section-5-button").removeAttr("data-toggle");
+          // $("#section-4-button").removeAttr("data-toggle");
+          // $("#section-5-button").removeAttr("data-toggle");
         } else {
           console.log(
             " --------- Need to show error max file size should not more than 4 MB ----------------"
