@@ -4324,6 +4324,12 @@ var myHeaders = new Headers();
     ];
     // var WhichJourneyNew = [{"id":"Connecting","name_eng":"Connecting journey","name_ita":"Viaggio di collegamento"},{"id":"Inbound","name_eng":"Final inbound journey to your Home Country","name_ita":"Ultima tratta di ritorno al Suo paese di residenza"},{"id":"Outbound","name_eng":"First outbound journey from your Home Country","name_ita":"Ultima tratta del viaggio di ritorno alla tua nazione di residenza"}]
     var WhichJourneyNew = [
+
+{
+    id: "Connecting",
+    name_eng: "Connecting journey",
+    name_ita: "Volo di collegamento",
+  },
       {
         id: "Inbound",
         name_eng: "On the return journey back home",
