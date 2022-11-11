@@ -4087,35 +4087,78 @@ var myHeaders = new Headers();
     /* 5.5 End */
   
     /* 5.6 Start */
-    var WhoMedicalExpenses = [
-      {
-        id: "Insured",
-        name_eng: "Myself",
-        name_ita: "Me stessa",
-      },
-      {
-        id: "AnotherInsured",
-        name_eng: "Another travelling insured",
-        name_ita: "Un altro viaggio assicurato",
-      },
-    ];
-    var MedicalInjuryIllness = [
-      {
-        id: "Illness",
-        name_eng: "Illness",
-        name_ita: "Malattia",
-      },
-      {
-        id: "Injury",
-        name_eng: "Injury",
-        name_ita: "Infortunio",
-      },
-      {
-        id: "Coronavirus",
-        name_eng: "Coronavirus (COVID-19)",
-        name_ita: "Coronavirus (COVID-19)",
-      },
-    ];
+    // var WhoMedicalExpenses = [
+    //   {
+    //     id: "Insured",
+    //     name_eng: "Myself",
+    //     name_ita: "Me stessa",
+    //   },
+    //   {
+    //     id: "AnotherInsured",
+    //     name_eng: "Another travelling insured",
+    //     name_ita: "Un altro viaggio assicurato",
+    //   },
+    // ];
+    // var MedicalInjuryIllness = [
+    //   {
+    //     id: "Illness",
+    //     name_eng: "Illness",
+    //     name_ita: "Malattia",
+    //   },
+    //   {
+    //     id: "Injury",
+    //     name_eng: "Injury",
+    //     name_ita: "Infortunio",
+    //   },
+    //   {
+    //     id: "Coronavirus",
+    //     name_eng: "Coronavirus (COVID-19)",
+    //     name_ita: "Coronavirus (COVID-19)",
+    //   },
+    // ];
+
+
+
+  var WhoMedicalExpenses = [
+    {
+      id: "Insured",
+      name_eng: "Myself",
+      name_ita: "Me stessa",
+    },
+    {
+      id: "AnotherInsured",
+      name_eng: "Another travelling insured",
+      name_ita: "Un altro viaggio assicurato",
+    },
+    {
+      id: "Other",
+      name_eng: "Other",
+      name_ita: "Altro",
+    },
+  ];
+  var MedicalInjuryIllness = [
+    {
+      id: "Illness",
+      name_eng: "Illness",
+      name_ita: "Malattia",
+    },
+    {
+      id: "Injury",
+      name_eng: "Injury",
+      name_ita: "Infortunio",
+    },
+    {
+      id: "Coronavirus",
+      name_eng: "Coronavirus (COVID-19)",
+      name_ita: "Coronavirus (COVID-19)",
+    },
+    {
+      id: "Dental",
+      name_eng: "Dental",
+      name_ita: "Dentale",
+    },
+  ];
+
     var MedicalExpensesCondition = MedicalCondition;
     var MedicalFirstExpenseType = [
       {
