@@ -1282,65 +1282,7 @@ var myHeaders = new Headers();
             $("#helpdesk_ticket_email").val(
               $("#helpdesk_ticket_custom_field_cf_email_address_2321673").val()
             );
-  
-            function add_section_2() {
-              $(
-                "<strong id='section_2_header'>" + titles[1] + "</strong>"
-              ).insertAfter("#great_line_1");
-              $("<hr class='summary_divider' id='great_line_2'>").insertAfter(
-                "#section_2_header"
-              );
-              //for loops
-  
-              $("#collapseSection2 input").each(function () {
-                if ($(this).hasClass("check-box")) {
-                  var label = $(this).closest(".form-group").find("label").text();
-                  var value = $(this).val();
-                  if ($(this).prop("checked")) {
-                    $(
-                      "<p class='section_2_line'>" +
-                        label +
-                        " : " +
-                        value +
-                        "</p>"
-                    ).insertBefore("#great_line_2");
-                  }
-                } else {
-                  var label = $(this).closest(".form-group").find("label").text();
-                  var value = $(this).val();
-                  $(
-                    "<p class='section_2_line'>" + label + " : " + value + "</p>"
-                  ).insertBefore("#great_line_2");
-                }
-              });
-            }
-  
-            function update_section_2() {
-              //for loops
-              $("p").remove(".section_2_line");
-              $("#collapseSection2 input").each(function () {
-                if ($(this).hasClass("check-box")) {
-                  var label = $(this).closest(".form-group").find("label").text();
-                  var value = $(this).val();
-                  if ($(this).prop("checked")) {
-                    $(
-                      "<p class='section_2_line'>" +
-                        label +
-                        " : " +
-                        value +
-                        "</p>"
-                    ).insertBefore("#great_line_2");
-                  }
-                } else {
-                  var label = $(this).closest(".form-group").find("label").text();
-                  var value = $(this).val();
-                  $(
-                    "<p class='section_2_line'>" + label + " : " + value + "</p>"
-                  ).insertBefore("#great_line_2");
-                }
-              });
-            }
-  
+   
             if ($("#section_2_header").length) {
               update_section_2();
   
@@ -1377,6 +1319,63 @@ var myHeaders = new Headers();
         }
       }
     });
+    function add_section_2() {
+        $(
+          "<strong id='section_2_header'>" + titles[1] + "</strong>"
+        ).insertAfter("#great_line_1");
+        $("<hr class='summary_divider' id='great_line_2'>").insertAfter(
+          "#section_2_header"
+        );
+        //for loops
+
+        $("#collapseSection2 input").each(function () {
+          if ($(this).hasClass("check-box")) {
+            var label = $(this).closest(".form-group").find("label").text();
+            var value = $(this).val();
+            if ($(this).prop("checked")) {
+              $(
+                "<p class='section_2_line'>" +
+                  label +
+                  " : " +
+                  value +
+                  "</p>"
+              ).insertBefore("#great_line_2");
+            }
+          } else {
+            var label = $(this).closest(".form-group").find("label").text();
+            var value = $(this).val();
+            $(
+              "<p class='section_2_line'>" + label + " : " + value + "</p>"
+            ).insertBefore("#great_line_2");
+          }
+        });
+      }
+
+      function update_section_2() {
+        //for loops
+        $("p").remove(".section_2_line");
+        $("#collapseSection2 input").each(function () {
+          if ($(this).hasClass("check-box")) {
+            var label = $(this).closest(".form-group").find("label").text();
+            var value = $(this).val();
+            if ($(this).prop("checked")) {
+              $(
+                "<p class='section_2_line'>" +
+                  label +
+                  " : " +
+                  value +
+                  "</p>"
+              ).insertBefore("#great_line_2");
+            }
+          } else {
+            var label = $(this).closest(".form-group").find("label").text();
+            var value = $(this).val();
+            $(
+              "<p class='section_2_line'>" + label + " : " + value + "</p>"
+            ).insertBefore("#great_line_2");
+          }
+        });
+      }
     //____________________________________________________SECTION 2 End  -  About You ______________________________________________
     //section 3 continue
     var ClaimReason = [
@@ -5077,108 +5076,6 @@ var myHeaders = new Headers();
           // we will make an api call to claim and sucess response open
           $("#ClaimAPIModal").modal("toggle");
   
-          function add_section_3() {
-            $(
-              "<strong id='section_3_header'>" + titles[2] + "</strong>"
-            ).insertAfter("#great_line_2");
-            $("<hr class='summary_divider' id='great_line_3'>").insertAfter(
-              "#section_3_header"
-            );
-            var number_elements = $("#collapseSection3")
-              .children(".card-body.ins-card")
-              .children("div").length;
-            for (let i = 1; i < number_elements + 1; i++) {
-              if (
-                $("#collapseSection3")
-                  .children(".card-body.ins-card")
-                  .children("div:nth-child(" + i + ")")
-                  .children(".choices.form-select").length
-              ) {
-                var label_dropdown = $("#collapseSection3")
-                  .children(".card-body.ins-card")
-                  .children("div:nth-child(" + i + ")")
-                  .children("label")
-                  .text();
-                var dropdown_value = $("#collapseSection3")
-                  .children(".card-body.ins-card")
-                  .children("div:nth-child(" + i + ")")
-                  .children(".choices.form-select")
-                  .children(".choices__inner")
-                  .children("select")
-                  .val();
-                $(
-                  "<p class='section_3_line'>" +
-                    label_dropdown +
-                    " : " +
-                    dropdown_value +
-                    "</p>"
-                ).insertBefore("#great_line_3");
-              } else {
-                var label = $("#collapseSection3")
-                  .children(".card-body.ins-card")
-                  .children("div:nth-child(" + i + ")")
-                  .children("label")
-                  .text();
-                var value = $("#collapseSection3")
-                  .children(".card-body.ins-card")
-                  .children("div:nth-child(" + i + ")")
-                  .children("input")
-                  .val();
-                $(
-                  "<p class='section_3_line'>" + label + " : " + value + "</p>"
-                ).insertBefore("#great_line_3");
-              }
-            }
-          }
-          function update_section_3() {
-            var number_elements = $("#collapseSection3")
-              .children(".card-body.ins-card")
-              .children("div").length;
-            $("p").remove(".section_3_line");
-            for (let i = 1; i < number_elements + 1; i++) {
-              if (
-                $("#collapseSection3")
-                  .children(".card-body.ins-card")
-                  .children("div:nth-child(" + i + ")")
-                  .children(".choices.form-select").length
-              ) {
-                var label_dropdown = $("#collapseSection3")
-                  .children(".card-body.ins-card")
-                  .children("div:nth-child(" + i + ")")
-                  .children("label")
-                  .text();
-                var dropdown_value = $("#collapseSection3")
-                  .children(".card-body.ins-card")
-                  .children("div:nth-child(" + i + ")")
-                  .children(".choices.form-select")
-                  .children(".choices__inner")
-                  .children("select")
-                  .val();
-                $(
-                  "<p class='section_3_line'>" +
-                    label_dropdown +
-                    " : " +
-                    dropdown_value +
-                    "</p>"
-                ).insertBefore("#great_line_3");
-              } else {
-                var label = $("#collapseSection3")
-                  .children(".card-body.ins-card")
-                  .children("div:nth-child(" + i + ")")
-                  .children("label")
-                  .text();
-                var value = $("#collapseSection3")
-                  .children(".card-body.ins-card")
-                  .children("div:nth-child(" + i + ")")
-                  .children("input")
-                  .val();
-                $(
-                  "<p class='section_3_line'>" + label + " : " + value + "</p>"
-                ).insertBefore("#great_line_3");
-              }
-            }
-          }
-  
           if ($("#section_3_header").length) {
             update_section_3();
           } else {
@@ -5203,6 +5100,107 @@ var myHeaders = new Headers();
         }
       }
     });
+    function add_section_3() {
+        $(
+          "<strong id='section_3_header'>" + titles[2] + "</strong>"
+        ).insertAfter("#great_line_2");
+        $("<hr class='summary_divider' id='great_line_3'>").insertAfter(
+          "#section_3_header"
+        );
+        var number_elements = $("#collapseSection3")
+          .children(".card-body.ins-card")
+          .children("div").length;
+        for (let i = 1; i < number_elements + 1; i++) {
+          if (
+            $("#collapseSection3")
+              .children(".card-body.ins-card")
+              .children("div:nth-child(" + i + ")")
+              .children(".choices.form-select").length
+          ) {
+            var label_dropdown = $("#collapseSection3")
+              .children(".card-body.ins-card")
+              .children("div:nth-child(" + i + ")")
+              .children("label")
+              .text();
+            var dropdown_value = $("#collapseSection3")
+              .children(".card-body.ins-card")
+              .children("div:nth-child(" + i + ")")
+              .children(".choices.form-select")
+              .children(".choices__inner")
+              .children("select")
+              .val();
+            $(
+              "<p class='section_3_line'>" +
+                label_dropdown +
+                " : " +
+                dropdown_value +
+                "</p>"
+            ).insertBefore("#great_line_3");
+          } else {
+            var label = $("#collapseSection3")
+              .children(".card-body.ins-card")
+              .children("div:nth-child(" + i + ")")
+              .children("label")
+              .text();
+            var value = $("#collapseSection3")
+              .children(".card-body.ins-card")
+              .children("div:nth-child(" + i + ")")
+              .children("input")
+              .val();
+            $(
+              "<p class='section_3_line'>" + label + " : " + value + "</p>"
+            ).insertBefore("#great_line_3");
+          }
+        }
+      }
+      function update_section_3() {
+        var number_elements = $("#collapseSection3")
+          .children(".card-body.ins-card")
+          .children("div").length;
+        $("p").remove(".section_3_line");
+        for (let i = 1; i < number_elements + 1; i++) {
+          if (
+            $("#collapseSection3")
+              .children(".card-body.ins-card")
+              .children("div:nth-child(" + i + ")")
+              .children(".choices.form-select").length
+          ) {
+            var label_dropdown = $("#collapseSection3")
+              .children(".card-body.ins-card")
+              .children("div:nth-child(" + i + ")")
+              .children("label")
+              .text();
+            var dropdown_value = $("#collapseSection3")
+              .children(".card-body.ins-card")
+              .children("div:nth-child(" + i + ")")
+              .children(".choices.form-select")
+              .children(".choices__inner")
+              .children("select")
+              .val();
+            $(
+              "<p class='section_3_line'>" +
+                label_dropdown +
+                " : " +
+                dropdown_value +
+                "</p>"
+            ).insertBefore("#great_line_3");
+          } else {
+            var label = $("#collapseSection3")
+              .children(".card-body.ins-card")
+              .children("div:nth-child(" + i + ")")
+              .children("label")
+              .text();
+            var value = $("#collapseSection3")
+              .children(".card-body.ins-card")
+              .children("div:nth-child(" + i + ")")
+              .children("input")
+              .val();
+            $(
+              "<p class='section_3_line'>" + label + " : " + value + "</p>"
+            ).insertBefore("#great_line_3");
+          }
+        }
+      }
     function createClaimRequest(claimObject, fieldId) {
       let flag = false;
       let statusCode;
@@ -5378,7 +5376,26 @@ var myHeaders = new Headers();
          $(".new-ticket-submit-button").trigger("click");
     });
     $("#save_and_continue4").click(function () {
-      function add_section_4() {
+  
+      if ($("#section_4_header").length) {
+        console.log("update section ---->");
+        update_section_4();
+      } else {
+        add_section_4();
+        console.log("add section ---->");
+      }
+  
+  
+      //close current section. open next
+      open_next(4);
+      $("#section-4-button").children(":first").removeClass("fa-minus");
+      $("#section-4-button").children(":first").removeClass("fa-plus");
+      $("#section-4-button").children(":first").addClass("fa-pen");
+      $("#section-4-button").css("background-color","#524954");
+    
+  
+    });
+    function add_section_4() {
         $("<strong id='section_4_header'>" + titles[3] + "</strong>").insertAfter(
           "#great_line_3"
         );
@@ -5580,25 +5597,6 @@ var myHeaders = new Headers();
           }
         }
       }
-  
-      if ($("#section_4_header").length) {
-        console.log("update section ---->");
-        update_section_4();
-      } else {
-        add_section_4();
-        console.log("add section ---->");
-      }
-  
-  
-      //close current section. open next
-      open_next(4);
-      $("#section-4-button").children(":first").removeClass("fa-minus");
-      $("#section-4-button").children(":first").removeClass("fa-plus");
-      $("#section-4-button").children(":first").addClass("fa-pen");
-      $("#section-4-button").css("background-color","#524954");
-    
-  
-    });
     //____________________________________________________SECTION 3 End - About Your Trip____________________________________________
     //_________________________________________________reasonForClaimObj_________________________________________
     var reasonForClaimObj = {
@@ -5883,46 +5881,7 @@ var myHeaders = new Headers();
           );
           addErrorMessage("api_call_failed_1", "File size cannot exceed 4 MB");
         }
-        function add_section_5() {
-          $(
-            "<strong id='section_5_header'>" + titles[4] + "</strong>"
-          ).insertAfter("#great_line_4");
-          $("<hr class='summary_divider' id='great_line_5'>").insertAfter(
-            "#section_5_header"
-          );
-          var number_attachments = $("#attachments_list").children().length;
-          console.log(number_attachments);
-          for (let i = 1; i < number_attachments + 1; i++) {
-            var document_name = $("#attachments_list")
-              .children("#attachment_" + i)
-              .children(
-                ".attachment.file-container.file-props-font.d-inline-block.position-relative"
-              )
-              .children(".file-name.position-absolute.overflow-hidden ")
-              .text();
-            $("<p class='section_5_line'>" + document_name + "</p>").insertBefore(
-              "#great_line_5"
-            );
-          }
-        }
-  
-        function update_section_5() {
-          var number_attachments = $("#attachments_list").children().length;
-          console.log(number_attachments);
-          $("p").remove(".section_5_line");
-          for (let i = 1; i < number_attachments + 1; i++) {
-            var document_name = $("#attachments_list")
-              .children("#attachment_" + i)
-              .children(
-                ".attachment.file-container.file-props-font.d-inline-block.position-relative"
-              )
-              .children(".file-name.position-absolute.overflow-hidden ")
-              .text();
-            $("<p class='section_5_line'>" + document_name + "</p>").insertBefore(
-              "#great_line_5"
-            );
-          }
-        }
+
       } else {
         addErrorMessage(
           "api_call_failed_1",
@@ -5931,6 +5890,46 @@ var myHeaders = new Headers();
         console.log(" --------- Need to show error message ----------------");
       }
     });
+    function add_section_5() {
+        $(
+          "<strong id='section_5_header'>" + titles[4] + "</strong>"
+        ).insertAfter("#great_line_4");
+        $("<hr class='summary_divider' id='great_line_5'>").insertAfter(
+          "#section_5_header"
+        );
+        var number_attachments = $("#attachments_list").children().length;
+        console.log(number_attachments);
+        for (let i = 1; i < number_attachments + 1; i++) {
+          var document_name = $("#attachments_list")
+            .children("#attachment_" + i)
+            .children(
+              ".attachment.file-container.file-props-font.d-inline-block.position-relative"
+            )
+            .children(".file-name.position-absolute.overflow-hidden ")
+            .text();
+          $("<p class='section_5_line'>" + document_name + "</p>").insertBefore(
+            "#great_line_5"
+          );
+        }
+      }
+
+      function update_section_5() {
+        var number_attachments = $("#attachments_list").children().length;
+        console.log(number_attachments);
+        $("p").remove(".section_5_line");
+        for (let i = 1; i < number_attachments + 1; i++) {
+          var document_name = $("#attachments_list")
+            .children("#attachment_" + i)
+            .children(
+              ".attachment.file-container.file-props-font.d-inline-block.position-relative"
+            )
+            .children(".file-name.position-absolute.overflow-hidden ")
+            .text();
+          $("<p class='section_5_line'>" + document_name + "</p>").insertBefore(
+            "#great_line_5"
+          );
+        }
+      }
     function getUploadFiles(files, fieldId) {
       let statusCode;
       let flag = false;
@@ -5975,14 +5974,6 @@ var myHeaders = new Headers();
           }
         })
         .catch((error) => console.log(error));
-      //       .then((response) => response.text())
-      //       .then(function (result) {
-      //         console.log("sucessfilly uploaded ----->", result);
-      //         if (JSON.parse(result).status == 401) {
-      //           getJWTToken(fieldId);
-      //         }
-      //       })
-      //       .catch((error) => console.log("error", error));
     }
     //____________________________________________________SECTION 5 End - Your Documents____________________________________________
     //____________________________________________________________________________________________________________________
@@ -6009,13 +6000,6 @@ var myHeaders = new Headers();
         ).val();
         let countryCode = countryPortal.VHI;
         console.log(accountNumber, iBanNumber, sortCode, countryCode);
-        //method one params
-        //iBan
-        //CountryCode
-        //method two params
-        //accountNumber
-        //sortCode
-        //countryCode
         if (countryCode == "GB") {
           ValidateBankMethodTwo(
             accountNumber,
@@ -6028,73 +6012,6 @@ var myHeaders = new Headers();
         }
   
         //add displaying
-        function add_section_6() {
-          var el_number = $("#collapseSection6")
-            .children(".card-body.ins-card")
-            .children(".form-group").length;
-          $(
-            "<strong id='section_6_header'>" + titles[5] + "</strong>"
-          ).insertAfter("#great_line_5");
-          $("<hr class='summary_divider' id='great_line_6'>").insertAfter(
-            "#section_6_header"
-          );
-  
-          for (let i = 1; i < el_number + 1; i++) {
-            var label = $("#collapseSection6")
-              .children(".card-body.ins-card")
-              .children("div:nth-child(" + i + ")")
-              .children("label")
-              .text();
-            var value = $("#collapseSection6")
-              .children(".card-body.ins-card")
-              .children("div:nth-child(" + i + ")")
-              .children("input")
-              .val();
-            $(
-              "<p class='section_6_line'>" + label + " : " + value + "</p>"
-            ).insertBefore("#great_line_6");
-          }
-        }
-  
-        function update_section_6() {
-          var el_number = $("#collapseSection6")
-            .children(".card-body.ins-card")
-            .children(".form-group").length;
-          $("p").remove(".section_6_line");
-          for (let i = 1; i < el_number + 1; i++) {
-            var label = $("#collapseSection6")
-              .children(".card-body.ins-card")
-              .children("div:nth-child(" + i + ")")
-              .children("label")
-              .text();
-            var value = $("#collapseSection6")
-              .children(".card-body.ins-card")
-              .children("div:nth-child(" + i + ")")
-              .children("input")
-              .val();
-            $(
-              "<p class='section_6_line'>" + label + " : " + value + "</p>"
-            ).insertBefore("#great_line_6");
-          }
-        }
-  
-        function addDeclaraion() {
-          $("<strong id='declaration_header'>Declaration</strong>").insertAfter(
-            "#great_line_6"
-          );
-          $("<hr class='summary_divider' id='great_line_7'>").insertAfter(
-            "#declaration_header"
-          );
-  
-          $(
-            "<p>I declare that I have completed this form to the best of knowledge and have read and understood the contents of <br>this page and form. I consent to Collinson using my data to process this claim and am aware that this will involve <br>sending my data to my insurer along with my pet's clinical history. I am aware that my insurer will take any <br>excesses as per my policy. Details can be found in the Collinson Privacy Policy</p>"
-          ).insertBefore("#great_line_7");
-          $("<br>").insertBefore("#great_line_7");
-  
-          $(
-            '<input class="ins_checkbox_paragraph" id="cb2" type="checkbox" ><p class="ins_consent_paragraph"> I consent</p<>'
-          ).insertBefore("#great_line_7");
-        }
   
         if ($("#section_6_header").length) {
           update_section_6();
@@ -6117,6 +6034,73 @@ var myHeaders = new Headers();
       $("#section-6-button").removeAttr("data-toggle");
   
     });
+    function add_section_6() {
+        var el_number = $("#collapseSection6")
+          .children(".card-body.ins-card")
+          .children(".form-group").length;
+        $(
+          "<strong id='section_6_header'>" + titles[5] + "</strong>"
+        ).insertAfter("#great_line_5");
+        $("<hr class='summary_divider' id='great_line_6'>").insertAfter(
+          "#section_6_header"
+        );
+
+        for (let i = 1; i < el_number + 1; i++) {
+          var label = $("#collapseSection6")
+            .children(".card-body.ins-card")
+            .children("div:nth-child(" + i + ")")
+            .children("label")
+            .text();
+          var value = $("#collapseSection6")
+            .children(".card-body.ins-card")
+            .children("div:nth-child(" + i + ")")
+            .children("input")
+            .val();
+          $(
+            "<p class='section_6_line'>" + label + " : " + value + "</p>"
+          ).insertBefore("#great_line_6");
+        }
+      }
+
+      function update_section_6() {
+        var el_number = $("#collapseSection6")
+          .children(".card-body.ins-card")
+          .children(".form-group").length;
+        $("p").remove(".section_6_line");
+        for (let i = 1; i < el_number + 1; i++) {
+          var label = $("#collapseSection6")
+            .children(".card-body.ins-card")
+            .children("div:nth-child(" + i + ")")
+            .children("label")
+            .text();
+          var value = $("#collapseSection6")
+            .children(".card-body.ins-card")
+            .children("div:nth-child(" + i + ")")
+            .children("input")
+            .val();
+          $(
+            "<p class='section_6_line'>" + label + " : " + value + "</p>"
+          ).insertBefore("#great_line_6");
+        }
+      }
+
+      function addDeclaraion() {
+        $("<strong id='declaration_header'>Declaration</strong>").insertAfter(
+          "#great_line_6"
+        );
+        $("<hr class='summary_divider' id='great_line_7'>").insertAfter(
+          "#declaration_header"
+        );
+
+        $(
+          "<p>I declare that I have completed this form to the best of knowledge and have read and understood the contents of <br>this page and form. I consent to Collinson using my data to process this claim and am aware that this will involve <br>sending my data to my insurer along with my pet's clinical history. I am aware that my insurer will take any <br>excesses as per my policy. Details can be found in the Collinson Privacy Policy</p>"
+        ).insertBefore("#great_line_7");
+        $("<br>").insertBefore("#great_line_7");
+
+        $(
+          '<input class="ins_checkbox_paragraph" id="cb2" type="checkbox" ><p class="ins_consent_paragraph"> I consent</p<>'
+        ).insertBefore("#great_line_7");
+      }
     function ValidateBankMethodOne(iBanNumber, countryCode, fieldId) {
       let flag = false;
       let statusCode;
