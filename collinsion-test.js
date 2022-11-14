@@ -1158,59 +1158,6 @@ var myHeaders = new Headers();
       if ($("#cb").prop("checked") == true) {
         //start summary section
         summary_section_start();
-  
-        function add_section_1() {
-          $(
-            "<strong id='section_1_header'>" + titles[0] + "</strong>"
-          ).insertAfter("#summary_intro");
-          $("<hr class='summary_divider' id='great_line_1'>").insertAfter(
-            "#section_1_header"
-          );
-          //for loops
-          var number_elements = $("#collapseSection1")
-            .children(".card-body.ins-card")
-            .children("div").length;
-  
-          for (let i = 1; i < number_elements + 1; i++) {
-            var label = $("#collapseSection1")
-              .children(".card-body.ins-card")
-              .children("div:nth-child(" + i + ")")
-              .children("label")
-              .text();
-            var value = $("#collapseSection1")
-              .children(".card-body.ins-card")
-              .children("div:nth-child(" + i + ")")
-              .children("input")
-              .val();
-            $(
-              "<p class='section_1_line'>" + label + " : " + value + "</p>"
-            ).insertBefore("#great_line_1");
-          }
-        }
-  
-        function update_section_1() {
-          //for loops
-          var number_elements = $("#collapseSection1")
-            .children(".card-body.ins-card")
-            .children("div").length;
-          $("p").remove(".section_1_line");
-          for (let i = 1; i < number_elements + 1; i++) {
-            var label = $("#collapseSection1")
-              .children(".card-body.ins-card")
-              .children("div:nth-child(" + i + ")")
-              .children("label")
-              .text();
-            var value = $("#collapseSection1")
-              .children(".card-body.ins-card")
-              .children("div:nth-child(" + i + ")")
-              .children("input")
-              .val();
-            $(
-              "<p class='section_1_line'>" + label + " : " + value + "</p>"
-            ).insertBefore("#great_line_1");
-          }
-        }
-  
         if ($("#section_1_header").length) {
           update_section_1();
         } else {
@@ -1229,6 +1176,57 @@ var myHeaders = new Headers();
       $("#section-1-button").children(":first").addClass("fa-pen");
       $("#section-1-button").css("background-color","#524954");
     });
+    function add_section_1() {
+        $(
+          "<strong id='section_1_header'>" + titles[0] + "</strong>"
+        ).insertAfter("#summary_intro");
+        $("<hr class='summary_divider' id='great_line_1'>").insertAfter(
+          "#section_1_header"
+        );
+        //for loops
+        var number_elements = $("#collapseSection1")
+          .children(".card-body.ins-card")
+          .children("div").length;
+
+        for (let i = 1; i < number_elements + 1; i++) {
+          var label = $("#collapseSection1")
+            .children(".card-body.ins-card")
+            .children("div:nth-child(" + i + ")")
+            .children("label")
+            .text();
+          var value = $("#collapseSection1")
+            .children(".card-body.ins-card")
+            .children("div:nth-child(" + i + ")")
+            .children("input")
+            .val();
+          $(
+            "<p class='section_1_line'>" + label + " : " + value + "</p>"
+          ).insertBefore("#great_line_1");
+        }
+      }
+
+      function update_section_1() {
+        //for loops
+        var number_elements = $("#collapseSection1")
+          .children(".card-body.ins-card")
+          .children("div").length;
+        $("p").remove(".section_1_line");
+        for (let i = 1; i < number_elements + 1; i++) {
+          var label = $("#collapseSection1")
+            .children(".card-body.ins-card")
+            .children("div:nth-child(" + i + ")")
+            .children("label")
+            .text();
+          var value = $("#collapseSection1")
+            .children(".card-body.ins-card")
+            .children("div:nth-child(" + i + ")")
+            .children("input")
+            .val();
+          $(
+            "<p class='section_1_line'>" + label + " : " + value + "</p>"
+          ).insertBefore("#great_line_1");
+        }
+      }
     //____________________________________________________SECTION 1 End - Your Policy______________________________________________
     //continue section 2
     var emailAddress = "helpdesk_ticket_custom_field_cf_email_address_2321673";
