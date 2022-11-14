@@ -4437,27 +4437,27 @@ var myHeaders = new Headers();
         name_ita: "Crew or Staff shortage",
       },
     ];
-     var WhichJourneyNew = [{"id":"Connecting","name_eng":"Connecting journey","name_ita":"Viaggio di collegamento"},{"id":"Inbound","name_eng":"Final inbound journey to your Home Country","name_ita":"Ultima tratta di ritorno al Suo paese di residenza"},{"id":"Outbound","name_eng":"First outbound journey from your Home Country","name_ita":"Ultima tratta del viaggio di ritorno alla tua nazione di residenza"}]
-//     var WhichJourneyNew = [
+     
+    var WhichJourneyNew = [
 
-// {
-//     id: "Connecting",
-//     name_eng: "Connecting journey",
-//     name_ita: "Volo di collegamento",
-//   },
-//       {
-//         id: "Inbound",
-//         name_eng: "On the return journey back home",
-//         name_ita:
-//           "Prima tratta internazionale del tuo itinerario di ritorno vero l'Italia",
-//       },
-//       {
-//         id: "Outbound",
-//         name_eng: "On the outward journey to my destination",
-//         name_ita:
-//           "Prima tratta internazionale del tuo itinerario di andata verso l'estero",
-//       },
-//     ];
+      {
+        id: "Connecting",
+        name_eng: "Connecting journey",
+        name_ita: "Volo di collegamento",
+      },
+      {
+        id: "Inbound",
+        name_eng: "On the return journey back home",
+        name_ita:
+          "Prima tratta internazionale del tuo itinerario di ritorno vero l'Italia",
+      },
+      {
+        id: "Outbound",
+        name_eng: "On the outward journey to my destination",
+        name_ita:
+          "Prima tratta internazionale del tuo itinerario di andata verso l'estero",
+      },
+    ];
     /* 5.10 End */
   
     /* 5.11 Start */
@@ -4506,7 +4506,8 @@ var myHeaders = new Headers();
   
     /* 5.12 Start */
     // var BaggageDelayLeg = WhichJourneyNew;
-    var BaggageDelayLeg = [
+    var BaggageDelayLeg =
+    [
       {
         id: "InwardJourney",
         name_eng: "On the return journey back home",
@@ -4518,6 +4519,12 @@ var myHeaders = new Headers();
         name_ita:
           "Ultima tratta del viaggio di ritorno alla tua nazione di residenza",
       },
+      {
+        id: "Connection",
+        name_eng: "Connecting journey",
+        name_ita:
+          "Viaggio di collegamento",
+      }
     ];
   
     var TransportationMethodDelayed = [
