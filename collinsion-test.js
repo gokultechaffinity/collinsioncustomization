@@ -847,8 +847,6 @@ getClaimStatus(claimNumberCheck,"#save_and_continue1")
         $("#helpdesk_ticket_custom_field_cf_policy_number454080_2321673").val() ==
           "" ||
         $("#helpdesk_ticket_custom_field_cf_date_of_birth_2321673").val() == ""
-        ||
-        $("#helpdesk_ticket_custom_field_cf_claim_number_2321673").val() == ""
       ) {
         addErrorMessage(
           "helpdesk_ticket_custom_field_cf_policy_number454080_2321673",
@@ -858,10 +856,12 @@ getClaimStatus(claimNumberCheck,"#save_and_continue1")
           "helpdesk_ticket_custom_field_cf_date_of_birth_2321673",
           "Please fill in all fields"
         );
-        addErrorMessage(
-          "helpdesk_ticket_custom_field_cf_claim_number_2321673",
-          "Please fill in all fields"
-        );
+        // ||
+        // $("#helpdesk_ticket_custom_field_cf_claim_number_2321673").val() == ""
+        // addErrorMessage(
+        //   "helpdesk_ticket_custom_field_cf_claim_number_2321673",
+        //   "Please fill in all fields"
+        // );
       } else {
         //check LENGTH OF POLICY NUMBER - 7 DIGITS
         if (
@@ -887,9 +887,19 @@ getClaimStatus(claimNumberCheck,"#save_and_continue1")
             let dateOfBirth = $(
               "#helpdesk_ticket_custom_field_cf_date_of_birth_2321673"
             ).val();
+            let claimNumberCheck=$(
+                "#helpdesk_ticket_custom_field_cf_claim_number_2321673"
+              ).val();
             jQuery("#model-error-msg").addClass("d-none");
             jQuery("#model-sucess-msg").addClass("d-none");
-            getPolicyDetails(policyNumber, dateOfBirth, "#save_and_continue1");
+            if(claimNumberCheck){
+                $("#agreementModal").addClass("loader-text")
+getClaimStatus(claimNumberCheck,"#save_and_continue1")
+              }else{
+                jQuery("#model-status-msg").addClass("d-none");
+            $("#agreementModal").addClass("loader-text")
+              getPolicyDetails(policyNumber, dateOfBirth, "#save_and_continue1");
+              }
             //changes started for error
             $("#save_and_continue1").attr("data-target", "#agreementModal");
             $("#save_and_continue1").attr("data-toggle", "modal");
@@ -9570,6 +9580,20 @@ var myHeaders = new Headers();
         }
       }
     );
+    if($(".edit_helpdesk_ticket").length>0){
+        if ($("#title").hasClass("ColumbusItaly")) {
+          $("<p id='summary_intro'>Ti preghiamo di dedicare un momento a ricontrollare le tue informazioni: l'accuratezza ci aiuta a elaborare rapidamente la tua richiesta</p>").insertBefore("#helpdesk_ticket_submit");
+        } else {
+          $('<p id="summary_intro">Please take a moment to double check your information - accuracy helps us process your claim quickly.</p>').insertBefore("#helpdesk_ticket_submit");
+        }
+        add_section_1();
+        add_section_2();
+        add_section_3();
+        add_section_4();
+        add_section_5();
+        add_section_6();
+        addDeclaraion();
+    }
  });
   
   
