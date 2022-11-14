@@ -7195,6 +7195,12 @@ var myHeaders = new Headers();
         body["ClaimAnswers"] = ClaimQaAndAnswers;
         console.log("submit claim body --->", body);
       } else if (reasonClaim[0].akey == "01_03_CxIllClnt") {
+        let cxBookDate = submitClaimBody(
+            "CanxBookingDate",
+            $("#helpdesk_ticket_custom_field_cf_your_booking_date_2321673").val(),
+            fieldTypeDate
+          );
+          ClaimQaAndAnswers.push(cxBookDate);
         let TripBookingRefund = submitClaimBody(
           "TripBookingRefund",
           $(
