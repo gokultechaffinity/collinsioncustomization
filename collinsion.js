@@ -7827,14 +7827,14 @@ var myHeaders = new Headers();
           fieldTypeText
         );
         ClaimQaAndAnswers.push(NatureInjury);
-        let DentalPaymentAmount = submitClaimBody(
-          "DentalPaymentAmount",
+        let MedicalPaymentAmount = submitClaimBody(
+          "MedicalPaymentPrice",
           $(
             "#helpdesk_ticket_custom_field_cf_amount_paid_in_local_currency527297_2321673"
           ).val(),
           fieldTypeText
         );
-        ClaimQaAndAnswers.push(DentalPaymentAmount);
+        ClaimQaAndAnswers.push(MedicalPaymentAmount);
         let MedicalPaymentDate = submitClaimBody(
           "MedicalPaymentDate",
           $(
