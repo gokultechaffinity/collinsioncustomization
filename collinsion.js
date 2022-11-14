@@ -4530,7 +4530,7 @@ var myHeaders = new Headers();
     var TransportationMethodDelayed = [
       {
         id: "Areoplane",
-        name_eng: "Areoplane",
+        name_eng: "Aeroplane",
         name_ita: "Areoplano",
       },
       {
