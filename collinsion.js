@@ -7765,6 +7765,17 @@ var myHeaders = new Headers();
             fieldTypeText
           )
         );
+        let thirdPartyOption=getAKey(
+            "helpdesk_ticket_custom_field_cf_was_someone_else_a_third_party_involved_in_you_sustaining_the_injury_2321673",
+            yesNo
+          );
+          ClaimQaAndAnswers.push(
+            submitClaimBody(
+                thirdPartyOption[0].qkey,
+                thirdPartyOption[0].akey,
+              fieldTypeText
+            )
+          );
         let MedicalCostTravel = getAKey(
           "helpdesk_ticket_custom_field_cf_do_any_of_the_costs_relate_to_travel_not_including_the_ambulance_or_taxi_to_the_hospital_2321673",
           yesNo
