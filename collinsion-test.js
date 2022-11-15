@@ -424,14 +424,14 @@ $("#helpdesk_ticket_custom_field_cf_claimnames_2321673").closest(".form-group").
   ];
   function thisDiv(number, title) {
     $(".for-section-" + number).wrapAll(
-      '<div class="collapse" id="collapseSection' +
+      '<div class="collapse order'+number+'" id="collapseSection' +
         number +
         '" data-parent="#accordion" aria-labelledby="overall_div_' +
         number +
-        '"><div class="card-body ins-card order'+number+'">'
+        '"><div class="card-body ins-card">'
     );
     $(
-      '<div class="card ins-card">' +
+      '<div class="card ins-card order'+number+'">' +
         '<div id="overall_div_' +
         number +
         '" class="card-header ins-div"> ' +
