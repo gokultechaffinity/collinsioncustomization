@@ -6815,6 +6815,16 @@ var myHeaders = new Headers();
         body["ClaimAnswers"] = ClaimQaAndAnswers;
         console.log("submit claim body --->", body);
       } else if (reasonClaim[0].akey == "01_02_BagL") {
+        let reasonClaim=$(
+            "#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673"
+          ).val();
+          let keyValue=$("#helpdesk_ticket_custom_field_cf_how_many_items_are_you_claiming_for_2321673").val();
+          let lossOrStolen=submitClaimBody(
+            reasonClaim,
+            keyValue,
+            "none"
+          );
+          ClaimQaAndAnswers.push(lossOrStolen);
         let PoliceReference = submitClaimBody(
           "PoliceReference",
           $(
@@ -8287,34 +8297,31 @@ var myHeaders = new Headers();
           ).val();
           arrayItems.push(objectItems);
           temp["items"] = arrayItems;
-        } else {
+        } else if(reasonClaim=="Baggage - personal items lost or stolen" && keyValue=="1" &&fieldType=="none"){
+            let itemArray=[];
+            let itemsObject = {};
+            temp["QuestionKey"] = "LostOrStolenBags";
+            temp["AnswerKey"]=$("#helpdesk_ticket_custom_field_cf_how_many_items_are_you_claiming_for_2321673").val();
+          temp["DateTimeAnswer"]=null;
+          temp["BooleanAnswer"]= null; 
+          temp["IntegerAnswer"]= null;
+          let itemTypes=getAKey(
+              "helpdesk_ticket_custom_field_cf_item_type870706_2321673",
+              ItemType
+            );
+          itemsObject["ItemType"] = itemTypes[0].akey;
+          itemsObject["PurchaseDate"] = $("#helpdesk_ticket_custom_field_cf_when_did_you_purchase_the_item_2321673").val();
+          itemsObject["purchasePrice"] =$("#helpdesk_ticket_custom_field_cf_what_was_its_cost_when_you_bought_it_2321673").val();
+          itemsObject["Currency"] = null;
+          itemsObject["repairCost"] = 0;
+          itemArray.push(itemsObject);
+          temp["items"] = itemArray;
+          }
+          else {
           temp["QuestionKey"] = qkeyValue;
           temp["AnswerKey"] = akeyValue;
         }
-        let reasonClaim=$(
-            "#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673"
-          ).val();
-          let keyValue=$("#helpdesk_ticket_custom_field_cf_how_many_items_are_you_claiming_for_2321673").val();
-        if(reasonClaim=="Baggage - personal items lost or stolen" && keyValue=="1" ){
-          let itemArray=[];
-          let itemsObject = {};
-          temp["QuestionKey"] = "LostOrStolenBags";
-          temp["AnswerKey"]=$("#helpdesk_ticket_custom_field_cf_how_many_items_are_you_claiming_for_2321673").val();
-        temp["DateTimeAnswer"]=null;
-        temp["BooleanAnswer"]= null; 
-        temp["IntegerAnswer"]= null;
-        let itemTypes=getAKey(
-            "helpdesk_ticket_custom_field_cf_item_type870706_2321673",
-            ItemType
-          );
-        itemsObject["ItemType"] = itemTypes[0].akey;
-        itemsObject["PurchaseDate"] = $("#helpdesk_ticket_custom_field_cf_when_did_you_purchase_the_item_2321673").val();
-        itemsObject["purchasePrice"] =$("#helpdesk_ticket_custom_field_cf_what_was_its_cost_when_you_bought_it_2321673").val();
-        itemsObject["Currency"] = null;
-        itemsObject["repairCost"] = 0;
-        itemArray.push(itemsObject);
-        temp["items"] = itemArray;
-        }
+    
         console.log(temp);
       } else {
         temp["QuestionKey"] = qkeyValue;
