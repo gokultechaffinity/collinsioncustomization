@@ -41,7 +41,7 @@ $("#helpdesk_ticket_custom_field_cf_claimnames_2321673").closest(".form-group").
       .after(
         '<span class="btn fw-primary-button new-ticket-submit-button new-ticket-dummy">Sottoscrivi</span>'
       );
-      $("button #helpdesk_ticket_submit")
+      $("button#helpdesk_ticket_submit")
       .hide()
       .after(
         '<span class="btn fw-primary-button  ticket-detail-dummy">Sottoscrivi</span>'
@@ -52,7 +52,7 @@ $("#helpdesk_ticket_custom_field_cf_claimnames_2321673").closest(".form-group").
       .after(
         '<span class="btn fw-primary-button new-ticket-submit-button new-ticket-dummy">Submit</span>'
       );
-      $("button #helpdesk_ticket_submit")
+      $("button#helpdesk_ticket_submit")
       .hide()
       .after(
         '<span class="btn fw-primary-button  ticket-detail-dummy">Submit</span>'
