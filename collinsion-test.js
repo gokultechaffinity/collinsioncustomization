@@ -10248,6 +10248,10 @@ $("#helpdesk_ticket_custom_field_cf_claimnames_2321673").val(namesArray);
           } else if (statusCode == 400) {
             console.log("--field miised getting senario->", result);
             addErrorMessage("common_error", result);
+          }else if(statusCode == 422){
+            addErrorMessage("common_error", result); 
+          }else if(statusCode == 404){
+            addErrorMessage("common_error", "Unable to create claim as per one claim per policy per day rule"); 
           }
         } else {
           let ele = ["common_error"];
@@ -10292,6 +10296,10 @@ $("#helpdesk_ticket_custom_field_cf_claimnames_2321673").val(namesArray);
           } else if (statusCode == 400) {
             console.log("--field miised getting senario->", result);
             addErrorMessage("common_error", result);
+          }else if(statusCode == 422){
+            addErrorMessage("common_error", result); 
+          }else if(statusCode == 404){
+            addErrorMessage("common_error", "Unable to create claim as per one claim per policy per day rule"); 
           }
         } else {
           let ele = ["common_error"];
