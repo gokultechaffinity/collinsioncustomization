@@ -6815,12 +6815,12 @@ var myHeaders = new Headers();
         body["ClaimAnswers"] = ClaimQaAndAnswers;
         console.log("submit claim body --->", body);
       } else if (reasonClaim[0].akey == "01_02_BagL") {
-        let reasonClaim=$(
+        let reasonClaims=$(
             "#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673"
           ).val();
           let keyValue=$("#helpdesk_ticket_custom_field_cf_how_many_items_are_you_claiming_for_2321673").val();
           let lossOrStolen=submitClaimBody(
-            reasonClaim,
+            reasonClaims,
             keyValue,
             "none"
           );
