@@ -8232,8 +8232,10 @@ $("#helpdesk_ticket_custom_field_cf_claimnames_2321673").val(namesArray);
     var yourArray = [];
     let otherClientValue=$("#helpdesk_ticket_custom_field_cf_otherclientid_2321673").val()
     if(otherClientValue){
-        console.log("if other client field has value ",otherClientValue)
-        body["OtherInsuredClientIds"]=yourArray.push(otherClientValue)
+        console.log("if other client field has value ",otherClientValue);
+        yourArray.push(otherClientValue)
+        console.log("if other client field has yourArray ",yourArray);
+        body["OtherInsuredClientIds"]=yourArray;
     }
     else{
         console.log("if other client field has no value ",otherClientValue)
