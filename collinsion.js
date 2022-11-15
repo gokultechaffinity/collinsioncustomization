@@ -8297,7 +8297,7 @@ var myHeaders = new Headers();
           ).val();
           arrayItems.push(objectItems);
           temp["items"] = arrayItems;
-        } else if(reasonClaim=="Baggage - personal items lost or stolen" && keyValue=="1" &&fieldType=="none"){
+        } else if(qkeyValue=="Baggage - personal items lost or stolen" && akeyValue=="1" &&fieldType=="none"){
             let itemArray=[];
             let itemsObject = {};
             temp["QuestionKey"] = "LostOrStolenBags";
