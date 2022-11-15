@@ -4376,7 +4376,7 @@ var myHeaders = new Headers();
     var TransportationMethod = [
       {
         id: "Areoplane",
-        name_eng: "Aeroplane",
+        name_eng: "Areoplane",
         name_ita: "Areoplano",
       },
       {
