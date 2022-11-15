@@ -8312,10 +8312,9 @@ var myHeaders = new Headers();
         itemsObject["purchasePrice"] =$("#helpdesk_ticket_custom_field_cf_what_was_its_cost_when_you_bought_it_2321673").val();
         itemsObject["Currency"] = null;
         itemsObject["repairCost"] = 0;
-        itemArray.push(objectItems);
+        itemArray.push(itemsObject);
         temp["items"] = itemArray;
         }
-  
         console.log(temp);
       } else {
         temp["QuestionKey"] = qkeyValue;
