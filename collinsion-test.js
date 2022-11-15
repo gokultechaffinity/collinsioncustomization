@@ -4372,7 +4372,7 @@ var myHeaders = new Headers();
   var TransportationMethod = [
     {
       id: "Areoplane",
-      name_eng: "Aeroplane",
+      name_eng: "Areoplane",
       name_ita: "Areoplano",
     },
     {
@@ -4513,7 +4513,7 @@ var myHeaders = new Headers();
   var TransportationMethodDelayed = [
     {
       id: "Areoplane",
-      name_eng: "Aeroplane",
+      name_eng: "Areoplane",
       name_ita: "Areoplano",
     },
     {
