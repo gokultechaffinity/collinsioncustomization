@@ -48,6 +48,11 @@ jQuery(document).ready(function ($) {
           '<span class="btn fw-primary-button new-ticket-submit-button new-ticket-dummy">Submit</span>'
         );
     }
+
+    //hide claim number for save-draft
+    $("#helpdesk_ticket_custom_field_cf_claim_number_2321673").closest(".form-group").hide();
+
+
   
     let AuthorizationKey = "";
     let ClaimInitiatedNumber = "";
@@ -6050,7 +6055,7 @@ var myHeaders = new Headers();
             //method one params
             //iBan
             //CountryCode
-            
+
             //method two params
             //accountNumber
             //sortCode
