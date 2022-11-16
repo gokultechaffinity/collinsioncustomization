@@ -6024,34 +6024,164 @@ var myHeaders = new Headers();
     //____________________________________________________________________________________________________________________
     //section 6 continue
     $("#save_and_continue6").click(function () {
-      payment_list = [
-        "helpdesk_ticket_custom_field_cf_name_of_account_holder_2321673",
-        "helpdesk_ticket_custom_field_cf_account_number_2321673",
-        "helpdesk_ticket_custom_field_cf_iban_number_2321673",
-        "helpdesk_ticket_custom_field_cf_sort_code659991_2321673",
-      ];
-      //check filled
+
+      if ($("#title").hasClass("VHI") ||$("#title").hasClass("ColumbusItaly") ){
+        let countryCode = countryPortal.VHI;
+
+        payment_list = [
+          "helpdesk_ticket_custom_field_cf_name_of_account_holder_2321673",
+          "helpdesk_ticket_custom_field_cf_account_number_2321673"]
+
+          if (checkedfilled(payment_list) == true) {
+            //clear errors
+            clearError(payment_list);
+            let accountNumber = $(
+              "#helpdesk_ticket_custom_field_cf_account_number_2321673"
+            ).val();
+            let iBanNumber = $(
+              "#helpdesk_ticket_custom_field_cf_iban_number_2321673"
+            ).val();
+            let sortCode = $(
+              "#helpdesk_ticket_custom_field_cf_sort_code659991_2321673"
+            ).val();
+
+            console.log(accountNumber, iBanNumber, sortCode, countryCode);
+            
+            //method one params
+            //iBan
+            //CountryCode
+            
+            //method two params
+            //accountNumber
+            //sortCode
+            //countryCode
+            if (countryCode == "GB") {
+              ValidateBankMethodTwo(
+                accountNumber,
+                sortCode,
+                countryCode,
+                "#save_and_continue6"
+              );
+            } else {
+              ValidateBankMethodOne(iBanNumber, countryCode, "#save_and_continue6");
+            }
+      
+            //add displaying
+            function add_section_6() {
+              var el_number = $("#collapseSection6")
+                .children(".card-body.ins-card")
+                .children(".form-group").length;
+              $(
+                "<strong id='section_6_header'>" + titles[5] + "</strong>"
+              ).insertAfter("#great_line_5");
+              $("<hr class='summary_divider' id='great_line_6'>").insertAfter(
+                "#section_6_header"
+              );
+      
+              for (let i = 1; i < el_number + 1; i++) {
+                var label = $("#collapseSection6")
+                  .children(".card-body.ins-card")
+                  .children("div:nth-child(" + i + ")")
+                  .children("label")
+                  .text();
+                var value = $("#collapseSection6")
+                  .children(".card-body.ins-card")
+                  .children("div:nth-child(" + i + ")")
+                  .children("input")
+                  .val();
+                $(
+                  "<p class='section_6_line'>" + label + " : " + value + "</p>"
+                ).insertBefore("#great_line_6");
+              }
+            }
+      
+            function update_section_6() {
+              var el_number = $("#collapseSection6")
+                .children(".card-body.ins-card")
+                .children(".form-group").length;
+              $("p").remove(".section_6_line");
+              for (let i = 1; i < el_number + 1; i++) {
+                var label = $("#collapseSection6")
+                  .children(".card-body.ins-card")
+                  .children("div:nth-child(" + i + ")")
+                  .children("label")
+                  .text();
+                var value = $("#collapseSection6")
+                  .children(".card-body.ins-card")
+                  .children("div:nth-child(" + i + ")")
+                  .children("input")
+                  .val();
+                $(
+                  "<p class='section_6_line'>" + label + " : " + value + "</p>"
+                ).insertBefore("#great_line_6");
+              }
+            }
+      
+            function addDeclaraion() {
+              $("<strong id='declaration_header'>Declaration</strong>").insertAfter(
+                "#great_line_6"
+              );
+              $("<hr class='summary_divider' id='great_line_7'>").insertAfter(
+                "#declaration_header"
+              );
+      
+              $(
+                "<p>I declare that I have completed this form to the best of knowledge and have read and understood the contents of <br>this page and form. I consent to Collinson using my data to process this claim and am aware that this will involve <br>sending my data to my insurer along with my pet's clinical history. I am aware that my insurer will take any <br>excesses as per my policy. Details can be found in the Collinson Privacy Policy</p>"
+              ).insertBefore("#great_line_7");
+              $("<br>").insertBefore("#great_line_7");
+      
+              $(
+                '<input class="ins_checkbox_paragraph" id="cb2" type="checkbox" ><p class="ins_consent_paragraph"> I consent</p<>'
+              ).insertBefore("#great_line_7");
+            }
+      
+            if ($("#section_6_header").length) {
+              update_section_6();
+            } else {
+              add_section_6();
+              addDeclaraion();
+            }
+          } else {
+            //ERROR Messaging
+            for (var i = 0; i < payment_list.length; i++) {
+              addErrorMessage(payment_list[i], "Please fill in all fields");
+            }
+          }
+
+      }else{
+        let countryCode = countryPortal.SagaPostOfficeColumbusUK;
+        payment_list = [
+          "helpdesk_ticket_custom_field_cf_name_of_account_holder_2321673",
+          "helpdesk_ticket_custom_field_cf_account_number_2321673",
+          "helpdesk_ticket_custom_field_cf_sort_code659991_2321673"
+        ]
+
+        //check filled
       if (checkedfilled(payment_list) == true) {
         //clear errors
         clearError(payment_list);
+        let accountHolder = $(
+          "#helpdesk_ticket_custom_field_cf_name_of_account_holder_2321673"
+        ).val();
         let accountNumber = $(
           "#helpdesk_ticket_custom_field_cf_account_number_2321673"
-        ).val();
-        let iBanNumber = $(
-          "#helpdesk_ticket_custom_field_cf_iban_number_2321673"
         ).val();
         let sortCode = $(
           "#helpdesk_ticket_custom_field_cf_sort_code659991_2321673"
         ).val();
-        let countryCode = countryPortal.VHI;
-        console.log(accountNumber, iBanNumber, sortCode, countryCode);
+
+
+        console.log(accountHolder, accountNumber, sortCode);
+
         //method one params
         //iBan
         //CountryCode
+
         //method two params
         //accountNumber
         //sortCode
         //countryCode
+
         if (countryCode == "GB") {
           ValidateBankMethodTwo(
             accountNumber,
@@ -6144,8 +6274,9 @@ var myHeaders = new Headers();
           addErrorMessage(payment_list[i], "Please fill in all fields");
         }
       }
-  
-  
+        
+      }
+
       $("#section-6-button").css("background-color","#4DC367");
       $("#section-6-button").children(":first").removeClass("fa-plus");
       $("#section-6-button").children(":first").removeClass("fa-minus");
