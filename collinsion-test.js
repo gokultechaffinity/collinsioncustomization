@@ -507,16 +507,16 @@ $("#helpdesk_ticket_custom_field_cf_claimnames_2321673").closest(".form-group").
   ) {
     //hide by default
     for (let i = 0; i < elements_to_toggle.length; i++) {
-      $(elements_to_toggle[i]).hide();
+      $(elements_to_toggle[i]).hide().addClass("hide_next");;
     }
     $(element_to_check).change(function () {
       if ($(element_to_check).val() == condition_to_check_for) {
         for (let i = 0; i < elements_to_toggle.length; i++) {
-          $(elements_to_toggle[i]).show();
+          $(elements_to_toggle[i]).show().removeClass("hide_next");;
         }
       } else {
         for (let i = 0; i < elements_to_toggle.length; i++) {
-          $(elements_to_toggle[i]).hide();
+          $(elements_to_toggle[i]).hide().addClass("hide_next");;
         }
       }
     });
