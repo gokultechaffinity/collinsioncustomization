@@ -4381,9 +4381,9 @@ var myHeaders = new Headers();
     /* 5.10 Start */
     var TransportationMethod = [
       {
-        id: "Areoplane",
-        name_eng: "Areoplane",
-        name_ita: "Areoplano",
+        id: "Aeroplane",
+        name_eng: "Aeroplane",
+        name_ita: "Aeroplano",
       },
       {
         id: "Ferry",
