@@ -1,3 +1,4 @@
+//latest
 jQuery(document).ready(function ($) {
     $("#helpdesk_ticket_subject").closest(".form-group").hide();
  $("#helpdesk_ticket_custom_field_cf_mainclientid_2321673").closest(".form-group").hide();
@@ -7354,14 +7355,24 @@ var myHeaders = new Headers();
             fieldTypeDate
           );
           ClaimQaAndAnswers.push(cxBookDate);
-        let TripBookingRefund = submitClaimBody(
-          "TripBookingRefund",
-          $(
+          let checkRefundValue=$(
             "#helpdesk_ticket_custom_field_cf_have_you_received_any_refunds_or_compensation702973_2321673"
-          ).val(),
-          fieldTypeText
-        );
-        ClaimQaAndAnswers.push(TripBookingRefund);
+          ).val();
+          let TripBookingRefund;
+          if(checkRefundValue){
+             TripBookingRefund = submitClaimBody(
+                "TripBookingRefund",
+                $(
+                  "#helpdesk_ticket_custom_field_cf_have_you_received_any_refunds_or_compensation702973_2321673"
+                ).val(),
+                fieldTypeText
+              );
+              ClaimQaAndAnswers.push(TripBookingRefund);
+          }else{
+             TripBookingRefund = submitClaimBody(
+                "TripBookingRefund","0",fieldTypeText);
+              ClaimQaAndAnswers.push(TripBookingRefund);
+          }
         let ReasonForCancellationDesc = submitClaimBody(
           "ReasonForCancellationDesc",
           $(
