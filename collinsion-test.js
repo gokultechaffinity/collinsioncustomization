@@ -11869,4 +11869,17 @@ jQuery(document).ready(function ($) {
     add_section_6();
     addDeclaraion();
   }
+  // Get the files names and appened into the summary of ticket detail page
+
+  function files_uploaded() {
+    $("p").remove(".section_5_line");
+    $(".fw-comments-wrapper .attachments .fw-attachment-item").each(function(){ 
+      $("<p class='section_5_line'>" + $(this).find("p").html().split("<br>")[0] + "</p>").insertBefore(
+          "#great_line_5"
+        );
+    });
+  }
+  if (jQuery(".fw-comments-wrapper .attachments").length > 0) {
+  files_uploaded();
+  }
 });
