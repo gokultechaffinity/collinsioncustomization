@@ -297,9 +297,11 @@ jQuery(document).ready(function ($) {
     ).insertAfter(
       ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper"
     );
-    $($(".attachments")[0].outerHTML).insertAfter(
-      ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper"
-    );
+    var attachments_html = "";
+    $(".attachments").each(function(){  
+       attachments_html += $(this).html(); 
+    });
+    $("<div class='attachments small mt-16'>"+attachments_html+"</div>").insertAfter(".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper");
     $("#portal_ticket_form .attachments").addClass("for-section-5");
     if ($("#title").hasClass("ColumbusItaly")) {
       $(
