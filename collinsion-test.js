@@ -1,9 +1,15 @@
+//latest
 jQuery(document).ready(function ($) {
-    //sk changes applied file
   $("#helpdesk_ticket_subject").closest(".form-group").hide();
-$("#helpdesk_ticket_custom_field_cf_mainclientid_2321673").closest(".form-group").hide();
-$("#helpdesk_ticket_custom_field_cf_otherclientid_2321673").closest(".form-group").hide();
-$("#helpdesk_ticket_custom_field_cf_claimnames_2321673").closest(".form-group").hide();
+  $("#helpdesk_ticket_custom_field_cf_mainclientid_2321673")
+    .closest(".form-group")
+    .hide();
+  $("#helpdesk_ticket_custom_field_cf_otherclientid_2321673")
+    .closest(".form-group")
+    .hide();
+  $("#helpdesk_ticket_custom_field_cf_claimnames_2321673")
+    .closest(".form-group")
+    .hide();
   $("#helpdesk_ticket_custom_field_cf_date_of_birth_2321673")
     .closest(".form-group")
     .append(
@@ -21,7 +27,7 @@ $("#helpdesk_ticket_custom_field_cf_claimnames_2321673").closest(".form-group").
     .append(
       '<div class="invalid-feedback api_call_failed_1">API call failed</div>'
     );
-    $("#helpdesk_ticket_custom_field_cf_iban_number_2321673")
+  $("#helpdesk_ticket_custom_field_cf_iban_number_2321673")
     .closest(".form-group")
     .append(
       '<div class="invalid-feedback api_call_failed_1">API call failed</div>'
@@ -42,7 +48,7 @@ $("#helpdesk_ticket_custom_field_cf_claimnames_2321673").closest(".form-group").
       .after(
         '<span class="btn fw-primary-button new-ticket-submit-button new-ticket-dummy">Sottoscrivi</span>'
       );
-      $("button#helpdesk_ticket_submit")
+    $("button#helpdesk_ticket_submit")
       .hide()
       .after(
         '<span class="btn fw-primary-button  ticket-detail-dummy">Sottoscrivi</span>'
@@ -53,12 +59,17 @@ $("#helpdesk_ticket_custom_field_cf_claimnames_2321673").closest(".form-group").
       .after(
         '<span class="btn fw-primary-button new-ticket-submit-button new-ticket-dummy">Submit</span>'
       );
-      $("button#helpdesk_ticket_submit")
+    $("button#helpdesk_ticket_submit")
       .hide()
       .after(
         '<span class="btn fw-primary-button  ticket-detail-dummy">Submit</span>'
       );
   }
+
+  //hide claim number for save-draft
+  $("#helpdesk_ticket_custom_field_cf_claim_number_2321673")
+    .closest(".form-group")
+    .hide();
 
   let AuthorizationKey = "";
   let ClaimInitiatedNumber = "";
@@ -67,9 +78,9 @@ $("#helpdesk_ticket_custom_field_cf_claimnames_2321673").closest(".form-group").
     SagaPostOfficeColumbusUK: "GB",
     VHI: "IE",
   };
-  let domainURL="claim-proxy-lower.collinsonnis.com";
-//"claim-proxy-lower.collinsonnis.com";
-//"claim-sandbox.collinsonnis.com";
+  let domainURL = "claim-proxy-lower.collinsonnis.com";
+  //"claim-proxy-lower.collinsonnis.com";
+  //"claim-sandbox.collinsonnis.com";
   let succesStatus = [200, 201, 202, 203, 204, 205, 206, 207, 208, 226];
   getJWTToken();
   function getJWTToken(fieldId) {
@@ -79,10 +90,7 @@ $("#helpdesk_ticket_custom_field_cf_claimnames_2321673").closest(".form-group").
       method: "POST",
       redirect: "follow",
     };
-    fetch(
-      "https://"+domainURL+"/authenticate",
-      requestOptions
-    )
+    fetch("https://" + domainURL + "/authenticate", requestOptions)
       .then((response) => {
         console.log("response -->", response);
         statusCode = response.status;
@@ -132,10 +140,10 @@ $("#helpdesk_ticket_custom_field_cf_claimnames_2321673").closest(".form-group").
     ).parentElement;
     DOBParent.classList.add("for-section-1");
 
-    var ClaimNumberParent = document.getElementById("helpdesk_ticket_custom_field_cf_claim_number_2321673"
+    var ClaimNumberParent = document.getElementById(
+      "helpdesk_ticket_custom_field_cf_claim_number_2321673"
     ).parentElement;
     ClaimNumberParent.classList.add("for-section-1");
-
   } else if ($("#title").hasClass("EasyJet")) {
     var PolicyNumberParent = document.getElementById(
       "helpdesk_ticket_custom_field_cf_policy_number454080_2321673"
@@ -147,11 +155,11 @@ $("#helpdesk_ticket_custom_field_cf_claimnames_2321673").closest(".form-group").
     ).parentElement;
     PostcodeParent.classList.add("for-section-1");
 
-    var ClaimNumberParent = document.getElementById("helpdesk_ticket_custom_field_cf_claim_number_2321673"
+    var ClaimNumberParent = document.getElementById(
+      "helpdesk_ticket_custom_field_cf_claim_number_2321673"
     ).parentElement;
     ClaimNumberParent.classList.add("for-section-1");
-  }
-   else if ($("#title").hasClass("CollinsonUK")) {
+  } else if ($("#title").hasClass("CollinsonUK")) {
     var PolicyNumberParent = document.getElementById(
       "helpdesk_ticket_custom_field_cf_policy_number454080_2321673"
     ).parentElement;
@@ -162,7 +170,8 @@ $("#helpdesk_ticket_custom_field_cf_claimnames_2321673").closest(".form-group").
     ).parentElement;
     DOBParent.classList.add("for-section-1");
 
-    var ClaimNumberParent = document.getElementById("helpdesk_ticket_custom_field_cf_claim_number_2321673"
+    var ClaimNumberParent = document.getElementById(
+      "helpdesk_ticket_custom_field_cf_claim_number_2321673"
     ).parentElement;
     ClaimNumberParent.classList.add("for-section-1");
   }
@@ -180,8 +189,7 @@ $("#helpdesk_ticket_custom_field_cf_claimnames_2321673").closest(".form-group").
     $(
       '<button id="save_and_continue1" class="btn btn-primary for-section-1 save_and_continue" type="button">Find Policy</button>'
     ).insertAfter("#helpdesk_ticket_custom_field_cf_claim_number_2321673");
-  }
-   else if ($("#title").hasClass("VHI")) {
+  } else if ($("#title").hasClass("VHI")) {
     $(
       '<button id="save_and_continue1" class="btn btn-primary for-section-1 save_and_continue" type="button">Find Policy</button>'
     ).insertAfter("#helpdesk_ticket_custom_field_cf_claim_number_2321673");
@@ -283,12 +291,14 @@ $("#helpdesk_ticket_custom_field_cf_claimnames_2321673").closest(".form-group").
   //____________________________________________________SECTION 5 Start - Your Documents____________________________________________
   //for-section-5 attachment group
   //___________________________________new_section 5_______________________________________________________
-
-  if(jQuery(".fw-comments-wrapper .attachments").length>0){
-    $('<div id="mock-doc" class="form-group attachments for-section-5"><span class="d-none"><input id="upload_file" type="file" multiple="false"><input id="files_list" type="file" name="helpdesk_ticket[attachments][][resource]" multiple="false"></span><div class="dropdown"><button class="btn btn-link " type="button" id="attach_btn" data-attach-type="file"><span class="file-upload-btn" tabindex="0"><img data-src="/glyphs/vectors/attachment.svg" loading="lazy" alt="Attachment" class="icon ls-is-cached lazyloaded" src="/glyphs/vectors/attachment.svg">Attachment</span></button><ul class="dropdown-menu" aria-labelledby="attach_btn"><li><a class="dropdown-item" href="#" data-attach-type="file">Attach a file</a></li></ul></div><div id="attachments_list" class="files-container"></div><div><div id="cumulative_error_heading" class="error-heading"></div><div id="cumulative_error_attachments_list" class="files-container"></div></div><div><div id="individual_error_heading" class="error-heading"></div><div id="individual_error_attachments_list" class="files-container"></div></div></div>'
-  ).insertAfter(".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper");
+  if (jQuery(".fw-comments-wrapper .attachments").length > 0) {
+    $(
+      '<div id="mock-doc" class="form-group attachments for-section-5"><span class="d-none"><input id="upload_file" type="file" multiple="false"><input id="files_list" type="file" name="helpdesk_ticket[attachments][][resource]" multiple="false"></span><div class="dropdown"><button class="btn btn-link " type="button" id="attach_btn" data-attach-type="file"><span class="file-upload-btn" tabindex="0"><img data-src="/glyphs/vectors/attachment.svg" loading="lazy" alt="Attachment" class="icon ls-is-cached lazyloaded" src="/glyphs/vectors/attachment.svg">Attachment</span></button><ul class="dropdown-menu" aria-labelledby="attach_btn"><li><a class="dropdown-item" href="#" data-attach-type="file">Attach a file</a></li></ul></div><div id="attachments_list" class="files-container"></div><div><div id="cumulative_error_heading" class="error-heading"></div><div id="cumulative_error_attachments_list" class="files-container"></div></div><div><div id="individual_error_heading" class="error-heading"></div><div id="individual_error_attachments_list" class="files-container"></div></div></div>'
+    ).insertAfter(
+      ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper"
+    );
     $($(".attachments")[0].outerHTML).insertAfter(
-    ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper"
+      ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper"
     );
     $("#portal_ticket_form .attachments").addClass("for-section-5");
     if ($("#title").hasClass("ColumbusItaly")) {
@@ -299,14 +309,17 @@ $("#helpdesk_ticket_custom_field_cf_claimnames_2321673").closest(".form-group").
       $(
         '<button class="save_and_continue5 btn btn-primary for-section-5 save_and_continue" type="button" >Save & Continue</button>'
       ).insertAfter(".attachments.for-section-5");
-     jQuery(".attachments.for-section-5").after('<button class="save_draft_5 btn btn-primary for-section-5 " type="button">Save Draft </button>');
+      jQuery(".attachments.for-section-5").after(
+        '<button class="save_draft_5 btn btn-primary for-section-5 " type="button">Save Draft </button>'
+      );
     }
-  
-  }
-  else{
-      $('<div id="mock-doc" class="form-group attachments-container for-section-5"><span class="d-none"><input id="upload_file" type="file" multiple="false"><input id="files_list" type="file" name="helpdesk_ticket[attachments][][resource]" multiple="false"></span><div class="dropdown"><button class="btn btn-link " type="button" id="attach_btn" data-attach-type="file"><span class="file-upload-btn" tabindex="0"><img data-src="/glyphs/vectors/attachment.svg" loading="lazy" alt="Attachment" class="icon ls-is-cached lazyloaded" src="/glyphs/vectors/attachment.svg">Attachment</span></button><ul class="dropdown-menu" aria-labelledby="attach_btn"><li><a class="dropdown-item" href="#" data-attach-type="file">Attach a file</a></li></ul></div><div id="attachments_list" class="files-container"></div><div><div id="cumulative_error_heading" class="error-heading"></div><div id="cumulative_error_attachments_list" class="files-container"></div></div><div><div id="individual_error_heading" class="error-heading"></div><div id="individual_error_attachments_list" class="files-container"></div></div></div>'
-  ).insertAfter(".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper");
-     $(".form-group.attachments-container").addClass("for-section-5");
+  } else {
+    $(
+      '<div id="mock-doc" class="form-group attachments-container for-section-5"><span class="d-none"><input id="upload_file" type="file" multiple="false"><input id="files_list" type="file" name="helpdesk_ticket[attachments][][resource]" multiple="false"></span><div class="dropdown"><button class="btn btn-link " type="button" id="attach_btn" data-attach-type="file"><span class="file-upload-btn" tabindex="0"><img data-src="/glyphs/vectors/attachment.svg" loading="lazy" alt="Attachment" class="icon ls-is-cached lazyloaded" src="/glyphs/vectors/attachment.svg">Attachment</span></button><ul class="dropdown-menu" aria-labelledby="attach_btn"><li><a class="dropdown-item" href="#" data-attach-type="file">Attach a file</a></li></ul></div><div id="attachments_list" class="files-container"></div><div><div id="cumulative_error_heading" class="error-heading"></div><div id="cumulative_error_attachments_list" class="files-container"></div></div><div><div id="individual_error_heading" class="error-heading"></div><div id="individual_error_attachments_list" class="files-container"></div></div></div>'
+    ).insertAfter(
+      ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper"
+    );
+    $(".form-group.attachments-container").addClass("for-section-5");
     if ($("#title").hasClass("ColumbusItaly")) {
       $(
         '<button class="save_and_continue5 btn btn-primary for-section-5 save_and_continue" type="button" >Salva e continua</button>'
@@ -315,7 +328,9 @@ $("#helpdesk_ticket_custom_field_cf_claimnames_2321673").closest(".form-group").
       $(
         '<button class="save_and_continue5 btn btn-primary for-section-5 save_and_continue" type="button" >Save & Continue</button>'
       ).insertAfter(".form-group.attachments-container.for-section-5");
-     jQuery(".attachments-container.for-section-5").after('<button class="save_draft_5 btn btn-primary for-section-5 " type="button">Save Draft </button>');
+      jQuery(".attachments-container.for-section-5").after(
+        '<button class="save_draft_5 btn btn-primary for-section-5 " type="button">Save Draft </button>'
+      );
     }
   }
   $("#mock-doc").remove();
@@ -355,8 +370,7 @@ $("#helpdesk_ticket_custom_field_cf_claimnames_2321673").closest(".form-group").
       "helpdesk_ticket_custom_field_cf_sort_code659991_2321673"
     ).parentElement;
     SortCodeParent.classList.add("for-section-6");
-  }
-    else if ($("#title").hasClass("CollinsonUK")) {
+  } else if ($("#title").hasClass("CollinsonUK")) {
     //Name of acc holder - put in section 6
     var accHolderParent = document.getElementById(
       "helpdesk_ticket_custom_field_cf_name_of_account_holder_2321673"
@@ -386,17 +400,15 @@ $("#helpdesk_ticket_custom_field_cf_claimnames_2321673").closest(".form-group").
     $(
       '<button id="save_and_continue6" class="btn btn-primary for-section-6 save_and_continue" type="button" >Save & Continue</button>'
     ).insertAfter(SortCodeParent);
-  }
-  else if ($("#title").hasClass("CollinsonUK")) {
+  } else if ($("#title").hasClass("CollinsonUK")) {
     $(
       '<button id="save_and_continue6" class="btn btn-primary for-section-6 save_and_continue" type="button" >Save & Continue</button>'
     ).insertAfter(SortCodeParent);
   }
   //____________________________________________________SECTION 7 Start - Summary Section____________________________________________
-  if($(".edit_helpdesk_ticket").length>0){
-      $("#helpdesk_ticket_submit").addClass("for-section-7");
-  }
-  else{
+  if ($(".edit_helpdesk_ticket").length > 0) {
+    $("#helpdesk_ticket_submit").addClass("for-section-7");
+  } else {
     $("#helpdesk_ticket_form_id").addClass("for-section-7");
     $(".form-group.helpdesk_ticket_email").addClass("for-section-7");
     $(".btn.fw-primary-button.new-ticket-submit-button").addClass(
@@ -435,14 +447,18 @@ $("#helpdesk_ticket_custom_field_cf_claimnames_2321673").closest(".form-group").
   ];
   function thisDiv(number, title) {
     $(".for-section-" + number).wrapAll(
-      '<div class="collapse order'+number+'" id="collapseSection' +
+      '<div class="collapse order' +
+        number +
+        '" id="collapseSection' +
         number +
         '" data-parent="#accordion" aria-labelledby="overall_div_' +
         number +
         '"><div class="card-body ins-card">'
     );
     $(
-      '<div class="card ins-card order'+number+'">' +
+      '<div class="card ins-card order' +
+        number +
+        '">' +
         '<div id="overall_div_' +
         number +
         '" class="card-header ins-div"> ' +
@@ -507,16 +523,16 @@ $("#helpdesk_ticket_custom_field_cf_claimnames_2321673").closest(".form-group").
   ) {
     //hide by default
     for (let i = 0; i < elements_to_toggle.length; i++) {
-      $(elements_to_toggle[i]).hide().addClass("hide_next");;
+      $(elements_to_toggle[i]).hide().addClass("hide_next");
     }
     $(element_to_check).change(function () {
       if ($(element_to_check).val() == condition_to_check_for) {
         for (let i = 0; i < elements_to_toggle.length; i++) {
-          $(elements_to_toggle[i]).show().removeClass("hide_next");;
+          $(elements_to_toggle[i]).show().removeClass("hide_next");
         }
       } else {
         for (let i = 0; i < elements_to_toggle.length; i++) {
-          $(elements_to_toggle[i]).hide().addClass("hide_next");;
+          $(elements_to_toggle[i]).hide().addClass("hide_next");
         }
       }
     });
@@ -655,15 +671,15 @@ $("#helpdesk_ticket_custom_field_cf_claimnames_2321673").closest(".form-group").
   //section 1 continue
   //on CHANGE OF DATE OF BIRTH - check any of the two inputs is empty, if it is remove attr, else add it
   $("#save_and_continue1").click(function () {
-    if ($("#title").hasClass("EasyJet")){
+    if ($("#title").hasClass("EasyJet")) {
       if (
-        $("#helpdesk_ticket_custom_field_cf_policy_number454080_2321673").val() ==
-          "" ||
+        $(
+          "#helpdesk_ticket_custom_field_cf_policy_number454080_2321673"
+        ).val() == "" ||
         $("#helpdesk_ticket_custom_field_cf_postcode68273_2321673").val() == ""
-       
       ) {
-          // ||
-          // $("#helpdesk_ticket_custom_field_cf_claim_number_2321673").val() == ""
+        // ||
+        // $("#helpdesk_ticket_custom_field_cf_claim_number_2321673").val() == ""
         addErrorMessage(
           "helpdesk_ticket_custom_field_cf_policy_number454080_2321673",
           "Please fill in all fields"
@@ -672,15 +688,16 @@ $("#helpdesk_ticket_custom_field_cf_claimnames_2321673").closest(".form-group").
           "helpdesk_ticket_custom_field_cf_postcode68273_2321673",
           "Please fill in all fields"
         );
-      //   addErrorMessage(
-      //     "helpdesk_ticket_custom_field_cf_claim_number_2321673",
-      //     "Please fill in all fields"
-      //   );
+        //   addErrorMessage(
+        //     "helpdesk_ticket_custom_field_cf_claim_number_2321673",
+        //     "Please fill in all fields"
+        //   );
       } else {
         //check LENGTH OF POLICY NUMBER - 7 DIGITS
         if (
-          $("#helpdesk_ticket_custom_field_cf_policy_number454080_2321673").val()
-            .length < 7
+          $(
+            "#helpdesk_ticket_custom_field_cf_policy_number454080_2321673"
+          ).val().length < 7
         ) {
           addErrorMessage(
             "helpdesk_ticket_custom_field_cf_policy_number454080_2321673",
@@ -710,21 +727,25 @@ $("#helpdesk_ticket_custom_field_cf_claimnames_2321673").closest(".form-group").
             "#helpdesk_ticket_custom_field_cf_claim_number_2321673"
           ).val();
           //getPolicy INVOKE HERE!!
-          if(claimNumber){
-              $("#agreementModal").addClass("loader-text")
-            getClaimStatus(claimNumber,"#save_and_continue1")
-            }else{
-              jQuery("#model-status-msg").addClass("d-none");
+          if (claimNumber) {
             $("#agreementModal").addClass("loader-text");
-            getPolicyDetailsByPostcode(policyNumber,postCode,"#save_and_continue1")
-            }
+            getClaimStatus(claimNumber, "#save_and_continue1");
+          } else {
+            jQuery("#model-status-msg").addClass("d-none");
+            $("#agreementModal").addClass("loader-text");
+            getPolicyDetailsByPostcode(
+              policyNumber,
+              postCode,
+              "#save_and_continue1"
+            );
+          }
           //
           $("#save_and_continue1").attr("data-target", "#agreementModal");
           $("#save_and_continue1").attr("data-toggle", "modal");
           clearError([
             "helpdesk_ticket_custom_field_cf_postcode68273_2321673",
             "helpdesk_ticket_custom_field_cf_policy_number454080_2321673",
-            "helpdesk_ticket_custom_field_cf_claim_number_2321673"
+            "helpdesk_ticket_custom_field_cf_claim_number_2321673",
           ]);
         }
       }
@@ -752,11 +773,11 @@ $("#helpdesk_ticket_custom_field_cf_claimnames_2321673").closest(".form-group").
       $("#title").hasClass("ColumbusItaly")
     ) {
       if (
-        $("#helpdesk_ticket_custom_field_cf_policy_number454080_2321673").val() ==
-          "" ||
+        $(
+          "#helpdesk_ticket_custom_field_cf_policy_number454080_2321673"
+        ).val() == "" ||
         $("#helpdesk_ticket_custom_field_cf_date_of_birth_2321673").val() == ""
       ) {
-
         addErrorMessage(
           "helpdesk_ticket_custom_field_cf_policy_number454080_2321673",
           "Please fill in all fields"
@@ -765,7 +786,7 @@ $("#helpdesk_ticket_custom_field_cf_claimnames_2321673").closest(".form-group").
           "helpdesk_ticket_custom_field_cf_date_of_birth_2321673",
           "Please fill in all fields"
         );
-         // ||
+        // ||
         // $("#helpdesk_ticket_custom_field_cf_claim_number_2321673").val() == ""
         // addErrorMessage(
         //   "helpdesk_ticket_custom_field_cf_claim_number_2321673",
@@ -774,8 +795,9 @@ $("#helpdesk_ticket_custom_field_cf_claimnames_2321673").closest(".form-group").
       } else {
         //check LENGTH OF POLICY NUMBER - 7 DIGITS
         if (
-          $("#helpdesk_ticket_custom_field_cf_policy_number454080_2321673").val()
-            .length >= 7
+          $(
+            "#helpdesk_ticket_custom_field_cf_policy_number454080_2321673"
+          ).val().length >= 7
         ) {
           birthdate = $(
             "#helpdesk_ticket_custom_field_cf_date_of_birth_2321673"
@@ -795,18 +817,127 @@ $("#helpdesk_ticket_custom_field_cf_claimnames_2321673").closest(".form-group").
             let dateOfBirth = $(
               "#helpdesk_ticket_custom_field_cf_date_of_birth_2321673"
             ).val();
-            let claimNumberCheck=$(
+            let claimNumberCheck = $(
               "#helpdesk_ticket_custom_field_cf_claim_number_2321673"
             ).val();
             jQuery("#model-error-msg").addClass("d-none");
             jQuery("#model-sucess-msg").addClass("d-none");
-            if(claimNumberCheck){
-              $("#agreementModal").addClass("loader-text")
-getClaimStatus(claimNumberCheck,"#save_and_continue1")
-            }else{
+            if (claimNumberCheck) {
+              $("#agreementModal").addClass("loader-text");
+              getClaimStatus(claimNumberCheck, "#save_and_continue1");
+            } else {
               jQuery("#model-status-msg").addClass("d-none");
-          $("#agreementModal").addClass("loader-text")
-            getPolicyDetails(policyNumber, dateOfBirth, "#save_and_continue1");
+              $("#agreementModal").addClass("loader-text");
+              getPolicyDetails(
+                policyNumber,
+                dateOfBirth,
+                "#save_and_continue1"
+              );
+            }
+            //changes started for error
+            $("#save_and_continue1").attr("data-target", "#agreementModal");
+            $("#save_and_continue1").attr("data-toggle", "modal");
+            clearError([
+              "helpdesk_ticket_custom_field_cf_date_of_birth_2321673",
+              "helpdesk_ticket_custom_field_cf_policy_number454080_2321673",
+            ]);
+          } else {
+            addErrorMessage(
+              "helpdesk_ticket_custom_field_cf_date_of_birth_2321673",
+              "Invalid Birthday"
+            );
+            $("#save_and_continue1").removeAttr("data-target");
+            $("#save_and_continue1").removeAttr("data-toggle");
+          }
+        } else {
+          addErrorMessage(
+            "helpdesk_ticket_custom_field_cf_policy_number454080_2321673",
+            "Policy Number must be at least 7 digits."
+          );
+          $("#save_and_continue1").removeAttr("data-target");
+          $("#save_and_continue1").removeAttr("data-toggle");
+        }
+      }
+      if ($("#cb").prop("checked") == true) {
+        $("#continue").attr("data-dismiss", "modal");
+        //grey out continue - opposite - for different schemes
+        if ($("#title").hasClass("VHI")) {
+          $("#continue").css("background-color", "#38133E");
+        } else if ($("#title").hasClass("EasyJet")) {
+          $("#continue").css("background-color", "#FF6600");
+        } else if ($("#title").hasClass("CollinsonUK")) {
+          $("#continue").css("background-color", "#FFFFFF");
+        } else if ($("#title").hasClass("ColumbusItaly")) {
+          $("#continue").css("background-color", "#083050");
+        }
+      } else {
+        $("#continue").removeAttr("data-dismiss");
+        //grey out continue
+        $("#continue").css("background-color", "grey");
+        $("#continue").removeAttr("data-dismiss");
+      }
+    } else if ($("#title").hasClass("CollinsonUK")) {
+      if (
+        $(
+          "#helpdesk_ticket_custom_field_cf_policy_number454080_2321673"
+        ).val() == "" ||
+        $("#helpdesk_ticket_custom_field_cf_date_of_birth_2321673").val() == ""
+      ) {
+        addErrorMessage(
+          "helpdesk_ticket_custom_field_cf_policy_number454080_2321673",
+          "Please fill in all fields"
+        );
+        addErrorMessage(
+          "helpdesk_ticket_custom_field_cf_date_of_birth_2321673",
+          "Please fill in all fields"
+        );
+        // ||
+        // $("#helpdesk_ticket_custom_field_cf_claim_number_2321673").val() == ""
+        // addErrorMessage(
+        //   "helpdesk_ticket_custom_field_cf_claim_number_2321673",
+        //   "Please fill in all fields"
+        // );
+      } else {
+        //check LENGTH OF POLICY NUMBER - 7 DIGITS
+        if (
+          $(
+            "#helpdesk_ticket_custom_field_cf_policy_number454080_2321673"
+          ).val().length >= 7
+        ) {
+          birthdate = $(
+            "#helpdesk_ticket_custom_field_cf_date_of_birth_2321673"
+          ).val();
+          bday = new Date(birthdate);
+          if (today < bday) {
+            addErrorMessage(
+              "helpdesk_ticket_custom_field_cf_date_of_birth_2321673",
+              "Invalid Birthday"
+            );
+            $("#save_and_continue1").removeAttr("data-target");
+            $("#save_and_continue1").removeAttr("data-toggle");
+          } else if (today > bday) {
+            let policyNumber = $(
+              "#helpdesk_ticket_custom_field_cf_policy_number454080_2321673"
+            ).val();
+            let dateOfBirth = $(
+              "#helpdesk_ticket_custom_field_cf_date_of_birth_2321673"
+            ).val();
+            let claimNumberCheck = $(
+              "#helpdesk_ticket_custom_field_cf_claim_number_2321673"
+            ).val();
+            jQuery("#model-error-msg").addClass("d-none");
+            jQuery("#model-sucess-msg").addClass("d-none");
+            if (claimNumberCheck) {
+              $("#agreementModal").addClass("loader-text");
+              getClaimStatus(claimNumberCheck, "#save_and_continue1");
+            } else {
+              jQuery("#model-status-msg").addClass("d-none");
+              $("#agreementModal").addClass("loader-text");
+              getPolicyDetails(
+                policyNumber,
+                dateOfBirth,
+                "#save_and_continue1"
+              );
             }
             //changes started for error
             $("#save_and_continue1").attr("data-target", "#agreementModal");
@@ -851,109 +982,6 @@ getClaimStatus(claimNumberCheck,"#save_and_continue1")
         $("#continue").removeAttr("data-dismiss");
       }
     }
-   else if (
-    $("#title").hasClass("CollinsonUK") 
-  ) {
-    if (
-      $("#helpdesk_ticket_custom_field_cf_policy_number454080_2321673").val() ==
-        "" ||
-      $("#helpdesk_ticket_custom_field_cf_date_of_birth_2321673").val() == ""
-    ) {
-      addErrorMessage(
-        "helpdesk_ticket_custom_field_cf_policy_number454080_2321673",
-        "Please fill in all fields"
-      );
-      addErrorMessage(
-        "helpdesk_ticket_custom_field_cf_date_of_birth_2321673",
-        "Please fill in all fields"
-      );
-      // ||
-      // $("#helpdesk_ticket_custom_field_cf_claim_number_2321673").val() == ""
-      // addErrorMessage(
-      //   "helpdesk_ticket_custom_field_cf_claim_number_2321673",
-      //   "Please fill in all fields"
-      // );
-    } else {
-      //check LENGTH OF POLICY NUMBER - 7 DIGITS
-      if (
-        $("#helpdesk_ticket_custom_field_cf_policy_number454080_2321673").val()
-          .length >= 7
-      ) {
-        birthdate = $(
-          "#helpdesk_ticket_custom_field_cf_date_of_birth_2321673"
-        ).val();
-        bday = new Date(birthdate);
-        if (today < bday) {
-          addErrorMessage(
-            "helpdesk_ticket_custom_field_cf_date_of_birth_2321673",
-            "Invalid Birthday"
-          );
-          $("#save_and_continue1").removeAttr("data-target");
-          $("#save_and_continue1").removeAttr("data-toggle");
-        } else if (today > bday) {
-          
-          let policyNumber = $(
-            "#helpdesk_ticket_custom_field_cf_policy_number454080_2321673"
-          ).val();
-          let dateOfBirth = $(
-            "#helpdesk_ticket_custom_field_cf_date_of_birth_2321673"
-          ).val();
-          let claimNumberCheck=$(
-              "#helpdesk_ticket_custom_field_cf_claim_number_2321673"
-            ).val();
-          jQuery("#model-error-msg").addClass("d-none");
-          jQuery("#model-sucess-msg").addClass("d-none");
-          if(claimNumberCheck){
-              $("#agreementModal").addClass("loader-text")
-getClaimStatus(claimNumberCheck,"#save_and_continue1")
-            }else{
-              jQuery("#model-status-msg").addClass("d-none");
-          $("#agreementModal").addClass("loader-text")
-            getPolicyDetails(policyNumber, dateOfBirth, "#save_and_continue1");
-            }
-          //changes started for error
-          $("#save_and_continue1").attr("data-target", "#agreementModal");
-          $("#save_and_continue1").attr("data-toggle", "modal");
-          clearError([
-            "helpdesk_ticket_custom_field_cf_date_of_birth_2321673",
-            "helpdesk_ticket_custom_field_cf_policy_number454080_2321673",
-          ]);
-        } else {
-          addErrorMessage(
-            "helpdesk_ticket_custom_field_cf_date_of_birth_2321673",
-            "Invalid Birthday"
-          );
-          $("#save_and_continue1").removeAttr("data-target");
-          $("#save_and_continue1").removeAttr("data-toggle");
-        }
-      } else {
-        addErrorMessage(
-          "helpdesk_ticket_custom_field_cf_policy_number454080_2321673",
-          "Policy Number must be at least 7 digits."
-        );
-        $("#save_and_continue1").removeAttr("data-target");
-        $("#save_and_continue1").removeAttr("data-toggle");
-      }
-    }
-    if ($("#cb").prop("checked") == true) {
-      $("#continue").attr("data-dismiss", "modal");
-      //grey out continue - opposite - for different schemes
-      if ($("#title").hasClass("VHI")) {
-        $("#continue").css("background-color", "#38133E");
-      } else if ($("#title").hasClass("EasyJet")) {
-        $("#continue").css("background-color", "#FF6600");
-      } else if ($("#title").hasClass("CollinsonUK")) {
-        $("#continue").css("background-color", "#FFFFFF");
-      } else if ($("#title").hasClass("ColumbusItaly")) {
-        $("#continue").css("background-color", "#083050");
-      }
-    } else {
-      $("#continue").removeAttr("data-dismiss");
-      //grey out continue
-      $("#continue").css("background-color", "grey");
-      $("#continue").removeAttr("data-dismiss");
-    }
-  }
   });
   function getPolicyDetails(policyNumber, dateOfBirth, fieldId) {
     console.log("---> policy inside token", AuthorizationKey);
@@ -968,7 +996,9 @@ getClaimStatus(claimNumberCheck,"#save_and_continue1")
       redirect: "follow",
     };
     fetch(
-      "https://"+domainURL+"/api/policy?policyNumber=" +
+      "https://" +
+        domainURL +
+        "/api/policy?policyNumber=" +
         policyNumber +
         "%25&dob=" +
         dateOfBirth,
@@ -983,7 +1013,7 @@ getClaimStatus(claimNumberCheck,"#save_and_continue1")
         return response.json();
       })
       .then(function (result) {
-          $("#agreementModal").removeClass("loader-text")
+        $("#agreementModal").removeClass("loader-text");
         console.log("Policy details", result);
         if (flag) {
           console.log("Need to show error ", statusCode);
@@ -999,7 +1029,7 @@ getClaimStatus(claimNumberCheck,"#save_and_continue1")
             $("#save_and_continue1").removeAttr("data-target");
             $("#save_and_continue1").removeAttr("data-toggle");
             console.log("error 404 -->", result.body);
-          }else if(statusCode == 403){
+          } else if (statusCode == 403) {
             console.log("--->", result.message, statusCode);
             jQuery("#model-error-msg").removeClass("d-none");
             jQuery("#model-error-msg .ins-modal-body-content").text(
@@ -1020,98 +1050,100 @@ getClaimStatus(claimNumberCheck,"#save_and_continue1")
       .catch((error) => console.log(error));
   }
   function getPolicyDetailsByPostcode(policyNumber, postCode, fieldId) {
-      console.log("---> policy inside token", AuthorizationKey);
-      var flag = false;
-      let statusCode;
-      var myHeaders = new Headers();
-      myHeaders.append("Cache-Control", "no-cache");
-      myHeaders.append("Authorization", AuthorizationKey);
-      var requestOptions = {
-        method: "GET",
-        headers: myHeaders,
-        redirect: "follow",
-      };
-      fetch(
-        "https://"+domainURL+"/api/policy?policyNumber=" +
-        policyNumber+
-          "%25&postCode=" +
-          postCode,
-        requestOptions
-      )
-        .then((response) => {
-          console.log(response);
-          statusCode = response.status;
-          if (!response.ok) {
-            flag = true;
+    console.log("---> policy inside token", AuthorizationKey);
+    var flag = false;
+    let statusCode;
+    var myHeaders = new Headers();
+    myHeaders.append("Cache-Control", "no-cache");
+    myHeaders.append("Authorization", AuthorizationKey);
+    var requestOptions = {
+      method: "GET",
+      headers: myHeaders,
+      redirect: "follow",
+    };
+    fetch(
+      "https://" +
+        domainURL +
+        "/api/policy?policyNumber=" +
+        policyNumber +
+        "%25&postCode=" +
+        postCode,
+      requestOptions
+    )
+      .then((response) => {
+        console.log(response);
+        statusCode = response.status;
+        if (!response.ok) {
+          flag = true;
+        }
+        return response.json();
+      })
+      .then(function (result) {
+        $("#agreementModal").removeClass("loader-text");
+        console.log("Policy details", result);
+        if (flag) {
+          console.log("Need to show error ", statusCode);
+          if (statusCode == 401) {
+            console.log("error", result.error);
+            getJWTToken(fieldId);
+          } else if (statusCode == 404) {
+            jQuery("#model-error-msg").removeClass("d-none");
+            jQuery("#model-error-msg .ins-modal-body-content").text(
+              result.body
+            );
+            addErrorMessage("api_call_failed_1", result.body);
+            $("#save_and_continue1").removeAttr("data-target");
+            $("#save_and_continue1").removeAttr("data-toggle");
+            console.log("error 404 -->", result.body);
+          } else if (statusCode == 403) {
+            console.log("--->", result.message, statusCode);
+            jQuery("#model-error-msg").removeClass("d-none");
+            jQuery("#model-error-msg .ins-modal-body-content").text(
+              result.message
+            );
+            addErrorMessage("api_call_failed_1", result.message);
+            $("#save_and_continue1").removeAttr("data-target");
+            $("#save_and_continue1").removeAttr("data-toggle");
           }
-          return response.json();
-        })
-        .then(function (result) {
-            $("#agreementModal").removeClass("loader-text")
-          console.log("Policy details", result);
-          if (flag) {
-            console.log("Need to show error ", statusCode);
-            if (statusCode == 401) {
-              console.log("error", result.error);
-              getJWTToken(fieldId);
-            } else if (statusCode == 404) {
-              jQuery("#model-error-msg").removeClass("d-none");
-              jQuery("#model-error-msg .ins-modal-body-content").text(
-                result.body
-              );
-              addErrorMessage("api_call_failed_1", result.body);
-              $("#save_and_continue1").removeAttr("data-target");
-              $("#save_and_continue1").removeAttr("data-toggle");
-              console.log("error 404 -->", result.body);
-            }else if(statusCode == 403){
-              console.log("--->", result.message, statusCode);
-              jQuery("#model-error-msg").removeClass("d-none");
-              jQuery("#model-error-msg .ins-modal-body-content").text(
-                result.message
-              );
-              addErrorMessage("api_call_failed_1", result.message);
-              $("#save_and_continue1").removeAttr("data-target");
-              $("#save_and_continue1").removeAttr("data-toggle");
-            }
-          } else {
-            let element = ["api_call_failed_1"];
-            clearError(element);
-            buildPolicyUI(result);
-  
-            jQuery("#model-sucess-msg").removeClass("d-none");
-          }
-        })
-        .catch((error) => console.log(error));
-    }
-  function getClaimStatus(claimId,fieldId){
-var myHeaders = new Headers();
-  myHeaders.append("Cache-Control", "no-cache");
-  myHeaders.append("Authorization", AuthorizationKey);
-  var requestOptions = {
-    method: "GET",
-    headers: myHeaders,
-    redirect: "follow",
-  };
-  fetch(
-    "https://"+domainURL+"/api/claim/"+claimId+"/status",
-    requestOptions
-  )
-    .then((response) => response.text())
-    .then(function (result) {
-      $("#agreementModal").removeClass("loader-text")
-      console.log("claim status  -->",result);
-    let claimStatus=JSON.parse(result).ClaimStatus;
-      if (JSON.parse(result).status == 401) {
-        getJWTToken(fieldId);
-      }else{
-          console.log("claim status  -->",claimStatus);
+        } else {
+          let element = ["api_call_failed_1"];
+          clearError(element);
+          buildPolicyUI(result);
+
+          jQuery("#model-sucess-msg").removeClass("d-none");
+        }
+      })
+      .catch((error) => console.log(error));
+  }
+  function getClaimStatus(claimId, fieldId) {
+    var myHeaders = new Headers();
+    myHeaders.append("Cache-Control", "no-cache");
+    myHeaders.append("Authorization", AuthorizationKey);
+    var requestOptions = {
+      method: "GET",
+      headers: myHeaders,
+      redirect: "follow",
+    };
+    fetch(
+      "https://" + domainURL + "/api/claim/" + claimId + "/status",
+      requestOptions
+    )
+      .then((response) => response.text())
+      .then(function (result) {
+        $("#agreementModal").removeClass("loader-text");
+        console.log("claim status  -->", result);
+        let claimStatus = JSON.parse(result).ClaimStatus;
+        if (JSON.parse(result).status == 401) {
+          getJWTToken(fieldId);
+        } else {
+          console.log("claim status  -->", claimStatus);
           jQuery("#model-status-msg").removeClass("d-none");
           jQuery("#model-status-msg .ins-modal-body-content").text(
-              "The Claim status is "+ claimStatus
+            "The Claim status is " + claimStatus
           );
-      }
-    })
-    .catch((error) => console.log("error", error));
+        }
+      })
+      .catch((error) => console.log("error", error));
   }
   function buildPolicyUI(policyData) {
     let policyDetails = policyData.Insured;
@@ -1195,59 +1227,59 @@ var myHeaders = new Headers();
 
     $("#section-1-button").children(":first").addClass("fa-solid");
     $("#section-1-button").children(":first").addClass("fa-pen");
-    $("#section-1-button").css("background-color","#524954");
+    $("#section-1-button").css("background-color", "#524954");
   });
   function add_section_1() {
+    $("<strong id='section_1_header'>" + titles[0] + "</strong>").insertAfter(
+      "#summary_intro"
+    );
+    $("<hr class='summary_divider' id='great_line_1'>").insertAfter(
+      "#section_1_header"
+    );
+    //for loops
+    var number_elements = $("#collapseSection1")
+      .children(".card-body.ins-card")
+      .children("div").length;
+
+    for (let i = 1; i < number_elements + 1; i++) {
+      var label = $("#collapseSection1")
+        .children(".card-body.ins-card")
+        .children("div:nth-child(" + i + ")")
+        .children("label")
+        .text();
+      var value = $("#collapseSection1")
+        .children(".card-body.ins-card")
+        .children("div:nth-child(" + i + ")")
+        .children("input")
+        .val();
       $(
-        "<strong id='section_1_header'>" + titles[0] + "</strong>"
-      ).insertAfter("#summary_intro");
-      $("<hr class='summary_divider' id='great_line_1'>").insertAfter(
-        "#section_1_header"
-      );
-      //for loops
-      var number_elements = $("#collapseSection1")
-        .children(".card-body.ins-card")
-        .children("div").length;
-
-      for (let i = 1; i < number_elements + 1; i++) {
-        var label = $("#collapseSection1")
-          .children(".card-body.ins-card")
-          .children("div:nth-child(" + i + ")")
-          .children("label")
-          .text();
-        var value = $("#collapseSection1")
-          .children(".card-body.ins-card")
-          .children("div:nth-child(" + i + ")")
-          .children("input")
-          .val();
-        $(
-          "<p class='section_1_line'>" + label + " : " + value + "</p>"
-        ).insertBefore("#great_line_1");
-      }
+        "<p class='section_1_line'>" + label + " : " + value + "</p>"
+      ).insertBefore("#great_line_1");
     }
+  }
 
-    function update_section_1() {
-      //for loops
-      var number_elements = $("#collapseSection1")
+  function update_section_1() {
+    //for loops
+    var number_elements = $("#collapseSection1")
+      .children(".card-body.ins-card")
+      .children("div").length;
+    $("p").remove(".section_1_line");
+    for (let i = 1; i < number_elements + 1; i++) {
+      var label = $("#collapseSection1")
         .children(".card-body.ins-card")
-        .children("div").length;
-      $("p").remove(".section_1_line");
-      for (let i = 1; i < number_elements + 1; i++) {
-        var label = $("#collapseSection1")
-          .children(".card-body.ins-card")
-          .children("div:nth-child(" + i + ")")
-          .children("label")
-          .text();
-        var value = $("#collapseSection1")
-          .children(".card-body.ins-card")
-          .children("div:nth-child(" + i + ")")
-          .children("input")
-          .val();
-        $(
-          "<p class='section_1_line'>" + label + " : " + value + "</p>"
-        ).insertBefore("#great_line_1");
-      }
+        .children("div:nth-child(" + i + ")")
+        .children("label")
+        .text();
+      var value = $("#collapseSection1")
+        .children(".card-body.ins-card")
+        .children("div:nth-child(" + i + ")")
+        .children("input")
+        .val();
+      $(
+        "<p class='section_1_line'>" + label + " : " + value + "</p>"
+      ).insertBefore("#great_line_1");
     }
+  }
   //____________________________________________________SECTION 1 End - Your Policy______________________________________________
   //continue section 2
   var emailAddress = "helpdesk_ticket_custom_field_cf_email_address_2321673";
@@ -1289,11 +1321,10 @@ var myHeaders = new Headers();
             $("#section-2-button").children(":first").removeClass("fa-plus");
             $("#section-2-button").children(":first").removeClass("fa-minus");
             $("#section-2-button").children(":first").removeClass("fas");
-        
+
             $("#section-2-button").children(":first").addClass("fa-solid");
             $("#section-2-button").children(":first").addClass("fa-pen");
-            $("#section-2-button").css("background-color","#524954");
-        
+            $("#section-2-button").css("background-color", "#524954");
           }
 
           //remove errors
@@ -1303,10 +1334,9 @@ var myHeaders = new Headers();
           $("#helpdesk_ticket_email").val(
             $("#helpdesk_ticket_custom_field_cf_email_address_2321673").val()
           );
- 
+
           if ($("#section_2_header").length) {
             update_section_2();
-
           } else {
             add_section_2();
           }
@@ -1341,62 +1371,54 @@ var myHeaders = new Headers();
     }
   });
   function add_section_2() {
-      $(
-        "<strong id='section_2_header'>" + titles[1] + "</strong>"
-      ).insertAfter("#great_line_1");
-      $("<hr class='summary_divider' id='great_line_2'>").insertAfter(
-        "#section_2_header"
-      );
-      //for loops
+    $("<strong id='section_2_header'>" + titles[1] + "</strong>").insertAfter(
+      "#great_line_1"
+    );
+    $("<hr class='summary_divider' id='great_line_2'>").insertAfter(
+      "#section_2_header"
+    );
+    //for loops
 
-      $("#collapseSection2 input").each(function () {
-        if ($(this).hasClass("check-box")) {
-          var label = $(this).closest(".form-group").find("label").text();
-          var value = $(this).val();
-          if ($(this).prop("checked")) {
-            $(
-              "<p class='section_2_line'>" +
-                label +
-                " : " +
-                value +
-                "</p>"
-            ).insertBefore("#great_line_2");
-          }
-        } else {
-          var label = $(this).closest(".form-group").find("label").text();
-          var value = $(this).val();
+    $("#collapseSection2 input").each(function () {
+      if ($(this).hasClass("check-box")) {
+        var label = $(this).closest(".form-group").find("label").text();
+        var value = $(this).val();
+        if ($(this).prop("checked")) {
           $(
             "<p class='section_2_line'>" + label + " : " + value + "</p>"
           ).insertBefore("#great_line_2");
         }
-      });
-    }
+      } else {
+        var label = $(this).closest(".form-group").find("label").text();
+        var value = $(this).val();
+        $(
+          "<p class='section_2_line'>" + label + " : " + value + "</p>"
+        ).insertBefore("#great_line_2");
+      }
+    });
+  }
 
-    function update_section_2() {
-      //for loops
-      $("p").remove(".section_2_line");
-      $("#collapseSection2 input").each(function () {
-        if ($(this).hasClass("check-box")) {
-          var label = $(this).closest(".form-group").find("label").text();
-          var value = $(this).val();
-          if ($(this).prop("checked")) {
-            $(
-              "<p class='section_2_line'>" +
-                label +
-                " : " +
-                value +
-                "</p>"
-            ).insertBefore("#great_line_2");
-          }
-        } else {
-          var label = $(this).closest(".form-group").find("label").text();
-          var value = $(this).val();
+  function update_section_2() {
+    //for loops
+    $("p").remove(".section_2_line");
+    $("#collapseSection2 input").each(function () {
+      if ($(this).hasClass("check-box")) {
+        var label = $(this).closest(".form-group").find("label").text();
+        var value = $(this).val();
+        if ($(this).prop("checked")) {
           $(
             "<p class='section_2_line'>" + label + " : " + value + "</p>"
           ).insertBefore("#great_line_2");
         }
-      });
-    }
+      } else {
+        var label = $(this).closest(".form-group").find("label").text();
+        var value = $(this).val();
+        $(
+          "<p class='section_2_line'>" + label + " : " + value + "</p>"
+        ).insertBefore("#great_line_2");
+      }
+    });
+  }
   //____________________________________________________SECTION 2 End  -  About You ______________________________________________
   //section 3 continue
   var ClaimReason = [
@@ -4127,6 +4149,36 @@ var myHeaders = new Headers();
   /* 5.5 End */
 
   /* 5.6 Start */
+  // var WhoMedicalExpenses = [
+  //   {
+  //     id: "Insured",
+  //     name_eng: "Myself",
+  //     name_ita: "Me stessa",
+  //   },
+  //   {
+  //     id: "AnotherInsured",
+  //     name_eng: "Another travelling insured",
+  //     name_ita: "Un altro viaggio assicurato",
+  //   },
+  // ];
+  // var MedicalInjuryIllness = [
+  //   {
+  //     id: "Illness",
+  //     name_eng: "Illness",
+  //     name_ita: "Malattia",
+  //   },
+  //   {
+  //     id: "Injury",
+  //     name_eng: "Injury",
+  //     name_ita: "Infortunio",
+  //   },
+  //   {
+  //     id: "Coronavirus",
+  //     name_eng: "Coronavirus (COVID-19)",
+  //     name_ita: "Coronavirus (COVID-19)",
+  //   },
+  // ];
+
   var WhoMedicalExpenses = [
     {
       id: "Insured",
@@ -4137,6 +4189,11 @@ var myHeaders = new Headers();
       id: "AnotherInsured",
       name_eng: "Another travelling insured",
       name_ita: "Un altro viaggio assicurato",
+    },
+    {
+      id: "Other",
+      name_eng: "Other",
+      name_ita: "Altro",
     },
   ];
   var MedicalInjuryIllness = [
@@ -4155,7 +4212,13 @@ var myHeaders = new Headers();
       name_eng: "Coronavirus (COVID-19)",
       name_ita: "Coronavirus (COVID-19)",
     },
+    {
+      id: "Dental",
+      name_eng: "Dental",
+      name_ita: "Dentale",
+    },
   ];
+
   var MedicalExpensesCondition = MedicalCondition;
   var MedicalFirstExpenseType = [
     {
@@ -4372,9 +4435,9 @@ var myHeaders = new Headers();
   /* 5.10 Start */
   var TransportationMethod = [
     {
-      id: "Areoplane",
-      name_eng: "Areoplane",
-      name_ita: "Areoplano",
+      id: "Aeroplane",
+      name_eng: "Aeroplane",
+      name_ita: "Aeroplano",
     },
     {
       id: "Ferry",
@@ -4434,8 +4497,13 @@ var myHeaders = new Headers();
       name_ita: "Crew or Staff shortage",
     },
   ];
-  // var WhichJourneyNew = [{"id":"Connecting","name_eng":"Connecting journey","name_ita":"Viaggio di collegamento"},{"id":"Inbound","name_eng":"Final inbound journey to your Home Country","name_ita":"Ultima tratta di ritorno al Suo paese di residenza"},{"id":"Outbound","name_eng":"First outbound journey from your Home Country","name_ita":"Ultima tratta del viaggio di ritorno alla tua nazione di residenza"}]
+
   var WhichJourneyNew = [
+    {
+      id: "Connecting",
+      name_eng: "Connecting journey",
+      name_ita: "Volo di collegamento",
+    },
     {
       id: "Inbound",
       name_eng: "On the return journey back home",
@@ -4509,13 +4577,18 @@ var myHeaders = new Headers();
       name_ita:
         "Ultima tratta del viaggio di ritorno alla tua nazione di residenza",
     },
+    {
+      id: "Connection",
+      name_eng: "Connecting journey",
+      name_ita: "Viaggio di collegamento",
+    },
   ];
 
   var TransportationMethodDelayed = [
     {
-      id: "Areoplane",
-      name_eng: "Areoplane",
-      name_ita: "Areoplano",
+      id: "Aeroplane",
+      name_eng: "Aeroplane",
+      name_ita: "Aeroplano",
     },
     {
       id: "Ferry",
@@ -5091,12 +5164,11 @@ var myHeaders = new Headers();
           );
           jQuery("#claim-error-msg").addClass("d-none");
           jQuery("#claim-sucess-msg").addClass("d-none");
-          $("#ClaimAPIModal").addClass("loader-text")
+          $("#ClaimAPIModal").addClass("loader-text");
           createClaimRequest(claimObject, "#save_and_continue3");
         }
         // we will make an api call to claim and sucess response open
         $("#ClaimAPIModal").modal("toggle");
-
         if ($("#section_3_header").length) {
           update_section_3();
         } else {
@@ -5122,106 +5194,106 @@ var myHeaders = new Headers();
     }
   });
   function add_section_3() {
-      $(
-        "<strong id='section_3_header'>" + titles[2] + "</strong>"
-      ).insertAfter("#great_line_2");
-      $("<hr class='summary_divider' id='great_line_3'>").insertAfter(
-        "#section_3_header"
-      );
-      var number_elements = $("#collapseSection3")
-        .children(".card-body.ins-card")
-        .children("div").length;
-      for (let i = 1; i < number_elements + 1; i++) {
-        if (
-          $("#collapseSection3")
-            .children(".card-body.ins-card")
-            .children("div:nth-child(" + i + ")")
-            .children(".choices.form-select").length
-        ) {
-          var label_dropdown = $("#collapseSection3")
-            .children(".card-body.ins-card")
-            .children("div:nth-child(" + i + ")")
-            .children("label")
-            .text();
-          var dropdown_value = $("#collapseSection3")
-            .children(".card-body.ins-card")
-            .children("div:nth-child(" + i + ")")
-            .children(".choices.form-select")
-            .children(".choices__inner")
-            .children("select")
-            .val();
-          $(
-            "<p class='section_3_line'>" +
-              label_dropdown +
-              " : " +
-              dropdown_value +
-              "</p>"
-          ).insertBefore("#great_line_3");
-        } else {
-          var label = $("#collapseSection3")
-            .children(".card-body.ins-card")
-            .children("div:nth-child(" + i + ")")
-            .children("label")
-            .text();
-          var value = $("#collapseSection3")
-            .children(".card-body.ins-card")
-            .children("div:nth-child(" + i + ")")
-            .children("input")
-            .val();
-          $(
-            "<p class='section_3_line'>" + label + " : " + value + "</p>"
-          ).insertBefore("#great_line_3");
-        }
+    $("<strong id='section_3_header'>" + titles[2] + "</strong>").insertAfter(
+      "#great_line_2"
+    );
+    $("<hr class='summary_divider' id='great_line_3'>").insertAfter(
+      "#section_3_header"
+    );
+    var number_elements = $("#collapseSection3")
+      .children(".card-body.ins-card")
+      .children("div").length;
+    for (let i = 1; i < number_elements + 1; i++) {
+      if (
+        $("#collapseSection3")
+          .children(".card-body.ins-card")
+          .children("div:nth-child(" + i + ")")
+          .children(".choices.form-select").length
+      ) {
+        var label_dropdown = $("#collapseSection3")
+          .children(".card-body.ins-card")
+          .children("div:nth-child(" + i + ")")
+          .children("label")
+          .text();
+        var dropdown_value = $("#collapseSection3")
+          .children(".card-body.ins-card")
+          .children("div:nth-child(" + i + ")")
+          .children(".choices.form-select")
+          .children(".choices__inner")
+          .children("select")
+          .val();
+        $(
+          "<p class='section_3_line'>" +
+            label_dropdown +
+            " : " +
+            dropdown_value +
+            "</p>"
+        ).insertBefore("#great_line_3");
+      } else {
+        var label = $("#collapseSection3")
+          .children(".card-body.ins-card")
+          .children("div:nth-child(" + i + ")")
+          .children("label")
+          .text();
+        var value = $("#collapseSection3")
+          .children(".card-body.ins-card")
+          .children("div:nth-child(" + i + ")")
+          .children("input")
+          .val();
+        $(
+          "<p class='section_3_line'>" + label + " : " + value + "</p>"
+        ).insertBefore("#great_line_3");
       }
     }
-    function update_section_3() {
-      var number_elements = $("#collapseSection3")
-        .children(".card-body.ins-card")
-        .children("div").length;
-      $("p").remove(".section_3_line");
-      for (let i = 1; i < number_elements + 1; i++) {
-        if (
-          $("#collapseSection3")
-            .children(".card-body.ins-card")
-            .children("div:nth-child(" + i + ")")
-            .children(".choices.form-select").length
-        ) {
-          var label_dropdown = $("#collapseSection3")
-            .children(".card-body.ins-card")
-            .children("div:nth-child(" + i + ")")
-            .children("label")
-            .text();
-          var dropdown_value = $("#collapseSection3")
-            .children(".card-body.ins-card")
-            .children("div:nth-child(" + i + ")")
-            .children(".choices.form-select")
-            .children(".choices__inner")
-            .children("select")
-            .val();
-          $(
-            "<p class='section_3_line'>" +
-              label_dropdown +
-              " : " +
-              dropdown_value +
-              "</p>"
-          ).insertBefore("#great_line_3");
-        } else {
-          var label = $("#collapseSection3")
-            .children(".card-body.ins-card")
-            .children("div:nth-child(" + i + ")")
-            .children("label")
-            .text();
-          var value = $("#collapseSection3")
-            .children(".card-body.ins-card")
-            .children("div:nth-child(" + i + ")")
-            .children("input")
-            .val();
-          $(
-            "<p class='section_3_line'>" + label + " : " + value + "</p>"
-          ).insertBefore("#great_line_3");
-        }
+  }
+  function update_section_3() {
+    var number_elements = $("#collapseSection3")
+      .children(".card-body.ins-card")
+      .children("div").length;
+    $("p").remove(".section_3_line");
+    for (let i = 1; i < number_elements + 1; i++) {
+      if (
+        $("#collapseSection3")
+          .children(".card-body.ins-card")
+          .children("div:nth-child(" + i + ")")
+          .children(".choices.form-select").length
+      ) {
+        var label_dropdown = $("#collapseSection3")
+          .children(".card-body.ins-card")
+          .children("div:nth-child(" + i + ")")
+          .children("label")
+          .text();
+        var dropdown_value = $("#collapseSection3")
+          .children(".card-body.ins-card")
+          .children("div:nth-child(" + i + ")")
+          .children(".choices.form-select")
+          .children(".choices__inner")
+          .children("select")
+          .val();
+        $(
+          "<p class='section_3_line'>" +
+            label_dropdown +
+            " : " +
+            dropdown_value +
+            "</p>"
+        ).insertBefore("#great_line_3");
+      } else {
+        var label = $("#collapseSection3")
+          .children(".card-body.ins-card")
+          .children("div:nth-child(" + i + ")")
+          .children("label")
+          .text();
+        var value = $("#collapseSection3")
+          .children(".card-body.ins-card")
+          .children("div:nth-child(" + i + ")")
+          .children("input")
+          .val();
+        $(
+          "<p class='section_3_line'>" + label + " : " + value + "</p>"
+        ).insertBefore("#great_line_3");
       }
     }
+  }
   function createClaimRequest(claimObject, fieldId) {
     let flag = false;
     let statusCode;
@@ -5240,7 +5312,7 @@ var myHeaders = new Headers();
       redirect: "follow",
     };
 
-    fetch("https://"+domainURL+"/api/claim", requestOptions)
+    fetch("https://" + domainURL + "/api/claim", requestOptions)
       .then((response) => {
         console.log(response.ok, response.status, response);
         statusCode = response.status;
@@ -5251,7 +5323,7 @@ var myHeaders = new Headers();
         return response.json();
       })
       .then(function (result) {
-          $("#ClaimAPIModal").removeClass("loader-text")
+        $("#ClaimAPIModal").removeClass("loader-text");
         console.log("--->", result);
         if (flag) {
           console.log("error--->", result.status);
@@ -5287,7 +5359,9 @@ var myHeaders = new Headers();
           ClaimInitiatedNumber = result.ClaimNumber;
           console.log(ClaimInitiatedNumber);
           $("#helpdesk_ticket_subject").val(ClaimInitiatedNumber);
-          $("#helpdesk_ticket_custom_field_cf_claim_number_2321673").val(ClaimInitiatedNumber)
+          $("#helpdesk_ticket_custom_field_cf_claim_number_2321673").val(
+            ClaimInitiatedNumber
+          );
           $(".claim-number").empty();
           $(".claim-number").append(
             `Your ClaimNumber is ${ClaimInitiatedNumber}`
@@ -5328,7 +5402,6 @@ var myHeaders = new Headers();
   $("#next").click(function () {
     $("#ClaimAPIModal").modal("toggle");
 
-
     //close current, open next
     open_next(3);
 
@@ -5350,54 +5423,56 @@ var myHeaders = new Headers();
     $("#section-3-button").children(":first").removeClass("fa-minus");
     $("#section-3-button").children(":first").addClass("fa-check");
 
-    $("#section-1-button").css('background-color','#4DC367')
-    $("#section-2-button").css('background-color','#4DC367')
-    $("#section-3-button").css('background-color','#4DC367')
-
+    $("#section-1-button").css("background-color", "#4DC367");
+    $("#section-2-button").css("background-color", "#4DC367");
+    $("#section-3-button").css("background-color", "#4DC367");
   });
   //____________________________________________________________________________________________________________________
   $("#save_draft_4").click(function () {
-      let saveDetails={};
-      var checkArray = [];
-      var nameArray=[];
-      if ($("input[data-ispolicyholder='true']:checked").length) {
-          saveDetails["MainContactClientId"] = $(
-          "input[data-ispolicyholder='true']:checked"
-        ).attr("data-clientId");
-        $("input[name='insured_1']:checked").each(function () {
+    let saveDetails = {};
+    var checkArray = [];
+    var nameArray = [];
+    if ($("input[data-ispolicyholder='true']:checked").length) {
+      saveDetails["MainContactClientId"] = $(
+        "input[data-ispolicyholder='true']:checked"
+      ).attr("data-clientId");
+      $("input[name='insured_1']:checked").each(function () {
+        checkArray.push($(this).attr("data-clientid"));
+        nameArray.push($(this).val() + " " + $(this).attr("data-lastname"));
+      });
+      checkArray = checkArray.filter(function (val) {
+        return saveDetails["MainContactClientId"].indexOf(val) == -1;
+      });
+      checkArray = checkArray.filter(
+        (val) => !saveDetails["MainContactClientId"].includes(val)
+      );
+
+      saveDetails["OtherInsuredClientIds"] = checkArray;
+    } else {
+      $("input[name='insured_1']:checked").each(function (index) {
+        if (index == 0) {
+          saveDetails["MainContactClientId"] = $(this).attr("data-clientid");
+          nameArray.push($(this).val() + " " + $(this).attr("data-lastname"));
+        } else {
           checkArray.push($(this).attr("data-clientid"));
-          nameArray.push($(this).val()+" "+$(this).attr("data-lastname"))
-        });
-        checkArray = checkArray.filter(function (val) {
-          return saveDetails["MainContactClientId"].indexOf(val) == -1;
-        });
-        checkArray = checkArray.filter(
-          (val) => !saveDetails["MainContactClientId"].includes(val)
-        );
-        
-        saveDetails["OtherInsuredClientIds"] = checkArray;
-      } else {
-        $("input[name='insured_1']:checked").each(function (index) {
-          if (index == 0) {
-              saveDetails["MainContactClientId"] = $(this).attr("data-clientid");
-              nameArray.push($(this).val()+" "+$(this).attr("data-lastname"))
-          } else {
-              checkArray.push($(this).attr("data-clientid"));
-          }
-        });
-        saveDetails["OtherInsuredClientIds"] = checkArray;
-      }
-      console.log("---------",saveDetails);
-      console.log(saveDetails.MainContactClientId)
-      console.log(saveDetails.OtherInsuredClientIds)
-      console.log(nameArray);
-      $("#helpdesk_ticket_custom_field_cf_mainclientid_2321673").val(saveDetails.MainContactClientId);
-$("#helpdesk_ticket_custom_field_cf_otherclientid_2321673").val(saveDetails.OtherInsuredClientIds);
-$("#helpdesk_ticket_custom_field_cf_claimnames_2321673").val(nameArray);
-       $(".new-ticket-submit-button").trigger("click");
+        }
+      });
+      saveDetails["OtherInsuredClientIds"] = checkArray;
+    }
+    console.log("---------", saveDetails);
+    console.log(saveDetails.MainContactClientId);
+    console.log(saveDetails.OtherInsuredClientIds);
+    console.log(nameArray);
+    $("#helpdesk_ticket_custom_field_cf_mainclientid_2321673").val(
+      saveDetails.MainContactClientId
+    );
+    $("#helpdesk_ticket_custom_field_cf_otherclientid_2321673").val(
+      saveDetails.OtherInsuredClientIds
+    );
+    $("#helpdesk_ticket_custom_field_cf_claimnames_2321673").val(nameArray);
+    $(".new-ticket-submit-button").trigger("click");
   });
   $("#save_and_continue4").click(function () {
-
     if ($("#section_4_header").length) {
       console.log("update section ---->");
       update_section_4();
@@ -5406,218 +5481,215 @@ $("#helpdesk_ticket_custom_field_cf_claimnames_2321673").val(nameArray);
       console.log("add section ---->");
     }
 
-
     //close current section. open next
     open_next(4);
     $("#section-4-button").children(":first").removeClass("fa-minus");
     $("#section-4-button").children(":first").removeClass("fa-plus");
     $("#section-4-button").children(":first").addClass("fa-pen");
-    $("#section-4-button").css("background-color","#524954");
-  
-
+    $("#section-4-button").css("background-color", "#524954");
   });
   function add_section_4() {
-      $("<strong id='section_4_header'>" + titles[3] + "</strong>").insertAfter(
-        "#great_line_3"
-      );
-      $("<hr class='summary_divider' id='great_line_4'>").insertAfter(
-        "#section_4_header"
-      );
-      //for loops
-      var number_elements = $("#collapseSection4")
-        .children(".card-body.ins-card")
-        .children(
-          "div.helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
-        )
-        .children(".form-group").length;
+    $("<strong id='section_4_header'>" + titles[3] + "</strong>").insertAfter(
+      "#great_line_3"
+    );
+    $("<hr class='summary_divider' id='great_line_4'>").insertAfter(
+      "#section_4_header"
+    );
+    //for loops
+    var number_elements = $("#collapseSection4")
+      .children(".card-body.ins-card")
+      .children(
+        "div.helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
+      )
+      .children(".form-group").length;
 
-      for (let i = 1; i < number_elements + 1; i++) {
-        if (
-          $("#collapseSection4")
-            .children(".card-body.ins-card")
-            .children(
-              ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
-            )
-            .children("div:nth-child(" + i + ")")
-            .children(".choices.form-select").length
-        ) {
-          var label = $("#collapseSection4")
-            .children(".card-body.ins-card")
-            .children(
-              ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
-            )
-            .children("div:nth-child(" + i + ")")
-            .children("label")
-            .text();
-          var value = $("#collapseSection4")
-            .children(".card-body.ins-card")
-            .children(
-              ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
-            )
-            .children("div:nth-child(" + i + ")")
-            .children(".choices.form-select")
-            .children(".choices__inner")
-            .children("select")
-            .val();
-          if (value != "") {
-            $(
-              "<p class='section_4_line'>" + label + " : " + value + "</p>"
-            ).insertBefore("#great_line_4");
-          }
-        } else if (
-          $("#collapseSection4")
-            .children(".card-body.ins-card")
-            .children(
-              ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
-            )
-            .children("div:nth-child(" + i + ")")
-            .children("textarea").length
-        ) {
-          var label = $("#collapseSection4")
-            .children(".card-body.ins-card")
-            .children(
-              ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
-            )
-            .children("div:nth-child(" + i + ")")
-            .children("label")
-            .text();
-          var value = $("#collapseSection4")
-            .children(".card-body.ins-card")
-            .children(
-              ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
-            )
-            .children("div:nth-child(" + i + ")")
-            .children("textarea")
-            .val();
-          if (value != "") {
-            $(
-              "<p class='section_4_line'>" + label + " : " + value + "</p>"
-            ).insertBefore("#great_line_4");
-          }
-        } else {
-          var label = $("#collapseSection4")
-            .children(".card-body.ins-card")
-            .children(
-              ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
-            )
-            .children("div:nth-child(" + i + ")")
-            .children("label")
-            .text();
-          var value = $("#collapseSection4")
-            .children(".card-body.ins-card")
-            .children(
-              ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
-            )
-            .children("div:nth-child(" + i + ")")
-            .children("input")
-            .val();
-          if (value != "") {
-            $(
-              "<p class='section_4_line'>" + label + " : " + value + "</p>"
-            ).insertBefore("#great_line_4");
-          }
+    for (let i = 1; i < number_elements + 1; i++) {
+      if (
+        $("#collapseSection4")
+          .children(".card-body.ins-card")
+          .children(
+            ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
+          )
+          .children("div:nth-child(" + i + ")")
+          .children(".choices.form-select").length
+      ) {
+        var label = $("#collapseSection4")
+          .children(".card-body.ins-card")
+          .children(
+            ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
+          )
+          .children("div:nth-child(" + i + ")")
+          .children("label")
+          .text();
+        var value = $("#collapseSection4")
+          .children(".card-body.ins-card")
+          .children(
+            ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
+          )
+          .children("div:nth-child(" + i + ")")
+          .children(".choices.form-select")
+          .children(".choices__inner")
+          .children("select")
+          .val();
+        if (value != "") {
+          $(
+            "<p class='section_4_line'>" + label + " : " + value + "</p>"
+          ).insertBefore("#great_line_4");
+        }
+      } else if (
+        $("#collapseSection4")
+          .children(".card-body.ins-card")
+          .children(
+            ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
+          )
+          .children("div:nth-child(" + i + ")")
+          .children("textarea").length
+      ) {
+        var label = $("#collapseSection4")
+          .children(".card-body.ins-card")
+          .children(
+            ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
+          )
+          .children("div:nth-child(" + i + ")")
+          .children("label")
+          .text();
+        var value = $("#collapseSection4")
+          .children(".card-body.ins-card")
+          .children(
+            ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
+          )
+          .children("div:nth-child(" + i + ")")
+          .children("textarea")
+          .val();
+        if (value != "") {
+          $(
+            "<p class='section_4_line'>" + label + " : " + value + "</p>"
+          ).insertBefore("#great_line_4");
+        }
+      } else {
+        var label = $("#collapseSection4")
+          .children(".card-body.ins-card")
+          .children(
+            ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
+          )
+          .children("div:nth-child(" + i + ")")
+          .children("label")
+          .text();
+        var value = $("#collapseSection4")
+          .children(".card-body.ins-card")
+          .children(
+            ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
+          )
+          .children("div:nth-child(" + i + ")")
+          .children("input")
+          .val();
+        if (value != "") {
+          $(
+            "<p class='section_4_line'>" + label + " : " + value + "</p>"
+          ).insertBefore("#great_line_4");
         }
       }
     }
+  }
 
-    function update_section_4() {
-      //for loops
-      var number_elements = $("#collapseSection4")
-        .children(".card-body.ins-card")
-        .children(
-          "div.helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
-        )
-        .children(".form-group").length;
-      $("p").remove(".section_4_line");
+  function update_section_4() {
+    //for loops
+    var number_elements = $("#collapseSection4")
+      .children(".card-body.ins-card")
+      .children(
+        "div.helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
+      )
+      .children(".form-group").length;
+    $("p").remove(".section_4_line");
 
-      for (let i = 1; i < number_elements + 1; i++) {
-        if (
-          $("#collapseSection4")
-            .children(".card-body.ins-card")
-            .children(
-              ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
-            )
-            .children("div:nth-child(" + i + ")")
-            .children(".choices.form-select").length
-        ) {
-          var label = $("#collapseSection4")
-            .children(".card-body.ins-card")
-            .children(
-              ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
-            )
-            .children("div:nth-child(" + i + ")")
-            .children("label")
-            .text();
-          var value = $("#collapseSection4")
-            .children(".card-body.ins-card")
-            .children(
-              ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
-            )
-            .children("div:nth-child(" + i + ")")
-            .children(".choices.form-select")
-            .children(".choices__inner")
-            .children("select")
-            .val();
-          if (value != "") {
-            $(
-              "<p class='section_4_line'>" + label + " : " + value + "</p>"
-            ).insertBefore("#great_line_4");
-          }
-        } else if (
-          $("#collapseSection4")
-            .children(".card-body.ins-card")
-            .children(
-              ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
-            )
-            .children("div:nth-child(" + i + ")")
-            .children("textarea").length
-        ) {
-          var label = $("#collapseSection4")
-            .children(".card-body.ins-card")
-            .children(
-              ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
-            )
-            .children("div:nth-child(" + i + ")")
-            .children("label")
-            .text();
-          var value = $("#collapseSection4")
-            .children(".card-body.ins-card")
-            .children(
-              ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
-            )
-            .children("div:nth-child(" + i + ")")
-            .children("textarea")
-            .val();
-          if (value != "") {
-            $(
-              "<p class='section_4_line'>" + label + " : " + value + "</p>"
-            ).insertBefore("#great_line_4");
-          }
-        } else {
-          var label = $("#collapseSection4")
-            .children(".card-body.ins-card")
-            .children(
-              ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
-            )
-            .children("div:nth-child(" + i + ")")
-            .children("label")
-            .text();
-          var value = $("#collapseSection4")
-            .children(".card-body.ins-card")
-            .children(
-              ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
-            )
-            .children("div:nth-child(" + i + ")")
-            .children("input")
-            .val();
-          if (value != "") {
-            $(
-              "<p class='section_4_line'>" + label + " : " + value + "</p>"
-            ).insertBefore("#great_line_4");
-          }
+    for (let i = 1; i < number_elements + 1; i++) {
+      if (
+        $("#collapseSection4")
+          .children(".card-body.ins-card")
+          .children(
+            ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
+          )
+          .children("div:nth-child(" + i + ")")
+          .children(".choices.form-select").length
+      ) {
+        var label = $("#collapseSection4")
+          .children(".card-body.ins-card")
+          .children(
+            ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
+          )
+          .children("div:nth-child(" + i + ")")
+          .children("label")
+          .text();
+        var value = $("#collapseSection4")
+          .children(".card-body.ins-card")
+          .children(
+            ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
+          )
+          .children("div:nth-child(" + i + ")")
+          .children(".choices.form-select")
+          .children(".choices__inner")
+          .children("select")
+          .val();
+        if (value != "") {
+          $(
+            "<p class='section_4_line'>" + label + " : " + value + "</p>"
+          ).insertBefore("#great_line_4");
+        }
+      } else if (
+        $("#collapseSection4")
+          .children(".card-body.ins-card")
+          .children(
+            ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
+          )
+          .children("div:nth-child(" + i + ")")
+          .children("textarea").length
+      ) {
+        var label = $("#collapseSection4")
+          .children(".card-body.ins-card")
+          .children(
+            ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
+          )
+          .children("div:nth-child(" + i + ")")
+          .children("label")
+          .text();
+        var value = $("#collapseSection4")
+          .children(".card-body.ins-card")
+          .children(
+            ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
+          )
+          .children("div:nth-child(" + i + ")")
+          .children("textarea")
+          .val();
+        if (value != "") {
+          $(
+            "<p class='section_4_line'>" + label + " : " + value + "</p>"
+          ).insertBefore("#great_line_4");
+        }
+      } else {
+        var label = $("#collapseSection4")
+          .children(".card-body.ins-card")
+          .children(
+            ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
+          )
+          .children("div:nth-child(" + i + ")")
+          .children("label")
+          .text();
+        var value = $("#collapseSection4")
+          .children(".card-body.ins-card")
+          .children(
+            ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
+          )
+          .children("div:nth-child(" + i + ")")
+          .children("input")
+          .val();
+        if (value != "") {
+          $(
+            "<p class='section_4_line'>" + label + " : " + value + "</p>"
+          ).insertBefore("#great_line_4");
         }
       }
     }
+  }
   //____________________________________________________SECTION 3 End - About Your Trip____________________________________________
   //_________________________________________________reasonForClaimObj_________________________________________
   var reasonForClaimObj = {
@@ -5820,44 +5892,48 @@ $("#helpdesk_ticket_custom_field_cf_claimnames_2321673").val(nameArray);
   //____________________________________________________________________________________________________________________
   //section 5 continue
   $(".save_draft_5").click(function () {
-      let saveDetail={};
-      var checksArray = [];
-      var namesArray=[];
-      if ($("input[data-ispolicyholder='true']:checked").length) {
-          saveDetail["MainContactClientId"] = $(
-          "input[data-ispolicyholder='true']:checked"
-        ).attr("data-clientId");
-        $("input[name='insured_1']:checked").each(function () {
+    let saveDetail = {};
+    var checksArray = [];
+    var namesArray = [];
+    if ($("input[data-ispolicyholder='true']:checked").length) {
+      saveDetail["MainContactClientId"] = $(
+        "input[data-ispolicyholder='true']:checked"
+      ).attr("data-clientId");
+      $("input[name='insured_1']:checked").each(function () {
+        checksArray.push($(this).attr("data-clientid"));
+        namesArray.push($(this).val() + " " + $(this).attr("data-lastname"));
+      });
+      checksArray = checksArray.filter(function (val) {
+        return saveDetail["MainContactClientId"].indexOf(val) == -1;
+      });
+      checksArray = checksArray.filter(
+        (val) => !saveDetail["MainContactClientId"].includes(val)
+      );
+
+      saveDetail["OtherInsuredClientIds"] = checksArray;
+    } else {
+      $("input[name='insured_1']:checked").each(function (index) {
+        if (index == 0) {
+          saveDetail["MainContactClientId"] = $(this).attr("data-clientid");
+          namesArray.push($(this).val() + " " + $(this).attr("data-lastname"));
+        } else {
           checksArray.push($(this).attr("data-clientid"));
-          namesArray.push($(this).val()+" "+$(this).attr("data-lastname"))
-        });
-        checksArray = checksArray.filter(function (val) {
-          return saveDetail["MainContactClientId"].indexOf(val) == -1;
-        });
-        checksArray = checksArray.filter(
-          (val) => !saveDetail["MainContactClientId"].includes(val)
-        );
-        
-        saveDetail["OtherInsuredClientIds"] = checksArray;
-      } else {
-        $("input[name='insured_1']:checked").each(function (index) {
-          if (index == 0) {
-              saveDetail["MainContactClientId"] = $(this).attr("data-clientid");
-              namesArray.push($(this).val()+" "+$(this).attr("data-lastname"))
-          } else {
-              checksArray.push($(this).attr("data-clientid"));
-          }
-        });
-        saveDetail["OtherInsuredClientIds"] = checksArray;
-      }
-      console.log("---------",saveDetail);
-      console.log(saveDetail.MainContactClientId)
-      console.log(saveDetail.OtherInsuredClientIds)
-      console.log(namesArray);
-      $("#helpdesk_ticket_custom_field_cf_mainclientid_2321673").val(saveDetail.MainContactClientId);
-$("#helpdesk_ticket_custom_field_cf_otherclientid_2321673").val(saveDetail.OtherInsuredClientIds);
-$("#helpdesk_ticket_custom_field_cf_claimnames_2321673").val(namesArray);
-       $(".new-ticket-submit-button").trigger("click");
+        }
+      });
+      saveDetail["OtherInsuredClientIds"] = checksArray;
+    }
+    console.log("---------", saveDetail);
+    console.log(saveDetail.MainContactClientId);
+    console.log(saveDetail.OtherInsuredClientIds);
+    console.log(namesArray);
+    $("#helpdesk_ticket_custom_field_cf_mainclientid_2321673").val(
+      saveDetail.MainContactClientId
+    );
+    $("#helpdesk_ticket_custom_field_cf_otherclientid_2321673").val(
+      saveDetail.OtherInsuredClientIds
+    );
+    $("#helpdesk_ticket_custom_field_cf_claimnames_2321673").val(namesArray);
+    $(".new-ticket-submit-button").trigger("click");
   });
   $(".save_and_continue5").click(function () {
     var elem = document.getElementById("files_list");
@@ -5886,71 +5962,67 @@ $("#helpdesk_ticket_custom_field_cf_claimnames_2321673").val(namesArray);
         /////////////////////////////////
         open_next(5);
 
-        $("#section-4-button").css("background-color","#4DC367");
-        $("#section-5-button").css("background-color","#4DC367");
+        $("#section-4-button").css("background-color", "#4DC367");
+        $("#section-5-button").css("background-color", "#4DC367");
         $("#section-4-button").children(":first").removeClass("fa-pen");
         $("#section-5-button").children(":first").removeClass("fa-minus");
         $("#section-5-button").children(":first").removeClass("fa-plus");
         $("#section-4-button").children(":first").addClass("fa-check");
         $("#section-5-button").children(":first").addClass("fa-check");
-        
-        $("#section-4-button").removeAttr("data-toggle");
-        $("#section-5-button").removeAttr("data-toggle");
+
+        // $("#section-4-button").removeAttr("data-toggle");
+        // $("#section-5-button").removeAttr("data-toggle");
       } else {
         console.log(
           " --------- Need to show error max file size should not more than 4 MB ----------------"
         );
         addErrorMessage("api_call_failed_1", "File size cannot exceed 4 MB");
       }
-
     } else {
-      addErrorMessage(
-        "api_call_failed_1",
-        "Please Upload the File."
-      );
+      addErrorMessage("api_call_failed_1", "Please Upload the File.");
       console.log(" --------- Need to show error message ----------------");
     }
   });
   function add_section_5() {
-      $(
-        "<strong id='section_5_header'>" + titles[4] + "</strong>"
-      ).insertAfter("#great_line_4");
-      $("<hr class='summary_divider' id='great_line_5'>").insertAfter(
-        "#section_5_header"
+    $("<strong id='section_5_header'>" + titles[4] + "</strong>").insertAfter(
+      "#great_line_4"
+    );
+    $("<hr class='summary_divider' id='great_line_5'>").insertAfter(
+      "#section_5_header"
+    );
+    var number_attachments = $("#attachments_list").children().length;
+    console.log(number_attachments);
+    for (let i = 1; i < number_attachments + 1; i++) {
+      var document_name = $("#attachments_list")
+        .children("#attachment_" + i)
+        .children(
+          ".attachment.file-container.file-props-font.d-inline-block.position-relative"
+        )
+        .children(".file-name.position-absolute.overflow-hidden ")
+        .text();
+      $("<p class='section_5_line'>" + document_name + "</p>").insertBefore(
+        "#great_line_5"
       );
-      var number_attachments = $("#attachments_list").children().length;
-      console.log(number_attachments);
-      for (let i = 1; i < number_attachments + 1; i++) {
-        var document_name = $("#attachments_list")
-          .children("#attachment_" + i)
-          .children(
-            ".attachment.file-container.file-props-font.d-inline-block.position-relative"
-          )
-          .children(".file-name.position-absolute.overflow-hidden ")
-          .text();
-        $("<p class='section_5_line'>" + document_name + "</p>").insertBefore(
-          "#great_line_5"
-        );
-      }
     }
+  }
 
-    function update_section_5() {
-      var number_attachments = $("#attachments_list").children().length;
-      console.log(number_attachments);
-      $("p").remove(".section_5_line");
-      for (let i = 1; i < number_attachments + 1; i++) {
-        var document_name = $("#attachments_list")
-          .children("#attachment_" + i)
-          .children(
-            ".attachment.file-container.file-props-font.d-inline-block.position-relative"
-          )
-          .children(".file-name.position-absolute.overflow-hidden ")
-          .text();
-        $("<p class='section_5_line'>" + document_name + "</p>").insertBefore(
-          "#great_line_5"
-        );
-      }
+  function update_section_5() {
+    var number_attachments = $("#attachments_list").children().length;
+    console.log(number_attachments);
+    $("p").remove(".section_5_line");
+    for (let i = 1; i < number_attachments + 1; i++) {
+      var document_name = $("#attachments_list")
+        .children("#attachment_" + i)
+        .children(
+          ".attachment.file-container.file-props-font.d-inline-block.position-relative"
+        )
+        .children(".file-name.position-absolute.overflow-hidden ")
+        .text();
+      $("<p class='section_5_line'>" + document_name + "</p>").insertBefore(
+        "#great_line_5"
+      );
     }
+  }
   function getUploadFiles(files, fieldId) {
     let statusCode;
     let flag = false;
@@ -5972,10 +6044,7 @@ $("#helpdesk_ticket_custom_field_cf_claimnames_2321673").val(namesArray);
       redirect: "follow",
     };
     console.log("--->", requestOptions);
-    fetch(
-      "https://"+domainURL+"/api/claim/uploadFiles",
-      requestOptions
-    )
+    fetch("https://" + domainURL + "/api/claim/uploadFiles", requestOptions)
       .then((response) => {
         console.log(response);
         statusCode = response.status;
@@ -5995,133 +6064,196 @@ $("#helpdesk_ticket_custom_field_cf_claimnames_2321673").val(namesArray);
         }
       })
       .catch((error) => console.log(error));
+    //       .then((response) => response.text())
+    //       .then(function (result) {
+    //         console.log("sucessfilly uploaded ----->", result);
+    //         if (JSON.parse(result).status == 401) {
+    //           getJWTToken(fieldId);
+    //         }
+    //       })
+    //       .catch((error) => console.log("error", error));
   }
   //____________________________________________________SECTION 5 End - Your Documents____________________________________________
   //____________________________________________________________________________________________________________________
   //section 6 continue
   $("#save_and_continue6").click(function () {
-    payment_list = [
-      "helpdesk_ticket_custom_field_cf_name_of_account_holder_2321673",
-      "helpdesk_ticket_custom_field_cf_account_number_2321673",
-      "helpdesk_ticket_custom_field_cf_iban_number_2321673",
-      "helpdesk_ticket_custom_field_cf_sort_code659991_2321673",
-    ];
-    //check filled
-    if (checkedfilled(payment_list) == true) {
-      //clear errors
-      clearError(payment_list);
-      let accountNumber = $(
-        "#helpdesk_ticket_custom_field_cf_account_number_2321673"
-      ).val();
-      let iBanNumber = $(
-        "#helpdesk_ticket_custom_field_cf_iban_number_2321673"
-      ).val();
-      let sortCode = $(
-        "#helpdesk_ticket_custom_field_cf_sort_code659991_2321673"
-      ).val();
+    if ($("#title").hasClass("VHI") || $("#title").hasClass("ColumbusItaly")) {
       let countryCode = countryPortal.VHI;
-      console.log(accountNumber, iBanNumber, sortCode, countryCode);
-      if (countryCode == "GB") {
-        ValidateBankMethodTwo(
-          accountNumber,
-          sortCode,
-          countryCode,
-          "#save_and_continue6"
-        );
-      } else {
-        ValidateBankMethodOne(iBanNumber, countryCode, "#save_and_continue6");
-      }
 
-      //add displaying
+      payment_list = [
+        "helpdesk_ticket_custom_field_cf_name_of_account_holder_2321673",
+        "helpdesk_ticket_custom_field_cf_account_number_2321673",
+      ];
 
-      if ($("#section_6_header").length) {
-        update_section_6();
+      if (checkedfilled(payment_list) == true) {
+        //clear errors
+        clearError(payment_list);
+        let accountNumber = $(
+          "#helpdesk_ticket_custom_field_cf_account_number_2321673"
+        ).val();
+        let iBanNumber = $(
+          "#helpdesk_ticket_custom_field_cf_iban_number_2321673"
+        ).val();
+        let sortCode = $(
+          "#helpdesk_ticket_custom_field_cf_sort_code659991_2321673"
+        ).val();
+        console.log(accountNumber, iBanNumber, sortCode, countryCode);
+        if (countryCode == "GB") {
+          ValidateBankMethodTwo(
+            accountNumber,
+            sortCode,
+            countryCode,
+            "#save_and_continue6"
+          );
+        } else {
+          ValidateBankMethodOne(iBanNumber, countryCode, "#save_and_continue6");
+        }
+
+        //add displaying
+        if ($("#section_6_header").length) {
+          update_section_6();
+        } else {
+          add_section_6();
+          addDeclaraion();
+        }
       } else {
-        add_section_6();
-        addDeclaraion();
+        //ERROR Messaging
+        for (var i = 0; i < payment_list.length; i++) {
+          addErrorMessage(payment_list[i], "Please fill in all fields");
+        }
       }
     } else {
-      //ERROR Messaging
-      for (var i = 0; i < payment_list.length; i++) {
-        addErrorMessage(payment_list[i], "Please fill in all fields");
+      let countryCode = countryPortal.SagaPostOfficeColumbusUK;
+      payment_list = [
+        "helpdesk_ticket_custom_field_cf_name_of_account_holder_2321673",
+        "helpdesk_ticket_custom_field_cf_account_number_2321673",
+        "helpdesk_ticket_custom_field_cf_sort_code659991_2321673",
+      ];
+
+      //check filled
+      if (checkedfilled(payment_list) == true) {
+        //clear errors
+        clearError(payment_list);
+        let accountHolder = $(
+          "#helpdesk_ticket_custom_field_cf_name_of_account_holder_2321673"
+        ).val();
+        let accountNumber = $(
+          "#helpdesk_ticket_custom_field_cf_account_number_2321673"
+        ).val();
+        let sortCode = $(
+          "#helpdesk_ticket_custom_field_cf_sort_code659991_2321673"
+        ).val();
+
+        console.log(accountHolder, accountNumber, sortCode);
+
+        //method one params
+        //iBan
+        //CountryCode
+
+        //method two params
+        //accountNumber
+        //sortCode
+        //countryCode
+
+        if (countryCode == "GB") {
+          ValidateBankMethodTwo(
+            accountNumber,
+            sortCode,
+            countryCode,
+            "#save_and_continue6"
+          );
+        } else {
+          ValidateBankMethodOne(iBanNumber, countryCode, "#save_and_continue6");
+        }
+
+        //add displaying
+        if ($("#section_6_header").length) {
+          update_section_6();
+        } else {
+          add_section_6();
+          addDeclaraion();
+        }
+      } else {
+        //ERROR Messaging
+        for (var i = 0; i < payment_list.length; i++) {
+          addErrorMessage(payment_list[i], "Please fill in all fields");
+        }
       }
     }
 
-
-    $("#section-6-button").css("background-color","#4DC367");
+    $("#section-6-button").css("background-color", "#4DC367");
     $("#section-6-button").children(":first").removeClass("fa-plus");
     $("#section-6-button").children(":first").removeClass("fa-minus");
     $("#section-6-button").children(":first").addClass("fa-check");
-    $("#section-6-button").removeAttr("data-toggle");
-
+    //$("#section-6-button").removeAttr("data-toggle");
   });
   function add_section_6() {
-      var el_number = $("#collapseSection6")
+    var el_number = $("#collapseSection6")
+      .children(".card-body.ins-card")
+      .children(".form-group").length;
+    $("<strong id='section_6_header'>" + titles[5] + "</strong>").insertAfter(
+      "#great_line_5"
+    );
+    $("<hr class='summary_divider' id='great_line_6'>").insertAfter(
+      "#section_6_header"
+    );
+
+    for (let i = 1; i < el_number + 1; i++) {
+      var label = $("#collapseSection6")
         .children(".card-body.ins-card")
-        .children(".form-group").length;
-      $(
-        "<strong id='section_6_header'>" + titles[5] + "</strong>"
-      ).insertAfter("#great_line_5");
-      $("<hr class='summary_divider' id='great_line_6'>").insertAfter(
-        "#section_6_header"
-      );
-
-      for (let i = 1; i < el_number + 1; i++) {
-        var label = $("#collapseSection6")
-          .children(".card-body.ins-card")
-          .children("div:nth-child(" + i + ")")
-          .children("label")
-          .text();
-        var value = $("#collapseSection6")
-          .children(".card-body.ins-card")
-          .children("div:nth-child(" + i + ")")
-          .children("input")
-          .val();
-        $(
-          "<p class='section_6_line'>" + label + " : " + value + "</p>"
-        ).insertBefore("#great_line_6");
-      }
-    }
-
-    function update_section_6() {
-      var el_number = $("#collapseSection6")
+        .children("div:nth-child(" + i + ")")
+        .children("label")
+        .text();
+      var value = $("#collapseSection6")
         .children(".card-body.ins-card")
-        .children(".form-group").length;
-      $("p").remove(".section_6_line");
-      for (let i = 1; i < el_number + 1; i++) {
-        var label = $("#collapseSection6")
-          .children(".card-body.ins-card")
-          .children("div:nth-child(" + i + ")")
-          .children("label")
-          .text();
-        var value = $("#collapseSection6")
-          .children(".card-body.ins-card")
-          .children("div:nth-child(" + i + ")")
-          .children("input")
-          .val();
-        $(
-          "<p class='section_6_line'>" + label + " : " + value + "</p>"
-        ).insertBefore("#great_line_6");
-      }
-    }
-
-    function addDeclaraion() {
-      $("<strong id='declaration_header'>Declaration</strong>").insertAfter(
-        "#great_line_6"
-      );
-      $("<hr class='summary_divider' id='great_line_7'>").insertAfter(
-        "#declaration_header"
-      );
-
+        .children("div:nth-child(" + i + ")")
+        .children("input")
+        .val();
       $(
-        "<p>I declare that I have completed this form to the best of knowledge and have read and understood the contents of <br>this page and form. I consent to Collinson using my data to process this claim and am aware that this will involve <br>sending my data to my insurer along with my pet's clinical history. I am aware that my insurer will take any <br>excesses as per my policy. Details can be found in the Collinson Privacy Policy</p>"
-      ).insertBefore("#great_line_7");
-      $("<br>").insertBefore("#great_line_7");
-
-      $(
-        '<input class="ins_checkbox_paragraph" id="cb2" type="checkbox" ><p class="ins_consent_paragraph"> I consent</p<>'
-      ).insertBefore("#great_line_7");
+        "<p class='section_6_line'>" + label + " : " + value + "</p>"
+      ).insertBefore("#great_line_6");
     }
+  }
+
+  function update_section_6() {
+    var el_number = $("#collapseSection6")
+      .children(".card-body.ins-card")
+      .children(".form-group").length;
+    $("p").remove(".section_6_line");
+    for (let i = 1; i < el_number + 1; i++) {
+      var label = $("#collapseSection6")
+        .children(".card-body.ins-card")
+        .children("div:nth-child(" + i + ")")
+        .children("label")
+        .text();
+      var value = $("#collapseSection6")
+        .children(".card-body.ins-card")
+        .children("div:nth-child(" + i + ")")
+        .children("input")
+        .val();
+      $(
+        "<p class='section_6_line'>" + label + " : " + value + "</p>"
+      ).insertBefore("#great_line_6");
+    }
+  }
+
+  function addDeclaraion() {
+    $("<strong id='declaration_header'>Declaration</strong>").insertAfter(
+      "#great_line_6"
+    );
+    $("<hr class='summary_divider' id='great_line_7'>").insertAfter(
+      "#declaration_header"
+    );
+
+    $(
+      "<p>I declare that I have completed this form to the best of knowledge and have read and understood the contents of <br>this page and form. I consent to Collinson using my data to process this claim and am aware that this will involve <br>sending my data to my insurer along with my pet's clinical history. I am aware that my insurer will take any <br>excesses as per my policy. Details can be found in the Collinson Privacy Policy</p>"
+    ).insertBefore("#great_line_7");
+    $("<br>").insertBefore("#great_line_7");
+
+    $(
+      '<input class="ins_checkbox_paragraph" id="cb2" type="checkbox" ><p class="ins_consent_paragraph"> I consent</p<>'
+    ).insertBefore("#great_line_7");
+  }
   function ValidateBankMethodOne(iBanNumber, countryCode, fieldId) {
     let flag = false;
     let statusCode;
@@ -6134,7 +6266,9 @@ $("#helpdesk_ticket_custom_field_cf_claimnames_2321673").val(namesArray);
       redirect: "follow",
     };
     fetch(
-      "https://"+domainURL+"/api/bank/validateBankAccount?iBan=" +
+      "https://" +
+        domainURL +
+        "/api/bank/validateBankAccount?iBan=" +
         iBanNumber +
         "&countryCode=" +
         countryCode,
@@ -6145,10 +6279,10 @@ $("#helpdesk_ticket_custom_field_cf_claimnames_2321673").val(namesArray);
         statusCode = response.status;
         if (!response.ok) {
           flag = true;
-        return response.text();
-      }else{
-      return response.json();
-      }
+          return response.text();
+        } else {
+          return response.json();
+        }
       })
       .then(function (result) {
         console.log("--->", result, statusCode);
@@ -6157,15 +6291,15 @@ $("#helpdesk_ticket_custom_field_cf_claimnames_2321673").val(namesArray);
           if (statusCode == 401) {
             getJWTToken(fieldId);
           }
-          if(statusCode == 500){
-              console.log("Please refresh the page ", statusCode, result);  
-              addErrorMessage(
-                  "helpdesk_ticket_custom_field_cf_iban_number_2321673",
-                  result
-                ); 
-             }
+          if (statusCode == 500) {
+            console.log("Please refresh the page ", statusCode, result);
+            addErrorMessage(
+              "helpdesk_ticket_custom_field_cf_iban_number_2321673",
+              result
+            );
+          }
         } else {
-              let ele = ["helpdesk_ticket_custom_field_cf_iban_number_2321673"];
+          let ele = ["helpdesk_ticket_custom_field_cf_iban_number_2321673"];
           clearError(ele);
           console.log("--sucesss-");
           bankResult = result;
@@ -6192,7 +6326,9 @@ $("#helpdesk_ticket_custom_field_cf_claimnames_2321673").val(namesArray);
       redirect: "follow",
     };
     fetch(
-      "https://"+domainURL+"/api/bank/validateBankAccount?accountNumber=" +
+      "https://" +
+        domainURL +
+        "/api/bank/validateBankAccount?accountNumber=" +
         accountNumber +
         "&sortCode=" +
         sortCode +
@@ -6206,9 +6342,9 @@ $("#helpdesk_ticket_custom_field_cf_claimnames_2321673").val(namesArray);
         if (!response.ok) {
           flag = true;
           return response.text();
-      }else{
-      return response.json();
-      }
+        } else {
+          return response.json();
+        }
       })
       .then(function (result) {
         console.log("--->", result, statusCode);
@@ -6217,13 +6353,13 @@ $("#helpdesk_ticket_custom_field_cf_claimnames_2321673").val(namesArray);
           if (statusCode == 401) {
             getJWTToken(fieldId);
           }
-          if(statusCode == 500){
-              console.log("Please refresh the page ", statusCode, result);  
-              addErrorMessage(
-                  "helpdesk_ticket_custom_field_cf_iban_number_2321673",
-                  result
-                ); 
-             }
+          if (statusCode == 500) {
+            console.log("Please refresh the page ", statusCode, result);
+            addErrorMessage(
+              "helpdesk_ticket_custom_field_cf_iban_number_2321673",
+              result
+            );
+          }
         } else {
           let ele = ["helpdesk_ticket_custom_field_cf_iban_number_2321673"];
           clearError(ele);
@@ -6784,6 +6920,14 @@ $("#helpdesk_ticket_custom_field_cf_claimnames_2321673").val(namesArray);
       body["ClaimAnswers"] = ClaimQaAndAnswers;
       console.log("submit claim body --->", body);
     } else if (reasonClaim[0].akey == "01_02_BagL") {
+      let reasonClaims = $(
+        "#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673"
+      ).val();
+      let keyValue = $(
+        "#helpdesk_ticket_custom_field_cf_how_many_items_are_you_claiming_for_2321673"
+      ).val();
+      let lossOrStolen = submitClaimBody(reasonClaims, keyValue, "none");
+      ClaimQaAndAnswers.push(lossOrStolen);
       let PoliceReference = submitClaimBody(
         "PoliceReference",
         $(
@@ -7171,14 +7315,33 @@ $("#helpdesk_ticket_custom_field_cf_claimnames_2321673").val(namesArray);
       body["ClaimAnswers"] = ClaimQaAndAnswers;
       console.log("submit claim body --->", body);
     } else if (reasonClaim[0].akey == "01_03_CxIllClnt") {
-      let TripBookingRefund = submitClaimBody(
-        "TripBookingRefund",
-        $(
-          "#helpdesk_ticket_custom_field_cf_have_you_received_any_refunds_or_compensation702973_2321673"
-        ).val(),
-        fieldTypeText
+      let cxBookDate = submitClaimBody(
+        "CanxBookingDate",
+        $("#helpdesk_ticket_custom_field_cf_your_booking_date_2321673").val(),
+        fieldTypeDate
       );
-      ClaimQaAndAnswers.push(TripBookingRefund);
+      ClaimQaAndAnswers.push(cxBookDate);
+      let checkRefundValue = $(
+        "#helpdesk_ticket_custom_field_cf_have_you_received_any_refunds_or_compensation702973_2321673"
+      ).val();
+      let TripBookingRefund;
+      if (checkRefundValue) {
+        TripBookingRefund = submitClaimBody(
+          "TripBookingRefund",
+          $(
+            "#helpdesk_ticket_custom_field_cf_have_you_received_any_refunds_or_compensation702973_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(TripBookingRefund);
+      } else {
+        TripBookingRefund = submitClaimBody(
+          "TripBookingRefund",
+          "0",
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(TripBookingRefund);
+      }
       let ReasonForCancellationDesc = submitClaimBody(
         "ReasonForCancellationDesc",
         $(
@@ -7741,6 +7904,17 @@ $("#helpdesk_ticket_custom_field_cf_claimnames_2321673").val(namesArray);
           fieldTypeText
         )
       );
+      let thirdPartyOption = getAKey(
+        "helpdesk_ticket_custom_field_cf_was_someone_else_a_third_party_involved_in_you_sustaining_the_injury_2321673",
+        yesNo
+      );
+      ClaimQaAndAnswers.push(
+        submitClaimBody(
+          thirdPartyOption[0].qkey,
+          thirdPartyOption[0].akey,
+          fieldTypeText
+        )
+      );
       let MedicalCostTravel = getAKey(
         "helpdesk_ticket_custom_field_cf_do_any_of_the_costs_relate_to_travel_not_including_the_ambulance_or_taxi_to_the_hospital_2321673",
         yesNo
@@ -7792,14 +7966,14 @@ $("#helpdesk_ticket_custom_field_cf_claimnames_2321673").val(namesArray);
         fieldTypeText
       );
       ClaimQaAndAnswers.push(NatureInjury);
-      let DentalPaymentAmount = submitClaimBody(
-        "DentalPaymentAmount",
+      let MedicalPaymentAmount = submitClaimBody(
+        "MedicalPaymentPrice",
         $(
           "#helpdesk_ticket_custom_field_cf_amount_paid_in_local_currency527297_2321673"
         ).val(),
         fieldTypeText
       );
-      ClaimQaAndAnswers.push(DentalPaymentAmount);
+      ClaimQaAndAnswers.push(MedicalPaymentAmount);
       let MedicalPaymentDate = submitClaimBody(
         "MedicalPaymentDate",
         $(
@@ -8218,8 +8392,12 @@ $("#helpdesk_ticket_custom_field_cf_claimnames_2321673").val(namesArray);
     console.log("Main ");
     let body = {
       internalpolicyNumber: policyNumber,
-      ClaimNumber: $("#helpdesk_ticket_custom_field_cf_claim_number_2321673").val(),
-      MainContactClientId: $("#helpdesk_ticket_custom_field_cf_mainclientid_2321673").val(),
+      ClaimNumber: $(
+        "#helpdesk_ticket_custom_field_cf_claim_number_2321673"
+      ).val(),
+      MainContactClientId: $(
+        "#helpdesk_ticket_custom_field_cf_mainclientid_2321673"
+      ).val(),
       FromDate: $(
         "#helpdesk_ticket_custom_field_cf_your_departure_date_2321673"
       ).val(),
@@ -8230,16 +8408,17 @@ $("#helpdesk_ticket_custom_field_cf_claimnames_2321673").val(namesArray);
     };
     //otherclients senarios logic
     var yourArray = [];
-    let otherClientValue=$("#helpdesk_ticket_custom_field_cf_otherclientid_2321673").val()
-    if(otherClientValue){
-        console.log("if other client field has value ",otherClientValue);
-        yourArray.push(otherClientValue)
-        console.log("if other client field has yourArray ",yourArray);
-        body["OtherInsuredClientIds"]=yourArray;
-    }
-    else{
-        console.log("if other client field has no value ",otherClientValue)
-        body["OtherInsuredClientIds"] = yourArray;
+    let otherClientValue = $(
+      "#helpdesk_ticket_custom_field_cf_otherclientid_2321673"
+    ).val();
+    if (otherClientValue) {
+      console.log("if other client field has value ", otherClientValue);
+      yourArray.push(otherClientValue);
+      console.log("if other client field has yourArray ", yourArray);
+      body["OtherInsuredClientIds"] = yourArray;
+    } else {
+      console.log("if other client field has no value ", otherClientValue);
+      body["OtherInsuredClientIds"] = yourArray;
     }
     console.log(body);
     //bank details senarios logic
@@ -8747,6 +8926,14 @@ $("#helpdesk_ticket_custom_field_cf_claimnames_2321673").val(namesArray);
       body["ClaimAnswers"] = ClaimQaAndAnswers;
       console.log("submit claim body --->", body);
     } else if (reasonClaim[0].akey == "01_02_BagL") {
+      let reasonClaims = $(
+        "#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673"
+      ).val();
+      let keyValue = $(
+        "#helpdesk_ticket_custom_field_cf_how_many_items_are_you_claiming_for_2321673"
+      ).val();
+      let lossOrStolen = submitClaimBody(reasonClaims, keyValue, "none");
+      ClaimQaAndAnswers.push(lossOrStolen);
       let PoliceReference = submitClaimBody(
         "PoliceReference",
         $(
@@ -9134,14 +9321,33 @@ $("#helpdesk_ticket_custom_field_cf_claimnames_2321673").val(namesArray);
       body["ClaimAnswers"] = ClaimQaAndAnswers;
       console.log("submit claim body --->", body);
     } else if (reasonClaim[0].akey == "01_03_CxIllClnt") {
-      let TripBookingRefund = submitClaimBody(
-        "TripBookingRefund",
-        $(
-          "#helpdesk_ticket_custom_field_cf_have_you_received_any_refunds_or_compensation702973_2321673"
-        ).val(),
-        fieldTypeText
+      let cxBookDate = submitClaimBody(
+        "CanxBookingDate",
+        $("#helpdesk_ticket_custom_field_cf_your_booking_date_2321673").val(),
+        fieldTypeDate
       );
-      ClaimQaAndAnswers.push(TripBookingRefund);
+      ClaimQaAndAnswers.push(cxBookDate);
+      let checkRefundValue = $(
+        "#helpdesk_ticket_custom_field_cf_have_you_received_any_refunds_or_compensation702973_2321673"
+      ).val();
+      let TripBookingRefund;
+      if (checkRefundValue) {
+        TripBookingRefund = submitClaimBody(
+          "TripBookingRefund",
+          $(
+            "#helpdesk_ticket_custom_field_cf_have_you_received_any_refunds_or_compensation702973_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(TripBookingRefund);
+      } else {
+        TripBookingRefund = submitClaimBody(
+          "TripBookingRefund",
+          "0",
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(TripBookingRefund);
+      }
       let ReasonForCancellationDesc = submitClaimBody(
         "ReasonForCancellationDesc",
         $(
@@ -9704,6 +9910,17 @@ $("#helpdesk_ticket_custom_field_cf_claimnames_2321673").val(namesArray);
           fieldTypeText
         )
       );
+      let thirdPartyOption = getAKey(
+        "helpdesk_ticket_custom_field_cf_was_someone_else_a_third_party_involved_in_you_sustaining_the_injury_2321673",
+        yesNo
+      );
+      ClaimQaAndAnswers.push(
+        submitClaimBody(
+          thirdPartyOption[0].qkey,
+          thirdPartyOption[0].akey,
+          fieldTypeText
+        )
+      );
       let MedicalCostTravel = getAKey(
         "helpdesk_ticket_custom_field_cf_do_any_of_the_costs_relate_to_travel_not_including_the_ambulance_or_taxi_to_the_hospital_2321673",
         yesNo
@@ -9755,14 +9972,14 @@ $("#helpdesk_ticket_custom_field_cf_claimnames_2321673").val(namesArray);
         fieldTypeText
       );
       ClaimQaAndAnswers.push(NatureInjury);
-      let DentalPaymentAmount = submitClaimBody(
-        "DentalPaymentAmount",
+      let MedicalPaymentAmount = submitClaimBody(
+        "MedicalPaymentPrice",
         $(
           "#helpdesk_ticket_custom_field_cf_amount_paid_in_local_currency527297_2321673"
         ).val(),
         fieldTypeText
       );
-      ClaimQaAndAnswers.push(DentalPaymentAmount);
+      ClaimQaAndAnswers.push(MedicalPaymentAmount);
       let MedicalPaymentDate = submitClaimBody(
         "MedicalPaymentDate",
         $(
@@ -10173,7 +10390,6 @@ $("#helpdesk_ticket_custom_field_cf_claimnames_2321673").val(namesArray);
 
     updateSubmitClaim(body, ".ticket-detail-dummy");
   });
-
   function submitClaimBody(qkeyValue, akeyValue, fieldType) {
     console.log("submitClaimBody ---->", akeyValue);
     let temp = {};
@@ -10202,6 +10418,35 @@ $("#helpdesk_ticket_custom_field_cf_claimnames_2321673").val(namesArray);
         ).val();
         arrayItems.push(objectItems);
         temp["items"] = arrayItems;
+      } else if (
+        qkeyValue == "Baggage - personal items lost or stolen" &&
+        akeyValue == "1" &&
+        fieldType == "none"
+      ) {
+        let itemArray = [];
+        let itemsObject = {};
+        temp["QuestionKey"] = "LostOrStolenBags";
+        temp["AnswerKey"] = $(
+          "#helpdesk_ticket_custom_field_cf_how_many_items_are_you_claiming_for_2321673"
+        ).val();
+        temp["DateTimeAnswer"] = null;
+        temp["BooleanAnswer"] = null;
+        temp["IntegerAnswer"] = null;
+        let itemTypes = getAKey(
+          "helpdesk_ticket_custom_field_cf_item_type870706_2321673",
+          ItemType
+        );
+        itemsObject["ItemType"] = itemTypes[0].akey;
+        itemsObject["PurchaseDate"] = $(
+          "#helpdesk_ticket_custom_field_cf_when_did_you_purchase_the_item_2321673"
+        ).val();
+        itemsObject["purchasePrice"] = $(
+          "#helpdesk_ticket_custom_field_cf_what_was_its_cost_when_you_bought_it_2321673"
+        ).val();
+        itemsObject["Currency"] = null;
+        itemsObject["repairCost"] = 0;
+        itemArray.push(itemsObject);
+        temp["items"] = itemArray;
       } else {
         temp["QuestionKey"] = qkeyValue;
         temp["AnswerKey"] = akeyValue;
@@ -10228,10 +10473,7 @@ $("#helpdesk_ticket_custom_field_cf_claimnames_2321673").val(namesArray);
       redirect: "follow",
     };
 
-    fetch(
-      "https://"+domainURL+"/api/claim/submission",
-      requestOptions
-    )
+    fetch("https://" + domainURL + "/api/claim/submission", requestOptions)
       .then((response) => {
         console.log("response -->", response);
         statusCode = response.status;
@@ -10248,16 +10490,19 @@ $("#helpdesk_ticket_custom_field_cf_claimnames_2321673").val(namesArray);
           } else if (statusCode == 400) {
             console.log("--field miised getting senario->", result);
             addErrorMessage("common_error", result);
-          }else if(statusCode == 422){
-            addErrorMessage("common_error", result); 
-          }else if(statusCode == 404){
-            addErrorMessage("common_error", "Unable to create claim as per one claim per policy per day rule"); 
+          } else if (statusCode == 422) {
+            addErrorMessage("common_error", result);
+          } else if (statusCode == 404) {
+            addErrorMessage(
+              "common_error",
+              "Unable to create claim as per one claim per policy per day rule"
+            );
           }
         } else {
           let ele = ["common_error"];
           clearError(ele);
           console.log("--sucesss-");
-           $(".new-ticket-submit-button").trigger("click");
+          $(".new-ticket-submit-button").trigger("click");
         }
       })
       .catch((error) => console.log("error -->", error));
@@ -10276,10 +10521,7 @@ $("#helpdesk_ticket_custom_field_cf_claimnames_2321673").val(namesArray);
       redirect: "follow",
     };
 
-    fetch(
-      "https://"+domainURL+"/api/claim/submission",
-      requestOptions
-    )
+    fetch("https://" + domainURL + "/api/claim/submission", requestOptions)
       .then((response) => {
         console.log("response -->", response);
         statusCode = response.status;
@@ -10296,16 +10538,19 @@ $("#helpdesk_ticket_custom_field_cf_claimnames_2321673").val(namesArray);
           } else if (statusCode == 400) {
             console.log("--field miised getting senario->", result);
             addErrorMessage("common_error", result);
-          }else if(statusCode == 422){
-            addErrorMessage("common_error", result); 
-          }else if(statusCode == 404){
-            addErrorMessage("common_error", "Unable to create claim as per one claim per policy per day rule"); 
+          } else if (statusCode == 422) {
+            addErrorMessage("common_error", result);
+          } else if (statusCode == 404) {
+            addErrorMessage(
+              "common_error",
+              "Unable to create claim as per one claim per policy per day rule"
+            );
           }
         } else {
           let ele = ["common_error"];
           clearError(ele);
           console.log("--sucesss-");
-           $("#helpdesk_ticket_submit").trigger("click");
+          $("#helpdesk_ticket_submit").trigger("click");
         }
       })
       .catch((error) => console.log("error -->", error));
@@ -11606,20 +11851,22 @@ $("#helpdesk_ticket_custom_field_cf_claimnames_2321673").val(namesArray);
       }
     }
   );
-  if($(".edit_helpdesk_ticket").length>0){
-      if ($("#title").hasClass("ColumbusItaly")) {
-        $("<p id='summary_intro'>Ti preghiamo di dedicare un momento a ricontrollare le tue informazioni: l'accuratezza ci aiuta a elaborare rapidamente la tua richiesta</p>").insertBefore("#helpdesk_ticket_submit");
-      } else {
-        $('<p id="summary_intro">Please take a moment to double check your information - accuracy helps us process your claim quickly.</p>').insertBefore("#helpdesk_ticket_submit");
-      }
-      add_section_1();
-      add_section_2();
-      add_section_3();
-      add_section_4();
-      add_section_5();
-      add_section_6();
-      addDeclaraion();
+  if ($(".edit_helpdesk_ticket").length > 0) {
+    if ($("#title").hasClass("ColumbusItaly")) {
+      $(
+        "<p id='summary_intro'>Ti preghiamo di dedicare un momento a ricontrollare le tue informazioni: l'accuratezza ci aiuta a elaborare rapidamente la tua richiesta</p>"
+      ).insertBefore("#helpdesk_ticket_submit");
+    } else {
+      $(
+        '<p id="summary_intro">Please take a moment to double check your information - accuracy helps us process your claim quickly.</p>'
+      ).insertBefore("#helpdesk_ticket_submit");
+    }
+    add_section_1();
+    add_section_2();
+    add_section_3();
+    add_section_4();
+    add_section_5();
+    add_section_6();
+    addDeclaraion();
   }
 });
-
-
