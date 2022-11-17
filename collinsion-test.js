@@ -10554,22 +10554,22 @@ jQuery(document).ready(function ($) {
             console.log("--sucesss-");
             // var current_url = $("#new_helpdesk_note").attr("action")   
             var current_url = "doogle.com"    
-            jQuery("#new_helpdesk_note").ajaxSubmit({
-                            type: 'POST',
-                            contentType: "application/json; charset=UTF-8",
-                            dataType: "json",
-                            crossDomain: true,
-                            cache: false,
-                            url: current_url,
-                            success: function(response, status, xhr) {
-                                console.log("success");
-                                console.log(status);
-                                $("#helpdesk_ticket_submit").trigger("click");
-                            },
-                            error: function() {
-                                console.log("error");
-                            }
-                        });
+            jQuery("#new_helpdesk_note").ajaxForm({
+                type: 'POST',
+                contentType: "application/json; charset=UTF-8",
+                dataType: "json",
+                crossDomain: true,
+                cache: false,
+                url: current_url,
+                success: function(response, status, xhr) {
+                    console.log("success");
+                    console.log(status);
+                    $("#helpdesk_ticket_submit").trigger("click");
+                },
+                error: function() {
+                    console.log("error");
+                }
+            });
     
           }
         })
