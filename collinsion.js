@@ -291,15 +291,17 @@ jQuery(document).ready(function ($) {
   //____________________________________________________SECTION 5 Start - Your Documents____________________________________________
   //for-section-5 attachment group
   //___________________________________new_section 5_______________________________________________________
-  if (jQuery(".fw-comments-wrapper .attachments").length > 0) {
+  if (jQuery(".fw-comments-wrapper").length > 0) {
     $(
       '<div id="mock-doc" class="form-group attachments for-section-5"><span class="d-none"><input id="upload_file" type="file" multiple="false"><input id="files_list" type="file" name="helpdesk_ticket[attachments][][resource]" multiple="false"></span><div class="dropdown"><button class="btn btn-link " type="button" id="attach_btn" data-attach-type="file"><span class="file-upload-btn" tabindex="0"><img data-src="/glyphs/vectors/attachment.svg" loading="lazy" alt="Attachment" class="icon ls-is-cached lazyloaded" src="/glyphs/vectors/attachment.svg">Attachment</span></button><ul class="dropdown-menu" aria-labelledby="attach_btn"><li><a class="dropdown-item" href="#" data-attach-type="file">Attach a file</a></li></ul></div><div id="attachments_list" class="files-container"></div><div><div id="cumulative_error_heading" class="error-heading"></div><div id="cumulative_error_attachments_list" class="files-container"></div></div><div><div id="individual_error_heading" class="error-heading"></div><div id="individual_error_attachments_list" class="files-container"></div></div></div>'
     ).insertAfter(
       ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper"
     );
-    $($(".attachments")[0].outerHTML).insertAfter(
-      ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper"
-    );
+    var attachments_html = "";
+    $(".attachments").each(function(){  
+       attachments_html += $(this).html(); 
+    });
+    $("<div class='attachments small mt-16'>"+attachments_html+"</div>").insertAfter(".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper");
     $("#portal_ticket_form .attachments").addClass("for-section-5");
     if ($("#title").hasClass("ColumbusItaly")) {
       $(
@@ -10551,6 +10553,7 @@ jQuery(document).ready(function ($) {
           clearError(ele);
           console.log("--sucesss-");
           $("#helpdesk_ticket_submit").trigger("click");
+  
         }
       })
       .catch((error) => console.log("error -->", error));
@@ -11869,4 +11872,18 @@ jQuery(document).ready(function ($) {
     add_section_6();
     addDeclaraion();
   }
+  // Get the files names and appened into the summary of ticket detail page
+
+  function files_uploaded() {
+    $("p").remove(".section_5_line");
+    $(".fw-comments-wrapper .attachments .fw-attachment-item").each(function(){ 
+      $("<p class='section_5_line'>" + $(this).find("p").html().split("<br>")[0] + "</p>").insertBefore(
+          "#great_line_5"
+        );
+    });
+  }
+  if (jQuery(".fw-comments-wrapper").length > 0) {
+  files_uploaded();
+  }
 });
+
