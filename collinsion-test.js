@@ -1000,7 +1000,7 @@ jQuery(document).ready(function ($) {
     fetch(
       "https://" +
         domainURL +
-        "/api/policy?policyNumber=" +
+        "/api/policy?policyNumber=%25" +
         policyNumber +
         "%25&dob=" +
         dateOfBirth,
