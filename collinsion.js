@@ -195,7 +195,7 @@ jQuery(document).ready(function ($) {
       ).insertAfter("#helpdesk_ticket_custom_field_cf_claim_number_2321673");
     }
 
-    //open section 1 by default
+    
     
 
     //____________________________________________________SECTION 2 Start -  About You______________________________________________
@@ -420,7 +420,8 @@ jQuery(document).ready(function ($) {
       $(".btn.fw-primary-button.new-ticket-submit-button").addClass(
         "for-section-7"
       );
-      $("a.btn.fw-secondary-button").addClass("for-section-7");
+      //hide cancel button
+      $("a.btn.fw-secondary-button").hide();
     }
   
     //__________________________________________________________________________________
