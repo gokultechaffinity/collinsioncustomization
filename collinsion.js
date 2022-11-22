@@ -1,6 +1,6 @@
 //latest
 jQuery(document).ready(function ($) {
-    $(".fc-widget-normal").hide();
+    $("#chat-icon").hide();
     $("#helpdesk_ticket_subject").closest(".form-group").hide();
     $("#helpdesk_ticket_custom_field_cf_mainclientid_2321673")
       .closest(".form-group")
