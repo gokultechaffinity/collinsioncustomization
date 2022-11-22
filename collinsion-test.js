@@ -5971,6 +5971,19 @@ jQuery(document).ready(function ($) {
       }
     });
     $(".save_and_continue5").click(function () {
+      //Need to add another condition for already had div if div has length then we need to open next section 
+      if(jQuery(".fw-comments-wrapper").length > 0){
+        //will execute in ticket detail page senario
+if($("#new_helpdesk_note #attachments_list .proper-attachments-list").length){
+  fileUploadCallback()
+}
+      }else{
+        //will excute in create new ticket senario
+fileUploadCallback()
+      }
+     
+    });
+    function fileUploadCallback(){
       var elem = document.getElementById("files_list");
       if (elem.files.length) {
         let ele = ["api_call_failed_1"];
@@ -5994,9 +6007,7 @@ jQuery(document).ready(function ($) {
             add_section_5();
           }
           getUploadFiles(files, ".save_and_continue5");
-          /////////////////////////////////
           open_next(5);
-  
           $("#section-4-button").css("background-color", "#4DC367");
           $("#section-5-button").css("background-color", "#4DC367");
           $("#section-4-button").children(":first").removeClass("fa-pen");
@@ -6004,9 +6015,6 @@ jQuery(document).ready(function ($) {
           $("#section-5-button").children(":first").removeClass("fa-plus");
           $("#section-4-button").children(":first").addClass("fa-check");
           $("#section-5-button").children(":first").addClass("fa-check");
-  
-          // $("#section-4-button").removeAttr("data-toggle");
-          // $("#section-5-button").removeAttr("data-toggle");
         } else {
           console.log(
             " --------- Need to show error max file size should not more than 4 MB ----------------"
@@ -6017,7 +6025,7 @@ jQuery(document).ready(function ($) {
         addErrorMessage("api_call_failed_1", "Please Upload the File.");
         console.log(" --------- Need to show error message ----------------");
       }
-    });
+    }
     function add_section_5() {
       $("<strong id='section_5_header'>" + titles[4] + "</strong>").insertAfter(
         "#great_line_4"
