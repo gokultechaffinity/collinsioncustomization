@@ -196,7 +196,7 @@ jQuery(document).ready(function ($) {
     }
 
     //open section 1 by default
-    $("#section-1-button").click();
+    
 
     //____________________________________________________SECTION 2 Start -  About You______________________________________________
     //identify Email Parent DIV
@@ -672,6 +672,8 @@ jQuery(document).ready(function ($) {
     //BY DEFAULT -  add attribute to section-1-button and section-7-button
     $("#section-1-button").attr("data-toggle", "collapse");
     $("#section-7-button").attr("data-toggle", "collapse");
+    //open section 1 by default
+    $("#section-1-button").click();
   
     //________________________________________________________________________________________________________________________________
     //section 1 continue
