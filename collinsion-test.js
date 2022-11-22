@@ -5935,7 +5935,39 @@ jQuery(document).ready(function ($) {
         saveDetail.OtherInsuredClientIds
       );
       $("#helpdesk_ticket_custom_field_cf_claimnames_2321673").val(namesArray);
-      $(".new-ticket-submit-button").trigger("click");
+      var elem = document.getElementById("files_list");
+      if (elem.files.length) {
+        let ele = ["api_call_failed_1"];
+        clearError(ele);
+        var files = [];
+        var fileSize = [];
+        for (var i = 0; i < elem.files.length; ++i) {
+          files.push(elem.files[i].name);
+          fileSize.push(elem.files[i].size);
+        }
+        var sum = fileSize.reduce(function (a, b) {
+          return a + b;
+        }, 0);
+        console.log("sum tottal--->", sum);
+        if (sum <= 4200000) {
+          let ele = ["api_call_failed_1"];
+          clearError(ele);
+          if ($("#section_5_header").length) {
+            update_section_5();
+          } else {
+            add_section_5();
+          }
+          getUploadFiles(files, ".save_draft_5");
+        } else {
+          console.log(
+            " --------- Need to show error max file size should not more than 4 MB ----------------"
+          );
+          addErrorMessage("api_call_failed_1", "File size cannot exceed 4 MB");
+        }
+      } else {
+        addErrorMessage("api_call_failed_1", "Please Upload the File.");
+        console.log(" --------- Need to show error message ----------------");
+      }
     });
     $(".save_and_continue5").click(function () {
       var elem = document.getElementById("files_list");
@@ -6064,16 +6096,17 @@ jQuery(document).ready(function ($) {
               getJWTToken(fieldId);
             }
           }
+          else{
+            if(jQuery(".fw-comments-wrapper").length > 0){
+              $("#new_helpdesk_note #helpdesk_note_submit").trigger("click")
+            }else{
+              if(fieldId==".save_draft_5" ){
+                $(".new-ticket-submit-button").trigger("click");
+              }
+            }
+          }
         })
         .catch((error) => console.log(error));
-      //       .then((response) => response.text())
-      //       .then(function (result) {
-      //         console.log("sucessfilly uploaded ----->", result);
-      //         if (JSON.parse(result).status == 401) {
-      //           getJWTToken(fieldId);
-      //         }
-      //       })
-      //       .catch((error) => console.log("error", error));
     }
     //____________________________________________________SECTION 5 End - Your Documents____________________________________________
     //____________________________________________________________________________________________________________________
