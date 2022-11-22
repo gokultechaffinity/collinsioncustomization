@@ -5321,8 +5321,9 @@ jQuery(document).ready(function ($) {
           if (!response.ok) {
             console.log("inside error ", response.status);
             flag = true;
+            return response.text();
           }
-          return response.text();
+          return response.json();
         })
         .then(function (result) {
           $("#ClaimAPIModal").removeClass("loader-text");
