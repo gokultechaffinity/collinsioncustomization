@@ -1,5 +1,6 @@
 //latest
 jQuery(document).ready(function ($) {
+    $(".fc-widget-normal").hide();
     $("#helpdesk_ticket_subject").closest(".form-group").hide();
     $("#helpdesk_ticket_custom_field_cf_mainclientid_2321673")
       .closest(".form-group")
@@ -6255,7 +6256,7 @@ jQuery(document).ready(function ($) {
       );
   
       $(
-        "<p>I declare that I have completed this form to the best of knowledge and have read and understood the contents of <br>this page and form. I consent to Collinson using my data to process this claim and am aware that this will involve <br>sending my data to my insurer along with my pet's clinical history. I am aware that my insurer will take any <br>excesses as per my policy. Details can be found in the Collinson Privacy Policy</p>"
+        "<p>I declare that I have completed this form to the best of knowledge and have read and understood the contents of <br>this page and form. I consent to Collinson using my data to process this claim and am aware that this will involve <br>sending my data to my insurer along with my clinical history. I am aware that my insurer will take any <br>excesses as per my policy. Details can be found in the Collinson Privacy Policy</p>"
       ).insertBefore("#great_line_7");
       $("<br>").insertBefore("#great_line_7");
   
