@@ -5322,7 +5322,7 @@ jQuery(document).ready(function ($) {
             console.log("inside error ", response.status);
             flag = true;
           }
-          return response.json();
+          return response.text();
         })
         .then(function (result) {
           $("#ClaimAPIModal").removeClass("loader-text");
@@ -6085,7 +6085,7 @@ jQuery(document).ready(function ($) {
           if (!response.ok) {
             flag = true;
           }
-          return response.json();
+          return response.text();
         })
         .then(function (result) {
           console.log("-- details->", result);
