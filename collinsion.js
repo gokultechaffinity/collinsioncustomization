@@ -194,6 +194,10 @@ jQuery(document).ready(function ($) {
         '<button id="save_and_continue1" class="btn btn-primary for-section-1 save_and_continue" type="button">Find Policy</button>'
       ).insertAfter("#helpdesk_ticket_custom_field_cf_claim_number_2321673");
     }
+
+    //open section 1 by default
+    $("#section-1-button").click();
+
     //____________________________________________________SECTION 2 Start -  About You______________________________________________
     //identify Email Parent DIV
     var EmailParent = document.getElementById(
