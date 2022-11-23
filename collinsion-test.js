@@ -13,24 +13,34 @@ jQuery(document).ready(function ($) {
   $("#helpdesk_ticket_custom_field_cf_date_of_birth_2321673")
     .closest(".form-group")
     .append(
-      '<div class="invalid-feedback api_call_failed_1">API call failed</div>'
+      '<div class="invalid-feedback api_call_failed_dob">API call failed</div>'
+    );
+    $("#helpdesk_ticket_custom_field_cf_postcode68273_2321673")
+    .closest(".form-group")
+    .append(
+      '<div class="invalid-feedback api_call_failed_postcode">API call failed</div>'
     );
   $(
     "#invalid-feedback helpdesk_ticket_custom_field_cf_reason_for_claim_2321673"
   )
     .closest(".form-group")
     .append(
-      '<div class="invalid-feedback api_call_failed_1">API call failed</div>'
+      '<div class="invalid-feedback api_call_failed_rc">API call failed</div>'
     );
   $("#attachments_list")
     .closest(".form-group")
     .append(
-      '<div class="invalid-feedback api_call_failed_1">API call failed</div>'
+      '<div class="invalid-feedback api_call_failed_filelist">API call failed</div>'
     );
   $("#helpdesk_ticket_custom_field_cf_iban_number_2321673")
     .closest(".form-group")
     .append(
-      '<div class="invalid-feedback api_call_failed_1">API call failed</div>'
+      '<div class="invalid-feedback api_call_failed_banvalidate">API call failed</div>'
+    );
+    $("#helpdesk_ticket_custom_field_cf_sort_code659991_2321673")
+    .closest(".form-group")
+    .append(
+      '<div class="invalid-feedback api_call_failed_sortcodevalidate">API call failed</div>'
     );
   jQuery(".new-ticket-submit-button")
     .closest(".card-body")
@@ -1027,7 +1037,7 @@ jQuery(document).ready(function ($) {
             jQuery("#model-error-msg .ins-modal-body-content").text(
               result.body
             );
-            addErrorMessage("api_call_failed_1", result.body);
+            addErrorMessage("api_call_failed_dob", result.body);
             $("#save_and_continue1").removeAttr("data-target");
             $("#save_and_continue1").removeAttr("data-toggle");
             console.log("error 404 -->", result.body);
@@ -1037,12 +1047,12 @@ jQuery(document).ready(function ($) {
             jQuery("#model-error-msg .ins-modal-body-content").text(
               result.message
             );
-            addErrorMessage("api_call_failed_1", result.message);
+            addErrorMessage("api_call_failed_dob", result.message);
             $("#save_and_continue1").removeAttr("data-target");
             $("#save_and_continue1").removeAttr("data-toggle");
           }
         } else {
-          let element = ["api_call_failed_1"];
+          let element = ["api_call_failed_dob"];
           clearError(element);
           buildPolicyUI(result);
 
@@ -1093,7 +1103,7 @@ jQuery(document).ready(function ($) {
             jQuery("#model-error-msg .ins-modal-body-content").text(
               result.body
             );
-            addErrorMessage("api_call_failed_1", result.body);
+            addErrorMessage("api_call_failed_postcode", result.body);
             $("#save_and_continue1").removeAttr("data-target");
             $("#save_and_continue1").removeAttr("data-toggle");
             console.log("error 404 -->", result.body);
@@ -1103,12 +1113,12 @@ jQuery(document).ready(function ($) {
             jQuery("#model-error-msg .ins-modal-body-content").text(
               result.message
             );
-            addErrorMessage("api_call_failed_1", result.message);
+            addErrorMessage("api_call_failed_postcode", result.message);
             $("#save_and_continue1").removeAttr("data-target");
             $("#save_and_continue1").removeAttr("data-toggle");
           }
         } else {
-          let element = ["api_call_failed_1"];
+          let element = ["api_call_failed_postcode"];
           clearError(element);
           buildPolicyUI(result);
 
@@ -5337,7 +5347,7 @@ jQuery(document).ready(function ($) {
             jQuery("#claim-error-msg .claim-desc-message").text(result);
             console.log("error--->", result);
             addErrorMessage(
-              "helpdesk_ticket_custom_field_cf_reason_for_claim_2321673",
+              "api_call_failed_rc",
               "Internal Server Error"
             );
             console.log("Internal server error");
@@ -5345,7 +5355,7 @@ jQuery(document).ready(function ($) {
             jQuery("#claim-error-msg").removeClass("d-none");
             jQuery("#claim-error-msg .claim-desc-message").text(result);
             addErrorMessage(
-              "helpdesk_ticket_custom_field_cf_reason_for_claim_2321673",
+              "api_call_failed_rc",
               result
             );
             console.log("error--->", result);
@@ -5355,7 +5365,7 @@ jQuery(document).ready(function ($) {
           }
         } else {
           let ele = [
-            "helpdesk_ticket_custom_field_cf_reason_for_claim_2321673",
+            "api_call_failed_rc",
           ];
           clearError(ele);
           jQuery("#claim-sucess-msg").removeClass("d-none");
@@ -5938,7 +5948,7 @@ jQuery(document).ready(function ($) {
     $("#helpdesk_ticket_custom_field_cf_claimnames_2321673").val(namesArray);
     var elem = document.getElementById("files_list");
     if (elem.files.length) {
-      let ele = ["api_call_failed_1"];
+      let ele = ["api_call_failed_filelist"];
       clearError(ele);
       var files = [];
       var fileSize = [];
@@ -5951,7 +5961,7 @@ jQuery(document).ready(function ($) {
       }, 0);
       console.log("sum tottal--->", sum);
       if (sum <= 4200000) {
-        let ele = ["api_call_failed_1"];
+        let ele = ["api_call_failed_filelist"];
         clearError(ele);
         if ($("#section_5_header").length) {
           update_section_5();
@@ -5963,10 +5973,10 @@ jQuery(document).ready(function ($) {
         console.log(
           " --------- Need to show error max file size should not more than 4 MB ----------------"
         );
-        addErrorMessage("api_call_failed_1", "File size cannot exceed 4 MB");
+        addErrorMessage("api_call_failed_filelist", "File size cannot exceed 4 MB");
       }
     } else {
-      addErrorMessage("api_call_failed_1", "Please Upload the File.");
+      addErrorMessage("api_call_failed_filelist", "Please Upload the File.");
       console.log(" --------- Need to show error message ----------------");
     }
   });
@@ -5989,7 +5999,7 @@ fileUploadCallback()
   function fileUploadCallback(){
     var elem = document.getElementById("files_list");
     if (elem.files.length) {
-      let ele = ["api_call_failed_1"];
+      let ele = ["api_call_failed_filelist"];
       clearError(ele);
       var files = [];
       var fileSize = [];
@@ -6002,7 +6012,7 @@ fileUploadCallback()
       }, 0);
       console.log("sum tottal--->", sum);
       if (sum <= 4200000) {
-        let ele = ["api_call_failed_1"];
+        let ele = ["api_call_failed_filelist"];
         clearError(ele);
         if ($("#section_5_header").length) {
           update_section_5();
@@ -6022,10 +6032,10 @@ fileUploadCallback()
         console.log(
           " --------- Need to show error max file size should not more than 4 MB ----------------"
         );
-        addErrorMessage("api_call_failed_1", "File size cannot exceed 4 MB");
+        addErrorMessage("api_call_failed_filelist", "File size cannot exceed 4 MB");
       }
     } else {
-      addErrorMessage("api_call_failed_1", "Please Upload the File.");
+      addErrorMessage("api_call_failed_filelist", "Please Upload the File.");
       console.log(" --------- Need to show error message ----------------");
     }
   }
@@ -6341,12 +6351,12 @@ fileUploadCallback()
           if (statusCode == 500) {
             console.log("Please refresh the page ", statusCode, result);
             addErrorMessage(
-              "helpdesk_ticket_custom_field_cf_iban_number_2321673",
+              "api_call_failed_banvalidate",
               result
             );
           }
         } else {
-          let ele = ["helpdesk_ticket_custom_field_cf_iban_number_2321673"];
+          let ele = ["api_call_failed_banvalidate"];
           clearError(ele);
           console.log("--sucesss-");
           bankResult = result;
@@ -6403,12 +6413,12 @@ fileUploadCallback()
           if (statusCode == 500) {
             console.log("Please refresh the page ", statusCode, result);
             addErrorMessage(
-              "helpdesk_ticket_custom_field_cf_iban_number_2321673",
+              "api_call_failed_sortcodevalidate",
               result
             );
           }
         } else {
-          let ele = ["helpdesk_ticket_custom_field_cf_iban_number_2321673"];
+          let ele = ["api_call_failed_sortcodevalidate"];
           clearError(ele);
           bankResult = result;
           console.log("--sucesss-");
