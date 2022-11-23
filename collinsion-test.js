@@ -5160,7 +5160,8 @@ jQuery(document).ready(function ($) {
         let claimObject = {};
         for (let i = 0; i < $("input[name='insured_1']:checked").length; i++) {
           claimObject = {};
-          claimObject["incidentCountryCode"] = countryPortal.VHI;
+          let destiny=getAKey("helpdesk_ticket_custom_field_cf_your_destination_2321673",Destination)
+          claimObject["incidentCountryCode"] = destiny[0].akey;
 
           claimObject["incidentDate"] = $(
             "#helpdesk_ticket_custom_field_cf_your_incident_date_2321673"
