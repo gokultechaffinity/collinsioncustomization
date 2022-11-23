@@ -5705,7 +5705,7 @@ jQuery(document).ready(function ($) {
     var reasonForClaimObj = {
       "Any CANCELLATION claim due to COVID-19": {
         paragraph:
-          "We'll need these important documents to make a decision about your claim:<br>Your trip Booking Invoice showing the cost, your name and departure & return dates.<br>Cancellation Invoice from each company you booked with verifying the cancellation charge.<br>Evidence of a Positive Covid test from the NHS/HSE, Private Testing company or your Doctor. We accept Email, Letter or SMS confirmation but we are unable to accept photographs of a home Lateral flow test on their own.<br>If you need to gather this information â€“ you can come to the Existing Claim section of our site and continue with your claim.<br>",
+          "We'll need these important documents to make a decision about your claim:<br>Your trip Booking Invoice showing the cost, your name and departure & return dates.<br>Cancellation Invoice from each company you booked with verifying the cancellation charge.<br>Evidence of a Positive Covid test from the NHS/HSE, Private Testing company or your Doctor. We accept Email, Letter or SMS confirmation but we are unable to accept photographs of a home Lateral flow test on their own.<br>If you need to gather this information, you can come to the Existing Claim section of our site and continue with your claim.<br>",
         titles: ["Booking Invoice", "Other Docs"],
         images: [
           "https://ins-multiforms.s3.eu-central-1.amazonaws.com/Document_Icons/Booking+Invoices.png",
@@ -5714,7 +5714,7 @@ jQuery(document).ready(function ($) {
       },
       "Baggage - personal items damaged": {
         paragraph:
-          "We'll need these important documents to make a decision about your claim:<br>Your trip Booking Invoice showing the cost, your name and departure & return dates.<br>Confirmation from a trusted company confirming the cost of repair or that it's beyond economical repair.<br>If you need to gather this information â€“ you can come to the Existing Claim section of our site and continue with your claim.<br>",
+          "We'll need these important documents to make a decision about your claim:<br>Your trip Booking Invoice showing the cost, your name and departure & return dates.<br>Confirmation from a trusted company confirming the cost of repair or that it's beyond economical repair.<br>If you need to gather this information, you can come to the Existing Claim section of our site and continue with your claim.<br>",
         titles: ["Booking Invoice", "Report"],
         images: [
           "https://ins-multiforms.s3.eu-central-1.amazonaws.com/Document_Icons/Booking+Invoices.png",
@@ -5723,7 +5723,7 @@ jQuery(document).ready(function ($) {
       },
       "Baggage - personal items lost or stolen": {
         paragraph:
-          "We'll need these important documents to make a decision about your claim:<br>Your trip Booking Invoice showing the cost, your name and departure & return dates.<br>Loss Report confirming the circumstances and the date/time at which you reported to the relevant person.<br>Proof of Ownership for the items being claimed.<br>If you need to gather this information â€“ you can come to the Existing Claim section of our site and continue with your claim.",
+          "We'll need these important documents to make a decision about your claim:<br>Your trip Booking Invoice showing the cost, your name and departure & return dates.<br>Loss Report confirming the circumstances and the date/time at which you reported to the relevant person.<br>Proof of Ownership for the items being claimed.<br>If you need to gather this information, you can come to the Existing Claim section of our site and continue with your claim.",
         titles: ["Booking Invoice", "Report"],
         images: [
           "https://ins-multiforms.s3.eu-central-1.amazonaws.com/Document_Icons/Booking+Invoices.png",
@@ -5741,7 +5741,7 @@ jQuery(document).ready(function ($) {
       },
       "Cancelled trip - (NOT related to COVID-19)": {
         paragraph:
-          "We'll need these important documents to make a decision about your claim:<br>Your trip Booking Invoice showing the cost, your name and departure & return dates.<br>Cancellation Invoice from each company you booked with verifying the cancellation charge.<br>Documents that show the need to cancel e.g. a Medical Letter or Delay Report.<br>If you need to gather this information â€“ you can come to the Existing Claim section of our site and continue with your claim.",
+          "We'll need these important documents to make a decision about your claim:<br>Your trip Booking Invoice showing the cost, your name and departure & return dates.<br>Cancellation Invoice from each company you booked with verifying the cancellation charge.<br>Documents that show the need to cancel e.g. a Medical Letter or Delay Report.<br>If you need to gather this information, you can come to the Existing Claim section of our site and continue with your claim.",
         titles: ["Booking Invoice", "Report"],
         images: [
           "https://ins-multiforms.s3.eu-central-1.amazonaws.com/Document_Icons/Booking+Invoices.png",
@@ -5750,7 +5750,7 @@ jQuery(document).ready(function ($) {
       },
       "Curtailment – returned home early": {
         paragraph:
-          "We'll need these important documents to make a decision about your claim:<br>Your trip Booking Invoice showing the cost, your name and departure & return dates. <br>Any other relevant documentation to support your claim.<br>If you need to gather this information â€“ you can come to the Existing Claim section of our site and continue with your claim.",
+          "We'll need these important documents to make a decision about your claim:<br>Your trip Booking Invoice showing the cost, your name and departure & return dates. <br>Any other relevant documentation to support your claim.<br>If you need to gather this information, you can come to the Existing Claim section of our site and continue with your claim.",
         titles: ["Booking Invoice", "Other Docs"],
         images: [
           "https://ins-multiforms.s3.eu-central-1.amazonaws.com/Document_Icons/Booking+Invoices.png",
@@ -5759,7 +5759,7 @@ jQuery(document).ready(function ($) {
       },
       "Dental expenses whilst abroad": {
         paragraph:
-          "We'll need these important documents to make a decision about your claim:<br>Your trip Booking Invoice showing the cost, your name and departure & return dates.<br>Medical document from your treating dentist or medical facility.<br>Receipts and Invoices relating to the medical expenses you're claiming for.<br>If you need to gather this information â€“ you can come to the Existing Claim section of our site and continue with your claim.",
+          "We'll need these important documents to make a decision about your claim:<br>Your trip Booking Invoice showing the cost, your name and departure & return dates.<br>Medical document from your treating dentist or medical facility.<br>Receipts and Invoices relating to the medical expenses you're claiming for.<br>If you need to gather this information, you can come to the Existing Claim section of our site and continue with your claim.",
         titles: ["Booking Invoice", "Other Docs"],
         images: [
           "https://ins-multiforms.s3.eu-central-1.amazonaws.com/Document_Icons/Booking+Invoices.png",
@@ -5768,7 +5768,7 @@ jQuery(document).ready(function ($) {
       },
       "Flight or Travel delayed": {
         paragraph:
-          "We'll need these important documents to make a decision about your claim:<br>Your trip Booking Invoice showing the cost, your name and departure & return dates. <br>A Delay Report or Evidence from the travel provider which confirms the reason and length of the delay.<br>If you need to gather this information â€“ you can come to the Existing Claim section of our site and continue with your claim.",
+          "We'll need these important documents to make a decision about your claim:<br>Your trip Booking Invoice showing the cost, your name and departure & return dates. <br>A Delay Report or Evidence from the travel provider which confirms the reason and length of the delay.<br>If you need to gather this information, you can come to the Existing Claim section of our site and continue with your claim.",
         titles: ["Booking Invoice", "Report"],
         images: [
           "https://ins-multiforms.s3.eu-central-1.amazonaws.com/Document_Icons/Booking+Invoices.png",
@@ -5777,7 +5777,7 @@ jQuery(document).ready(function ($) {
       },
       "Medical expenses abroad & repatriation cost": {
         paragraph:
-          "We'll need these important documents to make a decision about your claim:<br>Your trip Booking Invoice showing the cost, your name and departure & return dates.<br>Medical document from your treating doctor or medical facility.<br>Receipts and Invoices relating to the medical expenses you're claiming for.<br>If you need to gather this information â€“ you can come to the Existing Claim section of our site and continue with your claim.",
+          "We'll need these important documents to make a decision about your claim:<br>Your trip Booking Invoice showing the cost, your name and departure & return dates.<br>Medical document from your treating doctor or medical facility.<br>Receipts and Invoices relating to the medical expenses you're claiming for.<br>If you need to gather this information, you can come to the Existing Claim section of our site and continue with your claim.",
         titles: ["Booking Invoice", "Other Doc", "Other invoice"],
         images: [
           " https://ins-multiforms.s3.eu-central-1.amazonaws.com/Document_Icons/Booking+Invoices.png",
@@ -5787,7 +5787,7 @@ jQuery(document).ready(function ($) {
       },
       "Missed flight or departure": {
         paragraph:
-          "We'll need these important documents to make a decision about your claim:<br>Your trip Booking Invoice showing the cost, your name and departure & return dates.<br>Any other relevant documentation to support your claim.<br>If you need to gather this information â€“ you can come to the Existing Claim section of our site and continue with your claim.",
+          "We'll need these important documents to make a decision about your claim:<br>Your trip Booking Invoice showing the cost, your name and departure & return dates.<br>Any other relevant documentation to support your claim.<br>If you need to gather this information, you can come to the Existing Claim section of our site and continue with your claim.",
         titles: ["Booking Invoice", "Other Docs"],
         images: [
           "https://ins-multiforms.s3.eu-central-1.amazonaws.com/Document_Icons/Booking+Invoices.png",
@@ -5796,7 +5796,7 @@ jQuery(document).ready(function ($) {
       },
       "Substitute Accommodation - change to accommodation during trip": {
         paragraph:
-          "We'll need these important documents to make a decision about your claim:<br>Your trip Booking Invoice showing the cost, your name and departure & return dates.<br>Any other relevant documentation to support your claim.<br>If you need to gather this information â€“ you can come to the Existing Claim section of our site and continue with your claim.",
+          "We'll need these important documents to make a decision about your claim:<br>Your trip Booking Invoice showing the cost, your name and departure & return dates.<br>Any other relevant documentation to support your claim.<br>If you need to gather this information, you can come to the Existing Claim section of our site and continue with your claim.",
         titles: ["Booking Invoice", "Other Docs"],
         images: [
           "https://ins-multiforms.s3.eu-central-1.amazonaws.com/Document_Icons/Booking+Invoices.png",
@@ -5805,7 +5805,7 @@ jQuery(document).ready(function ($) {
       },
       "Winter sports - lift pass, equipment or piste closure": {
         paragraph:
-          "We'll need these important documents to make a decision about your claim:<br>Your trip Booking Invoice showing the cost, your name and departure & return dates.<br>Any other relevant documentation to support your claim.<br>If you need to gather this information â€“ you can come to the Existing Claim section of our site and continue with your claim.",
+          "We'll need these important documents to make a decision about your claim:<br>Your trip Booking Invoice showing the cost, your name and departure & return dates.<br>Any other relevant documentation to support your claim.<br>If you need to gather this information, you can come to the Existing Claim section of our site and continue with your claim.",
         titles: ["Booking Invoice", "Other Docs"],
         images: [
           "https://ins-multiforms.s3.eu-central-1.amazonaws.com/Document_Icons/Booking+Invoices.png",
@@ -10824,7 +10824,7 @@ jQuery(document).ready(function ($) {
       function () {
         if (
           $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() ==
-          "Curtailment â€“ returned home early"
+          "Curtailment – returned home early"
         ) {
           //save and continue 3 button
           var refunds_compensation_parent = document.getElementById(
