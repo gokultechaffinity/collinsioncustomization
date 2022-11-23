@@ -5732,7 +5732,7 @@ jQuery(document).ready(function ($) {
       },
       "Baggage - suitcase hasn't arrived on time": {
         paragraph:
-          "We'll need these important documents to make a decision about your claim:<br>Your trip Booking Invoice showing the cost, your name and departure & return dates.<br>A PIR (Property Irregularity Report) from your transport provider confirming your luggage was delayed.<br>Receipts for any emergency items you had to buy.<br>If you need to gather this information â€“ you can come to the Existing Claim section of our site and continue with your claim.",
+          "We'll need these important documents to make a decision about your claim:<br>Your trip Booking Invoice showing the cost, your name and departure & return dates.<br>A PIR (Property Irregularity Report) from your transport provider confirming your luggage was delayed.<br>Receipts for any emergency items you had to buy.<br>If you need to gather this information, you can come to the Existing Claim section of our site and continue with your claim.",
         titles: ["Booking Invoice", "Other Docs"],
         images: [
           "https://ins-multiforms.s3.eu-central-1.amazonaws.com/Document_Icons/Booking+Invoices.png",
@@ -5748,7 +5748,7 @@ jQuery(document).ready(function ($) {
           "https://ins-multiforms.s3.eu-central-1.amazonaws.com/Document_Icons/Report.png",
         ],
       },
-      "Curtailment â€“ returned home early": {
+      "Curtailment - returned home early": {
         paragraph:
           "We'll need these important documents to make a decision about your claim:<br>Your trip Booking Invoice showing the cost, your name and departure & return dates. <br>Any other relevant documentation to support your claim.<br>If you need to gather this information â€“ you can come to the Existing Claim section of our site and continue with your claim.",
         titles: ["Booking Invoice", "Other Docs"],
