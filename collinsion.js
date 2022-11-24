@@ -1161,7 +1161,7 @@ jQuery(document).ready(function ($) {
       let InternalPolicyNumber = policyData.InternalPolicyNumber;
       let options = "";
       options +=
-        '<div class="form-group"><label class="form-label" style="display:inline-table;" > Name(s) of the Insured  <a id="claimants-hint" style="margin-left:650px; color:red; " *Claimant(s). Select everyone who is claiming!</a> </label> ';
+        '<div class="form-group"><label class="form-label" style="display:inline-table;" > Name(s) of the Insured  <a id="claimants-hint" style="margin-left:650px;"> *Claimant(s). Select everyone who is claiming!</a> </label> ';
       policyDetails.forEach(function (element, index) {
         options +=
           '<div class="list-claim"><input type="checkbox" class="check-box" id=' +
