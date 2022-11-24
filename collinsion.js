@@ -517,7 +517,7 @@ jQuery(document).ready(function ($) {
         departure_date < return_date &&
         return_date > departure_date &&
         booking_date < departure_date &&
-        incident_date < return_date
+        incident_date <= return_date
       ) {
         result = true;
       }
