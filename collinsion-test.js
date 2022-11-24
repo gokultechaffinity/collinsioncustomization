@@ -10445,7 +10445,7 @@ fileUploadCallback()
       body["ClaimAnswers"] = ClaimQaAndAnswers;
       console.log("submit claim body --->", body);
     }
-
+    console.log("--------- calling create submit claim body------- ");
     updateSubmitClaim(body, ".ticket-detail-dummy");
   });
   function submitClaimBody(qkeyValue, akeyValue, fieldType) {
@@ -10595,6 +10595,7 @@ fileUploadCallback()
         console.log("--->", result, statusCode);
         if (flag) {
           if (statusCode == 401) {
+            console.log("--- Re authorize token submit claim ---")
             getJWTToken(fieldId);
           } else if (statusCode == 400) {
             console.log("--field miised getting senario->", result);
@@ -10610,8 +10611,8 @@ fileUploadCallback()
         } else {
           let ele = ["common_error"];
           clearError(ele);
-          console.log("--sucesss-");
-          $("#helpdesk_ticket_submit").trigger("click");
+          console.log("--sucesss of submit claim--");
+        // $("#helpdesk_ticket_submit").trigger("click");
   
         }
       })
