@@ -8439,7 +8439,7 @@ fileUploadCallback()
       body["ClaimAnswers"] = ClaimQaAndAnswers;
       console.log("submit claim body --->", body);
     }
-
+    console.log("----- create submit claim -----");
     createSubmitClaim(body, ".new-ticket-dummy");
   });
   $(".ticket-detail-dummy").click(function () {
@@ -10563,7 +10563,7 @@ fileUploadCallback()
           let ele = ["common_error"];
           clearError(ele);
           console.log("--sucesss-");
-          $(".new-ticket-submit-button").trigger("click");
+          //$(".new-ticket-submit-button").trigger("click");
         }
       })
       .catch((error) => console.log("error -->", error));
@@ -10612,7 +10612,7 @@ fileUploadCallback()
           let ele = ["common_error"];
           clearError(ele);
           console.log("--sucesss of submit claim--");
-        // $("#helpdesk_ticket_submit").trigger("click");
+         $("#helpdesk_ticket_submit").trigger("click");
   
         }
       })
