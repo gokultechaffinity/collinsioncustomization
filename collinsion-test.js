@@ -3700,7 +3700,7 @@ jQuery(document).ready(function ($) {
     },
     {
       id: "AtBeach",
-      name_eng: "Checked-in luggage (In my suitcase)",
+      name_eng: "At the beach",
       name_ita: "Sulla spiaggia",
     },
     {
@@ -4505,7 +4505,7 @@ jQuery(document).ready(function ($) {
     },
     {
       id: "CrewShortage",
-      name_eng: "Equipaggio o carenza di personale",
+      name_eng: "Crew Shortage",
       name_ita: "Crew or Staff shortage",
     },
   ];
@@ -6507,6 +6507,12 @@ fileUploadCallback()
     let fieldTypeText = "Text";
     let fieldTypeDate = "Date";
     let ClaimQaAndAnswers = [];
+    let cxBookDate = submitClaimBody(
+      "CanxBookingDate",
+      $("#helpdesk_ticket_custom_field_cf_your_booking_date_2321673").val(),
+      fieldTypeDate
+    );
+    ClaimQaAndAnswers.push(cxBookDate);
     if (reasonClaim[0].akey == "01_02_Canx") {
       let coronaDateAware = submitClaimBody(
         "CoronaDateAware",
@@ -7373,12 +7379,6 @@ fileUploadCallback()
       body["ClaimAnswers"] = ClaimQaAndAnswers;
       console.log("submit claim body --->", body);
     } else if (reasonClaim[0].akey == "01_03_CxIllClnt") {
-      let cxBookDate = submitClaimBody(
-        "CanxBookingDate",
-        $("#helpdesk_ticket_custom_field_cf_your_booking_date_2321673").val(),
-        fieldTypeDate
-      );
-      ClaimQaAndAnswers.push(cxBookDate);
       let checkRefundValue = $(
         "#helpdesk_ticket_custom_field_cf_have_you_received_any_refunds_or_compensation702973_2321673"
       ).val();
@@ -8513,6 +8513,12 @@ fileUploadCallback()
     let fieldTypeText = "Text";
     let fieldTypeDate = "Date";
     let ClaimQaAndAnswers = [];
+    let cxBookDate = submitClaimBody(
+      "CanxBookingDate",
+      $("#helpdesk_ticket_custom_field_cf_your_booking_date_2321673").val(),
+      fieldTypeDate
+    );
+    ClaimQaAndAnswers.push(cxBookDate);
     if (reasonClaim[0].akey == "01_02_Canx") {
       let coronaDateAware = submitClaimBody(
         "CoronaDateAware",
@@ -8727,6 +8733,7 @@ fileUploadCallback()
       body["ClaimAnswers"] = ClaimQaAndAnswers;
       console.log("submit claim body --->", body);
     } else if (reasonClaim[0].akey == "01_03_BagDamNonCarr") {
+
       let PIRNumberDamage = submitClaimBody(
         "PIRNumberDamage",
         $(
@@ -9379,12 +9386,6 @@ fileUploadCallback()
       body["ClaimAnswers"] = ClaimQaAndAnswers;
       console.log("submit claim body --->", body);
     } else if (reasonClaim[0].akey == "01_03_CxIllClnt") {
-      let cxBookDate = submitClaimBody(
-        "CanxBookingDate",
-        $("#helpdesk_ticket_custom_field_cf_your_booking_date_2321673").val(),
-        fieldTypeDate
-      );
-      ClaimQaAndAnswers.push(cxBookDate);
       let checkRefundValue = $(
         "#helpdesk_ticket_custom_field_cf_have_you_received_any_refunds_or_compensation702973_2321673"
       ).val();
