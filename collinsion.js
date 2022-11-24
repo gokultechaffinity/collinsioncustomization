@@ -1188,6 +1188,10 @@ jQuery(document).ready(function ($) {
       $("#collapseSection2 .card-body").prepend(
         "<div class='list-policy-names'>" + options + "</div>"
       );
+      $(".list-policy-names").prepend(
+        "<a id='claimants-hint'>Claimant(s). Select everyone who's claiming!</a>"
+      );
+
       $("#collapseSection2 .list-policy-names .form-group").append(
         "<div class='invalid-feedback check-finder'></div>"
       );
