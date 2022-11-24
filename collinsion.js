@@ -1161,7 +1161,7 @@ jQuery(document).ready(function ($) {
       let InternalPolicyNumber = policyData.InternalPolicyNumber;
       let options = "";
       options +=
-        '<div class="form-group"><label class="form-label"> Name(s) of the Insured</label>';
+        '<div class="form-group"><label class="form-label"> Name(s) of the Insured</label> <a id="claimants-hint">Claimant(s). Select everyone who is claiming!</a>';
       policyDetails.forEach(function (element, index) {
         options +=
           '<div class="list-claim"><input type="checkbox" class="check-box" id=' +
@@ -1188,9 +1188,9 @@ jQuery(document).ready(function ($) {
       $("#collapseSection2 .card-body").prepend(
         "<div class='list-policy-names'>" + options + "</div>"
       );
-      $(".list-policy-names").prepend(
-        "<a id='claimants-hint'>Claimant(s). Select everyone who's claiming!</a>"
-      );
+      // $(".list-policy-names").prepend(
+      //   "<a id='claimants-hint'>Claimant(s). Select everyone who's claiming!</a>"
+      // );
 
       $("#collapseSection2 .list-policy-names .form-group").append(
         "<div class='invalid-feedback check-finder'></div>"
