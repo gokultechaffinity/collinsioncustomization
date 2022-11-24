@@ -56,7 +56,7 @@ jQuery(document).ready(function ($) {
     $("button.new-ticket-submit-button")
       .hide()
       .after(
-        '<span class="btn fw-primary-button new-ticket-submit-button new-ticket-dummy">Sottoscrivi</span>'
+        '<span class="btn fw-primary-button new-ticket-dummy">Sottoscrivi</span>'
       );
     $("button#helpdesk_ticket_submit")
       .hide()
@@ -67,7 +67,7 @@ jQuery(document).ready(function ($) {
     $("button.new-ticket-submit-button")
       .hide()
       .after(
-        '<span class="btn fw-primary-button new-ticket-submit-button new-ticket-dummy">Submit</span>'
+        '<span class="btn fw-primary-button  new-ticket-dummy">Submit</span>'
       );
     $("button#helpdesk_ticket_submit")
       .hide()
@@ -10564,7 +10564,7 @@ fileUploadCallback()
           let ele = ["common_error"];
           clearError(ele);
           console.log("--sucesss-");
-          //$(".new-ticket-submit-button").trigger("click");
+          $(".new-ticket-submit-button").trigger("click");
         }
       })
       .catch((error) => console.log("error -->", error));
