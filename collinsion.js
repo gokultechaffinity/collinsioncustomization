@@ -5379,7 +5379,7 @@ jQuery(document).ready(function ($) {
             jQuery("#claim-error-msg .claim-desc-message").text(result);
             addErrorMessage(
               "api_call_failed_rc",
-              "Warning!! Something's not quite right. Please try again and if the problem persists please contact the team using the 'Contact Us' button in the footer."
+              "Warning Something's not quite right. Please try again and if the problem persists please contact the team using the 'Contact Us' button in the footer."
             );
              
           }
