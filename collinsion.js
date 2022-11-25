@@ -14,24 +14,35 @@ jQuery(document).ready(function ($) {
     $("#helpdesk_ticket_custom_field_cf_date_of_birth_2321673")
       .closest(".form-group")
       .append(
-        '<div class="invalid-feedback api_call_failed_1">API call failed</div>'
+        '<div class="invalid-feedback api_call_failed_dob">API call failed</div>'
       );
+      $("#helpdesk_ticket_custom_field_cf_postcode68273_2321673")
+      .closest(".form-group")
+      .append(
+        '<div class="invalid-feedback api_call_failed_postcode">API call failed</div>'
+      );
+  
     $(
       "#invalid-feedback helpdesk_ticket_custom_field_cf_reason_for_claim_2321673"
     )
       .closest(".form-group")
       .append(
-        '<div class="invalid-feedback api_call_failed_1">API call failed</div>'
+        '<div class="invalid-feedback api_call_failed_rc">API call failed</div>'
       );
     $("#attachments_list")
       .closest(".form-group")
       .append(
-        '<div class="invalid-feedback api_call_failed_1">API call failed</div>'
+        '<div class="invalid-feedback api_call_failed_filelist">API call failed</div>'
       );
     $("#helpdesk_ticket_custom_field_cf_iban_number_2321673")
       .closest(".form-group")
       .append(
-        '<div class="invalid-feedback api_call_failed_1">API call failed</div>'
+        '<div class="invalid-feedback api_call_failed_banvalidate">API call failed</div>'
+      );
+      $("#helpdesk_ticket_custom_field_cf_sort_code659991_2321673")
+      .closest(".form-group")
+      .append(
+        '<div class="invalid-feedback api_call_failed_sortcodevalidate">API call failed</div>'
       );
     jQuery(".new-ticket-submit-button")
       .closest(".card-body")
@@ -47,7 +58,7 @@ jQuery(document).ready(function ($) {
       $("button.new-ticket-submit-button")
         .hide()
         .after(
-          '<span class="btn fw-primary-button new-ticket-submit-button new-ticket-dummy">Sottoscrivi</span>'
+          '<span class="btn fw-primary-button new-ticket-dummy">Sottoscrivi</span>'
         );
       $("button#helpdesk_ticket_submit")
         .hide()
@@ -58,7 +69,7 @@ jQuery(document).ready(function ($) {
       $("button.new-ticket-submit-button")
         .hide()
         .after(
-          '<span class="btn fw-primary-button new-ticket-submit-button new-ticket-dummy">Submit</span>'
+          '<span class="btn fw-primary-button new-ticket-dummy">Submit</span>'
         );
       $("button#helpdesk_ticket_submit")
         .hide()
@@ -1035,7 +1046,7 @@ jQuery(document).ready(function ($) {
               jQuery("#model-error-msg .ins-modal-body-content").text(
                 result.body
               );
-              addErrorMessage("api_call_failed_1", result.body);
+              addErrorMessage("api_call_failed_dob", result.body);
               $("#save_and_continue1").removeAttr("data-target");
               $("#save_and_continue1").removeAttr("data-toggle");
               console.log("error 404 -->", result.body);
@@ -1045,12 +1056,12 @@ jQuery(document).ready(function ($) {
               jQuery("#model-error-msg .ins-modal-body-content").text(
                 result.message
               );
-              addErrorMessage("api_call_failed_1", result.message);
+              addErrorMessage("api_call_failed_dob", result.message);
               $("#save_and_continue1").removeAttr("data-target");
               $("#save_and_continue1").removeAttr("data-toggle");
             }
           } else {
-            let element = ["api_call_failed_1"];
+            let element = ["api_call_failed_dob"];
             clearError(element);
             buildPolicyUI(result);
   
@@ -1101,7 +1112,7 @@ jQuery(document).ready(function ($) {
               jQuery("#model-error-msg .ins-modal-body-content").text(
                 result.body
               );
-              addErrorMessage("api_call_failed_1", result.body);
+              addErrorMessage("api_call_failed_postcode", result.body);
               $("#save_and_continue1").removeAttr("data-target");
               $("#save_and_continue1").removeAttr("data-toggle");
               console.log("error 404 -->", result.body);
@@ -1111,12 +1122,12 @@ jQuery(document).ready(function ($) {
               jQuery("#model-error-msg .ins-modal-body-content").text(
                 result.message
               );
-              addErrorMessage("api_call_failed_1", result.message);
+              addErrorMessage("api_call_failed_postcode", result.message);
               $("#save_and_continue1").removeAttr("data-target");
               $("#save_and_continue1").removeAttr("data-toggle");
             }
           } else {
-            let element = ["api_call_failed_1"];
+            let element = ["api_call_failed_postcode"];
             clearError(element);
             buildPolicyUI(result);
   
@@ -3699,7 +3710,7 @@ jQuery(document).ready(function ($) {
       },
       {
         id: "AtBeach",
-        name_eng: "Checked-in luggage (In my suitcase)",
+        name_eng: "At the beach",
         name_ita: "Sulla spiaggia",
       },
       {
@@ -4504,7 +4515,7 @@ jQuery(document).ready(function ($) {
       },
       {
         id: "CrewShortage",
-        name_eng: "Equipaggio o carenza di personale",
+        name_eng: "Crew Shortage",
         name_ita: "Crew or Staff shortage",
       },
     ];
@@ -5159,8 +5170,8 @@ jQuery(document).ready(function ($) {
           let claimObject = {};
           for (let i = 0; i < $("input[name='insured_1']:checked").length; i++) {
             claimObject = {};
-            claimObject["incidentCountryCode"] = countryPortal.VHI;
-  
+            let destiny=getAKey("helpdesk_ticket_custom_field_cf_your_destination_2321673",Destination)
+            claimObject["incidentCountryCode"] = destiny[0].akey;
             claimObject["incidentDate"] = $(
               "#helpdesk_ticket_custom_field_cf_your_incident_date_2321673"
             ).val();
@@ -5330,6 +5341,7 @@ jQuery(document).ready(function ($) {
           if (!response.ok) {
             console.log("inside error ", response.status);
             flag = true;
+            return response.text();
           }
           return response.json();
         })
@@ -5345,7 +5357,7 @@ jQuery(document).ready(function ($) {
               jQuery("#claim-error-msg .claim-desc-message").text(result);
               console.log("error--->", result);
               addErrorMessage(
-                "helpdesk_ticket_custom_field_cf_reason_for_claim_2321673",
+                "api_call_failed_rc",
                 "Internal Server Error"
               );
               console.log("Internal server error");
@@ -5353,7 +5365,7 @@ jQuery(document).ready(function ($) {
               jQuery("#claim-error-msg").removeClass("d-none");
               jQuery("#claim-error-msg .claim-desc-message").text(result);
               addErrorMessage(
-                "helpdesk_ticket_custom_field_cf_reason_for_claim_2321673",
+                "api_call_failed_rc",
                 result
               );
               console.log("error--->", result);
@@ -5363,7 +5375,7 @@ jQuery(document).ready(function ($) {
             }
           } else {
             let ele = [
-              "helpdesk_ticket_custom_field_cf_reason_for_claim_2321673",
+              "api_call_failed_rc",
             ];
             clearError(ele);
             jQuery("#claim-sucess-msg").removeClass("d-none");
@@ -5944,12 +5956,9 @@ jQuery(document).ready(function ($) {
         saveDetail.OtherInsuredClientIds
       );
       $("#helpdesk_ticket_custom_field_cf_claimnames_2321673").val(namesArray);
-      $(".new-ticket-submit-button").trigger("click");
-    });
-    $(".save_and_continue5").click(function () {
       var elem = document.getElementById("files_list");
       if (elem.files.length) {
-        let ele = ["api_call_failed_1"];
+        let ele = ["api_call_failed_filelist"];
         clearError(ele);
         var files = [];
         var fileSize = [];
@@ -5962,7 +5971,57 @@ jQuery(document).ready(function ($) {
         }, 0);
         console.log("sum tottal--->", sum);
         if (sum <= 4200000) {
-          let ele = ["api_call_failed_1"];
+          let ele = ["api_call_failed_filelist"];
+          clearError(ele);
+          if ($("#section_5_header").length) {
+            update_section_5();
+          } else {
+            add_section_5();
+          }
+          getUploadFiles(files, ".save_draft_5");
+        } else {
+          console.log(
+            " --------- Need to show error max file size should not more than 4 MB ----------------"
+          );
+          addErrorMessage("api_call_failed_filelist", "File size cannot exceed 4 MB");
+        }
+      } else {
+        addErrorMessage("api_call_failed_filelist", "Please Upload the File.");
+        console.log(" --------- Need to show error message ----------------");
+      }
+    });
+    $(".save_and_continue5").click(function () {
+      if(jQuery(".fw-comments-wrapper").length > 0){
+        //will execute in ticket detail page senario
+  if($("#new_helpdesk_note #attachments_list .proper-attachments-list").length){
+  fileUploadCallback()
+  } 
+  else if($(".fw-comments-wrapper .fw-attachment-item").length){
+     //Need to add another condition for already had div if div has length then we need to open next section
+   open_next(5);
+  }
+      }else{
+        //will excute in create new ticket senario
+  fileUploadCallback()
+      }
+    });
+    function fileUploadCallback(){
+      var elem = document.getElementById("files_list");
+      if (elem.files.length) {
+        let ele = ["api_call_failed_filelist"];
+        clearError(ele);
+        var files = [];
+        var fileSize = [];
+        for (var i = 0; i < elem.files.length; ++i) {
+          files.push(elem.files[i].name);
+          fileSize.push(elem.files[i].size);
+        }
+        var sum = fileSize.reduce(function (a, b) {
+          return a + b;
+        }, 0);
+        console.log("sum tottal--->", sum);
+        if (sum <= 4200000) {
+          let ele = ["api_call_failed_filelist"];
           clearError(ele);
           if ($("#section_5_header").length) {
             update_section_5();
@@ -5970,9 +6029,7 @@ jQuery(document).ready(function ($) {
             add_section_5();
           }
           getUploadFiles(files, ".save_and_continue5");
-          /////////////////////////////////
           open_next(5);
-  
           $("#section-4-button").css("background-color", "#4DC367");
           $("#section-5-button").css("background-color", "#4DC367");
           $("#section-4-button").children(":first").removeClass("fa-pen");
@@ -5980,20 +6037,17 @@ jQuery(document).ready(function ($) {
           $("#section-5-button").children(":first").removeClass("fa-plus");
           $("#section-4-button").children(":first").addClass("fa-check");
           $("#section-5-button").children(":first").addClass("fa-check");
-  
-          // $("#section-4-button").removeAttr("data-toggle");
-          // $("#section-5-button").removeAttr("data-toggle");
         } else {
           console.log(
             " --------- Need to show error max file size should not more than 4 MB ----------------"
           );
-          addErrorMessage("api_call_failed_1", "File size cannot exceed 4 MB");
+          addErrorMessage("api_call_failed_filelist", "File size cannot exceed 4 MB");
         }
       } else {
-        addErrorMessage("api_call_failed_1", "Please Upload the File.");
+        addErrorMessage("api_call_failed_filelist", "Please Upload the File.");
         console.log(" --------- Need to show error message ----------------");
       }
-    });
+    }
     function add_section_5() {
       $("<strong id='section_5_header'>" + titles[4] + "</strong>").insertAfter(
         "#great_line_4"
@@ -6062,7 +6116,7 @@ jQuery(document).ready(function ($) {
           if (!response.ok) {
             flag = true;
           }
-          return response.json();
+          return response.text();
         })
         .then(function (result) {
           console.log("-- details->", result);
@@ -6072,17 +6126,17 @@ jQuery(document).ready(function ($) {
               console.log("unauthorized");
               getJWTToken(fieldId);
             }
+          } else{
+            if(jQuery(".fw-comments-wrapper").length > 0){
+              $("#new_helpdesk_note #helpdesk_note_submit").trigger("click")
+            }else{
+              if(fieldId==".save_draft_5" ){
+                $(".new-ticket-submit-button").trigger("click");
+              }
+            }
           }
         })
         .catch((error) => console.log(error));
-      //       .then((response) => response.text())
-      //       .then(function (result) {
-      //         console.log("sucessfilly uploaded ----->", result);
-      //         if (JSON.parse(result).status == 401) {
-      //           getJWTToken(fieldId);
-      //         }
-      //       })
-      //       .catch((error) => console.log("error", error));
     }
     //____________________________________________________SECTION 5 End - Your Documents____________________________________________
     //____________________________________________________________________________________________________________________
@@ -6305,12 +6359,12 @@ jQuery(document).ready(function ($) {
             if (statusCode == 500) {
               console.log("Please refresh the page ", statusCode, result);
               addErrorMessage(
-                "helpdesk_ticket_custom_field_cf_iban_number_2321673",
+                "api_call_failed_banvalidate",
                 result
               );
             }
           } else {
-            let ele = ["helpdesk_ticket_custom_field_cf_iban_number_2321673"];
+            let ele = ["api_call_failed_banvalidate"];
             clearError(ele);
             console.log("--sucesss-");
             bankResult = result;
@@ -6367,12 +6421,12 @@ jQuery(document).ready(function ($) {
             if (statusCode == 500) {
               console.log("Please refresh the page ", statusCode, result);
               addErrorMessage(
-                "helpdesk_ticket_custom_field_cf_iban_number_2321673",
+                "api_call_failed_sortcodevalidate",
                 result
               );
             }
           } else {
-            let ele = ["helpdesk_ticket_custom_field_cf_iban_number_2321673"];
+            let ele = ["api_call_failed_sortcodevalidate"];
             clearError(ele);
             bankResult = result;
             console.log("--sucesss-");
@@ -6460,6 +6514,12 @@ jQuery(document).ready(function ($) {
       let fieldTypeText = "Text";
       let fieldTypeDate = "Date";
       let ClaimQaAndAnswers = [];
+      let cxBookDate = submitClaimBody(
+        "CanxBookingDate",
+        $("#helpdesk_ticket_custom_field_cf_your_booking_date_2321673").val(),
+        fieldTypeDate
+      );
+      ClaimQaAndAnswers.push(cxBookDate);
       if (reasonClaim[0].akey == "01_02_Canx") {
         let coronaDateAware = submitClaimBody(
           "CoronaDateAware",
@@ -7326,12 +7386,6 @@ jQuery(document).ready(function ($) {
         body["ClaimAnswers"] = ClaimQaAndAnswers;
         console.log("submit claim body --->", body);
       } else if (reasonClaim[0].akey == "01_03_CxIllClnt") {
-        let cxBookDate = submitClaimBody(
-          "CanxBookingDate",
-          $("#helpdesk_ticket_custom_field_cf_your_booking_date_2321673").val(),
-          fieldTypeDate
-        );
-        ClaimQaAndAnswers.push(cxBookDate);
         let checkRefundValue = $(
           "#helpdesk_ticket_custom_field_cf_have_you_received_any_refunds_or_compensation702973_2321673"
         ).val();
@@ -8466,6 +8520,12 @@ jQuery(document).ready(function ($) {
       let fieldTypeText = "Text";
       let fieldTypeDate = "Date";
       let ClaimQaAndAnswers = [];
+      let cxBookDate = submitClaimBody(
+        "CanxBookingDate",
+        $("#helpdesk_ticket_custom_field_cf_your_booking_date_2321673").val(),
+        fieldTypeDate
+      );
+      ClaimQaAndAnswers.push(cxBookDate);
       if (reasonClaim[0].akey == "01_02_Canx") {
         let coronaDateAware = submitClaimBody(
           "CoronaDateAware",
@@ -9332,12 +9392,6 @@ jQuery(document).ready(function ($) {
         body["ClaimAnswers"] = ClaimQaAndAnswers;
         console.log("submit claim body --->", body);
       } else if (reasonClaim[0].akey == "01_03_CxIllClnt") {
-        let cxBookDate = submitClaimBody(
-          "CanxBookingDate",
-          $("#helpdesk_ticket_custom_field_cf_your_booking_date_2321673").val(),
-          fieldTypeDate
-        );
-        ClaimQaAndAnswers.push(cxBookDate);
         let checkRefundValue = $(
           "#helpdesk_ticket_custom_field_cf_have_you_received_any_refunds_or_compensation702973_2321673"
         ).val();
