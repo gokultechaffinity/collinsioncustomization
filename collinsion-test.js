@@ -58,23 +58,23 @@ jQuery(document).ready(function ($) {
       $("button.new-ticket-submit-button")
         .hide()
         .after(
-          '<span class="btn fw-primary-button new-ticket-dummy">Sottoscrivi</span>'
+          '<span class="btn fw-primary-button new-ticket-dummy for-section-7">Sottoscrivi</span>'
         );
       $("button#helpdesk_ticket_submit")
         .hide()
         .after(
-          '<span class="btn fw-primary-button  ticket-detail-dummy">Sottoscrivi</span>'
+          '<span class="btn fw-primary-button  ticket-detail-dummy for-section-7">Sottoscrivi</span>'
         );
     } else {
       $("button.new-ticket-submit-button")
         .hide()
         .after(
-          '<span class="btn fw-primary-button new-ticket-dummy">Submit</span>'
+          '<span class="btn fw-primary-button new-ticket-dummy for-section-7">Submit</span>'
         );
       $("button#helpdesk_ticket_submit")
         .hide()
         .after(
-          '<span class="btn fw-primary-button  ticket-detail-dummy">Submit</span>'
+          '<span class="btn fw-primary-button  ticket-detail-dummy for-section-7">Submit</span>'
         );
     }
   
