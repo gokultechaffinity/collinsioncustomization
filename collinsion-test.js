@@ -294,15 +294,16 @@ jQuery(document).ready(function ($) {
     );
   } else {
     $(
-      '<button id="save_and_continue4" class="btn btn-primary for-section-4 save_and_continue" type="button">Save &amp; Continue</button>'
-    ).insertAfter(
-      ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper"
-    );
-    $(
       '<button id="save_draft_4" class="btn btn-primary for-section-4 " type="button">Save Draft</button>'
     ).insertAfter(
       ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper"
     );
+    $(
+      '<button id="save_and_continue4" class="btn btn-primary for-section-4 save_and_continue" type="button">Save &amp; Continue</button>'
+    ).insertAfter(
+      ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper"
+    );
+
   }
   //____________________________________________________SECTION 5 Start - Your Documents____________________________________________
   //for-section-5 attachment group
@@ -324,12 +325,13 @@ jQuery(document).ready(function ($) {
         '<button class="save_and_continue5 btn btn-primary for-section-5 save_and_continue" type="button" >Salva e continua</button>'
       ).insertAfter(".attachments.for-section-5");
     } else {
-      $(
-        '<button class="save_and_continue5 btn btn-primary for-section-5 save_and_continue" type="button" >Save & Continue</button>'
-      ).insertAfter(".attachments.for-section-5");
       jQuery(".attachments.for-section-5").after(
         '<button class="save_draft_5 btn btn-primary for-section-5 " type="button">Save Draft </button>'
       );
+      $(
+        '<button class="save_and_continue5 btn btn-primary for-section-5 save_and_continue" type="button" >Save & Continue</button>'
+      ).insertAfter(".attachments.for-section-5");
+     
     }
   } else {
     $(
@@ -343,12 +345,13 @@ jQuery(document).ready(function ($) {
         '<button class="save_and_continue5 btn btn-primary for-section-5 save_and_continue" type="button" >Salva e continua</button>'
       ).insertAfter(".form-group.attachments-container.for-section-5");
     } else {
-      $(
-        '<button class="save_and_continue5 btn btn-primary for-section-5 save_and_continue" type="button" >Save & Continue</button>'
-      ).insertAfter(".form-group.attachments-container.for-section-5");
       jQuery(".attachments-container.for-section-5").after(
         '<button class="save_draft_5 btn btn-primary for-section-5 " type="button">Save Draft </button>'
       );
+      $(
+        '<button class="save_and_continue5 btn btn-primary for-section-5 save_and_continue" type="button" >Save & Continue</button>'
+      ).insertAfter(".form-group.attachments-container.for-section-5");
+
     }
   }
   $("#mock-doc").remove();
