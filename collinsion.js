@@ -303,7 +303,6 @@ jQuery(document).ready(function ($) {
     ).insertAfter(
       ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper"
     );
-
   }
   //____________________________________________________SECTION 5 Start - Your Documents____________________________________________
   //for-section-5 attachment group
@@ -331,7 +330,7 @@ jQuery(document).ready(function ($) {
       $(
         '<button class="save_and_continue5 btn btn-primary for-section-5 save_and_continue" type="button" >Save & Continue</button>'
       ).insertAfter(".attachments.for-section-5");
-     
+
     }
   } else {
     $(
@@ -351,7 +350,7 @@ jQuery(document).ready(function ($) {
       $(
         '<button class="save_and_continue5 btn btn-primary for-section-5 save_and_continue" type="button" >Save & Continue</button>'
       ).insertAfter(".form-group.attachments-container.for-section-5");
-
+ 
     }
   }
   $("#mock-doc").remove();
@@ -1047,9 +1046,9 @@ jQuery(document).ready(function ($) {
           } else if (statusCode == 404) {
             jQuery("#model-error-msg").removeClass("d-none");
             jQuery("#model-error-msg .ins-modal-body-content").text(
-              result.body
+              "Something's not quite right. Please try again using the policy number shown on your insurance document."
             );
-            addErrorMessage("api_call_failed_dob", result.body);
+            addErrorMessage("api_call_failed_dob", "Something's not quite right. Please try again using the policy number shown on your insurance document.");
             $("#save_and_continue1").removeAttr("data-target");
             $("#save_and_continue1").removeAttr("data-toggle");
             console.log("error 404 -->", result.body);
@@ -1113,9 +1112,9 @@ jQuery(document).ready(function ($) {
           } else if (statusCode == 404) {
             jQuery("#model-error-msg").removeClass("d-none");
             jQuery("#model-error-msg .ins-modal-body-content").text(
-              result.body
+              "Something's not quite right. Please try again using the policy number shown on your insurance document."
             );
-            addErrorMessage("api_call_failed_postcode", result.body);
+            addErrorMessage("api_call_failed_postcode", "Something's not quite right. Please try again using the policy number shown on your insurance document.");
             $("#save_and_continue1").removeAttr("data-target");
             $("#save_and_continue1").removeAttr("data-toggle");
             console.log("error 404 -->", result.body);
@@ -5375,6 +5374,14 @@ jQuery(document).ready(function ($) {
             console.log(
               "Unable to create claim as per one claim per policy per day rule"
             );
+          }else{
+            jQuery("#claim-error-msg").removeClass("d-none");
+            jQuery("#claim-error-msg .claim-desc-message").text(result);
+            addErrorMessage(
+              "api_call_failed_rc",
+              "Warning Something's not quite right. Please try again and if the problem persists please contact the team using the 'Contact Us' button in the footer."
+            );
+             
           }
         } else {
           let ele = [
@@ -5390,39 +5397,11 @@ jQuery(document).ready(function ($) {
           );
           $(".claim-number").empty();
           $(".claim-number").append(
-            `Your ClaimNumber is ${ClaimInitiatedNumber}`
+            `Your Claim Number is ${ClaimInitiatedNumber}`
           );
         }
       })
       .catch((error) => console.log("errror -->", error));
-    // .then((response) => response.text())
-    // .then(function (result) {
-    //   console.log(result);
-    //   console.log(typeof result);
-    //   if (JSON.parse(result).status == 401) {
-    //     getJWTToken(fieldId);
-    //     console.log("unauthorized token please try again sometime");
-    //   } else if (JSON.parse(result).status == 500) {
-    //     console.log("Internal Server Error");
-    //   } else if (JSON.parse(result).status == 400) {
-    //     $(".claim-number").empty();
-    //     $(".claim-number").append(
-    //       "Unable to create claim as per one claim per policy per day rule"
-    //     );
-    //     console.log(
-    //       "Unable to create claim as per one claim per policy per day rule"
-    //     );
-    //   } else {
-    //     console.log("else show claim number-->", JSON.parse(result));
-    //     ClaimInitiatedNumber = JSON.parse(result).ClaimNumber;
-    //     $("#helpdesk_ticket_subject").val(ClaimInitiatedNumber);
-    //     $(".claim-number").empty();
-    //     $(".claim-number").append(
-    //       `Your ClaimNumber is ${ClaimInitiatedNumber}`
-    //     );
-    //   }
-    // })
-    // .catch((error) => console.log("error", error));
   }
   //do modal popup with claims statement
   $("#next").click(function () {
@@ -6365,6 +6344,11 @@ fileUploadCallback()
               "api_call_failed_banvalidate",
               result
             );
+          }else{
+            addErrorMessage(
+              "api_call_failed_banvalidate",
+              "Unable to process the bank account information. Please check the information entered and try again."
+            );
           }
         } else {
           let ele = ["api_call_failed_banvalidate"];
@@ -6427,6 +6411,13 @@ fileUploadCallback()
               "api_call_failed_sortcodevalidate",
               result
             );
+          }else{
+            
+              addErrorMessage(
+                "api_call_failed_sortcodevalidate",
+                "Unable to process the bank account information. Please check the information entered and try again."
+              );
+        
           }
         } else {
           let ele = ["api_call_failed_sortcodevalidate"];
