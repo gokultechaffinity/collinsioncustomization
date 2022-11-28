@@ -5817,7 +5817,13 @@ jQuery(document).ready(function ($) {
       $(para).insertBefore(
         ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
       );
+      $(para).insertBefore(
+        ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
+      );
     } else {
+      $(para).insertBefore(
+        ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
+      );
       $(para).insertBefore(
         ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
       );
@@ -5838,61 +5844,61 @@ jQuery(document).ready(function ($) {
       }
     }
   );
-
-  $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").change(
-    function () {
-      if (
-        $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() !=
-        ""
-      ) {
-        var table = [];
-        for (
-          let i = 0;
-          i <
-          reasonForClaimObj[
-            $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val()
-          ]["titles"].length;
-          i++
-        ) {
-          var image =
-            reasonForClaimObj[
-              $(
-                "#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673"
-              ).val()
-            ]["images"][i];
-          var text =
-            reasonForClaimObj[
-              $(
-                "#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673"
-              ).val()
-            ]["titles"][i];
-          table.push([image, text]);
-        }
-        if ($(".doc-wrapper").length) {
-          $(".doc-wrapper").remove();
-          for (let i = 0; i < table.length; i++) {
-            $(
-              "<div class='doc-wrapper'><span class='img_and_text' ><img  class='clickable_img' src =" +
-                table[i][0] +
-                "><strong> " +
-                table[i][1] +
-                "</strong></span></div>"
-            ).insertBefore(".dropdown");
-          }
-        } else {
-          for (let i = 0; i < table.length; i++) {
-            $(
-              "<div class='doc-wrapper'><span class='img_and_text' ><img  class='clickable_img' src =" +
-                table[i][0] +
-                "><strong> " +
-                table[i][1] +
-                "</strong></span></div>"
-            ).insertBefore(".dropdown");
-          }
-        }
-      }
-    }
-  );
+    //images are added here, no need for those anymore
+  // $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").change(
+  //   function () {
+  //     if (
+  //       $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() !=
+  //       ""
+  //     ) {
+  //       var table = [];
+  //       for (
+  //         let i = 0;
+  //         i <
+  //         reasonForClaimObj[
+  //           $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val()
+  //         ]["titles"].length;
+  //         i++
+  //       ) {
+  //         var image =
+  //           reasonForClaimObj[
+  //             $(
+  //               "#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673"
+  //             ).val()
+  //           ]["images"][i];
+  //         var text =
+  //           reasonForClaimObj[
+  //             $(
+  //               "#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673"
+  //             ).val()
+  //           ]["titles"][i];
+  //         table.push([image, text]);
+  //       }
+  //       if ($(".doc-wrapper").length) {
+  //         $(".doc-wrapper").remove();
+  //         for (let i = 0; i < table.length; i++) {
+  //           $(
+  //             "<div class='doc-wrapper'><span class='img_and_text' ><img  class='clickable_img' src =" +
+  //               table[i][0] +
+  //               "><strong> " +
+  //               table[i][1] +
+  //               "</strong></span></div>"
+  //           ).insertBefore(".dropdown");
+  //         }
+  //       } else {
+  //         for (let i = 0; i < table.length; i++) {
+  //           $(
+  //             "<div class='doc-wrapper'><span class='img_and_text' ><img  class='clickable_img' src =" +
+  //               table[i][0] +
+  //               "><strong> " +
+  //               table[i][1] +
+  //               "</strong></span></div>"
+  //           ).insertBefore(".dropdown");
+  //         }
+  //       }
+  //     }
+  //   }
+  // );
 
   //____________________________________________________________________________________________________________________
   //section 5 continue
