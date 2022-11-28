@@ -6248,10 +6248,10 @@ fileUploadCallback()
     ).insertBefore("#great_line_7");
     $("<br>").insertBefore("#great_line_7");
 
-    $(
-      '<input class="ins_checkbox_paragraph" id="cb2" type="checkbox" ><p class="ins_consent_paragraph"> I consent</p<>'
-    ).insertBefore("#great_line_7");
-  }
+  //   $(
+  //     '<input class="ins_checkbox_paragraph" id="cb2" type="checkbox" ><p class="ins_consent_paragraph"> I consent</p<>'
+  //   ).insertBefore("#great_line_7");
+   }
   function ValidateBankMethodOne(iBanNumber, countryCode, fieldId) {
     let flag = false;
     let statusCode;
