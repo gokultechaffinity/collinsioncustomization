@@ -5818,14 +5818,14 @@ jQuery(document).ready(function ($) {
         ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
       );
       $(para).insertBefore(
-        ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
+        ".form-group.attachments-container.for-section-5"
       );
     } else {
       $(para).insertBefore(
         ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
       );
       $(para).insertBefore(
-        ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
+        ".form-group.attachments-container.for-section-5"
       );
     }
   }
