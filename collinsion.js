@@ -5844,62 +5844,7 @@ jQuery(document).ready(function ($) {
       }
     }
   );
-    //images are added here, no need for those anymore
-  // $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").change(
-  //   function () {
-  //     if (
-  //       $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() !=
-  //       ""
-  //     ) {
-  //       var table = [];
-  //       for (
-  //         let i = 0;
-  //         i <
-  //         reasonForClaimObj[
-  //           $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val()
-  //         ]["titles"].length;
-  //         i++
-  //       ) {
-  //         var image =
-  //           reasonForClaimObj[
-  //             $(
-  //               "#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673"
-  //             ).val()
-  //           ]["images"][i];
-  //         var text =
-  //           reasonForClaimObj[
-  //             $(
-  //               "#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673"
-  //             ).val()
-  //           ]["titles"][i];
-  //         table.push([image, text]);
-  //       }
-  //       if ($(".doc-wrapper").length) {
-  //         $(".doc-wrapper").remove();
-  //         for (let i = 0; i < table.length; i++) {
-  //           $(
-  //             "<div class='doc-wrapper'><span class='img_and_text' ><img  class='clickable_img' src =" +
-  //               table[i][0] +
-  //               "><strong> " +
-  //               table[i][1] +
-  //               "</strong></span></div>"
-  //           ).insertBefore(".dropdown");
-  //         }
-  //       } else {
-  //         for (let i = 0; i < table.length; i++) {
-  //           $(
-  //             "<div class='doc-wrapper'><span class='img_and_text' ><img  class='clickable_img' src =" +
-  //               table[i][0] +
-  //               "><strong> " +
-  //               table[i][1] +
-  //               "</strong></span></div>"
-  //           ).insertBefore(".dropdown");
-  //         }
-  //       }
-  //     }
-  //   }
-  // );
-
+  
   //____________________________________________________________________________________________________________________
   //section 5 continue
   $(".save_draft_5").click(function () {
@@ -11705,9 +11650,14 @@ fileUploadCallback()
         $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() ==
         "Baggage - personal items lost or stolen"
       ) {
-        //save_and_continue 4
-        //$('<button id="save_and_continue4" class="btn btn-primary for-section-4 save_and_continue" type="button" >Save & Continue</button>').insertAfter(".form-group.helpdesk_ticket_custom_field_cf_did_you_pay_for_50_or_more_of_the_trip_with_a_credit_card824584_2321673");
-        //theft or loss dependancy
+
+        //hide by default
+        $(".form-group.helpdesk_ticket_custom_field_cf_item_type870706_2321673").hide();
+        $("#helpdesk_ticket_custom_field_cf_what_was_its_cost_when_you_bought_it_2321673").closest('.form-group').hide();
+        $("#helpdesk_ticket_custom_field_cf_item_description369043_2321673").closest('.form-group').hide();
+        $("#helpdesk_ticket_custom_field_cf_when_did_you_purchase_the_item_2321673").closest('.form-group').hide();
+        
+        //theft or loss dependancy 1
         show_and_hide(
           [
             "label[for='helpdesk_ticket_custom_field_cf_in_your_own_words_tell_us_what_happened994308_2321673']",
