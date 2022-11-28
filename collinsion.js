@@ -11459,6 +11459,10 @@ fileUploadCallback()
         $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() ==
         "Baggage - personal items damaged"
       ) {
+
+        //hide by default
+        $("#helpdesk_ticket_custom_field_cf_what_was_its_cost_when_you_bought_it_2321673").hide();
+        $("label[for='helpdesk_ticket_custom_field_cf_what_was_its_cost_when_you_bought_it_2321673']").hide();
         //save_and_continue 4
         //$('<button id="save_and_continue4" class="btn btn-primary for-section-4 save_and_continue" type="button" >Save & Continue</button>').insertAfter(".form-group.helpdesk_ticket_custom_field_cf_did_you_pay_for_50_or_more_of_the_trip_with_a_credit_card824584_2321673");
         //Was the item(s) with you when it was damaged? - dependancy
@@ -11508,6 +11512,8 @@ fileUploadCallback()
             "#helpdesk_ticket_custom_field_cf_when_did_you_buy_the_item_2321673",
             "label[for='helpdesk_ticket_custom_field_cf_amount_paid_in_local_currency_2321673']",
             "#helpdesk_ticket_custom_field_cf_amount_paid_in_local_currency_2321673",
+            "helpdesk_ticket_custom_field_cf_what_was_its_cost_when_you_bought_it_2321673",
+            "label[for='helpdesk_ticket_custom_field_cf_what_was_its_cost_when_you_bought_it_2321673']",
           ],
           "#helpdesk_ticket_custom_field_cf_how_many_items_are_you_claiming_for411795_2321673",
           "1"
