@@ -11750,9 +11750,20 @@ fileUploadCallback()
           "Mobile Phone"
         );
         //theft and loss dependancy 12
+
+
         show_and_hide(
           [
             ".form-group.helpdesk_ticket_custom_field_cf_who_owns_the_item86910_2321673",
+            ".form-group.helpdesk_ticket_custom_field_cf_item_type870706_2321673",
+            "label[for='helpdesk_ticket_custom_field_cf_what_was_its_cost_when_you_bought_it_2321673']",
+            "#helpdesk_ticket_custom_field_cf_what_was_its_cost_when_you_bought_it_2321673",
+            "label[for='helpdesk_ticket_custom_field_cf_item_description369043_2321673']",
+            "#helpdesk_ticket_custom_field_cf_item_description369043_2321673",
+            "label[for='helpdesk_ticket_custom_field_cf_item_description369043_2321673']",
+            "#helpdesk_ticket_custom_field_cf_item_description369043_2321673",
+            "label[for='helpdesk_ticket_custom_field_cf_when_did_you_purchase_the_item_2321673']",
+            "#helpdesk_ticket_custom_field_cf_when_did_you_purchase_the_item_2321673"
           ],
           "#helpdesk_ticket_custom_field_cf_how_many_items_are_you_claiming_for_2321673",
           "1"
