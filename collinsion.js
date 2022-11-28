@@ -6235,23 +6235,24 @@ fileUploadCallback()
     }
   }
 
-  function addDeclaraion() {
-    $("<strong id='declaration_header'>Declaration</strong>").insertAfter(
-      "#great_line_6"
-    );
-    $("<hr class='summary_divider' id='great_line_7'>").insertAfter(
-      "#declaration_header"
-    );
+//declaration removed
+  // function addDeclaraion() {
+  //   $("<strong id='declaration_header'>Declaration</strong>").insertAfter(
+  //     "#great_line_6"
+  //   );
+  //   $("<hr class='summary_divider' id='great_line_7'>").insertAfter(
+  //     "#declaration_header"
+  //   );
 
-    $(
-      "<p>I declare that I have completed this form to the best of knowledge and have read and understood the contents of <br>this page and form. I consent to Collinson using my data to process this claim and am aware that this will involve <br>sending my data to my insurer along with my clinical history. I am aware that my insurer will take any <br>excesses as per my policy. Details can be found in the Collinson Privacy Policy</p>"
-    ).insertBefore("#great_line_7");
-    $("<br>").insertBefore("#great_line_7");
+  //   $(
+  //     "<p>I declare that I have completed this form to the best of knowledge and have read and understood the contents of <br>this page and form. I consent to Collinson using my data to process this claim and am aware that this will involve <br>sending my data to my insurer along with my clinical history. I am aware that my insurer will take any <br>excesses as per my policy. Details can be found in the Collinson Privacy Policy</p>"
+  //   ).insertBefore("#great_line_7");
+  //   $("<br>").insertBefore("#great_line_7");
 
   //   $(
   //     '<input class="ins_checkbox_paragraph" id="cb2" type="checkbox" ><p class="ins_consent_paragraph"> I consent</p<>'
   //   ).insertBefore("#great_line_7");
-   }
+   //}
   function ValidateBankMethodOne(iBanNumber, countryCode, fieldId) {
     let flag = false;
     let statusCode;
@@ -11512,7 +11513,7 @@ fileUploadCallback()
             "#helpdesk_ticket_custom_field_cf_when_did_you_buy_the_item_2321673",
             "label[for='helpdesk_ticket_custom_field_cf_amount_paid_in_local_currency_2321673']",
             "#helpdesk_ticket_custom_field_cf_amount_paid_in_local_currency_2321673",
-            "helpdesk_ticket_custom_field_cf_what_was_its_cost_when_you_bought_it_2321673",
+            "#helpdesk_ticket_custom_field_cf_what_was_its_cost_when_you_bought_it_2321673",
             "label[for='helpdesk_ticket_custom_field_cf_what_was_its_cost_when_you_bought_it_2321673']",
           ],
           "#helpdesk_ticket_custom_field_cf_how_many_items_are_you_claiming_for411795_2321673",
