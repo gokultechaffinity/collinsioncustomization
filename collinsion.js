@@ -10796,7 +10796,10 @@ fileUploadCallback()
           if (
             $(
               "#helpdesk_ticket_custom_field_cf_on_which_part_of_the_journey_were_you_delayed_2321673"
-            ).val() == "On the return journey back home"
+            ).val() == "On the return journey back home" 
+            ||  $(
+              "#helpdesk_ticket_custom_field_cf_on_which_part_of_the_journey_were_you_delayed_2321673"
+            ).val() == "Connecting journey"
           ) {
             $(
               ".form-group.helpdesk_ticket_custom_field_cf_were_you_delayed_for_24_hours_or_more923623_2321673"
