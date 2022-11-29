@@ -10558,7 +10558,7 @@ fileUploadCallback()
     myHeaders.append("Authorization", AuthorizationKey);
     var raw = JSON.stringify(body);
     var requestOptions = {
-      method: "POST",
+      method: "PUT",
       headers: myHeaders,
       body: raw,
       redirect: "follow",
@@ -10606,7 +10606,7 @@ fileUploadCallback()
     myHeaders.append("Authorization", AuthorizationKey);
     var raw = JSON.stringify(body);
     var requestOptions = {
-      method: "POST",
+      method: "PUT",
       headers: myHeaders,
       body: raw,
       redirect: "follow",
