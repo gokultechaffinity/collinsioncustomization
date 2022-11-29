@@ -1495,7 +1495,7 @@ jQuery(document).ready(function ($) {
         "Spese mediche causate da malattia/infortunio/Covid-19 - Prolungamento del soggiorno inlcuso",
     },
     {
-      id: "01_03_MDDelPrvbT",
+      id: "01_02_MissedDep",
       name_eng: "Missed flight or departure",
     },
     {
@@ -5361,7 +5361,7 @@ jQuery(document).ready(function ($) {
             console.log("error--->", result);
             addErrorMessage(
               "api_call_failed_rc",
-              "Internal Server Error"
+              "Warning Something's not quite right. Please try again and if the problem persists please contact the team using the 'Contact Us' button in the footer."
             );
             console.log("Internal server error");
           } else if (statusCode == 400) {
@@ -6363,8 +6363,14 @@ fileUploadCallback()
             console.log("Please refresh the page ", statusCode, result);
             addErrorMessage(
               "api_call_failed_banvalidate",
-              result
+              "Unable to process the bank account information. Please check the information entered and try again."
             );
+          }else{
+            addErrorMessage(
+              "api_call_failed_banvalidate",
+              "Unable to process the bank account information. Please check the information entered and try again."
+            );
+            
           }
         } else {
           let ele = ["api_call_failed_banvalidate"];
@@ -6425,8 +6431,14 @@ fileUploadCallback()
             console.log("Please refresh the page ", statusCode, result);
             addErrorMessage(
               "api_call_failed_sortcodevalidate",
-              result
+              "Unable to process the bank account information. Please check the information entered and try again."
             );
+          }else{
+            addErrorMessage(
+              "api_call_failed_banvalidate",
+              "Unable to process the bank account information. Please check the information entered and try again."
+            );
+            
           }
         } else {
           let ele = ["api_call_failed_sortcodevalidate"];
@@ -6454,7 +6466,11 @@ fileUploadCallback()
       ToDate: $(
         "#helpdesk_ticket_custom_field_cf_your_return_date_2321673"
       ).val(),
-      UseContactInformationFromLeadInsured: true,
+      UseContactInformationFromLeadInsured: false,
+      Email: $("#helpdesk_ticket_custom_field_cf_email_address_2321673").val(),
+      HomePhone:$("#helpdesk_ticket_custom_field_cf_mobile_number_2321673").val(),
+      Mobile:$("#helpdesk_ticket_custom_field_cf_mobile_number_2321673").val(),
+      Telephone:$("#helpdesk_ticket_custom_field_cf_mobile_number_2321673").val() ,
     };
     //otherclients senarios logic
     var yourArray = [];
@@ -8196,7 +8212,7 @@ fileUploadCallback()
       );
       body["ClaimAnswers"] = ClaimQaAndAnswers;
       console.log("submit claim body --->", body);
-    } else if (reasonClaim[0].akey == "01_03_MDDelPrvbT") {
+    } else if (reasonClaim[0].akey == "01_02_MissedDep") {
       let MissedDepDelayOther = submitClaimBody(
         "MissedDepDelayOther",
         $(
@@ -8472,7 +8488,11 @@ fileUploadCallback()
       ToDate: $(
         "#helpdesk_ticket_custom_field_cf_your_return_date_2321673"
       ).val(),
-      UseContactInformationFromLeadInsured: true,
+      UseContactInformationFromLeadInsured: false,
+      Email: $("#helpdesk_ticket_custom_field_cf_email_address_2321673").val(),
+      HomePhone:$("#helpdesk_ticket_custom_field_cf_mobile_number_2321673").val(),
+      Mobile:$("#helpdesk_ticket_custom_field_cf_mobile_number_2321673").val(),
+      Telephone:$("#helpdesk_ticket_custom_field_cf_mobile_number_2321673").val() ,
     };
     //otherclients senarios logic
     var yourArray = [];
@@ -10202,7 +10222,7 @@ fileUploadCallback()
       );
       body["ClaimAnswers"] = ClaimQaAndAnswers;
       console.log("submit claim body --->", body);
-    } else if (reasonClaim[0].akey == "01_03_MDDelPrvbT") {
+    } else if (reasonClaim[0].akey == "01_02_MissedDep") {
       let MissedDepDelayOther = submitClaimBody(
         "MissedDepDelayOther",
         $(
