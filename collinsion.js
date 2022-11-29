@@ -6112,7 +6112,7 @@ fileUploadCallback()
           update_section_6();
         } else {
           add_section_6();
-          addDeclaraion();
+          //addDeclaraion();
         }
       } else {
         //ERROR Messaging
@@ -6169,7 +6169,7 @@ fileUploadCallback()
           update_section_6();
         } else {
           add_section_6();
-          addDeclaraion();
+          //addDeclaraion();
         }
       } else {
         //ERROR Messaging
@@ -10573,8 +10573,8 @@ fileUploadCallback()
           let ele = ["common_error"];
           clearError(ele);
           console.log("--sucesss-");
+          $("#helpdesk_ticket_submit").attr("href","https://vhi.claimhere.ie/en/support/home");
           $("#helpdesk_ticket_submit").trigger("click");
-  
         }
       })
       .catch((error) => console.log("error -->", error));
