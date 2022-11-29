@@ -5360,7 +5360,7 @@ jQuery(document).ready(function ($) {
             console.log("error--->", result);
             addErrorMessage(
               "api_call_failed_rc",
-              "Internal Server Error"
+              "Warning Something's not quite right. Please try again and if the problem persists please contact the team using the 'Contact Us' button in the footer."
             );
             console.log("Internal server error");
           } else if (statusCode == 400) {
@@ -6294,7 +6294,7 @@ fileUploadCallback()
             console.log("Please refresh the page ", statusCode, result);
             addErrorMessage(
               "api_call_failed_banvalidate",
-              result
+              "Unable to process the bank account information. Please check the information entered and try again."
             );
           }else{
             addErrorMessage(
@@ -6361,8 +6361,9 @@ fileUploadCallback()
             console.log("Please refresh the page ", statusCode, result);
             addErrorMessage(
               "api_call_failed_sortcodevalidate",
-              result
+              "Unable to process the bank account information. Please check the information entered and try again."
             );
+
           }else{
             
               addErrorMessage(
@@ -6397,7 +6398,11 @@ fileUploadCallback()
       ToDate: $(
         "#helpdesk_ticket_custom_field_cf_your_return_date_2321673"
       ).val(),
-      UseContactInformationFromLeadInsured: true,
+      UseContactInformationFromLeadInsured: false,
+      Email: $("#helpdesk_ticket_custom_field_cf_email_address_2321673").val(),
+      HomePhone:$("#helpdesk_ticket_custom_field_cf_mobile_number_2321673").val(),
+      Mobile:$("#helpdesk_ticket_custom_field_cf_mobile_number_2321673").val(),
+      Telephone:$("#helpdesk_ticket_custom_field_cf_mobile_number_2321673").val() ,
     };
     //otherclients senarios logic
     var yourArray = [];
@@ -8415,7 +8420,11 @@ fileUploadCallback()
       ToDate: $(
         "#helpdesk_ticket_custom_field_cf_your_return_date_2321673"
       ).val(),
-      UseContactInformationFromLeadInsured: true,
+      UseContactInformationFromLeadInsured: false,
+      Email: $("#helpdesk_ticket_custom_field_cf_email_address_2321673").val(),
+      HomePhone:$("#helpdesk_ticket_custom_field_cf_mobile_number_2321673").val(),
+      Mobile:$("#helpdesk_ticket_custom_field_cf_mobile_number_2321673").val(),
+      Telephone:$("#helpdesk_ticket_custom_field_cf_mobile_number_2321673").val() ,
     };
     //otherclients senarios logic
     var yourArray = [];
@@ -10481,7 +10490,7 @@ fileUploadCallback()
     myHeaders.append("Authorization", AuthorizationKey);
     var raw = JSON.stringify(body);
     var requestOptions = {
-      method: "POST",
+      method: "PUT",
       headers: myHeaders,
       body: raw,
       redirect: "follow",
@@ -10529,7 +10538,7 @@ fileUploadCallback()
     myHeaders.append("Authorization", AuthorizationKey);
     var raw = JSON.stringify(body);
     var requestOptions = {
-      method: "POST",
+      method: "PUT",
       headers: myHeaders,
       body: raw,
       redirect: "follow",
