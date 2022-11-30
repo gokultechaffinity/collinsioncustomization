@@ -7096,6 +7096,14 @@ fileUploadCallback()
         fieldTypeText
       );
       ClaimQaAndAnswers.push(LossTheftNumberOfItems);
+      let lossTheftWhereItems=getAKey("helpdesk_ticket_custom_field_cf_are_any_of_the_items_lost_defined_as_a_valuable_gadgetelectrical_as_shown_within_your_policy_wording_2321673",yesNo);
+      ClaimQaAndAnswers.push(
+        submitClaimBody(
+          lossTheftWhereItems[0].qkey,
+          lossTheftWhereItems[0].akey,
+          fieldTypeText
+        )
+      );
       let LossOrTheftItems = getAKey(
         "helpdesk_ticket_custom_field_cf_are_you_claiming_for_a_loss_or_theft_2321673",
         LossOrTheft
