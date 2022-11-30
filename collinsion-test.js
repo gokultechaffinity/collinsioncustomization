@@ -8976,6 +8976,7 @@ fileUploadCallback()
           fieldTypeText
         )
       );
+      console.log("for checking lossTheftWhereItems purpose --->",lossTheftWhereItems)
       let transportGadgetItems=getAKey("helpdesk_ticket_custom_field_cf_are_you_claiming_for_more_than_1_item_2321673",yesNo);
       ClaimQaAndAnswers.push(
         submitClaimBody(
@@ -8984,6 +8985,7 @@ fileUploadCallback()
           fieldTypeText
         )
       );
+      console.log("for checking transportGadgetItems purpose --->",transportGadgetItems)
       let BaggageLossItemDescription = submitClaimBody(
         "BaggageLossItemDescription",
         $(
