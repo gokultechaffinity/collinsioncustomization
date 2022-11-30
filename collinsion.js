@@ -5374,7 +5374,10 @@ jQuery(document).ready(function ($) {
           } else if (statusCode == 400) {
             jQuery("#claim-error-msg").removeClass("d-none");
             jQuery("#claim-error-msg .claim-desc-message").text(result);
-            addErrorMessage("api_call_failed_rc", result);
+            addErrorMessage(
+              "api_call_failed_rc",
+              "Warning Something's not quite right. Please try again and if the problem persists please contact the team using the 'Contact Us' button in the footer."
+            );
             console.log("error--->", result);
             console.log(
               "Unable to create claim as per one claim per policy per day rule"
