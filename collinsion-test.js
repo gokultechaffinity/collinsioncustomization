@@ -6958,6 +6958,16 @@ fileUploadCallback()
         fieldTypeText
       );
       ClaimQaAndAnswers.push(PoliceReference);
+      let lossTheftTransportGadget=getAKey(
+        "helpdesk_ticket_custom_field_cf_are_you_claiming_for_more_than_1_item_2321673",
+        yesNo
+      );
+      ClaimQaAndAnswers.push(
+        submitClaimBody(
+          lossTheftTransportGadget[0].qkey,
+          lossTheftTransportGadget[0].akey,
+          fieldTypeText
+        ))
       let BaggageLossItemDescription = submitClaimBody(
         "BaggageLossItemDescription",
         $(
