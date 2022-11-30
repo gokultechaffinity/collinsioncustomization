@@ -10583,7 +10583,7 @@ jQuery(document).ready(function ($) {
           let ele = ["common_error"];
           clearError(ele);
           console.log("--sucesss-");
-          $(".new-ticket-submit-button").trigger("click");
+          //   $(".new-ticket-submit-button").trigger("click");
         }
       })
       .catch((error) => console.log("error -->", error));
