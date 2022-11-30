@@ -7104,6 +7104,14 @@ fileUploadCallback()
           fieldTypeText
         )
       );
+      let transportGadgetItems=getAKey("helpdesk_ticket_custom_field_cf_are_you_claiming_for_more_than_1_item_2321673",yesNo);
+      ClaimQaAndAnswers.push(
+        submitClaimBody(
+          transportGadgetItems[0].qkey,
+          transportGadgetItems[0].akey,
+          fieldTypeText
+        )
+      );
       let LossOrTheftItems = getAKey(
         "helpdesk_ticket_custom_field_cf_are_you_claiming_for_a_loss_or_theft_2321673",
         LossOrTheft
