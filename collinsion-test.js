@@ -303,7 +303,6 @@ jQuery(document).ready(function ($) {
     ).insertAfter(
       ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper"
     );
-
   }
   //____________________________________________________SECTION 5 Start - Your Documents____________________________________________
   //for-section-5 attachment group
@@ -331,7 +330,7 @@ jQuery(document).ready(function ($) {
       $(
         '<button class="save_and_continue5 btn btn-primary for-section-5 save_and_continue" type="button" >Save & Continue</button>'
       ).insertAfter(".attachments.for-section-5");
-     
+
     }
   } else {
     $(
@@ -351,7 +350,7 @@ jQuery(document).ready(function ($) {
       $(
         '<button class="save_and_continue5 btn btn-primary for-section-5 save_and_continue" type="button" >Save & Continue</button>'
       ).insertAfter(".form-group.attachments-container.for-section-5");
-
+ 
     }
   }
   $("#mock-doc").remove();
@@ -530,7 +529,7 @@ jQuery(document).ready(function ($) {
     if (
       departure_date < return_date &&
       return_date > departure_date &&
-      booking_date < departure_date &&
+      booking_date <= departure_date &&
       incident_date <= return_date
     ) {
       result = true;
@@ -1047,9 +1046,9 @@ jQuery(document).ready(function ($) {
           } else if (statusCode == 404) {
             jQuery("#model-error-msg").removeClass("d-none");
             jQuery("#model-error-msg .ins-modal-body-content").text(
-              result.body
+              "Something's not quite right. Please try again using the policy number shown on your insurance document."
             );
-            addErrorMessage("api_call_failed_dob", result.body);
+            addErrorMessage("api_call_failed_dob", "Something's not quite right. Please try again using the policy number shown on your insurance document.");
             $("#save_and_continue1").removeAttr("data-target");
             $("#save_and_continue1").removeAttr("data-toggle");
             console.log("error 404 -->", result.body);
@@ -1113,9 +1112,9 @@ jQuery(document).ready(function ($) {
           } else if (statusCode == 404) {
             jQuery("#model-error-msg").removeClass("d-none");
             jQuery("#model-error-msg .ins-modal-body-content").text(
-              result.body
+              "Something's not quite right. Please try again using the policy number shown on your insurance document."
             );
-            addErrorMessage("api_call_failed_postcode", result.body);
+            addErrorMessage("api_call_failed_postcode", "Something's not quite right. Please try again using the policy number shown on your insurance document.");
             $("#save_and_continue1").removeAttr("data-target");
             $("#save_and_continue1").removeAttr("data-toggle");
             console.log("error 404 -->", result.body);
@@ -1175,7 +1174,7 @@ jQuery(document).ready(function ($) {
     let InternalPolicyNumber = policyData.InternalPolicyNumber;
     let options = "";
     options +=
-      '<div class="form-group"><label class="form-label" style="display:inline-table;" > Name(s) of the Insured  <a id="claimants-hint" style="margin-left:650px;"> *Claimant(s). Select everyone who is claiming!</a> </label> ';
+      '<div class="form-group"><label class="form-label" style="display:inline-table;" > Name(s) of the Insured. Select everyone who is claiming! </label>';
     policyDetails.forEach(function (element, index) {
       options +=
         '<div class="list-claim"><input type="checkbox" class="check-box" id=' +
@@ -1495,7 +1494,7 @@ jQuery(document).ready(function ($) {
         "Spese mediche causate da malattia/infortunio/Covid-19 - Prolungamento del soggiorno inlcuso",
     },
     {
-      id: "01_02_MissedDep",
+      id: "01_03_MDDelPrvbT",
       name_eng: "Missed flight or departure",
     },
     {
@@ -4683,12 +4682,12 @@ jQuery(document).ready(function ($) {
         "helpdesk_ticket_custom_field_cf_was_there_physical_damage_to_the_vehicle_2321673",
     },
     {
-      id: "LossTheftTransportGadget",
+      id: "LossTheftWhere",
       name_eng:
         "helpdesk_ticket_custom_field_cf_are_any_of_the_items_lost_defined_as_a_valuable_gadgetelectrical_as_shown_within_your_policy_wording_2321673",
     },
     {
-      id: "TransportGadgetItems",
+      id: "LossTheftTransportGadget",
       name_eng:
         "helpdesk_ticket_custom_field_cf_are_you_claiming_for_more_than_1_item_2321673",
     },
@@ -5375,6 +5374,14 @@ jQuery(document).ready(function ($) {
             console.log(
               "Unable to create claim as per one claim per policy per day rule"
             );
+          }else{
+            jQuery("#claim-error-msg").removeClass("d-none");
+            jQuery("#claim-error-msg .claim-desc-message").text(result);
+            addErrorMessage(
+              "api_call_failed_rc",
+              "Warning Something's not quite right. Please try again and if the problem persists please contact the team using the 'Contact Us' button in the footer."
+            );
+             
           }
         } else {
           let ele = [
@@ -5390,39 +5397,11 @@ jQuery(document).ready(function ($) {
           );
           $(".claim-number").empty();
           $(".claim-number").append(
-            `Your ClaimNumber is ${ClaimInitiatedNumber}`
+            `Your Claim Number is ${ClaimInitiatedNumber}`
           );
         }
       })
       .catch((error) => console.log("errror -->", error));
-    // .then((response) => response.text())
-    // .then(function (result) {
-    //   console.log(result);
-    //   console.log(typeof result);
-    //   if (JSON.parse(result).status == 401) {
-    //     getJWTToken(fieldId);
-    //     console.log("unauthorized token please try again sometime");
-    //   } else if (JSON.parse(result).status == 500) {
-    //     console.log("Internal Server Error");
-    //   } else if (JSON.parse(result).status == 400) {
-    //     $(".claim-number").empty();
-    //     $(".claim-number").append(
-    //       "Unable to create claim as per one claim per policy per day rule"
-    //     );
-    //     console.log(
-    //       "Unable to create claim as per one claim per policy per day rule"
-    //     );
-    //   } else {
-    //     console.log("else show claim number-->", JSON.parse(result));
-    //     ClaimInitiatedNumber = JSON.parse(result).ClaimNumber;
-    //     $("#helpdesk_ticket_subject").val(ClaimInitiatedNumber);
-    //     $(".claim-number").empty();
-    //     $(".claim-number").append(
-    //       `Your ClaimNumber is ${ClaimInitiatedNumber}`
-    //     );
-    //   }
-    // })
-    // .catch((error) => console.log("error", error));
   }
   //do modal popup with claims statement
   $("#next").click(function () {
@@ -5838,9 +5817,15 @@ jQuery(document).ready(function ($) {
       $(para).insertBefore(
         ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
       );
+      $(para).insertBefore(
+        ".form-group.attachments-container.for-section-5"
+      );
     } else {
       $(para).insertBefore(
         ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
+      );
+      $(para).insertBefore(
+        ".form-group.attachments-container.for-section-5"
       );
     }
   }
@@ -5859,62 +5844,7 @@ jQuery(document).ready(function ($) {
       }
     }
   );
-
-  $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").change(
-    function () {
-      if (
-        $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() !=
-        ""
-      ) {
-        var table = [];
-        for (
-          let i = 0;
-          i <
-          reasonForClaimObj[
-            $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val()
-          ]["titles"].length;
-          i++
-        ) {
-          var image =
-            reasonForClaimObj[
-              $(
-                "#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673"
-              ).val()
-            ]["images"][i];
-          var text =
-            reasonForClaimObj[
-              $(
-                "#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673"
-              ).val()
-            ]["titles"][i];
-          table.push([image, text]);
-        }
-        if ($(".doc-wrapper").length) {
-          $(".doc-wrapper").remove();
-          for (let i = 0; i < table.length; i++) {
-            $(
-              "<div class='doc-wrapper'><span class='img_and_text' ><img  class='clickable_img' src =" +
-                table[i][0] +
-                "><strong> " +
-                table[i][1] +
-                "</strong></span></div>"
-            ).insertBefore(".dropdown");
-          }
-        } else {
-          for (let i = 0; i < table.length; i++) {
-            $(
-              "<div class='doc-wrapper'><span class='img_and_text' ><img  class='clickable_img' src =" +
-                table[i][0] +
-                "><strong> " +
-                table[i][1] +
-                "</strong></span></div>"
-            ).insertBefore(".dropdown");
-          }
-        }
-      }
-    }
-  );
-
+  
   //____________________________________________________________________________________________________________________
   //section 5 continue
   $(".save_draft_5").click(function () {
@@ -6182,7 +6112,7 @@ fileUploadCallback()
           update_section_6();
         } else {
           add_section_6();
-          addDeclaraion();
+          //addDeclaraion();
         }
       } else {
         //ERROR Messaging
@@ -6239,7 +6169,7 @@ fileUploadCallback()
           update_section_6();
         } else {
           add_section_6();
-          addDeclaraion();
+          //addDeclaraion();
         }
       } else {
         //ERROR Messaging
@@ -6305,23 +6235,24 @@ fileUploadCallback()
     }
   }
 
-  function addDeclaraion() {
-    $("<strong id='declaration_header'>Declaration</strong>").insertAfter(
-      "#great_line_6"
-    );
-    $("<hr class='summary_divider' id='great_line_7'>").insertAfter(
-      "#declaration_header"
-    );
+//declaration removed
+  // function addDeclaraion() {
+  //   $("<strong id='declaration_header'>Declaration</strong>").insertAfter(
+  //     "#great_line_6"
+  //   );
+  //   $("<hr class='summary_divider' id='great_line_7'>").insertAfter(
+  //     "#declaration_header"
+  //   );
 
-    $(
-      "<p>I declare that I have completed this form to the best of knowledge and have read and understood the contents of <br>this page and form. I consent to Collinson using my data to process this claim and am aware that this will involve <br>sending my data to my insurer along with my clinical history. I am aware that my insurer will take any <br>excesses as per my policy. Details can be found in the Collinson Privacy Policy</p>"
-    ).insertBefore("#great_line_7");
-    $("<br>").insertBefore("#great_line_7");
+  //   $(
+  //     "<p>I declare that I have completed this form to the best of knowledge and have read and understood the contents of <br>this page and form. I consent to Collinson using my data to process this claim and am aware that this will involve <br>sending my data to my insurer along with my clinical history. I am aware that my insurer will take any <br>excesses as per my policy. Details can be found in the Collinson Privacy Policy</p>"
+  //   ).insertBefore("#great_line_7");
+  //   $("<br>").insertBefore("#great_line_7");
 
-    $(
-      '<input class="ins_checkbox_paragraph" id="cb2" type="checkbox" ><p class="ins_consent_paragraph"> I consent</p<>'
-    ).insertBefore("#great_line_7");
-  }
+  //   $(
+  //     '<input class="ins_checkbox_paragraph" id="cb2" type="checkbox" ><p class="ins_consent_paragraph"> I consent</p<>'
+  //   ).insertBefore("#great_line_7");
+   //}
   function ValidateBankMethodOne(iBanNumber, countryCode, fieldId) {
     let flag = false;
     let statusCode;
@@ -6370,7 +6301,6 @@ fileUploadCallback()
               "api_call_failed_banvalidate",
               "Unable to process the bank account information. Please check the information entered and try again."
             );
-            
           }
         } else {
           let ele = ["api_call_failed_banvalidate"];
@@ -6433,12 +6363,14 @@ fileUploadCallback()
               "api_call_failed_sortcodevalidate",
               "Unable to process the bank account information. Please check the information entered and try again."
             );
+
           }else{
-            addErrorMessage(
-              "api_call_failed_banvalidate",
-              "Unable to process the bank account information. Please check the information entered and try again."
-            );
             
+              addErrorMessage(
+                "api_call_failed_sortcodevalidate",
+                "Unable to process the bank account information. Please check the information entered and try again."
+              );
+        
           }
         } else {
           let ele = ["api_call_failed_sortcodevalidate"];
@@ -8212,7 +8144,7 @@ fileUploadCallback()
       );
       body["ClaimAnswers"] = ClaimQaAndAnswers;
       console.log("submit claim body --->", body);
-    } else if (reasonClaim[0].akey == "01_02_MissedDep") {
+    } else if (reasonClaim[0].akey == "01_03_MDDelPrvbT") {
       let MissedDepDelayOther = submitClaimBody(
         "MissedDepDelayOther",
         $(
@@ -10222,7 +10154,7 @@ fileUploadCallback()
       );
       body["ClaimAnswers"] = ClaimQaAndAnswers;
       console.log("submit claim body --->", body);
-    } else if (reasonClaim[0].akey == "01_02_MissedDep") {
+    } else if (reasonClaim[0].akey == "01_03_MDDelPrvbT") {
       let MissedDepDelayOther = submitClaimBody(
         "MissedDepDelayOther",
         $(
@@ -10641,8 +10573,8 @@ fileUploadCallback()
           let ele = ["common_error"];
           clearError(ele);
           console.log("--sucesss-");
+          $("#helpdesk_ticket_submit").attr("href","https://vhi.claimhere.ie/en/support/home");
           $("#helpdesk_ticket_submit").trigger("click");
-  
         }
       })
       .catch((error) => console.log("error -->", error));
@@ -10864,10 +10796,10 @@ fileUploadCallback()
           if (
             $(
               "#helpdesk_ticket_custom_field_cf_on_which_part_of_the_journey_were_you_delayed_2321673"
-            ).val() == "Connecting journey" ||
-            $(
+            ).val() == "On the return journey back home" 
+            ||  $(
               "#helpdesk_ticket_custom_field_cf_on_which_part_of_the_journey_were_you_delayed_2321673"
-            ).val() == "Final inbound journey to your Home Country"
+            ).val() == "Connecting journey"
           ) {
             $(
               ".form-group.helpdesk_ticket_custom_field_cf_were_you_delayed_for_24_hours_or_more923623_2321673"
@@ -11540,6 +11472,10 @@ fileUploadCallback()
         $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() ==
         "Baggage - personal items damaged"
       ) {
+
+        //hide by default
+        $("#helpdesk_ticket_custom_field_cf_what_was_its_cost_when_you_bought_it_2321673").hide();
+        $("label[for='helpdesk_ticket_custom_field_cf_what_was_its_cost_when_you_bought_it_2321673']").hide();
         //save_and_continue 4
         //$('<button id="save_and_continue4" class="btn btn-primary for-section-4 save_and_continue" type="button" >Save & Continue</button>').insertAfter(".form-group.helpdesk_ticket_custom_field_cf_did_you_pay_for_50_or_more_of_the_trip_with_a_credit_card824584_2321673");
         //Was the item(s) with you when it was damaged? - dependancy
@@ -11589,6 +11525,8 @@ fileUploadCallback()
             "#helpdesk_ticket_custom_field_cf_when_did_you_buy_the_item_2321673",
             "label[for='helpdesk_ticket_custom_field_cf_amount_paid_in_local_currency_2321673']",
             "#helpdesk_ticket_custom_field_cf_amount_paid_in_local_currency_2321673",
+            "#helpdesk_ticket_custom_field_cf_what_was_its_cost_when_you_bought_it_2321673",
+            "label[for='helpdesk_ticket_custom_field_cf_what_was_its_cost_when_you_bought_it_2321673']",
           ],
           "#helpdesk_ticket_custom_field_cf_how_many_items_are_you_claiming_for411795_2321673",
           "1"
@@ -11728,9 +11666,18 @@ fileUploadCallback()
         $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() ==
         "Baggage - personal items lost or stolen"
       ) {
-        //save_and_continue 4
-        //$('<button id="save_and_continue4" class="btn btn-primary for-section-4 save_and_continue" type="button" >Save & Continue</button>').insertAfter(".form-group.helpdesk_ticket_custom_field_cf_did_you_pay_for_50_or_more_of_the_trip_with_a_credit_card824584_2321673");
-        //theft or loss dependancy
+
+        //hide by default
+        $(".form-group.helpdesk_ticket_custom_field_cf_item_type870706_2321673").hide();
+        $(".form-group.helpdesk_ticket_custom_field_cf_who_owns_the_item86910_2321673").hide();
+        $("label[for='helpdesk_ticket_custom_field_cf_what_was_its_cost_when_you_bought_it_2321673']").hide();
+        $("#helpdesk_ticket_custom_field_cf_what_was_its_cost_when_you_bought_it_2321673").hide();
+        $("label[for='helpdesk_ticket_custom_field_cf_item_description369043_2321673']").hide();
+        $("#helpdesk_ticket_custom_field_cf_item_description369043_2321673").hide();
+        $("label[for='helpdesk_ticket_custom_field_cf_when_did_you_purchase_the_item_2321673']").hide();
+        $("#helpdesk_ticket_custom_field_cf_when_did_you_purchase_the_item_2321673").hide();
+
+        //theft or loss dependancy 1
         show_and_hide(
           [
             "label[for='helpdesk_ticket_custom_field_cf_in_your_own_words_tell_us_what_happened994308_2321673']",
@@ -11826,9 +11773,18 @@ fileUploadCallback()
           "Mobile Phone"
         );
         //theft and loss dependancy 12
+
+
         show_and_hide(
           [
             ".form-group.helpdesk_ticket_custom_field_cf_who_owns_the_item86910_2321673",
+            ".form-group.helpdesk_ticket_custom_field_cf_item_type870706_2321673",
+            "label[for='helpdesk_ticket_custom_field_cf_what_was_its_cost_when_you_bought_it_2321673']",
+            "#helpdesk_ticket_custom_field_cf_what_was_its_cost_when_you_bought_it_2321673",
+            "label[for='helpdesk_ticket_custom_field_cf_item_description369043_2321673']",
+            "#helpdesk_ticket_custom_field_cf_item_description369043_2321673",
+            "label[for='helpdesk_ticket_custom_field_cf_when_did_you_purchase_the_item_2321673']",
+            "#helpdesk_ticket_custom_field_cf_when_did_you_purchase_the_item_2321673"
           ],
           "#helpdesk_ticket_custom_field_cf_how_many_items_are_you_claiming_for_2321673",
           "1"
