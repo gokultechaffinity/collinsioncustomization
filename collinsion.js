@@ -1494,7 +1494,7 @@ jQuery(document).ready(function ($) {
         "Spese mediche causate da malattia/infortunio/Covid-19 - Prolungamento del soggiorno inlcuso",
     },
     {
-      id: "01_03_MDDelPrvbT",
+      id: "01_02_MissedDep",
       name_eng: "Missed flight or departure",
     },
     {
@@ -8144,7 +8144,7 @@ fileUploadCallback()
       );
       body["ClaimAnswers"] = ClaimQaAndAnswers;
       console.log("submit claim body --->", body);
-    } else if (reasonClaim[0].akey == "01_03_MDDelPrvbT") {
+    } else if (reasonClaim[0].akey == "01_02_MissedDep") {
       let MissedDepDelayOther = submitClaimBody(
         "MissedDepDelayOther",
         $(
@@ -9038,6 +9038,22 @@ fileUploadCallback()
         fieldTypeText
       );
       ClaimQaAndAnswers.push(LossTheftNumberOfItems);
+      let lossTheftWhereItems=getAKey("helpdesk_ticket_custom_field_cf_are_any_of_the_items_lost_defined_as_a_valuable_gadgetelectrical_as_shown_within_your_policy_wording_2321673",yesNo);
+      ClaimQaAndAnswers.push(
+        submitClaimBody(
+          lossTheftWhereItems[0].qkey,
+          lossTheftWhereItems[0].akey,
+          fieldTypeText
+        )
+      );
+      let transportGadgetItems=getAKey("helpdesk_ticket_custom_field_cf_are_you_claiming_for_more_than_1_item_2321673",yesNo);
+      ClaimQaAndAnswers.push(
+        submitClaimBody(
+          transportGadgetItems[0].qkey,
+          transportGadgetItems[0].akey,
+          fieldTypeText
+        )
+      );
       let LossOrTheftItems = getAKey(
         "helpdesk_ticket_custom_field_cf_are_you_claiming_for_a_loss_or_theft_2321673",
         LossOrTheft
@@ -10154,7 +10170,7 @@ fileUploadCallback()
       );
       body["ClaimAnswers"] = ClaimQaAndAnswers;
       console.log("submit claim body --->", body);
-    } else if (reasonClaim[0].akey == "01_03_MDDelPrvbT") {
+    } else if (reasonClaim[0].akey == "01_02_MissedDep") {
       let MissedDepDelayOther = submitClaimBody(
         "MissedDepDelayOther",
         $(
