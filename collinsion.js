@@ -8429,7 +8429,7 @@ jQuery(document).ready(function ($) {
       body["ClaimAnswers"] = ClaimQaAndAnswers;
       console.log("submit claim body --->", body);
     }
-
+    jQuery("#overlay").removeClass("d-none").addClass("show loader-text")
     createSubmitClaim(body, ".new-ticket-dummy");
   });
   $(".ticket-detail-dummy").click(function () {
@@ -10465,7 +10465,7 @@ jQuery(document).ready(function ($) {
       body["ClaimAnswers"] = ClaimQaAndAnswers;
       console.log("submit claim body --->", body);
     }
-
+    jQuery("#overlay").removeClass("d-none").addClass("show loader-text")
     updateSubmitClaim(body, ".ticket-detail-dummy");
   });
   function submitClaimBody(qkeyValue, akeyValue, fieldType) {
@@ -10566,6 +10566,7 @@ jQuery(document).ready(function ($) {
       .then(function (result) {
         console.log("--->", result, statusCode);
         if (flag) {
+          jQuery("#overlay").addClass("d-none").removeClass("show loader-text")
           if (statusCode == 401) {
             getJWTToken(fieldId);
           } else if (statusCode == 400) {
@@ -10614,6 +10615,7 @@ jQuery(document).ready(function ($) {
       .then(function (result) {
         console.log("--->", result, statusCode);
         if (flag) {
+          jQuery("#overlay").addClass("d-none").removeClass("show loader-text")
           if (statusCode == 401) {
             getJWTToken(fieldId);
           } else if (statusCode == 400) {
