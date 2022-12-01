@@ -8429,6 +8429,12 @@ jQuery(document).ready(function ($) {
       body["ClaimAnswers"] = ClaimQaAndAnswers;
       console.log("submit claim body --->", body);
     }
+    jQuery(".new-ticket-submit-button")
+    .closest(".card-body")
+    .find(".form-group")
+    .before(
+      '<div class="invalid-feedback common_error">Please fill in all fields</div>'
+    );
     jQuery("#overlay").removeClass("d-none").addClass("show loader-text")
     createSubmitClaim(body, ".new-ticket-dummy");
   });
@@ -10465,6 +10471,12 @@ jQuery(document).ready(function ($) {
       body["ClaimAnswers"] = ClaimQaAndAnswers;
       console.log("submit claim body --->", body);
     }
+    jQuery("#helpdesk_ticket_submit")
+    .closest(".card-body")
+    .find(".form-group")
+    .before(
+      '<div class="invalid-feedback common_error">Please fill in all fields</div>'
+    );
     jQuery("#overlay").removeClass("d-none").addClass("show loader-text")
     updateSubmitClaim(body, ".ticket-detail-dummy");
   });
@@ -10577,7 +10589,7 @@ jQuery(document).ready(function ($) {
           } else if (statusCode == 404) {
             addErrorMessage(
               "common_error",
-              "Unable to create claim as per one claim per policy per day rule"
+              result
             );
           }
         } else {
@@ -10626,17 +10638,13 @@ jQuery(document).ready(function ($) {
           } else if (statusCode == 404) {
             addErrorMessage(
               "common_error",
-              "Unable to create claim as per one claim per policy per day rule"
+              result
             );
           }
         } else {
           let ele = ["common_error"];
           clearError(ele);
           console.log("--sucesss-");
-          $("#helpdesk_ticket_submit").attr(
-            "href",
-            "https://vhi.claimhere.ie/en/support/home"
-          );
           $("#helpdesk_ticket_submit").trigger("click");
         }
       })
