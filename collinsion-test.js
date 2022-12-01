@@ -44,7 +44,12 @@ jQuery(document).ready(function ($) {
     .append(
       '<div class="invalid-feedback api_call_failed_sortcodevalidate">API call failed</div>'
     );
-
+  jQuery(".new-ticket-submit-button")
+    .closest(".card-body")
+    .find(".form-group")
+    .before(
+      '<div class="invalid-feedback common_error">Please fill in all fields</div>'
+    );
 
   $("#cancel-claim-model").click(function () {
     jQuery(".modal").trigger("click");
@@ -10466,7 +10471,13 @@ jQuery(document).ready(function ($) {
       body["ClaimAnswers"] = ClaimQaAndAnswers;
       console.log("submit claim body --->", body);
     }
-
+    jQuery("#helpdesk_ticket_submit")
+    .closest(".card-body")
+    .find(".form-group")
+    .before(
+      '<div class="invalid-feedback common_error">Please fill in all fields</div>'
+    );
+    jQuery("#overlay").removeClass("d-none").addClass("show loader-text")
     updateSubmitClaim(body, ".ticket-detail-dummy");
   });
   function submitClaimBody(qkeyValue, akeyValue, fieldType) {
@@ -10567,7 +10578,7 @@ jQuery(document).ready(function ($) {
       .then(function (result) {
         console.log("--->", result, statusCode);
         if (flag) {
-         jQuery("#overlay").addClass("d-none").removeClass("show loader-text")
+          jQuery("#overlay").addClass("d-none").removeClass("show loader-text")
           if (statusCode == 401) {
             getJWTToken(fieldId);
           } else if (statusCode == 400) {
@@ -10578,18 +10589,14 @@ jQuery(document).ready(function ($) {
           } else if (statusCode == 404) {
             addErrorMessage(
               "common_error",
-              "Unable to create claim as per one claim per policy per day rule"
+              result
             );
           }
         } else {
-          // let ele = ["common_error"];
-          // clearError(ele);
+          let ele = ["common_error"];
+          clearError(ele);
           console.log("--sucesss-");
-          addErrorMessage(
-            "common_error",
-            "checking error will populate or not"
-          );
-          //   $(".new-ticket-submit-button").trigger("click");
+          $(".new-ticket-submit-button").trigger("click");
         }
       })
       .catch((error) => console.log("error -->", error));
@@ -10620,6 +10627,7 @@ jQuery(document).ready(function ($) {
       .then(function (result) {
         console.log("--->", result, statusCode);
         if (flag) {
+          jQuery("#overlay").addClass("d-none").removeClass("show loader-text")
           if (statusCode == 401) {
             getJWTToken(fieldId);
           } else if (statusCode == 400) {
@@ -10630,17 +10638,13 @@ jQuery(document).ready(function ($) {
           } else if (statusCode == 404) {
             addErrorMessage(
               "common_error",
-              "Unable to create claim as per one claim per policy per day rule"
+              result
             );
           }
         } else {
           let ele = ["common_error"];
           clearError(ele);
           console.log("--sucesss-");
-          $("#helpdesk_ticket_submit").attr(
-            "href",
-            "https://vhi.claimhere.ie/en/support/home"
-          );
           $("#helpdesk_ticket_submit").trigger("click");
         }
       })
