@@ -44,12 +44,7 @@ jQuery(document).ready(function ($) {
     .append(
       '<div class="invalid-feedback api_call_failed_sortcodevalidate">API call failed</div>'
     );
-  jQuery(".new-ticket-submit-button")
-    .closest(".card-body")
-    .find(".form-group")
-    .before(
-      '<div class="invalid-feedback common_error">Please fill in all fields</div>'
-    );
+
 
   $("#cancel-claim-model").click(function () {
     jQuery(".modal").trigger("click");
@@ -8429,6 +8424,12 @@ jQuery(document).ready(function ($) {
       body["ClaimAnswers"] = ClaimQaAndAnswers;
       console.log("submit claim body --->", body);
     }
+    jQuery(".new-ticket-submit-button")
+    .closest(".card-body")
+    .find(".form-group")
+    .before(
+      '<div class="invalid-feedback common_error">Please fill in all fields</div>'
+    );
     jQuery("#overlay").removeClass("d-none").addClass("show loader-text")
     createSubmitClaim(body, ".new-ticket-dummy");
   });
