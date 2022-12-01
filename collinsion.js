@@ -6475,12 +6475,12 @@ jQuery(document).ready(function ($) {
     let fieldTypeText = "Text";
     let fieldTypeDate = "Date";
     let ClaimQaAndAnswers = [];
-    let cxBookDate = submitClaimBody(
+    let cxBookingDate = submitClaimBody(
       "CanxBookingDate",
       $("#helpdesk_ticket_custom_field_cf_your_booking_date_2321673").val(),
       fieldTypeDate
     );
-    ClaimQaAndAnswers.push(cxBookDate);
+    ClaimQaAndAnswers.push(cxBookingDate);
     if (reasonClaim[0].akey == "01_02_Canx") {
       let coronaDateAware = submitClaimBody(
         "CoronaDateAware",
@@ -6522,12 +6522,6 @@ jQuery(document).ready(function ($) {
         fieldTypeText
       );
       ClaimQaAndAnswers.push(dualInsuranceName);
-      let cxBookingDate = submitClaimBody(
-        "CanxBookingDate",
-        $("#helpdesk_ticket_custom_field_cf_your_booking_date_2321673").val(),
-        fieldTypeDate
-      );
-      ClaimQaAndAnswers.push(cxBookingDate);
       let dualInsuranceNumber = submitClaimBody(
         "DualInsuranceNumber",
         $("#helpdesk_ticket_custom_field_cf_policy_number964552_2321673").val(),
@@ -8517,12 +8511,12 @@ jQuery(document).ready(function ($) {
     let fieldTypeText = "Text";
     let fieldTypeDate = "Date";
     let ClaimQaAndAnswers = [];
-    let cxBookDate = submitClaimBody(
+    let cxBookingDate = submitClaimBody(
       "CanxBookingDate",
       $("#helpdesk_ticket_custom_field_cf_your_booking_date_2321673").val(),
       fieldTypeDate
     );
-    ClaimQaAndAnswers.push(cxBookDate);
+    ClaimQaAndAnswers.push(cxBookingDate);
     if (reasonClaim[0].akey == "01_02_Canx") {
       let coronaDateAware = submitClaimBody(
         "CoronaDateAware",
@@ -8564,12 +8558,6 @@ jQuery(document).ready(function ($) {
         fieldTypeText
       );
       ClaimQaAndAnswers.push(dualInsuranceName);
-      let cxBookingDate = submitClaimBody(
-        "CanxBookingDate",
-        $("#helpdesk_ticket_custom_field_cf_your_booking_date_2321673").val(),
-        fieldTypeDate
-      );
-      ClaimQaAndAnswers.push(cxBookingDate);
       let dualInsuranceNumber = submitClaimBody(
         "DualInsuranceNumber",
         $("#helpdesk_ticket_custom_field_cf_policy_number964552_2321673").val(),
