@@ -3949,7 +3949,7 @@ jQuery(document).ready(function ($) {
   var ReasonForCancellation = [
     {
       id: "Illness",
-      name_eng: "Unforseen death",
+      name_eng: "Unforseen illness",
       name_ita: "Malattia imprevista",
     },
     {
@@ -3959,7 +3959,7 @@ jQuery(document).ready(function ($) {
     },
     {
       id: "Death",
-      name_eng: "Unforseen illness",
+      name_eng: "Unforseen death",
       name_ita: "Morte imprevista",
     },
     {
@@ -5912,7 +5912,7 @@ jQuery(document).ready(function ($) {
         } else {
           add_section_5();
         }
-        getUploadFiles(files, ".save_draft_5");
+        getUploadFiles(elem.files, ".save_draft_5");
       } else {
         console.log(
           " --------- Need to show error max file size should not more than 4 MB ----------------"
