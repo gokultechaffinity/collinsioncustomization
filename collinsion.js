@@ -3949,7 +3949,7 @@ jQuery(document).ready(function ($) {
   var ReasonForCancellation = [
     {
       id: "Illness",
-      name_eng: "Unforseen death",
+      name_eng: "Unforseen illness",
       name_ita: "Malattia imprevista",
     },
     {
@@ -3959,7 +3959,7 @@ jQuery(document).ready(function ($) {
     },
     {
       id: "Death",
-      name_eng: "Unforseen illness",
+      name_eng: "Unforseen death",
       name_ita: "Morte imprevista",
     },
     {
@@ -5912,7 +5912,7 @@ jQuery(document).ready(function ($) {
         } else {
           add_section_5();
         }
-        getUploadFiles(files, ".save_draft_5");
+        getUploadFiles(elem.files, ".save_draft_5");
       } else {
         console.log(
           " --------- Need to show error max file size should not more than 4 MB ----------------"
@@ -5947,6 +5947,7 @@ jQuery(document).ready(function ($) {
   function fileUploadCallback() {
     var elem = document.getElementById("files_list");
     if (elem.files.length) {
+
       let ele = ["api_call_failed_filelist"];
       clearError(ele);
       var files = [];
@@ -5955,6 +5956,7 @@ jQuery(document).ready(function ($) {
         files.push(elem.files[i].name);
         fileSize.push(elem.files[i].size);
       }
+      
       var sum = fileSize.reduce(function (a, b) {
         return a + b;
       }, 0);
@@ -5967,7 +5969,8 @@ jQuery(document).ready(function ($) {
         } else {
           add_section_5();
         }
-        getUploadFiles(files, ".save_and_continue5");
+        console.log("files --->",files)
+        getUploadFiles(elem.files, ".save_and_continue5");
         open_next(5);
         $("#section-4-button").css("background-color", "#4DC367");
         $("#section-5-button").css("background-color", "#4DC367");
@@ -6031,6 +6034,8 @@ jQuery(document).ready(function ($) {
     }
   }
   function getUploadFiles(files, fieldId) {
+    console.log("--->",files)
+    console.log("--->",typeof files)
     let statusCode;
     let flag = false;
     var formdata = new FormData();
@@ -6042,8 +6047,11 @@ jQuery(document).ready(function ($) {
     formdata.append("source", "OnlineClaims");
     formdata.append("subject", "Omni Documents");
     for (let file of files) {
-      formdata.append("attachments[]", new File([""], file));
+      console.log("iterate -->",file)
+      formdata.append("attachments[]",file,file.name );
     }
+  
+console.log("form data body --->",formdata)
     var requestOptions = {
       method: "POST",
       headers: myHeaders,
