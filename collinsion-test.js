@@ -7371,14 +7371,14 @@ console.log("form data body --->",formdata)
       body["ClaimAnswers"] = ClaimQaAndAnswers;
       console.log("submit claim body --->", body);
     } else if (reasonClaim[0].akey == "01_03_CxIllClnt") {
-      let dateAdvisedOfRedundancy = submitClaimBody(
-        "DateAdvisedOfRedundancy",
+      let dateAdvisedJuryWitness = submitClaimBody(
+        "DateAdvisedJuryWitness",
         $(
           "#helpdesk_ticket_custom_field_cf_on_what_date_were_you_advised_of_the_jury_service_or_court_date_2321673"
         ).val(),
         fieldTypeDate
       );
-      ClaimQaAndAnswers.push(dateAdvisedOfRedundancy);
+      ClaimQaAndAnswers.push(dateAdvisedJuryWitness);
       let checkRefundValue = $(
         "#helpdesk_ticket_custom_field_cf_have_you_received_any_refunds_or_compensation702973_2321673"
       ).val();
@@ -9415,15 +9415,15 @@ console.log("form data body --->",formdata)
       body["ClaimAnswers"] = ClaimQaAndAnswers;
       console.log("submit claim body --->", body);
     } else if (reasonClaim[0].akey == "01_03_CxIllClnt") {
-      let dateAdvisedOfRedundancy = submitClaimBody(
-        "DateAdvisedOfRedundancy",
+      let dateAdvisedJuryWitness = submitClaimBody(
+        "DateAdvisedJuryWitness",
         $(
           "#helpdesk_ticket_custom_field_cf_on_what_date_were_you_advised_of_the_jury_service_or_court_date_2321673"
         ).val(),
         fieldTypeDate
       );
     
-     ClaimQaAndAnswers.push(dateAdvisedOfRedundancy);
+     ClaimQaAndAnswers.push(dateAdvisedJuryWitness);
       let checkRefundValue = $(
         "#helpdesk_ticket_custom_field_cf_have_you_received_any_refunds_or_compensation702973_2321673"
       ).val();
