@@ -6035,6 +6035,7 @@ jQuery(document).ready(function ($) {
   }
   function getUploadFiles(files, fieldId) {
     console.log("--->",files)
+    console.log("--->",typeof files)
     let statusCode;
     let flag = false;
     var formdata = new FormData();
@@ -6046,8 +6047,11 @@ jQuery(document).ready(function ($) {
     formdata.append("source", "OnlineClaims");
     formdata.append("subject", "Omni Documents");
     for (let file of files) {
-      formdata.append("attachments[]", new File([""], file));
+      console.log("iterate -->",file)
+      formdata.append("attachments[]",file,file.name );
     }
+  
+console.log("form data body --->",formdata)
     var requestOptions = {
       method: "POST",
       headers: myHeaders,
