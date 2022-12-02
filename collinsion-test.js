@@ -5947,6 +5947,7 @@ jQuery(document).ready(function ($) {
   function fileUploadCallback() {
     var elem = document.getElementById("files_list");
     if (elem.files.length) {
+
       let ele = ["api_call_failed_filelist"];
       clearError(ele);
       var files = [];
@@ -5955,6 +5956,7 @@ jQuery(document).ready(function ($) {
         files.push(elem.files[i].name);
         fileSize.push(elem.files[i].size);
       }
+      
       var sum = fileSize.reduce(function (a, b) {
         return a + b;
       }, 0);
@@ -5967,7 +5969,8 @@ jQuery(document).ready(function ($) {
         } else {
           add_section_5();
         }
-        getUploadFiles(files, ".save_and_continue5");
+        console.log("files --->",files)
+        getUploadFiles(elem.files, ".save_and_continue5");
         open_next(5);
         $("#section-4-button").css("background-color", "#4DC367");
         $("#section-5-button").css("background-color", "#4DC367");
@@ -6031,6 +6034,7 @@ jQuery(document).ready(function ($) {
     }
   }
   function getUploadFiles(files, fieldId) {
+    console.log("--->",files)
     let statusCode;
     let flag = false;
     var formdata = new FormData();
