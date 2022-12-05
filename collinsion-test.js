@@ -1,3 +1,4 @@
+//collinsion.js
 //latest
 jQuery(document).ready(function ($) {
   $("#chat-icon").hide();
@@ -5445,7 +5446,6 @@ jQuery(document).ready(function ($) {
           $(".claim-number").append(
             `Your Claim Number is ${ClaimInitiatedNumber}`
           );
-
         }
       })
       .catch((error) => console.log("errror -->", error));
