@@ -5175,34 +5175,66 @@ jQuery(document).ready(function ($) {
         $("#save_and_continue3").attr("data-toggle", "modal");
         $("#save_and_continue3").attr("data-target", "ClaimAPIModal");
         let claimObject = {};
-        for (let i = 0; i < $("input[name='insured_1']:checked").length; i++) {
-          claimObject = {};
-          let destiny = getAKey(
-            "helpdesk_ticket_custom_field_cf_your_destination_2321673",
-            Destination
+        let destiny = getAKey(
+          "helpdesk_ticket_custom_field_cf_your_destination_2321673",
+          Destination
+        );
+        claimObject["incidentCountryCode"] = destiny[0].akey;
+        claimObject["incidentDate"] = $(
+          "#helpdesk_ticket_custom_field_cf_your_incident_date_2321673"
+        ).val();
+        let claimReason = getAKey(
+          "helpdesk_ticket_custom_field_cf_reason_for_claim_2321673",
+          ClaimReason
+        );
+        claimObject["coverCause"] = claimReason[0].akey;
+        var yourArray = [];
+        let createClaimIds={}
+        if ($("input[data-ispolicyholder='true']:checked").length) {
+          createClaimIds["MainContactClientId"] = $(
+            "input[data-ispolicyholder='true']:checked"
+          ).attr("data-clientId");
+          createClaimIds["clientId"]=$(
+            "input[data-ispolicyholder='true']:checked"
+          ).attr("data-clientId");
+          createClaimIds["internalPolicyNumber"]=$(
+            "input[data-ispolicyholder='true']:checked"
+          ).attr("data-PolicyNumber");
+          $("input[name='insured_1']:checked").each(function() {
+            yourArray.push($(this).attr("data-clientid"));
+          });
+          yourArray = yourArray.filter(function(val) {
+            return createClaimIds["MainContactClientId"].indexOf(val) == -1;
+          });
+          yourArray = yourArray.filter(
+            (val) => !createClaimIds["MainContactClientId"].includes(val)
           );
-          claimObject["incidentCountryCode"] = destiny[0].akey;
-          claimObject["incidentDate"] = $(
-            "#helpdesk_ticket_custom_field_cf_your_incident_date_2321673"
-          ).val();
-          let claimReason = getAKey(
-            "helpdesk_ticket_custom_field_cf_reason_for_claim_2321673",
-            ClaimReason
-          );
-          claimObject["coverCause"] = claimReason[0].akey;
-          claimObject["clientId"] = $("#" + i).attr("data-clientId");
-          claimObject["internalPolicyNumber"] = $("#" + i).attr(
-            "data-PolicyNumber"
-          );
-          if(i==0){
-            console.log("entered only one time in if loop ",claimObject)
-            jQuery("#claim-error-msg").addClass("d-none");
-            jQuery("#claim-sucess-msg").addClass("d-none");
-            $("#ClaimAPIModal").addClass("loader-text");
-            createClaimRequest(claimObject, "#save_and_continue3");
-          }
-
+          createClaimIds["OtherInsuredClientIds"] = yourArray;
+        } else {
+          $("input[name='insured_1']:checked").each(function(index) {
+            if (index == 0) {
+              createClaimIds["MainContactClientId"] = $(this).attr("data-clientid");
+              createClaimIds["clientId"]=$(this).attr("data-clientid");
+              createClaimIds["internalPolicyNumber"]=$(this).attr("data-PolicyNumber");
+            } else {
+              yourArray.push($(this).attr("data-clientid"));
+            }
+          });
+          createClaimIds["OtherInsuredClientIds"] = yourArray;
         }
+      console.log("create claim IDs -->",createClaimIds);
+      console.log("yourArray Array -->",yourArray);
+      console.log("claimObject  -->",claimObject);
+        // for (let i = 0; i < $("input[name='insured_1']:checked").length; i++) {
+        //   claimObject = {};
+        //   // if(i==0){
+        //     jQuery("#claim-error-msg").addClass("d-none");
+        //     jQuery("#claim-sucess-msg").addClass("d-none");
+        //     $("#ClaimAPIModal").addClass("loader-text");
+        //     createClaimRequest(claimObject, "#save_and_continue3");
+        //   // }
+
+        // }
         // we will make an api call to claim and sucess response open
         $("#ClaimAPIModal").modal("toggle");
         if ($("#section_3_header").length) {
