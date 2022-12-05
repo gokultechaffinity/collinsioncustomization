@@ -5222,6 +5222,8 @@ jQuery(document).ready(function ($) {
           });
           createClaimIds["OtherInsuredClientIds"] = yourArray;
         }
+        claimObject["clientId"]=createClaimIds.clientId;
+        claimObject["internalPolicyNumber"]=createClaimIds.internalPolicyNumber;
       console.log("create claim IDs -->",createClaimIds);
       console.log("yourArray Array -->",yourArray);
       console.log("claimObject  -->",claimObject);
