@@ -11603,7 +11603,6 @@ console.log("form data body --->",formdata)
         //did you get a repair estimat
         show_and_hide(
           [
-            ".form-group.helpdesk_ticket_custom_field_cf_who_owns_the_item_2321673",
             ".form-group.helpdesk_ticket_custom_field_cf_did_you_get_a_repair_estimate_2321673",
             ".form-group.helpdesk_ticket_custom_field_cf_item_type_2321673",
             "label[for='helpdesk_ticket_custom_field_cf_item_description_2321673']",
@@ -11757,9 +11756,9 @@ console.log("form data body --->",formdata)
         $(
           ".form-group.helpdesk_ticket_custom_field_cf_item_type870706_2321673"
         ).hide();
-        $(
-          ".form-group.helpdesk_ticket_custom_field_cf_who_owns_the_item86910_2321673"
-        ).hide();
+        // $(
+        //   ".form-group.helpdesk_ticket_custom_field_cf_who_owns_the_item86910_2321673"
+        // ).hide();
         $(
           "label[for='helpdesk_ticket_custom_field_cf_what_was_its_cost_when_you_bought_it_2321673']"
         ).hide();
@@ -11878,7 +11877,6 @@ console.log("form data body --->",formdata)
 
         show_and_hide(
           [
-            ".form-group.helpdesk_ticket_custom_field_cf_who_owns_the_item86910_2321673",
             ".form-group.helpdesk_ticket_custom_field_cf_item_type870706_2321673",
             "label[for='helpdesk_ticket_custom_field_cf_what_was_its_cost_when_you_bought_it_2321673']",
             "#helpdesk_ticket_custom_field_cf_what_was_its_cost_when_you_bought_it_2321673",
