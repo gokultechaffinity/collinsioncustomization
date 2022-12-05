@@ -715,15 +715,15 @@ jQuery(document).ready(function ($) {
         //     "Please fill in all fields"
         //   );
       } else {
-        //check LENGTH OF POLICY NUMBER - 7 DIGITS
+        //check LENGTH OF POLICY NUMBER - 6 DIGITS
         if (
           $(
             "#helpdesk_ticket_custom_field_cf_policy_number454080_2321673"
-          ).val().length < 7
+          ).val().length < 6
         ) {
           addErrorMessage(
             "helpdesk_ticket_custom_field_cf_policy_number454080_2321673",
-            "Policy Number must be at least 7 digits."
+            "Policy Number must be at least 6 digits."
           );
           $("#save_and_continue1").removeAttr("data-target");
           $("#save_and_continue1").removeAttr("data-toggle");
@@ -815,11 +815,11 @@ jQuery(document).ready(function ($) {
         //   "Please fill in all fields"
         // );
       } else {
-        //check LENGTH OF POLICY NUMBER - 7 DIGITS
+        //check LENGTH OF POLICY NUMBER - 6 DIGITS
         if (
           $(
             "#helpdesk_ticket_custom_field_cf_policy_number454080_2321673"
-          ).val().length >= 7
+          ).val().length >= 6
         ) {
           birthdate = $(
             "#helpdesk_ticket_custom_field_cf_date_of_birth_2321673"
@@ -874,7 +874,7 @@ jQuery(document).ready(function ($) {
         } else {
           addErrorMessage(
             "helpdesk_ticket_custom_field_cf_policy_number454080_2321673",
-            "Policy Number must be at least 7 digits."
+            "Policy Number must be at least 6 digits."
           );
           $("#save_and_continue1").removeAttr("data-target");
           $("#save_and_continue1").removeAttr("data-toggle");
@@ -920,11 +920,11 @@ jQuery(document).ready(function ($) {
         //   "Please fill in all fields"
         // );
       } else {
-        //check LENGTH OF POLICY NUMBER - 7 DIGITS
+        //check LENGTH OF POLICY NUMBER - 6 DIGITS
         if (
           $(
             "#helpdesk_ticket_custom_field_cf_policy_number454080_2321673"
-          ).val().length >= 7
+          ).val().length >= 6
         ) {
           birthdate = $(
             "#helpdesk_ticket_custom_field_cf_date_of_birth_2321673"
@@ -979,7 +979,7 @@ jQuery(document).ready(function ($) {
         } else {
           addErrorMessage(
             "helpdesk_ticket_custom_field_cf_policy_number454080_2321673",
-            "Policy Number must be at least 7 digits."
+            "Policy Number must be at least 6 digits."
           );
           $("#save_and_continue1").removeAttr("data-target");
           $("#save_and_continue1").removeAttr("data-toggle");
