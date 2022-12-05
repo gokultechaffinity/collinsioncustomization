@@ -5189,7 +5189,8 @@ jQuery(document).ready(function ($) {
         );
         claimObject["coverCause"] = claimReason[0].akey;
         var yourArray = [];
-        let createClaimIds={}
+        let createClaimIds={};
+        let nameArray=[];
         if ($("input[data-ispolicyholder='true']:checked").length) {
           createClaimIds["MainContactClientId"] = $(
             "input[data-ispolicyholder='true']:checked"
@@ -5202,6 +5203,7 @@ jQuery(document).ready(function ($) {
           ).attr("data-PolicyNumber");
           $("input[name='insured_1']:checked").each(function() {
             yourArray.push($(this).attr("data-clientid"));
+            nameArray.push($(this).val() + " " + $(this).attr("data-lastname"));
           });
           yourArray = yourArray.filter(function(val) {
             return createClaimIds["MainContactClientId"].indexOf(val) == -1;
@@ -5216,6 +5218,7 @@ jQuery(document).ready(function ($) {
               createClaimIds["MainContactClientId"] = $(this).attr("data-clientid");
               createClaimIds["clientId"]=$(this).attr("data-clientid");
               createClaimIds["internalPolicyNumber"]=$(this).attr("data-PolicyNumber");
+              nameArray.push($(this).val() + " " + $(this).attr("data-lastname"));
             } else {
               yourArray.push($(this).attr("data-clientid"));
             }
@@ -5224,7 +5227,9 @@ jQuery(document).ready(function ($) {
         }
         claimObject["clientId"]=createClaimIds.clientId;
         claimObject["internalPolicyNumber"]=createClaimIds.internalPolicyNumber;
-      console.log("claimObject  -->",claimObject);
+        createClaimIds["namesArray"]=nameArray;
+          console.log("claimObject  -->",claimObject);
+          console.log("claimNames -->",createClaimIds);
             jQuery("#claim-error-msg").addClass("d-none");
             jQuery("#claim-sucess-msg").addClass("d-none");
             $("#ClaimAPIModal").addClass("loader-text");
@@ -5433,6 +5438,7 @@ jQuery(document).ready(function ($) {
           $(".claim-number").append(
             `Your Claim Number is ${ClaimInitiatedNumber}`
           );
+
         }
       })
       .catch((error) => console.log("errror -->", error));
