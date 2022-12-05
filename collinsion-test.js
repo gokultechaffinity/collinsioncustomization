@@ -5233,7 +5233,7 @@ jQuery(document).ready(function ($) {
             jQuery("#claim-error-msg").addClass("d-none");
             jQuery("#claim-sucess-msg").addClass("d-none");
             $("#ClaimAPIModal").addClass("loader-text");
-            createClaimRequest(claimObject, "#save_and_continue3");
+            createClaimRequest(claimObject, "#save_and_continue3",createClaimIds);
         $("#ClaimAPIModal").modal("toggle");
         if ($("#section_3_header").length) {
           update_section_3();
@@ -5360,7 +5360,7 @@ jQuery(document).ready(function ($) {
       }
     }
   }
-  function createClaimRequest(claimObject, fieldId) {
+  function createClaimRequest(claimObject, fieldId,createClaimIds) {
     let flag = false;
     let statusCode;
     $(".claim-number").empty();
@@ -5434,6 +5434,13 @@ jQuery(document).ready(function ($) {
           $("#helpdesk_ticket_custom_field_cf_claim_number_2321673").val(
             ClaimInitiatedNumber
           );
+          $("#helpdesk_ticket_custom_field_cf_mainclientid_2321673").val(
+            createClaimIds.MainContactClientId
+          );
+          $("#helpdesk_ticket_custom_field_cf_otherclientid_2321673").val(
+            createClaimIds.OtherInsuredClientIds
+          );
+          $("#helpdesk_ticket_custom_field_cf_claimnames_2321673").val(createClaimIds.nameArray);
           $(".claim-number").empty();
           $(".claim-number").append(
             `Your Claim Number is ${ClaimInitiatedNumber}`
