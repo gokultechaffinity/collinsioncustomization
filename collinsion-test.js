@@ -5441,7 +5441,7 @@ jQuery(document).ready(function ($) {
           $("#helpdesk_ticket_custom_field_cf_otherclientid_2321673").val(
             createClaimIds.OtherInsuredClientIds
           );
-          $("#helpdesk_ticket_custom_field_cf_claimnames_2321673").val(createClaimIds.nameArray);
+          $("#helpdesk_ticket_custom_field_cf_claimnames_2321673").val(createClaimIds.namesArray);
           $(".claim-number").empty();
           $(".claim-number").append(
             `Your Claim Number is ${ClaimInitiatedNumber}`
@@ -5481,47 +5481,6 @@ jQuery(document).ready(function ($) {
   });
   //____________________________________________________________________________________________________________________
   $("#save_draft_4").click(function () {
-    let saveDetails = {};
-    var checkArray = [];
-    var nameArray = [];
-    if ($("input[data-ispolicyholder='true']:checked").length) {
-      saveDetails["MainContactClientId"] = $(
-        "input[data-ispolicyholder='true']:checked"
-      ).attr("data-clientId");
-      $("input[name='insured_1']:checked").each(function () {
-        checkArray.push($(this).attr("data-clientid"));
-        nameArray.push($(this).val() + " " + $(this).attr("data-lastname"));
-      });
-      checkArray = checkArray.filter(function (val) {
-        return saveDetails["MainContactClientId"].indexOf(val) == -1;
-      });
-      checkArray = checkArray.filter(
-        (val) => !saveDetails["MainContactClientId"].includes(val)
-      );
-
-      saveDetails["OtherInsuredClientIds"] = checkArray;
-    } else {
-      $("input[name='insured_1']:checked").each(function (index) {
-        if (index == 0) {
-          saveDetails["MainContactClientId"] = $(this).attr("data-clientid");
-          nameArray.push($(this).val() + " " + $(this).attr("data-lastname"));
-        } else {
-          checkArray.push($(this).attr("data-clientid"));
-        }
-      });
-      saveDetails["OtherInsuredClientIds"] = checkArray;
-    }
-    console.log("---------", saveDetails);
-    console.log(saveDetails.MainContactClientId);
-    console.log(saveDetails.OtherInsuredClientIds);
-    console.log(nameArray);
-    $("#helpdesk_ticket_custom_field_cf_mainclientid_2321673").val(
-      saveDetails.MainContactClientId
-    );
-    $("#helpdesk_ticket_custom_field_cf_otherclientid_2321673").val(
-      saveDetails.OtherInsuredClientIds
-    );
-    $("#helpdesk_ticket_custom_field_cf_claimnames_2321673").val(nameArray);
     $(".new-ticket-submit-button").trigger("click");
   });
   $("#save_and_continue4").click(function () {
@@ -5891,47 +5850,6 @@ jQuery(document).ready(function ($) {
   //____________________________________________________________________________________________________________________
   //section 5 continue
   $(".save_draft_5").click(function () {
-    let saveDetail = {};
-    var checksArray = [];
-    var namesArray = [];
-    if ($("input[data-ispolicyholder='true']:checked").length) {
-      saveDetail["MainContactClientId"] = $(
-        "input[data-ispolicyholder='true']:checked"
-      ).attr("data-clientId");
-      $("input[name='insured_1']:checked").each(function () {
-        checksArray.push($(this).attr("data-clientid"));
-        namesArray.push($(this).val() + " " + $(this).attr("data-lastname"));
-      });
-      checksArray = checksArray.filter(function (val) {
-        return saveDetail["MainContactClientId"].indexOf(val) == -1;
-      });
-      checksArray = checksArray.filter(
-        (val) => !saveDetail["MainContactClientId"].includes(val)
-      );
-
-      saveDetail["OtherInsuredClientIds"] = checksArray;
-    } else {
-      $("input[name='insured_1']:checked").each(function (index) {
-        if (index == 0) {
-          saveDetail["MainContactClientId"] = $(this).attr("data-clientid");
-          namesArray.push($(this).val() + " " + $(this).attr("data-lastname"));
-        } else {
-          checksArray.push($(this).attr("data-clientid"));
-        }
-      });
-      saveDetail["OtherInsuredClientIds"] = checksArray;
-    }
-    console.log("---------", saveDetail);
-    console.log(saveDetail.MainContactClientId);
-    console.log(saveDetail.OtherInsuredClientIds);
-    console.log(namesArray);
-    $("#helpdesk_ticket_custom_field_cf_mainclientid_2321673").val(
-      saveDetail.MainContactClientId
-    );
-    $("#helpdesk_ticket_custom_field_cf_otherclientid_2321673").val(
-      saveDetail.OtherInsuredClientIds
-    );
-    $("#helpdesk_ticket_custom_field_cf_claimnames_2321673").val(namesArray);
     var elem = document.getElementById("files_list");
     if (elem.files.length) {
       let ele = ["api_call_failed_filelist"];
