@@ -5194,10 +5194,14 @@ jQuery(document).ready(function ($) {
           claimObject["internalPolicyNumber"] = $("#" + i).attr(
             "data-PolicyNumber"
           );
-          jQuery("#claim-error-msg").addClass("d-none");
-          jQuery("#claim-sucess-msg").addClass("d-none");
-          $("#ClaimAPIModal").addClass("loader-text");
-          createClaimRequest(claimObject, "#save_and_continue3");
+          if(i==0){
+            console.log("entered only one time in if loop ",claimObject)
+            jQuery("#claim-error-msg").addClass("d-none");
+            jQuery("#claim-sucess-msg").addClass("d-none");
+            $("#ClaimAPIModal").addClass("loader-text");
+            createClaimRequest(claimObject, "#save_and_continue3");
+          }
+
         }
         // we will make an api call to claim and sucess response open
         $("#ClaimAPIModal").modal("toggle");
