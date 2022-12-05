@@ -5224,20 +5224,11 @@ jQuery(document).ready(function ($) {
         }
         claimObject["clientId"]=createClaimIds.clientId;
         claimObject["internalPolicyNumber"]=createClaimIds.internalPolicyNumber;
-      console.log("create claim IDs -->",createClaimIds);
-      console.log("yourArray Array -->",yourArray);
       console.log("claimObject  -->",claimObject);
-        // for (let i = 0; i < $("input[name='insured_1']:checked").length; i++) {
-        //   claimObject = {};
-        //   // if(i==0){
-        //     jQuery("#claim-error-msg").addClass("d-none");
-        //     jQuery("#claim-sucess-msg").addClass("d-none");
-        //     $("#ClaimAPIModal").addClass("loader-text");
-        //     createClaimRequest(claimObject, "#save_and_continue3");
-        //   // }
-
-        // }
-        // we will make an api call to claim and sucess response open
+            jQuery("#claim-error-msg").addClass("d-none");
+            jQuery("#claim-sucess-msg").addClass("d-none");
+            $("#ClaimAPIModal").addClass("loader-text");
+            createClaimRequest(claimObject, "#save_and_continue3");
         $("#ClaimAPIModal").modal("toggle");
         if ($("#section_3_header").length) {
           update_section_3();
