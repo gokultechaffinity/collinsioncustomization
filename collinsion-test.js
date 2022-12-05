@@ -1,3 +1,4 @@
+//collinsion.js
 //latest
 jQuery(document).ready(function ($) {
   $("#chat-icon").hide();
@@ -715,15 +716,15 @@ jQuery(document).ready(function ($) {
         //     "Please fill in all fields"
         //   );
       } else {
-        //check LENGTH OF POLICY NUMBER - 7 DIGITS
+        //check LENGTH OF POLICY NUMBER - 6 DIGITS
         if (
           $(
             "#helpdesk_ticket_custom_field_cf_policy_number454080_2321673"
-          ).val().length < 7
+          ).val().length < 6
         ) {
           addErrorMessage(
             "helpdesk_ticket_custom_field_cf_policy_number454080_2321673",
-            "Policy Number must be at least 7 digits."
+            "Policy Number must be at least 6 digits."
           );
           $("#save_and_continue1").removeAttr("data-target");
           $("#save_and_continue1").removeAttr("data-toggle");
@@ -815,11 +816,11 @@ jQuery(document).ready(function ($) {
         //   "Please fill in all fields"
         // );
       } else {
-        //check LENGTH OF POLICY NUMBER - 7 DIGITS
+        //check LENGTH OF POLICY NUMBER - 6 DIGITS
         if (
           $(
             "#helpdesk_ticket_custom_field_cf_policy_number454080_2321673"
-          ).val().length >= 7
+          ).val().length >= 6
         ) {
           birthdate = $(
             "#helpdesk_ticket_custom_field_cf_date_of_birth_2321673"
@@ -874,7 +875,7 @@ jQuery(document).ready(function ($) {
         } else {
           addErrorMessage(
             "helpdesk_ticket_custom_field_cf_policy_number454080_2321673",
-            "Policy Number must be at least 7 digits."
+            "Policy Number must be at least 6 digits."
           );
           $("#save_and_continue1").removeAttr("data-target");
           $("#save_and_continue1").removeAttr("data-toggle");
@@ -920,11 +921,11 @@ jQuery(document).ready(function ($) {
         //   "Please fill in all fields"
         // );
       } else {
-        //check LENGTH OF POLICY NUMBER - 7 DIGITS
+        //check LENGTH OF POLICY NUMBER - 6 DIGITS
         if (
           $(
             "#helpdesk_ticket_custom_field_cf_policy_number454080_2321673"
-          ).val().length >= 7
+          ).val().length >= 6
         ) {
           birthdate = $(
             "#helpdesk_ticket_custom_field_cf_date_of_birth_2321673"
@@ -979,7 +980,7 @@ jQuery(document).ready(function ($) {
         } else {
           addErrorMessage(
             "helpdesk_ticket_custom_field_cf_policy_number454080_2321673",
-            "Policy Number must be at least 7 digits."
+            "Policy Number must be at least 6 digits."
           );
           $("#save_and_continue1").removeAttr("data-target");
           $("#save_and_continue1").removeAttr("data-toggle");
@@ -5175,31 +5176,65 @@ jQuery(document).ready(function ($) {
         $("#save_and_continue3").attr("data-toggle", "modal");
         $("#save_and_continue3").attr("data-target", "ClaimAPIModal");
         let claimObject = {};
-        for (let i = 0; i < $("input[name='insured_1']:checked").length; i++) {
-          claimObject = {};
-          let destiny = getAKey(
-            "helpdesk_ticket_custom_field_cf_your_destination_2321673",
-            Destination
+        let destiny = getAKey(
+          "helpdesk_ticket_custom_field_cf_your_destination_2321673",
+          Destination
+        );
+        claimObject["incidentCountryCode"] = destiny[0].akey;
+        claimObject["incidentDate"] = $(
+          "#helpdesk_ticket_custom_field_cf_your_incident_date_2321673"
+        ).val();
+        let claimReason = getAKey(
+          "helpdesk_ticket_custom_field_cf_reason_for_claim_2321673",
+          ClaimReason
+        );
+        claimObject["coverCause"] = claimReason[0].akey;
+        var yourArray = [];
+        let createClaimIds={};
+        let nameArray=[];
+        if ($("input[data-ispolicyholder='true']:checked").length) {
+          createClaimIds["MainContactClientId"] = $(
+            "input[data-ispolicyholder='true']:checked"
+          ).attr("data-clientId");
+          createClaimIds["clientId"]=$(
+            "input[data-ispolicyholder='true']:checked"
+          ).attr("data-clientId");
+          createClaimIds["internalPolicyNumber"]=$(
+            "input[data-ispolicyholder='true']:checked"
+          ).attr("data-PolicyNumber");
+          $("input[name='insured_1']:checked").each(function() {
+            yourArray.push($(this).attr("data-clientid"));
+            nameArray.push($(this).val() + " " + $(this).attr("data-lastname"));
+          });
+          yourArray = yourArray.filter(function(val) {
+            return createClaimIds["MainContactClientId"].indexOf(val) == -1;
+          });
+          yourArray = yourArray.filter(
+            (val) => !createClaimIds["MainContactClientId"].includes(val)
           );
-          claimObject["incidentCountryCode"] = destiny[0].akey;
-          claimObject["incidentDate"] = $(
-            "#helpdesk_ticket_custom_field_cf_your_incident_date_2321673"
-          ).val();
-          let claimReason = getAKey(
-            "helpdesk_ticket_custom_field_cf_reason_for_claim_2321673",
-            ClaimReason
-          );
-          claimObject["coverCause"] = claimReason[0].akey;
-          claimObject["clientId"] = $("#" + i).attr("data-clientId");
-          claimObject["internalPolicyNumber"] = $("#" + i).attr(
-            "data-PolicyNumber"
-          );
-          jQuery("#claim-error-msg").addClass("d-none");
-          jQuery("#claim-sucess-msg").addClass("d-none");
-          $("#ClaimAPIModal").addClass("loader-text");
-          createClaimRequest(claimObject, "#save_and_continue3");
+          createClaimIds["OtherInsuredClientIds"] = yourArray;
+        } else {
+          $("input[name='insured_1']:checked").each(function(index) {
+            if (index == 0) {
+              createClaimIds["MainContactClientId"] = $(this).attr("data-clientid");
+              createClaimIds["clientId"]=$(this).attr("data-clientid");
+              createClaimIds["internalPolicyNumber"]=$(this).attr("data-PolicyNumber");
+              nameArray.push($(this).val() + " " + $(this).attr("data-lastname"));
+            } else {
+              yourArray.push($(this).attr("data-clientid"));
+            }
+          });
+          createClaimIds["OtherInsuredClientIds"] = yourArray;
         }
-        // we will make an api call to claim and sucess response open
+        claimObject["clientId"]=createClaimIds.clientId;
+        claimObject["internalPolicyNumber"]=createClaimIds.internalPolicyNumber;
+        createClaimIds["namesArray"]=nameArray;
+          console.log("claimObject  -->",claimObject);
+          console.log("claimNames -->",createClaimIds);
+            jQuery("#claim-error-msg").addClass("d-none");
+            jQuery("#claim-sucess-msg").addClass("d-none");
+            $("#ClaimAPIModal").addClass("loader-text");
+            createClaimRequest(claimObject, "#save_and_continue3",createClaimIds);
         $("#ClaimAPIModal").modal("toggle");
         if ($("#section_3_header").length) {
           update_section_3();
@@ -5326,7 +5361,7 @@ jQuery(document).ready(function ($) {
       }
     }
   }
-  function createClaimRequest(claimObject, fieldId) {
+  function createClaimRequest(claimObject, fieldId,createClaimIds) {
     let flag = false;
     let statusCode;
     $(".claim-number").empty();
@@ -5400,6 +5435,13 @@ jQuery(document).ready(function ($) {
           $("#helpdesk_ticket_custom_field_cf_claim_number_2321673").val(
             ClaimInitiatedNumber
           );
+          $("#helpdesk_ticket_custom_field_cf_mainclientid_2321673").val(
+            createClaimIds.MainContactClientId
+          );
+          $("#helpdesk_ticket_custom_field_cf_otherclientid_2321673").val(
+            createClaimIds.OtherInsuredClientIds
+          );
+          $("#helpdesk_ticket_custom_field_cf_claimnames_2321673").val(createClaimIds.namesArray);
           $(".claim-number").empty();
           $(".claim-number").append(
             `Your Claim Number is ${ClaimInitiatedNumber}`
@@ -5439,47 +5481,6 @@ jQuery(document).ready(function ($) {
   });
   //____________________________________________________________________________________________________________________
   $("#save_draft_4").click(function () {
-    let saveDetails = {};
-    var checkArray = [];
-    var nameArray = [];
-    if ($("input[data-ispolicyholder='true']:checked").length) {
-      saveDetails["MainContactClientId"] = $(
-        "input[data-ispolicyholder='true']:checked"
-      ).attr("data-clientId");
-      $("input[name='insured_1']:checked").each(function () {
-        checkArray.push($(this).attr("data-clientid"));
-        nameArray.push($(this).val() + " " + $(this).attr("data-lastname"));
-      });
-      checkArray = checkArray.filter(function (val) {
-        return saveDetails["MainContactClientId"].indexOf(val) == -1;
-      });
-      checkArray = checkArray.filter(
-        (val) => !saveDetails["MainContactClientId"].includes(val)
-      );
-
-      saveDetails["OtherInsuredClientIds"] = checkArray;
-    } else {
-      $("input[name='insured_1']:checked").each(function (index) {
-        if (index == 0) {
-          saveDetails["MainContactClientId"] = $(this).attr("data-clientid");
-          nameArray.push($(this).val() + " " + $(this).attr("data-lastname"));
-        } else {
-          checkArray.push($(this).attr("data-clientid"));
-        }
-      });
-      saveDetails["OtherInsuredClientIds"] = checkArray;
-    }
-    console.log("---------", saveDetails);
-    console.log(saveDetails.MainContactClientId);
-    console.log(saveDetails.OtherInsuredClientIds);
-    console.log(nameArray);
-    $("#helpdesk_ticket_custom_field_cf_mainclientid_2321673").val(
-      saveDetails.MainContactClientId
-    );
-    $("#helpdesk_ticket_custom_field_cf_otherclientid_2321673").val(
-      saveDetails.OtherInsuredClientIds
-    );
-    $("#helpdesk_ticket_custom_field_cf_claimnames_2321673").val(nameArray);
     $(".new-ticket-submit-button").trigger("click");
   });
   $("#save_and_continue4").click(function () {
@@ -5849,47 +5850,6 @@ jQuery(document).ready(function ($) {
   //____________________________________________________________________________________________________________________
   //section 5 continue
   $(".save_draft_5").click(function () {
-    let saveDetail = {};
-    var checksArray = [];
-    var namesArray = [];
-    if ($("input[data-ispolicyholder='true']:checked").length) {
-      saveDetail["MainContactClientId"] = $(
-        "input[data-ispolicyholder='true']:checked"
-      ).attr("data-clientId");
-      $("input[name='insured_1']:checked").each(function () {
-        checksArray.push($(this).attr("data-clientid"));
-        namesArray.push($(this).val() + " " + $(this).attr("data-lastname"));
-      });
-      checksArray = checksArray.filter(function (val) {
-        return saveDetail["MainContactClientId"].indexOf(val) == -1;
-      });
-      checksArray = checksArray.filter(
-        (val) => !saveDetail["MainContactClientId"].includes(val)
-      );
-
-      saveDetail["OtherInsuredClientIds"] = checksArray;
-    } else {
-      $("input[name='insured_1']:checked").each(function (index) {
-        if (index == 0) {
-          saveDetail["MainContactClientId"] = $(this).attr("data-clientid");
-          namesArray.push($(this).val() + " " + $(this).attr("data-lastname"));
-        } else {
-          checksArray.push($(this).attr("data-clientid"));
-        }
-      });
-      saveDetail["OtherInsuredClientIds"] = checksArray;
-    }
-    console.log("---------", saveDetail);
-    console.log(saveDetail.MainContactClientId);
-    console.log(saveDetail.OtherInsuredClientIds);
-    console.log(namesArray);
-    $("#helpdesk_ticket_custom_field_cf_mainclientid_2321673").val(
-      saveDetail.MainContactClientId
-    );
-    $("#helpdesk_ticket_custom_field_cf_otherclientid_2321673").val(
-      saveDetail.OtherInsuredClientIds
-    );
-    $("#helpdesk_ticket_custom_field_cf_claimnames_2321673").val(namesArray);
     var elem = document.getElementById("files_list");
     if (elem.files.length) {
       let ele = ["api_call_failed_filelist"];
@@ -8446,53 +8406,8 @@ console.log("form data body --->",formdata)
       '<div class="invalid-feedback common_error">Please fill in all fields</div>'
     );
     jQuery("#overlay").removeClass("d-none").addClass("show loader-text")
-    appendClientIdandNames()
     createSubmitClaim(body, ".new-ticket-dummy");
   });
-
-  function appendClientIdandNames(){
-    let saveDetails = {};
-    var checkArray = [];
-    var nameArray = [];
-    if ($("input[data-ispolicyholder='true']:checked").length) {
-      saveDetails["MainContactClientId"] = $(
-        "input[data-ispolicyholder='true']:checked"
-      ).attr("data-clientId");
-      $("input[name='insured_1']:checked").each(function () {
-        checkArray.push($(this).attr("data-clientid"));
-        nameArray.push($(this).val() + " " + $(this).attr("data-lastname"));
-      });
-      checkArray = checkArray.filter(function (val) {
-        return saveDetails["MainContactClientId"].indexOf(val) == -1;
-      });
-      checkArray = checkArray.filter(
-        (val) => !saveDetails["MainContactClientId"].includes(val)
-      );
-
-      saveDetails["OtherInsuredClientIds"] = checkArray;
-    } else {
-      $("input[name='insured_1']:checked").each(function (index) {
-        if (index == 0) {
-          saveDetails["MainContactClientId"] = $(this).attr("data-clientid");
-          nameArray.push($(this).val() + " " + $(this).attr("data-lastname"));
-        } else {
-          checkArray.push($(this).attr("data-clientid"));
-        }
-      });
-      saveDetails["OtherInsuredClientIds"] = checkArray;
-    }
-    console.log("---------", saveDetails);
-    console.log(saveDetails.MainContactClientId);
-    console.log(saveDetails.OtherInsuredClientIds);
-    console.log(nameArray);
-    $("#helpdesk_ticket_custom_field_cf_mainclientid_2321673").val(
-      saveDetails.MainContactClientId
-    );
-    $("#helpdesk_ticket_custom_field_cf_otherclientid_2321673").val(
-      saveDetails.OtherInsuredClientIds
-    );
-    $("#helpdesk_ticket_custom_field_cf_claimnames_2321673").val(nameArray);
-  }
   $(".ticket-detail-dummy").click(function () {
     let policyNumber = $(
       "#helpdesk_ticket_custom_field_cf_policy_number454080_2321673"
