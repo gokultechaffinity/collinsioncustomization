@@ -701,11 +701,10 @@ jQuery(document).ready(function ($) {
 
   
   function checkRecaptcha(){
+  
+  $("#recaptcha-accessible-status").html();
 
-  var RecaptCha_span = document.getElementById("recaptcha-anchor")
-
-
-  console.log(RecaptCha_span.classList());
+  console.log( $("#recaptcha-accessible-status").html());
 
 
   // if(($("#recaptcha-anchor").hasClass('recaptcha-checkbox-checked'))){
