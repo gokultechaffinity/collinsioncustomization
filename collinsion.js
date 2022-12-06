@@ -703,7 +703,7 @@ jQuery(document).ready(function ($) {
 
   function checkRecaptcha(){
 
-    if($("#recaptcha-anchor").attr('aria-checked') == "true"){
+    if($("#recaptcha-anchor").is(':checked')){
       console.log("RecaptCha Completed");
     }else{
       console.log("RecaptCha Incomplete");
