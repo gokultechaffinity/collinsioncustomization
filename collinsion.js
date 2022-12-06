@@ -701,14 +701,10 @@ jQuery(document).ready(function ($) {
 
   
 
-  function checkRecaptcha(){
-
-    if($("#recaptcha-anchor").is('aria-disbled') == "false"){
-      console.log("RecaptCha Completed");
-    }else{
-      console.log("RecaptCha Incomplete");
-    }
-
+  if(($("#recaptcha-anchor").is('aria-disabled')) == "false"){
+    console.log("RecaptCha Completed");
+  } else if(($("#recaptcha-anchor").is('aria-disabled')) == "true") {
+    console.log("RecaptCha Incomplete");
   }
 
   //________________________________________________________________________________________________________________________________
