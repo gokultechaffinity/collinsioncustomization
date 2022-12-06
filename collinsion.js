@@ -704,14 +704,9 @@ jQuery(document).ready(function ($) {
   
  
 
-  console.log($('iframe[src="/support/recaptcha#6LdvejUUAAAAAEn6wjOFcPVRyQr4KtAJ03ltA1SQ"]'));
+  console.log($('iframe[src="/support/recaptcha#6LdvejUUAAAAAEn6wjOFcPVRyQr4KtAJ03ltA1SQ"]').contents.find('recaptcha-anchor'));
 
 
-  // if(($("#recaptcha-anchor").hasClass('recaptcha-checkbox-checked'))){
-  //   console.log("RecaptCha Completed");
-  // } else{
-  //   console.log("RecaptCha Incomplete");
-  // }
 }
 
   //________________________________________________________________________________________________________________________________
