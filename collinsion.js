@@ -702,9 +702,9 @@ jQuery(document).ready(function ($) {
   
   function checkRecaptcha(){
   
-  $("#recaptcha-accessible-status").html();
+  $("#recaptcha-accessible-status").innerHTML;
 
-  console.log( $("#recaptcha-accessible-status").html());
+  console.log( $("#recaptcha-accessible-status").innerHTML);
 
 
   // if(($("#recaptcha-anchor").hasClass('recaptcha-checkbox-checked'))){
