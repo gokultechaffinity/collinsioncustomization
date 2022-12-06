@@ -699,6 +699,17 @@ jQuery(document).ready(function ($) {
   //open section 1 by default
   $("#section-1-button").click();
 
+  document.getElementById("save_and_continue1").disabled = true;
+
+  function checkRecaptcha(){
+    var CaptchaCheckbox = document.getElementById("recaptcha-anchor");
+
+    if(CaptchaCheckbox.attr('aria-checked') == true ){
+      document.getElementById("save_and_continue1").disabled = false;
+    }
+
+  }
+
   //________________________________________________________________________________________________________________________________
   //section 1 continue
   //on CHANGE OF DATE OF BIRTH - check any of the two inputs is empty, if it is remove attr, else add it
@@ -800,6 +811,7 @@ jQuery(document).ready(function ($) {
         $("#continue").css("background-color", "grey");
         $("#continue").removeAttr("data-dismiss");
       }
+    
     } else if (
       $("#title").hasClass("VHI") ||
       $("#title").hasClass("ColumbusItaly")
@@ -869,10 +881,15 @@ jQuery(document).ready(function ($) {
             //changes started for error
             $("#save_and_continue1").attr("data-target", "#agreementModal");
             $("#save_and_continue1").attr("data-toggle", "modal");
+
             clearError([
               "helpdesk_ticket_custom_field_cf_date_of_birth_2321673",
               "helpdesk_ticket_custom_field_cf_policy_number454080_2321673",
             ]);
+
+            //checkRecaptcha
+            checkRecaptcha();
+
           } else {
             addErrorMessage(
               "helpdesk_ticket_custom_field_cf_date_of_birth_2321673",
@@ -908,6 +925,7 @@ jQuery(document).ready(function ($) {
         $("#continue").css("background-color", "grey");
         $("#continue").removeAttr("data-dismiss");
       }
+    
     } else if ($("#title").hasClass("CollinsonUK")) {
       if (
         $(
