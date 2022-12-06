@@ -1,6 +1,8 @@
 //collinsion.js
 //latest
 jQuery(document).ready(function ($) {
+ 
+
   $("#chat-icon").hide();
   $("#helpdesk_ticket_subject").closest(".form-group").hide();
   $("#helpdesk_ticket_custom_field_cf_mainclientid_2321673")
@@ -157,6 +159,12 @@ jQuery(document).ready(function ($) {
       "helpdesk_ticket_custom_field_cf_claim_number_2321673"
     ).parentElement;
     ClaimNumberParent.classList.add("for-section-1");
+
+    var CaptchaParent = document.getElementById("rc-anchor-container");
+
+    CaptchaParent.classList.add('for-section-1');
+
+
   } else if ($("#title").hasClass("EasyJet")) {
     var PolicyNumberParent = document.getElementById(
       "helpdesk_ticket_custom_field_cf_policy_number454080_2321673"
