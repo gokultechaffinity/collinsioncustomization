@@ -701,9 +701,10 @@ jQuery(document).ready(function ($) {
 
   
   function checkRecaptcha(){
-  if(($("#recaptcha-anchor").attr('aria-disabled')) == "false"){
+    console.log($("#recaptcha-anchor").attr('aria-checked'));
+  if(($("#recaptcha-anchor").attr('aria-checked')) == "true"){
     console.log("RecaptCha Completed");
-  } else if(($("#recaptcha-anchor").attr('aria-disabled')) == "true") {
+  } else if(($("#recaptcha-anchor").attr('aria-checked')) == "false") {
     console.log("RecaptCha Incomplete");
   }
 }
