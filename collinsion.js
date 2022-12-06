@@ -701,10 +701,10 @@ jQuery(document).ready(function ($) {
 
   
   function checkRecaptcha(){
-    console.log($("#recaptcha-anchor").attr('aria-checked'));
-  if(($("#recaptcha-anchor").attr('aria-checked')) == "true"){
+    console.log($("#recaptcha-anchor").hasClass('aria-recaptcha-checkbox-checked'));
+  if(($("#recaptcha-anchor").hasClass('aria-recaptcha-checkbox-checked'))){
     console.log("RecaptCha Completed");
-  } else if(($("#recaptcha-anchor").attr('aria-checked')) == "false") {
+  } else{
     console.log("RecaptCha Incomplete");
   }
 }
