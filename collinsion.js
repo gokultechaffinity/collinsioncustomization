@@ -702,7 +702,7 @@ jQuery(document).ready(function ($) {
   
   function checkRecaptcha(){
 
-    var RecaptCha_span = document.getElementById("recaptcha-anchor")
+  var RecaptCha_span = document.getElementById("recaptcha-anchor")
 
 
   console.log(RecaptCha_span.classList());
