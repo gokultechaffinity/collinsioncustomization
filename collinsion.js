@@ -702,9 +702,11 @@ jQuery(document).ready(function ($) {
   
   function checkRecaptcha(){
 
- 
+  var iFrame = document.getElementsByTagName("iframe");
 
-  console.log($('iframe[src="/support/recaptcha#6LdvejUUAAAAAEn6wjOFcPVRyQr4KtAJ03ltA1SQ"]').children("body").length);
+  console.log(iFrame.length)
+
+  console.log($('iframe[src="/support/recaptcha#6LdvejUUAAAAAEn6wjOFcPVRyQr4KtAJ03ltA1SQ"]').children("#document").length);
 
 }
 
