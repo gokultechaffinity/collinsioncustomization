@@ -704,7 +704,7 @@ jQuery(document).ready(function ($) {
   
  
 
-  console.log($('iframe[src="other.html"]').contents().find("##recaptcha-accessible-status"));
+  console.log($('iframe[src="other.html"]').contents().find("#recaptcha-accessible-status"));
 
 
   // if(($("#recaptcha-anchor").hasClass('recaptcha-checkbox-checked'))){
