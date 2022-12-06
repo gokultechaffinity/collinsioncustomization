@@ -704,7 +704,7 @@ jQuery(document).ready(function ($) {
   function checkRecaptcha(){
     var CaptchaCheckbox = document.getElementById("recaptcha-anchor");
 
-    if(CaptchaCheckbox.attr('aria-checked') == true ){
+    if((CaptchaCheckbox.attr('aria-checked').val()) == true ){
       console.log("RecaptCha Completed");
     }else{
       console.log("RecaptCha Incomplete");
