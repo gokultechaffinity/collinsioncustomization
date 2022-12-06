@@ -704,7 +704,7 @@ jQuery(document).ready(function ($) {
   
  
 
-  console.log($('iframe[src="/support/recaptcha#6LdvejUUAAAAAEn6wjOFcPVRyQr4KtAJ03ltA1SQ"]').contents().find("#recaptcha-accessible-status"));
+  console.log($('iframe[src="/support/recaptcha#6LdvejUUAAAAAEn6wjOFcPVRyQr4KtAJ03ltA1SQ"]'));
 
 
   // if(($("#recaptcha-anchor").hasClass('recaptcha-checkbox-checked'))){
