@@ -160,10 +160,7 @@ jQuery(document).ready(function ($) {
     ).parentElement;
     ClaimNumberParent.classList.add("for-section-1");
 
-    var CaptchaParent = document.getElementById("rc-anchor-container");
-
-    CaptchaParent.classList.add('for-section-1');
-
+    $("#rc-anchor-container").addClass("for-section-1");
 
   } else if ($("#title").hasClass("EasyJet")) {
     var PolicyNumberParent = document.getElementById(
