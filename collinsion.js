@@ -701,11 +701,9 @@ jQuery(document).ready(function ($) {
 
   
   function checkRecaptcha(){
-  
-  
  
 
-  console.log($('iframe[src="/support/recaptcha#6LdvejUUAAAAAEn6wjOFcPVRyQr4KtAJ03ltA1SQ"]').contents().find('#recaptcha-anchor'));
+  console.log($('iframe[src="/support/recaptcha#6LdvejUUAAAAAEn6wjOFcPVRyQr4KtAJ03ltA1SQ"]').classList());
 
 
 }
