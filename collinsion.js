@@ -703,8 +703,7 @@ jQuery(document).ready(function ($) {
   function checkRecaptcha(){
  
 
-  console.log($('iframe[src="/support/recaptcha#6LdvejUUAAAAAEn6wjOFcPVRyQr4KtAJ03ltA1SQ"]').find("span#recaptcha-anchor").attr("aria-checked"));
-
+  console.log($('iframe[src="/support/recaptcha#6LdvejUUAAAAAEn6wjOFcPVRyQr4KtAJ03ltA1SQ"]').find("#recaptcha-anchor").attr("aria-checked"));
 
 }
 
