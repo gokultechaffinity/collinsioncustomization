@@ -700,12 +700,13 @@ jQuery(document).ready(function ($) {
   $("#section-1-button").click();
 
   
-
+  function checkRecaptcha(){
   if(($("#recaptcha-anchor").is('aria-disabled')) == "false"){
     console.log("RecaptCha Completed");
   } else if(($("#recaptcha-anchor").is('aria-disabled')) == "true") {
     console.log("RecaptCha Incomplete");
   }
+}
 
   //________________________________________________________________________________________________________________________________
   //section 1 continue
