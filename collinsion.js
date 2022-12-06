@@ -701,9 +701,9 @@ jQuery(document).ready(function ($) {
 
   
   function checkRecaptcha(){
-  if(($("#recaptcha-anchor").is('aria-disabled')) == "false"){
+  if(($("#recaptcha-anchor").attr('aria-disabled')) == "false"){
     console.log("RecaptCha Completed");
-  } else if(($("#recaptcha-anchor").is('aria-disabled')) == "true") {
+  } else if(($("#recaptcha-anchor").attr('aria-disabled')) == "true") {
     console.log("RecaptCha Incomplete");
   }
 }
