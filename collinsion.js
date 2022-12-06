@@ -704,9 +704,11 @@ jQuery(document).ready(function ($) {
 
   var iFrame = document.getElementsByTagName("iframe");
 
-  console.log(iFrame.length)
+  var anchor = iFrame.contentWindow.document.getElementById("rc-anchor-container");
 
-  console.log($('iframe[src="/support/recaptcha#6LdvejUUAAAAAEn6wjOFcPVRyQr4KtAJ03ltA1SQ"]').children("#document").length);
+  console.log(iFrame.length)
+  console.log(anchor.length)
+
 
 }
 
