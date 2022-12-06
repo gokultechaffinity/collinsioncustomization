@@ -155,12 +155,12 @@ jQuery(document).ready(function ($) {
     ).parentElement;
     DOBParent.classList.add("for-section-1");
 
+    $(".controls.recaptcha-control").closest(".form-group").addClass("for-section-1");
+    
     var ClaimNumberParent = document.getElementById(
       "helpdesk_ticket_custom_field_cf_claim_number_2321673"
     ).parentElement;
     ClaimNumberParent.classList.add("for-section-1");
-
-    $("#rc-anchor-container").addClass("for-section-1");
 
   } else if ($("#title").hasClass("EasyJet")) {
     var PolicyNumberParent = document.getElementById(
