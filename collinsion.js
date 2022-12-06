@@ -168,10 +168,10 @@ jQuery(document).ready(function ($) {
     ).parentElement;
     PolicyNumberParent.classList.add("for-section-1");
 
-    var PostcodeParent = document.getElementById(
-      "helpdesk_ticket_custom_field_cf_postcode68273_2321673"
+    var PolEmailParent = document.getElementById(
+      "helpdesk_ticket_custom_field_cf_policy_email_2321673"
     ).parentElement;
-    PostcodeParent.classList.add("for-section-1");
+    PolEmailParent.classList.add("for-section-1");
 
     $(".controls.recaptcha-control").closest(".form-group").addClass("for-section-1");
 
