@@ -702,9 +702,8 @@ jQuery(document).ready(function ($) {
   
 
   function checkRecaptcha(){
-    var CaptchaCheckbox = document.getElementById("recaptcha-anchor");
 
-    if((CaptchaCheckbox.attr('aria-checked').val()) == true ){
+    if($("recaptcha-anchor").attr('aria-checked') == true ){
       console.log("RecaptCha Completed");
     }else{
       console.log("RecaptCha Incomplete");
@@ -820,6 +819,7 @@ jQuery(document).ready(function ($) {
       $("#title").hasClass("VHI") ||
       $("#title").hasClass("ColumbusItaly")
     ) {
+      checkRecaptcha();
       if (
         $(
           "#helpdesk_ticket_custom_field_cf_policy_number454080_2321673"
@@ -930,6 +930,7 @@ jQuery(document).ready(function ($) {
       }
     
     } else if ($("#title").hasClass("CollinsonUK")) {
+      checkRecaptcha();
       if (
         $(
           "#helpdesk_ticket_custom_field_cf_policy_number454080_2321673"
