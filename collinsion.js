@@ -715,6 +715,8 @@ jQuery(document).ready(function ($) {
   //on CHANGE OF DATE OF BIRTH - check any of the two inputs is empty, if it is remove attr, else add it
   $("#save_and_continue1").click(function () {
     if ($("#title").hasClass("EasyJet")) {
+      //checkRecaptcha
+      checkRecaptcha();
       if (
         $(
           "#helpdesk_ticket_custom_field_cf_policy_number454080_2321673"
@@ -887,8 +889,7 @@ jQuery(document).ready(function ($) {
               "helpdesk_ticket_custom_field_cf_policy_number454080_2321673",
             ]);
 
-            //checkRecaptcha
-            checkRecaptcha();
+            
 
           } else {
             addErrorMessage(
