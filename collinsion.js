@@ -173,6 +173,8 @@ jQuery(document).ready(function ($) {
     ).parentElement;
     PostcodeParent.classList.add("for-section-1");
 
+    $(".controls.recaptcha-control").closest(".form-group").addClass("for-section-1");
+
     var ClaimNumberParent = document.getElementById(
       "helpdesk_ticket_custom_field_cf_claim_number_2321673"
     ).parentElement;
@@ -187,6 +189,8 @@ jQuery(document).ready(function ($) {
       "helpdesk_ticket_custom_field_cf_date_of_birth_2321673"
     ).parentElement;
     DOBParent.classList.add("for-section-1");
+
+    $(".controls.recaptcha-control").closest(".form-group").addClass("for-section-1");
 
     var ClaimNumberParent = document.getElementById(
       "helpdesk_ticket_custom_field_cf_claim_number_2321673"
