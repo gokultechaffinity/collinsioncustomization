@@ -701,12 +701,18 @@ jQuery(document).ready(function ($) {
 
   
   function checkRecaptcha(){
-    console.log($("#recaptcha-anchor").hasClass('aria-recaptcha-checkbox-checked'));
-  if(($("#recaptcha-anchor").hasClass('aria-recaptcha-checkbox-checked'))){
-    console.log("RecaptCha Completed");
-  } else{
-    console.log("RecaptCha Incomplete");
-  }
+
+    var RecaptCha_span = document.getElementById("recaptcha-anchor")
+
+
+  console.log(RecaptCha_span.classList());
+
+
+  // if(($("#recaptcha-anchor").hasClass('recaptcha-checkbox-checked'))){
+  //   console.log("RecaptCha Completed");
+  // } else{
+  //   console.log("RecaptCha Incomplete");
+  // }
 }
 
   //________________________________________________________________________________________________________________________________
