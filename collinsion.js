@@ -702,12 +702,11 @@ jQuery(document).ready(function ($) {
   
   function checkRecaptcha(){
 
-  var iFrame = document.getElementsByTagName("iframe");
+    const iFrame = document.getElementById("recaptcha-frame");
 
-  var anchor = iFrame.contentWindow.document.getElementById("rc-anchor-container");
-
-  console.log(iFrame.length)
-  console.log(anchor.length)
+    const iFrameWindow = iFrame.contentDocument;
+  
+    console.log(iFrameWindow);
 
 
 }
