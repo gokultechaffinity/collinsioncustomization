@@ -699,13 +699,15 @@ jQuery(document).ready(function ($) {
   //open section 1 by default
   $("#section-1-button").click();
 
-  document.getElementById("save_and_continue1").disabled = true;
+  
 
   function checkRecaptcha(){
     var CaptchaCheckbox = document.getElementById("recaptcha-anchor");
 
     if(CaptchaCheckbox.attr('aria-checked') == true ){
-      document.getElementById("save_and_continue1").disabled = false;
+      console.log("RecaptCha Completed");
+    }else{
+      console.log("RecaptCha Incomplete");
     }
 
   }
