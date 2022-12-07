@@ -731,7 +731,7 @@ jQuery(document).ready(function ($) {
   $("#save_and_continue1").click(function () {
     if ($("#title").hasClass("EasyJet")) {
       //checkRecaptcha
-      checkRecaptcha();
+     
       if (
         $(
           "#helpdesk_ticket_custom_field_cf_policy_number454080_2321673"
@@ -833,7 +833,7 @@ jQuery(document).ready(function ($) {
       $("#title").hasClass("VHI") ||
       $("#title").hasClass("ColumbusItaly")
     ) {
-      checkRecaptcha();
+      
       if (
         $(
           "#helpdesk_ticket_custom_field_cf_policy_number454080_2321673"
@@ -944,7 +944,6 @@ jQuery(document).ready(function ($) {
       }
     
     } else if ($("#title").hasClass("CollinsonUK")) {
-      checkRecaptcha();
       if (
         $(
           "#helpdesk_ticket_custom_field_cf_policy_number454080_2321673"
