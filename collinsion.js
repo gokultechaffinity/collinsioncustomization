@@ -704,9 +704,23 @@ jQuery(document).ready(function ($) {
 
     const iFrame = document.getElementById("recaptcha-frame");
 
-    const iFrameWindow = iFrame.contentDocument;
-  
-    console.log(iFrameWindow);
+    const iFrameWindow = iFrame.contentWindow;
+
+    const secondLayer = iFrameWindow.document;
+
+    const thirdLayer = secondLayer.getElementById("recaptcha");
+
+    //console.log(thirdLayer)
+
+    const iFrame2 = thirdLayer.querySelectorAll("iframe[title=reCAPTCHA]")[0];
+
+    console.log(iFrame2);
+
+    const iFrame2Window = iFrame2.contentWindow;
+
+    const iFrame2Windowdoc = iFrame2Window.document;
+
+    console.log(iFrame2Window);
 
 
 }
