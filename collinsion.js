@@ -202,19 +202,19 @@ jQuery(document).ready(function ($) {
   if ($("#title").hasClass("ColumbusItaly")) {
     $(
       '<button id="save_and_continue1" class="btn btn-primary for-section-1 save_and_continue" type="button">Trova la politica</button>'
-    ).insertAfter(".controls.recaptcha-control");
+    ).insertAfter("#helpdesk_ticket_custom_field_cf_claim_number_2321673");
   } else if ($("#title").hasClass("EasyJet")) {
     $(
       '<button id="save_and_continue1" class="btn btn-primary for-section-1 save_and_continue" type="button">Find Policy</button>'
-    ).insertAfter(".controls.recaptcha-control");
+    ).insertAfter("#helpdesk_ticket_custom_field_cf_claim_number_2321673");
   } else if ($("#title").hasClass("CollinsonUK")) {
     $(
       '<button id="save_and_continue1" class="btn btn-primary for-section-1 save_and_continue" type="button">Find Policy</button>'
-    ).insertAfter(".controls.recaptcha-control");
+    ).insertAfter("#helpdesk_ticket_custom_field_cf_claim_number_2321673");
   } else if ($("#title").hasClass("VHI")) {
     $(
       '<button id="save_and_continue1" class="btn btn-primary for-section-1 save_and_continue" type="button">Find Policy</button>'
-      ).insertAfter(".controls.recaptcha-control");
+      ).insertAfter("#helpdesk_ticket_custom_field_cf_claim_number_2321673");
   }
 
   //____________________________________________________SECTION 2 Start -  About You______________________________________________
