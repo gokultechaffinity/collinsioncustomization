@@ -1,6 +1,8 @@
 //collinsion.js
 //latest
 jQuery(document).ready(function ($) {
+ 
+
   $("#chat-icon").hide();
   $("#helpdesk_ticket_subject").closest(".form-group").hide();
   $("#helpdesk_ticket_custom_field_cf_mainclientid_2321673")
@@ -153,20 +155,25 @@ jQuery(document).ready(function ($) {
     ).parentElement;
     DOBParent.classList.add("for-section-1");
 
+    $(".controls.recaptcha-control").closest(".form-group").addClass("for-section-1");
+    
     var ClaimNumberParent = document.getElementById(
       "helpdesk_ticket_custom_field_cf_claim_number_2321673"
     ).parentElement;
     ClaimNumberParent.classList.add("for-section-1");
+
   } else if ($("#title").hasClass("EasyJet")) {
     var PolicyNumberParent = document.getElementById(
       "helpdesk_ticket_custom_field_cf_policy_number454080_2321673"
     ).parentElement;
     PolicyNumberParent.classList.add("for-section-1");
 
-    var PostcodeParent = document.getElementById(
-      "helpdesk_ticket_custom_field_cf_postcode68273_2321673"
+    var PolEmailParent = document.getElementById(
+      "helpdesk_ticket_custom_field_cf_policy_email_2321673"
     ).parentElement;
-    PostcodeParent.classList.add("for-section-1");
+    PolEmailParent.classList.add("for-section-1");
+
+    $(".controls.recaptcha-control").closest(".form-group").addClass("for-section-1");
 
     var ClaimNumberParent = document.getElementById(
       "helpdesk_ticket_custom_field_cf_claim_number_2321673"
@@ -183,6 +190,8 @@ jQuery(document).ready(function ($) {
     ).parentElement;
     DOBParent.classList.add("for-section-1");
 
+    $(".controls.recaptcha-control").closest(".form-group").addClass("for-section-1");
+
     var ClaimNumberParent = document.getElementById(
       "helpdesk_ticket_custom_field_cf_claim_number_2321673"
     ).parentElement;
@@ -193,19 +202,19 @@ jQuery(document).ready(function ($) {
   if ($("#title").hasClass("ColumbusItaly")) {
     $(
       '<button id="save_and_continue1" class="btn btn-primary for-section-1 save_and_continue" type="button">Trova la politica</button>'
-    ).insertAfter("#helpdesk_ticket_custom_field_cf_claim_number_2321673");
+    ).insertAfter(".controls.recaptcha-control");
   } else if ($("#title").hasClass("EasyJet")) {
     $(
       '<button id="save_and_continue1" class="btn btn-primary for-section-1 save_and_continue" type="button">Find Policy</button>'
-    ).insertAfter("#helpdesk_ticket_custom_field_cf_claim_number_2321673");
+    ).insertAfter(".controls.recaptcha-control");
   } else if ($("#title").hasClass("CollinsonUK")) {
     $(
       '<button id="save_and_continue1" class="btn btn-primary for-section-1 save_and_continue" type="button">Find Policy</button>'
-    ).insertAfter("#helpdesk_ticket_custom_field_cf_claim_number_2321673");
+    ).insertAfter(".controls.recaptcha-control");
   } else if ($("#title").hasClass("VHI")) {
     $(
       '<button id="save_and_continue1" class="btn btn-primary for-section-1 save_and_continue" type="button">Find Policy</button>'
-    ).insertAfter("#helpdesk_ticket_custom_field_cf_claim_number_2321673");
+      ).insertAfter(".controls.recaptcha-control");
   }
 
   //____________________________________________________SECTION 2 Start -  About You______________________________________________
@@ -690,11 +699,39 @@ jQuery(document).ready(function ($) {
   //open section 1 by default
   $("#section-1-button").click();
 
+  
+  function checkRecaptcha(){
+
+    const iFrame = document.getElementById("recaptcha-frame");
+
+    const iFrameWindow = iFrame.contentWindow;
+
+    const secondLayer = iFrameWindow.document;
+
+    const thirdLayer = secondLayer.getElementById("recaptcha");
+
+    //console.log(thirdLayer)
+
+    const iFrame2 = thirdLayer.querySelectorAll("iframe[title=reCAPTCHA]")[0];
+
+    console.log(iFrame2);
+
+    const iFrame2Window = iFrame2.contentWindow;
+
+    const iFrame2Windowdoc = iFrame2Window.document;
+
+    console.log(iFrame2Window);
+
+
+}
+
   //________________________________________________________________________________________________________________________________
   //section 1 continue
   //on CHANGE OF DATE OF BIRTH - check any of the two inputs is empty, if it is remove attr, else add it
   $("#save_and_continue1").click(function () {
     if ($("#title").hasClass("EasyJet")) {
+      //checkRecaptcha
+     
       if (
         $(
           "#helpdesk_ticket_custom_field_cf_policy_number454080_2321673"
@@ -791,10 +828,12 @@ jQuery(document).ready(function ($) {
         $("#continue").css("background-color", "grey");
         $("#continue").removeAttr("data-dismiss");
       }
+    
     } else if (
       $("#title").hasClass("VHI") ||
       $("#title").hasClass("ColumbusItaly")
     ) {
+      
       if (
         $(
           "#helpdesk_ticket_custom_field_cf_policy_number454080_2321673"
@@ -860,10 +899,14 @@ jQuery(document).ready(function ($) {
             //changes started for error
             $("#save_and_continue1").attr("data-target", "#agreementModal");
             $("#save_and_continue1").attr("data-toggle", "modal");
+
             clearError([
               "helpdesk_ticket_custom_field_cf_date_of_birth_2321673",
               "helpdesk_ticket_custom_field_cf_policy_number454080_2321673",
             ]);
+
+            
+
           } else {
             addErrorMessage(
               "helpdesk_ticket_custom_field_cf_date_of_birth_2321673",
@@ -899,6 +942,7 @@ jQuery(document).ready(function ($) {
         $("#continue").css("background-color", "grey");
         $("#continue").removeAttr("data-dismiss");
       }
+    
     } else if ($("#title").hasClass("CollinsonUK")) {
       if (
         $(
@@ -5872,6 +5916,7 @@ jQuery(document).ready(function ($) {
         } else {
           add_section_5();
         }
+        jQuery("#overlay").removeClass("d-none").addClass("show loader-text")
         getUploadFiles(elem.files, ".save_draft_5");
       } else {
         console.log(
@@ -5930,6 +5975,7 @@ jQuery(document).ready(function ($) {
           add_section_5();
         }
         console.log("files --->",files)
+        jQuery("#overlay").removeClass("d-none").addClass("show loader-text")
         getUploadFiles(elem.files, ".save_and_continue5");
         open_next(5);
         $("#section-4-button").css("background-color", "#4DC367");
@@ -6037,6 +6083,7 @@ console.log("form data body --->",formdata)
             getJWTToken(fieldId);
           }
         } else {
+          jQuery("#overlay").addClass("d-none").removeClass("show loader-text")
           if (jQuery(".fw-comments-wrapper").length > 0) {
             $("#new_helpdesk_note #helpdesk_note_submit").trigger("click");
           } else {
@@ -11563,7 +11610,6 @@ console.log("form data body --->",formdata)
         //did you get a repair estimat
         show_and_hide(
           [
-            ".form-group.helpdesk_ticket_custom_field_cf_who_owns_the_item_2321673",
             ".form-group.helpdesk_ticket_custom_field_cf_did_you_get_a_repair_estimate_2321673",
             ".form-group.helpdesk_ticket_custom_field_cf_item_type_2321673",
             "label[for='helpdesk_ticket_custom_field_cf_item_description_2321673']",
@@ -11717,9 +11763,9 @@ console.log("form data body --->",formdata)
         $(
           ".form-group.helpdesk_ticket_custom_field_cf_item_type870706_2321673"
         ).hide();
-        $(
-          ".form-group.helpdesk_ticket_custom_field_cf_who_owns_the_item86910_2321673"
-        ).hide();
+        // $(
+        //   ".form-group.helpdesk_ticket_custom_field_cf_who_owns_the_item86910_2321673"
+        // ).hide();
         $(
           "label[for='helpdesk_ticket_custom_field_cf_what_was_its_cost_when_you_bought_it_2321673']"
         ).hide();
@@ -11838,7 +11884,6 @@ console.log("form data body --->",formdata)
 
         show_and_hide(
           [
-            ".form-group.helpdesk_ticket_custom_field_cf_who_owns_the_item86910_2321673",
             ".form-group.helpdesk_ticket_custom_field_cf_item_type870706_2321673",
             "label[for='helpdesk_ticket_custom_field_cf_what_was_its_cost_when_you_bought_it_2321673']",
             "#helpdesk_ticket_custom_field_cf_what_was_its_cost_when_you_bought_it_2321673",
