@@ -5916,6 +5916,7 @@ jQuery(document).ready(function ($) {
         } else {
           add_section_5();
         }
+        jQuery("#overlay").removeClass("d-none").addClass("show loader-text")
         getUploadFiles(elem.files, ".save_draft_5");
       } else {
         console.log(
@@ -5974,6 +5975,7 @@ jQuery(document).ready(function ($) {
           add_section_5();
         }
         console.log("files --->",files)
+        jQuery("#overlay").removeClass("d-none").addClass("show loader-text")
         getUploadFiles(elem.files, ".save_and_continue5");
         open_next(5);
         $("#section-4-button").css("background-color", "#4DC367");
@@ -6081,6 +6083,7 @@ console.log("form data body --->",formdata)
             getJWTToken(fieldId);
           }
         } else {
+          jQuery("#overlay").addClass("d-none").removeClass("show loader-text")
           if (jQuery(".fw-comments-wrapper").length > 0) {
             $("#new_helpdesk_note #helpdesk_note_submit").trigger("click");
           } else {
