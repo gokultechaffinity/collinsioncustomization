@@ -1,8 +1,7 @@
 //collinsion.js
 //latest
 jQuery(document).ready(function ($) {
- 
-
+let code;
   $("#chat-icon").hide();
   $("#helpdesk_ticket_subject").closest(".form-group").hide();
   $("#helpdesk_ticket_custom_field_cf_mainclientid_2321673")
@@ -18,6 +17,16 @@ jQuery(document).ready(function ($) {
     .closest(".form-group")
     .append(
       '<div class="invalid-feedback api_call_failed_dob">API call failed</div>'
+    );
+    $("#helpdesk_ticket_custom_field_cf_date_of_birth_2321673")
+    .closest(".form-group")
+    .append(
+      '<div id="captcha-section"><label>Enter Captcha</label><div id="captcha"></div><input type="text" placeholder="Captcha" id="cpatchaTextBox"/></div>'
+    );
+    $("#captcha-section")
+    .closest(".form-group")
+    .append(
+      '<div class="invalid-feedback captcha_failed">API call failed</div>'
     );
   $("#helpdesk_ticket_custom_field_cf_postcode68273_2321673")
     .closest(".form-group")
@@ -85,7 +94,6 @@ jQuery(document).ready(function ($) {
   $("#helpdesk_ticket_custom_field_cf_claim_number_2321673")
     .closest(".form-group")
     .hide();
-
   let AuthorizationKey = "";
   let ClaimInitiatedNumber = "";
   let bankResult = "";
@@ -98,6 +106,7 @@ jQuery(document).ready(function ($) {
   //"claim-sandbox.collinsonnis.com";
   let succesStatus = [200, 201, 202, 203, 204, 205, 206, 207, 208, 226];
   getJWTToken();
+  createCaptcha();
   function getJWTToken(fieldId) {
     var flag = false;
     var statusCode;
@@ -127,6 +136,32 @@ jQuery(document).ready(function ($) {
       })
       .catch((error) => console.log(error));
   }
+
+function createCaptcha() {
+  //clear the contents of captcha div first 
+  document.getElementById('captcha').innerHTML = "";
+  var charsArray =
+  "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ@!#$%^&*";
+  var lengthOtp = 6;
+  var captcha = [];
+  for (var i = 0; i < lengthOtp; i++) {
+    //below code will not allow Repetition of Characters
+    var index = Math.floor(Math.random() * charsArray.length + 1); //get the next character from the array
+    if (captcha.indexOf(charsArray[index]) == -1)
+      captcha.push(charsArray[index]);
+    else i--;
+  }
+  var canv = document.createElement("canvas");
+  canv.id = "captcha";
+  canv.width = 100;
+  canv.height = 50;
+  var ctx = canv.getContext("2d");
+  ctx.font = "25px Georgia";
+  ctx.strokeText(captcha.join(""), 0, 30);
+  //storing captcha so that can validate you can save it somewhere else according to your specific requirements
+  code = captcha.join("");
+  document.getElementById("captcha").appendChild(canv); // adds the canvas to the body element
+}
   //email verification function
   function isEmail(email) {
     var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
@@ -236,11 +271,11 @@ jQuery(document).ready(function ($) {
   //save and continue section 2
   if ($("#title").hasClass("ColumbusItaly")) {
     $(
-      '<button id="save_and_continue2" class="btn btn-primary for-section-2 save_and_continue" type="button" >Salva e continua</button>'
+      '<button id="save_and_continue2" class="btn btn-primary for-section-2 save_and_continue" type="button" >Sezione successiva</button>'
     ).insertAfter("#helpdesk_ticket_custom_field_cf_mobile_number_2321673");
   } else {
     $(
-      '<button id="save_and_continue2" class="btn btn-primary for-section-2 save_and_continue" type="button" >Save & Continue</button>'
+      '<button id="save_and_continue2" class="btn btn-primary for-section-2 save_and_continue" type="button" >Next Section</button>'
     ).insertAfter("#helpdesk_ticket_custom_field_cf_mobile_number_2321673");
   }
   //____________________________________________________SECTION 3 Start - About Your Trip ____________________________________________
@@ -277,13 +312,13 @@ jQuery(document).ready(function ($) {
   //save and coninue for Section 3
   if ($("#title").hasClass("ColumbusItaly")) {
     $(
-      '<button id="save_and_continue3" class="btn btn-primary for-section-3 save_and_continue" type="button" >Salva e continua</button>'
+      '<button id="save_and_continue3" class="btn btn-primary for-section-3 save_and_continue" type="button" >Sezione successiva</button>'
     ).insertAfter(
       ".form-group.helpdesk_ticket_custom_field_cf_reason_for_claim_2321673.for-section-3"
     );
   } else {
     $(
-      '<button id="save_and_continue3" class="btn btn-primary for-section-3 save_and_continue" type="button" >Save & Continue</button>'
+      '<button id="save_and_continue3" class="btn btn-primary for-section-3 save_and_continue" type="button" >Next Section</button>'
     ).insertAfter(
       ".form-group.helpdesk_ticket_custom_field_cf_reason_for_claim_2321673.for-section-3"
     );
@@ -295,18 +330,23 @@ jQuery(document).ready(function ($) {
 
   if ($("#title").hasClass("ColumbusItaly")) {
     $(
-      '<button id="save_and_continue4" class="btn btn-primary for-section-4 save_and_continue" type="button">Salva e continua</button>'
+      '<button id="save_draft_4" class="btn btn-primary for-section-4 " type="button">Salva reclamo ed esci</button>'
+    ).insertAfter(
+      ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper"
+    );
+    $(
+      '<button id="save_and_continue4" class="btn btn-primary for-section-4 save_and_continue" type="button">Sezione successiva</button>'
     ).insertAfter(
       ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper"
     );
   } else {
     $(
-      '<button id="save_draft_4" class="btn btn-primary for-section-4 " type="button">Save Draft</button>'
+      '<button id="save_draft_4" class="btn btn-primary for-section-4 " type="button">Save Claim & Exit</button>'
     ).insertAfter(
       ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper"
     );
     $(
-      '<button id="save_and_continue4" class="btn btn-primary for-section-4 save_and_continue" type="button">Save &amp; Continue</button>'
+      '<button id="save_and_continue4" class="btn btn-primary for-section-4 save_and_continue" type="button">Next Section</button>'
     ).insertAfter(
       ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper"
     );
@@ -331,15 +371,18 @@ jQuery(document).ready(function ($) {
     );
     $("#portal_ticket_form .attachments").addClass("for-section-5");
     if ($("#title").hasClass("ColumbusItaly")) {
+      jQuery(".attachments.for-section-5").after(
+        '<button class="save_draft_5 btn btn-primary for-section-5 " type="button">Salva reclamo ed esci</button>'
+      );
       $(
-        '<button class="save_and_continue5 btn btn-primary for-section-5 save_and_continue" type="button" >Salva e continua</button>'
+        '<button class="save_and_continue5 btn btn-primary for-section-5 save_and_continue" type="button" >Sezione successiva</button>'
       ).insertAfter(".attachments.for-section-5");
     } else {
       jQuery(".attachments.for-section-5").after(
-        '<button class="save_draft_5 btn btn-primary for-section-5 " type="button">Save Draft </button>'
+        '<button class="save_draft_5 btn btn-primary for-section-5 " type="button">Save Claim & Exit</button>'
       );
       $(
-        '<button class="save_and_continue5 btn btn-primary for-section-5 save_and_continue" type="button" >Save & Continue</button>'
+        '<button class="save_and_continue5 btn btn-primary for-section-5 save_and_continue" type="button" >Next Section</button>'
       ).insertAfter(".attachments.for-section-5");
     }
   } else {
@@ -350,15 +393,18 @@ jQuery(document).ready(function ($) {
     );
     $(".form-group.attachments-container").addClass("for-section-5");
     if ($("#title").hasClass("ColumbusItaly")) {
+      jQuery(".attachments-container.for-section-5").after(
+        '<button class="save_draft_5 btn btn-primary for-section-5 " type="button">Salva reclamo ed esci</button>'
+      );
       $(
-        '<button class="save_and_continue5 btn btn-primary for-section-5 save_and_continue" type="button" >Salva e continua</button>'
+        '<button class="save_and_continue5 btn btn-primary for-section-5 save_and_continue" type="button" >Sezione successiva</button>'
       ).insertAfter(".form-group.attachments-container.for-section-5");
     } else {
       jQuery(".attachments-container.for-section-5").after(
-        '<button class="save_draft_5 btn btn-primary for-section-5 " type="button">Save Draft </button>'
+        '<button class="save_draft_5 btn btn-primary for-section-5 " type="button">Save Claim & Exit</button>'
       );
       $(
-        '<button class="save_and_continue5 btn btn-primary for-section-5 save_and_continue" type="button" >Save & Continue</button>'
+        '<button class="save_and_continue5 btn btn-primary for-section-5 save_and_continue" type="button" >Next Section</button>'
       ).insertAfter(".form-group.attachments-container.for-section-5");
     }
   }
@@ -419,19 +465,19 @@ jQuery(document).ready(function ($) {
   //save and continue 6
   if ($("#title").hasClass("ColumbusItaly")) {
     $(
-      '<button id="save_and_continue6" class="btn btn-primary for-section-6 save_and_continue" type="button" >Salva e continua</button>'
+      '<button id="save_and_continue6" class="btn btn-primary for-section-6 save_and_continue" type="button" >Sezione successiva</button>'
     ).insertAfter(ibanNumber);
   } else if ($("#title").hasClass("VHI")) {
     $(
-      '<button id="save_and_continue6" class="btn btn-primary for-section-6 save_and_continue" type="button" >Save & Continue</button>'
+      '<button id="save_and_continue6" class="btn btn-primary for-section-6 save_and_continue" type="button" >Next Section</button>'
     ).insertAfter(ibanNumber);
   } else if ($("#title").hasClass("EasyJet")) {
     $(
-      '<button id="save_and_continue6" class="btn btn-primary for-section-6 save_and_continue" type="button" >Save & Continue</button>'
+      '<button id="save_and_continue6" class="btn btn-primary for-section-6 save_and_continue" type="button" >Next Section</button>'
     ).insertAfter(SortCodeParent);
   } else if ($("#title").hasClass("CollinsonUK")) {
     $(
-      '<button id="save_and_continue6" class="btn btn-primary for-section-6 save_and_continue" type="button" >Save & Continue</button>'
+      '<button id="save_and_continue6" class="btn btn-primary for-section-6 save_and_continue" type="button" >Next Section</button>'
     ).insertAfter(SortCodeParent);
   }
   //____________________________________________________SECTION 7 Start - Summary Section____________________________________________
@@ -833,115 +879,124 @@ jQuery(document).ready(function ($) {
       $("#title").hasClass("VHI") ||
       $("#title").hasClass("ColumbusItaly")
     ) {
-      
-      if (
-        $(
-          "#helpdesk_ticket_custom_field_cf_policy_number454080_2321673"
-        ).val() == "" ||
-        $("#helpdesk_ticket_custom_field_cf_date_of_birth_2321673").val() == ""
-      ) {
-        addErrorMessage(
-          "helpdesk_ticket_custom_field_cf_policy_number454080_2321673",
-          "Please fill in all fields"
-        );
-        addErrorMessage(
-          "helpdesk_ticket_custom_field_cf_date_of_birth_2321673",
-          "Please fill in all fields"
-        );
-        // ||
-        // $("#helpdesk_ticket_custom_field_cf_claim_number_2321673").val() == ""
-        // addErrorMessage(
-        //   "helpdesk_ticket_custom_field_cf_claim_number_2321673",
-        //   "Please fill in all fields"
-        // );
-      } else {
-        //check LENGTH OF POLICY NUMBER - 6 DIGITS
+      if (document.getElementById("cpatchaTextBox").value == code) {
         if (
           $(
             "#helpdesk_ticket_custom_field_cf_policy_number454080_2321673"
-          ).val().length >= 6
+          ).val() == "" ||
+          $("#helpdesk_ticket_custom_field_cf_date_of_birth_2321673").val() == ""
         ) {
-          birthdate = $(
-            "#helpdesk_ticket_custom_field_cf_date_of_birth_2321673"
-          ).val();
-          bday = new Date(birthdate);
-          if (today < bday) {
-            addErrorMessage(
-              "helpdesk_ticket_custom_field_cf_date_of_birth_2321673",
-              "Invalid Birthday"
-            );
-            $("#save_and_continue1").removeAttr("data-target");
-            $("#save_and_continue1").removeAttr("data-toggle");
-          } else if (today > bday) {
-            let policyNumber = $(
+          addErrorMessage(
+            "helpdesk_ticket_custom_field_cf_policy_number454080_2321673",
+            "Please fill in all fields"
+          );
+          addErrorMessage(
+            "helpdesk_ticket_custom_field_cf_date_of_birth_2321673",
+            "Please fill in all fields"
+          );
+          // ||
+          // $("#helpdesk_ticket_custom_field_cf_claim_number_2321673").val() == ""
+          // addErrorMessage(
+          //   "helpdesk_ticket_custom_field_cf_claim_number_2321673",
+          //   "Please fill in all fields"
+          // );
+        } else {
+          //check LENGTH OF POLICY NUMBER - 6 DIGITS
+          if (
+            $(
               "#helpdesk_ticket_custom_field_cf_policy_number454080_2321673"
-            ).val();
-            let dateOfBirth = $(
+            ).val().length >= 6
+          ) {
+            birthdate = $(
               "#helpdesk_ticket_custom_field_cf_date_of_birth_2321673"
             ).val();
-            let claimNumberCheck = $(
-              "#helpdesk_ticket_custom_field_cf_claim_number_2321673"
-            ).val();
-            jQuery("#model-error-msg").addClass("d-none");
-            jQuery("#model-sucess-msg").addClass("d-none");
-            if (claimNumberCheck) {
-              $("#agreementModal").addClass("loader-text");
-              getClaimStatus(claimNumberCheck, "#save_and_continue1");
-            } else {
-              jQuery("#model-status-msg").addClass("d-none");
-              $("#agreementModal").addClass("loader-text");
-              getPolicyDetails(
-                policyNumber,
-                dateOfBirth,
-                "#save_and_continue1"
+            bday = new Date(birthdate);
+            if (today < bday) {
+              addErrorMessage(
+                "helpdesk_ticket_custom_field_cf_date_of_birth_2321673",
+                "Invalid Birthday"
               );
+              $("#save_and_continue1").removeAttr("data-target");
+              $("#save_and_continue1").removeAttr("data-toggle");
+            } else if (today > bday) {
+              let policyNumber = $(
+                "#helpdesk_ticket_custom_field_cf_policy_number454080_2321673"
+              ).val();
+              let dateOfBirth = $(
+                "#helpdesk_ticket_custom_field_cf_date_of_birth_2321673"
+              ).val();
+              let claimNumberCheck = $(
+                "#helpdesk_ticket_custom_field_cf_claim_number_2321673"
+              ).val();
+              jQuery("#model-error-msg").addClass("d-none");
+              jQuery("#model-sucess-msg").addClass("d-none");
+              if (claimNumberCheck) {
+                $("#agreementModal").addClass("loader-text");
+                getClaimStatus(claimNumberCheck, "#save_and_continue1");
+              } else {
+                jQuery("#model-status-msg").addClass("d-none");
+                $("#agreementModal").addClass("loader-text");
+                getPolicyDetails(
+                  policyNumber,
+                  dateOfBirth,
+                  "#save_and_continue1"
+                );
+              }
+              //changes started for error
+              $("#save_and_continue1").attr("data-target", "#agreementModal");
+              $("#save_and_continue1").attr("data-toggle", "modal");
+  
+              clearError([
+                "helpdesk_ticket_custom_field_cf_date_of_birth_2321673",
+                "helpdesk_ticket_custom_field_cf_policy_number454080_2321673",
+              ]);
+  
+              
+  
+            } else {
+              addErrorMessage(
+                "helpdesk_ticket_custom_field_cf_date_of_birth_2321673",
+                "Invalid Birthday"
+              );
+              $("#save_and_continue1").removeAttr("data-target");
+              $("#save_and_continue1").removeAttr("data-toggle");
             }
-            //changes started for error
-            $("#save_and_continue1").attr("data-target", "#agreementModal");
-            $("#save_and_continue1").attr("data-toggle", "modal");
-
-            clearError([
-              "helpdesk_ticket_custom_field_cf_date_of_birth_2321673",
-              "helpdesk_ticket_custom_field_cf_policy_number454080_2321673",
-            ]);
-
-            
-
           } else {
             addErrorMessage(
-              "helpdesk_ticket_custom_field_cf_date_of_birth_2321673",
-              "Invalid Birthday"
+              "helpdesk_ticket_custom_field_cf_policy_number454080_2321673",
+              "Policy Number must be at least 6 digits."
             );
             $("#save_and_continue1").removeAttr("data-target");
             $("#save_and_continue1").removeAttr("data-toggle");
           }
+        }
+        if ($("#cb").prop("checked") == true) {
+          $("#continue").attr("data-dismiss", "modal");
+          //grey out continue - opposite - for different schemes
+          if ($("#title").hasClass("VHI")) {
+            $("#continue").css("background-color", "#38133E");
+          } else if ($("#title").hasClass("EasyJet")) {
+            $("#continue").css("background-color", "#FF6600");
+          } else if ($("#title").hasClass("CollinsonUK")) {
+            $("#continue").css("background-color", "#FFFFFF");
+          } else if ($("#title").hasClass("ColumbusItaly")) {
+            $("#continue").css("background-color", "#083050");
+          }
         } else {
-          addErrorMessage(
-            "helpdesk_ticket_custom_field_cf_policy_number454080_2321673",
-            "Policy Number must be at least 6 digits."
-          );
-          $("#save_and_continue1").removeAttr("data-target");
-          $("#save_and_continue1").removeAttr("data-toggle");
+          $("#continue").removeAttr("data-dismiss");
+          //grey out continue
+          $("#continue").css("background-color", "grey");
+          $("#continue").removeAttr("data-dismiss");
         }
+      }else{
+        console.log("Invalid captcha")
+        addErrorMessage(
+          "captcha_failed",
+          "Invalid Captcha. Please re-enter captcha"
+        );
+        createCaptcha();
       }
-      if ($("#cb").prop("checked") == true) {
-        $("#continue").attr("data-dismiss", "modal");
-        //grey out continue - opposite - for different schemes
-        if ($("#title").hasClass("VHI")) {
-          $("#continue").css("background-color", "#38133E");
-        } else if ($("#title").hasClass("EasyJet")) {
-          $("#continue").css("background-color", "#FF6600");
-        } else if ($("#title").hasClass("CollinsonUK")) {
-          $("#continue").css("background-color", "#FFFFFF");
-        } else if ($("#title").hasClass("ColumbusItaly")) {
-          $("#continue").css("background-color", "#083050");
-        }
-      } else {
-        $("#continue").removeAttr("data-dismiss");
-        //grey out continue
-        $("#continue").css("background-color", "grey");
-        $("#continue").removeAttr("data-dismiss");
-      }
+
     
     } else if ($("#title").hasClass("CollinsonUK")) {
       if (
