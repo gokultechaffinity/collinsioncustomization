@@ -240,7 +240,7 @@ jQuery(document).ready(function ($) {
     ).insertAfter("#helpdesk_ticket_custom_field_cf_mobile_number_2321673");
   } else {
     $(
-      '<button id="save_and_continue2" class="btn btn-primary for-section-2 save_and_continue" type="button" >Save & Continue</button>'
+      '<button id="save_and_continue2" class="btn btn-primary for-section-2 save_and_continue" type="button" >Next Section</button>'
     ).insertAfter("#helpdesk_ticket_custom_field_cf_mobile_number_2321673");
   }
   //____________________________________________________SECTION 3 Start - About Your Trip ____________________________________________
@@ -283,7 +283,7 @@ jQuery(document).ready(function ($) {
     );
   } else {
     $(
-      '<button id="save_and_continue3" class="btn btn-primary for-section-3 save_and_continue" type="button" >Save & Continue</button>'
+      '<button id="save_and_continue3" class="btn btn-primary for-section-3 save_and_continue" type="button" >Next Section</button>'
     ).insertAfter(
       ".form-group.helpdesk_ticket_custom_field_cf_reason_for_claim_2321673.for-section-3"
     );
@@ -301,12 +301,12 @@ jQuery(document).ready(function ($) {
     );
   } else {
     $(
-      '<button id="save_draft_4" class="btn btn-primary for-section-4 " type="button">Save Draft</button>'
+      '<button id="save_draft_4" class="btn btn-primary for-section-4 " type="button">Save Claim & Exit</button>'
     ).insertAfter(
       ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper"
     );
     $(
-      '<button id="save_and_continue4" class="btn btn-primary for-section-4 save_and_continue" type="button">Save &amp; Continue</button>'
+      '<button id="save_and_continue4" class="btn btn-primary for-section-4 save_and_continue" type="button">Next Section</button>'
     ).insertAfter(
       ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper"
     );
@@ -336,10 +336,10 @@ jQuery(document).ready(function ($) {
       ).insertAfter(".attachments.for-section-5");
     } else {
       jQuery(".attachments.for-section-5").after(
-        '<button class="save_draft_5 btn btn-primary for-section-5 " type="button">Save Draft </button>'
+        '<button class="save_draft_5 btn btn-primary for-section-5 " type="button">Save Claim & Exit</button>'
       );
       $(
-        '<button class="save_and_continue5 btn btn-primary for-section-5 save_and_continue" type="button" >Save & Continue</button>'
+        '<button class="save_and_continue5 btn btn-primary for-section-5 save_and_continue" type="button" >Next Section</button>'
       ).insertAfter(".attachments.for-section-5");
     }
   } else {
@@ -355,10 +355,10 @@ jQuery(document).ready(function ($) {
       ).insertAfter(".form-group.attachments-container.for-section-5");
     } else {
       jQuery(".attachments-container.for-section-5").after(
-        '<button class="save_draft_5 btn btn-primary for-section-5 " type="button">Save Draft </button>'
+        '<button class="save_draft_5 btn btn-primary for-section-5 " type="button">Save Claim & Exit</button>'
       );
       $(
-        '<button class="save_and_continue5 btn btn-primary for-section-5 save_and_continue" type="button" >Save & Continue</button>'
+        '<button class="save_and_continue5 btn btn-primary for-section-5 save_and_continue" type="button" >Next Section</button>'
       ).insertAfter(".form-group.attachments-container.for-section-5");
     }
   }
@@ -423,15 +423,15 @@ jQuery(document).ready(function ($) {
     ).insertAfter(ibanNumber);
   } else if ($("#title").hasClass("VHI")) {
     $(
-      '<button id="save_and_continue6" class="btn btn-primary for-section-6 save_and_continue" type="button" >Save & Continue</button>'
+      '<button id="save_and_continue6" class="btn btn-primary for-section-6 save_and_continue" type="button" >Next Section</button>'
     ).insertAfter(ibanNumber);
   } else if ($("#title").hasClass("EasyJet")) {
     $(
-      '<button id="save_and_continue6" class="btn btn-primary for-section-6 save_and_continue" type="button" >Save & Continue</button>'
+      '<button id="save_and_continue6" class="btn btn-primary for-section-6 save_and_continue" type="button" >Next Section</button>'
     ).insertAfter(SortCodeParent);
   } else if ($("#title").hasClass("CollinsonUK")) {
     $(
-      '<button id="save_and_continue6" class="btn btn-primary for-section-6 save_and_continue" type="button" >Save & Continue</button>'
+      '<button id="save_and_continue6" class="btn btn-primary for-section-6 save_and_continue" type="button" >Next Section</button>'
     ).insertAfter(SortCodeParent);
   }
   //____________________________________________________SECTION 7 Start - Summary Section____________________________________________
