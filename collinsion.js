@@ -1076,6 +1076,7 @@ jQuery(document).ready(function ($) {
         statusCode = response.status;
         if (!response.ok) {
           flag = true;
+          return response.text();
         }
         return response.json();
       })
@@ -1085,7 +1086,7 @@ jQuery(document).ready(function ($) {
         if (flag) {
           console.log("Need to show error ", statusCode);
           if (statusCode == 401) {
-            console.log("error", result.error);
+            console.log("error", result);
             getJWTToken(fieldId);
           } else if (statusCode == 404) {
             jQuery("#model-error-msg").removeClass("d-none");
@@ -1098,14 +1099,14 @@ jQuery(document).ready(function ($) {
             );
             $("#save_and_continue1").removeAttr("data-target");
             $("#save_and_continue1").removeAttr("data-toggle");
-            console.log("error 404 -->", result.body);
+            console.log("error 404 -->", result);
           } else if (statusCode == 403) {
-            console.log("--->", result.message, statusCode);
+            console.log("--->", result, statusCode);
             jQuery("#model-error-msg").removeClass("d-none");
             jQuery("#model-error-msg .ins-modal-body-content").text(
-              result.message
+              "Warning Something's not quite right. Please try again and if the problem persists please contact the team using the 'Contact Us' button in the footer."
             );
-            addErrorMessage("api_call_failed_dob", result.message);
+            addErrorMessage("api_call_failed_dob","Warning Something's not quite right. Please try again and if the problem persists please contact the team using the 'Contact Us' button in the footer." );
             $("#save_and_continue1").removeAttr("data-target");
             $("#save_and_continue1").removeAttr("data-toggle");
           }
@@ -1120,7 +1121,7 @@ jQuery(document).ready(function ($) {
             );
             $("#save_and_continue1").removeAttr("data-target");
             $("#save_and_continue1").removeAttr("data-toggle");
-            console.log("error 500 -->", result.body);
+            console.log("error 500 -->", result);
           }
         } else {
           let element = ["api_call_failed_dob"];
@@ -1158,6 +1159,7 @@ jQuery(document).ready(function ($) {
         statusCode = response.status;
         if (!response.ok) {
           flag = true;
+          return response.text();
         }
         return response.json();
       })
@@ -1167,7 +1169,7 @@ jQuery(document).ready(function ($) {
         if (flag) {
           console.log("Need to show error ", statusCode);
           if (statusCode == 401) {
-            console.log("error", result.error);
+            console.log("error", result);
             getJWTToken(fieldId);
           } else if (statusCode == 404) {
             jQuery("#model-error-msg").removeClass("d-none");
@@ -1180,14 +1182,14 @@ jQuery(document).ready(function ($) {
             );
             $("#save_and_continue1").removeAttr("data-target");
             $("#save_and_continue1").removeAttr("data-toggle");
-            console.log("error 404 -->", result.body);
+            console.log("error 404 -->", result);
           } else if (statusCode == 403) {
-            console.log("--->", result.message, statusCode);
+            console.log("--->", result, statusCode);
             jQuery("#model-error-msg").removeClass("d-none");
             jQuery("#model-error-msg .ins-modal-body-content").text(
-              result.message
+              "Warning Something's not quite right. Please try again and if the problem persists please contact the team using the 'Contact Us' button in the footer."
             );
-            addErrorMessage("api_call_failed_postcode", result.message);
+            addErrorMessage("api_call_failed_postcode", "Warning Something's not quite right. Please try again and if the problem persists please contact the team using the 'Contact Us' button in the footer.");
             $("#save_and_continue1").removeAttr("data-target");
             $("#save_and_continue1").removeAttr("data-toggle");
           } else if(statusCode == 500){
@@ -1201,7 +1203,7 @@ jQuery(document).ready(function ($) {
             );
             $("#save_and_continue1").removeAttr("data-target");
             $("#save_and_continue1").removeAttr("data-toggle");
-            console.log("error 500 -->", result.body);
+            console.log("error 500 -->", result);
           }
         } else {
           let element = ["api_call_failed_postcode"];
