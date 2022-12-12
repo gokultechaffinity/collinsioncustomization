@@ -236,7 +236,7 @@ jQuery(document).ready(function ($) {
   //save and continue section 2
   if ($("#title").hasClass("ColumbusItaly")) {
     $(
-      '<button id="save_and_continue2" class="btn btn-primary for-section-2 save_and_continue" type="button" >Salva e continua</button>'
+      '<button id="save_and_continue2" class="btn btn-primary for-section-2 save_and_continue" type="button" >Sezione successiva</button>'
     ).insertAfter("#helpdesk_ticket_custom_field_cf_mobile_number_2321673");
   } else {
     $(
@@ -277,7 +277,7 @@ jQuery(document).ready(function ($) {
   //save and coninue for Section 3
   if ($("#title").hasClass("ColumbusItaly")) {
     $(
-      '<button id="save_and_continue3" class="btn btn-primary for-section-3 save_and_continue" type="button" >Salva e continua</button>'
+      '<button id="save_and_continue3" class="btn btn-primary for-section-3 save_and_continue" type="button" >Sezione successiva</button>'
     ).insertAfter(
       ".form-group.helpdesk_ticket_custom_field_cf_reason_for_claim_2321673.for-section-3"
     );
@@ -295,7 +295,12 @@ jQuery(document).ready(function ($) {
 
   if ($("#title").hasClass("ColumbusItaly")) {
     $(
-      '<button id="save_and_continue4" class="btn btn-primary for-section-4 save_and_continue" type="button">Salva e continua</button>'
+      '<button id="save_draft_4" class="btn btn-primary for-section-4 " type="button">Salva reclamo ed esci</button>'
+    ).insertAfter(
+      ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper"
+    );
+    $(
+      '<button id="save_and_continue4" class="btn btn-primary for-section-4 save_and_continue" type="button">Sezione successiva</button>'
     ).insertAfter(
       ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper"
     );
@@ -331,8 +336,11 @@ jQuery(document).ready(function ($) {
     );
     $("#portal_ticket_form .attachments").addClass("for-section-5");
     if ($("#title").hasClass("ColumbusItaly")) {
+      jQuery(".attachments.for-section-5").after(
+        '<button class="save_draft_5 btn btn-primary for-section-5 " type="button">Salva reclamo ed esci</button>'
+      );
       $(
-        '<button class="save_and_continue5 btn btn-primary for-section-5 save_and_continue" type="button" >Salva e continua</button>'
+        '<button class="save_and_continue5 btn btn-primary for-section-5 save_and_continue" type="button" >Sezione successiva</button>'
       ).insertAfter(".attachments.for-section-5");
     } else {
       jQuery(".attachments.for-section-5").after(
@@ -350,8 +358,11 @@ jQuery(document).ready(function ($) {
     );
     $(".form-group.attachments-container").addClass("for-section-5");
     if ($("#title").hasClass("ColumbusItaly")) {
+      jQuery(".attachments-container.for-section-5").after(
+        '<button class="save_draft_5 btn btn-primary for-section-5 " type="button">Salva reclamo ed esci</button>'
+      );
       $(
-        '<button class="save_and_continue5 btn btn-primary for-section-5 save_and_continue" type="button" >Salva e continua</button>'
+        '<button class="save_and_continue5 btn btn-primary for-section-5 save_and_continue" type="button" >Sezione successiva</button>'
       ).insertAfter(".form-group.attachments-container.for-section-5");
     } else {
       jQuery(".attachments-container.for-section-5").after(
@@ -419,7 +430,7 @@ jQuery(document).ready(function ($) {
   //save and continue 6
   if ($("#title").hasClass("ColumbusItaly")) {
     $(
-      '<button id="save_and_continue6" class="btn btn-primary for-section-6 save_and_continue" type="button" >Salva e continua</button>'
+      '<button id="save_and_continue6" class="btn btn-primary for-section-6 save_and_continue" type="button" >Sezione successiva</button>'
     ).insertAfter(ibanNumber);
   } else if ($("#title").hasClass("VHI")) {
     $(
