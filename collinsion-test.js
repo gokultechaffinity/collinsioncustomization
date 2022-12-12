@@ -996,113 +996,121 @@ function createCaptcha() {
         );
         createCaptcha();
       }
-
-    
     } else if ($("#title").hasClass("CollinsonUK")) {
-      if (
-        $(
-          "#helpdesk_ticket_custom_field_cf_policy_number454080_2321673"
-        ).val() == "" ||
-        $("#helpdesk_ticket_custom_field_cf_date_of_birth_2321673").val() == ""
-      ) {
-        addErrorMessage(
-          "helpdesk_ticket_custom_field_cf_policy_number454080_2321673",
-          "Please fill in all fields"
-        );
-        addErrorMessage(
-          "helpdesk_ticket_custom_field_cf_date_of_birth_2321673",
-          "Please fill in all fields"
-        );
-        // ||
-        // $("#helpdesk_ticket_custom_field_cf_claim_number_2321673").val() == ""
-        // addErrorMessage(
-        //   "helpdesk_ticket_custom_field_cf_claim_number_2321673",
-        //   "Please fill in all fields"
-        // );
-      } else {
-        //check LENGTH OF POLICY NUMBER - 6 DIGITS
+      if (document.getElementById("cpatchaTextBox").value == code) {
         if (
           $(
             "#helpdesk_ticket_custom_field_cf_policy_number454080_2321673"
-          ).val().length >= 6
+          ).val() == "" ||
+          $("#helpdesk_ticket_custom_field_cf_date_of_birth_2321673").val() == ""
         ) {
-          birthdate = $(
-            "#helpdesk_ticket_custom_field_cf_date_of_birth_2321673"
-          ).val();
-          bday = new Date(birthdate);
-          if (today < bday) {
-            addErrorMessage(
-              "helpdesk_ticket_custom_field_cf_date_of_birth_2321673",
-              "Invalid Birthday"
-            );
-            $("#save_and_continue1").removeAttr("data-target");
-            $("#save_and_continue1").removeAttr("data-toggle");
-          } else if (today > bday) {
-            let policyNumber = $(
+          addErrorMessage(
+            "helpdesk_ticket_custom_field_cf_policy_number454080_2321673",
+            "Please fill in all fields"
+          );
+          addErrorMessage(
+            "helpdesk_ticket_custom_field_cf_date_of_birth_2321673",
+            "Please fill in all fields"
+          );
+          // ||
+          // $("#helpdesk_ticket_custom_field_cf_claim_number_2321673").val() == ""
+          // addErrorMessage(
+          //   "helpdesk_ticket_custom_field_cf_claim_number_2321673",
+          //   "Please fill in all fields"
+          // );
+        } else {
+          //check LENGTH OF POLICY NUMBER - 6 DIGITS
+          if (
+            $(
               "#helpdesk_ticket_custom_field_cf_policy_number454080_2321673"
-            ).val();
-            let dateOfBirth = $(
+            ).val().length >= 6
+          ) {
+            birthdate = $(
               "#helpdesk_ticket_custom_field_cf_date_of_birth_2321673"
             ).val();
-            let claimNumberCheck = $(
-              "#helpdesk_ticket_custom_field_cf_claim_number_2321673"
-            ).val();
-            jQuery("#model-error-msg").addClass("d-none");
-            jQuery("#model-sucess-msg").addClass("d-none");
-            if (claimNumberCheck) {
-              $("#agreementModal").addClass("loader-text");
-              getClaimStatus(claimNumberCheck, "#save_and_continue1");
-            } else {
-              jQuery("#model-status-msg").addClass("d-none");
-              $("#agreementModal").addClass("loader-text");
-              getPolicyDetails(
-                policyNumber,
-                dateOfBirth,
-                "#save_and_continue1"
+            bday = new Date(birthdate);
+            if (today < bday) {
+              addErrorMessage(
+                "helpdesk_ticket_custom_field_cf_date_of_birth_2321673",
+                "Invalid Birthday"
               );
+              $("#save_and_continue1").removeAttr("data-target");
+              $("#save_and_continue1").removeAttr("data-toggle");
+            } else if (today > bday) {
+              let policyNumber = $(
+                "#helpdesk_ticket_custom_field_cf_policy_number454080_2321673"
+              ).val();
+              let dateOfBirth = $(
+                "#helpdesk_ticket_custom_field_cf_date_of_birth_2321673"
+              ).val();
+              let claimNumberCheck = $(
+                "#helpdesk_ticket_custom_field_cf_claim_number_2321673"
+              ).val();
+              jQuery("#model-error-msg").addClass("d-none");
+              jQuery("#model-sucess-msg").addClass("d-none");
+              if (claimNumberCheck) {
+                $("#agreementModal").addClass("loader-text");
+                getClaimStatus(claimNumberCheck, "#save_and_continue1");
+              } else {
+                jQuery("#model-status-msg").addClass("d-none");
+                $("#agreementModal").addClass("loader-text");
+                getPolicyDetails(
+                  policyNumber,
+                  dateOfBirth,
+                  "#save_and_continue1"
+                );
+              }
+              //changes started for error
+              $("#save_and_continue1").attr("data-target", "#agreementModal");
+              $("#save_and_continue1").attr("data-toggle", "modal");
+              clearError([
+                "helpdesk_ticket_custom_field_cf_date_of_birth_2321673",
+                "helpdesk_ticket_custom_field_cf_policy_number454080_2321673",
+              ]);
+            } else {
+              addErrorMessage(
+                "helpdesk_ticket_custom_field_cf_date_of_birth_2321673",
+                "Invalid Birthday"
+              );
+              $("#save_and_continue1").removeAttr("data-target");
+              $("#save_and_continue1").removeAttr("data-toggle");
             }
-            //changes started for error
-            $("#save_and_continue1").attr("data-target", "#agreementModal");
-            $("#save_and_continue1").attr("data-toggle", "modal");
-            clearError([
-              "helpdesk_ticket_custom_field_cf_date_of_birth_2321673",
-              "helpdesk_ticket_custom_field_cf_policy_number454080_2321673",
-            ]);
           } else {
             addErrorMessage(
-              "helpdesk_ticket_custom_field_cf_date_of_birth_2321673",
-              "Invalid Birthday"
+              "helpdesk_ticket_custom_field_cf_policy_number454080_2321673",
+              "Policy Number must be at least 6 digits."
             );
             $("#save_and_continue1").removeAttr("data-target");
             $("#save_and_continue1").removeAttr("data-toggle");
           }
+        }
+        if ($("#cb").prop("checked") == true) {
+          $("#continue").attr("data-dismiss", "modal");
+          //grey out continue - opposite - for different schemes
+          if ($("#title").hasClass("VHI")) {
+            $("#continue").css("background-color", "#38133E");
+          } else if ($("#title").hasClass("EasyJet")) {
+            $("#continue").css("background-color", "#FF6600");
+          } else if ($("#title").hasClass("CollinsonUK")) {
+            $("#continue").css("background-color", "#FFFFFF");
+          } else if ($("#title").hasClass("ColumbusItaly")) {
+            $("#continue").css("background-color", "#083050");
+          }
         } else {
-          addErrorMessage(
-            "helpdesk_ticket_custom_field_cf_policy_number454080_2321673",
-            "Policy Number must be at least 6 digits."
-          );
-          $("#save_and_continue1").removeAttr("data-target");
-          $("#save_and_continue1").removeAttr("data-toggle");
+          $("#continue").removeAttr("data-dismiss");
+          //grey out continue
+          $("#continue").css("background-color", "grey");
+          $("#continue").removeAttr("data-dismiss");
         }
+      }else{
+        console.log("Invalid captcha")
+        addErrorMessage(
+          "captcha_failed",
+          "Invalid Captcha. Please re-enter captcha"
+        );
+        createCaptcha();
       }
-      if ($("#cb").prop("checked") == true) {
-        $("#continue").attr("data-dismiss", "modal");
-        //grey out continue - opposite - for different schemes
-        if ($("#title").hasClass("VHI")) {
-          $("#continue").css("background-color", "#38133E");
-        } else if ($("#title").hasClass("EasyJet")) {
-          $("#continue").css("background-color", "#FF6600");
-        } else if ($("#title").hasClass("CollinsonUK")) {
-          $("#continue").css("background-color", "#FFFFFF");
-        } else if ($("#title").hasClass("ColumbusItaly")) {
-          $("#continue").css("background-color", "#083050");
-        }
-      } else {
-        $("#continue").removeAttr("data-dismiss");
-        //grey out continue
-        $("#continue").css("background-color", "grey");
-        $("#continue").removeAttr("data-dismiss");
-      }
+     
     }
   });
   function getPolicyDetails(policyNumber, dateOfBirth, fieldId) {
