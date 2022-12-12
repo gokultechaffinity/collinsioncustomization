@@ -1109,6 +1109,19 @@ jQuery(document).ready(function ($) {
             $("#save_and_continue1").removeAttr("data-target");
             $("#save_and_continue1").removeAttr("data-toggle");
           }
+          else if(statusCode == 500){
+            jQuery("#model-error-msg").removeClass("d-none");
+            jQuery("#model-error-msg .ins-modal-body-content").text(
+              "Warning Something's not quite right. Please try again and if the problem persists please contact the team using the 'Contact Us' button in the footer."
+            );
+            addErrorMessage(
+              "api_call_failed_dob",
+              "Warning Something's not quite right. Please try again and if the problem persists please contact the team using the 'Contact Us' button in the footer."
+            );
+            $("#save_and_continue1").removeAttr("data-target");
+            $("#save_and_continue1").removeAttr("data-toggle");
+            console.log("error 500 -->", result.body);
+          }
         } else {
           let element = ["api_call_failed_dob"];
           clearError(element);
@@ -1177,6 +1190,18 @@ jQuery(document).ready(function ($) {
             addErrorMessage("api_call_failed_postcode", result.message);
             $("#save_and_continue1").removeAttr("data-target");
             $("#save_and_continue1").removeAttr("data-toggle");
+          } else if(statusCode == 500){
+            jQuery("#model-error-msg").removeClass("d-none");
+            jQuery("#model-error-msg .ins-modal-body-content").text(
+              "Warning Something's not quite right. Please try again and if the problem persists please contact the team using the 'Contact Us' button in the footer."
+            );
+            addErrorMessage(
+              "api_call_failed_dob",
+              "Warning Something's not quite right. Please try again and if the problem persists please contact the team using the 'Contact Us' button in the footer."
+            );
+            $("#save_and_continue1").removeAttr("data-target");
+            $("#save_and_continue1").removeAttr("data-toggle");
+            console.log("error 500 -->", result.body);
           }
         } else {
           let element = ["api_call_failed_postcode"];
