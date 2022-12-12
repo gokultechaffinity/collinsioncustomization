@@ -5922,14 +5922,23 @@ jQuery(document).ready(function ($) {
   //section 5 continue
   $(".save_draft_5").click(function () {
     var elem = document.getElementById("files_list");
+    let fileExtensionArray=["gif","jpeg","jpg","png","bmp","tiff","tif","pdf","doc","docx","xls","xlsx","txt","odt"]
+let FileExtensionValidateCounter=0;
+let fileExtension;
     if (elem.files.length) {
       let ele = ["api_call_failed_filelist"];
       clearError(ele);
       var files = [];
       var fileSize = [];
       for (var i = 0; i < elem.files.length; ++i) {
+        fileExtension=elem.files[i].name.split('.').pop();
+      if(fileExtensionArray.includes(fileExtension)){
         files.push(elem.files[i].name);
         fileSize.push(elem.files[i].size);
+      }
+      else{
+          FileExtensionValidateCounter=FileExtensionValidateCounter+1;
+      }
       }
       var sum = fileSize.reduce(function (a, b) {
         return a + b;
@@ -5943,8 +5952,18 @@ jQuery(document).ready(function ($) {
         } else {
           add_section_5();
         }
-        jQuery("#overlay").removeClass("d-none").addClass("show loader-text")
-        getUploadFiles(elem.files, ".save_draft_5");
+        if(!FileExtensionValidateCounter){
+          console.log("Make AN API")
+          jQuery("#overlay").removeClass("d-none").addClass("show loader-text")
+          getUploadFiles(elem.files, ".save_draft_5");
+      }else{
+          console.log("Show Error unsupported File Format ")
+          addErrorMessage(
+            "api_call_failed_filelist",
+            "Unsupported File Format. Supported formats: gif,jpeg,jpg,png,bmp,tiff,tif,pdf,doc,docx,xls,xlsx,txt,odt"
+          );
+      }
+       
       } else {
         console.log(
           " --------- Need to show error max file size should not more than 4 MB ----------------"
@@ -5979,14 +5998,22 @@ jQuery(document).ready(function ($) {
   function fileUploadCallback() {
     var elem = document.getElementById("files_list");
     if (elem.files.length) {
-
+      let fileExtensionArray=["gif","jpeg","jpg","png","bmp","tiff","tif","pdf","doc","docx","xls","xlsx","txt","odt"]
+      let FileExtensionValidateCounter=0;
+      let fileExtension;
       let ele = ["api_call_failed_filelist"];
       clearError(ele);
       var files = [];
       var fileSize = [];
       for (var i = 0; i < elem.files.length; ++i) {
-        files.push(elem.files[i].name);
-        fileSize.push(elem.files[i].size);
+        fileExtension=elem.files[i].name.split('.').pop();
+        if(fileExtensionArray.includes(fileExtension)){
+          files.push(elem.files[i].name);
+          fileSize.push(elem.files[i].size);
+        }
+        else{
+            FileExtensionValidateCounter=FileExtensionValidateCounter+1;
+        }
       }
       
       var sum = fileSize.reduce(function (a, b) {
@@ -6002,16 +6029,26 @@ jQuery(document).ready(function ($) {
           add_section_5();
         }
         console.log("files --->",files)
-        jQuery("#overlay").removeClass("d-none").addClass("show loader-text")
-        getUploadFiles(elem.files, ".save_and_continue5");
-        open_next(5);
-        $("#section-4-button").css("background-color", "#4DC367");
-        $("#section-5-button").css("background-color", "#4DC367");
-        $("#section-4-button").children(":first").removeClass("fa-pen");
-        $("#section-5-button").children(":first").removeClass("fa-minus");
-        $("#section-5-button").children(":first").removeClass("fa-plus");
-        $("#section-4-button").children(":first").addClass("fa-check");
-        $("#section-5-button").children(":first").addClass("fa-check");
+        if(!FileExtensionValidateCounter){
+          console.log("Make AN API")
+          jQuery("#overlay").removeClass("d-none").addClass("show loader-text")
+          getUploadFiles(elem.files, ".save_draft_5");
+          open_next(5);
+          $("#section-4-button").css("background-color", "#4DC367");
+          $("#section-5-button").css("background-color", "#4DC367");
+          $("#section-4-button").children(":first").removeClass("fa-pen");
+          $("#section-5-button").children(":first").removeClass("fa-minus");
+          $("#section-5-button").children(":first").removeClass("fa-plus");
+          $("#section-4-button").children(":first").addClass("fa-check");
+          $("#section-5-button").children(":first").addClass("fa-check");
+      }else{
+          console.log("Show Error unsupported File Format ")
+          addErrorMessage(
+            "api_call_failed_filelist",
+            "Unsupported File Format. Supported formats: gif,jpeg,jpg,png,bmp,tiff,tif,pdf,doc,docx,xls,xlsx,txt,odt"
+          );
+      }
+       
       } else {
         console.log(
           " --------- Need to show error max file size should not more than 4 MB ----------------"
