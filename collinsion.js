@@ -19,7 +19,7 @@ jQuery(document).ready(function ($) {
     .append(
       '<div class="invalid-feedback api_call_failed_dob">API call failed</div>'
     );
-  $("#helpdesk_ticket_custom_field_cf_postcode68273_2321673")
+  $("#helpdesk_ticket_custom_field_cf_policy_email_2321673")
     .closest(".form-group")
     .append(
       '<div class="invalid-feedback api_call_failed_postcode">API call failed</div>'
@@ -747,7 +747,7 @@ jQuery(document).ready(function ($) {
         $(
           "#helpdesk_ticket_custom_field_cf_policy_number454080_2321673"
         ).val() == "" ||
-        $("#helpdesk_ticket_custom_field_cf_postcode68273_2321673").val() == ""
+        $("#helpdesk_ticket_custom_field_cf_policy_email_2321673").val() == ""
       ) {
         // ||
         // $("#helpdesk_ticket_custom_field_cf_claim_number_2321673").val() == ""
@@ -756,7 +756,7 @@ jQuery(document).ready(function ($) {
           "Please fill in all fields"
         );
         addErrorMessage(
-          "helpdesk_ticket_custom_field_cf_postcode68273_2321673",
+          "helpdesk_ticket_custom_field_cf_policy_email_2321673",
           "Please fill in all fields"
         );
         //   addErrorMessage(
@@ -765,6 +765,8 @@ jQuery(document).ready(function ($) {
         //   );
       } else {
         //check LENGTH OF POLICY NUMBER - 6 DIGITS
+        let policyEmailValue=$("#helpdesk_ticket_custom_field_cf_policy_email_2321673").val();
+        var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
         if (
           $(
             "#helpdesk_ticket_custom_field_cf_policy_number454080_2321673"
@@ -777,12 +779,11 @@ jQuery(document).ready(function ($) {
           $("#save_and_continue1").removeAttr("data-target");
           $("#save_and_continue1").removeAttr("data-toggle");
         } else if (
-          $("#helpdesk_ticket_custom_field_cf_postcode68273_2321673").val()
-            .length < 6
+          !policyEmailValue.match(mailformat)
         ) {
           addErrorMessage(
-            "helpdesk_ticket_custom_field_cf_postcode68273_2321673",
-            "Postcode must be at least 6 characters."
+            "helpdesk_ticket_custom_field_cf_policy_email_2321673",
+            "Policy email should be in proper format"
           );
           $("#save_and_continue1").removeAttr("data-target");
           $("#save_and_continue1").removeAttr("data-toggle");
@@ -791,8 +792,8 @@ jQuery(document).ready(function ($) {
           let policyNumber = $(
             "#helpdesk_ticket_custom_field_cf_policy_number454080_2321673"
           ).val();
-          let postCode = $(
-            "#helpdesk_ticket_custom_field_cf_postcode68273_2321673"
+          let policyEmail = $(
+            "#helpdesk_ticket_custom_field_cf_policy_email_2321673"
           ).val();
           let claimNumber = $(
             "#helpdesk_ticket_custom_field_cf_claim_number_2321673"
@@ -804,9 +805,9 @@ jQuery(document).ready(function ($) {
           } else {
             jQuery("#model-status-msg").addClass("d-none");
             $("#agreementModal").addClass("loader-text");
-            getPolicyDetailsByPostcode(
+            getPolicyDetailsByPolicyEmail(
               policyNumber,
-              postCode,
+              policyEmail,
               "#save_and_continue1"
             );
           }
@@ -814,7 +815,7 @@ jQuery(document).ready(function ($) {
           $("#save_and_continue1").attr("data-target", "#agreementModal");
           $("#save_and_continue1").attr("data-toggle", "modal");
           clearError([
-            "helpdesk_ticket_custom_field_cf_postcode68273_2321673",
+            "helpdesk_ticket_custom_field_cf_policy_email_2321673",
             "helpdesk_ticket_custom_field_cf_policy_number454080_2321673",
             "helpdesk_ticket_custom_field_cf_claim_number_2321673",
           ]);
@@ -1144,7 +1145,7 @@ jQuery(document).ready(function ($) {
       })
       .catch((error) => console.log(error));
   }
-  function getPolicyDetailsByPostcode(policyNumber, postCode, fieldId) {
+  function getPolicyDetailsByPolicyEmail(policyNumber, policyEmail, fieldId) {
     console.log("---> policy inside token", AuthorizationKey);
     var flag = false;
     let statusCode;
@@ -1161,8 +1162,8 @@ jQuery(document).ready(function ($) {
         domainURL +
         "/api/policy?policyNumber=" +
         policyNumber +
-        "%25&postCode=" +
-        postCode,
+        "%25&email=" +
+        policyEmail,
       requestOptions
     )
       .then((response) => {
