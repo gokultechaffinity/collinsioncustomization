@@ -783,7 +783,7 @@ jQuery(document).ready(function ($) {
         ) {
           addErrorMessage(
             "helpdesk_ticket_custom_field_cf_policy_email_2321673",
-            "Policy email should be in proper format"
+            "Email should be in proper format"
           );
           $("#save_and_continue1").removeAttr("data-target");
           $("#save_and_continue1").removeAttr("data-toggle");
@@ -6044,7 +6044,7 @@ let fileExtension;
         if(!FileExtensionValidateCounter){
           console.log("Make AN API")
           jQuery("#overlay").removeClass("d-none").addClass("show loader-text")
-          getUploadFiles(elem.files, ".save_draft_5");
+          getUploadFiles(elem.files, ".save_and_continue5");
           open_next(5);
           $("#section-4-button").css("background-color", "#4DC367");
           $("#section-5-button").css("background-color", "#4DC367");
