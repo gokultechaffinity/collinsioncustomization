@@ -6474,6 +6474,7 @@ console.log("form data body --->",formdata)
           clearError(ele);
           bankResult = result;
           console.log("--sucesss-");
+          open_next(6);
         }
       })
       .catch((error) => console.log("error -->", error));
