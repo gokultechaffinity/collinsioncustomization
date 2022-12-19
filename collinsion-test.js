@@ -1263,7 +1263,7 @@ jQuery(document).ready(function ($) {
     let InternalPolicyNumber = policyData.InternalPolicyNumber;
     let options = "";
     options +=
-      '<div class="form-group"><label class="form-label" style="display:inline-table;" > Name(s) of the Insured. Select everyone who is claiming! </label>';
+      '<div class="form-group"><label class="form-label" style="display:inline-table;" > Name(s) of the Insured. Select everyone who was involved in the claim! </label>';
     policyDetails.forEach(function (element, index) {
       options +=
         '<div class="list-claim"><input type="checkbox" class="check-box" id=' +
@@ -6474,6 +6474,7 @@ console.log("form data body --->",formdata)
           clearError(ele);
           bankResult = result;
           console.log("--sucesss-");
+          open_next(6);
         }
       })
       .catch((error) => console.log("error -->", error));
