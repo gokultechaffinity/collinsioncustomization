@@ -93,6 +93,7 @@ jQuery(document).ready(function ($) {
     SagaPostOfficeColumbusUK: "GB",
     VHI: "IE",
   };
+  let InternalPolicyNumber;
   let domainURL = "claim-proxy-lower.collinsonnis.com";
   //"claim-proxy-lower.collinsonnis.com";
   //"claim-sandbox.collinsonnis.com";
@@ -1260,7 +1261,7 @@ jQuery(document).ready(function ($) {
   function buildPolicyUI(policyData) {
     let policyDetails = policyData.Insured;
     console.log(policyDetails);
-    let InternalPolicyNumber = policyData.InternalPolicyNumber;
+   InternalPolicyNumber = policyData.InternalPolicyNumber;
     let options = "";
     options +=
       '<div class="form-group"><label class="form-label" style="display:inline-table;" > Name(s) of the Insured. Select everyone who was involved in the claim! </label>';
@@ -6482,13 +6483,13 @@ console.log("form data body --->",formdata)
 
   $(".new-ticket-dummy").click(function () {
     console.log("submit claim entered ");
-    let policyNumber = $(
-      "#helpdesk_ticket_custom_field_cf_policy_number454080_2321673"
-    ).val();
+    // let policyNumber = $(
+    //   "#helpdesk_ticket_custom_field_cf_policy_number454080_2321673"
+    // ).val();
     // claimnumber we can use global stored value
     console.log("Main ");
     let body = {
-      internalpolicyNumber: policyNumber,
+      internalpolicyNumber: InternalPolicyNumber,
       ClaimNumber: ClaimInitiatedNumber,
       FromDate: $(
         "#helpdesk_ticket_custom_field_cf_your_departure_date_2321673"
@@ -8533,13 +8534,13 @@ console.log("form data body --->",formdata)
     createSubmitClaim(body, ".new-ticket-dummy");
   });
   $(".ticket-detail-dummy").click(function () {
-    let policyNumber = $(
-      "#helpdesk_ticket_custom_field_cf_policy_number454080_2321673"
-    ).val();
+    // let policyNumber = $(
+    //   "#helpdesk_ticket_custom_field_cf_policy_number454080_2321673"
+    // ).val();
     // claimnumber we can use global stored value
     console.log("Main ");
     let body = {
-      internalpolicyNumber: policyNumber,
+      internalpolicyNumber: InternalPolicyNumber,
       ClaimNumber: $(
         "#helpdesk_ticket_custom_field_cf_claim_number_2321673"
       ).val(),
