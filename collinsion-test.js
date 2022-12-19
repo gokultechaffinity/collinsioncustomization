@@ -5483,7 +5483,7 @@ jQuery(document).ready(function ($) {
             getJWTToken(fieldId);
           } else if (statusCode == 500) {
             jQuery("#claim-error-msg").removeClass("d-none");
-            jQuery("#claim-error-msg .claim-desc-message").text(result);
+            jQuery("#claim-error-msg .claim-desc-message").text("Warning Something's not quite right. Please try again and if the problem persists please contact the team using the 'Contact Us' button in the footer.");
             console.log("error--->", result);
             addErrorMessage(
               "api_call_failed_rc",
@@ -5492,7 +5492,7 @@ jQuery(document).ready(function ($) {
             console.log("Internal server error");
           } else if (statusCode == 400) {
             jQuery("#claim-error-msg").removeClass("d-none");
-            jQuery("#claim-error-msg .claim-desc-message").text(result);
+            jQuery("#claim-error-msg .claim-desc-message").text( "Warning Something's not quite right. Please try again and if the problem persists please contact the team using the 'Contact Us' button in the footer.");
             addErrorMessage(
               "api_call_failed_rc",
               "Warning Something's not quite right. Please try again and if the problem persists please contact the team using the 'Contact Us' button in the footer."
@@ -5503,7 +5503,7 @@ jQuery(document).ready(function ($) {
             );
           } else {
             jQuery("#claim-error-msg").removeClass("d-none");
-            jQuery("#claim-error-msg .claim-desc-message").text(result);
+            jQuery("#claim-error-msg .claim-desc-message").text("Warning Something's not quite right. Please try again and if the problem persists please contact the team using the 'Contact Us' button in the footer.");
             addErrorMessage(
               "api_call_failed_rc",
               "Warning Something's not quite right. Please try again and if the problem persists please contact the team using the 'Contact Us' button in the footer."
