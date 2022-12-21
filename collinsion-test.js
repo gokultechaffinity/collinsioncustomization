@@ -14,6 +14,9 @@ jQuery(document).ready(function ($) {
   $("#helpdesk_ticket_custom_field_cf_claimnames_2321673")
     .closest(".form-group")
     .hide();
+    $("#helpdesk_ticket_custom_field_cf_internalpolicynumber_2321673")
+    .closest(".form-group")
+    .hide();
   $("#helpdesk_ticket_custom_field_cf_date_of_birth_2321673")
     .closest(".form-group")
     .append(
@@ -5526,6 +5529,7 @@ jQuery(document).ready(function ($) {
             createClaimIds.OtherInsuredClientIds
           );
           $("#helpdesk_ticket_custom_field_cf_claimnames_2321673").val(createClaimIds.namesArray);
+          $("#helpdesk_ticket_custom_field_cf_internalpolicynumber_2321673").val(InternalPolicyNumber);
           $(".claim-number").empty();
           $(".claim-number").append(
             `Your Claim Number is ${ClaimInitiatedNumber}`
@@ -8540,7 +8544,7 @@ console.log("form data body --->",formdata)
     // claimnumber we can use global stored value
     console.log("Main ");
     let body = {
-      internalpolicyNumber: InternalPolicyNumber,
+      internalpolicyNumber: $("#helpdesk_ticket_custom_field_cf_internalpolicynumber_2321673").val(),
       ClaimNumber: $(
         "#helpdesk_ticket_custom_field_cf_claim_number_2321673"
       ).val(),
