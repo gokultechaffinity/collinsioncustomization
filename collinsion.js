@@ -1,8 +1,6 @@
 //collinsion.js
 //latest
 jQuery(document).ready(function ($) {
- 
-
   $("#chat-icon").hide();
   $("#helpdesk_ticket_subject").closest(".form-group").hide();
   $("#helpdesk_ticket_custom_field_cf_mainclientid_2321673")
@@ -14,7 +12,7 @@ jQuery(document).ready(function ($) {
   $("#helpdesk_ticket_custom_field_cf_claimnames_2321673")
     .closest(".form-group")
     .hide();
-    $("#helpdesk_ticket_custom_field_cf_internalpolicynumber_2321673")
+  $("#helpdesk_ticket_custom_field_cf_internalpolicynumber_2321673")
     .closest(".form-group")
     .hide();
   $("#helpdesk_ticket_custom_field_cf_date_of_birth_2321673")
@@ -159,13 +157,14 @@ jQuery(document).ready(function ($) {
     ).parentElement;
     DOBParent.classList.add("for-section-1");
 
-    $(".controls.recaptcha-control").closest(".form-group").addClass("for-section-1");
-    
+    $(".controls.recaptcha-control")
+      .closest(".form-group")
+      .addClass("for-section-1");
+
     var ClaimNumberParent = document.getElementById(
       "helpdesk_ticket_custom_field_cf_claim_number_2321673"
     ).parentElement;
     ClaimNumberParent.classList.add("for-section-1");
-
   } else if ($("#title").hasClass("EasyJet")) {
     var PolicyNumberParent = document.getElementById(
       "helpdesk_ticket_custom_field_cf_policy_number454080_2321673"
@@ -177,7 +176,9 @@ jQuery(document).ready(function ($) {
     ).parentElement;
     PolEmailParent.classList.add("for-section-1");
 
-    $(".controls.recaptcha-control").closest(".form-group").addClass("for-section-1");
+    $(".controls.recaptcha-control")
+      .closest(".form-group")
+      .addClass("for-section-1");
 
     var ClaimNumberParent = document.getElementById(
       "helpdesk_ticket_custom_field_cf_claim_number_2321673"
@@ -194,7 +195,9 @@ jQuery(document).ready(function ($) {
     ).parentElement;
     DOBParent.classList.add("for-section-1");
 
-    $(".controls.recaptcha-control").closest(".form-group").addClass("for-section-1");
+    $(".controls.recaptcha-control")
+      .closest(".form-group")
+      .addClass("for-section-1");
 
     var ClaimNumberParent = document.getElementById(
       "helpdesk_ticket_custom_field_cf_claim_number_2321673"
@@ -218,7 +221,7 @@ jQuery(document).ready(function ($) {
   } else if ($("#title").hasClass("VHI")) {
     $(
       '<button id="save_and_continue1" class="btn btn-primary for-section-1 save_and_continue" type="button">Find Policy</button>'
-      ).insertAfter("#helpdesk_ticket_custom_field_cf_claim_number_2321673");
+    ).insertAfter("#helpdesk_ticket_custom_field_cf_claim_number_2321673");
   }
 
   //____________________________________________________SECTION 2 Start -  About You______________________________________________
@@ -714,9 +717,7 @@ jQuery(document).ready(function ($) {
   //open section 1 by default
   $("#section-1-button").click();
 
-  
-  function checkRecaptcha(){
-
+  function checkRecaptcha() {
     const iFrame = document.getElementById("recaptcha-frame");
 
     const iFrameWindow = iFrame.contentWindow;
@@ -736,9 +737,7 @@ jQuery(document).ready(function ($) {
     const iFrame2Windowdoc = iFrame2Window.document;
 
     console.log(iFrame2Window);
-
-
-}
+  }
 
   //________________________________________________________________________________________________________________________________
   //section 1 continue
@@ -746,7 +745,7 @@ jQuery(document).ready(function ($) {
   $("#save_and_continue1").click(function () {
     if ($("#title").hasClass("EasyJet")) {
       //checkRecaptcha
-     
+
       if (
         $(
           "#helpdesk_ticket_custom_field_cf_policy_number454080_2321673"
@@ -769,7 +768,9 @@ jQuery(document).ready(function ($) {
         //   );
       } else {
         //check LENGTH OF POLICY NUMBER - 6 DIGITS
-        let policyEmailValue=$("#helpdesk_ticket_custom_field_cf_policy_email_2321673").val();
+        let policyEmailValue = $(
+          "#helpdesk_ticket_custom_field_cf_policy_email_2321673"
+        ).val();
         var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
         if (
           $(
@@ -782,9 +783,7 @@ jQuery(document).ready(function ($) {
           );
           $("#save_and_continue1").removeAttr("data-target");
           $("#save_and_continue1").removeAttr("data-toggle");
-        } else if (
-          !policyEmailValue.match(mailformat)
-        ) {
+        } else if (!policyEmailValue.match(mailformat)) {
           addErrorMessage(
             "helpdesk_ticket_custom_field_cf_policy_email_2321673",
             "Email should be in proper format"
@@ -844,12 +843,10 @@ jQuery(document).ready(function ($) {
         $("#continue").css("background-color", "grey");
         $("#continue").removeAttr("data-dismiss");
       }
-    
     } else if (
       $("#title").hasClass("VHI") ||
       $("#title").hasClass("ColumbusItaly")
     ) {
-      
       if (
         $(
           "#helpdesk_ticket_custom_field_cf_policy_number454080_2321673"
@@ -920,9 +917,6 @@ jQuery(document).ready(function ($) {
               "helpdesk_ticket_custom_field_cf_date_of_birth_2321673",
               "helpdesk_ticket_custom_field_cf_policy_number454080_2321673",
             ]);
-
-            
-
           } else {
             addErrorMessage(
               "helpdesk_ticket_custom_field_cf_date_of_birth_2321673",
@@ -958,7 +952,6 @@ jQuery(document).ready(function ($) {
         $("#continue").css("background-color", "grey");
         $("#continue").removeAttr("data-dismiss");
       }
-    
     } else if ($("#title").hasClass("CollinsonUK")) {
       if (
         $(
@@ -1122,11 +1115,13 @@ jQuery(document).ready(function ($) {
             jQuery("#model-error-msg .ins-modal-body-content").text(
               "Warning Something's not quite right. Please try again and if the problem persists please contact the team using the 'Contact Us' button in the footer."
             );
-            addErrorMessage("api_call_failed_dob","Warning Something's not quite right. Please try again and if the problem persists please contact the team using the 'Contact Us' button in the footer." );
+            addErrorMessage(
+              "api_call_failed_dob",
+              "Warning Something's not quite right. Please try again and if the problem persists please contact the team using the 'Contact Us' button in the footer."
+            );
             $("#save_and_continue1").removeAttr("data-target");
             $("#save_and_continue1").removeAttr("data-toggle");
-          }
-          else if(statusCode == 500){
+          } else if (statusCode == 500) {
             jQuery("#model-error-msg").removeClass("d-none");
             jQuery("#model-error-msg .ins-modal-body-content").text(
               "Warning Something's not quite right. Please try again and if the problem persists please contact the team using the 'Contact Us' button in the footer."
@@ -1205,10 +1200,13 @@ jQuery(document).ready(function ($) {
             jQuery("#model-error-msg .ins-modal-body-content").text(
               "Warning Something's not quite right. Please try again and if the problem persists please contact the team using the 'Contact Us' button in the footer."
             );
-            addErrorMessage("api_call_failed_postcode", "Warning Something's not quite right. Please try again and if the problem persists please contact the team using the 'Contact Us' button in the footer.");
+            addErrorMessage(
+              "api_call_failed_postcode",
+              "Warning Something's not quite right. Please try again and if the problem persists please contact the team using the 'Contact Us' button in the footer."
+            );
             $("#save_and_continue1").removeAttr("data-target");
             $("#save_and_continue1").removeAttr("data-toggle");
-          } else if(statusCode == 500){
+          } else if (statusCode == 500) {
             jQuery("#model-error-msg").removeClass("d-none");
             jQuery("#model-error-msg .ins-modal-body-content").text(
               "Warning Something's not quite right. Please try again and if the problem persists please contact the team using the 'Contact Us' button in the footer."
@@ -1264,7 +1262,7 @@ jQuery(document).ready(function ($) {
   function buildPolicyUI(policyData) {
     let policyDetails = policyData.Insured;
     console.log(policyDetails);
-   InternalPolicyNumber = policyData.InternalPolicyNumber;
+    InternalPolicyNumber = policyData.InternalPolicyNumber;
     let options = "";
     options +=
       '<div class="form-group"><label class="form-label" style="display:inline-table;" > Name(s) of the Insured. Select everyone who was involved in the claim! </label>';
@@ -5277,23 +5275,23 @@ jQuery(document).ready(function ($) {
         );
         claimObject["coverCause"] = claimReason[0].akey;
         var yourArray = [];
-        let createClaimIds={};
-        let nameArray=[];
+        let createClaimIds = {};
+        let nameArray = [];
         if ($("input[data-ispolicyholder='true']:checked").length) {
           createClaimIds["MainContactClientId"] = $(
             "input[data-ispolicyholder='true']:checked"
           ).attr("data-clientId");
-          createClaimIds["clientId"]=$(
+          createClaimIds["clientId"] = $(
             "input[data-ispolicyholder='true']:checked"
           ).attr("data-clientId");
-          createClaimIds["internalPolicyNumber"]=$(
+          createClaimIds["internalPolicyNumber"] = $(
             "input[data-ispolicyholder='true']:checked"
           ).attr("data-PolicyNumber");
-          $("input[name='insured_1']:checked").each(function() {
+          $("input[name='insured_1']:checked").each(function () {
             yourArray.push($(this).attr("data-clientid"));
             nameArray.push($(this).val() + " " + $(this).attr("data-lastname"));
           });
-          yourArray = yourArray.filter(function(val) {
+          yourArray = yourArray.filter(function (val) {
             return createClaimIds["MainContactClientId"].indexOf(val) == -1;
           });
           yourArray = yourArray.filter(
@@ -5301,27 +5299,32 @@ jQuery(document).ready(function ($) {
           );
           createClaimIds["OtherInsuredClientIds"] = yourArray;
         } else {
-          $("input[name='insured_1']:checked").each(function(index) {
+          $("input[name='insured_1']:checked").each(function (index) {
             if (index == 0) {
-              createClaimIds["MainContactClientId"] = $(this).attr("data-clientid");
-              createClaimIds["clientId"]=$(this).attr("data-clientid");
-              createClaimIds["internalPolicyNumber"]=$(this).attr("data-PolicyNumber");
-              nameArray.push($(this).val() + " " + $(this).attr("data-lastname"));
+              createClaimIds["MainContactClientId"] =
+                $(this).attr("data-clientid");
+              createClaimIds["clientId"] = $(this).attr("data-clientid");
+              createClaimIds["internalPolicyNumber"] =
+                $(this).attr("data-PolicyNumber");
+              nameArray.push(
+                $(this).val() + " " + $(this).attr("data-lastname")
+              );
             } else {
               yourArray.push($(this).attr("data-clientid"));
             }
           });
           createClaimIds["OtherInsuredClientIds"] = yourArray;
         }
-        claimObject["clientId"]=createClaimIds.clientId;
-        claimObject["internalPolicyNumber"]=createClaimIds.internalPolicyNumber;
-        createClaimIds["namesArray"]=nameArray;
-          console.log("claimObject  -->",claimObject);
-          console.log("claimNames -->",createClaimIds);
-            jQuery("#claim-error-msg").addClass("d-none");
-            jQuery("#claim-sucess-msg").addClass("d-none");
-            $("#ClaimAPIModal").addClass("loader-text");
-            createClaimRequest(claimObject, "#save_and_continue3",createClaimIds);
+        claimObject["clientId"] = createClaimIds.clientId;
+        claimObject["internalPolicyNumber"] =
+          createClaimIds.internalPolicyNumber;
+        createClaimIds["namesArray"] = nameArray;
+        console.log("claimObject  -->", claimObject);
+        console.log("claimNames -->", createClaimIds);
+        jQuery("#claim-error-msg").addClass("d-none");
+        jQuery("#claim-sucess-msg").addClass("d-none");
+        $("#ClaimAPIModal").addClass("loader-text");
+        createClaimRequest(claimObject, "#save_and_continue3", createClaimIds);
         $("#ClaimAPIModal").modal("toggle");
         if ($("#section_3_header").length) {
           update_section_3();
@@ -5448,7 +5451,7 @@ jQuery(document).ready(function ($) {
       }
     }
   }
-  function createClaimRequest(claimObject, fieldId,createClaimIds) {
+  function createClaimRequest(claimObject, fieldId, createClaimIds) {
     let flag = false;
     let statusCode;
     $(".claim-number").empty();
@@ -5486,7 +5489,9 @@ jQuery(document).ready(function ($) {
             getJWTToken(fieldId);
           } else if (statusCode == 500) {
             jQuery("#claim-error-msg").removeClass("d-none");
-            jQuery("#claim-error-msg .claim-desc-message").text("Warning Something's not quite right. Please try again and if the problem persists please contact the team using the 'Contact Us' button in the footer.");
+            jQuery("#claim-error-msg .claim-desc-message").text(
+              "Warning Something's not quite right. Please try again and if the problem persists please contact the team using the 'Contact Us' button in the footer."
+            );
             console.log("error--->", result);
             addErrorMessage(
               "api_call_failed_rc",
@@ -5495,7 +5500,9 @@ jQuery(document).ready(function ($) {
             console.log("Internal server error");
           } else if (statusCode == 400) {
             jQuery("#claim-error-msg").removeClass("d-none");
-            jQuery("#claim-error-msg .claim-desc-message").text( "Warning Something's not quite right. Please try again and if the problem persists please contact the team using the 'Contact Us' button in the footer.");
+            jQuery("#claim-error-msg .claim-desc-message").text(
+              "Warning Something's not quite right. Please try again and if the problem persists please contact the team using the 'Contact Us' button in the footer."
+            );
             addErrorMessage(
               "api_call_failed_rc",
               "Warning Something's not quite right. Please try again and if the problem persists please contact the team using the 'Contact Us' button in the footer."
@@ -5506,7 +5513,9 @@ jQuery(document).ready(function ($) {
             );
           } else {
             jQuery("#claim-error-msg").removeClass("d-none");
-            jQuery("#claim-error-msg .claim-desc-message").text("Warning Something's not quite right. Please try again and if the problem persists please contact the team using the 'Contact Us' button in the footer.");
+            jQuery("#claim-error-msg .claim-desc-message").text(
+              "Warning Something's not quite right. Please try again and if the problem persists please contact the team using the 'Contact Us' button in the footer."
+            );
             addErrorMessage(
               "api_call_failed_rc",
               "Warning Something's not quite right. Please try again and if the problem persists please contact the team using the 'Contact Us' button in the footer."
@@ -5528,8 +5537,12 @@ jQuery(document).ready(function ($) {
           $("#helpdesk_ticket_custom_field_cf_otherclientid_2321673").val(
             createClaimIds.OtherInsuredClientIds
           );
-          $("#helpdesk_ticket_custom_field_cf_claimnames_2321673").val(createClaimIds.namesArray);
-          $("#helpdesk_ticket_custom_field_cf_internalpolicynumber_2321673").val(InternalPolicyNumber);
+          $("#helpdesk_ticket_custom_field_cf_claimnames_2321673").val(
+            createClaimIds.namesArray
+          );
+          $(
+            "#helpdesk_ticket_custom_field_cf_internalpolicynumber_2321673"
+          ).val(InternalPolicyNumber);
           $(".claim-number").empty();
           $(".claim-number").append(
             `Your Claim Number is ${ClaimInitiatedNumber}`
@@ -5939,23 +5952,37 @@ jQuery(document).ready(function ($) {
   //section 5 continue
   $(".save_draft_5").click(function () {
     var elem = document.getElementById("files_list");
-    let fileExtensionArray=["gif","jpeg","jpg","png","bmp","tiff","tif","pdf","doc","docx","xls","xlsx","txt","odt"]
-let FileExtensionValidateCounter=0;
-let fileExtension;
+    let fileExtensionArray = [
+      "gif",
+      "jpeg",
+      "jpg",
+      "png",
+      "bmp",
+      "tiff",
+      "tif",
+      "pdf",
+      "doc",
+      "docx",
+      "xls",
+      "xlsx",
+      "txt",
+      "odt",
+    ];
+    let FileExtensionValidateCounter = 0;
+    let fileExtension;
     if (elem.files.length) {
       let ele = ["api_call_failed_filelist"];
       clearError(ele);
       var files = [];
       var fileSize = [];
       for (var i = 0; i < elem.files.length; ++i) {
-        fileExtension=elem.files[i].name.split('.').pop();
-      if(fileExtensionArray.includes(fileExtension)){
-        files.push(elem.files[i].name);
-        fileSize.push(elem.files[i].size);
-      }
-      else{
-          FileExtensionValidateCounter=FileExtensionValidateCounter+1;
-      }
+        fileExtension = elem.files[i].name.split(".").pop();
+        if (fileExtensionArray.includes(fileExtension)) {
+          files.push(elem.files[i].name);
+          fileSize.push(elem.files[i].size);
+        } else {
+          FileExtensionValidateCounter = FileExtensionValidateCounter + 1;
+        }
       }
       var sum = fileSize.reduce(function (a, b) {
         return a + b;
@@ -5969,18 +5996,17 @@ let fileExtension;
         } else {
           add_section_5();
         }
-        if(!FileExtensionValidateCounter){
-          console.log("Make AN API")
-          jQuery("#overlay").removeClass("d-none").addClass("show loader-text")
+        if (!FileExtensionValidateCounter) {
+          console.log("Make AN API");
+          jQuery("#overlay").removeClass("d-none").addClass("show loader-text");
           getUploadFiles(elem.files, ".save_draft_5");
-      }else{
-          console.log("Show Error unsupported File Format ")
+        } else {
+          console.log("Show Error unsupported File Format ");
           addErrorMessage(
             "api_call_failed_filelist",
             "Unsupported File Format. Supported formats: gif,jpeg,jpg,png,bmp,tiff,tif,pdf,doc,docx,xls,xlsx,txt,odt"
           );
-      }
-       
+        }
       } else {
         console.log(
           " --------- Need to show error max file size should not more than 4 MB ----------------"
@@ -6015,24 +6041,38 @@ let fileExtension;
   function fileUploadCallback() {
     var elem = document.getElementById("files_list");
     if (elem.files.length) {
-      let fileExtensionArray=["gif","jpeg","jpg","png","bmp","tiff","tif","pdf","doc","docx","xls","xlsx","txt","odt"]
-      let FileExtensionValidateCounter=0;
+      let fileExtensionArray = [
+        "gif",
+        "jpeg",
+        "jpg",
+        "png",
+        "bmp",
+        "tiff",
+        "tif",
+        "pdf",
+        "doc",
+        "docx",
+        "xls",
+        "xlsx",
+        "txt",
+        "odt",
+      ];
+      let FileExtensionValidateCounter = 0;
       let fileExtension;
       let ele = ["api_call_failed_filelist"];
       clearError(ele);
       var files = [];
       var fileSize = [];
       for (var i = 0; i < elem.files.length; ++i) {
-        fileExtension=elem.files[i].name.split('.').pop();
-        if(fileExtensionArray.includes(fileExtension)){
+        fileExtension = elem.files[i].name.split(".").pop();
+        if (fileExtensionArray.includes(fileExtension)) {
           files.push(elem.files[i].name);
           fileSize.push(elem.files[i].size);
-        }
-        else{
-            FileExtensionValidateCounter=FileExtensionValidateCounter+1;
+        } else {
+          FileExtensionValidateCounter = FileExtensionValidateCounter + 1;
         }
       }
-      
+
       var sum = fileSize.reduce(function (a, b) {
         return a + b;
       }, 0);
@@ -6045,10 +6085,10 @@ let fileExtension;
         } else {
           add_section_5();
         }
-        console.log("files --->",files)
-        if(!FileExtensionValidateCounter){
-          console.log("Make AN API")
-          jQuery("#overlay").removeClass("d-none").addClass("show loader-text")
+        console.log("files --->", files);
+        if (!FileExtensionValidateCounter) {
+          console.log("Make AN API");
+          jQuery("#overlay").removeClass("d-none").addClass("show loader-text");
           getUploadFiles(elem.files, ".save_and_continue5");
           open_next(5);
           $("#section-4-button").css("background-color", "#4DC367");
@@ -6058,14 +6098,13 @@ let fileExtension;
           $("#section-5-button").children(":first").removeClass("fa-plus");
           $("#section-4-button").children(":first").addClass("fa-check");
           $("#section-5-button").children(":first").addClass("fa-check");
-      }else{
-          console.log("Show Error unsupported File Format ")
+        } else {
+          console.log("Show Error unsupported File Format ");
           addErrorMessage(
             "api_call_failed_filelist",
             "Unsupported File Format. Supported formats: gif,jpeg,jpg,png,bmp,tiff,tif,pdf,doc,docx,xls,xlsx,txt,odt"
           );
-      }
-       
+        }
       } else {
         console.log(
           " --------- Need to show error max file size should not more than 4 MB ----------------"
@@ -6121,8 +6160,8 @@ let fileExtension;
     }
   }
   function getUploadFiles(files, fieldId) {
-    console.log("--->",files)
-    console.log("--->",typeof files)
+    console.log("--->", files);
+    console.log("--->", typeof files);
     let statusCode;
     let flag = false;
     var formdata = new FormData();
@@ -6134,11 +6173,11 @@ let fileExtension;
     formdata.append("source", "OnlineClaims");
     formdata.append("subject", "Omni Documents");
     for (let file of files) {
-      console.log("iterate -->",file)
-      formdata.append("attachments[]",file,file.name );
+      console.log("iterate -->", file);
+      formdata.append("attachments[]", file, file.name);
     }
-  
-console.log("form data body --->",formdata)
+
+    console.log("form data body --->", formdata);
     var requestOptions = {
       method: "POST",
       headers: myHeaders,
@@ -6164,7 +6203,7 @@ console.log("form data body --->",formdata)
             getJWTToken(fieldId);
           }
         } else {
-          jQuery("#overlay").addClass("d-none").removeClass("show loader-text")
+          jQuery("#overlay").addClass("d-none").removeClass("show loader-text");
           if (jQuery(".fw-comments-wrapper").length > 0) {
             $("#new_helpdesk_note #helpdesk_note_submit").trigger("click");
           } else {
@@ -8529,12 +8568,12 @@ console.log("form data body --->",formdata)
       console.log("submit claim body --->", body);
     }
     jQuery(".new-ticket-submit-button")
-    .closest(".card-body")
-    .find(".form-group")
-    .before(
-      '<div class="invalid-feedback common_error">Please fill in all fields</div>'
-    );
-    jQuery("#overlay").removeClass("d-none").addClass("show loader-text")
+      .closest(".card-body")
+      .find(".form-group")
+      .before(
+        '<div class="invalid-feedback common_error">Please fill in all fields</div>'
+      );
+    jQuery("#overlay").removeClass("d-none").addClass("show loader-text");
     createSubmitClaim(body, ".new-ticket-dummy");
   });
   $(".ticket-detail-dummy").click(function () {
@@ -8544,7 +8583,9 @@ console.log("form data body --->",formdata)
     // claimnumber we can use global stored value
     console.log("Main ");
     let body = {
-      internalpolicyNumber: $("#helpdesk_ticket_custom_field_cf_internalpolicynumber_2321673").val(),
+      internalpolicyNumber: $(
+        "#helpdesk_ticket_custom_field_cf_internalpolicynumber_2321673"
+      ).val(),
       ClaimNumber: $(
         "#helpdesk_ticket_custom_field_cf_claim_number_2321673"
       ).val(),
@@ -9511,8 +9552,8 @@ console.log("form data body --->",formdata)
         ).val(),
         fieldTypeDate
       );
-    
-     ClaimQaAndAnswers.push(dateAdvisedJuryWitness);
+
+      ClaimQaAndAnswers.push(dateAdvisedJuryWitness);
       let checkRefundValue = $(
         "#helpdesk_ticket_custom_field_cf_have_you_received_any_refunds_or_compensation702973_2321673"
       ).val();
@@ -10574,12 +10615,12 @@ console.log("form data body --->",formdata)
       console.log("submit claim body --->", body);
     }
     jQuery("#helpdesk_ticket_submit")
-    .closest(".card-body")
-    .find(".form-group")
-    .before(
-      '<div class="invalid-feedback common_error">Please fill in all fields</div>'
-    );
-    jQuery("#overlay").removeClass("d-none").addClass("show loader-text")
+      .closest(".card-body")
+      .find(".form-group")
+      .before(
+        '<div class="invalid-feedback common_error">Please fill in all fields</div>'
+      );
+    jQuery("#overlay").removeClass("d-none").addClass("show loader-text");
     updateSubmitClaim(body, ".ticket-detail-dummy");
   });
   function submitClaimBody(qkeyValue, akeyValue, fieldType) {
@@ -10680,7 +10721,7 @@ console.log("form data body --->",formdata)
       .then(function (result) {
         console.log("--->", result, statusCode);
         if (flag) {
-          jQuery("#overlay").addClass("d-none").removeClass("show loader-text")
+          jQuery("#overlay").addClass("d-none").removeClass("show loader-text");
           if (statusCode == 401) {
             getJWTToken(fieldId);
           } else if (statusCode == 400) {
@@ -10689,10 +10730,7 @@ console.log("form data body --->",formdata)
           } else if (statusCode == 422) {
             addErrorMessage("common_error", result);
           } else if (statusCode == 404) {
-            addErrorMessage(
-              "common_error",
-              result
-            );
+            addErrorMessage("common_error", result);
           }
         } else {
           let ele = ["common_error"];
@@ -10729,7 +10767,7 @@ console.log("form data body --->",formdata)
       .then(function (result) {
         console.log("--->", result, statusCode);
         if (flag) {
-          jQuery("#overlay").addClass("d-none").removeClass("show loader-text")
+          jQuery("#overlay").addClass("d-none").removeClass("show loader-text");
           if (statusCode == 401) {
             getJWTToken(fieldId);
           } else if (statusCode == 400) {
@@ -10738,10 +10776,7 @@ console.log("form data body --->",formdata)
           } else if (statusCode == 422) {
             addErrorMessage("common_error", result);
           } else if (statusCode == 404) {
-            addErrorMessage(
-              "common_error",
-              result
-            );
+            addErrorMessage("common_error", result);
           }
         } else {
           let ele = ["common_error"];
