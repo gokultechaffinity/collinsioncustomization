@@ -1,6 +1,7 @@
 //collinsion.js
-//latest
+//live
 jQuery(document).ready(function ($) {
+  let code;
   $("#chat-icon").hide();
   $("#helpdesk_ticket_subject").closest(".form-group").hide();
   $("#helpdesk_ticket_custom_field_cf_mainclientid_2321673")
@@ -25,7 +26,21 @@ jQuery(document).ready(function ($) {
     .append(
       '<div class="invalid-feedback api_call_failed_postcode">API call failed</div>'
     );
-
+    $("#helpdesk_ticket_custom_field_cf_policy_email_2321673")
+    .closest(".form-group")
+    .append(
+      '<div id="captcha-section"><label>Enter Captcha</label><div id="captcha"></div><input type="text" placeholder="Captcha" id="cpatchaTextBox"/></div>'
+    );
+    $("#helpdesk_ticket_custom_field_cf_date_of_birth_2321673")
+    .closest(".form-group")
+    .append(
+      '<div id="captcha-section"><label>Enter Captcha</label><div id="captcha"></div><input type="text" placeholder="Captcha" id="cpatchaTextBox"/></div>'
+    );
+    $("#captcha-section")
+    .closest(".form-group")
+    .append(
+      '<div class="invalid-feedback captcha_failed">API call failed</div>'
+    );
   $(
     "#invalid-feedback helpdesk_ticket_custom_field_cf_reason_for_claim_2321673"
   )
@@ -100,6 +115,7 @@ jQuery(document).ready(function ($) {
   //"claim-sandbox.collinsonnis.com";
   let succesStatus = [200, 201, 202, 203, 204, 205, 206, 207, 208, 226];
   getJWTToken();
+  createCaptcha();
   function getJWTToken(fieldId) {
     var flag = false;
     var statusCode;
@@ -128,6 +144,31 @@ jQuery(document).ready(function ($) {
         }
       })
       .catch((error) => console.log(error));
+  }
+  function createCaptcha() {
+    //clear the contents of captcha div first 
+    document.getElementById('captcha').innerHTML = "";
+    var charsArray =
+    "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ@!#$%^&*";
+    var lengthOtp = 6;
+    var captcha = [];
+    for (var i = 0; i < lengthOtp; i++) {
+      //below code will not allow Repetition of Characters
+      var index = Math.floor(Math.random() * charsArray.length + 1); //get the next character from the array
+      if (captcha.indexOf(charsArray[index]) == -1)
+        captcha.push(charsArray[index]);
+      else i--;
+    }
+    var canv = document.createElement("canvas");
+    canv.id = "captcha";
+    canv.width = 100;
+    canv.height = 50;
+    var ctx = canv.getContext("2d");
+    ctx.font = "25px Georgia";
+    ctx.strokeText(captcha.join(""), 0, 30);
+    //storing captcha so that can validate you can save it somewhere else according to your specific requirements
+    code = captcha.join("");
+    document.getElementById("captcha").appendChild(canv); // adds the canvas to the body element
   }
   //email verification function
   function isEmail(email) {
@@ -745,7 +786,7 @@ jQuery(document).ready(function ($) {
   $("#save_and_continue1").click(function () {
     if ($("#title").hasClass("EasyJet")) {
       //checkRecaptcha
-
+      if (document.getElementById("cpatchaTextBox").value == code) {
       if (
         $(
           "#helpdesk_ticket_custom_field_cf_policy_number454080_2321673"
@@ -824,6 +865,14 @@ jQuery(document).ready(function ($) {
           ]);
         }
       }
+    }else{
+      console.log("Invalid captcha")
+      addErrorMessage(
+        "captcha_failed",
+        "Invalid Captcha. Please re-enter captcha"
+      );
+      createCaptcha();
+    }
 
       if ($("#cb").prop("checked") == true) {
         $("#continue").attr("data-dismiss", "modal");
@@ -847,6 +896,7 @@ jQuery(document).ready(function ($) {
       $("#title").hasClass("VHI") ||
       $("#title").hasClass("ColumbusItaly")
     ) {
+      if (document.getElementById("cpatchaTextBox").value == code) {
       if (
         $(
           "#helpdesk_ticket_custom_field_cf_policy_number454080_2321673"
@@ -934,6 +984,14 @@ jQuery(document).ready(function ($) {
           $("#save_and_continue1").removeAttr("data-toggle");
         }
       }
+    }else{
+      console.log("Invalid captcha")
+      addErrorMessage(
+        "captcha_failed",
+        "Invalid Captcha. Please re-enter captcha"
+      );
+      createCaptcha();
+    }
       if ($("#cb").prop("checked") == true) {
         $("#continue").attr("data-dismiss", "modal");
         //grey out continue - opposite - for different schemes
@@ -953,6 +1011,7 @@ jQuery(document).ready(function ($) {
         $("#continue").removeAttr("data-dismiss");
       }
     } else if ($("#title").hasClass("CollinsonUK")) {
+      if (document.getElementById("cpatchaTextBox").value == code) {
       if (
         $(
           "#helpdesk_ticket_custom_field_cf_policy_number454080_2321673"
@@ -1039,6 +1098,14 @@ jQuery(document).ready(function ($) {
           $("#save_and_continue1").removeAttr("data-toggle");
         }
       }
+    }else{
+      console.log("Invalid captcha")
+      addErrorMessage(
+        "captcha_failed",
+        "Invalid Captcha. Please re-enter captcha"
+      );
+      createCaptcha();
+    }
       if ($("#cb").prop("checked") == true) {
         $("#continue").attr("data-dismiss", "modal");
         //grey out continue - opposite - for different schemes
