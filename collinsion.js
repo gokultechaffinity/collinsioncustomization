@@ -6411,6 +6411,11 @@ jQuery(document).ready(function ($) {
       "#section_6_header"
     );
 
+    //summary
+    $("<strong  id='summary'>If you notice a mistake and need to amend this, please select the relevant section above to edit these details</strong>").insertBefore(
+      "#great_line_6"
+    );
+
     for (let i = 1; i < el_number + 1; i++) {
       var label = $("#collapseSection6")
         .children(".card-body.ins-card")
@@ -6447,6 +6452,10 @@ jQuery(document).ready(function ($) {
       $(
         "<p class='section_6_line'>" + label + " : " + value + "</p>"
       ).insertBefore("#great_line_6");
+      //summary
+      $("<strong  id='summary'>If you notice a mistake and need to amend this, please select the relevant section above to edit these details</strong>").insertBefore(
+        "#great_line_6"
+      );
     }
   }
 
