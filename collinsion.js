@@ -6428,8 +6428,8 @@ jQuery(document).ready(function ($) {
     }
 
     //summary
-    $("<strong  id='summary'>If you notice a mistake and need to amend this, please select the relevant section above to edit these details</strong>").insertBefore(
-      ".btn.fw-primary-button.new-ticket-dummy.for-section-7"
+    $("<strong  id='summary'>If you notice a mistake and need to amend this, please select the relevant section above to edit these details</strong>").insertAfter(
+      ".summary_divider"
     );
   }
 
