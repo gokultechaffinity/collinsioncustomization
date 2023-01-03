@@ -6429,7 +6429,7 @@ jQuery(document).ready(function ($) {
 
     //summary
     $("<strong  id='summary'>If you notice a mistake and need to amend this, please select the relevant section above to edit these details</strong>").insertAfter(
-      ".summary_divider"
+      "#great_line_6"
     );
   }
 
