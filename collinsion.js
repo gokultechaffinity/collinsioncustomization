@@ -6412,7 +6412,7 @@ jQuery(document).ready(function ($) {
     );
 
     //summary
-    $("<strong  id='summary'>If you notice a mistake and need to amend this, please select the relevant section above to edit these details</strong>").insertBefore(
+    $("<strong  id='summary'>If you notice a mistake and need to amend this, please select the relevant section above to edit these details</strong>").insertAfter(
       "#great_line_6"
     );
 
@@ -6452,10 +6452,6 @@ jQuery(document).ready(function ($) {
       $(
         "<p class='section_6_line'>" + label + " : " + value + "</p>"
       ).insertBefore("#great_line_6");
-      //summary
-      $("<strong  id='summary'>If you notice a mistake and need to amend this, please select the relevant section above to edit these details</strong>").insertBefore(
-        "#great_line_6"
-      );
     }
   }
 
