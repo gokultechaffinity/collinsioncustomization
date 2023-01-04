@@ -26,6 +26,27 @@ jQuery(document).ready(function ($) {
     .append(
       '<div class="invalid-feedback api_call_failed_postcode">API call failed</div>'
     );
+
+    if ($("#title").hasClass("ColumbusItaly")){
+      if (!$(".edit_helpdesk_ticket").length > 0){
+        $("#helpdesk_ticket_custom_field_cf_policy_email_2321673")
+        .closest(".form-group")
+        .append(
+          '<div id="captcha-section"><label>Inserisci Captcha</label><div id="captcha"></div><input type="text" placeholder="Captcha" id="cpatchaTextBox"/></div>'
+        );
+        $("#helpdesk_ticket_custom_field_cf_date_of_birth_2321673")
+        .closest(".form-group")
+        .append(
+          '<div id="captcha-section"><label>Inserisci Captcha</label><div id="captcha"></div><input type="text" placeholder="Captcha" id="cpatchaTextBox"/></div>'
+        );
+        $("#captcha-section")
+        .closest(".form-group")
+        .append(
+          '<div class="invalid-feedback captcha_failed">API call failed</div>'
+        );
+      }
+
+    }else{
     if (!$(".edit_helpdesk_ticket").length > 0){
       $("#helpdesk_ticket_custom_field_cf_policy_email_2321673")
       .closest(".form-group")
@@ -42,6 +63,7 @@ jQuery(document).ready(function ($) {
       .append(
         '<div class="invalid-feedback captcha_failed">API call failed</div>'
       );
+    }
     }
 
 
