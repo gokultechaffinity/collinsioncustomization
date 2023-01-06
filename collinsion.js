@@ -136,7 +136,12 @@ jQuery(document).ready(function ($) {
     VHI: "IE",
   };
   let InternalPolicyNumber;
-  let domainURL = "claim-proxy-lower.collinsonnis.com";
+  let domainURL;
+  if($("#title").hasClass("VHI")||$("#title").hasClass("EasyJet")){
+    domainURL = "claim-proxy.collinsonnis.com";
+  }else {
+    domainURL = "claim-proxy-lower.collinsonnis.com";
+  }
   //"claim-proxy-lower.collinsonnis.com";
   //"claim-sandbox.collinsonnis.com";
   let succesStatus = [200, 201, 202, 203, 204, 205, 206, 207, 208, 226];
