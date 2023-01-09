@@ -5,8 +5,7 @@ jQuery(document).ready(function ($) {
 //hide two options for Italy
   $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").click(function(){
     if ($("#title").hasClass("ColumbusItaly")){
-      $("select[id='helpdesk_ticket_custom_field_cf_reason_for_claim_2321673']").closest("option[value='Missed flight or departure']").hide();
-      $("select[id='helpdesk_ticket_custom_field_cf_reason_for_claim_2321673']").closest("option[value='Substitute Accommodation - change to accommodation during trip']").hide();
+      console.log($("select[id='helpdesk_ticket_custom_field_cf_reason_for_claim_2321673']").closest("option"));
     };
   });
 
