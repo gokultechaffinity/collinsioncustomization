@@ -5,7 +5,7 @@ jQuery(document).ready(function ($) {
 //hide two options for Italy
  
   if ($("#title").hasClass("ColumbusItaly")){
-    $('div[data-value="Medical expenses abroad & repatriation cost"]').remove();
+    $('div[data-value="Missed flight or departure"]').remove();
     $('div[data-value="Substitute Accommodation - change to accommodation during trip"]').remove();
   };
  
