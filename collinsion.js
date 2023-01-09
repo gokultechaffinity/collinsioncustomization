@@ -6406,15 +6406,6 @@ jQuery(document).ready(function ($) {
 
         console.log(accountHolder, accountNumber, sortCode);
 
-        //method one params
-        //iBan
-        //CountryCode
-
-        //method two params
-        //accountNumber
-        //sortCode
-        //countryCode
-
         if (countryCode == "GB") {
           ValidateBankMethodTwo(
             accountNumber,
@@ -6474,10 +6465,17 @@ jQuery(document).ready(function ($) {
       ).insertBefore("#great_line_6");
     }
 
+    if($("#title").hasClass("ColumbusItaly")){
+      //summary
+    $("<strong  id='summary'>Se noti un errore e devi modificarlo, seleziona la sezione pertinente in alto per modificare questi dettagli</strong>").insertAfter(
+      "#great_line_6"
+    );
+    }else{
     //summary
     $("<strong  id='summary'>If you notice a mistake and need to amend this, please select the relevant section above to edit these details</strong>").insertAfter(
       "#great_line_6"
     );
+    }
   }
 
   function update_section_6() {
@@ -6502,24 +6500,6 @@ jQuery(document).ready(function ($) {
     }
   }
 
-  //declaration removed
-  // function addDeclaraion() {
-  //   $("<strong id='declaration_header'>Declaration</strong>").insertAfter(
-  //     "#great_line_6"
-  //   );
-  //   $("<hr class='summary_divider' id='great_line_7'>").insertAfter(
-  //     "#declaration_header"
-  //   );
-
-  //   $(
-  //     "<p>I declare that I have completed this form to the best of knowledge and have read and understood the contents of <br>this page and form. I consent to Collinson using my data to process this claim and am aware that this will involve <br>sending my data to my insurer along with my clinical history. I am aware that my insurer will take any <br>excesses as per my policy. Details can be found in the Collinson Privacy Policy</p>"
-  //   ).insertBefore("#great_line_7");
-  //   $("<br>").insertBefore("#great_line_7");
-
-  //   $(
-  //     '<input class="ins_checkbox_paragraph" id="cb2" type="checkbox" ><p class="ins_consent_paragraph"> I consent</p<>'
-  //   ).insertBefore("#great_line_7");
-  //}
   function ValidateBankMethodOne(iBanNumber, countryCode, fieldId) {
     let flag = false;
     let statusCode;
