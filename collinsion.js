@@ -5906,6 +5906,7 @@ jQuery(document).ready(function ($) {
     "Any CANCELLATION claim due to COVID-19": {
       paragraph:
         "We'll need these important documents to make a decision about your claim:<br>Your trip Booking Invoice showing the cost, your name and departure & return dates.<br>Cancellation Invoice from each company you booked with verifying the cancellation charge.<br>Evidence of a Positive Covid test from the NHS/HSE, Private Testing company or your Doctor. We accept Email, Letter or SMS confirmation but we are unable to accept photographs of a home Lateral flow test on their own.<br>If you need to gather this information, you can come to the Existing Claim section of our site and continue with your claim.<br>",
+      italian_paragraph:"Per favore carica l'informazione richiesta per il tuo sinistro:<br>Documento attestante il viaggio: può essere la prenotazione del biglietto aereo, una prenotazione, ricevuta albergo o simile.<br>Documento di cancellazione della prenotazione che indichi le somme a tuo carico. Questo per ogni prenotazione.<br>Documenti che evidenzino la necessità di disdetta come la conferma della prenotazione per eventuale test Coronavirus e evidenza di esito positivo. È sufficiente solo la conferma tramite e-mail, non accettiamo la conferma tramite SMS.<br>Se non hai tutte le informazioni, potrai salvare la tua richiesta e riprenderla in un secondo momento utilizzando il pulsante sinistro esistente ed inserendo il numero di rieferimento.",
       titles: ["Booking Invoice", "Other Docs"],
       images: [
         "https://ins-multiforms.s3.eu-central-1.amazonaws.com/Document_Icons/Booking+Invoices.png",
@@ -5915,7 +5916,8 @@ jQuery(document).ready(function ($) {
     "Baggage - personal items damaged": {
       paragraph:
         "We'll need these important documents to make a decision about your claim:<br>Your trip Booking Invoice showing the cost, your name and departure & return dates.<br>Confirmation from a trusted company confirming the cost of repair or that it's beyond economical repair.<br>If you need to gather this information, you can come to the Existing Claim section of our site and continue with your claim.<br>",
-      titles: ["Booking Invoice", "Report"],
+      italian_paragraph: "Per favore carica l'informazione richiesta per il tuo sinistro:<br>Documento attestante il viaggio: può essere la prenotazione del biglietto aereo, una prenotazione, ricevuta albergo o simile.<br>Certificazione, rilasciata da un professionista, che confermi il costo di riparabilità o la non riparabilità del bene.<br>Se non hai tutte le informazioni, potrai salvare la tua richiesta e riprenderla in un secondo momento utilizzando il pulsante sinistro esistente ed inserendo il numero di rieferimento.",
+        titles: ["Booking Invoice", "Report"],
       images: [
         "https://ins-multiforms.s3.eu-central-1.amazonaws.com/Document_Icons/Booking+Invoices.png",
         "https://ins-multiforms.s3.eu-central-1.amazonaws.com/Document_Icons/Report.png",
@@ -5924,7 +5926,8 @@ jQuery(document).ready(function ($) {
     "Baggage - personal items lost or stolen": {
       paragraph:
         "We'll need these important documents to make a decision about your claim:<br>Your trip Booking Invoice showing the cost, your name and departure & return dates.<br>Loss Report confirming the circumstances and the date/time at which you reported to the relevant person.<br>Proof of Ownership for the items being claimed.<br>If you need to gather this information, you can come to the Existing Claim section of our site and continue with your claim.",
-      titles: ["Booking Invoice", "Report"],
+      italian_paragraph:"Per favore carica l'informazione richiesta per il tuo sinistro:<br>Documento attestante il viaggio: può essere la prenotazione del biglietto aereo, una prenotazione, ricevuta albergo o simile.<br>Denuncia alle autorità locali che confermi gli eventi da cui è scaturito il sinistro.<br>Scontrino/ricevuta d'acquisto per il bene alla base del sinistro.<br>Se non hai tutte le informazioni, potrai salvare la tua richiesta e riprenderla in un secondo momento utilizzando il pulsante sinistro esistente ed inserendo il numero di rieferimento.",
+        titles: ["Booking Invoice", "Report"],
       images: [
         "https://ins-multiforms.s3.eu-central-1.amazonaws.com/Document_Icons/Booking+Invoices.png",
         "https://ins-multiforms.s3.eu-central-1.amazonaws.com/Document_Icons/Report.png",
@@ -5933,7 +5936,8 @@ jQuery(document).ready(function ($) {
     "Baggage - suitcase hasn't arrived on time": {
       paragraph:
         "We'll need these important documents to make a decision about your claim:<br>Your trip Booking Invoice showing the cost, your name and departure & return dates.<br>A PIR (Property Irregularity Report) from your transport provider confirming your luggage was delayed.<br>Receipts for any emergency items you had to buy.<br>If you need to gather this information, you can come to the Existing Claim section of our site and continue with your claim.",
-      titles: ["Booking Invoice", "Other Docs"],
+      italian_paragraph: "Per favore carica l'informazione richiesta per il tuo sinistro:<br>Documento attestante il viaggio: può essere la prenotazione del biglietto aereo, una prenotazione, ricevuta albergo o simile.<br>Il rapporto di irregolarità bagaglio rilasciato dal vettore.<br>Scontrino/ricevuta d'acquisto per il bene di prima necessità.<br>Se non hai tutte le informazioni, potrai salvare la tua richiesta e riprenderla in un secondo momento utilizzando il pulsante sinistro esistente ed inserendo il numero di rieferimento.",
+        titles: ["Booking Invoice", "Other Docs"],
       images: [
         "https://ins-multiforms.s3.eu-central-1.amazonaws.com/Document_Icons/Booking+Invoices.png",
         "https://ins-multiforms.s3.eu-central-1.amazonaws.com/Document_Icons/Other+doc.png",
@@ -5942,7 +5946,8 @@ jQuery(document).ready(function ($) {
     "Cancelled trip - (NOT related to COVID-19)": {
       paragraph:
         "We'll need these important documents to make a decision about your claim:<br>Your trip Booking Invoice showing the cost, your name and departure & return dates.<br>Cancellation Invoice from each company you booked with verifying the cancellation charge.<br>Documents that show the need to cancel e.g. a Medical Letter or Delay Report.<br>If you need to gather this information, you can come to the Existing Claim section of our site and continue with your claim.",
-      titles: ["Booking Invoice", "Report"],
+      italian_paragraph: "Per favore carica l'informazione richiesta per il tuo sinistro:<br>Documento attestante il viaggio: può essere la prenotazione del biglietto aereo, una prenotazione, ricevuta albergo o simile.<br>Documento di cancellazione della prenotazione che indichi le somme a tuo carico. Questo per ogni prenotazione.<br>Documenti che evidenzino la necessità di disdetta Documentazione che indichi la necessità di cancellare il viaggio es. Documentazione medica.<br>Se non hai tutte le informazioni, potrai salvare la tua richiesta e riprenderla in un secondo momento utilizzando il pulsante sinistro esistente ed inserendo il numero di rieferimento.",
+        titles: ["Booking Invoice", "Report"],
       images: [
         "https://ins-multiforms.s3.eu-central-1.amazonaws.com/Document_Icons/Booking+Invoices.png",
         "https://ins-multiforms.s3.eu-central-1.amazonaws.com/Document_Icons/Report.png",
@@ -5951,7 +5956,8 @@ jQuery(document).ready(function ($) {
     "Curtailment – returned home early": {
       paragraph:
         "We'll need these important documents to make a decision about your claim:<br>Your trip Booking Invoice showing the cost, your name and departure & return dates. <br>Any other relevant documentation to support your claim.<br>If you need to gather this information, you can come to the Existing Claim section of our site and continue with your claim.",
-      titles: ["Booking Invoice", "Other Docs"],
+      italian_paragraph:"Per favore carica l'informazione richiesta per il tuo sinistro:<br>Documento attestante il viaggio: può essere la prenotazione del biglietto aereo, una prenotazione, ricevuta albergo o simile.<br>Qualsiasi altro documento che sia rilevante per il tuo sinistro.<br>Se non hai tutte le informazioni, potrai salvare la tua richiesta e riprenderla in un secondo momento utilizzando il pulsante sinistro esistente ed inserendo il numero di rieferimento.",
+        titles: ["Booking Invoice", "Other Docs"],
       images: [
         "https://ins-multiforms.s3.eu-central-1.amazonaws.com/Document_Icons/Booking+Invoices.png",
         "https://ins-multiforms.s3.eu-central-1.amazonaws.com/Document_Icons/Other+doc.png",
@@ -5960,7 +5966,8 @@ jQuery(document).ready(function ($) {
     "Dental expenses whilst abroad": {
       paragraph:
         "We'll need these important documents to make a decision about your claim:<br>Your trip Booking Invoice showing the cost, your name and departure & return dates.<br>Medical document from your treating dentist or medical facility.<br>Receipts and Invoices relating to the medical expenses you're claiming for.<br>If you need to gather this information, you can come to the Existing Claim section of our site and continue with your claim.",
-      titles: ["Booking Invoice", "Other Docs"],
+      italian_paragraph:"Per favore carica l'informazione richiesta per il tuo sinistro:<br>Documento attestante il viaggio: può essere la prenotazione del biglietto aereo, una prenotazione, ricevuta albergo o simile.<br>Ricevuta e certificato medico rilasciato dal dentista.<br>Ricevute e fatture relative alle spese mediche che stai richiedendo.<br>Se non hai tutte le informazioni, potrai salvare la tua richiesta e riprenderla in un secondo momento utilizzando il pulsante sinistro esistente ed inserendo il numero di rieferimento.",
+        titles: ["Booking Invoice", "Other Docs"],
       images: [
         "https://ins-multiforms.s3.eu-central-1.amazonaws.com/Document_Icons/Booking+Invoices.png",
         "https://ins-multiforms.s3.eu-central-1.amazonaws.com/Document_Icons/Other+doc.png",
@@ -5969,7 +5976,8 @@ jQuery(document).ready(function ($) {
     "Flight or Travel delayed": {
       paragraph:
         "We'll need these important documents to make a decision about your claim:<br>Your trip Booking Invoice showing the cost, your name and departure & return dates. <br>A Delay Report or Evidence from the travel provider which confirms the reason and length of the delay.<br>If you need to gather this information, you can come to the Existing Claim section of our site and continue with your claim.",
-      titles: ["Booking Invoice", "Report"],
+      italian_paragraph:"Per favore carica l'informazione richiesta per il tuo sinistro:<br>Documento attestante il viaggio: può essere la prenotazione del biglietto aereo, una prenotazione, ricevuta albergo o simile.<br>Qualsiasi informazione che possa confermare la motivazione e la durata del ritardo di viaggio.<br>Se non hai tutte le informazioni, potrai salvare la tua richiesta e riprenderla in un secondo momento utilizzando il pulsante sinistro esistente ed inserendo il numero di rieferimento.",
+        titles: ["Booking Invoice", "Report"],
       images: [
         "https://ins-multiforms.s3.eu-central-1.amazonaws.com/Document_Icons/Booking+Invoices.png",
         "https://ins-multiforms.s3.eu-central-1.amazonaws.com/Document_Icons/Report.png",
@@ -5978,7 +5986,8 @@ jQuery(document).ready(function ($) {
     "Medical expenses abroad & repatriation cost": {
       paragraph:
         "We'll need these important documents to make a decision about your claim:<br>Your trip Booking Invoice showing the cost, your name and departure & return dates.<br>Medical document from your treating doctor or medical facility.<br>Receipts and Invoices relating to the medical expenses you're claiming for.<br>If you need to gather this information, you can come to the Existing Claim section of our site and continue with your claim.",
-      titles: ["Booking Invoice", "Other Doc", "Other invoice"],
+      italian_paragraph:"Per favore carica l'informazione richiesta per il tuo sinistro:<br>Documento attestante il viaggio: può essere la prenotazione del biglietto aereo, una prenotazione, ricevuta albergo o simile.<br>Ricevuta e certificato medico rilasciato dal dottore.<br>Ricevute e fatture relative alle spese mediche che stai richiedendo.<br>Se non hai tutte le informazioni, potrai salvare la tua richiesta e riprenderla in un secondo momento utilizzando il pulsante sinistro esistente ed inserendo il numero di rieferimento.",
+        titles: ["Booking Invoice", "Other Doc", "Other invoice"],
       images: [
         " https://ins-multiforms.s3.eu-central-1.amazonaws.com/Document_Icons/Booking+Invoices.png",
         "https://ins-multiforms.s3.eu-central-1.amazonaws.com/Document_Icons/Other+doc.png",
@@ -5988,7 +5997,8 @@ jQuery(document).ready(function ($) {
     "Missed flight or departure": {
       paragraph:
         "We'll need these important documents to make a decision about your claim:<br>Your trip Booking Invoice showing the cost, your name and departure & return dates.<br>Any other relevant documentation to support your claim.<br>If you need to gather this information, you can come to the Existing Claim section of our site and continue with your claim.",
-      titles: ["Booking Invoice", "Other Docs"],
+      italian_paragraph:"Pending translation....",
+        titles: ["Booking Invoice", "Other Docs"],
       images: [
         "https://ins-multiforms.s3.eu-central-1.amazonaws.com/Document_Icons/Booking+Invoices.png",
         "https://ins-multiforms.s3.eu-central-1.amazonaws.com/Document_Icons/Other+doc.png",
@@ -5997,7 +6007,8 @@ jQuery(document).ready(function ($) {
     "Substitute Accommodation - change to accommodation during trip": {
       paragraph:
         "We'll need these important documents to make a decision about your claim:<br>Your trip Booking Invoice showing the cost, your name and departure & return dates.<br>Any other relevant documentation to support your claim.<br>If you need to gather this information, you can come to the Existing Claim section of our site and continue with your claim.",
-      titles: ["Booking Invoice", "Other Docs"],
+        italian_paragraph:"Pending translation....",
+        titles: ["Booking Invoice", "Other Docs"],
       images: [
         "https://ins-multiforms.s3.eu-central-1.amazonaws.com/Document_Icons/Booking+Invoices.png",
         "https://ins-multiforms.s3.eu-central-1.amazonaws.com/Document_Icons/Other+doc.png",
@@ -6006,7 +6017,8 @@ jQuery(document).ready(function ($) {
     "Winter sports - lift pass, equipment or piste closure": {
       paragraph:
         "We'll need these important documents to make a decision about your claim:<br>Your trip Booking Invoice showing the cost, your name and departure & return dates.<br>Any other relevant documentation to support your claim.<br>If you need to gather this information, you can come to the Existing Claim section of our site and continue with your claim.",
-      titles: ["Booking Invoice", "Other Docs"],
+      italian_paragraph:"Per favore carica l'informazione richiesta per il tuo sinistro:<br>Documento attestante il viaggio: può essere la prenotazione del biglietto aereo, una prenotazione, ricevuta albergo o simile.<br>Qualsiasi altro documento che sia rilevante per il tuo sinistro.<br>Se non hai tutte le informazioni, potrai salvare la tua richiesta e riprenderla in un secondo momento utilizzando il pulsante sinistro esistente ed inserendo il numero di rieferimento.",
+        titles: ["Booking Invoice", "Other Docs"],
       images: [
         "https://ins-multiforms.s3.eu-central-1.amazonaws.com/Document_Icons/Booking+Invoices.png",
         "https://ins-multiforms.s3.eu-central-1.amazonaws.com/Document_Icons/Other+doc.png",
@@ -6037,11 +6049,19 @@ jQuery(document).ready(function ($) {
         $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() !=
         ""
       ) {
-        insertParagraph(
-          reasonForClaimObj[
-            $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val()
-          ]["paragraph"]
-        );
+        if($("#title").hasClass("ColumbusItaly")){
+          insertParagraph(
+            reasonForClaimObj[
+              $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val()
+            ]["italian_paragraph"]
+          );
+        }else{
+          insertParagraph(
+            reasonForClaimObj[
+              $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val()
+            ]["paragraph"]
+          );
+        }
       }
     }
   );
