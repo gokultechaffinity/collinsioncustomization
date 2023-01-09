@@ -3,11 +3,12 @@
 jQuery(document).ready(function ($) {
   let code;
 //hide two options for Italy
-  $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").click(function(){
-    if ($("#title").hasClass("ColumbusItaly")){
-      console.log($("select[id='helpdesk_ticket_custom_field_cf_reason_for_claim_2321673']").closest("option"));
-    };
-  });
+ 
+  if ($("#title").hasClass("ColumbusItaly")){
+    $('div[data-value="Medical expenses abroad & repatriation cost"]').remove();
+    $('div[data-value="Substitute Accommodation - change to accommodation during trip"]').remove();
+  };
+ 
 
   $("#chat-icon").hide();
   $("#helpdesk_ticket_subject").closest(".form-group").hide();
