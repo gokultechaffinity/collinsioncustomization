@@ -4,10 +4,12 @@ jQuery(document).ready(function ($) {
   let code;
 //hide two options for Italy
  
-  if ($("#title").hasClass("ColumbusItaly")){
-    $('div[data-value="Missed flight or departure"]').remove();
-    $('div[data-value="Substitute Accommodation - change to accommodation during trip"]').remove();
-  };
+  $(document.body).click(function(){
+    if ($("#title").hasClass("ColumbusItaly")){
+      $('div[data-value="Missed flight or departure"]').remove();
+      $('div[data-value="Substitute Accommodation - change to accommodation during trip"]').remove();
+    };
+  })
  
 
   $("#chat-icon").hide();
