@@ -112,6 +112,7 @@ jQuery(document).ready(function ($) {
   let countryPortal = {
     SagaPostOfficeColumbusUK: "GB",
     VHI: "IE",
+    ColumbusItaly:"IT",
   };
   let InternalPolicyNumber;
   let domainURL = "claim-proxy-lower.collinsonnis.com";
@@ -6291,8 +6292,12 @@ jQuery(document).ready(function ($) {
   //section 6 continue
   $("#save_and_continue6").click(function () {
     if ($("#title").hasClass("VHI") || $("#title").hasClass("ColumbusItaly")) {
-      let countryCode = countryPortal.VHI;
-
+      let countryCode ;
+      if($("#title").hasClass("VHI")){
+        countryCode = countryPortal.VHI;
+      }else {
+        countryCode = countryPortal.ColumbusItaly;
+      }
       payment_list = [
         "helpdesk_ticket_custom_field_cf_name_of_account_holder_2321673",
         "helpdesk_ticket_custom_field_cf_account_number_2321673",
