@@ -923,11 +923,12 @@ jQuery(document).ready(function ($) {
         } else if ($("#title").hasClass("EasyJet")) {
           $("#continue").css("background-color", "#FF6600");
         } else if ($("#title").hasClass("CollinsonUK")) {
-          $("#continue").css("background-color", "#FFFFFF");
+          $("#continue").css("background-color", "#004C99");
         } else if ($("#title").hasClass("ColumbusItaly")) {
           $("#continue").css("background-color", "#083050");
         }
-      } else {
+      }
+       else {
         $("#continue").removeAttr("data-dismiss");
         //grey out continue
         $("#continue").css("background-color", "grey");
