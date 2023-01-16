@@ -11450,8 +11450,8 @@ jQuery(document).ready(function ($) {
         show_and_hide(
           [
             ".form-group.helpdesk_ticket_custom_field_cf_who_has_tested_positive_for_coronavirus_2321673",
-            "label[for='helpdesk_ticket_custom_field_cf_when_did_the_symptoms_start939174_2321673']",
-            "#helpdesk_ticket_custom_field_cf_when_did_the_symptoms_start939174_2321673",
+            // "label[for='helpdesk_ticket_custom_field_cf_when_did_the_symptoms_start939174_2321673']",
+            // "#helpdesk_ticket_custom_field_cf_when_did_the_symptoms_start939174_2321673",
             ".form-group.helpdesk_ticket_custom_field_cf_what_type_of_test_was_taken_2321673",
             ".form-group.helpdesk_ticket_custom_field_cf_do_you_have_evidence_from_either_the_nhshse_private_testing_company_or_your_doctor_confirming_the_positive_covid_test_email_letter_sms_2321673",
             "label[for='helpdesk_ticket_custom_field_cf_when_did_the_test_results_confirming_coronavirus_infection_arrive_2321673']",
