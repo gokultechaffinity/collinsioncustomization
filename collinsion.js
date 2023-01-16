@@ -10997,7 +10997,10 @@ jQuery(document).ready(function ($) {
             today.getFullYear() + "-" + today.getMonth() + "-" + today.getDate()
           );
 
-          if (new_today > replacement_purchase_date) {
+          console.log("Date today: "+ new_today);
+          console.log("Date of replacement purchases: "+replacement_purchase_date);
+
+          if (new_today < replacement_purchase_date) {
             //ERROR MESSAGING
             addErrorMessage(
               "helpdesk_ticket_custom_field_cf_on_what_date_did_you_purchase_the_replacement_items_2321673",
