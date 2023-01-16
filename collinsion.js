@@ -10986,13 +10986,7 @@ jQuery(document).ready(function ($) {
             "#helpdesk_ticket_custom_field_cf_on_what_date_did_you_purchase_the_replacement_items_2321673"
           ).val();
           replacement_purchase_date = new Date(replacement_purchase);
-          var replacement_purchase_date = new Date(
-            replacement_purchase_date.getFullYear() +
-              "-" +
-              replacement_purchase_date.getMonth() +
-              "-" +
-              replacement_purchase_date.getDate()
-          );
+          var replacement_purchase_date = new Date(replacement_purchase);
           var new_today = new Date();
 
           console.log("Date today: "+ new_today);
