@@ -143,18 +143,19 @@ jQuery(document).ready(function ($) {
   let bankResult = "";
   let countryPortal = {
     SagaPostOfficeColumbusUK: "GB",
+    ColumbusItaly:"IT",
     VHI: "IE",
   };
   let InternalPolicyNumber;
   let domainURL;
-  if($("#title").hasClass("VHI")||$("#title").hasClass("EasyJet")){
-    domainURL = "claim-proxy.collinsonnis.com";
-  }else {
+  // if($("#title").hasClass("VHI")||$("#title").hasClass("EasyJet")){
+  //   domainURL = "claim-proxy.collinsonnis.com";
+  // }else {
     domainURL = "claim-proxy-lower.collinsonnis.com";
-  }
+  // }
   //"claim-proxy-lower.collinsonnis.com";
   //"claim-sandbox.collinsonnis.com";
-  let succesStatus = [200, 201, 202, 203, 204, 205, 206, 207, 208, 226];
+  // let succesStatus = [200, 201, 202, 203, 204, 205, 206, 207, 208, 226];
   getJWTToken();
   createCaptcha();
   function getJWTToken(fieldId) {
@@ -6349,7 +6350,12 @@ jQuery(document).ready(function ($) {
   //section 6 continue
   $("#save_and_continue6").click(function () {
     if ($("#title").hasClass("VHI") || $("#title").hasClass("ColumbusItaly")) {
-      let countryCode = countryPortal.VHI;
+      let countryCode ;
+      if($("#title").hasClass("VHI")){
+        countryCode = countryPortal.VHI;
+      }else {
+        countryCode = countryPortal.ColumbusItaly;
+      }
 
       payment_list = [
         "helpdesk_ticket_custom_field_cf_name_of_account_holder_2321673",
