@@ -10993,9 +10993,7 @@ jQuery(document).ready(function ($) {
               "-" +
               replacement_purchase_date.getDate()
           );
-          var new_today = new Date(
-            today.getFullYear() + "-" + today.getMonth() + "-" + today.getDate()
-          );
+          var new_today = new Date();
 
           console.log("Date today: "+ new_today);
           console.log("Date of replacement purchases: "+replacement_purchase_date);
