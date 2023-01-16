@@ -11001,14 +11001,14 @@ jQuery(document).ready(function ($) {
           } else if (new_today > replacement_purchase_date) {
             // do nothing
           } 
-          // else {
-          //   //assume equal
-          //   //ERROR MESSAGING
-          //   addErrorMessage(
-          //     "helpdesk_ticket_custom_field_cf_on_what_date_did_you_purchase_the_replacement_items_2321673",
-          //     "Date must be in the past."
-          //   );
-          // }
+          else {
+            //assume equal
+            //ERROR MESSAGING
+            addErrorMessage(
+              "helpdesk_ticket_custom_field_cf_on_what_date_did_you_purchase_the_replacement_items_2321673",
+              "Date must be in the past."
+            );
+          }
         });
       }
     }
