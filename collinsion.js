@@ -10885,6 +10885,9 @@ jQuery(document).ready(function ($) {
           clearError(ele);
           console.log("--sucesss-");
           $(".new-ticket-submit-button").trigger("click");
+          var summary_div = document.getElementById("collapseSection7");
+          var contents_summary_div = summary_div.innerHTML;
+          console(contents_summary_div);
         }
       })
       .catch((error) => console.log("error -->", error));
