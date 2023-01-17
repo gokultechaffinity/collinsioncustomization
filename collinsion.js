@@ -1395,7 +1395,7 @@ jQuery(document).ready(function ($) {
     console.log(policyDetails);
     InternalPolicyNumber = policyData.InternalPolicyNumber;
     let options = "";
-    if ($("#title".hasClass("ColumbusItaly"))){
+    if ($("#title").hasClass("ColumbusItaly")){
       options +=
       "<div class='form-group'><label class='form-label' style='display:inline-table;' > Nome/i dell'Assicurato. Seleziona tutti coloro che sono stati coinvolti nel reclamo! </label>";
     
