@@ -1220,13 +1220,23 @@ jQuery(document).ready(function ($) {
             getJWTToken(fieldId);
           } else if (statusCode == 404) {
             jQuery("#model-error-msg").removeClass("d-none");
-            jQuery("#model-error-msg .ins-modal-body-content").text(
-              "Something's not quite right. Please try again using the policy number shown on your insurance document."
-            );
-            addErrorMessage(
-              "api_call_failed_dob",
-              "Something's not quite right. Please try again using the policy number shown on your insurance document."
-            );
+            if($("#title").hasClass("ColumbusItaly")){
+              jQuery("#model-error-msg .ins-modal-body-content").text(
+                "Qualcosa non va. Si prega di riprovare utilizzando il numero di polizza riportato sul documento assicurativo."
+              );
+              addErrorMessage(
+                "api_call_failed_dob",
+                "Qualcosa non va. Si prega di riprovare utilizzando il numero di polizza riportato sul documento assicurativo."
+              );
+            }else{
+              jQuery("#model-error-msg .ins-modal-body-content").text(
+                "Something's not quite right. Please try again using the policy number shown on your insurance document."
+              );
+              addErrorMessage(
+                "api_call_failed_dob",
+                "Something's not quite right. Please try again using the policy number shown on your insurance document."
+              );
+            }
             $("#save_and_continue1").removeAttr("data-target");
             $("#save_and_continue1").removeAttr("data-toggle");
             console.log("error 404 -->", result);
@@ -1385,9 +1395,16 @@ jQuery(document).ready(function ($) {
     console.log(policyDetails);
     InternalPolicyNumber = policyData.InternalPolicyNumber;
     let options = "";
-    options +=
+    if ($("#title".hasClass("ColumbusItaly"))){
+      options +=
+      "<div class='form-group'><label class='form-label' style='display:inline-table;' > Nome/i dell'Assicurato. Seleziona tutti coloro che sono stati coinvolti nel reclamo! </label>";
+    
+    }else{
+      options +=
       '<div class="form-group"><label class="form-label" style="display:inline-table;" > Name(s) of the Insured. Select everyone who was involved in the claim! </label>';
-    policyDetails.forEach(function (element, index) {
+    
+    }
+      policyDetails.forEach(function (element, index) {
       options +=
         '<div class="list-claim"><input type="checkbox" class="check-box" id=' +
         index +
