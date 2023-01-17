@@ -593,9 +593,11 @@ jQuery(document).ready(function ($) {
         '<div id="overall_div_' +
         number +
         '" class="card-header ins-div"> ' +
+        '<div class="col-md-6">'+
         '<h5 class="mb-0 header-text">' +
         title +
-        "</h5>" +
+        '</h5></div>' +
+        '<div class="col-md-6" style="float: right;"> '+
         '<div id="section-' +
         number +
         '-button" class="ins-col-test collapsed  col align-self-end"  data-target="#collapseSection' +
