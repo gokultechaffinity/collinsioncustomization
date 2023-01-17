@@ -10949,7 +10949,7 @@ jQuery(document).ready(function ($) {
 
   $(".new-ticket-submit-button").click(function(){
     var summary_div = document.getElementById("collapseSection7");
-    var contents_summary_div = summary_div.innerHTML;
+    var contents_summary_div = summary_div.innerText;
     console.log(contents_summary_div);
   });
     
