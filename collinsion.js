@@ -1397,7 +1397,7 @@ jQuery(document).ready(function ($) {
     let options = "";
     if ($("#title").hasClass("ColumbusItaly")){
       options +=
-      "<div class='form-group'><label class='form-label' style='display:inline-table;' > Nome/i dell'Assicurato. Seleziona tutti coloro che sono stati coinvolti nel reclamo! </label>";
+      "<div class='form-group'><label class='form-label' style='display:inline-table;' >Nome dell'assicurato </label>";
     
     }else{
       options +=
