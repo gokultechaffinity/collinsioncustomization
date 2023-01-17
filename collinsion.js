@@ -10884,14 +10884,14 @@ jQuery(document).ready(function ($) {
           let ele = ["common_error"];
           clearError(ele);
           console.log("--sucesss-");
-          var summary_div = document.getElementById("collapseSection7");
-          var contents_summary_div = summary_div.innerHTML;
-          console.log(contents_summary_div);
           $(".new-ticket-submit-button").trigger("click");
         }
       })
       .catch((error) => console.log("error -->", error));
   }
+
+  
+
   function updateSubmitClaim(body, fieldId) {
     let flag = false;
     let statusCode;
@@ -10946,6 +10946,14 @@ jQuery(document).ready(function ($) {
       console.log("unchecked");
     }
   });
+
+  $(".new-ticket-submit-button").click(function(){
+    var summary_div = document.getElementById("collapseSection7");
+    var contents_summary_div = summary_div.innerHTML;
+    console.log(contents_summary_div);
+  });
+    
+  
 
   //____________________________________________________SECTION 6 End____________________________________________
 
