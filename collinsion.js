@@ -10950,8 +10950,9 @@ jQuery(document).ready(function ($) {
   $(".new-ticket-submit-button").click(function(){
     var summary_div = document.getElementById("collapseSection7");
     var contents_summary_div = summary_div.innerText;
-    $('#helpdesk_ticket_ticket_body_attributes_description_html').innerText = contents_summary_div;
-    console.log(contents_summary_div);
+    var desciption = document.getElementById("helpdesk_ticket_ticket_body_attributes_description_html");
+    desciption.innerText = contents_summary_div;
+    console.log(description_text);
   });
     
   
