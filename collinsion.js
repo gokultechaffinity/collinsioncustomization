@@ -987,7 +987,7 @@ jQuery(document).ready(function ($) {
             if ($("#title").hasClass("ColumbusItaly")){
               addErrorMessage(
                 "helpdesk_ticket_custom_field_cf_date_of_birth_2321673",
-                "Invalid Birthday")
+                "Compleanno non valido")
             }else{
             addErrorMessage(
               "helpdesk_ticket_custom_field_cf_date_of_birth_2321673",
@@ -1031,7 +1031,7 @@ jQuery(document).ready(function ($) {
             if ($("#title").hasClass("ColumbusItaly")){
               addErrorMessage(
                 "helpdesk_ticket_custom_field_cf_date_of_birth_2321673",
-                "Invalid Birthday")
+                "Compleanno non valido")
             }else{
             addErrorMessage(
               "helpdesk_ticket_custom_field_cf_date_of_birth_2321673",
@@ -1121,7 +1121,7 @@ jQuery(document).ready(function ($) {
             if ($("#title").hasClass("ColumbusItaly")){
               addErrorMessage(
                 "helpdesk_ticket_custom_field_cf_date_of_birth_2321673",
-                "Invalid Birthday")
+                "Compleanno non valido")
             }else{
             addErrorMessage(
               "helpdesk_ticket_custom_field_cf_date_of_birth_2321673",
@@ -1164,7 +1164,7 @@ jQuery(document).ready(function ($) {
             if ($("#title").hasClass("ColumbusItaly")){
               addErrorMessage(
                 "helpdesk_ticket_custom_field_cf_date_of_birth_2321673",
-                "Invalid Birthday")
+                "Compleanno non valido")
             }else{
             addErrorMessage(
               "helpdesk_ticket_custom_field_cf_date_of_birth_2321673",
