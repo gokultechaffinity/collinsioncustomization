@@ -1689,6 +1689,17 @@ jQuery(document).ready(function ($) {
             add_section_2();
           }
         } else {
+          if($("#title").hasClass("ColumbusItaly")){
+            //ERROR Messaging
+          addErrorMessage(
+            "helpdesk_ticket_custom_field_cf_email_address_2321673",
+            "Assicurati che l'e-mail e l'e-mail di conferma siano le stesse."
+          );
+          addErrorMessage(
+            "helpdesk_ticket_custom_field_cf_confirm_email_address_2321673",
+            "Assicurati che l'e-mail e l'e-mail di conferma siano le stesse."
+          );
+          }else{
           //ERROR Messaging
           addErrorMessage(
             "helpdesk_ticket_custom_field_cf_email_address_2321673",
@@ -1697,9 +1708,18 @@ jQuery(document).ready(function ($) {
           addErrorMessage(
             "helpdesk_ticket_custom_field_cf_confirm_email_address_2321673",
             "Please make sure email and confirmation email are the same."
-          );
+          );}
         }
       } else {
+        if ($("#title").hasClass("ColumbusItaly")){
+          addErrorMessage(
+            "helpdesk_ticket_custom_field_cf_email_address_2321673",
+            "Assicurati che entrambi i valori siano email"
+          );
+          addErrorMessage(
+            "helpdesk_ticket_custom_field_cf_confirm_email_address_2321673",
+            "Assicurati che entrambi i valori siano email");
+        }else{
         addErrorMessage(
           "helpdesk_ticket_custom_field_cf_email_address_2321673",
           "Please make sure both values are emails"
@@ -1707,7 +1727,7 @@ jQuery(document).ready(function ($) {
         addErrorMessage(
           "helpdesk_ticket_custom_field_cf_confirm_email_address_2321673",
           "Please make sure both values are emails"
-        );
+        );}
       }
     } else {
       //ERROR Messaging
