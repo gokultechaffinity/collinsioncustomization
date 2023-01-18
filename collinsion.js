@@ -6178,10 +6178,16 @@ jQuery(document).ready(function ($) {
           getUploadFiles(elem.files, ".save_draft_5");
         } else {
           console.log("Show Error unsupported File Format ");
+          if($("#title").hasClass("ColumbusItaly")){
+            addErrorMessage(
+              "api_call_failed_filelist",
+              "Formato file non supportato. Formati supportati: gif,jpeg,jpg,png,bmp,tiff,tif,pdf,doc,docx,xls,xlsx,txt,odt"
+            );
+          }else{
           addErrorMessage(
             "api_call_failed_filelist",
             "Unsupported File Format. Supported formats: gif,jpeg,jpg,png,bmp,tiff,tif,pdf,doc,docx,xls,xlsx,txt,odt"
-          );
+          );}
         }
       } else {
         console.log(
@@ -6193,8 +6199,13 @@ jQuery(document).ready(function ($) {
         );
       }
     } else {
+      if($("#title").hasClass("ColumbusItaly")){
+        addErrorMessage("api_call_failed_filelist", "Si prega di caricare il file.");
+        console.log(" --------- Need to show error message ----------------");
+      }else{
       addErrorMessage("api_call_failed_filelist", "Please Upload the File.");
       console.log(" --------- Need to show error message ----------------");
+    }
     }
   });
   $(".save_and_continue5").click(function () {
