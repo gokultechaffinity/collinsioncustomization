@@ -923,6 +923,7 @@ jQuery(document).ready(function ($) {
         "captcha_failed",
         "Invalid Captcha. Please re-enter captcha"
       );
+      
       createCaptcha();
     }
     }
@@ -1040,10 +1041,19 @@ jQuery(document).ready(function ($) {
       }
     }else{
       console.log("Invalid captcha")
+
+      if($("#title").hasClass("ColumbusItaly")){
+        addErrorMessage(
+          "captcha_failed",
+          "CAPTCHA non valido. Si prega di reinserire captcha"
+        );
+        createCaptcha();
+      }else{
       addErrorMessage(
         "captcha_failed",
         "Invalid Captcha. Please re-enter captcha"
-      );
+      );}
+      
       createCaptcha();
     }
       if ($("#cb").prop("checked") == true) {
@@ -1154,10 +1164,18 @@ jQuery(document).ready(function ($) {
       }
     }else{
       console.log("Invalid captcha")
+
+      if($("#title").hasClass("ColumbusItaly")){
+        addErrorMessage(
+          "captcha_failed",
+          "CAPTCHA non valido. Si prega di reinserire captcha"
+        );
+        createCaptcha();
+      }else{
       addErrorMessage(
         "captcha_failed",
         "Invalid Captcha. Please re-enter captcha"
-      );
+      );}
       createCaptcha();
     }
       if ($("#cb").prop("checked") == true) {
