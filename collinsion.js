@@ -5695,10 +5695,15 @@ jQuery(document).ready(function ($) {
             "#helpdesk_ticket_custom_field_cf_internalpolicynumber_2321673"
           ).val(InternalPolicyNumber);
           $(".claim-number").empty();
+          if($("#title").hasClass("ColumbusItaly")){
+            $(".claim-number").append(
+              `Il tuo numero di reclamo è ${ClaimInitiatedNumber}`
+            );
+          }else{
           $(".claim-number").append(
             `Your Claim Number is ${ClaimInitiatedNumber}`
           );
-        }
+        }}
       })
       .catch((error) => console.log("errror -->", error));
   }
@@ -6597,15 +6602,29 @@ jQuery(document).ready(function ($) {
           }
           if (statusCode == 500) {
             console.log("Please refresh the page ", statusCode, result);
+            if ($("#title").hasClass("ColumbusItaly")){
+              addErrorMessage(
+                "api_call_failed_banvalidate",
+                "Impossibile elaborare le informazioni sul conto bancario. Si prega di controllare le informazioni inserite e riprovare."
+              );
+            }else{
             addErrorMessage(
               "api_call_failed_banvalidate",
               "Unable to process the bank account information. Please check the information entered and try again."
             );
+          }
           } else {
+            if ($("#title").hasClass("ColumbusItaly")){
+              addErrorMessage(
+                "api_call_failed_banvalidate",
+                "Impossibile elaborare le informazioni sul conto bancario. Si prega di controllare le informazioni inserite e riprovare."
+              );
+            }else{
             addErrorMessage(
               "api_call_failed_banvalidate",
               "Unable to process the bank account information. Please check the information entered and try again."
             );
+          }
           }
         } else {
           let ele = ["api_call_failed_banvalidate"];
