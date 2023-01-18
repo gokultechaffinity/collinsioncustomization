@@ -6417,9 +6417,13 @@ jQuery(document).ready(function ($) {
           "File size cannot exceed 4 MB"
         );
       }
-    } else {
-      addErrorMessage("api_call_failed_filelist", "Please Upload the File.");
+    } else {if($("#title").hasClass("ColumbusItaly")){
+      addErrorMessage("api_call_failed_filelist", "Si prega di caricare il file.");
       console.log(" --------- Need to show error message ----------------");
+    }else{
+    addErrorMessage("api_call_failed_filelist", "Please Upload the File.");
+    console.log(" --------- Need to show error message ----------------");
+  }
     }
   }
   function add_section_5() {
@@ -11652,7 +11656,7 @@ jQuery(document).ready(function ($) {
         "Any CANCELLATION claim due to COVID-19"
       ) {
 
-        $(".form-group.helpdesk_ticket_custom_field_cf_what_type_of_transport_was_included_in_your_booking_2321673 hide_next").show();
+        $(".form-group.helpdesk_ticket_custom_field_cf_what_type_of_transport_was_included_in_your_booking_2321673").show();
         
          //accomodation only - dependancy 1
         show_and_hide(
