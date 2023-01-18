@@ -984,10 +984,15 @@ jQuery(document).ready(function ($) {
           ).val();
           bday = new Date(birthdate);
           if (today < bday) {
+            if ($("#title").hasClass("ColumbusItaly")){
+              addErrorMessage(
+                "helpdesk_ticket_custom_field_cf_date_of_birth_2321673",
+                "Invalid Birthday")
+            }else{
             addErrorMessage(
               "helpdesk_ticket_custom_field_cf_date_of_birth_2321673",
               "Invalid Birthday"
-            );
+            );}
             $("#save_and_continue1").removeAttr("data-target");
             $("#save_and_continue1").removeAttr("data-toggle");
           } else if (today > bday) {
@@ -1023,10 +1028,15 @@ jQuery(document).ready(function ($) {
               "helpdesk_ticket_custom_field_cf_policy_number454080_2321673",
             ]);
           } else {
+            if ($("#title").hasClass("ColumbusItaly")){
+              addErrorMessage(
+                "helpdesk_ticket_custom_field_cf_date_of_birth_2321673",
+                "Invalid Birthday")
+            }else{
             addErrorMessage(
               "helpdesk_ticket_custom_field_cf_date_of_birth_2321673",
               "Invalid Birthday"
-            );
+            );}
             $("#save_and_continue1").removeAttr("data-target");
             $("#save_and_continue1").removeAttr("data-toggle");
           }
@@ -1053,7 +1063,7 @@ jQuery(document).ready(function ($) {
         "captcha_failed",
         "Invalid Captcha. Please re-enter captcha"
       );}
-      
+
       createCaptcha();
     }
       if ($("#cb").prop("checked") == true) {
@@ -1108,10 +1118,15 @@ jQuery(document).ready(function ($) {
           ).val();
           bday = new Date(birthdate);
           if (today < bday) {
+            if ($("#title").hasClass("ColumbusItaly")){
+              addErrorMessage(
+                "helpdesk_ticket_custom_field_cf_date_of_birth_2321673",
+                "Invalid Birthday")
+            }else{
             addErrorMessage(
               "helpdesk_ticket_custom_field_cf_date_of_birth_2321673",
               "Invalid Birthday"
-            );
+            );}
             $("#save_and_continue1").removeAttr("data-target");
             $("#save_and_continue1").removeAttr("data-toggle");
           } else if (today > bday) {
@@ -1146,10 +1161,15 @@ jQuery(document).ready(function ($) {
               "helpdesk_ticket_custom_field_cf_policy_number454080_2321673",
             ]);
           } else {
+            if ($("#title").hasClass("ColumbusItaly")){
+              addErrorMessage(
+                "helpdesk_ticket_custom_field_cf_date_of_birth_2321673",
+                "Invalid Birthday")
+            }else{
             addErrorMessage(
               "helpdesk_ticket_custom_field_cf_date_of_birth_2321673",
               "Invalid Birthday"
-            );
+            );}
             $("#save_and_continue1").removeAttr("data-target");
             $("#save_and_continue1").removeAttr("data-toggle");
           }
