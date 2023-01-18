@@ -1549,7 +1549,12 @@ jQuery(document).ready(function ($) {
     ).length;
 
     if (len <= 0) {
+      if(("#title").hasClass("ColumbusItaly")){
+        addErrorMessage("check-finder", "Seleziona almeno un cliente");
+      }
+      else{
       addErrorMessage("check-finder", "Please select at least one client");
+    }
     } else {
       let errorMessage = ["check-finder"];
       clearError(errorMessage);
@@ -1616,12 +1621,20 @@ jQuery(document).ready(function ($) {
       }
     } else {
       //ERROR Messaging
+      if ($("#title").hasClass("ColumbusItaly")){
+        for (var i = 0; i < list_to_check1.length; i++) {
+          addErrorMessage(list_to_check1[i], "Si prega di compilare tutti i campi");
+          $("#save_and_continue3").removeAttr("data-target");
+          $("#save_and_continue3").removeAttr("data-toggle");
+        }
+      }else{
       for (var i = 0; i < list_to_check1.length; i++) {
         addErrorMessage(list_to_check1[i], "Please fill in all fields");
         $("#save_and_continue3").removeAttr("data-target");
         $("#save_and_continue3").removeAttr("data-toggle");
       }
     }
+  }
   });
   function add_section_2() {
     $("<strong id='section_2_header'>" + titles[1] + "</strong>").insertAfter(
