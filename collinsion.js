@@ -168,9 +168,7 @@ jQuery(document).ready(function ($) {
   //"claim-sandbox.collinsonnis.com";
   // let succesStatus = [200, 201, 202, 203, 204, 205, 206, 207, 208, 226];
   getJWTToken();
-  if(!jQuery(".fw-comments-wrapper").length){
-    createCaptcha();
-  }
+  createCaptcha();
   function getJWTToken(fieldId) {
     var flag = false;
     var statusCode;
@@ -815,6 +813,27 @@ jQuery(document).ready(function ($) {
   //open section 1 by default
   $("#section-1-button").click();
 
+  function checkRecaptcha() {
+    const iFrame = document.getElementById("recaptcha-frame");
+
+    const iFrameWindow = iFrame.contentWindow;
+
+    const secondLayer = iFrameWindow.document;
+
+    const thirdLayer = secondLayer.getElementById("recaptcha");
+
+    //console.log(thirdLayer)
+
+    const iFrame2 = thirdLayer.querySelectorAll("iframe[title=reCAPTCHA]")[0];
+
+    console.log(iFrame2);
+
+    const iFrame2Window = iFrame2.contentWindow;
+
+    const iFrame2Windowdoc = iFrame2Window.document;
+
+    console.log(iFrame2Window);
+  }
 
   //________________________________________________________________________________________________________________________________
   //section 1 continue
@@ -822,7 +841,7 @@ jQuery(document).ready(function ($) {
   $("#save_and_continue1").click(function () {
     if ($("#title").hasClass("EasyJet")) {
       //checkRecaptcha
-      if (document.getElementById("cpatchaTextBox").value == code||jQuery(".fw-comments-wrapper").length) {
+      if (document.getElementById("cpatchaTextBox").value == code) {
       if (
         $(
           "#helpdesk_ticket_custom_field_cf_policy_number454080_2321673"
@@ -957,7 +976,7 @@ jQuery(document).ready(function ($) {
       $("#title").hasClass("VHI") ||
       $("#title").hasClass("ColumbusItaly")
     ) {
-      if (document.getElementById("cpatchaTextBox").value == code||jQuery(".fw-comments-wrapper").length) {
+      if (document.getElementById("cpatchaTextBox").value == code) {
       if (
         $(
           "#helpdesk_ticket_custom_field_cf_policy_number454080_2321673"
@@ -1105,7 +1124,7 @@ jQuery(document).ready(function ($) {
         $("#continue").removeAttr("data-dismiss");
       }
     } else if ($("#title").hasClass("CollinsonUK")) {
-      if (document.getElementById("cpatchaTextBox").value == code||jQuery(".fw-comments-wrapper").length) {
+      if (document.getElementById("cpatchaTextBox").value == code) {
       if (
         $(
           "#helpdesk_ticket_custom_field_cf_policy_number454080_2321673"
@@ -12472,7 +12491,7 @@ jQuery(document).ready(function ($) {
     add_section_4();
     add_section_5();
     add_section_6();
-    // addDeclaraion();
+    addDeclaraion();
   }
   // Get the files names and appened into the summary of ticket detail page
 
