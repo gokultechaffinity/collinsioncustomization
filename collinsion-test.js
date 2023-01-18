@@ -26,6 +26,27 @@ jQuery(document).ready(function ($) {
     .append(
       '<div class="invalid-feedback api_call_failed_postcode">API call failed</div>'
     );
+
+    if ($("#title").hasClass("ColumbusItaly")){
+      if (!$(".edit_helpdesk_ticket").length > 0){
+        $("#helpdesk_ticket_custom_field_cf_policy_email_2321673")
+        .closest(".form-group")
+        .append(
+          '<div id="captcha-section"><label>Inserisci Captcha</label><div id="captcha"></div><input type="text" placeholder="Captcha" id="cpatchaTextBox"/></div>'
+        );
+        $("#helpdesk_ticket_custom_field_cf_date_of_birth_2321673")
+        .closest(".form-group")
+        .append(
+          '<div id="captcha-section"><label>Inserisci Captcha</label><div id="captcha"></div><input type="text" placeholder="Captcha" id="cpatchaTextBox"/></div>'
+        );
+        $("#captcha-section")
+        .closest(".form-group")
+        .append(
+          '<div class="invalid-feedback captcha_failed">API call failed</div>'
+        );
+      }
+
+    }else{
     if (!$(".edit_helpdesk_ticket").length > 0){
       $("#helpdesk_ticket_custom_field_cf_policy_email_2321673")
       .closest(".form-group")
@@ -42,6 +63,7 @@ jQuery(document).ready(function ($) {
       .append(
         '<div class="invalid-feedback captcha_failed">API call failed</div>'
       );
+    }
     }
 
 
@@ -112,10 +134,14 @@ jQuery(document).ready(function ($) {
   let countryPortal = {
     SagaPostOfficeColumbusUK: "GB",
     VHI: "IE",
-    ColumbusItaly:"IT",
   };
   let InternalPolicyNumber;
-  let domainURL = "claim-proxy-lower.collinsonnis.com";
+  let domainURL;
+  // if($("#title").hasClass("VHI")||$("#title").hasClass("EasyJet")){
+  //   domainURL = "claim-proxy.collinsonnis.com";
+  // }else {
+    domainURL = "claim-proxy-lower.collinsonnis.com";
+  // }
   //"claim-proxy-lower.collinsonnis.com";
   //"claim-sandbox.collinsonnis.com";
   let succesStatus = [200, 201, 202, 203, 204, 205, 206, 207, 208, 226];
@@ -6292,12 +6318,8 @@ jQuery(document).ready(function ($) {
   //section 6 continue
   $("#save_and_continue6").click(function () {
     if ($("#title").hasClass("VHI") || $("#title").hasClass("ColumbusItaly")) {
-      let countryCode ;
-      if($("#title").hasClass("VHI")){
-        countryCode = countryPortal.VHI;
-      }else {
-        countryCode = countryPortal.ColumbusItaly;
-      }
+      let countryCode = countryPortal.VHI;
+
       payment_list = [
         "helpdesk_ticket_custom_field_cf_name_of_account_holder_2321673",
         "helpdesk_ticket_custom_field_cf_account_number_2321673",
@@ -6431,6 +6453,11 @@ jQuery(document).ready(function ($) {
         "<p class='section_6_line'>" + label + " : " + value + "</p>"
       ).insertBefore("#great_line_6");
     }
+
+    //summary
+    $("<strong  id='summary'>If you notice a mistake and need to amend this, please select the relevant section above to edit these details</strong>").insertAfter(
+      "#great_line_6"
+    );
   }
 
   function update_section_6() {
