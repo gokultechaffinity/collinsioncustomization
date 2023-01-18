@@ -99,12 +99,23 @@ jQuery(document).ready(function ($) {
     .append(
       '<div class="invalid-feedback api_call_failed_sortcodevalidate">API call failed</div>'
     );
-  jQuery(".new-ticket-submit-button")
+  if($("#title").hasClass("ColumbusItaly")){
+    jQuery(".new-ticket-submit-button")
+    .closest(".card-body")
+    .find(".form-group")
+    .before(
+      '<div class="invalid-feedback common_error">Si prega di compilare tutti i campi</div>'
+    );
+  }else{
+    jQuery(".new-ticket-submit-button")
     .closest(".card-body")
     .find(".form-group")
     .before(
       '<div class="invalid-feedback common_error">Please fill in all fields</div>'
     );
+  }
+
+  
 
   $("#cancel-claim-model").click(function () {
     jQuery(".modal").trigger("click");
@@ -839,6 +850,15 @@ jQuery(document).ready(function ($) {
       ) {
         // ||
         // $("#helpdesk_ticket_custom_field_cf_claim_number_2321673").val() == ""
+        if ($("#title").hasClass("ColumbusItaly")){
+          addErrorMessage(
+            "helpdesk_ticket_custom_field_cf_policy_number454080_2321673",
+            "Si prega di compilare tutti i campi"
+          );
+          addErrorMessage(
+            "helpdesk_ticket_custom_field_cf_policy_email_2321673",
+            "Si prega di compilare tutti i campi");
+        }else{
         addErrorMessage(
           "helpdesk_ticket_custom_field_cf_policy_number454080_2321673",
           "Please fill in all fields"
@@ -846,11 +866,8 @@ jQuery(document).ready(function ($) {
         addErrorMessage(
           "helpdesk_ticket_custom_field_cf_policy_email_2321673",
           "Please fill in all fields"
-        );
-        //   addErrorMessage(
-        //     "helpdesk_ticket_custom_field_cf_claim_number_2321673",
-        //     "Please fill in all fields"
-        //   );
+        );}
+        
       } else {
         //check LENGTH OF POLICY NUMBER - 6 DIGITS
         let policyEmailValue = $(
@@ -862,12 +879,20 @@ jQuery(document).ready(function ($) {
             "#helpdesk_ticket_custom_field_cf_policy_number454080_2321673"
           ).val().length < 6
         ) {
+          if($("#title").hasClass("ColumbusItaly")){
+            addErrorMessage(
+              "helpdesk_ticket_custom_field_cf_policy_number454080_2321673",
+              "Il numero di polizza deve essere di almeno 6 cifre."
+            );
+            $("#save_and_continue1").removeAttr("data-target");
+            $("#save_and_continue1").removeAttr("data-toggle");
+          }else{
           addErrorMessage(
             "helpdesk_ticket_custom_field_cf_policy_number454080_2321673",
             "Policy Number must be at least 6 digits."
           );
           $("#save_and_continue1").removeAttr("data-target");
-          $("#save_and_continue1").removeAttr("data-toggle");
+          $("#save_and_continue1").removeAttr("data-toggle");}
         } else if (!policyEmailValue.match(mailformat)) {
           addErrorMessage(
             "helpdesk_ticket_custom_field_cf_policy_email_2321673",
@@ -958,6 +983,17 @@ jQuery(document).ready(function ($) {
         ).val() == "" ||
         $("#helpdesk_ticket_custom_field_cf_date_of_birth_2321673").val() == ""
       ) {
+
+        if ($("#title").hasClass("ColumbusItaly")){
+          addErrorMessage(
+            "helpdesk_ticket_custom_field_cf_policy_number454080_2321673",
+            "Si prega di compilare tutti i campi"
+          );
+          addErrorMessage(
+            "helpdesk_ticket_custom_field_cf_date_of_birth_2321673",
+            "Si prega di compilare tutti i campi"
+          );
+        }else{
         addErrorMessage(
           "helpdesk_ticket_custom_field_cf_policy_number454080_2321673",
           "Please fill in all fields"
@@ -966,12 +1002,7 @@ jQuery(document).ready(function ($) {
           "helpdesk_ticket_custom_field_cf_date_of_birth_2321673",
           "Please fill in all fields"
         );
-        // ||
-        // $("#helpdesk_ticket_custom_field_cf_claim_number_2321673").val() == ""
-        // addErrorMessage(
-        //   "helpdesk_ticket_custom_field_cf_claim_number_2321673",
-        //   "Please fill in all fields"
-        // );
+      }
       } else {
         //check LENGTH OF POLICY NUMBER - 6 DIGITS
         if (
@@ -1041,12 +1072,20 @@ jQuery(document).ready(function ($) {
             $("#save_and_continue1").removeAttr("data-toggle");
           }
         } else {
+          if($("#title").hasClass("ColumbusItaly")){
+            addErrorMessage(
+              "helpdesk_ticket_custom_field_cf_policy_number454080_2321673",
+              "Il numero di polizza deve essere di almeno 6 cifre."
+            );
+            $("#save_and_continue1").removeAttr("data-target");
+            $("#save_and_continue1").removeAttr("data-toggle");
+          }else{
           addErrorMessage(
             "helpdesk_ticket_custom_field_cf_policy_number454080_2321673",
             "Policy Number must be at least 6 digits."
           );
           $("#save_and_continue1").removeAttr("data-target");
-          $("#save_and_continue1").removeAttr("data-toggle");
+          $("#save_and_continue1").removeAttr("data-toggle");}
         }
       }
     }else{
@@ -1092,6 +1131,16 @@ jQuery(document).ready(function ($) {
         ).val() == "" ||
         $("#helpdesk_ticket_custom_field_cf_date_of_birth_2321673").val() == ""
       ) {
+        if ($("#title").hasClass("ColumbusItaly")){
+          addErrorMessage(
+            "helpdesk_ticket_custom_field_cf_policy_number454080_2321673",
+            "Si prega di compilare tutti i campi"
+          );
+          addErrorMessage(
+            "helpdesk_ticket_custom_field_cf_date_of_birth_2321673",
+            "Si prega di compilare tutti i campi"
+          );
+        }else{
         addErrorMessage(
           "helpdesk_ticket_custom_field_cf_policy_number454080_2321673",
           "Please fill in all fields"
@@ -1099,13 +1148,8 @@ jQuery(document).ready(function ($) {
         addErrorMessage(
           "helpdesk_ticket_custom_field_cf_date_of_birth_2321673",
           "Please fill in all fields"
-        );
-        // ||
-        // $("#helpdesk_ticket_custom_field_cf_claim_number_2321673").val() == ""
-        // addErrorMessage(
-        //   "helpdesk_ticket_custom_field_cf_claim_number_2321673",
-        //   "Please fill in all fields"
-        // );
+        );}
+        
       } else {
         //check LENGTH OF POLICY NUMBER - 6 DIGITS
         if (
@@ -1174,12 +1218,20 @@ jQuery(document).ready(function ($) {
             $("#save_and_continue1").removeAttr("data-toggle");
           }
         } else {
+          if($("#title").hasClass("ColumbusItaly")){
           addErrorMessage(
             "helpdesk_ticket_custom_field_cf_policy_number454080_2321673",
-            "Policy Number must be at least 6 digits."
+            "Il numero di polizza deve essere di almeno 6 cifre."
           );
           $("#save_and_continue1").removeAttr("data-target");
           $("#save_and_continue1").removeAttr("data-toggle");
+        }else{
+        addErrorMessage(
+          "helpdesk_ticket_custom_field_cf_policy_number454080_2321673",
+          "Policy Number must be at least 6 digits."
+        );
+        $("#save_and_continue1").removeAttr("data-target");
+        $("#save_and_continue1").removeAttr("data-toggle");}
         }
       }
     }else{
@@ -5533,9 +5585,15 @@ jQuery(document).ready(function ($) {
     } else {
       //ERROR Messaging
       for (var i = 0; i < list_to_check2.length; i++) {
+        if($("#title").hasClass("ColumbusItaly")){
+          addErrorMessage(list_to_check2[i], "Si prega di compilare tutti i campi.");
+          $("#save_and_continue3").removeAttr("data-target");
+          $("#save_and_continue3").removeAttr("data-toggle");
+        }else{
         addErrorMessage(list_to_check2[i], "Please fill in all fields");
         $("#save_and_continue3").removeAttr("data-target");
         $("#save_and_continue3").removeAttr("data-toggle");
+      }
       }
     }
   });
@@ -6491,7 +6549,11 @@ jQuery(document).ready(function ($) {
       } else {
         //ERROR Messaging
         for (var i = 0; i < payment_list.length; i++) {
-          addErrorMessage(payment_list[i], "Please fill in all fields");
+          if($("#title").hasClass("ColumbusItaly")){
+            addErrorMessage(payment_list[i], "Si prega di compilare tutti i campi.");
+          }else{
+            addErrorMessage(payment_list[i], "Please fill in all fields");
+          }
         }
       }
     } else {
@@ -6539,7 +6601,10 @@ jQuery(document).ready(function ($) {
       } else {
         //ERROR Messaging
         for (var i = 0; i < payment_list.length; i++) {
-          addErrorMessage(payment_list[i], "Please fill in all fields");
+          if($("#title").hasClass("ColumbusItaly")){
+            addErrorMessage(payment_list[i], "Si prega di compilare tutti i campi.");
+          }else{
+          addErrorMessage(payment_list[i], "Please fill in all fields.");}
         }
       }
     }
