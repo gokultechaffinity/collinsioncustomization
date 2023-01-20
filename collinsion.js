@@ -1,4 +1,3 @@
-//collinsion.js
 //live
 jQuery(document).ready(function ($) {
   let code;
