@@ -1,16 +1,16 @@
-//collinsion.js
-//live
+//test with adding condition on ticket detail page in captcha
 jQuery(document).ready(function ($) {
   let code;
-//hide two options for Italy
- 
-  $(document.body).click(function(){
-    if ($("#title").hasClass("ColumbusItaly")){
+  //hide two options for Italy
+
+  $(document.body).click(function () {
+    if ($("#title").hasClass("ColumbusItaly")) {
       $('div[data-value="Missed flight or departure"]').remove();
-      $('div[data-value="Substitute Accommodation - change to accommodation during trip"]').remove();
-    };
-  })
- 
+      $(
+        'div[data-value="Substitute Accommodation - change to accommodation during trip"]'
+      ).remove();
+    }
+  });
 
   $("#chat-icon").hide();
   $("#helpdesk_ticket_subject").closest(".form-group").hide();
@@ -37,45 +37,43 @@ jQuery(document).ready(function ($) {
       '<div class="invalid-feedback api_call_failed_postcode">API call failed</div>'
     );
 
-    if ($("#title").hasClass("ColumbusItaly")){
-      if (!$(".edit_helpdesk_ticket").length > 0){
-        $("#helpdesk_ticket_custom_field_cf_policy_email_2321673")
+  if ($("#title").hasClass("ColumbusItaly")) {
+    if (!$(".edit_helpdesk_ticket").length > 0) {
+      $("#helpdesk_ticket_custom_field_cf_policy_email_2321673")
         .closest(".form-group")
         .append(
           '<div id="captcha-section"><label>Inserisci Captcha</label><div id="captcha"></div><input type="text" placeholder="Captcha" id="cpatchaTextBox"/></div>'
         );
-        $("#helpdesk_ticket_custom_field_cf_date_of_birth_2321673")
+      $("#helpdesk_ticket_custom_field_cf_date_of_birth_2321673")
         .closest(".form-group")
         .append(
           '<div id="captcha-section"><label>Inserisci Captcha</label><div id="captcha"></div><input type="text" placeholder="Captcha" id="cpatchaTextBox"/></div>'
         );
-        $("#captcha-section")
+      $("#captcha-section")
         .closest(".form-group")
         .append(
           '<div class="invalid-feedback captcha_failed">API call failed</div>'
         );
-      }
-
-    }else{
-    if (!$(".edit_helpdesk_ticket").length > 0){
+    }
+  } else {
+    if (!$(".edit_helpdesk_ticket").length > 0) {
       $("#helpdesk_ticket_custom_field_cf_policy_email_2321673")
-      .closest(".form-group")
-      .append(
-        '<div id="captcha-section"><label>Enter Captcha</label><div id="captcha"></div><input type="text" placeholder="Captcha" id="cpatchaTextBox"/></div>'
-      );
+        .closest(".form-group")
+        .append(
+          '<div id="captcha-section"><label>Enter Captcha</label><div id="captcha"></div><input type="text" placeholder="Captcha" id="cpatchaTextBox"/></div>'
+        );
       $("#helpdesk_ticket_custom_field_cf_date_of_birth_2321673")
-      .closest(".form-group")
-      .append(
-        '<div id="captcha-section"><label>Enter Captcha</label><div id="captcha"></div><input type="text" placeholder="Captcha" id="cpatchaTextBox"/></div>'
-      );
+        .closest(".form-group")
+        .append(
+          '<div id="captcha-section"><label>Enter Captcha</label><div id="captcha"></div><input type="text" placeholder="Captcha" id="cpatchaTextBox"/></div>'
+        );
       $("#captcha-section")
-      .closest(".form-group")
-      .append(
-        '<div class="invalid-feedback captcha_failed">API call failed</div>'
-      );
+        .closest(".form-group")
+        .append(
+          '<div class="invalid-feedback captcha_failed">API call failed</div>'
+        );
     }
-    }
-
+  }
 
   $(
     "#invalid-feedback helpdesk_ticket_custom_field_cf_reason_for_claim_2321673"
@@ -99,23 +97,21 @@ jQuery(document).ready(function ($) {
     .append(
       '<div class="invalid-feedback api_call_failed_sortcodevalidate">API call failed</div>'
     );
-  if($("#title").hasClass("ColumbusItaly")){
+  if ($("#title").hasClass("ColumbusItaly")) {
     jQuery(".new-ticket-submit-button")
-    .closest(".card-body")
-    .find(".form-group")
-    .before(
-      '<div class="invalid-feedback common_error">Si prega di compilare tutti i campi</div>'
-    );
-  }else{
+      .closest(".card-body")
+      .find(".form-group")
+      .before(
+        '<div class="invalid-feedback common_error">Si prega di compilare tutti i campi</div>'
+      );
+  } else {
     jQuery(".new-ticket-submit-button")
-    .closest(".card-body")
-    .find(".form-group")
-    .before(
-      '<div class="invalid-feedback common_error">Please fill in all fields</div>'
-    );
+      .closest(".card-body")
+      .find(".form-group")
+      .before(
+        '<div class="invalid-feedback common_error">Please fill in all fields</div>'
+      );
   }
-
-  
 
   $("#cancel-claim-model").click(function () {
     jQuery(".modal").trigger("click");
@@ -154,7 +150,7 @@ jQuery(document).ready(function ($) {
   let bankResult = "";
   let countryPortal = {
     SagaPostOfficeColumbusUK: "GB",
-    ColumbusItaly:"IT",
+    ColumbusItaly: "IT",
     VHI: "IE",
   };
   let InternalPolicyNumber;
@@ -162,13 +158,15 @@ jQuery(document).ready(function ($) {
   // if($("#title").hasClass("VHI")||$("#title").hasClass("EasyJet")){
   //   domainURL = "claim-proxy.collinsonnis.com";
   // }else {
-    domainURL = "claim-proxy-lower.collinsonnis.com";
+  domainURL = "claim-proxy-lower.collinsonnis.com";
   // }
   //"claim-proxy-lower.collinsonnis.com";
   //"claim-sandbox.collinsonnis.com";
   // let succesStatus = [200, 201, 202, 203, 204, 205, 206, 207, 208, 226];
   getJWTToken();
-  createCaptcha();
+  if (!jQuery(".fw-comments-wrapper").length) {
+    createCaptcha();
+  }
   function getJWTToken(fieldId) {
     var flag = false;
     var statusCode;
@@ -199,10 +197,10 @@ jQuery(document).ready(function ($) {
       .catch((error) => console.log(error));
   }
   function createCaptcha() {
-    //clear the contents of captcha div first 
-    document.getElementById('captcha').innerHTML = "";
+    //clear the contents of captcha div first
+    document.getElementById("captcha").innerHTML = "";
     var charsArray =
-    "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ@!#$%^&*";
+      "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ@!#$%^&*";
     var lengthOtp = 6;
     var captcha = [];
     for (var i = 0; i < lengthOtp; i++) {
@@ -604,11 +602,11 @@ jQuery(document).ready(function ($) {
         '<div id="overall_div_' +
         number +
         '" class="card-header ins-div"> ' +
-        '<div class="col-md-6">'+
+        '<div class="col-md-6">' +
         '<h5 class="mb-0 header-text">' +
         title +
-        '</h5></div>' +
-        '<div class="col-md-6" style="float: right;"> '+
+        "</h5></div>" +
+        '<div class="col-md-6" style="float: right;"> ' +
         '<div id="section-' +
         number +
         '-button" class="ins-col-test collapsed  col align-self-end"  data-target="#collapseSection' +
@@ -813,145 +811,128 @@ jQuery(document).ready(function ($) {
   //open section 1 by default
   $("#section-1-button").click();
 
-  function checkRecaptcha() {
-    const iFrame = document.getElementById("recaptcha-frame");
-
-    const iFrameWindow = iFrame.contentWindow;
-
-    const secondLayer = iFrameWindow.document;
-
-    const thirdLayer = secondLayer.getElementById("recaptcha");
-
-    //console.log(thirdLayer)
-
-    const iFrame2 = thirdLayer.querySelectorAll("iframe[title=reCAPTCHA]")[0];
-
-    console.log(iFrame2);
-
-    const iFrame2Window = iFrame2.contentWindow;
-
-    const iFrame2Windowdoc = iFrame2Window.document;
-
-    console.log(iFrame2Window);
-  }
-
   //________________________________________________________________________________________________________________________________
   //section 1 continue
   //on CHANGE OF DATE OF BIRTH - check any of the two inputs is empty, if it is remove attr, else add it
   $("#save_and_continue1").click(function () {
     if ($("#title").hasClass("EasyJet")) {
       //checkRecaptcha
-      if (document.getElementById("cpatchaTextBox").value == code) {
       if (
-        $(
-          "#helpdesk_ticket_custom_field_cf_policy_number454080_2321673"
-        ).val() == "" ||
-        $("#helpdesk_ticket_custom_field_cf_policy_email_2321673").val() == ""
+        document.getElementById("cpatchaTextBox").value == code ||
+        jQuery(".fw-comments-wrapper").length
       ) {
-        // ||
-        // $("#helpdesk_ticket_custom_field_cf_claim_number_2321673").val() == ""
-        if ($("#title").hasClass("ColumbusItaly")){
-          addErrorMessage(
-            "helpdesk_ticket_custom_field_cf_policy_number454080_2321673",
-            "Si prega di compilare tutti i campi"
-          );
-          addErrorMessage(
-            "helpdesk_ticket_custom_field_cf_policy_email_2321673",
-            "Si prega di compilare tutti i campi");
-        }else{
-        addErrorMessage(
-          "helpdesk_ticket_custom_field_cf_policy_number454080_2321673",
-          "Please fill in all fields"
-        );
-        addErrorMessage(
-          "helpdesk_ticket_custom_field_cf_policy_email_2321673",
-          "Please fill in all fields"
-        );}
-        
-      } else {
-        //check LENGTH OF POLICY NUMBER - 6 DIGITS
-        let policyEmailValue = $(
-          "#helpdesk_ticket_custom_field_cf_policy_email_2321673"
-        ).val();
-        var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
         if (
           $(
             "#helpdesk_ticket_custom_field_cf_policy_number454080_2321673"
-          ).val().length < 6
+          ).val() == "" ||
+          $("#helpdesk_ticket_custom_field_cf_policy_email_2321673").val() == ""
         ) {
-          if($("#title").hasClass("ColumbusItaly")){
+          // ||
+          // $("#helpdesk_ticket_custom_field_cf_claim_number_2321673").val() == ""
+          if ($("#title").hasClass("ColumbusItaly")) {
             addErrorMessage(
               "helpdesk_ticket_custom_field_cf_policy_number454080_2321673",
-              "Il numero di polizza deve essere di almeno 6 cifre."
+              "Si prega di compilare tutti i campi"
+            );
+            addErrorMessage(
+              "helpdesk_ticket_custom_field_cf_policy_email_2321673",
+              "Si prega di compilare tutti i campi"
+            );
+          } else {
+            addErrorMessage(
+              "helpdesk_ticket_custom_field_cf_policy_number454080_2321673",
+              "Please fill in all fields"
+            );
+            addErrorMessage(
+              "helpdesk_ticket_custom_field_cf_policy_email_2321673",
+              "Please fill in all fields"
+            );
+          }
+        } else {
+          //check LENGTH OF POLICY NUMBER - 6 DIGITS
+          let policyEmailValue = $(
+            "#helpdesk_ticket_custom_field_cf_policy_email_2321673"
+          ).val();
+          var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+          if (
+            $(
+              "#helpdesk_ticket_custom_field_cf_policy_number454080_2321673"
+            ).val().length < 6
+          ) {
+            if ($("#title").hasClass("ColumbusItaly")) {
+              addErrorMessage(
+                "helpdesk_ticket_custom_field_cf_policy_number454080_2321673",
+                "Il numero di polizza deve essere di almeno 6 cifre."
+              );
+              $("#save_and_continue1").removeAttr("data-target");
+              $("#save_and_continue1").removeAttr("data-toggle");
+            } else {
+              addErrorMessage(
+                "helpdesk_ticket_custom_field_cf_policy_number454080_2321673",
+                "Policy Number must be at least 6 digits."
+              );
+              $("#save_and_continue1").removeAttr("data-target");
+              $("#save_and_continue1").removeAttr("data-toggle");
+            }
+          } else if (!policyEmailValue.match(mailformat)) {
+            addErrorMessage(
+              "helpdesk_ticket_custom_field_cf_policy_email_2321673",
+              "Email should be in proper format"
             );
             $("#save_and_continue1").removeAttr("data-target");
             $("#save_and_continue1").removeAttr("data-toggle");
-          }else{
-          addErrorMessage(
-            "helpdesk_ticket_custom_field_cf_policy_number454080_2321673",
-            "Policy Number must be at least 6 digits."
-          );
-          $("#save_and_continue1").removeAttr("data-target");
-          $("#save_and_continue1").removeAttr("data-toggle");}
-        } else if (!policyEmailValue.match(mailformat)) {
-          addErrorMessage(
-            "helpdesk_ticket_custom_field_cf_policy_email_2321673",
-            "Email should be in proper format"
-          );
-          $("#save_and_continue1").removeAttr("data-target");
-          $("#save_and_continue1").removeAttr("data-toggle");
-        } else {
-          //create variables for invoke
-          let policyNumber = $(
-            "#helpdesk_ticket_custom_field_cf_policy_number454080_2321673"
-          ).val();
-          let policyEmail = $(
-            "#helpdesk_ticket_custom_field_cf_policy_email_2321673"
-          ).val();
-          let claimNumber = $(
-            "#helpdesk_ticket_custom_field_cf_claim_number_2321673"
-          ).val();
-          //getPolicy INVOKE HERE!!
-          if (claimNumber) {
-            $("#agreementModal").addClass("loader-text");
-            getClaimStatus(claimNumber, "#save_and_continue1");
           } else {
-            jQuery("#model-status-msg").addClass("d-none");
-            $("#agreementModal").addClass("loader-text");
-            getPolicyDetailsByPolicyEmail(
-              policyNumber,
-              policyEmail,
-              "#save_and_continue1"
-            );
+            //create variables for invoke
+            let policyNumber = $(
+              "#helpdesk_ticket_custom_field_cf_policy_number454080_2321673"
+            ).val();
+            let policyEmail = $(
+              "#helpdesk_ticket_custom_field_cf_policy_email_2321673"
+            ).val();
+            let claimNumber = $(
+              "#helpdesk_ticket_custom_field_cf_claim_number_2321673"
+            ).val();
+            //getPolicy INVOKE HERE!!
+            if (claimNumber) {
+              $("#agreementModal").addClass("loader-text");
+              getClaimStatus(claimNumber, "#save_and_continue1");
+            } else {
+              jQuery("#model-status-msg").addClass("d-none");
+              $("#agreementModal").addClass("loader-text");
+              getPolicyDetailsByPolicyEmail(
+                policyNumber,
+                policyEmail,
+                "#save_and_continue1"
+              );
+            }
+            //
+            $("#save_and_continue1").attr("data-target", "#agreementModal");
+            $("#save_and_continue1").attr("data-toggle", "modal");
+            clearError([
+              "helpdesk_ticket_custom_field_cf_policy_email_2321673",
+              "helpdesk_ticket_custom_field_cf_policy_number454080_2321673",
+              "helpdesk_ticket_custom_field_cf_claim_number_2321673",
+            ]);
           }
-          //
-          $("#save_and_continue1").attr("data-target", "#agreementModal");
-          $("#save_and_continue1").attr("data-toggle", "modal");
-          clearError([
-            "helpdesk_ticket_custom_field_cf_policy_email_2321673",
-            "helpdesk_ticket_custom_field_cf_policy_number454080_2321673",
-            "helpdesk_ticket_custom_field_cf_claim_number_2321673",
-          ]);
+        }
+      } else {
+        console.log("Invalid captcha");
+
+        if ($("#title").hasClass("ColumbusItaly")) {
+          addErrorMessage(
+            "captcha_failed",
+            "CAPTCHA non valido. Si prega di reinserire captcha"
+          );
+          createCaptcha();
+        } else {
+          addErrorMessage(
+            "captcha_failed",
+            "Invalid Captcha. Please re-enter captcha"
+          );
+
+          createCaptcha();
         }
       }
-    }else{
-      console.log("Invalid captcha")
-
-      if($("#title").hasClass("ColumbusItaly")){
-        addErrorMessage(
-          "captcha_failed",
-          "CAPTCHA non valido. Si prega di reinserire captcha"
-        );
-        createCaptcha();
-      }else{
-      addErrorMessage(
-        "captcha_failed",
-        "Invalid Captcha. Please re-enter captcha"
-      );
-      
-      createCaptcha();
-    }
-    }
 
       if ($("#cb").prop("checked") == true) {
         $("#continue").attr("data-dismiss", "modal");
@@ -965,8 +946,7 @@ jQuery(document).ready(function ($) {
         } else if ($("#title").hasClass("ColumbusItaly")) {
           $("#continue").css("background-color", "#083050");
         }
-      }
-       else {
+      } else {
         $("#continue").removeAttr("data-dismiss");
         //grey out continue
         $("#continue").css("background-color", "grey");
@@ -976,135 +956,144 @@ jQuery(document).ready(function ($) {
       $("#title").hasClass("VHI") ||
       $("#title").hasClass("ColumbusItaly")
     ) {
-      if (document.getElementById("cpatchaTextBox").value == code) {
       if (
-        $(
-          "#helpdesk_ticket_custom_field_cf_policy_number454080_2321673"
-        ).val() == "" ||
-        $("#helpdesk_ticket_custom_field_cf_date_of_birth_2321673").val() == ""
+        document.getElementById("cpatchaTextBox").value == code ||
+        jQuery(".fw-comments-wrapper").length
       ) {
-
-        if ($("#title").hasClass("ColumbusItaly")){
-          addErrorMessage(
-            "helpdesk_ticket_custom_field_cf_policy_number454080_2321673",
-            "Si prega di compilare tutti i campi"
-          );
-          addErrorMessage(
-            "helpdesk_ticket_custom_field_cf_date_of_birth_2321673",
-            "Si prega di compilare tutti i campi"
-          );
-        }else{
-        addErrorMessage(
-          "helpdesk_ticket_custom_field_cf_policy_number454080_2321673",
-          "Please fill in all fields"
-        );
-        addErrorMessage(
-          "helpdesk_ticket_custom_field_cf_date_of_birth_2321673",
-          "Please fill in all fields"
-        );
-      }
-      } else {
-        //check LENGTH OF POLICY NUMBER - 6 DIGITS
         if (
           $(
             "#helpdesk_ticket_custom_field_cf_policy_number454080_2321673"
-          ).val().length >= 6
+          ).val() == "" ||
+          $("#helpdesk_ticket_custom_field_cf_date_of_birth_2321673").val() ==
+            ""
         ) {
-          birthdate = $(
-            "#helpdesk_ticket_custom_field_cf_date_of_birth_2321673"
-          ).val();
-          bday = new Date(birthdate);
-          if (today < bday) {
-            if ($("#title").hasClass("ColumbusItaly")){
-              addErrorMessage(
-                "helpdesk_ticket_custom_field_cf_date_of_birth_2321673",
-                "Compleanno non valido")
-            }else{
+          if ($("#title").hasClass("ColumbusItaly")) {
             addErrorMessage(
-              "helpdesk_ticket_custom_field_cf_date_of_birth_2321673",
-              "Invalid Birthday"
-            );}
-            $("#save_and_continue1").removeAttr("data-target");
-            $("#save_and_continue1").removeAttr("data-toggle");
-          } else if (today > bday) {
-            let policyNumber = $(
-              "#helpdesk_ticket_custom_field_cf_policy_number454080_2321673"
-            ).val();
-            let dateOfBirth = $(
-              "#helpdesk_ticket_custom_field_cf_date_of_birth_2321673"
-            ).val();
-            let claimNumberCheck = $(
-              "#helpdesk_ticket_custom_field_cf_claim_number_2321673"
-            ).val();
-            jQuery("#model-error-msg").addClass("d-none");
-            jQuery("#model-sucess-msg").addClass("d-none");
-            if (claimNumberCheck) {
-              $("#agreementModal").addClass("loader-text");
-              getClaimStatus(claimNumberCheck, "#save_and_continue1");
-            } else {
-              jQuery("#model-status-msg").addClass("d-none");
-              $("#agreementModal").addClass("loader-text");
-              getPolicyDetails(
-                policyNumber,
-                dateOfBirth,
-                "#save_and_continue1"
-              );
-            }
-            //changes started for error
-            $("#save_and_continue1").attr("data-target", "#agreementModal");
-            $("#save_and_continue1").attr("data-toggle", "modal");
-
-            clearError([
-              "helpdesk_ticket_custom_field_cf_date_of_birth_2321673",
               "helpdesk_ticket_custom_field_cf_policy_number454080_2321673",
-            ]);
-          } else {
-            if ($("#title").hasClass("ColumbusItaly")){
-              addErrorMessage(
-                "helpdesk_ticket_custom_field_cf_date_of_birth_2321673",
-                "Compleanno non valido")
-            }else{
+              "Si prega di compilare tutti i campi"
+            );
             addErrorMessage(
               "helpdesk_ticket_custom_field_cf_date_of_birth_2321673",
-              "Invalid Birthday"
-            );}
-            $("#save_and_continue1").removeAttr("data-target");
-            $("#save_and_continue1").removeAttr("data-toggle");
+              "Si prega di compilare tutti i campi"
+            );
+          } else {
+            addErrorMessage(
+              "helpdesk_ticket_custom_field_cf_policy_number454080_2321673",
+              "Please fill in all fields"
+            );
+            addErrorMessage(
+              "helpdesk_ticket_custom_field_cf_date_of_birth_2321673",
+              "Please fill in all fields"
+            );
           }
         } else {
-          if($("#title").hasClass("ColumbusItaly")){
-            addErrorMessage(
-              "helpdesk_ticket_custom_field_cf_policy_number454080_2321673",
-              "Il numero di polizza deve essere di almeno 6 cifre."
-            );
-            $("#save_and_continue1").removeAttr("data-target");
-            $("#save_and_continue1").removeAttr("data-toggle");
-          }else{
-          addErrorMessage(
-            "helpdesk_ticket_custom_field_cf_policy_number454080_2321673",
-            "Policy Number must be at least 6 digits."
-          );
-          $("#save_and_continue1").removeAttr("data-target");
-          $("#save_and_continue1").removeAttr("data-toggle");}
+          //check LENGTH OF POLICY NUMBER - 6 DIGITS
+          if (
+            $(
+              "#helpdesk_ticket_custom_field_cf_policy_number454080_2321673"
+            ).val().length >= 6
+          ) {
+            birthdate = $(
+              "#helpdesk_ticket_custom_field_cf_date_of_birth_2321673"
+            ).val();
+            bday = new Date(birthdate);
+            if (today < bday) {
+              if ($("#title").hasClass("ColumbusItaly")) {
+                addErrorMessage(
+                  "helpdesk_ticket_custom_field_cf_date_of_birth_2321673",
+                  "Compleanno non valido"
+                );
+              } else {
+                addErrorMessage(
+                  "helpdesk_ticket_custom_field_cf_date_of_birth_2321673",
+                  "Invalid Birthday"
+                );
+              }
+              $("#save_and_continue1").removeAttr("data-target");
+              $("#save_and_continue1").removeAttr("data-toggle");
+            } else if (today > bday) {
+              let policyNumber = $(
+                "#helpdesk_ticket_custom_field_cf_policy_number454080_2321673"
+              ).val();
+              let dateOfBirth = $(
+                "#helpdesk_ticket_custom_field_cf_date_of_birth_2321673"
+              ).val();
+              let claimNumberCheck = $(
+                "#helpdesk_ticket_custom_field_cf_claim_number_2321673"
+              ).val();
+              jQuery("#model-error-msg").addClass("d-none");
+              jQuery("#model-sucess-msg").addClass("d-none");
+              if (claimNumberCheck) {
+                $("#agreementModal").addClass("loader-text");
+                getClaimStatus(claimNumberCheck, "#save_and_continue1");
+              } else {
+                jQuery("#model-status-msg").addClass("d-none");
+                $("#agreementModal").addClass("loader-text");
+                getPolicyDetails(
+                  policyNumber,
+                  dateOfBirth,
+                  "#save_and_continue1"
+                );
+              }
+              //changes started for error
+              $("#save_and_continue1").attr("data-target", "#agreementModal");
+              $("#save_and_continue1").attr("data-toggle", "modal");
+
+              clearError([
+                "helpdesk_ticket_custom_field_cf_date_of_birth_2321673",
+                "helpdesk_ticket_custom_field_cf_policy_number454080_2321673",
+              ]);
+            } else {
+              if ($("#title").hasClass("ColumbusItaly")) {
+                addErrorMessage(
+                  "helpdesk_ticket_custom_field_cf_date_of_birth_2321673",
+                  "Compleanno non valido"
+                );
+              } else {
+                addErrorMessage(
+                  "helpdesk_ticket_custom_field_cf_date_of_birth_2321673",
+                  "Invalid Birthday"
+                );
+              }
+              $("#save_and_continue1").removeAttr("data-target");
+              $("#save_and_continue1").removeAttr("data-toggle");
+            }
+          } else {
+            if ($("#title").hasClass("ColumbusItaly")) {
+              addErrorMessage(
+                "helpdesk_ticket_custom_field_cf_policy_number454080_2321673",
+                "Il numero di polizza deve essere di almeno 6 cifre."
+              );
+              $("#save_and_continue1").removeAttr("data-target");
+              $("#save_and_continue1").removeAttr("data-toggle");
+            } else {
+              addErrorMessage(
+                "helpdesk_ticket_custom_field_cf_policy_number454080_2321673",
+                "Policy Number must be at least 6 digits."
+              );
+              $("#save_and_continue1").removeAttr("data-target");
+              $("#save_and_continue1").removeAttr("data-toggle");
+            }
+          }
         }
-      }
-    }else{
-      console.log("Invalid captcha")
+      } else {
+        console.log("Invalid captcha");
 
-      if($("#title").hasClass("ColumbusItaly")){
-        addErrorMessage(
-          "captcha_failed",
-          "CAPTCHA non valido. Si prega di reinserire captcha"
-        );
+        if ($("#title").hasClass("ColumbusItaly")) {
+          addErrorMessage(
+            "captcha_failed",
+            "CAPTCHA non valido. Si prega di reinserire captcha"
+          );
+          createCaptcha();
+        } else {
+          addErrorMessage(
+            "captcha_failed",
+            "Invalid Captcha. Please re-enter captcha"
+          );
+        }
+
         createCaptcha();
-      }else{
-      addErrorMessage(
-        "captcha_failed",
-        "Invalid Captcha. Please re-enter captcha"
-      );}
-
-      createCaptcha();
-    }
+      }
       if ($("#cb").prop("checked") == true) {
         $("#continue").attr("data-dismiss", "modal");
         //grey out continue - opposite - for different schemes
@@ -1124,132 +1113,142 @@ jQuery(document).ready(function ($) {
         $("#continue").removeAttr("data-dismiss");
       }
     } else if ($("#title").hasClass("CollinsonUK")) {
-      if (document.getElementById("cpatchaTextBox").value == code) {
       if (
-        $(
-          "#helpdesk_ticket_custom_field_cf_policy_number454080_2321673"
-        ).val() == "" ||
-        $("#helpdesk_ticket_custom_field_cf_date_of_birth_2321673").val() == ""
+        document.getElementById("cpatchaTextBox").value == code ||
+        jQuery(".fw-comments-wrapper").length
       ) {
-        if ($("#title").hasClass("ColumbusItaly")){
-          addErrorMessage(
-            "helpdesk_ticket_custom_field_cf_policy_number454080_2321673",
-            "Si prega di compilare tutti i campi"
-          );
-          addErrorMessage(
-            "helpdesk_ticket_custom_field_cf_date_of_birth_2321673",
-            "Si prega di compilare tutti i campi"
-          );
-        }else{
-        addErrorMessage(
-          "helpdesk_ticket_custom_field_cf_policy_number454080_2321673",
-          "Please fill in all fields"
-        );
-        addErrorMessage(
-          "helpdesk_ticket_custom_field_cf_date_of_birth_2321673",
-          "Please fill in all fields"
-        );}
-        
-      } else {
-        //check LENGTH OF POLICY NUMBER - 6 DIGITS
         if (
           $(
             "#helpdesk_ticket_custom_field_cf_policy_number454080_2321673"
-          ).val().length >= 6
+          ).val() == "" ||
+          $("#helpdesk_ticket_custom_field_cf_date_of_birth_2321673").val() ==
+            ""
         ) {
-          birthdate = $(
-            "#helpdesk_ticket_custom_field_cf_date_of_birth_2321673"
-          ).val();
-          bday = new Date(birthdate);
-          if (today < bday) {
-            if ($("#title").hasClass("ColumbusItaly")){
-              addErrorMessage(
-                "helpdesk_ticket_custom_field_cf_date_of_birth_2321673",
-                "Compleanno non valido")
-            }else{
+          if ($("#title").hasClass("ColumbusItaly")) {
             addErrorMessage(
-              "helpdesk_ticket_custom_field_cf_date_of_birth_2321673",
-              "Invalid Birthday"
-            );}
-            $("#save_and_continue1").removeAttr("data-target");
-            $("#save_and_continue1").removeAttr("data-toggle");
-          } else if (today > bday) {
-            let policyNumber = $(
-              "#helpdesk_ticket_custom_field_cf_policy_number454080_2321673"
-            ).val();
-            let dateOfBirth = $(
-              "#helpdesk_ticket_custom_field_cf_date_of_birth_2321673"
-            ).val();
-            let claimNumberCheck = $(
-              "#helpdesk_ticket_custom_field_cf_claim_number_2321673"
-            ).val();
-            jQuery("#model-error-msg").addClass("d-none");
-            jQuery("#model-sucess-msg").addClass("d-none");
-            if (claimNumberCheck) {
-              $("#agreementModal").addClass("loader-text");
-              getClaimStatus(claimNumberCheck, "#save_and_continue1");
-            } else {
-              jQuery("#model-status-msg").addClass("d-none");
-              $("#agreementModal").addClass("loader-text");
-              getPolicyDetails(
-                policyNumber,
-                dateOfBirth,
-                "#save_and_continue1"
-              );
-            }
-            //changes started for error
-            $("#save_and_continue1").attr("data-target", "#agreementModal");
-            $("#save_and_continue1").attr("data-toggle", "modal");
-            clearError([
-              "helpdesk_ticket_custom_field_cf_date_of_birth_2321673",
               "helpdesk_ticket_custom_field_cf_policy_number454080_2321673",
-            ]);
-          } else {
-            if ($("#title").hasClass("ColumbusItaly")){
-              addErrorMessage(
-                "helpdesk_ticket_custom_field_cf_date_of_birth_2321673",
-                "Compleanno non valido")
-            }else{
+              "Si prega di compilare tutti i campi"
+            );
             addErrorMessage(
               "helpdesk_ticket_custom_field_cf_date_of_birth_2321673",
-              "Invalid Birthday"
-            );}
-            $("#save_and_continue1").removeAttr("data-target");
-            $("#save_and_continue1").removeAttr("data-toggle");
+              "Si prega di compilare tutti i campi"
+            );
+          } else {
+            addErrorMessage(
+              "helpdesk_ticket_custom_field_cf_policy_number454080_2321673",
+              "Please fill in all fields"
+            );
+            addErrorMessage(
+              "helpdesk_ticket_custom_field_cf_date_of_birth_2321673",
+              "Please fill in all fields"
+            );
           }
         } else {
-          if($("#title").hasClass("ColumbusItaly")){
-          addErrorMessage(
-            "helpdesk_ticket_custom_field_cf_policy_number454080_2321673",
-            "Il numero di polizza deve essere di almeno 6 cifre."
-          );
-          $("#save_and_continue1").removeAttr("data-target");
-          $("#save_and_continue1").removeAttr("data-toggle");
-        }else{
-        addErrorMessage(
-          "helpdesk_ticket_custom_field_cf_policy_number454080_2321673",
-          "Policy Number must be at least 6 digits."
-        );
-        $("#save_and_continue1").removeAttr("data-target");
-        $("#save_and_continue1").removeAttr("data-toggle");}
+          //check LENGTH OF POLICY NUMBER - 6 DIGITS
+          if (
+            $(
+              "#helpdesk_ticket_custom_field_cf_policy_number454080_2321673"
+            ).val().length >= 6
+          ) {
+            birthdate = $(
+              "#helpdesk_ticket_custom_field_cf_date_of_birth_2321673"
+            ).val();
+            bday = new Date(birthdate);
+            if (today < bday) {
+              if ($("#title").hasClass("ColumbusItaly")) {
+                addErrorMessage(
+                  "helpdesk_ticket_custom_field_cf_date_of_birth_2321673",
+                  "Compleanno non valido"
+                );
+              } else {
+                addErrorMessage(
+                  "helpdesk_ticket_custom_field_cf_date_of_birth_2321673",
+                  "Invalid Birthday"
+                );
+              }
+              $("#save_and_continue1").removeAttr("data-target");
+              $("#save_and_continue1").removeAttr("data-toggle");
+            } else if (today > bday) {
+              let policyNumber = $(
+                "#helpdesk_ticket_custom_field_cf_policy_number454080_2321673"
+              ).val();
+              let dateOfBirth = $(
+                "#helpdesk_ticket_custom_field_cf_date_of_birth_2321673"
+              ).val();
+              let claimNumberCheck = $(
+                "#helpdesk_ticket_custom_field_cf_claim_number_2321673"
+              ).val();
+              jQuery("#model-error-msg").addClass("d-none");
+              jQuery("#model-sucess-msg").addClass("d-none");
+              if (claimNumberCheck) {
+                $("#agreementModal").addClass("loader-text");
+                getClaimStatus(claimNumberCheck, "#save_and_continue1");
+              } else {
+                jQuery("#model-status-msg").addClass("d-none");
+                $("#agreementModal").addClass("loader-text");
+                getPolicyDetails(
+                  policyNumber,
+                  dateOfBirth,
+                  "#save_and_continue1"
+                );
+              }
+              //changes started for error
+              $("#save_and_continue1").attr("data-target", "#agreementModal");
+              $("#save_and_continue1").attr("data-toggle", "modal");
+              clearError([
+                "helpdesk_ticket_custom_field_cf_date_of_birth_2321673",
+                "helpdesk_ticket_custom_field_cf_policy_number454080_2321673",
+              ]);
+            } else {
+              if ($("#title").hasClass("ColumbusItaly")) {
+                addErrorMessage(
+                  "helpdesk_ticket_custom_field_cf_date_of_birth_2321673",
+                  "Compleanno non valido"
+                );
+              } else {
+                addErrorMessage(
+                  "helpdesk_ticket_custom_field_cf_date_of_birth_2321673",
+                  "Invalid Birthday"
+                );
+              }
+              $("#save_and_continue1").removeAttr("data-target");
+              $("#save_and_continue1").removeAttr("data-toggle");
+            }
+          } else {
+            if ($("#title").hasClass("ColumbusItaly")) {
+              addErrorMessage(
+                "helpdesk_ticket_custom_field_cf_policy_number454080_2321673",
+                "Il numero di polizza deve essere di almeno 6 cifre."
+              );
+              $("#save_and_continue1").removeAttr("data-target");
+              $("#save_and_continue1").removeAttr("data-toggle");
+            } else {
+              addErrorMessage(
+                "helpdesk_ticket_custom_field_cf_policy_number454080_2321673",
+                "Policy Number must be at least 6 digits."
+              );
+              $("#save_and_continue1").removeAttr("data-target");
+              $("#save_and_continue1").removeAttr("data-toggle");
+            }
+          }
         }
-      }
-    }else{
-      console.log("Invalid captcha")
+      } else {
+        console.log("Invalid captcha");
 
-      if($("#title").hasClass("ColumbusItaly")){
-        addErrorMessage(
-          "captcha_failed",
-          "CAPTCHA non valido. Si prega di reinserire captcha"
-        );
+        if ($("#title").hasClass("ColumbusItaly")) {
+          addErrorMessage(
+            "captcha_failed",
+            "CAPTCHA non valido. Si prega di reinserire captcha"
+          );
+          createCaptcha();
+        } else {
+          addErrorMessage(
+            "captcha_failed",
+            "Invalid Captcha. Please re-enter captcha"
+          );
+        }
         createCaptcha();
-      }else{
-      addErrorMessage(
-        "captcha_failed",
-        "Invalid Captcha. Please re-enter captcha"
-      );}
-      createCaptcha();
-    }
+      }
       if ($("#cb").prop("checked") == true) {
         $("#continue").attr("data-dismiss", "modal");
         //grey out continue - opposite - for different schemes
@@ -1310,7 +1309,7 @@ jQuery(document).ready(function ($) {
             getJWTToken(fieldId);
           } else if (statusCode == 404) {
             jQuery("#model-error-msg").removeClass("d-none");
-            if($("#title").hasClass("ColumbusItaly")){
+            if ($("#title").hasClass("ColumbusItaly")) {
               jQuery("#model-error-msg .ins-modal-body-content").text(
                 "Qualcosa non va. Si prega di riprovare utilizzando il numero di polizza riportato sul documento assicurativo."
               );
@@ -1318,7 +1317,7 @@ jQuery(document).ready(function ($) {
                 "api_call_failed_dob",
                 "Qualcosa non va. Si prega di riprovare utilizzando il numero di polizza riportato sul documento assicurativo."
               );
-            }else{
+            } else {
               jQuery("#model-error-msg .ins-modal-body-content").text(
                 "Something's not quite right. Please try again using the policy number shown on your insurance document."
               );
@@ -1485,16 +1484,14 @@ jQuery(document).ready(function ($) {
     console.log(policyDetails);
     InternalPolicyNumber = policyData.InternalPolicyNumber;
     let options = "";
-    if ($("#title").hasClass("ColumbusItaly")){
+    if ($("#title").hasClass("ColumbusItaly")) {
       options +=
-      "<div class='form-group'><label class='form-label' style='display:inline-table;' >Nome dell'assicurato </label>";
-    
-    }else{
+        "<div class='form-group'><label class='form-label' style='display:inline-table;' >Nome dell'assicurato </label>";
+    } else {
       options +=
-      '<div class="form-group"><label class="form-label" style="display:inline-table;" > Name(s) of the Insured. Select everyone who was involved in the claim! </label>';
-    
+        '<div class="form-group"><label class="form-label" style="display:inline-table;" > Name(s) of the Insured. Select everyone who was involved in the claim! </label>';
     }
-      policyDetails.forEach(function (element, index) {
+    policyDetails.forEach(function (element, index) {
       options +=
         '<div class="list-claim"><input type="checkbox" class="check-box" id=' +
         index +
@@ -1639,12 +1636,11 @@ jQuery(document).ready(function ($) {
     ).length;
 
     if (len <= 0) {
-      if(("#title").hasClass("ColumbusItaly")){
+      if ("#title".hasClass("ColumbusItaly")) {
         addErrorMessage("check-finder", "Seleziona almeno un cliente");
+      } else {
+        addErrorMessage("check-finder", "Please select at least one client");
       }
-      else{
-      addErrorMessage("check-finder", "Please select at least one client");
-    }
     } else {
       let errorMessage = ["check-finder"];
       clearError(errorMessage);
@@ -1689,62 +1685,68 @@ jQuery(document).ready(function ($) {
             add_section_2();
           }
         } else {
-          if($("#title").hasClass("ColumbusItaly")){
+          if ($("#title").hasClass("ColumbusItaly")) {
             //ERROR Messaging
-          addErrorMessage(
-            "helpdesk_ticket_custom_field_cf_email_address_2321673",
-            "Assicurati che l'e-mail e l'e-mail di conferma siano le stesse."
-          );
-          addErrorMessage(
-            "helpdesk_ticket_custom_field_cf_confirm_email_address_2321673",
-            "Assicurati che l'e-mail e l'e-mail di conferma siano le stesse."
-          );
-          }else{
-          //ERROR Messaging
-          addErrorMessage(
-            "helpdesk_ticket_custom_field_cf_email_address_2321673",
-            "Please make sure email and confirmation email are the same."
-          );
-          addErrorMessage(
-            "helpdesk_ticket_custom_field_cf_confirm_email_address_2321673",
-            "Please make sure email and confirmation email are the same."
-          );}
+            addErrorMessage(
+              "helpdesk_ticket_custom_field_cf_email_address_2321673",
+              "Assicurati che l'e-mail e l'e-mail di conferma siano le stesse."
+            );
+            addErrorMessage(
+              "helpdesk_ticket_custom_field_cf_confirm_email_address_2321673",
+              "Assicurati che l'e-mail e l'e-mail di conferma siano le stesse."
+            );
+          } else {
+            //ERROR Messaging
+            addErrorMessage(
+              "helpdesk_ticket_custom_field_cf_email_address_2321673",
+              "Please make sure email and confirmation email are the same."
+            );
+            addErrorMessage(
+              "helpdesk_ticket_custom_field_cf_confirm_email_address_2321673",
+              "Please make sure email and confirmation email are the same."
+            );
+          }
         }
       } else {
-        if ($("#title").hasClass("ColumbusItaly")){
+        if ($("#title").hasClass("ColumbusItaly")) {
           addErrorMessage(
             "helpdesk_ticket_custom_field_cf_email_address_2321673",
             "Assicurati che entrambi i valori siano email"
           );
           addErrorMessage(
             "helpdesk_ticket_custom_field_cf_confirm_email_address_2321673",
-            "Assicurati che entrambi i valori siano email");
-        }else{
-        addErrorMessage(
-          "helpdesk_ticket_custom_field_cf_email_address_2321673",
-          "Please make sure both values are emails"
-        );
-        addErrorMessage(
-          "helpdesk_ticket_custom_field_cf_confirm_email_address_2321673",
-          "Please make sure both values are emails"
-        );}
+            "Assicurati che entrambi i valori siano email"
+          );
+        } else {
+          addErrorMessage(
+            "helpdesk_ticket_custom_field_cf_email_address_2321673",
+            "Please make sure both values are emails"
+          );
+          addErrorMessage(
+            "helpdesk_ticket_custom_field_cf_confirm_email_address_2321673",
+            "Please make sure both values are emails"
+          );
+        }
       }
     } else {
       //ERROR Messaging
-      if ($("#title").hasClass("ColumbusItaly")){
+      if ($("#title").hasClass("ColumbusItaly")) {
         for (var i = 0; i < list_to_check1.length; i++) {
-          addErrorMessage(list_to_check1[i], "Si prega di compilare tutti i campi");
+          addErrorMessage(
+            list_to_check1[i],
+            "Si prega di compilare tutti i campi"
+          );
           $("#save_and_continue3").removeAttr("data-target");
           $("#save_and_continue3").removeAttr("data-toggle");
         }
-      }else{
-      for (var i = 0; i < list_to_check1.length; i++) {
-        addErrorMessage(list_to_check1[i], "Please fill in all fields");
-        $("#save_and_continue3").removeAttr("data-target");
-        $("#save_and_continue3").removeAttr("data-toggle");
+      } else {
+        for (var i = 0; i < list_to_check1.length; i++) {
+          addErrorMessage(list_to_check1[i], "Please fill in all fields");
+          $("#save_and_continue3").removeAttr("data-target");
+          $("#save_and_continue3").removeAttr("data-toggle");
+        }
       }
     }
-  }
   });
   function add_section_2() {
     $("<strong id='section_2_header'>" + titles[1] + "</strong>").insertAfter(
@@ -5605,15 +5607,18 @@ jQuery(document).ready(function ($) {
     } else {
       //ERROR Messaging
       for (var i = 0; i < list_to_check2.length; i++) {
-        if($("#title").hasClass("ColumbusItaly")){
-          addErrorMessage(list_to_check2[i], "Si prega di compilare tutti i campi.");
+        if ($("#title").hasClass("ColumbusItaly")) {
+          addErrorMessage(
+            list_to_check2[i],
+            "Si prega di compilare tutti i campi."
+          );
           $("#save_and_continue3").removeAttr("data-target");
           $("#save_and_continue3").removeAttr("data-toggle");
-        }else{
-        addErrorMessage(list_to_check2[i], "Please fill in all fields");
-        $("#save_and_continue3").removeAttr("data-target");
-        $("#save_and_continue3").removeAttr("data-toggle");
-      }
+        } else {
+          addErrorMessage(list_to_check2[i], "Please fill in all fields");
+          $("#save_and_continue3").removeAttr("data-target");
+          $("#save_and_continue3").removeAttr("data-toggle");
+        }
       }
     }
   });
@@ -5811,15 +5816,16 @@ jQuery(document).ready(function ($) {
             "#helpdesk_ticket_custom_field_cf_internalpolicynumber_2321673"
           ).val(InternalPolicyNumber);
           $(".claim-number").empty();
-          if($("#title").hasClass("ColumbusItaly")){
+          if ($("#title").hasClass("ColumbusItaly")) {
             $(".claim-number").append(
               `Il tuo numero di reclamo è ${ClaimInitiatedNumber}`
             );
-          }else{
-          $(".claim-number").append(
-            `Your Claim Number is ${ClaimInitiatedNumber}`
-          );
-        }}
+          } else {
+            $(".claim-number").append(
+              `Your Claim Number is ${ClaimInitiatedNumber}`
+            );
+          }
+        }
       })
       .catch((error) => console.log("errror -->", error));
   }
@@ -6080,7 +6086,8 @@ jQuery(document).ready(function ($) {
     "Any CANCELLATION claim due to COVID-19": {
       paragraph:
         "We'll need these important documents to make a decision about your claim:<br>Your trip Booking Invoice showing the cost, your name and departure & return dates.<br>Cancellation Invoice from each company you booked with verifying the cancellation charge.<br>Evidence of a Positive Covid test from the NHS/HSE, Private Testing company or your Doctor. We accept Email, Letter or SMS confirmation but we are unable to accept photographs of a home Lateral flow test on their own.<br>If you need to gather this information, you can come to the Existing Claim section of our site and continue with your claim.<br>",
-      italian_paragraph:"Per favore carica l'informazione richiesta per il tuo sinistro:<br>Documento attestante il viaggio: può essere la prenotazione del biglietto aereo, una prenotazione, ricevuta albergo o simile.<br>Documento di cancellazione della prenotazione che indichi le somme a tuo carico. Questo per ogni prenotazione.<br>Documenti che evidenzino la necessità di disdetta come la conferma della prenotazione per eventuale test Coronavirus e evidenza di esito positivo. È sufficiente solo la conferma tramite e-mail, non accettiamo la conferma tramite SMS.<br>Se non hai tutte le informazioni, potrai salvare la tua richiesta e riprenderla in un secondo momento utilizzando il pulsante sinistro esistente ed inserendo il numero di rieferimento.",
+      italian_paragraph:
+        "Per favore carica l'informazione richiesta per il tuo sinistro:<br>Documento attestante il viaggio: può essere la prenotazione del biglietto aereo, una prenotazione, ricevuta albergo o simile.<br>Documento di cancellazione della prenotazione che indichi le somme a tuo carico. Questo per ogni prenotazione.<br>Documenti che evidenzino la necessità di disdetta come la conferma della prenotazione per eventuale test Coronavirus e evidenza di esito positivo. È sufficiente solo la conferma tramite e-mail, non accettiamo la conferma tramite SMS.<br>Se non hai tutte le informazioni, potrai salvare la tua richiesta e riprenderla in un secondo momento utilizzando il pulsante sinistro esistente ed inserendo il numero di rieferimento.",
       titles: ["Booking Invoice", "Other Docs"],
       images: [
         "https://ins-multiforms.s3.eu-central-1.amazonaws.com/Document_Icons/Booking+Invoices.png",
@@ -6090,8 +6097,9 @@ jQuery(document).ready(function ($) {
     "Baggage - personal items damaged": {
       paragraph:
         "We'll need these important documents to make a decision about your claim:<br>Your trip Booking Invoice showing the cost, your name and departure & return dates.<br>Confirmation from a trusted company confirming the cost of repair or that it's beyond economical repair.<br>If you need to gather this information, you can come to the Existing Claim section of our site and continue with your claim.<br>",
-      italian_paragraph: "Per favore carica l'informazione richiesta per il tuo sinistro:<br>Documento attestante il viaggio: può essere la prenotazione del biglietto aereo, una prenotazione, ricevuta albergo o simile.<br>Certificazione, rilasciata da un professionista, che confermi il costo di riparabilità o la non riparabilità del bene.<br>Se non hai tutte le informazioni, potrai salvare la tua richiesta e riprenderla in un secondo momento utilizzando il pulsante sinistro esistente ed inserendo il numero di rieferimento.",
-        titles: ["Booking Invoice", "Report"],
+      italian_paragraph:
+        "Per favore carica l'informazione richiesta per il tuo sinistro:<br>Documento attestante il viaggio: può essere la prenotazione del biglietto aereo, una prenotazione, ricevuta albergo o simile.<br>Certificazione, rilasciata da un professionista, che confermi il costo di riparabilità o la non riparabilità del bene.<br>Se non hai tutte le informazioni, potrai salvare la tua richiesta e riprenderla in un secondo momento utilizzando il pulsante sinistro esistente ed inserendo il numero di rieferimento.",
+      titles: ["Booking Invoice", "Report"],
       images: [
         "https://ins-multiforms.s3.eu-central-1.amazonaws.com/Document_Icons/Booking+Invoices.png",
         "https://ins-multiforms.s3.eu-central-1.amazonaws.com/Document_Icons/Report.png",
@@ -6100,8 +6108,9 @@ jQuery(document).ready(function ($) {
     "Baggage - personal items lost or stolen": {
       paragraph:
         "We'll need these important documents to make a decision about your claim:<br>Your trip Booking Invoice showing the cost, your name and departure & return dates.<br>Loss Report confirming the circumstances and the date/time at which you reported to the relevant person.<br>Proof of Ownership for the items being claimed.<br>If you need to gather this information, you can come to the Existing Claim section of our site and continue with your claim.",
-      italian_paragraph:"Per favore carica l'informazione richiesta per il tuo sinistro:<br>Documento attestante il viaggio: può essere la prenotazione del biglietto aereo, una prenotazione, ricevuta albergo o simile.<br>Denuncia alle autorità locali che confermi gli eventi da cui è scaturito il sinistro.<br>Scontrino/ricevuta d'acquisto per il bene alla base del sinistro.<br>Se non hai tutte le informazioni, potrai salvare la tua richiesta e riprenderla in un secondo momento utilizzando il pulsante sinistro esistente ed inserendo il numero di rieferimento.",
-        titles: ["Booking Invoice", "Report"],
+      italian_paragraph:
+        "Per favore carica l'informazione richiesta per il tuo sinistro:<br>Documento attestante il viaggio: può essere la prenotazione del biglietto aereo, una prenotazione, ricevuta albergo o simile.<br>Denuncia alle autorità locali che confermi gli eventi da cui è scaturito il sinistro.<br>Scontrino/ricevuta d'acquisto per il bene alla base del sinistro.<br>Se non hai tutte le informazioni, potrai salvare la tua richiesta e riprenderla in un secondo momento utilizzando il pulsante sinistro esistente ed inserendo il numero di rieferimento.",
+      titles: ["Booking Invoice", "Report"],
       images: [
         "https://ins-multiforms.s3.eu-central-1.amazonaws.com/Document_Icons/Booking+Invoices.png",
         "https://ins-multiforms.s3.eu-central-1.amazonaws.com/Document_Icons/Report.png",
@@ -6110,8 +6119,9 @@ jQuery(document).ready(function ($) {
     "Baggage - suitcase hasn't arrived on time": {
       paragraph:
         "We'll need these important documents to make a decision about your claim:<br>Your trip Booking Invoice showing the cost, your name and departure & return dates.<br>A PIR (Property Irregularity Report) from your transport provider confirming your luggage was delayed.<br>Receipts for any emergency items you had to buy.<br>If you need to gather this information, you can come to the Existing Claim section of our site and continue with your claim.",
-      italian_paragraph: "Per favore carica l'informazione richiesta per il tuo sinistro:<br>Documento attestante il viaggio: può essere la prenotazione del biglietto aereo, una prenotazione, ricevuta albergo o simile.<br>Il rapporto di irregolarità bagaglio rilasciato dal vettore.<br>Scontrino/ricevuta d'acquisto per il bene di prima necessità.<br>Se non hai tutte le informazioni, potrai salvare la tua richiesta e riprenderla in un secondo momento utilizzando il pulsante sinistro esistente ed inserendo il numero di rieferimento.",
-        titles: ["Booking Invoice", "Other Docs"],
+      italian_paragraph:
+        "Per favore carica l'informazione richiesta per il tuo sinistro:<br>Documento attestante il viaggio: può essere la prenotazione del biglietto aereo, una prenotazione, ricevuta albergo o simile.<br>Il rapporto di irregolarità bagaglio rilasciato dal vettore.<br>Scontrino/ricevuta d'acquisto per il bene di prima necessità.<br>Se non hai tutte le informazioni, potrai salvare la tua richiesta e riprenderla in un secondo momento utilizzando il pulsante sinistro esistente ed inserendo il numero di rieferimento.",
+      titles: ["Booking Invoice", "Other Docs"],
       images: [
         "https://ins-multiforms.s3.eu-central-1.amazonaws.com/Document_Icons/Booking+Invoices.png",
         "https://ins-multiforms.s3.eu-central-1.amazonaws.com/Document_Icons/Other+doc.png",
@@ -6120,8 +6130,9 @@ jQuery(document).ready(function ($) {
     "Cancelled trip - (NOT related to COVID-19)": {
       paragraph:
         "We'll need these important documents to make a decision about your claim:<br>Your trip Booking Invoice showing the cost, your name and departure & return dates.<br>Cancellation Invoice from each company you booked with verifying the cancellation charge.<br>Documents that show the need to cancel e.g. a Medical Letter or Delay Report.<br>If you need to gather this information, you can come to the Existing Claim section of our site and continue with your claim.",
-      italian_paragraph: "Per favore carica l'informazione richiesta per il tuo sinistro:<br>Documento attestante il viaggio: può essere la prenotazione del biglietto aereo, una prenotazione, ricevuta albergo o simile.<br>Documento di cancellazione della prenotazione che indichi le somme a tuo carico. Questo per ogni prenotazione.<br>Documenti che evidenzino la necessità di disdetta Documentazione che indichi la necessità di cancellare il viaggio es. Documentazione medica.<br>Se non hai tutte le informazioni, potrai salvare la tua richiesta e riprenderla in un secondo momento utilizzando il pulsante sinistro esistente ed inserendo il numero di rieferimento.",
-        titles: ["Booking Invoice", "Report"],
+      italian_paragraph:
+        "Per favore carica l'informazione richiesta per il tuo sinistro:<br>Documento attestante il viaggio: può essere la prenotazione del biglietto aereo, una prenotazione, ricevuta albergo o simile.<br>Documento di cancellazione della prenotazione che indichi le somme a tuo carico. Questo per ogni prenotazione.<br>Documenti che evidenzino la necessità di disdetta Documentazione che indichi la necessità di cancellare il viaggio es. Documentazione medica.<br>Se non hai tutte le informazioni, potrai salvare la tua richiesta e riprenderla in un secondo momento utilizzando il pulsante sinistro esistente ed inserendo il numero di rieferimento.",
+      titles: ["Booking Invoice", "Report"],
       images: [
         "https://ins-multiforms.s3.eu-central-1.amazonaws.com/Document_Icons/Booking+Invoices.png",
         "https://ins-multiforms.s3.eu-central-1.amazonaws.com/Document_Icons/Report.png",
@@ -6130,8 +6141,9 @@ jQuery(document).ready(function ($) {
     "Curtailment – returned home early": {
       paragraph:
         "We'll need these important documents to make a decision about your claim:<br>Your trip Booking Invoice showing the cost, your name and departure & return dates. <br>Any other relevant documentation to support your claim.<br>If you need to gather this information, you can come to the Existing Claim section of our site and continue with your claim.",
-      italian_paragraph:"Per favore carica l'informazione richiesta per il tuo sinistro:<br>Documento attestante il viaggio: può essere la prenotazione del biglietto aereo, una prenotazione, ricevuta albergo o simile.<br>Qualsiasi altro documento che sia rilevante per il tuo sinistro.<br>Se non hai tutte le informazioni, potrai salvare la tua richiesta e riprenderla in un secondo momento utilizzando il pulsante sinistro esistente ed inserendo il numero di rieferimento.",
-        titles: ["Booking Invoice", "Other Docs"],
+      italian_paragraph:
+        "Per favore carica l'informazione richiesta per il tuo sinistro:<br>Documento attestante il viaggio: può essere la prenotazione del biglietto aereo, una prenotazione, ricevuta albergo o simile.<br>Qualsiasi altro documento che sia rilevante per il tuo sinistro.<br>Se non hai tutte le informazioni, potrai salvare la tua richiesta e riprenderla in un secondo momento utilizzando il pulsante sinistro esistente ed inserendo il numero di rieferimento.",
+      titles: ["Booking Invoice", "Other Docs"],
       images: [
         "https://ins-multiforms.s3.eu-central-1.amazonaws.com/Document_Icons/Booking+Invoices.png",
         "https://ins-multiforms.s3.eu-central-1.amazonaws.com/Document_Icons/Other+doc.png",
@@ -6140,8 +6152,9 @@ jQuery(document).ready(function ($) {
     "Dental expenses whilst abroad": {
       paragraph:
         "We'll need these important documents to make a decision about your claim:<br>Your trip Booking Invoice showing the cost, your name and departure & return dates.<br>Medical document from your treating dentist or medical facility.<br>Receipts and Invoices relating to the medical expenses you're claiming for.<br>If you need to gather this information, you can come to the Existing Claim section of our site and continue with your claim.",
-      italian_paragraph:"Per favore carica l'informazione richiesta per il tuo sinistro:<br>Documento attestante il viaggio: può essere la prenotazione del biglietto aereo, una prenotazione, ricevuta albergo o simile.<br>Ricevuta e certificato medico rilasciato dal dentista.<br>Ricevute e fatture relative alle spese mediche che stai richiedendo.<br>Se non hai tutte le informazioni, potrai salvare la tua richiesta e riprenderla in un secondo momento utilizzando il pulsante sinistro esistente ed inserendo il numero di rieferimento.",
-        titles: ["Booking Invoice", "Other Docs"],
+      italian_paragraph:
+        "Per favore carica l'informazione richiesta per il tuo sinistro:<br>Documento attestante il viaggio: può essere la prenotazione del biglietto aereo, una prenotazione, ricevuta albergo o simile.<br>Ricevuta e certificato medico rilasciato dal dentista.<br>Ricevute e fatture relative alle spese mediche che stai richiedendo.<br>Se non hai tutte le informazioni, potrai salvare la tua richiesta e riprenderla in un secondo momento utilizzando il pulsante sinistro esistente ed inserendo il numero di rieferimento.",
+      titles: ["Booking Invoice", "Other Docs"],
       images: [
         "https://ins-multiforms.s3.eu-central-1.amazonaws.com/Document_Icons/Booking+Invoices.png",
         "https://ins-multiforms.s3.eu-central-1.amazonaws.com/Document_Icons/Other+doc.png",
@@ -6150,8 +6163,9 @@ jQuery(document).ready(function ($) {
     "Flight or Travel delayed": {
       paragraph:
         "We'll need these important documents to make a decision about your claim:<br>Your trip Booking Invoice showing the cost, your name and departure & return dates. <br>A Delay Report or Evidence from the travel provider which confirms the reason and length of the delay.<br>If you need to gather this information, you can come to the Existing Claim section of our site and continue with your claim.",
-      italian_paragraph:"Per favore carica l'informazione richiesta per il tuo sinistro:<br>Documento attestante il viaggio: può essere la prenotazione del biglietto aereo, una prenotazione, ricevuta albergo o simile.<br>Qualsiasi informazione che possa confermare la motivazione e la durata del ritardo di viaggio.<br>Se non hai tutte le informazioni, potrai salvare la tua richiesta e riprenderla in un secondo momento utilizzando il pulsante sinistro esistente ed inserendo il numero di rieferimento.",
-        titles: ["Booking Invoice", "Report"],
+      italian_paragraph:
+        "Per favore carica l'informazione richiesta per il tuo sinistro:<br>Documento attestante il viaggio: può essere la prenotazione del biglietto aereo, una prenotazione, ricevuta albergo o simile.<br>Qualsiasi informazione che possa confermare la motivazione e la durata del ritardo di viaggio.<br>Se non hai tutte le informazioni, potrai salvare la tua richiesta e riprenderla in un secondo momento utilizzando il pulsante sinistro esistente ed inserendo il numero di rieferimento.",
+      titles: ["Booking Invoice", "Report"],
       images: [
         "https://ins-multiforms.s3.eu-central-1.amazonaws.com/Document_Icons/Booking+Invoices.png",
         "https://ins-multiforms.s3.eu-central-1.amazonaws.com/Document_Icons/Report.png",
@@ -6160,8 +6174,9 @@ jQuery(document).ready(function ($) {
     "Medical expenses abroad & repatriation cost": {
       paragraph:
         "We'll need these important documents to make a decision about your claim:<br>Your trip Booking Invoice showing the cost, your name and departure & return dates.<br>Medical document from your treating doctor or medical facility.<br>Receipts and Invoices relating to the medical expenses you're claiming for.<br>If you need to gather this information, you can come to the Existing Claim section of our site and continue with your claim.",
-      italian_paragraph:"Per favore carica l'informazione richiesta per il tuo sinistro:<br>Documento attestante il viaggio: può essere la prenotazione del biglietto aereo, una prenotazione, ricevuta albergo o simile.<br>Ricevuta e certificato medico rilasciato dal dottore.<br>Ricevute e fatture relative alle spese mediche che stai richiedendo.<br>Se non hai tutte le informazioni, potrai salvare la tua richiesta e riprenderla in un secondo momento utilizzando il pulsante sinistro esistente ed inserendo il numero di rieferimento.",
-        titles: ["Booking Invoice", "Other Doc", "Other invoice"],
+      italian_paragraph:
+        "Per favore carica l'informazione richiesta per il tuo sinistro:<br>Documento attestante il viaggio: può essere la prenotazione del biglietto aereo, una prenotazione, ricevuta albergo o simile.<br>Ricevuta e certificato medico rilasciato dal dottore.<br>Ricevute e fatture relative alle spese mediche che stai richiedendo.<br>Se non hai tutte le informazioni, potrai salvare la tua richiesta e riprenderla in un secondo momento utilizzando il pulsante sinistro esistente ed inserendo il numero di rieferimento.",
+      titles: ["Booking Invoice", "Other Doc", "Other invoice"],
       images: [
         " https://ins-multiforms.s3.eu-central-1.amazonaws.com/Document_Icons/Booking+Invoices.png",
         "https://ins-multiforms.s3.eu-central-1.amazonaws.com/Document_Icons/Other+doc.png",
@@ -6171,8 +6186,8 @@ jQuery(document).ready(function ($) {
     "Missed flight or departure": {
       paragraph:
         "We'll need these important documents to make a decision about your claim:<br>Your trip Booking Invoice showing the cost, your name and departure & return dates.<br>Any other relevant documentation to support your claim.<br>If you need to gather this information, you can come to the Existing Claim section of our site and continue with your claim.",
-      italian_paragraph:"Pending translation....",
-        titles: ["Booking Invoice", "Other Docs"],
+      italian_paragraph: "Pending translation....",
+      titles: ["Booking Invoice", "Other Docs"],
       images: [
         "https://ins-multiforms.s3.eu-central-1.amazonaws.com/Document_Icons/Booking+Invoices.png",
         "https://ins-multiforms.s3.eu-central-1.amazonaws.com/Document_Icons/Other+doc.png",
@@ -6181,8 +6196,8 @@ jQuery(document).ready(function ($) {
     "Substitute Accommodation - change to accommodation during trip": {
       paragraph:
         "We'll need these important documents to make a decision about your claim:<br>Your trip Booking Invoice showing the cost, your name and departure & return dates.<br>Any other relevant documentation to support your claim.<br>If you need to gather this information, you can come to the Existing Claim section of our site and continue with your claim.",
-        italian_paragraph:"Pending translation....",
-        titles: ["Booking Invoice", "Other Docs"],
+      italian_paragraph: "Pending translation....",
+      titles: ["Booking Invoice", "Other Docs"],
       images: [
         "https://ins-multiforms.s3.eu-central-1.amazonaws.com/Document_Icons/Booking+Invoices.png",
         "https://ins-multiforms.s3.eu-central-1.amazonaws.com/Document_Icons/Other+doc.png",
@@ -6191,8 +6206,9 @@ jQuery(document).ready(function ($) {
     "Winter sports - lift pass, equipment or piste closure": {
       paragraph:
         "We'll need these important documents to make a decision about your claim:<br>Your trip Booking Invoice showing the cost, your name and departure & return dates.<br>Any other relevant documentation to support your claim.<br>If you need to gather this information, you can come to the Existing Claim section of our site and continue with your claim.",
-      italian_paragraph:"Per favore carica l'informazione richiesta per il tuo sinistro:<br>Documento attestante il viaggio: può essere la prenotazione del biglietto aereo, una prenotazione, ricevuta albergo o simile.<br>Qualsiasi altro documento che sia rilevante per il tuo sinistro.<br>Se non hai tutte le informazioni, potrai salvare la tua richiesta e riprenderla in un secondo momento utilizzando il pulsante sinistro esistente ed inserendo il numero di rieferimento.",
-        titles: ["Booking Invoice", "Other Docs"],
+      italian_paragraph:
+        "Per favore carica l'informazione richiesta per il tuo sinistro:<br>Documento attestante il viaggio: può essere la prenotazione del biglietto aereo, una prenotazione, ricevuta albergo o simile.<br>Qualsiasi altro documento che sia rilevante per il tuo sinistro.<br>Se non hai tutte le informazioni, potrai salvare la tua richiesta e riprenderla in un secondo momento utilizzando il pulsante sinistro esistente ed inserendo il numero di rieferimento.",
+      titles: ["Booking Invoice", "Other Docs"],
       images: [
         "https://ins-multiforms.s3.eu-central-1.amazonaws.com/Document_Icons/Booking+Invoices.png",
         "https://ins-multiforms.s3.eu-central-1.amazonaws.com/Document_Icons/Other+doc.png",
@@ -6223,16 +6239,20 @@ jQuery(document).ready(function ($) {
         $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() !=
         ""
       ) {
-        if($("#title").hasClass("ColumbusItaly")){
+        if ($("#title").hasClass("ColumbusItaly")) {
           insertParagraph(
             reasonForClaimObj[
-              $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val()
+              $(
+                "#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673"
+              ).val()
             ]["italian_paragraph"]
           );
-        }else{
+        } else {
           insertParagraph(
             reasonForClaimObj[
-              $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val()
+              $(
+                "#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673"
+              ).val()
             ]["paragraph"]
           );
         }
@@ -6294,16 +6314,17 @@ jQuery(document).ready(function ($) {
           getUploadFiles(elem.files, ".save_draft_5");
         } else {
           console.log("Show Error unsupported File Format ");
-          if($("#title").hasClass("ColumbusItaly")){
+          if ($("#title").hasClass("ColumbusItaly")) {
             addErrorMessage(
               "api_call_failed_filelist",
               "Formato file non supportato. Formati supportati: gif,jpeg,jpg,png,bmp,tiff,tif,pdf,doc,docx,xls,xlsx,txt,odt"
             );
-          }else{
-          addErrorMessage(
-            "api_call_failed_filelist",
-            "Unsupported File Format. Supported formats: gif,jpeg,jpg,png,bmp,tiff,tif,pdf,doc,docx,xls,xlsx,txt,odt"
-          );}
+          } else {
+            addErrorMessage(
+              "api_call_failed_filelist",
+              "Unsupported File Format. Supported formats: gif,jpeg,jpg,png,bmp,tiff,tif,pdf,doc,docx,xls,xlsx,txt,odt"
+            );
+          }
         }
       } else {
         console.log(
@@ -6315,13 +6336,16 @@ jQuery(document).ready(function ($) {
         );
       }
     } else {
-      if($("#title").hasClass("ColumbusItaly")){
-        addErrorMessage("api_call_failed_filelist", "Si prega di caricare il file.");
+      if ($("#title").hasClass("ColumbusItaly")) {
+        addErrorMessage(
+          "api_call_failed_filelist",
+          "Si prega di caricare il file."
+        );
         console.log(" --------- Need to show error message ----------------");
-      }else{
-      addErrorMessage("api_call_failed_filelist", "Please Upload the File.");
-      console.log(" --------- Need to show error message ----------------");
-    }
+      } else {
+        addErrorMessage("api_call_failed_filelist", "Please Upload the File.");
+        console.log(" --------- Need to show error message ----------------");
+      }
     }
   });
   $(".save_and_continue5").click(function () {
@@ -6417,13 +6441,17 @@ jQuery(document).ready(function ($) {
           "File size cannot exceed 4 MB"
         );
       }
-    } else {if($("#title").hasClass("ColumbusItaly")){
-      addErrorMessage("api_call_failed_filelist", "Si prega di caricare il file.");
-      console.log(" --------- Need to show error message ----------------");
-    }else{
-    addErrorMessage("api_call_failed_filelist", "Please Upload the File.");
-    console.log(" --------- Need to show error message ----------------");
-  }
+    } else {
+      if ($("#title").hasClass("ColumbusItaly")) {
+        addErrorMessage(
+          "api_call_failed_filelist",
+          "Si prega di caricare il file."
+        );
+        console.log(" --------- Need to show error message ----------------");
+      } else {
+        addErrorMessage("api_call_failed_filelist", "Please Upload the File.");
+        console.log(" --------- Need to show error message ----------------");
+      }
     }
   }
   function add_section_5() {
@@ -6527,10 +6555,10 @@ jQuery(document).ready(function ($) {
   //section 6 continue
   $("#save_and_continue6").click(function () {
     if ($("#title").hasClass("VHI") || $("#title").hasClass("ColumbusItaly")) {
-      let countryCode ;
-      if($("#title").hasClass("VHI")){
+      let countryCode;
+      if ($("#title").hasClass("VHI")) {
         countryCode = countryPortal.VHI;
-      }else {
+      } else {
         countryCode = countryPortal.ColumbusItaly;
       }
 
@@ -6573,9 +6601,12 @@ jQuery(document).ready(function ($) {
       } else {
         //ERROR Messaging
         for (var i = 0; i < payment_list.length; i++) {
-          if($("#title").hasClass("ColumbusItaly")){
-            addErrorMessage(payment_list[i], "Si prega di compilare tutti i campi.");
-          }else{
+          if ($("#title").hasClass("ColumbusItaly")) {
+            addErrorMessage(
+              payment_list[i],
+              "Si prega di compilare tutti i campi."
+            );
+          } else {
             addErrorMessage(payment_list[i], "Please fill in all fields");
           }
         }
@@ -6625,10 +6656,14 @@ jQuery(document).ready(function ($) {
       } else {
         //ERROR Messaging
         for (var i = 0; i < payment_list.length; i++) {
-          if($("#title").hasClass("ColumbusItaly")){
-            addErrorMessage(payment_list[i], "Si prega di compilare tutti i campi.");
-          }else{
-          addErrorMessage(payment_list[i], "Please fill in all fields.");}
+          if ($("#title").hasClass("ColumbusItaly")) {
+            addErrorMessage(
+              payment_list[i],
+              "Si prega di compilare tutti i campi."
+            );
+          } else {
+            addErrorMessage(payment_list[i], "Please fill in all fields.");
+          }
         }
       }
     }
@@ -6666,16 +6701,16 @@ jQuery(document).ready(function ($) {
       ).insertBefore("#great_line_6");
     }
 
-    if($("#title").hasClass("ColumbusItaly")){
+    if ($("#title").hasClass("ColumbusItaly")) {
       //summary
-    $("<strong  id='summary'>Se noti un errore e devi modificarlo, seleziona la sezione pertinente in alto per modificare questi dettagli</strong>").insertAfter(
-      "#great_line_6"
-    );
-    }else{
-    //summary
-    $("<strong  id='summary'>If you notice a mistake and need to amend this, please select the relevant section above to edit these details</strong>").insertAfter(
-      "#great_line_6"
-    );
+      $(
+        "<strong  id='summary'>Se noti un errore e devi modificarlo, seleziona la sezione pertinente in alto per modificare questi dettagli</strong>"
+      ).insertAfter("#great_line_6");
+    } else {
+      //summary
+      $(
+        "<strong  id='summary'>If you notice a mistake and need to amend this, please select the relevant section above to edit these details</strong>"
+      ).insertAfter("#great_line_6");
     }
   }
 
@@ -6740,29 +6775,29 @@ jQuery(document).ready(function ($) {
           }
           if (statusCode == 500) {
             console.log("Please refresh the page ", statusCode, result);
-            if ($("#title").hasClass("ColumbusItaly")){
+            if ($("#title").hasClass("ColumbusItaly")) {
               addErrorMessage(
                 "api_call_failed_banvalidate",
                 "Impossibile elaborare le informazioni sul conto bancario. Si prega di controllare le informazioni inserite e riprovare."
               );
-            }else{
-            addErrorMessage(
-              "api_call_failed_banvalidate",
-              "Unable to process the bank account information. Please check the information entered and try again."
-            );
-          }
+            } else {
+              addErrorMessage(
+                "api_call_failed_banvalidate",
+                "Unable to process the bank account information. Please check the information entered and try again."
+              );
+            }
           } else {
-            if ($("#title").hasClass("ColumbusItaly")){
+            if ($("#title").hasClass("ColumbusItaly")) {
               addErrorMessage(
                 "api_call_failed_banvalidate",
                 "Impossibile elaborare le informazioni sul conto bancario. Si prega di controllare le informazioni inserite e riprovare."
               );
-            }else{
-            addErrorMessage(
-              "api_call_failed_banvalidate",
-              "Unable to process the bank account information. Please check the information entered and try again."
-            );
-          }
+            } else {
+              addErrorMessage(
+                "api_call_failed_banvalidate",
+                "Unable to process the bank account information. Please check the information entered and try again."
+              );
+            }
           }
         } else {
           let ele = ["api_call_failed_banvalidate"];
@@ -11060,8 +11095,6 @@ jQuery(document).ready(function ($) {
       .catch((error) => console.log("error -->", error));
   }
 
-  
-
   function updateSubmitClaim(body, fieldId) {
     let flag = false;
     let statusCode;
@@ -11117,13 +11150,11 @@ jQuery(document).ready(function ($) {
     }
   });
 
-  $(".new-ticket-submit-button").click(function(){
+  $(".new-ticket-submit-button").click(function () {
     var summary_div = document.getElementById("collapseSection7");
     var contents_summary_div = summary_div.innerText;
     $(".fr-element.fr-view").text(contents_summary_div);
   });
-    
-  
 
   //____________________________________________________SECTION 6 End____________________________________________
 
@@ -11198,8 +11229,10 @@ jQuery(document).ready(function ($) {
           var replacement_purchase_date = new Date(replacement_purchase);
           var new_today = new Date();
 
-          console.log("Date today: "+ new_today);
-          console.log("Date of replacement purchases: "+replacement_purchase_date);
+          console.log("Date today: " + new_today);
+          console.log(
+            "Date of replacement purchases: " + replacement_purchase_date
+          );
 
           if (new_today < replacement_purchase_date) {
             //ERROR MESSAGING
@@ -11209,8 +11242,7 @@ jQuery(document).ready(function ($) {
             );
           } else if (new_today > replacement_purchase_date) {
             // do nothing
-          } 
-          else {
+          } else {
             //assume equal
             //ERROR MESSAGING
             addErrorMessage(
@@ -11655,10 +11687,11 @@ jQuery(document).ready(function ($) {
         $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() ==
         "Any CANCELLATION claim due to COVID-19"
       ) {
+        $(
+          ".form-group.helpdesk_ticket_custom_field_cf_what_type_of_transport_was_included_in_your_booking_2321673"
+        ).show();
 
-        $(".form-group.helpdesk_ticket_custom_field_cf_what_type_of_transport_was_included_in_your_booking_2321673").show();
-        
-         //accomodation only - dependancy 1
+        //accomodation only - dependancy 1
         show_and_hide(
           [
             ".form-group.helpdesk_ticket_custom_field_cf_what_type_of_transport_was_included_in_your_booking_2321673",
