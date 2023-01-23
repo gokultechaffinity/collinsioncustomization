@@ -11689,22 +11689,31 @@ jQuery(document).ready(function ($) {
       ) {
         
 
-        //accomodation only - dependancy 2
-        show_and_hide(
-          [
-            ".form-group.helpdesk_ticket_custom_field_cf_what_type_of_transport_was_included_in_your_booking_2321673",
-          ],
-          "#helpdesk_ticket_custom_field_cf_what_type_of_trip_did_you_book877716_2321673",
-          "Travel ONLY (e.g flights or ferry)"
-        );
+        $(
+          "#helpdesk_ticket_custom_field_cf_what_type_of_trip_did_you_book877716_2321673"
+        ).change(function () {
+          if (
+            $(
+              "#helpdesk_ticket_custom_field_cf_what_type_of_trip_did_you_book877716_2321673"
+            ).val() == "Package booking (e.g. flights and accommodation or flights and cruise)" ||
+            $(
+              "#helpdesk_ticket_custom_field_cf_what_type_of_trip_did_you_book877716_2321673"
+            ).val() == "Independent booking (travel and accommodation booked separately)" ||
+            $(
+              "#helpdesk_ticket_custom_field_cf_what_type_of_trip_did_you_book877716_2321673"
+            ).val() == "Travel ONLY (e.g flights or ferry)" 
+          ) {
+            $(
+              ".form-group.helpdesk_ticket_custom_field_cf_what_type_of_transport_was_included_in_your_booking_2321673"
+            ).show();
+          } else {
+            $(
+              ".form-group.helpdesk_ticket_custom_field_cf_what_type_of_transport_was_included_in_your_booking_2321673"
+            ).hide();
+          }
+        });
 
-        show_and_hide(
-          [
-            ".form-group.helpdesk_ticket_custom_field_cf_what_type_of_transport_was_included_in_your_booking_2321673",
-          ],
-          "#helpdesk_ticket_custom_field_cf_what_type_of_trip_did_you_book877716_2321673",
-          "Package booking (e.g. flights and accommodation or flights and cruise)"
-        );
+
 
         //A POSITIVE Coronavirus test result - dependancy
         show_and_hide(
