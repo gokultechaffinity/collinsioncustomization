@@ -11343,17 +11343,15 @@ jQuery(document).ready(function ($) {
 
           payment_date_dental = new Date(payment_date_dental);
 
-          // var payment_date_dental = new Date(
-          //   payment_date_dental.getFullYear() +
-          //     "-" +
-          //     payment_date_dental.getMonth() +
-          //     "-" +
-          //     payment_date_dental.getDate()
-          // );
           var new_today = new Date();
+          
+          payment_date_dental = payment_date_dental.setHours(0,0,0,0);
+          new_today = new_today.setHours(0,0,0,0);
 
           console.log(new_today);
           console.log(payment_date_dental);
+
+
           if (new_today < payment_date_dental) {
             addErrorMessage(
               "helpdesk_ticket_custom_field_cf_on_what_date_did_you_pay_the_dental_expenses_2321673",
