@@ -11688,6 +11688,9 @@ jQuery(document).ready(function ($) {
         "Any CANCELLATION claim due to COVID-19"
       ) {
         
+        $(
+          ".form-group.helpdesk_ticket_custom_field_cf_what_type_of_transport_was_included_in_your_booking_2321673"
+        ).hide();
 
         $(
           "#helpdesk_ticket_custom_field_cf_what_type_of_trip_did_you_book877716_2321673"
