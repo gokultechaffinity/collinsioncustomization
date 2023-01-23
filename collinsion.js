@@ -1570,12 +1570,23 @@ jQuery(document).ready(function ($) {
     $("#section-1-button").css("background-color", "#524954");
   });
   function add_section_1() {
-    $("<strong id='section_1_header'>" + titles[0] + "</strong>").insertAfter(
-      "#summary_intro"
-    );
-    $("<hr class='summary_divider' id='great_line_1'>").insertAfter(
-      "#section_1_header"
-    );
+
+    if ($("#title".hasClass("ColumbusItaly"))){
+      $("<strong id='section_1_header'>" + italy_titles[0] + "</strong>").insertAfter(
+        "#summary_intro"
+      );
+      $("<hr class='summary_divider' id='great_line_1'>").insertAfter(
+        "#section_1_header"
+      );
+    }else{
+      $("<strong id='section_1_header'>" + titles[0] + "</strong>").insertAfter(
+        "#summary_intro"
+      );
+      $("<hr class='summary_divider' id='great_line_1'>").insertAfter(
+        "#section_1_header"
+      );
+  }
+
     //for loops
     var number_elements = $("#collapseSection1")
       .children(".card-body.ins-card")
