@@ -11291,10 +11291,8 @@ jQuery(document).ready(function ($) {
           var replacement_purchase_date = new Date(replacement_purchase);
           var new_today = new Date();
 
-          console.log("Date today: " + new_today);
-          console.log(
-            "Date of replacement purchases: " + replacement_purchase_date
-          );
+          new_today = new_today.setHours(0,0,0,0);
+          replacement_purchase_date = replacement_purchase_date.setHours(0,0,0,0);
 
           if (new_today < replacement_purchase_date) {
             //ERROR MESSAGING
@@ -11561,18 +11559,12 @@ jQuery(document).ready(function ($) {
           purchase_date_medical = $(
             "#helpdesk_ticket_custom_field_cf_date_of_payment778903_2321673"
           ).val();
-          purchase_date_medical = new Date(purchase_date_medical);
 
-          var purchase_date_medical = new Date(
-            purchase_date_medical.getFullYear() +
-              "-" +
-              purchase_date_medical.getMonth() +
-              "-" +
-              purchase_date_medical.getDate()
-          );
-          var new_today = new Date(
-            today.getFullYear() + "-" + today.getMonth() + "-" + today.getDate()
-          );
+          purchase_date_medical = new Date(purchase_date_medical);
+          var new_today = new Date();
+
+          purchase_date_medical = purchase_date_medical.setHours(0,0,0,0);
+          new_today = new_today.setHours(0,0,0,0);
 
           if (new_today < purchase_date_medical) {
             //ERROR MESSAGING
@@ -11581,9 +11573,7 @@ jQuery(document).ready(function ($) {
               "Date must be in the past."
             );
           } else if (new_today > purchase_date_medical) {
-            $(
-              ".invalid-feedback.helpdesk_ticket_custom_field_cf_date_of_payment778903_2321673"
-            ).removeClass("d-block");
+            //do nothing
           } else {
             //assume equal
             //ERROR MESSAGING
