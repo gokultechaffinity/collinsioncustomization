@@ -11687,27 +11687,7 @@ jQuery(document).ready(function ($) {
         $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() ==
         "Any CANCELLATION claim due to COVID-19"
       ) {
-        $(
-          ".form-group.helpdesk_ticket_custom_field_cf_what_type_of_transport_was_included_in_your_booking_2321673"
-        ).show();
-
-        //accomodation only - dependancy 1
-        show_and_hide(
-          [
-            ".form-group.helpdesk_ticket_custom_field_cf_what_type_of_transport_was_included_in_your_booking_2321673",
-          ],
-          "#helpdesk_ticket_custom_field_cf_what_type_of_trip_did_you_book877716_2321673",
-          "Independent booking (travel and accommodation booked separately)"
-        );
-
-        //accomodation only - dependancy 2
-        show_and_hide(
-          [
-            ".form-group.helpdesk_ticket_custom_field_cf_what_type_of_transport_was_included_in_your_booking_2321673",
-          ],
-          "#helpdesk_ticket_custom_field_cf_what_type_of_trip_did_you_book877716_2321673",
-          "Package booking (e.g. flights and accommodation or flights and cruise)"
-        );
+        
 
         //accomodation only - dependancy 2
         show_and_hide(
@@ -11716,6 +11696,14 @@ jQuery(document).ready(function ($) {
           ],
           "#helpdesk_ticket_custom_field_cf_what_type_of_trip_did_you_book877716_2321673",
           "Travel ONLY (e.g flights or ferry)"
+        );
+
+        show_and_hide(
+          [
+            ".form-group.helpdesk_ticket_custom_field_cf_what_type_of_transport_was_included_in_your_booking_2321673",
+          ],
+          "#helpdesk_ticket_custom_field_cf_what_type_of_trip_did_you_book877716_2321673",
+          "Package booking (e.g. flights and accommodation or flights and cruise)"
         );
 
         //A POSITIVE Coronavirus test result - dependancy
