@@ -11340,15 +11340,16 @@ jQuery(document).ready(function ($) {
           payment_date_dental = $(
             "#helpdesk_ticket_custom_field_cf_on_what_date_did_you_pay_the_dental_expenses_2321673"
           ).val();
+
           payment_date_dental = new Date(payment_date_dental);
 
-          var payment_date_dental = new Date(
-            payment_date_dental.getFullYear() +
-              "-" +
-              payment_date_dental.getMonth() +
-              "-" +
-              payment_date_dental.getDate()
-          );
+          // var payment_date_dental = new Date(
+          //   payment_date_dental.getFullYear() +
+          //     "-" +
+          //     payment_date_dental.getMonth() +
+          //     "-" +
+          //     payment_date_dental.getDate()
+          // );
           var new_today = new Date(
             today.getFullYear() + "-" + today.getMonth() + "-" + today.getDate()
           );
