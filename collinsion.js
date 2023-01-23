@@ -6555,7 +6555,12 @@ jQuery(document).ready(function ($) {
     var myHeaders = new Headers();
     myHeaders.append("Cache-Control", "no-cache");
     myHeaders.append("Authorization", AuthorizationKey);
-    formdata.append("claimNumber", ClaimInitiatedNumber);
+    if(jQuery(".fw-comments-wrapper").length > 0){
+      let updateClaimIniatedNumber=$("#helpdesk_ticket_custom_field_cf_internalpolicynumber_2321673").val();
+      formdata.append("claimNumber",updateClaimIniatedNumber );
+    }else{
+      formdata.append("claimNumber",ClaimInitiatedNumber );
+    }
     formdata.append("uploadedBy", "Collinson API");
     formdata.append("source", "OnlineClaims");
     formdata.append("subject", "Omni Documents");
