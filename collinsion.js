@@ -11353,6 +11353,8 @@ jQuery(document).ready(function ($) {
             today.getFullYear() + "-" + today.getMonth() + "-" + today.getDate()
           );
 
+          console.log(new_today);
+          console.log(payment_date_dental);
           if (new_today < payment_date_dental) {
             addErrorMessage(
               "helpdesk_ticket_custom_field_cf_on_what_date_did_you_pay_the_dental_expenses_2321673",
@@ -11360,14 +11362,14 @@ jQuery(document).ready(function ($) {
             );
           } else if (new_today > payment_date_dental) {
             // do nothing
-          } else {
-            //assume equal
-            //ERROR MESSAGING
-            addErrorMessage(
-              "helpdesk_ticket_custom_field_cf_on_what_date_did_you_pay_the_dental_expenses_2321673",
-              "Date must be in past."
-            );
           }
+          // } else {
+          //   //assume equal
+          //   addErrorMessage(
+          //     "helpdesk_ticket_custom_field_cf_on_what_date_did_you_pay_the_dental_expenses_2321673",
+          //     "Date must be in past."
+          //   );
+          // }
         });
         //What type of dental treatment did you need? - dependancy
         show_and_hide(
