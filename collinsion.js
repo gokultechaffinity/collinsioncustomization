@@ -1760,12 +1760,22 @@ jQuery(document).ready(function ($) {
     }
   });
   function add_section_2() {
-    $("<strong id='section_2_header'>" + titles[1] + "</strong>").insertAfter(
-      "#great_line_1"
-    );
-    $("<hr class='summary_divider' id='great_line_2'>").insertAfter(
-      "#section_2_header"
-    );
+
+    if($("#title").hasClass("ColumbusItaly")){
+      $("<strong id='section_2_header'>" + italy_titles[1] + "</strong>").insertAfter(
+        "#great_line_1"
+      );
+      $("<hr class='summary_divider' id='great_line_2'>").insertAfter(
+        "#section_2_header"
+      );
+    }else{
+      $("<strong id='section_2_header'>" + titles[1] + "</strong>").insertAfter(
+        "#great_line_1"
+      );
+      $("<hr class='summary_divider' id='great_line_2'>").insertAfter(
+        "#section_2_header"
+      );
+  }
     //for loops
 
     $("#collapseSection2 input").each(function () {
@@ -5634,12 +5644,22 @@ jQuery(document).ready(function ($) {
     }
   });
   function add_section_3() {
+    if ($("#title").hasClass("ColumbusItaly")){
+      $("<strong id='section_3_header'>" + italy_titles[2] + "</strong>").insertAfter(
+        "#great_line_2"
+      );
+      $("<hr class='summary_divider' id='great_line_3'>").insertAfter(
+        "#section_3_header"
+      );
+    }else{
     $("<strong id='section_3_header'>" + titles[2] + "</strong>").insertAfter(
       "#great_line_2"
     );
     $("<hr class='summary_divider' id='great_line_3'>").insertAfter(
       "#section_3_header"
     );
+  }
+
     var number_elements = $("#collapseSection3")
       .children(".card-body.ins-card")
       .children("div").length;
@@ -5889,13 +5909,25 @@ jQuery(document).ready(function ($) {
     $("#section-4-button").children(":first").addClass("fa-pen");
     $("#section-4-button").css("background-color", "#524954");
   });
+
+
   function add_section_4() {
-    $("<strong id='section_4_header'>" + titles[3] + "</strong>").insertAfter(
-      "#great_line_3"
-    );
-    $("<hr class='summary_divider' id='great_line_4'>").insertAfter(
-      "#section_4_header"
-    );
+
+    if($("#title").hasClass("ColumbusItaly")){
+      $("<strong id='section_4_header'>" + italy_titles[3] + "</strong>").insertAfter(
+        "#great_line_3"
+      );
+      $("<hr class='summary_divider' id='great_line_4'>").insertAfter(
+        "#section_4_header"
+      );
+    }else{
+      $("<strong id='section_4_header'>" + titles[3] + "</strong>").insertAfter(
+        "#great_line_3"
+      );
+      $("<hr class='summary_divider' id='great_line_4'>").insertAfter(
+        "#section_4_header"
+      );
+  }
     //for loops
     var number_elements = $("#collapseSection4")
       .children(".card-body.ins-card")
@@ -6466,12 +6498,21 @@ jQuery(document).ready(function ($) {
     }
   }
   function add_section_5() {
-    $("<strong id='section_5_header'>" + titles[4] + "</strong>").insertAfter(
-      "#great_line_4"
-    );
-    $("<hr class='summary_divider' id='great_line_5'>").insertAfter(
-      "#section_5_header"
-    );
+    if($("#title").hasClass("ColumbusItaly")){
+      $("<strong id='section_5_header'>" + italy_titles[4] + "</strong>").insertAfter(
+        "#great_line_4"
+      );
+      $("<hr class='summary_divider' id='great_line_5'>").insertAfter(
+        "#section_5_header"
+      );
+    }else{
+      $("<strong id='section_5_header'>" + titles[4] + "</strong>").insertAfter(
+        "#great_line_4"
+      );
+      $("<hr class='summary_divider' id='great_line_5'>").insertAfter(
+        "#section_5_header"
+      );
+  }
     var number_attachments = $("#attachments_list").children().length;
     console.log(number_attachments);
     for (let i = 1; i < number_attachments + 1; i++) {
@@ -6689,12 +6730,22 @@ jQuery(document).ready(function ($) {
     var el_number = $("#collapseSection6")
       .children(".card-body.ins-card")
       .children(".form-group").length;
-    $("<strong id='section_6_header'>" + titles[5] + "</strong>").insertAfter(
-      "#great_line_5"
-    );
-    $("<hr class='summary_divider' id='great_line_6'>").insertAfter(
-      "#section_6_header"
-    );
+
+    if($("#title").hasClass("ColumbusItaly")){
+      $("<strong id='section_6_header'>" + italy_titles[5] + "</strong>").insertAfter(
+        "#great_line_5"
+      );
+      $("<hr class='summary_divider' id='great_line_6'>").insertAfter(
+        "#section_6_header"
+      );
+    }else{ 
+      $("<strong id='section_6_header'>" + titles[5] + "</strong>").insertAfter(
+        "#great_line_5"
+      );
+      $("<hr class='summary_divider' id='great_line_6'>").insertAfter(
+        "#section_6_header"
+      );
+  }
 
     for (let i = 1; i < el_number + 1; i++) {
       var label = $("#collapseSection6")
