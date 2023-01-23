@@ -11350,9 +11350,7 @@ jQuery(document).ready(function ($) {
           //     "-" +
           //     payment_date_dental.getDate()
           // );
-          var new_today = new Date(
-            today.getFullYear() + "-" + today.getMonth() + "-" + today.getDate()
-          );
+          var new_today = new Date();
 
           console.log(new_today);
           console.log(payment_date_dental);
