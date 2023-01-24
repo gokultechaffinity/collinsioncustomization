@@ -6556,7 +6556,7 @@ jQuery(document).ready(function ($) {
     myHeaders.append("Cache-Control", "no-cache");
     myHeaders.append("Authorization", AuthorizationKey);
     if(jQuery(".fw-comments-wrapper").length > 0){
-      let updateClaimIniatedNumber=$("#helpdesk_ticket_custom_field_cf_internalpolicynumber_2321673").val();
+      let updateClaimIniatedNumber=$("#helpdesk_ticket_custom_field_cf_claim_number_2321673").val();
       formdata.append("claimNumber",updateClaimIniatedNumber );
     }else{
       formdata.append("claimNumber",ClaimInitiatedNumber );
