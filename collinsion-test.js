@@ -1,4 +1,4 @@
-//test with adding condition on ticket detail page in captcha
+//collinsion live
 jQuery(document).ready(function ($) {
   let code;
   //hide two options for Italy
@@ -1570,12 +1570,23 @@ jQuery(document).ready(function ($) {
     $("#section-1-button").css("background-color", "#524954");
   });
   function add_section_1() {
-    $("<strong id='section_1_header'>" + titles[0] + "</strong>").insertAfter(
-      "#summary_intro"
-    );
-    $("<hr class='summary_divider' id='great_line_1'>").insertAfter(
-      "#section_1_header"
-    );
+
+    if ($("#title").hasClass("ColumbusItaly")){
+      $("<strong id='section_1_header'>" + italy_titles[0] + "</strong>").insertAfter(
+        "#summary_intro"
+      );
+      $("<hr class='summary_divider' id='great_line_1'>").insertAfter(
+        "#section_1_header"
+      );
+    }else{
+      $("<strong id='section_1_header'>" + titles[0] + "</strong>").insertAfter(
+        "#summary_intro"
+      );
+      $("<hr class='summary_divider' id='great_line_1'>").insertAfter(
+        "#section_1_header"
+      );
+  }
+
     //for loops
     var number_elements = $("#collapseSection1")
       .children(".card-body.ins-card")
@@ -1749,12 +1760,22 @@ jQuery(document).ready(function ($) {
     }
   });
   function add_section_2() {
-    $("<strong id='section_2_header'>" + titles[1] + "</strong>").insertAfter(
-      "#great_line_1"
-    );
-    $("<hr class='summary_divider' id='great_line_2'>").insertAfter(
-      "#section_2_header"
-    );
+
+    if($("#title").hasClass("ColumbusItaly")){
+      $("<strong id='section_2_header'>" + italy_titles[1] + "</strong>").insertAfter(
+        "#great_line_1"
+      );
+      $("<hr class='summary_divider' id='great_line_2'>").insertAfter(
+        "#section_2_header"
+      );
+    }else{
+      $("<strong id='section_2_header'>" + titles[1] + "</strong>").insertAfter(
+        "#great_line_1"
+      );
+      $("<hr class='summary_divider' id='great_line_2'>").insertAfter(
+        "#section_2_header"
+      );
+  }
     //for loops
 
     $("#collapseSection2 input").each(function () {
@@ -5623,12 +5644,22 @@ jQuery(document).ready(function ($) {
     }
   });
   function add_section_3() {
+    if ($("#title").hasClass("ColumbusItaly")){
+      $("<strong id='section_3_header'>" + italy_titles[2] + "</strong>").insertAfter(
+        "#great_line_2"
+      );
+      $("<hr class='summary_divider' id='great_line_3'>").insertAfter(
+        "#section_3_header"
+      );
+    }else{
     $("<strong id='section_3_header'>" + titles[2] + "</strong>").insertAfter(
       "#great_line_2"
     );
     $("<hr class='summary_divider' id='great_line_3'>").insertAfter(
       "#section_3_header"
     );
+  }
+
     var number_elements = $("#collapseSection3")
       .children(".card-body.ins-card")
       .children("div").length;
@@ -5878,13 +5909,25 @@ jQuery(document).ready(function ($) {
     $("#section-4-button").children(":first").addClass("fa-pen");
     $("#section-4-button").css("background-color", "#524954");
   });
+
+
   function add_section_4() {
-    $("<strong id='section_4_header'>" + titles[3] + "</strong>").insertAfter(
-      "#great_line_3"
-    );
-    $("<hr class='summary_divider' id='great_line_4'>").insertAfter(
-      "#section_4_header"
-    );
+
+    if($("#title").hasClass("ColumbusItaly")){
+      $("<strong id='section_4_header'>" + italy_titles[3] + "</strong>").insertAfter(
+        "#great_line_3"
+      );
+      $("<hr class='summary_divider' id='great_line_4'>").insertAfter(
+        "#section_4_header"
+      );
+    }else{
+      $("<strong id='section_4_header'>" + titles[3] + "</strong>").insertAfter(
+        "#great_line_3"
+      );
+      $("<hr class='summary_divider' id='great_line_4'>").insertAfter(
+        "#section_4_header"
+      );
+  }
     //for loops
     var number_elements = $("#collapseSection4")
       .children(".card-body.ins-card")
@@ -6455,12 +6498,21 @@ jQuery(document).ready(function ($) {
     }
   }
   function add_section_5() {
-    $("<strong id='section_5_header'>" + titles[4] + "</strong>").insertAfter(
-      "#great_line_4"
-    );
-    $("<hr class='summary_divider' id='great_line_5'>").insertAfter(
-      "#section_5_header"
-    );
+    if($("#title").hasClass("ColumbusItaly")){
+      $("<strong id='section_5_header'>" + italy_titles[4] + "</strong>").insertAfter(
+        "#great_line_4"
+      );
+      $("<hr class='summary_divider' id='great_line_5'>").insertAfter(
+        "#section_5_header"
+      );
+    }else{
+      $("<strong id='section_5_header'>" + titles[4] + "</strong>").insertAfter(
+        "#great_line_4"
+      );
+      $("<hr class='summary_divider' id='great_line_5'>").insertAfter(
+        "#section_5_header"
+      );
+  }
     var number_attachments = $("#attachments_list").children().length;
     console.log(number_attachments);
     for (let i = 1; i < number_attachments + 1; i++) {
@@ -6504,7 +6556,7 @@ jQuery(document).ready(function ($) {
     myHeaders.append("Cache-Control", "no-cache");
     myHeaders.append("Authorization", AuthorizationKey);
     if(jQuery(".fw-comments-wrapper").length > 0){
-      let updateClaimIniatedNumber=$("#helpdesk_ticket_custom_field_cf_internalpolicynumber_2321673").val();
+      let updateClaimIniatedNumber=$("#helpdesk_ticket_custom_field_cf_claim_number_2321673").val();
       formdata.append("claimNumber",updateClaimIniatedNumber );
     }else{
       formdata.append("claimNumber",ClaimInitiatedNumber );
@@ -6683,12 +6735,22 @@ jQuery(document).ready(function ($) {
     var el_number = $("#collapseSection6")
       .children(".card-body.ins-card")
       .children(".form-group").length;
-    $("<strong id='section_6_header'>" + titles[5] + "</strong>").insertAfter(
-      "#great_line_5"
-    );
-    $("<hr class='summary_divider' id='great_line_6'>").insertAfter(
-      "#section_6_header"
-    );
+
+    if($("#title").hasClass("ColumbusItaly")){
+      $("<strong id='section_6_header'>" + italy_titles[5] + "</strong>").insertAfter(
+        "#great_line_5"
+      );
+      $("<hr class='summary_divider' id='great_line_6'>").insertAfter(
+        "#section_6_header"
+      );
+    }else{ 
+      $("<strong id='section_6_header'>" + titles[5] + "</strong>").insertAfter(
+        "#great_line_5"
+      );
+      $("<hr class='summary_divider' id='great_line_6'>").insertAfter(
+        "#section_6_header"
+      );
+  }
 
     for (let i = 1; i < el_number + 1; i++) {
       var label = $("#collapseSection6")
@@ -11234,10 +11296,8 @@ jQuery(document).ready(function ($) {
           var replacement_purchase_date = new Date(replacement_purchase);
           var new_today = new Date();
 
-          console.log("Date today: " + new_today);
-          console.log(
-            "Date of replacement purchases: " + replacement_purchase_date
-          );
+          new_today = new_today.setHours(0,0,0,0);
+          replacement_purchase_date = replacement_purchase_date.setHours(0,0,0,0);
 
           if (new_today < replacement_purchase_date) {
             //ERROR MESSAGING
@@ -11283,18 +11343,17 @@ jQuery(document).ready(function ($) {
           payment_date_dental = $(
             "#helpdesk_ticket_custom_field_cf_on_what_date_did_you_pay_the_dental_expenses_2321673"
           ).val();
+
           payment_date_dental = new Date(payment_date_dental);
 
-          var payment_date_dental = new Date(
-            payment_date_dental.getFullYear() +
-              "-" +
-              payment_date_dental.getMonth() +
-              "-" +
-              payment_date_dental.getDate()
-          );
-          var new_today = new Date(
-            today.getFullYear() + "-" + today.getMonth() + "-" + today.getDate()
-          );
+          var new_today = new Date();
+          
+          payment_date_dental = payment_date_dental.setHours(0,0,0,0);
+          new_today = new_today.setHours(0,0,0,0);
+
+          console.log(new_today);
+          console.log(payment_date_dental);
+
 
           if (new_today < payment_date_dental) {
             addErrorMessage(
@@ -11305,7 +11364,6 @@ jQuery(document).ready(function ($) {
             // do nothing
           } else {
             //assume equal
-            //ERROR MESSAGING
             addErrorMessage(
               "helpdesk_ticket_custom_field_cf_on_what_date_did_you_pay_the_dental_expenses_2321673",
               "Date must be in past."
@@ -11506,18 +11564,12 @@ jQuery(document).ready(function ($) {
           purchase_date_medical = $(
             "#helpdesk_ticket_custom_field_cf_date_of_payment778903_2321673"
           ).val();
-          purchase_date_medical = new Date(purchase_date_medical);
 
-          var purchase_date_medical = new Date(
-            purchase_date_medical.getFullYear() +
-              "-" +
-              purchase_date_medical.getMonth() +
-              "-" +
-              purchase_date_medical.getDate()
-          );
-          var new_today = new Date(
-            today.getFullYear() + "-" + today.getMonth() + "-" + today.getDate()
-          );
+          purchase_date_medical = new Date(purchase_date_medical);
+          var new_today = new Date();
+
+          purchase_date_medical = purchase_date_medical.setHours(0,0,0,0);
+          new_today = new_today.setHours(0,0,0,0);
 
           if (new_today < purchase_date_medical) {
             //ERROR MESSAGING
@@ -11526,9 +11578,7 @@ jQuery(document).ready(function ($) {
               "Date must be in the past."
             );
           } else if (new_today > purchase_date_medical) {
-            $(
-              ".invalid-feedback.helpdesk_ticket_custom_field_cf_date_of_payment778903_2321673"
-            ).removeClass("d-block");
+            //do nothing
           } else {
             //assume equal
             //ERROR MESSAGING
@@ -11692,36 +11742,36 @@ jQuery(document).ready(function ($) {
         $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() ==
         "Any CANCELLATION claim due to COVID-19"
       ) {
+        
         $(
           ".form-group.helpdesk_ticket_custom_field_cf_what_type_of_transport_was_included_in_your_booking_2321673"
-        ).show();
+        ).hide();
 
-        //accomodation only - dependancy 1
-        show_and_hide(
-          [
-            ".form-group.helpdesk_ticket_custom_field_cf_what_type_of_transport_was_included_in_your_booking_2321673",
-          ],
-          "#helpdesk_ticket_custom_field_cf_what_type_of_trip_did_you_book877716_2321673",
-          "Independent booking (travel and accommodation booked separately)"
-        );
+        $(
+          "#helpdesk_ticket_custom_field_cf_what_type_of_trip_did_you_book877716_2321673"
+        ).change(function () {
+          if (
+            $(
+              "#helpdesk_ticket_custom_field_cf_what_type_of_trip_did_you_book877716_2321673"
+            ).val() == "Package booking (e.g. flights and accommodation or flights and cruise)" ||
+            $(
+              "#helpdesk_ticket_custom_field_cf_what_type_of_trip_did_you_book877716_2321673"
+            ).val() == "Independent booking (travel and accommodation booked separately)" ||
+            $(
+              "#helpdesk_ticket_custom_field_cf_what_type_of_trip_did_you_book877716_2321673"
+            ).val() == "Travel ONLY (e.g flights or ferry)" 
+          ) {
+            $(
+              ".form-group.helpdesk_ticket_custom_field_cf_what_type_of_transport_was_included_in_your_booking_2321673"
+            ).show();
+          } else {
+            $(
+              ".form-group.helpdesk_ticket_custom_field_cf_what_type_of_transport_was_included_in_your_booking_2321673"
+            ).hide();
+          }
+        });
 
-        //accomodation only - dependancy 2
-        show_and_hide(
-          [
-            ".form-group.helpdesk_ticket_custom_field_cf_what_type_of_transport_was_included_in_your_booking_2321673",
-          ],
-          "#helpdesk_ticket_custom_field_cf_what_type_of_trip_did_you_book877716_2321673",
-          "Package booking (e.g. flights and accommodation or flights and cruise)"
-        );
 
-        //accomodation only - dependancy 2
-        show_and_hide(
-          [
-            ".form-group.helpdesk_ticket_custom_field_cf_what_type_of_transport_was_included_in_your_booking_2321673",
-          ],
-          "#helpdesk_ticket_custom_field_cf_what_type_of_trip_did_you_book877716_2321673",
-          "Travel ONLY (e.g flights or ferry)"
-        );
 
         //A POSITIVE Coronavirus test result - dependancy
         show_and_hide(
