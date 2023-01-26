@@ -156,9 +156,9 @@ jQuery(document).ready(function ($) {
   let InternalPolicyNumber;
   let domainURL;
   // if($("#title").hasClass("VHI")||$("#title").hasClass("EasyJet")){
-  //   domainURL = "claim-proxy.collinsonnis.com";
+    domainURL = "claim-proxy.collinsonnis.com";
   // }else {
-  domainURL = "claim-proxy-lower.collinsonnis.com";
+  // domainURL = "claim-proxy-lower.collinsonnis.com";
   // }
   //"claim-proxy-lower.collinsonnis.com";
   //"claim-sandbox.collinsonnis.com";
