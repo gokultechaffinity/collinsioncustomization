@@ -11218,9 +11218,12 @@ jQuery(document).ready(function ($) {
   });
 
   $(".new-ticket-submit-button").click(function () {
-    var summary_div = document.getElementById("collapseSection7");
-    var contents_summary_div = summary_div.innerText;
-    $(".fr-element.fr-view").text(contents_summary_div);
+    // var summary_div = document.getElementById("collapseSection7");
+    // var contents_summary_div = summary_div.innerText;
+    // $(".fr-element.fr-view").text(contents_summary_div);
+    //      AS Attempt
+    var summary_div = document.getElementById("collapseSection7").innerText;
+    $(".fr-element.fr-view").append(summary_div);
   });
 
   //____________________________________________________SECTION 6 End____________________________________________
