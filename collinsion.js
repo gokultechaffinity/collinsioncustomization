@@ -5849,11 +5849,21 @@ jQuery(document).ready(function ($) {
           $(".claim-number").empty();
           if ($("#title").hasClass("ColumbusItaly")) {
             $(".claim-number").append(
-              `Il tuo numero di reclamo è ${ClaimInitiatedNumber}`
+              `Il tuo numero di reclamo è ${ClaimInitiatedNumber}
+              
+              Non chiudere il browser perché non sarai in grado di continuare con la tua richiesta di rimborso. 
+              
+              Clicca Avanti per fornirci i dettagli precisi di ciò che è accaduto e di quanto stai richiedendo. 
+              `
             );
           } else {
             $(".claim-number").append(
-              `Your Claim Number is ${ClaimInitiatedNumber}`
+              `Your Claim Number is ${ClaimInitiatedNumber}
+              
+              Do not close your browser as you will not be able to continue with your claim online.
+
+              Click Next to tell us the finer details of what happened and how much you're claiming.
+              `
             );
           }
         }
