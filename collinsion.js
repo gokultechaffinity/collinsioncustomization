@@ -435,16 +435,16 @@ jQuery(document).ready(function ($) {
     );
     $("#portal_ticket_form .attachments").addClass("for-section-5");
     if ($("#title").hasClass("ColumbusItaly")) {
-      jQuery(".attachments.for-section-5").after(
-        '<button class="save_draft_5 btn btn-primary for-section-5 " type="button">Salva reclamo ed esci</button>'
-      );
+      // jQuery(".attachments.for-section-5").after(
+      //   '<button class="save_draft_5 btn btn-primary for-section-5 " type="button">Salva reclamo ed esci</button>'
+      // );
       $(
         '<button class="save_and_continue5 btn btn-primary for-section-5 save_and_continue" type="button" >Sezione successiva</button>'
       ).insertAfter(".attachments.for-section-5");
     } else {
-      jQuery(".attachments.for-section-5").after(
-        '<button class="save_draft_5 btn btn-primary for-section-5 " type="button">Save Claim & Exit</button>'
-      );
+      // jQuery(".attachments.for-section-5").after(
+      //   '<button class="save_draft_5 btn btn-primary for-section-5 " type="button">Save Claim & Exit</button>'
+      // );
       $(
         '<button class="save_and_continue5 btn btn-primary for-section-5 save_and_continue" type="button" >Next Section</button>'
       ).insertAfter(".attachments.for-section-5");
@@ -457,16 +457,16 @@ jQuery(document).ready(function ($) {
     );
     $(".form-group.attachments-container").addClass("for-section-5");
     if ($("#title").hasClass("ColumbusItaly")) {
-      jQuery(".attachments-container.for-section-5").after(
-        '<button class="save_draft_5 btn btn-primary for-section-5 " type="button">Salva reclamo ed esci</button>'
-      );
+      // jQuery(".attachments-container.for-section-5").after(
+      //   '<button class="save_draft_5 btn btn-primary for-section-5 " type="button">Salva reclamo ed esci</button>'
+      // );
       $(
         '<button class="save_and_continue5 btn btn-primary for-section-5 save_and_continue" type="button" >Sezione successiva</button>'
       ).insertAfter(".form-group.attachments-container.for-section-5");
     } else {
-      jQuery(".attachments-container.for-section-5").after(
-        '<button class="save_draft_5 btn btn-primary for-section-5 " type="button">Save Claim & Exit</button>'
-      );
+      // jQuery(".attachments-container.for-section-5").after(
+      //   '<button class="save_draft_5 btn btn-primary for-section-5 " type="button">Save Claim & Exit</button>'
+      // );
       $(
         '<button class="save_and_continue5 btn btn-primary for-section-5 save_and_continue" type="button" >Next Section</button>'
       ).insertAfter(".form-group.attachments-container.for-section-5");
