@@ -11222,7 +11222,7 @@ jQuery(document).ready(function ($) {
     // var contents_summary_div = summary_div.innerText;
     // $(".fr-element.fr-view").text(contents_summary_div);
     //      AS Attempt
-    var summary_div = document.getElementById("collapseSection7").innerText;
+    var summary_div = document.getElementById("collapseSection7").innerHTML;
     $(".fr-element.fr-view").append(summary_div);
   });
 
