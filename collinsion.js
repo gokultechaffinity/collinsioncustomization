@@ -11218,12 +11218,15 @@ jQuery(document).ready(function ($) {
   });
 
   $(".new-ticket-submit-button").click(function () {
-    // var summary_div = document.getElementById("collapseSection7");
-    // var contents_summary_div = summary_div.innerText;
-    // $(".fr-element.fr-view").text(contents_summary_div);
-    //      AS Attempt
     var summary_div = document.getElementById("collapseSection7").innerHTML;
-    $(".fr-element.fr-view").append(summary_div);
+    //add condition to check if information had already been appended, if so, clear description field and add new information
+    if(($(".fr-element.fr-view").length) != 0){
+      $(".fr-element.fr-view").empty();
+      $(".fr-element.fr-view").append(summary_div);
+    }else{
+      $(".fr-element.fr-view").append(summary_div);
+    }
+    
   });
 
   //____________________________________________________SECTION 6 End____________________________________________
