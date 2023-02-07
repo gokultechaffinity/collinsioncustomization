@@ -6353,7 +6353,7 @@ jQuery(document).ready(function ($) {
         }
         if (!FileExtensionValidateCounter) {
           console.log("Make AN API");
-          jQuery("#overlay").removeClass("d-none").addClass("show loader-text");
+          // jQuery("#overlay").removeClass("d-none").addClass("show loader-text");
           getUploadFiles(elem.files, ".save_draft_5");
         } else {
           console.log("Show Error unsupported File Format ");
@@ -6458,7 +6458,7 @@ jQuery(document).ready(function ($) {
         console.log("files --->", files);
         if (!FileExtensionValidateCounter) {
           console.log("Make AN API");
-          jQuery("#overlay").removeClass("d-none").addClass("show loader-text");
+          // jQuery("#overlay").removeClass("d-none").addClass("show loader-text");
           getUploadFiles(elem.files, ".save_and_continue5");
           open_next(5);
           $("#section-4-button").css("background-color", "#4DC367");
@@ -6595,7 +6595,7 @@ jQuery(document).ready(function ($) {
             getJWTToken(fieldId);
           }
         } else {
-          jQuery("#overlay").addClass("d-none").removeClass("show loader-text");
+          // jQuery("#overlay").addClass("d-none").removeClass("show loader-text");
           if (jQuery(".fw-comments-wrapper").length > 0) {
             $("#new_helpdesk_note #helpdesk_note_submit").trigger("click");
           } else {
