@@ -6387,16 +6387,17 @@ jQuery(document).ready(function ($) {
         );
       }
     } else {
-      if ($("#title").hasClass("ColumbusItaly")) {
-        addErrorMessage(
-          "api_call_failed_filelist",
-          "Si prega di caricare il file."
-        );
-        console.log(" --------- Need to show error message ----------------");
-      } else {
-        addErrorMessage("api_call_failed_filelist", "Please Upload the File.");
-        console.log(" --------- Need to show error message ----------------");
-      }
+      open_next(5);
+      // if ($("#title").hasClass("ColumbusItaly")) {
+      //   addErrorMessage(
+      //     "api_call_failed_filelist",
+      //     "Si prega di caricare il file."
+      //   );
+      //   console.log(" --------- Need to show error message ----------------");
+      // } else {
+      //   addErrorMessage("api_call_failed_filelist", "Please Upload the File.");
+      //   console.log(" --------- Need to show error message ----------------");
+      // }
     }
   });
   $(".save_and_continue5").click(function () {
@@ -6501,16 +6502,17 @@ jQuery(document).ready(function ($) {
         );
       }
     } else {
-      if ($("#title").hasClass("ColumbusItaly")) {
-        addErrorMessage(
-          "api_call_failed_filelist",
-          "Si prega di caricare il file."
-        );
-        console.log(" --------- Need to show error message ----------------");
-      } else {
-        addErrorMessage("api_call_failed_filelist", "Please Upload the File.");
-        console.log(" --------- Need to show error message ----------------");
-      }
+      open_next(5);
+      // if ($("#title").hasClass("ColumbusItaly")) {
+      //   addErrorMessage(
+      //     "api_call_failed_filelist",
+      //     "Si prega di caricare il file."
+      //   );
+      //   console.log(" --------- Need to show error message ----------------");
+      // } else {
+      //   addErrorMessage("api_call_failed_filelist", "Please Upload the File.");
+      //   console.log(" --------- Need to show error message ----------------");
+      // }
     }
   }
   function add_section_5() {
