@@ -404,21 +404,21 @@ jQuery(document).ready(function ($) {
       ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper"
     );
   } else {
-    // $(
-    //   '<button id="save_draft_4" class="btn btn-primary for-section-4 " type="button">Save Claim & Exit</button>'
-    // ).insertAfter(
-    //   ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper"
-    // );
+    $(
+      '<button id="save_draft_4" class="btn btn-primary for-section-4 " type="button">Save Claim & Exit</button>'
+    ).insertAfter(
+      ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper"
+    );
     $(
       '<button id="save_and_continue4" class="btn btn-primary for-section-4 save_and_continue" type="button">Next Section</button>'
     ).insertAfter(
       ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper"
     );
-    // $(
-    //   '<p class="for-section-4" >If you "Save Claim & Exit", we will send you an activation email within 5 minutes to your portal where you can continue with your claim.</p>'
-    // ).insertAfter(
-    //   ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper"
-    // );
+    $("<hr id ='hr4' class='for-section-4'>").insertAfter("#save_draft_4");
+    $('<p class="for-section-4" style="margin-top: 20px;">If you "Save Claim &amp; Exit", we will send you an activation email within 5 minutes to your portal where you can continue with your claim.</p>'
+    ).insertBefore(
+      '#hr4'
+    );
   }
   //____________________________________________________SECTION 5 Start - Your Documents____________________________________________
   //for-section-5 attachment group
@@ -469,12 +469,17 @@ jQuery(document).ready(function ($) {
         '<button class="save_and_continue5 btn btn-primary for-section-5 save_and_continue" type="button" >Sezione successiva</button>'
       ).insertAfter(".form-group.attachments-container.for-section-5");
     } else {
-      // jQuery(".attachments-container.for-section-5").after(
-      //   '<button class="save_draft_5 btn btn-primary for-section-5 " type="button">Save Claim & Exit</button>'
-      // );
+      jQuery(".attachments-container.for-section-5").after(
+        '<button class="save_draft_5 btn btn-primary for-section-5 " type="button">Save Claim & Exit</button>'
+      );
       $(
         '<button class="save_and_continue5 btn btn-primary for-section-5 save_and_continue" type="button" >Next Section</button>'
       ).insertAfter(".form-group.attachments-container.for-section-5");
+      $("<hr id ='hr5' class='for-section-5'>").insertAfter(".save_draft_5");
+      $('<p class="for-section-5" style="margin-top: 20px;">If you "Save Claim &amp; Exit", we will send you an activation email within 5 minutes to your portal where you can continue with your claim.</p>'
+      ).insertBefore(
+        '#hr5'
+      );
     }
   }
   $("#mock-doc").remove();
