@@ -404,13 +404,18 @@ jQuery(document).ready(function ($) {
       ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper"
     );
   } else {
-    // $(
-    //   '<button id="save_draft_4" class="btn btn-primary for-section-4 " type="button">Save Claim & Exit</button>'
-    // ).insertAfter(
-    //   ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper"
-    // );
+    $(
+      '<button id="save_draft_4" class="btn btn-primary for-section-4 " type="button">Save Claim & Exit</button>'
+    ).insertAfter(
+      ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper"
+    );
     $(
       '<button id="save_and_continue4" class="btn btn-primary for-section-4 save_and_continue" type="button">Next Section</button>'
+    ).insertAfter(
+      ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper"
+    );
+    $(
+      '<p>If you "Save CLaim & Exit", we will send youa an activation email within 5 minutes to your portal where you can continue with your claim.</p>'
     ).insertAfter(
       ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper"
     );
