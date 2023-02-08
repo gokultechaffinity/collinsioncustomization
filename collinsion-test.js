@@ -6368,12 +6368,12 @@ jQuery(document).ready(function ($) {
           if ($("#title").hasClass("ColumbusItaly")) {
             addErrorMessage(
               "api_call_failed_filelist",
-              "Formato file non supportato. Formati supportati: gif,jpeg,jpg,png,bmp,tiff,tif,pdf,doc,docx,xls,xlsx,txt,odt"
+              "Formato file non supportato. Formati supportati: test(.gif) ,jpeg,jpg,png,bmp,tiff,tif,pdf,doc,docx,xls,xlsx,txt,odt"
             );
           } else {
             addErrorMessage(
               "api_call_failed_filelist",
-              "Unsupported File Format. Supported formats: gif,jpeg,jpg,png,bmp,tiff,tif,pdf,doc,docx,xls,xlsx,txt,odt"
+              "Unsupported File Format. Supported formats: test(.gif) ,jpeg,jpg,png,bmp,tiff,tif,pdf,doc,docx,xls,xlsx,txt,odt"
             );
           }
         }
@@ -6488,7 +6488,7 @@ jQuery(document).ready(function ($) {
           console.log("Show Error unsupported File Format ");
           addErrorMessage(
             "api_call_failed_filelist",
-            "Unsupported File Format. Supported formats: test(.gif),jpeg,jpg,png,bmp,tiff,tif,pdf,doc,docx,xls,xlsx,txt,odt"
+            "Unsupported File Format. Supported formats: test(.gif) ,jpeg,jpg,png,bmp,tiff,tif,pdf,doc,docx,xls,xlsx,txt,odt"
           );
         }
       } else {
