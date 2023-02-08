@@ -6330,11 +6330,19 @@ jQuery(document).ready(function ($) {
       clearError(ele);
       var files = [];
       var fileSize = [];
+      let formatValidateCounter=0;
       for (var i = 0; i < elem.files.length; ++i) {
         fileExtension = elem.files[i].name.split(".").pop();
         if (fileExtensionArray.includes(fileExtension)) {
-          files.push(elem.files[i].name);
-          fileSize.push(elem.files[i].size);
+          let checkingFile=elem.files[i].name.split(".");
+          console.log("file name in save draft flow",elem.files[i].name)
+          console.log("checking file name splitted in save draft flow",checkingFile)
+          if(checkingFile.length>2){
+            formatValidateCounter=formatValidateCounter+1;
+          }else{
+            files.push(elem.files[i].name);
+            fileSize.push(elem.files[i].size);
+          }
         } else {
           FileExtensionValidateCounter = FileExtensionValidateCounter + 1;
         }
@@ -6351,7 +6359,7 @@ jQuery(document).ready(function ($) {
         } else {
           add_section_5();
         }
-        if (!FileExtensionValidateCounter) {
+        if (!FileExtensionValidateCounter&&!formatValidateCounter) {
           console.log("Make AN API");
           // jQuery("#overlay").removeClass("d-none").addClass("show loader-text");
           getUploadFiles(elem.files, ".save_draft_5");
