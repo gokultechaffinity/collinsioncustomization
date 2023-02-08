@@ -6330,11 +6330,19 @@ jQuery(document).ready(function ($) {
       clearError(ele);
       var files = [];
       var fileSize = [];
+      let formatValidateCounter=0;
       for (var i = 0; i < elem.files.length; ++i) {
         fileExtension = elem.files[i].name.split(".").pop();
         if (fileExtensionArray.includes(fileExtension)) {
-          files.push(elem.files[i].name);
-          fileSize.push(elem.files[i].size);
+          let checkingFile=elem.files[i].name.split(".");
+          console.log("file name in save draft flow",elem.files[i].name)
+          console.log("checking file name splitted in save draft flow",checkingFile)
+          if(checkingFile.length>2){
+            formatValidateCounter=formatValidateCounter+1;
+          }else{
+            files.push(elem.files[i].name);
+            fileSize.push(elem.files[i].size);
+          }
         } else {
           FileExtensionValidateCounter = FileExtensionValidateCounter + 1;
         }
@@ -6351,7 +6359,7 @@ jQuery(document).ready(function ($) {
         } else {
           add_section_5();
         }
-        if (!FileExtensionValidateCounter) {
+        if (!FileExtensionValidateCounter&&!formatValidateCounter) {
           console.log("Make AN API");
           // jQuery("#overlay").removeClass("d-none").addClass("show loader-text");
           getUploadFiles(elem.files, ".save_draft_5");
@@ -6360,12 +6368,12 @@ jQuery(document).ready(function ($) {
           if ($("#title").hasClass("ColumbusItaly")) {
             addErrorMessage(
               "api_call_failed_filelist",
-              "Formato file non supportato. Formati supportati: gif,jpeg,jpg,png,bmp,tiff,tif,pdf,doc,docx,xls,xlsx,txt,odt"
+              "Formato file non supportato. Formati supportati: test(.gif),jpeg,jpg,png,bmp,tiff,tif,pdf,doc,docx,xls,xlsx,txt,odt"
             );
           } else {
             addErrorMessage(
               "api_call_failed_filelist",
-              "Unsupported File Format. Supported formats: gif,jpeg,jpg,png,bmp,tiff,tif,pdf,doc,docx,xls,xlsx,txt,odt"
+              "Unsupported File Format. Supported formats: test(.gif),jpeg,jpg,png,bmp,tiff,tif,pdf,doc,docx,xls,xlsx,txt,odt"
             );
           }
         }
@@ -6378,18 +6386,20 @@ jQuery(document).ready(function ($) {
           "File size cannot exceed 4 MB"
         );
       }
-    } else {
-      if ($("#title").hasClass("ColumbusItaly")) {
-        addErrorMessage(
-          "api_call_failed_filelist",
-          "Si prega di caricare il file."
-        );
-        console.log(" --------- Need to show error message ----------------");
-      } else {
-        addErrorMessage("api_call_failed_filelist", "Please Upload the File.");
-        console.log(" --------- Need to show error message ----------------");
-      }
-    }
+    } 
+    else {
+      open_next(5);
+    //   if ($("#title").hasClass("ColumbusItaly")) {
+    //     addErrorMessage(
+    //       "api_call_failed_filelist",
+    //       "Si prega di caricare il file."
+    //     );
+    //     console.log(" --------- Need to show error message ----------------");
+    //   } else {
+    //     addErrorMessage("api_call_failed_filelist", "Please Upload the File.");
+    //     console.log(" --------- Need to show error message ----------------");
+    //   }
+     }
   });
   $(".save_and_continue5").click(function () {
     if (jQuery(".fw-comments-wrapper").length > 0) {
@@ -6433,11 +6443,19 @@ jQuery(document).ready(function ($) {
       clearError(ele);
       var files = [];
       var fileSize = [];
+      let formatValidateCounter=0;
       for (var i = 0; i < elem.files.length; ++i) {
         fileExtension = elem.files[i].name.split(".").pop();
         if (fileExtensionArray.includes(fileExtension)) {
-          files.push(elem.files[i].name);
-          fileSize.push(elem.files[i].size);
+          let checkingFile=elem.files[i].name.split(".");
+          console.log("file name ",elem.files[i].name)
+          console.log("checking file name splitted ",checkingFile)
+          if(checkingFile.length>2){
+            formatValidateCounter=formatValidateCounter+1;
+          }else{
+            files.push(elem.files[i].name);
+            fileSize.push(elem.files[i].size);
+          }
         } else {
           FileExtensionValidateCounter = FileExtensionValidateCounter + 1;
         }
@@ -6472,7 +6490,7 @@ jQuery(document).ready(function ($) {
           console.log("Show Error unsupported File Format ");
           addErrorMessage(
             "api_call_failed_filelist",
-            "Unsupported File Format. Supported formats: gif,jpeg,jpg,png,bmp,tiff,tif,pdf,doc,docx,xls,xlsx,txt,odt"
+            "Unsupported File Format. Supported formats: test(.gif),jpeg,jpg,png,bmp,tiff,tif,pdf,doc,docx,xls,xlsx,txt,odt"
           );
         }
       } else {
@@ -6484,17 +6502,19 @@ jQuery(document).ready(function ($) {
           "File size cannot exceed 4 MB"
         );
       }
-    } else {
-      if ($("#title").hasClass("ColumbusItaly")) {
-        addErrorMessage(
-          "api_call_failed_filelist",
-          "Si prega di caricare il file."
-        );
-        console.log(" --------- Need to show error message ----------------");
-      } else {
-        addErrorMessage("api_call_failed_filelist", "Please Upload the File.");
-        console.log(" --------- Need to show error message ----------------");
-      }
+    }
+     else {
+      open_next(5);
+      // if ($("#title").hasClass("ColumbusItaly")) {
+      //   addErrorMessage(
+      //     "api_call_failed_filelist",
+      //     "Si prega di caricare il file."
+      //   );
+      //   console.log(" --------- Need to show error message ----------------");
+      // } else {
+      //   addErrorMessage("api_call_failed_filelist", "Please Upload the File.");
+      //   console.log(" --------- Need to show error message ----------------");
+      // }
     }
   }
   function add_section_5() {
