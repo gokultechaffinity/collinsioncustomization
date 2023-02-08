@@ -414,10 +414,11 @@ jQuery(document).ready(function ($) {
     ).insertAfter(
       ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper"
     );
-    $("#collapseSection4"
-    ).append(
-      '<p class="for-section-4" style="text-align: center;" >If you "Save Claim & Exit", we will send you an activation email within 5 minutes to your portal where you can continue with your claim.</p>'
-    );
+    $("<hr class='for-section-4'>").insertAfter("#save_draft_4")
+    // $("#collapseSection4"
+    // ).append(
+    //   '<p class="for-section-4" style="text-align: center;" >If you "Save Claim & Exit", we will send you an activation email within 5 minutes to your portal where you can continue with your claim.</p>'
+    // );
   }
   //____________________________________________________SECTION 5 Start - Your Documents____________________________________________
   //for-section-5 attachment group
