@@ -6433,6 +6433,7 @@ jQuery(document).ready(function ($) {
       clearError(ele);
       var files = [];
       var fileSize = [];
+      let formatValidateCounter=0;
       for (var i = 0; i < elem.files.length; ++i) {
         fileExtension = elem.files[i].name.split(".").pop();
         if (fileExtensionArray.includes(fileExtension)) {
@@ -6440,11 +6441,7 @@ jQuery(document).ready(function ($) {
           console.log("file name ",elem.files[i].name)
           console.log("checking file name splitted ",checkingFile)
           if(checkingFile.length>2){
-            addErrorMessage(
-              "api_call_failed_filelist",
-              "Unsupported File Format. Supported format : test (.pdf) gif,jpeg,jpg,png,bmp,tiff,tif,doc,docx,xls,xlsx,txt,odt"
-            );
-            break;
+            formatValidateCounter=formatValidateCounter+1;
           }else{
             files.push(elem.files[i].name);
             fileSize.push(elem.files[i].size);
@@ -6467,7 +6464,7 @@ jQuery(document).ready(function ($) {
           add_section_5();
         }
         console.log("files --->", files);
-        if (!FileExtensionValidateCounter) {
+        if (!FileExtensionValidateCounter&&!formatValidateCounter) {
           console.log("Make AN API");
           // jQuery("#overlay").removeClass("d-none").addClass("show loader-text");
           getUploadFiles(elem.files, ".save_and_continue5");
@@ -6483,7 +6480,7 @@ jQuery(document).ready(function ($) {
           console.log("Show Error unsupported File Format ");
           addErrorMessage(
             "api_call_failed_filelist",
-            "Unsupported File Format. Supported formats: gif,jpeg,jpg,png,bmp,tiff,tif,pdf,doc,docx,xls,xlsx,txt,odt"
+            "Unsupported File Format. Supported formats: test(.gif),jpeg,jpg,png,bmp,tiff,tif,pdf,doc,docx,xls,xlsx,txt,odt"
           );
         }
       } else {
