@@ -469,17 +469,17 @@ jQuery(document).ready(function ($) {
         '<button class="save_and_continue5 btn btn-primary for-section-5 save_and_continue" type="button" >Sezione successiva</button>'
       ).insertAfter(".form-group.attachments-container.for-section-5");
     } else {
-      jQuery(".attachments-container.for-section-5").after(
-        '<button class="save_draft_5 btn btn-primary for-section-5 " type="button">Save Claim & Exit</button>'
-      );
+      // jQuery(".attachments-container.for-section-5").after(
+      //   '<button class="save_draft_5 btn btn-primary for-section-5 " type="button">Save Claim & Exit</button>'
+      // );
       $(
         '<button class="save_and_continue5 btn btn-primary for-section-5 save_and_continue" type="button" >Next Section</button>'
       ).insertAfter(".form-group.attachments-container.for-section-5");
-      $("<hr id ='hr5' class='for-section-5'>").insertAfter(".save_and_continue5.btn.btn-primary.for-section-5.save_and_continue");
-      $('<p class="for-section-5" style="margin-top: 20px;">If you "Save Claim &amp; Exit", we will send you an activation email within 5 minutes to your portal where you can continue with your claim.</p>'
-      ).insertBefore(
-        '#hr5'
-      );
+      // $("<hr id ='hr5' class='for-section-5'>").insertAfter(".save_and_continue5.btn.btn-primary.for-section-5.save_and_continue");
+      // $('<p class="for-section-5" style="margin-top: 20px;">If you "Save Claim &amp; Exit", we will send you an activation email within 5 minutes to your portal where you can continue with your claim.</p>'
+      // ).insertBefore(
+      //   '#hr5'
+      // );
     }
   }
   $("#mock-doc").remove();
