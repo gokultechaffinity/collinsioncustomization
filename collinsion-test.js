@@ -6436,8 +6436,19 @@ jQuery(document).ready(function ($) {
       for (var i = 0; i < elem.files.length; ++i) {
         fileExtension = elem.files[i].name.split(".").pop();
         if (fileExtensionArray.includes(fileExtension)) {
-          files.push(elem.files[i].name);
-          fileSize.push(elem.files[i].size);
+          let checkingFile=elem.files[i].name.split(".");
+          console.log("file name ",elem.files[i].name)
+          console.log("checking file name splitted ",checkingFile)
+          if(checkingFile.length>2){
+            addErrorMessage(
+              "api_call_failed_filelist",
+              "Unsupported File Format. Supported format : test (.pdf) gif,jpeg,jpg,png,bmp,tiff,tif,doc,docx,xls,xlsx,txt,odt"
+            );
+            break;
+          }else{
+            files.push(elem.files[i].name);
+            fileSize.push(elem.files[i].size);
+          }
         } else {
           FileExtensionValidateCounter = FileExtensionValidateCounter + 1;
         }
