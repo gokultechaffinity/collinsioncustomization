@@ -6474,7 +6474,7 @@ jQuery(document).ready(function ($) {
           add_section_5();
         }
         console.log("files --->", files);
-        if (!FileExtensionValidateCounter) {
+        if (!FileExtensionValidateCounter&&!formatValidateCounter) {
           console.log("Make AN API");
           // jQuery("#overlay").removeClass("d-none").addClass("show loader-text");
           getUploadFiles(elem.files, ".save_and_continue5");
