@@ -481,6 +481,7 @@ jQuery(document).ready(function ($) {
         '<button class="save_and_continue5 btn btn-primary for-section-5 save_and_continue" type="button" >Next Section</button>'
       ).insertAfter(".form-group.attachments-container.for-section-5");
       $('<p class="for-section-5" style="margin-top: 20px;">If you "Save Claim &amp; Exit", we will send you an activation email within 5 minutes to your portal where you can continue with your claim.</p>').insertAfter(".save_draft_5.btn.btn-primary.for-section-5:visible");
+      $("p.for-section-5:eq(0)").hide();
     }
   }
   $("#mock-doc").remove();
