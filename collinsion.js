@@ -451,8 +451,8 @@ jQuery(document).ready(function ($) {
       $(
         '<button class="save_and_continue5 btn btn-primary for-section-5 save_and_continue" type="button" >Sezione successiva</button>'
       ).insertAfter(".attachments.for-section-5");
-      ("<p class='for-section-5' style='margin-top: 20px;'>Se clicchi 'Salva sinistro' ti invieremo un'e-mail entro 5 minuti per l'attivazione del tuo account, dove potrai continuare con il tuo sinistro</p>").insertAfter(".save_draft_5.btn.btn-primary.for-section-5:visible");
-      $("p.for-section-5:eq(0)").hide();
+      // ("<p class='for-section-5' style='margin-top: 20px;'>Se clicchi 'Salva sinistro' ti invieremo un'e-mail entro 5 minuti per l'attivazione del tuo account, dove potrai continuare con il tuo sinistro</p>").insertAfter(".save_draft_5.btn.btn-primary.for-section-5:visible");
+      // $("p.for-section-5:eq(0)").hide();
     } else {
       jQuery(".attachments.for-section-5").after(
         '<button class="save_draft_5 btn btn-primary for-section-5 " type="button">Save Claim & Exit</button>'
@@ -460,8 +460,8 @@ jQuery(document).ready(function ($) {
       $(
         '<button class="save_and_continue5 btn btn-primary for-section-5 save_and_continue" type="button" >Next Section</button>'
       ).insertAfter(".attachments.for-section-5");
-      $('<p class="for-section-5" style="margin-top: 20px;">If you "Save Claim &amp; Exit", we will send you an activation email within 5 minutes to your portal where you can continue with your claim.</p>').insertAfter(".save_draft_5.btn.btn-primary.for-section-5:visible");
-      $("p.for-section-5:eq(0)").hide();
+      // $('<p class="for-section-5" style="margin-top: 20px;">If you "Save Claim &amp; Exit", we will send you an activation email within 5 minutes to your portal where you can continue with your claim.</p>').insertAfter(".save_draft_5.btn.btn-primary.for-section-5:visible");
+      // $("p.for-section-5:eq(0)").hide();
     }
   } else {
     $(
