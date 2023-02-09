@@ -393,15 +393,20 @@ jQuery(document).ready(function ($) {
   ).addClass("for-section-4");
 
   if ($("#title").hasClass("ColumbusItaly")) {
-    // $(
-    //   '<button id="save_draft_4" class="btn btn-primary for-section-4 " type="button">Salva reclamo ed esci</button>'
-    // ).insertAfter(
-    //   ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper"
-    // );
+    $(
+      '<button id="save_draft_4" class="btn btn-primary for-section-4 " type="button">Salva reclamo ed esci</button>'
+    ).insertAfter(
+      ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper"
+    );
     $(
       '<button id="save_and_continue4" class="btn btn-primary for-section-4 save_and_continue" type="button">Sezione successiva</button>'
     ).insertAfter(
       ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper"
+    );
+    $("<hr id ='hr4' class='for-section-4'>").insertAfter("#save_draft_4");
+    $('<p class="for-section-4" style="margin-top: 20px;">If you "Save Claim &amp; Exit", we will send you an activation email within 5 minutes to your portal where you can continue with your claim.</p>'
+    ).insertBefore(
+      '#hr4'
     );
   } else {
     $(
