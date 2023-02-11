@@ -1348,29 +1348,57 @@ jQuery(document).ready(function ($) {
             $("#save_and_continue1").removeAttr("data-toggle");
             console.log("error 404 -->", result);
           } else if (statusCode == 403) {
+            if ($("#title").hasClass("ColumbusItaly")) {
             console.log("--->", result, statusCode);
             jQuery("#model-error-msg").removeClass("d-none");
             jQuery("#model-error-msg .ins-modal-body-content").text(
-              "Warning Something's not quite right. Please try again and if the problem persists please contact the team using the 'Contact Us' button in the footer."
+              "Attenzione, qualcosa non ha funzionato. Per favore riprova e se il problema persiste, contatta l'ufficio sinistri."
             );
             addErrorMessage(
               "api_call_failed_dob",
-              "Warning Something's not quite right. Please try again and if the problem persists please contact the team using the 'Contact Us' button in the footer."
+              "Attenzione, qualcosa non ha funzionato. Per favore riprova e se il problema persiste, contatta l'ufficio sinistri."
             );
             $("#save_and_continue1").removeAttr("data-target");
             $("#save_and_continue1").removeAttr("data-toggle");
+            } else{
+              console.log("--->", result, statusCode);
+              jQuery("#model-error-msg").removeClass("d-none");
+              jQuery("#model-error-msg .ins-modal-body-content").text(
+              "Warning Something's not quite right. Please try again and if the problem persists please contact the team using the 'Contact Us' button in the footer."
+              );
+              addErrorMessage(
+              "api_call_failed_dob",
+              "Warning Something's not quite right. Please try again and if the problem persists please contact the team using the 'Contact Us' button in the footer."
+              );
+              $("#save_and_continue1").removeAttr("data-target");
+              $("#save_and_continue1").removeAttr("data-toggle");
+            }
           } else if (statusCode == 500) {
-            jQuery("#model-error-msg").removeClass("d-none");
-            jQuery("#model-error-msg .ins-modal-body-content").text(
-              "Warning Something's not quite right. Please try again and if the problem persists please contact the team using the 'Contact Us' button in the footer."
-            );
-            addErrorMessage(
-              "api_call_failed_dob",
-              "Warning Something's not quite right. Please try again and if the problem persists please contact the team using the 'Contact Us' button in the footer."
-            );
-            $("#save_and_continue1").removeAttr("data-target");
-            $("#save_and_continue1").removeAttr("data-toggle");
-            console.log("error 500 -->", result);
+            if ($("#title").hasClass("ColumbusItaly")) {
+              jQuery("#model-error-msg").removeClass("d-none");
+              jQuery("#model-error-msg .ins-modal-body-content").text(
+                "Attenzione, qualcosa non ha funzionato. Per favore riprova e se il problema persiste, contatta l'ufficio sinistri."
+              );
+              addErrorMessage(
+                "api_call_failed_dob",
+                "Attenzione, qualcosa non ha funzionato. Per favore riprova e se il problema persiste, contatta l'ufficio sinistri."
+              );
+              $("#save_and_continue1").removeAttr("data-target");
+              $("#save_and_continue1").removeAttr("data-toggle");
+              console.log("error 500 -->", result);
+            }else{
+              jQuery("#model-error-msg").removeClass("d-none");
+              jQuery("#model-error-msg .ins-modal-body-content").text(
+                "Warning Something's not quite right. Please try again and if the problem persists please contact the team using the 'Contact Us' button in the footer."
+              );
+              addErrorMessage(
+                "api_call_failed_dob",
+                "Warning Something's not quite right. Please try again and if the problem persists please contact the team using the 'Contact Us' button in the footer."
+              );
+              $("#save_and_continue1").removeAttr("data-target");
+              $("#save_and_continue1").removeAttr("data-toggle");
+              console.log("error 500 -->", result);
+            }
           }
         } else {
           let element = ["api_call_failed_dob"];
@@ -1421,31 +1449,72 @@ jQuery(document).ready(function ($) {
             console.log("error", result);
             getJWTToken(fieldId);
           } else if (statusCode == 404) {
-            jQuery("#model-error-msg").removeClass("d-none");
-            jQuery("#model-error-msg .ins-modal-body-content").text(
-              "Something's not quite right. Please try again using the policy number shown on your insurance document."
-            );
-            addErrorMessage(
-              "api_call_failed_postcode",
-              "Something's not quite right. Please try again using the policy number shown on your insurance document."
-            );
-            $("#save_and_continue1").removeAttr("data-target");
-            $("#save_and_continue1").removeAttr("data-toggle");
-            console.log("error 404 -->", result);
+            if ($("#title").hasClass("ColumbusItaly")) {
+              jQuery("#model-error-msg").removeClass("d-none");
+              jQuery("#model-error-msg .ins-modal-body-content").text(
+                "Qualcosa non va. Si prega di riprovare utilizzando il numero di polizza riportato sul documento assicurativo."
+              );
+              addErrorMessage(
+                "api_call_failed_postcode",
+                "Qualcosa non va. Si prega di riprovare utilizzando il numero di polizza riportato sul documento assicurativo."
+              );
+              $("#save_and_continue1").removeAttr("data-target");
+              $("#save_and_continue1").removeAttr("data-toggle");
+              console.log("error 404 -->", result);
+            }else{
+              jQuery("#model-error-msg").removeClass("d-none");
+              jQuery("#model-error-msg .ins-modal-body-content").text(
+                "Something's not quite right. Please try again using the policy number shown on your insurance document."
+              );
+              addErrorMessage(
+                "api_call_failed_postcode",
+                "Something's not quite right. Please try again using the policy number shown on your insurance document."
+              );
+              $("#save_and_continue1").removeAttr("data-target");
+              $("#save_and_continue1").removeAttr("data-toggle");
+              console.log("error 404 -->", result);
+            }
           } else if (statusCode == 403) {
-            console.log("--->", result, statusCode);
+            if ($("#title").hasClass("ColumbusItaly")) {
+              console.log("--->", result, statusCode);
+              jQuery("#model-error-msg").removeClass("d-none");
+              jQuery("#model-error-msg .ins-modal-body-content").text(
+                "Attenzione, qualcosa non ha funzionato. Per favore riprova e se il problema persiste, contatta l'ufficio sinistri."
+              );
+              addErrorMessage(
+                "api_call_failed_postcode",
+                "Attenzione, qualcosa non ha funzionato. Per favore riprova e se il problema persiste, contatta l'ufficio sinistri."
+              );
+              $("#save_and_continue1").removeAttr("data-target");
+              $("#save_and_continue1").removeAttr("data-toggle");
+            }else{
+              console.log("--->", result, statusCode);
+              jQuery("#model-error-msg").removeClass("d-none");
+              jQuery("#model-error-msg .ins-modal-body-content").text(
+                "Warning Something's not quite right. Please try again and if the problem persists please contact the team using the 'Contact Us' button in the footer."
+              );
+              addErrorMessage(
+                "api_call_failed_postcode",
+                "Warning Something's not quite right. Please try again and if the problem persists please contact the team using the 'Contact Us' button in the footer."
+              );
+              $("#save_and_continue1").removeAttr("data-target");
+              $("#save_and_continue1").removeAttr("data-toggle");
+            }
+          } else if (statusCode == 500) {
+            if ($("#title").hasClass("ColumbusItaly")) {
             jQuery("#model-error-msg").removeClass("d-none");
             jQuery("#model-error-msg .ins-modal-body-content").text(
-              "Warning Something's not quite right. Please try again and if the problem persists please contact the team using the 'Contact Us' button in the footer."
+              "Attenzione, qualcosa non ha funzionato. Per favore riprova e se il problema persiste, contatta l'ufficio sinistri."
             );
             addErrorMessage(
-              "api_call_failed_postcode",
-              "Warning Something's not quite right. Please try again and if the problem persists please contact the team using the 'Contact Us' button in the footer."
+              "api_call_failed_dob",
+              "Attenzione, qualcosa non ha funzionato. Per favore riprova e se il problema persiste, contatta l'ufficio sinistri."
             );
             $("#save_and_continue1").removeAttr("data-target");
             $("#save_and_continue1").removeAttr("data-toggle");
-          } else if (statusCode == 500) {
-            jQuery("#model-error-msg").removeClass("d-none");
+            console.log("error 500 -->", result);
+            }else{
+              jQuery("#model-error-msg").removeClass("d-none");
             jQuery("#model-error-msg .ins-modal-body-content").text(
               "Warning Something's not quite right. Please try again and if the problem persists please contact the team using the 'Contact Us' button in the footer."
             );
@@ -1456,6 +1525,7 @@ jQuery(document).ready(function ($) {
             $("#save_and_continue1").removeAttr("data-target");
             $("#save_and_continue1").removeAttr("data-toggle");
             console.log("error 500 -->", result);
+            }
           }
         } else {
           let element = ["api_call_failed_postcode"];
@@ -5809,6 +5879,18 @@ jQuery(document).ready(function ($) {
           if (statusCode == 401) {
             getJWTToken(fieldId);
           } else if (statusCode == 500) {
+            if($('#title').hasClass("ColumbusItaly")){
+              jQuery("#claim-error-msg").removeClass("d-none");
+              jQuery("#claim-error-msg .claim-desc-message").text(
+                "Attenzione, qualcosa non ha funzionato. Per favore riprova e se il problema persiste, contatta l'ufficio sinistri."
+              );
+              console.log("error--->", result);
+              addErrorMessage(
+                "api_call_failed_rc",
+                "Attenzione, qualcosa non ha funzionato. Per favore riprova e se il problema persiste, contatta l'ufficio sinistri."
+              );
+              console.log("Internal server error");
+          }else{
             jQuery("#claim-error-msg").removeClass("d-none");
             jQuery("#claim-error-msg .claim-desc-message").text(
               "Warning Something's not quite right. Please try again and if the problem persists please contact the team using the 'Contact Us' button in the footer."
@@ -5819,29 +5901,56 @@ jQuery(document).ready(function ($) {
               "Warning Something's not quite right. Please try again and if the problem persists please contact the team using the 'Contact Us' button in the footer."
             );
             console.log("Internal server error");
-          } else if (statusCode == 400) {
-            jQuery("#claim-error-msg").removeClass("d-none");
-            jQuery("#claim-error-msg .claim-desc-message").text(
-              "Warning Something's not quite right. Please try again and if the problem persists please contact the team using the 'Contact Us' button in the footer."
-            );
-            addErrorMessage(
-              "api_call_failed_rc",
-              "Warning Something's not quite right. Please try again and if the problem persists please contact the team using the 'Contact Us' button in the footer."
-            );
-            console.log("error--->", result);
-            console.log(
-              "Unable to create claim as per one claim per policy per day rule"
-            );
-          } else {
-            jQuery("#claim-error-msg").removeClass("d-none");
-            jQuery("#claim-error-msg .claim-desc-message").text(
-              "Warning Something's not quite right. Please try again and if the problem persists please contact the team using the 'Contact Us' button in the footer."
-            );
-            addErrorMessage(
-              "api_call_failed_rc",
-              "Warning Something's not quite right. Please try again and if the problem persists please contact the team using the 'Contact Us' button in the footer."
-            );
           }
+          } else if (statusCode == 400) {
+            if($('#title').hasClass("ColumbusItaly")){
+              jQuery("#claim-error-msg").removeClass("d-none");
+              jQuery("#claim-error-msg .claim-desc-message").text(
+                "Attenzione, qualcosa non ha funzionato. Per favore riprova e se il problema persiste, contatta l'ufficio sinistri."
+              );
+              addErrorMessage(
+                "api_call_failed_rc",
+                "Attenzione, qualcosa non ha funzionato. Per favore riprova e se il problema persiste, contatta l'ufficio sinistri."
+              );
+              console.log("error--->", result);
+              console.log(
+                "Unable to create claim as per one claim per policy per day rule"
+              );
+            }else{
+              jQuery("#claim-error-msg").removeClass("d-none");
+              jQuery("#claim-error-msg .claim-desc-message").text(
+                "Warning Something's not quite right. Please try again and if the problem persists please contact the team using the 'Contact Us' button in the footer."
+              );
+              addErrorMessage(
+                "api_call_failed_rc",
+                "Warning Something's not quite right. Please try again and if the problem persists please contact the team using the 'Contact Us' button in the footer."
+              );
+              console.log("error--->", result);
+              console.log(
+                "Unable to create claim as per one claim per policy per day rule"
+              );
+            }
+          } else {
+            if($('#title').hasClass("ColumbusItaly")){
+              jQuery("#claim-error-msg").removeClass("d-none");
+              jQuery("#claim-error-msg .claim-desc-message").text(
+                "Attenzione, qualcosa non ha funzionato. Per favore riprova e se il problema persiste, contatta l'ufficio sinistri."
+              );
+              addErrorMessage(
+                "api_call_failed_rc",
+                "Attenzione, qualcosa non ha funzionato. Per favore riprova e se il problema persiste, contatta l'ufficio sinistri."
+              );
+            }else{
+              jQuery("#claim-error-msg").removeClass("d-none");
+              jQuery("#claim-error-msg .claim-desc-message").text(
+                "Warning Something's not quite right. Please try again and if the problem persists please contact the team using the 'Contact Us' button in the footer."
+              );
+              addErrorMessage(
+                "api_call_failed_rc",
+                "Warning Something's not quite right. Please try again and if the problem persists please contact the team using the 'Contact Us' button in the footer."
+              );
+            }
+        }
         } else {
           let ele = ["api_call_failed_rc"];
           clearError(ele);
