@@ -300,7 +300,7 @@ jQuery(document).ready(function ($) {
   //add save and continue button - add section 1
   if ($("#title").hasClass("ColumbusItaly")) {
     $(
-      '<button id="save_and_continue1" class="btn btn-primary for-section-1 save_and_continue" type="button">Trova la politica</button>'
+      '<button id="save_and_continue1" class="btn btn-primary for-section-1 save_and_continue" type="button">Trova la polizza</button>'
     ).insertAfter("#helpdesk_ticket_custom_field_cf_claim_number_2321673");
   } else if ($("#title").hasClass("EasyJet")) {
     $(
