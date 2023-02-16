@@ -6392,7 +6392,8 @@ jQuery(document).ready(function ($) {
         );
       }
     } else {
-      open_next(5);
+      // open_next(5);
+      $(".new-ticket-submit-button").trigger("click");
       // if ($("#title").hasClass("ColumbusItaly")) {
       //   addErrorMessage(
       //     "api_call_failed_filelist",
