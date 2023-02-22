@@ -5911,12 +5911,27 @@ jQuery(document).ready(function ($) {
     
     if (is_filled == false){
       for(let j=0; j< red_indexes.length ; j++ ){
-        $("#"+list_of_fields[red_indexes[j]]).css('border','1px solid red')
+        //check if choice
+        if( $("#"+list_of_fields[red_indexes[j]].hasClass('choices'))){
+          $("#"+list_of_fields[red_indexes[j]]).parent().parent().css('border','1px solid red');
+        }else{
+          $("#"+list_of_fields[red_indexes[j]]).css('border','1px solid red');
+        }
       }
     }else{
       for(let j=0; j< list_of_fields.length ; j++ ){
-        $("#"+list_of_fields[j]).css('border','1px solid black')
+        if( $("#"+list_of_fields[red_indexes[j]].hasClass('choices'))){
+          $("#"+list_of_fields[red_indexes[j]]).parent().parent().css('border','1px solid black');
+        }else{
+          $("#"+list_of_fields[red_indexes[j]]).css('border','1px solid black');
+        }
       }
+      //close current section. open next
+      open_next(4);
+      $("#section-4-button").children(":first").removeClass("fa-minus");
+      $("#section-4-button").children(":first").removeClass("fa-plus");
+      $("#section-4-button").children(":first").addClass("fa-pen");
+      $("#section-4-button").css("background-color", "#524954");
     }
     
   }
@@ -5951,7 +5966,7 @@ jQuery(document).ready(function ($) {
       'helpdesk_ticket_custom_field_cf_amount_paid_in_local_currency527297_2321673',
       'helpdesk_ticket_custom_field_cf_have_you_received_any_refund_from_your_transport_provider_2321673']
 
-      console.log(validateMandatoryFields(MandatoryFields));
+      validateMandatoryFields(MandatoryFields);
 
     } 
     else if ($("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() ==
