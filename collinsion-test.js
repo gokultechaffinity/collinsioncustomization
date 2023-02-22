@@ -5909,24 +5909,18 @@ jQuery(document).ready(function ($) {
     }
     console.log("the following indexes are empty")
     console.log(red_indexes);
+    console.log("length: "+red_indexes.length)
     
-    if (red_indexes.length > 0){
-      for(let j=0; j< red_indexes.length ; j++ ){
-        //check if choice
-        if( $("#"+(list_of_fields[red_indexes[j]])).hasClass('choices')){
-          $("#"+(list_of_fields[red_indexes[j]])).parent().parent().css('border','1px solid red');
+    if (red_indexes.length >= 1){
+      red_indexes.forEach((index) => {
+        if( $("#"+(list_of_fields[index])).hasClass('choices')){
+          $("#"+(list_of_fields[index])).parent().parent().css('border','1px solid red');
         }else{
-          $("#"+(list_of_fields[red_indexes[j]])).css('border','1px solid red');
+          $("#"+(list_of_fields[index])).css('border','1px solid red');
         }
-      }
+      });
     }else{
-      // for(let j=0; j< black_indexes.length ; j++ ){
-      //   if( $("#"+(list_of_fields[black_indexes[j]])).hasClass('choices')){
-      //     $("#"+(list_of_fields[black_indexes[j]])).parent().parent().css('border','1px solid black');
-      //   }else{
-      //     $("#"+(list_of_fields[black_indexes[j]])).css('border','1px solid black');
-      //   }
-      // }
+      
       //close current section. open next
       open_next(4);
       $("#section-4-button").children(":first").removeClass("fa-minus");
