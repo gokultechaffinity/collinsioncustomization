@@ -5900,8 +5900,6 @@ jQuery(document).ready(function ($) {
     red_indexes = []
     clear_index = []
 
-    
-
     for (let i = 0; i < list_of_fields.length; i++ ){
       if ( $("#"+(list_of_fields[i])).val() == '' ){
         red_indexes.push(i);
@@ -5914,9 +5912,10 @@ jQuery(document).ready(function ($) {
     console.log("the following indexes are empty")
     console.log(red_indexes);
     console.log("length: "+red_indexes.length)
+    console.log("-------------------------------------------")
     console.log("TO CLEAR!")
     console.log(clear_index);
-    console.log("length: "+clear_index.length)
+    console.log("length: "+clear_index.length)                                                                                                                                                      
     
     if (red_indexes.length >= 1){
       
