@@ -5898,36 +5898,55 @@ jQuery(document).ready(function ($) {
 
   function validateMandatoryFields(list_of_fields){
     red_indexes = []
+    clear_index = []
+
     
 
     for (let i = 0; i < list_of_fields.length; i++ ){
       if ( $("#"+(list_of_fields[i])).val() == '' ){
         red_indexes.push(i);
+        clear_index.pop(i);
       }else if( $("#"+(list_of_fields[i])).val() != '' ) {
         red_indexes.pop(i);
+        clear_index.push(i);
       }
     }
     console.log("the following indexes are empty")
     console.log(red_indexes);
     console.log("length: "+red_indexes.length)
+    console.log("TO CLEAR!")
+    console.log(clear_index);
+    console.log("length: "+clear_index.length)
     
     if (red_indexes.length >= 1){
+      
       red_indexes.forEach((index) => {
+        
         if( $("#"+(list_of_fields[index])).hasClass('choices')){
           $("#"+(list_of_fields[index])).parent().parent().css('border','1px solid red');
         }else{
           $("#"+(list_of_fields[index])).css('border','1px solid red');
         }
       });
-    }else{
+  }else{
+
+    clear_index.forEach((index) => {
+        
+      if( $("#"+(list_of_fields[index])).hasClass('choices')){
+        $("#"+(list_of_fields[index])).parent().parent().css('border','1px solid black');
+      }else{
+        $("#"+(list_of_fields[index])).css('border','1px solid black');
+      }
+    }); 
       
       //close current section. open next
-      open_next(4);
-      $("#section-4-button").children(":first").removeClass("fa-minus");
-      $("#section-4-button").children(":first").removeClass("fa-plus");
-      $("#section-4-button").children(":first").addClass("fa-pen");
-      $("#section-4-button").css("background-color", "#524954");
-    }
+    open_next(4);
+    $("#section-4-button").children(":first").removeClass("fa-minus");
+    $("#section-4-button").children(":first").removeClass("fa-plus");
+    $("#section-4-button").children(":first").addClass("fa-pen");
+    $("#section-4-button").css("background-color", "#524954");
+    
+  }
     
   }
 
