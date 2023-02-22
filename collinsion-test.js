@@ -5901,10 +5901,10 @@ jQuery(document).ready(function ($) {
     black_indexes = []
 
     for (let i = 0; i < list_of_fields.length; i++ ){
-      if ($("#"+list_of_fields[i]).val() == '' ){
+      if ( $("#"+(list_of_fields[i])).val() == '' ){
         red_indexes.push(i);
         black_indexes.pop(i);
-      }else if($("#"+list_of_fields[i]).val() != '' ) {
+      }else if( $("#"+(list_of_fields[i])).val() != '' ) {
         red_indexes.pop(i);
         black_indexes.push(i);
       }
