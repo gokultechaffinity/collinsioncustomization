@@ -5898,14 +5898,17 @@ jQuery(document).ready(function ($) {
 
   function validateMandatoryFields(list_of_fields){
     is_filled = false;
+    red_indexes = []
 
     for (let i = 0; i < list_of_fields.length; i++ ){
       if ($("#"+list_of_fields[i]).val() != '' ){
         is_filled = true;
       }else{
         is_filled = false;
+        red_indexes.pop(i);
       }
     }
+    console.log(red_indexes)
     return is_filled;
   }
 
