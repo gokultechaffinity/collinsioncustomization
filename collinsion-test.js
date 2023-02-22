@@ -5897,20 +5897,19 @@ jQuery(document).ready(function ($) {
   //validate mandatory fields____________________________________________________________________________________________________________________
 
   function validateMandatoryFields(list_of_fields){
-    is_filled = false;
     red_indexes = []
 
     for (let i = 0; i < list_of_fields.length; i++ ){
       if ($("#"+list_of_fields[i]).val() != '' ){
-        is_filled = true;
         red_indexes.pop(i);
       }else{
-        is_filled = false;
         red_indexes.push(i);
       }
     }
+    console.log("the following indexes are empty")
+    console.log(red_indexes);
     
-    if (is_filled == false){
+    if (red_indexes.length > 0){
       for(let j=0; j< red_indexes.length ; j++ ){
         //check if choice
         if( $("#"+(list_of_fields[red_indexes[j]])).hasClass('choices')){
