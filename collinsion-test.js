@@ -5912,18 +5912,18 @@ jQuery(document).ready(function ($) {
     if (is_filled == false){
       for(let j=0; j< red_indexes.length ; j++ ){
         //check if choice
-        if( $("#"+list_of_fields[red_indexes[j]].hasClass('choices'))){
-          $("#"+list_of_fields[red_indexes[j]]).parent().parent().css('border','1px solid red');
+        if( $("#"+(list_of_fields[red_indexes[j]])).hasClass('choices')){
+          $("#"+(list_of_fields[red_indexes[j]])).parent().parent().css('border','1px solid red');
         }else{
-          $("#"+list_of_fields[red_indexes[j]]).css('border','1px solid red');
+          $("#"+(list_of_fields[red_indexes[j]])).css('border','1px solid red');
         }
       }
     }else{
       for(let j=0; j< list_of_fields.length ; j++ ){
-        if( $("#"+list_of_fields[red_indexes[j]].hasClass('choices'))){
-          $("#"+list_of_fields[red_indexes[j]]).parent().parent().css('border','1px solid black');
+        if( $("#"+(list_of_fields[red_indexes[j]])).hasClass('choices')){
+          $("#"+(list_of_fields[red_indexes[j]])).parent().parent().css('border','1px solid black');
         }else{
-          $("#"+list_of_fields[red_indexes[j]]).css('border','1px solid black');
+          $("#"+(list_of_fields[red_indexes[j]])).css('border','1px solid black');
         }
       }
       //close current section. open next
