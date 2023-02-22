@@ -5908,8 +5908,17 @@ jQuery(document).ready(function ($) {
         red_indexes.push(i);
       }
     }
-    console.log(red_indexes)
-    return is_filled;
+    
+    if (is_filled == false){
+      for(let j=0; j< red_indexes.length ; j++ ){
+        $("#"+list_of_fields[red_indexes[j]]).css('border','1px solid red')
+      }
+    }else{
+      for(let j=0; j< list_of_fields.length ; j++ ){
+        $("#"+list_of_fields[j]).css('border','1px solid black')
+      }
+    }
+    
   }
 
   //_____________________________________________________________________________________________________________________________________________
