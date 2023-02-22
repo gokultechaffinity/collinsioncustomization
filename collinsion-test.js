@@ -5905,7 +5905,7 @@ jQuery(document).ready(function ($) {
         is_filled = true;
       }else{
         is_filled = false;
-        red_indexes.pop(i);
+        red_indexes.push(i);
       }
     }
     console.log(red_indexes)
