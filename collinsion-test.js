@@ -5915,30 +5915,30 @@ jQuery(document).ready(function ($) {
     console.log("the following indexes are filled")
     console.log(black_indexes);
     
-    if (red_indexes.length > 0){
-      for(let j=0; j< red_indexes.length ; j++ ){
-        //check if choice
-        if( $("#"+(list_of_fields[red_indexes[j]])).hasClass('choices')){
-          $("#"+(list_of_fields[red_indexes[j]])).parent().parent().css('border','1px solid red');
-        }else{
-          $("#"+(list_of_fields[red_indexes[j]])).css('border','1px solid red');
-        }
-      }
-    }else{
-      for(let j=0; j< black_indexes.length ; j++ ){
-        if( $("#"+(list_of_fields[black_indexes[j]])).hasClass('choices')){
-          $("#"+(list_of_fields[black_indexes[j]])).parent().parent().css('border','1px solid black');
-        }else{
-          $("#"+(list_of_fields[black_indexes[j]])).css('border','1px solid black');
-        }
-      }
-      //close current section. open next
-      open_next(4);
-      $("#section-4-button").children(":first").removeClass("fa-minus");
-      $("#section-4-button").children(":first").removeClass("fa-plus");
-      $("#section-4-button").children(":first").addClass("fa-pen");
-      $("#section-4-button").css("background-color", "#524954");
-    }
+    // if (red_indexes.length > 0){
+    //   for(let j=0; j< red_indexes.length ; j++ ){
+    //     //check if choice
+    //     if( $("#"+(list_of_fields[red_indexes[j]])).hasClass('choices')){
+    //       $("#"+(list_of_fields[red_indexes[j]])).parent().parent().css('border','1px solid red');
+    //     }else{
+    //       $("#"+(list_of_fields[red_indexes[j]])).css('border','1px solid red');
+    //     }
+    //   }
+    // }else{
+    //   for(let j=0; j< black_indexes.length ; j++ ){
+    //     if( $("#"+(list_of_fields[black_indexes[j]])).hasClass('choices')){
+    //       $("#"+(list_of_fields[black_indexes[j]])).parent().parent().css('border','1px solid black');
+    //     }else{
+    //       $("#"+(list_of_fields[black_indexes[j]])).css('border','1px solid black');
+    //     }
+    //   }
+    //   //close current section. open next
+    //   open_next(4);
+    //   $("#section-4-button").children(":first").removeClass("fa-minus");
+    //   $("#section-4-button").children(":first").removeClass("fa-plus");
+    //   $("#section-4-button").children(":first").addClass("fa-pen");
+    //   $("#section-4-button").css("background-color", "#524954");
+    // }
     
   }
 
