@@ -5937,14 +5937,15 @@ jQuery(document).ready(function ($) {
         $("#"+(list_of_fields[index])).css('border','1px solid black');
       }
     }); 
-      
-      //close current section. open next
+    
+  }
+
+  if (red_indexes.length == 0){
     open_next(4);
     $("#section-4-button").children(":first").removeClass("fa-minus");
     $("#section-4-button").children(":first").removeClass("fa-plus");
     $("#section-4-button").children(":first").addClass("fa-pen");
     $("#section-4-button").css("background-color", "#524954");
-    
   }
     
   }
