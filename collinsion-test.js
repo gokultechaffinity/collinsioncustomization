@@ -5894,7 +5894,22 @@ jQuery(document).ready(function ($) {
     $("#section-2-button").css("background-color", "#4DC367");
     $("#section-3-button").css("background-color", "#4DC367");
   });
-  //____________________________________________________________________________________________________________________
+  //validate mandatory fields____________________________________________________________________________________________________________________
+
+  function validateMandatoryFields(list_of_fields){
+    is_filled = false;
+
+    for (let i = 0; i < list_of_fields.length; i++ ){
+      if ($("#"+list_of_fields[i]).val() != '' ){
+        is_filled = true;
+      }else{
+        is_filled = false;
+      }
+    }
+    return is_filled;
+  }
+
+  //_____________________________________________________________________________________________________________________________________________
   $("#save_draft_4").click(function () {
     $(".new-ticket-submit-button").trigger("click");
   });
@@ -5907,12 +5922,40 @@ jQuery(document).ready(function ($) {
       console.log("add section ---->");
     }
 
+    if (
+      $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() ==
+      "Baggage - suitcase hasn't arrived on time"
+    ){
+      console.log($("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val())
+      //fields to check
+      MandatoryFields = ['helpdesk_ticket_custom_field_cf_which_part_of_the_journey_did_your_baggage_arrive_late_2321673',
+      'helpdesk_ticket_custom_field_cf_how_many_hours_was_your_baggage_delayed_2321673',
+      'helpdesk_ticket_custom_field_cf_has_your_baggage_been_returned_to_you_2321673',
+      'helpdesk_ticket_custom_field_cf_what_transport_type_was_your_baggage_delayed_on_2321673',
+      'helpdesk_ticket_custom_field_cf_did_you_notify_your_transport_provider_about_the_delay_and_get_a_report_pir_2321673',
+      'helpdesk_ticket_custom_field_cf_please_list_all_replacement_items_purchased339565_2321673',
+      'helpdesk_ticket_custom_field_cf_on_what_date_did_you_purchase_the_replacement_items_2321673',
+      'helpdesk_ticket_custom_field_cf_currency_type637939_2321673',
+      'helpdesk_ticket_custom_field_cf_amount_paid_in_local_currency527297_2321673',
+      'helpdesk_ticket_custom_field_cf_have_you_received_any_refund_from_your_transport_provider_2321673']
+
+      console.log(validateMandatoryFields(MandatoryFields));
+
+    } 
+    else if ($("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() ==
+    "Baggage - suitcase hasn't arrived on time" ){
+      console.log($("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val())
+    }
+    else if($("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() ==
+    "Flight or Travel delayed"){
+      console.log($("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val())
+    }
     //close current section. open next
-    open_next(4);
-    $("#section-4-button").children(":first").removeClass("fa-minus");
-    $("#section-4-button").children(":first").removeClass("fa-plus");
-    $("#section-4-button").children(":first").addClass("fa-pen");
-    $("#section-4-button").css("background-color", "#524954");
+    // open_next(4);
+    // $("#section-4-button").children(":first").removeClass("fa-minus");
+    // $("#section-4-button").children(":first").removeClass("fa-plus");
+    // $("#section-4-button").children(":first").addClass("fa-pen");
+    // $("#section-4-button").css("background-color", "#524954");
   });
 
 
