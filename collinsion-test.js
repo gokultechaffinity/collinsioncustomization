@@ -5898,16 +5898,22 @@ jQuery(document).ready(function ($) {
 
   function validateMandatoryFields(list_of_fields){
     red_indexes = []
+    black_indexes = []
 
     for (let i = 0; i < list_of_fields.length; i++ ){
       if ($("#"+list_of_fields[i]).val() != '' ){
         red_indexes.pop(i);
+        black_indexes.push(i);
       }else{
         red_indexes.push(i);
+        black_indexes.pop(i);
       }
     }
     console.log("the following indexes are empty")
     console.log(red_indexes);
+
+    console.log("the following indexes are filled")
+    console.log(black_indexes);
     
     if (red_indexes.length > 0){
       for(let j=0; j< red_indexes.length ; j++ ){
@@ -5920,10 +5926,10 @@ jQuery(document).ready(function ($) {
       }
     }else{
       for(let j=0; j< list_of_fields.length ; j++ ){
-        if( $("#"+(list_of_fields[red_indexes[j]])).hasClass('choices')){
-          $("#"+(list_of_fields[red_indexes[j]])).parent().parent().css('border','1px solid black');
+        if( $("#"+(list_of_fields[black_indexes[j]])).hasClass('choices')){
+          $("#"+(list_of_fields[black_indexes[j]])).parent().parent().css('border','1px solid black');
         }else{
-          $("#"+(list_of_fields[red_indexes[j]])).css('border','1px solid black');
+          $("#"+(list_of_fields[black_indexes[j]])).css('border','1px solid black');
         }
       }
       //close current section. open next
