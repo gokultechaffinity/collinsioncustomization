@@ -5904,7 +5904,7 @@ jQuery(document).ready(function ($) {
       if ($("#"+list_of_fields[i]).val() == '' ){
         red_indexes.push(i);
         black_indexes.pop(i);
-      }else{
+      }else if($("#"+list_of_fields[i]).val() != '' ) {
         red_indexes.pop(i);
         black_indexes.push(i);
       }
