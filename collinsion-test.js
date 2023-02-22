@@ -5925,7 +5925,7 @@ jQuery(document).ready(function ($) {
         }
       }
     }else{
-      for(let j=0; j< list_of_fields.length ; j++ ){
+      for(let j=0; j< black_indexes.length ; j++ ){
         if( $("#"+(list_of_fields[black_indexes[j]])).hasClass('choices')){
           $("#"+(list_of_fields[black_indexes[j]])).parent().parent().css('border','1px solid black');
         }else{
