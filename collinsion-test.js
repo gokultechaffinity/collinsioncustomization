@@ -5961,6 +5961,7 @@ jQuery(document).ready(function ($) {
   });
 
   $("#save_and_continue4").click(function () {
+    
     if ($("#section_4_header").length) {
       console.log("update section ---->");
       update_section_4();
@@ -5986,14 +5987,17 @@ jQuery(document).ready(function ($) {
       'helpdesk_ticket_custom_field_cf_amount_paid_in_local_currency527297_2321673',
       'helpdesk_ticket_custom_field_cf_have_you_received_any_refund_from_your_transport_provider_2321673']
 
-      if (validateMandatoryFields(MandatoryFields) == true){
-        console.log("WE CAN MOVE FORWARD!!!")
-        open_next(4);
-        $("#section-4-button").children(":first").removeClass("fa-minus");
-        $("#section-4-button").children(":first").removeClass("fa-plus");
-        $("#section-4-button").children(":first").addClass("fa-pen");
-        $("#section-4-button").css("background-color", "#524954");
-      }
+      validateMandatoryFields(MandatoryFields)
+      
+      // if (validateMandatoryFields(MandatoryFields) == true){
+      //   console.log("WE CAN MOVE FORWARD!!!");
+
+      //   open_next(4);
+      //   $("#section-4-button").children(":first").removeClass("fa-minus");
+      //   $("#section-4-button").children(":first").removeClass("fa-plus");
+      //   $("#section-4-button").children(":first").addClass("fa-pen");
+      //   $("#section-4-button").css("background-color", "#524954");
+      // }
 
 
     } 
@@ -6013,14 +6017,16 @@ jQuery(document).ready(function ($) {
       'helpdesk_ticket_custom_field_cf_who_do_you_bank_with_and_what_type_of_account_do_you_have486839_2321673',
       'helpdesk_ticket_custom_field_cf_how_did_you_pay_for_your_trip913590_2321673']
 
-      if (validateMandatoryFields(MandatoryFields) == true){
-        console.log("WE CAN MOVE FORWARD!!!")
-        open_next(4);
-        $("#section-4-button").children(":first").removeClass("fa-minus");
-        $("#section-4-button").children(":first").removeClass("fa-plus");
-        $("#section-4-button").children(":first").addClass("fa-pen");
-        $("#section-4-button").css("background-color", "#524954");
-      }
+      validateMandatoryFields(MandatoryFields)
+
+      // if (validateMandatoryFields(MandatoryFields) == true){
+      //   console.log("WE CAN MOVE FORWARD!!!")
+      //   open_next(4);
+      //   $("#section-4-button").children(":first").removeClass("fa-minus");
+      //   $("#section-4-button").children(":first").removeClass("fa-plus");
+      //   $("#section-4-button").children(":first").addClass("fa-pen");
+      //   $("#section-4-button").css("background-color", "#524954");
+      // }
 
 
     }
@@ -6037,14 +6043,15 @@ jQuery(document).ready(function ($) {
       'helpdesk_ticket_custom_field_cf_who_do_you_bank_with_and_what_type_of_account_do_you_have87472_2321673',
       'helpdesk_ticket_custom_field_cf_how_did_you_pay_for_your_trip396837_2321673']
 
-      if (validateMandatoryFields(MandatoryFields) == true){
-        console.log("WE CAN MOVE FORWARD!!!")
-        open_next(4);
-        $("#section-4-button").children(":first").removeClass("fa-minus");
-        $("#section-4-button").children(":first").removeClass("fa-plus");
-        $("#section-4-button").children(":first").addClass("fa-pen");
-        $("#section-4-button").css("background-color", "#524954");
-      }
+      validateMandatoryFields(MandatoryFields)
+      // if (validateMandatoryFields(MandatoryFields) == true){
+      //   console.log("WE CAN MOVE FORWARD!!!")
+      //   open_next(4);
+      //   $("#section-4-button").children(":first").removeClass("fa-minus");
+      //   $("#section-4-button").children(":first").removeClass("fa-plus");
+      //   $("#section-4-button").children(":first").addClass("fa-pen");
+      //   $("#section-4-button").css("background-color", "#524954");
+      // }
 
     }
 
@@ -6062,14 +6069,16 @@ jQuery(document).ready(function ($) {
       'helpdesk_ticket_custom_field_cf_who_do_you_bank_with_and_what_type_of_account_do_you_have87472_2321673',
       'helpdesk_ticket_custom_field_cf_how_did_you_pay_for_your_trip396837_2321673']
 
-      if (validateMandatoryFields(MandatoryFields) == true){
-        console.log("WE CAN MOVE FORWARD!!!")
-        open_next(4);
-        $("#section-4-button").children(":first").removeClass("fa-minus");
-        $("#section-4-button").children(":first").removeClass("fa-plus");
-        $("#section-4-button").children(":first").addClass("fa-pen");
-        $("#section-4-button").css("background-color", "#524954");
-      }
+      validateMandatoryFields(MandatoryFields)
+
+      // if (validateMandatoryFields(MandatoryFields) == true){
+      //   console.log("WE CAN MOVE FORWARD!!!")
+      //   open_next(4);
+      //   $("#section-4-button").children(":first").removeClass("fa-minus");
+      //   $("#section-4-button").children(":first").removeClass("fa-plus");
+      //   $("#section-4-button").children(":first").addClass("fa-pen");
+      //   $("#section-4-button").css("background-color", "#524954");
+      // }
       
     }
     //sus
@@ -6090,14 +6099,16 @@ jQuery(document).ready(function ($) {
       'helpdesk_ticket_custom_field_cf_who_do_you_bank_with_and_what_type_of_account_do_you_have486839_2321673',
       'helpdesk_ticket_custom_field_cf_how_did_you_pay_for_your_trip913590_2321673']
 
-      if (validateMandatoryFields(MandatoryFields) == true){
-        console.log("WE CAN MOVE FORWARD!!!")
-        open_next(4);
-        $("#section-4-button").children(":first").removeClass("fa-minus");
-        $("#section-4-button").children(":first").removeClass("fa-plus");
-        $("#section-4-button").children(":first").addClass("fa-pen");
-        $("#section-4-button").css("background-color", "#524954");
-      }
+      validateMandatoryFields(MandatoryFields)
+
+      // if (validateMandatoryFields(MandatoryFields) == true){
+      //   console.log("WE CAN MOVE FORWARD!!!")
+      //   open_next(4);
+      //   $("#section-4-button").children(":first").removeClass("fa-minus");
+      //   $("#section-4-button").children(":first").removeClass("fa-plus");
+      //   $("#section-4-button").children(":first").addClass("fa-pen");
+      //   $("#section-4-button").css("background-color", "#524954");
+      // }
       
     }
 
@@ -6108,15 +6119,15 @@ jQuery(document).ready(function ($) {
       MandatoryFields = ['helpdesk_ticket_custom_field_cf_currency_type637939_2321673',
       'helpdesk_ticket_custom_field_cf_total_refund_vouchers_amount_the_amount_you_have_received_back594804_2321673'
       ]
-
-      if (validateMandatoryFields(MandatoryFields) == true){
-        console.log("WE CAN MOVE FORWARD!!!")
-        open_next(4);
-        $("#section-4-button").children(":first").removeClass("fa-minus");
-        $("#section-4-button").children(":first").removeClass("fa-plus");
-        $("#section-4-button").children(":first").addClass("fa-pen");
-        $("#section-4-button").css("background-color", "#524954");
-      }
+      validateMandatoryFields(MandatoryFields)
+      // if (validateMandatoryFields(MandatoryFields) == true){
+      //   console.log("WE CAN MOVE FORWARD!!!")
+      //   open_next(4);
+      //   $("#section-4-button").children(":first").removeClass("fa-minus");
+      //   $("#section-4-button").children(":first").removeClass("fa-plus");
+      //   $("#section-4-button").children(":first").addClass("fa-pen");
+      //   $("#section-4-button").css("background-color", "#524954");
+      // }
       
     }
 
@@ -6128,14 +6139,15 @@ jQuery(document).ready(function ($) {
       'helpdesk_ticket_custom_field_cf_amount_paid_in_local_currency527297_2321673'
       ]
 
-      if (validateMandatoryFields(MandatoryFields) == true){
-        console.log("WE CAN MOVE FORWARD!!!")
-        open_next(4);
-        $("#section-4-button").children(":first").removeClass("fa-minus");
-        $("#section-4-button").children(":first").removeClass("fa-plus");
-        $("#section-4-button").children(":first").addClass("fa-pen");
-        $("#section-4-button").css("background-color", "#524954");
-      }
+      validateMandatoryFields(MandatoryFields)
+      // if (validateMandatoryFields(MandatoryFields) == true){
+      //   console.log("WE CAN MOVE FORWARD!!!")
+      //   open_next(4);
+      //   $("#section-4-button").children(":first").removeClass("fa-minus");
+      //   $("#section-4-button").children(":first").removeClass("fa-plus");
+      //   $("#section-4-button").children(":first").addClass("fa-pen");
+      //   $("#section-4-button").css("background-color", "#524954");
+      // }
       
     }
 
@@ -6150,14 +6162,15 @@ jQuery(document).ready(function ($) {
       'helpdesk_ticket_custom_field_cf_on_which_part_of_the_journey_were_you_delayed_2321673'
       ]
 
-      if (validateMandatoryFields(MandatoryFields) == true){
-        console.log("WE CAN MOVE FORWARD!!!")
-        open_next(4);
-        $("#section-4-button").children(":first").removeClass("fa-minus");
-        $("#section-4-button").children(":first").removeClass("fa-plus");
-        $("#section-4-button").children(":first").addClass("fa-pen");
-        $("#section-4-button").css("background-color", "#524954");
-      }
+      validateMandatoryFields(MandatoryFields)
+      // if (validateMandatoryFields(MandatoryFields) == true){
+      //   console.log("WE CAN MOVE FORWARD!!!")
+      //   open_next(4);
+      //   $("#section-4-button").children(":first").removeClass("fa-minus");
+      //   $("#section-4-button").children(":first").removeClass("fa-plus");
+      //   $("#section-4-button").children(":first").addClass("fa-pen");
+      //   $("#section-4-button").css("background-color", "#524954");
+      // }
       
     }
 
@@ -6184,14 +6197,15 @@ jQuery(document).ready(function ($) {
       'helpdesk_ticket_custom_field_cf_who_do_you_bank_with_and_what_type_of_account_do_you_have584479_2321673'
       ]
 
-      if (validateMandatoryFields(MandatoryFields) == true){
-        console.log("WE CAN MOVE FORWARD!!!")
-        open_next(4);
-        $("#section-4-button").children(":first").removeClass("fa-minus");
-        $("#section-4-button").children(":first").removeClass("fa-plus");
-        $("#section-4-button").children(":first").addClass("fa-pen");
-        $("#section-4-button").css("background-color", "#524954");
-      }
+      validateMandatoryFields(MandatoryFields)
+      // if (validateMandatoryFields(MandatoryFields) == true){
+      //   console.log("WE CAN MOVE FORWARD!!!")
+      //   open_next(4);
+      //   $("#section-4-button").children(":first").removeClass("fa-minus");
+      //   $("#section-4-button").children(":first").removeClass("fa-plus");
+      //   $("#section-4-button").children(":first").addClass("fa-pen");
+      //   $("#section-4-button").css("background-color", "#524954");
+      // }
       
     }
 
@@ -6210,14 +6224,16 @@ jQuery(document).ready(function ($) {
       'helpdesk_ticket_custom_field_cf_total_refund_vouchers_amount_the_amount_you_have_received_back594804_2321673',
       ]
 
-      if (validateMandatoryFields(MandatoryFields) == true){
-        console.log("WE CAN MOVE FORWARD!!!")
-        open_next(4);
-        $("#section-4-button").children(":first").removeClass("fa-minus");
-        $("#section-4-button").children(":first").removeClass("fa-plus");
-        $("#section-4-button").children(":first").addClass("fa-pen");
-        $("#section-4-button").css("background-color", "#524954");
-      }
+      validateMandatoryFields(MandatoryFields)
+
+      // if (validateMandatoryFields(MandatoryFields) == true){
+      //   console.log("WE CAN MOVE FORWARD!!!")
+      //   open_next(4);
+      //   $("#section-4-button").children(":first").removeClass("fa-minus");
+      //   $("#section-4-button").children(":first").removeClass("fa-plus");
+      //   $("#section-4-button").children(":first").addClass("fa-pen");
+      //   $("#section-4-button").css("background-color", "#524954");
+      // }
       
     }
 
@@ -6229,14 +6245,16 @@ jQuery(document).ready(function ($) {
       'helpdesk_ticket_custom_field_cf_total_refund_vouchers_amount_the_amount_you_have_received_back594804_2321673'
       ]
 
-      if (validateMandatoryFields(MandatoryFields) == true){
-        console.log("WE CAN MOVE FORWARD!!!")
-        open_next(4);
-        $("#section-4-button").children(":first").removeClass("fa-minus");
-        $("#section-4-button").children(":first").removeClass("fa-plus");
-        $("#section-4-button").children(":first").addClass("fa-pen");
-        $("#section-4-button").css("background-color", "#524954");
-      }
+      validateMandatoryFields(MandatoryFields)
+
+      // if (validateMandatoryFields(MandatoryFields) == true){
+      //   console.log("WE CAN MOVE FORWARD!!!")
+      //   open_next(4);
+      //   $("#section-4-button").children(":first").removeClass("fa-minus");
+      //   $("#section-4-button").children(":first").removeClass("fa-plus");
+      //   $("#section-4-button").children(":first").addClass("fa-pen");
+      //   $("#section-4-button").css("background-color", "#524954");
+      // }
       
     }
 
@@ -6247,15 +6265,26 @@ jQuery(document).ready(function ($) {
       MandatoryFields = ['helpdesk_ticket_custom_field_cf_currency_type637939_2321673'
       ]
 
-      if (validateMandatoryFields(MandatoryFields) == true){
-        console.log("WE CAN MOVE FORWARD!!!")
-        open_next(4);
-        $("#section-4-button").children(":first").removeClass("fa-minus");
-        $("#section-4-button").children(":first").removeClass("fa-plus");
-        $("#section-4-button").children(":first").addClass("fa-pen");
-        $("#section-4-button").css("background-color", "#524954");
-      }
+      validateMandatoryFields(MandatoryFields)
+
+      // if (validateMandatoryFields(MandatoryFields) == true){
+      //   console.log("WE CAN MOVE FORWARD!!!")
+      //   open_next(4);
+      //   $("#section-4-button").children(":first").removeClass("fa-minus");
+      //   $("#section-4-button").children(":first").removeClass("fa-plus");
+      //   $("#section-4-button").children(":first").addClass("fa-pen");
+      //   $("#section-4-button").css("background-color", "#524954");
+      // }
       
+    }
+
+    if (validateMandatoryFields(MandatoryFields) == true){
+      console.log("WE CAN MOVE FORWARD!!!")
+      open_next(4);
+      $("#section-4-button").children(":first").removeClass("fa-minus");
+      $("#section-4-button").children(":first").removeClass("fa-plus");
+      $("#section-4-button").children(":first").addClass("fa-pen");
+      $("#section-4-button").css("background-color", "#524954");
     }
     
     
