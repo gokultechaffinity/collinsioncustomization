@@ -5948,6 +5948,31 @@ jQuery(document).ready(function ($) {
       }
     });
 
+    function open_next(section_number) {
+      //close current, open next
+      $("#collapseSection" + section_number).removeClass("show");
+      //sign swap
+      $("#section-" + section_number + "-button")
+        .children(":first")
+        .removeClass("fa-minus");
+      $("#section-" + section_number + "-button")
+        .children(":first")
+        .addClass("fa-plus");
+      //ENABLE NEXT SECTION +!
+      $("#section-" + (section_number + 1) + "-button").attr(
+        "data-toggle",
+        "collapse"
+      );
+      $("#collapseSection" + (section_number + 1)).addClass("show");
+      //sign swap
+      $("#section-" + (section_number + 1) + "-button")
+        .children(":first")
+        .removeClass("fa-plus");
+      $("#section-" + (section_number + 1) + "-button")
+        .children(":first")
+        .addClass("fa-minus");
+    }
+
     open_next(4);
     $("#section-4-button").children(":first").removeClass("fa-minus");
     $("#section-4-button").children(":first").removeClass("fa-plus");
