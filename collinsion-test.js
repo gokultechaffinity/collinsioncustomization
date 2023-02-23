@@ -5936,9 +5936,8 @@ jQuery(document).ready(function ($) {
       }
     }); 
     
-  }
-
-  if (red_indexes.length == 0){
+  } else if (red_indexes.length == 0){
+    
     open_next(4);
     $("#section-4-button").children(":first").removeClass("fa-minus");
     $("#section-4-button").children(":first").removeClass("fa-plus");
