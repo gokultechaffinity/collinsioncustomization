@@ -5939,6 +5939,15 @@ jQuery(document).ready(function ($) {
     
   } else if (red_indexes.length == 0){
 
+    clear_index.forEach((index) => {
+          
+      if( $("#"+(list_of_fields[index])).hasClass('choices')){
+        $("#"+(list_of_fields[index])).parent().parent().css('border','1px solid black');
+      }else{
+        $("#"+(list_of_fields[index])).css('border','1px solid black');
+      }
+    });
+
     open_next(4);
     $("#section-4-button").children(":first").removeClass("fa-minus");
     $("#section-4-button").children(":first").removeClass("fa-plus");
