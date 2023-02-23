@@ -5987,6 +5987,7 @@ jQuery(document).ready(function ($) {
       'helpdesk_ticket_custom_field_cf_have_you_received_any_refund_from_your_transport_provider_2321673']
 
       if (validateMandatoryFields(MandatoryFields) == true){
+        console.log("WE CAN MOVE FORWARD!!!")
         open_next(4);
         $("#section-4-button").children(":first").removeClass("fa-minus");
         $("#section-4-button").children(":first").removeClass("fa-plus");
