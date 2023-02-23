@@ -5916,7 +5916,8 @@ jQuery(document).ready(function ($) {
     console.log("length: "+clear_index.length)                                                                                                                                                      
     
     if (red_indexes.length >= 1){
-      
+
+      //highlight reds
       red_indexes.forEach((index) => {
         
         if( $("#"+(list_of_fields[index])).hasClass('choices')){
@@ -5925,19 +5926,19 @@ jQuery(document).ready(function ($) {
           $("#"+(list_of_fields[index])).css('border','1px solid red');
         }
       });
-  }else if (clear_index.length >= 1) {
-
-    clear_index.forEach((index) => {
-        
-      if( $("#"+(list_of_fields[index])).hasClass('choices')){
-        $("#"+(list_of_fields[index])).parent().parent().css('border','1px solid black');
-      }else{
-        $("#"+(list_of_fields[index])).css('border','1px solid black');
-      }
-    }); 
+  
+      //clear 
+      clear_index.forEach((index) => {
+          
+        if( $("#"+(list_of_fields[index])).hasClass('choices')){
+          $("#"+(list_of_fields[index])).parent().parent().css('border','1px solid black');
+        }else{
+          $("#"+(list_of_fields[index])).css('border','1px solid black');
+        }
+      }); 
     
   } else if (red_indexes.length == 0){
-    
+
     open_next(4);
     $("#section-4-button").children(":first").removeClass("fa-minus");
     $("#section-4-button").children(":first").removeClass("fa-plus");
