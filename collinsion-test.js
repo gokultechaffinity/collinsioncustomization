@@ -5925,7 +5925,7 @@ jQuery(document).ready(function ($) {
           $("#"+(list_of_fields[index])).css('border','1px solid red');
         }
       });
-  }else{
+  }else if (clear_index.length >= 1) {
 
     clear_index.forEach((index) => {
         
@@ -5952,6 +5952,7 @@ jQuery(document).ready(function ($) {
   $("#save_draft_4").click(function () {
     $(".new-ticket-submit-button").trigger("click");
   });
+
   $("#save_and_continue4").click(function () {
     if ($("#section_4_header").length) {
       console.log("update section ---->");
