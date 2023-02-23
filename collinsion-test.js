@@ -5897,6 +5897,7 @@ jQuery(document).ready(function ($) {
   //validate mandatory fields____________________________________________________________________________________________________________________
 
   function validateMandatoryFields(list_of_fields){
+    move_forward = false;
     red_indexes = []
     clear_index = []
 
@@ -5948,38 +5949,10 @@ jQuery(document).ready(function ($) {
       }
     });
 
-    function open_next(section_number) {
-      //close current, open next
-      $("#collapseSection" + section_number).removeClass("show");
-      //sign swap
-      $("#section-" + section_number + "-button")
-        .children(":first")
-        .removeClass("fa-minus");
-      $("#section-" + section_number + "-button")
-        .children(":first")
-        .addClass("fa-plus");
-      //ENABLE NEXT SECTION +!
-      $("#section-" + (section_number + 1) + "-button").attr(
-        "data-toggle",
-        "collapse"
-      );
-      $("#collapseSection" + (section_number + 1)).addClass("show");
-      //sign swap
-      $("#section-" + (section_number + 1) + "-button")
-        .children(":first")
-        .removeClass("fa-plus");
-      $("#section-" + (section_number + 1) + "-button")
-        .children(":first")
-        .addClass("fa-minus");
-    }
-
-    open_next(4);
-    $("#section-4-button").children(":first").removeClass("fa-minus");
-    $("#section-4-button").children(":first").removeClass("fa-plus");
-    $("#section-4-button").children(":first").addClass("fa-pen");
-    $("#section-4-button").css("background-color", "#524954");
+    move_forward = true;
   }
     
+  return move_forward;
   }
 
   //_____________________________________________________________________________________________________________________________________________
@@ -6013,12 +5986,32 @@ jQuery(document).ready(function ($) {
       'helpdesk_ticket_custom_field_cf_amount_paid_in_local_currency527297_2321673',
       'helpdesk_ticket_custom_field_cf_have_you_received_any_refund_from_your_transport_provider_2321673']
 
-      validateMandatoryFields(MandatoryFields);
+      if (validateMandatoryFields(MandatoryFields) == true){
+        open_next(4);
+        $("#section-4-button").children(":first").removeClass("fa-minus");
+        $("#section-4-button").children(":first").removeClass("fa-plus");
+        $("#section-4-button").children(":first").addClass("fa-pen");
+        $("#section-4-button").css("background-color", "#524954");
+      }
+
 
     } 
     else if ($("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() ==
     "Baggage - suitcase hasn't arrived on time" ){
       console.log($("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val())
+
+      MandatoryFields = ['helpdesk_ticket_custom_field_cf_which_part_of_the_journey_did_your_baggage_arrive_late_2321673',
+      'helpdesk_ticket_custom_field_cf_how_many_hours_was_your_baggage_delayed_2321673',
+      'helpdesk_ticket_custom_field_cf_has_your_baggage_been_returned_to_you_2321673',
+      'helpdesk_ticket_custom_field_cf_what_transport_type_was_your_baggage_delayed_on_2321673',
+      'helpdesk_ticket_custom_field_cf_did_you_notify_your_transport_provider_about_the_delay_and_get_a_report_pir_2321673',
+      'helpdesk_ticket_custom_field_cf_please_list_all_replacement_items_purchased339565_2321673',
+      'helpdesk_ticket_custom_field_cf_on_what_date_did_you_purchase_the_replacement_items_2321673',
+      'helpdesk_ticket_custom_field_cf_currency_type637939_2321673',
+      'helpdesk_ticket_custom_field_cf_amount_paid_in_local_currency527297_2321673',
+      'helpdesk_ticket_custom_field_cf_have_you_received_any_refund_from_your_transport_provider_2321673']
+
+      validateMandatoryFields(MandatoryFields);
     }
     else if($("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() ==
     "Flight or Travel delayed"){
