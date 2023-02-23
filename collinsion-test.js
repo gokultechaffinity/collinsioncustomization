@@ -5903,9 +5903,7 @@ jQuery(document).ready(function ($) {
     for (let i = 0; i < list_of_fields.length; i++ ){
       if ( $("#"+(list_of_fields[i])).val() == '' ){
         red_indexes.push(i);
-        clear_index.pop(i);
       }else{
-        red_indexes.pop(i);
         clear_index.push(i);
       }
     }
@@ -5991,12 +5989,7 @@ jQuery(document).ready(function ($) {
     "Flight or Travel delayed"){
       console.log($("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val())
     }
-    //close current section. open next
-    // open_next(4);
-    // $("#section-4-button").children(":first").removeClass("fa-minus");
-    // $("#section-4-button").children(":first").removeClass("fa-plus");
-    // $("#section-4-button").children(":first").addClass("fa-pen");
-    // $("#section-4-button").css("background-color", "#524954");
+    
   });
 
 
