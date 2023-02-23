@@ -6020,7 +6020,9 @@ jQuery(document).ready(function ($) {
   $("#save_draft_4").click(function () {
     $(".new-ticket-submit-button").trigger("click");
   });
+  
   $("#save_and_continue4").click(function () {
+    
     if ($("#section_4_header").length) {
       console.log("update section ---->");
       update_section_4();
@@ -6029,14 +6031,315 @@ jQuery(document).ready(function ($) {
       console.log("add section ---->");
     }
 
-    //close current section. open next
-    open_next(4);
-    $("#section-4-button").children(":first").removeClass("fa-minus");
-    $("#section-4-button").children(":first").removeClass("fa-plus");
-    $("#section-4-button").children(":first").addClass("fa-pen");
-    $("#section-4-button").css("background-color", "#524954");
-  });
+    if (
+      $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() ==
+      "Baggage - suitcase hasn't arrived on time"
+    ){
+      console.log($("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val())
+      //fields to check
+      MandatoryFields1 = ['helpdesk_ticket_custom_field_cf_which_part_of_the_journey_did_your_baggage_arrive_late_2321673',
+      'helpdesk_ticket_custom_field_cf_how_many_hours_was_your_baggage_delayed_2321673',
+      'helpdesk_ticket_custom_field_cf_has_your_baggage_been_returned_to_you_2321673',
+      'helpdesk_ticket_custom_field_cf_what_transport_type_was_your_baggage_delayed_on_2321673',
+      'helpdesk_ticket_custom_field_cf_did_you_notify_your_transport_provider_about_the_delay_and_get_a_report_pir_2321673',
+      'helpdesk_ticket_custom_field_cf_please_list_all_replacement_items_purchased339565_2321673',
+      'helpdesk_ticket_custom_field_cf_on_what_date_did_you_purchase_the_replacement_items_2321673',
+      'helpdesk_ticket_custom_field_cf_currency_type637939_2321673',
+      'helpdesk_ticket_custom_field_cf_amount_paid_in_local_currency527297_2321673',
+      'helpdesk_ticket_custom_field_cf_have_you_received_any_refund_from_your_transport_provider_2321673']
 
+      validateMandatoryFields(MandatoryFields1);
+
+      if (validateMandatoryFields(MandatoryFields1) == true){
+        console.log("WE CAN MOVE FORWARD!!!");
+
+        open_next(4);
+        $("#section-4-button").children(":first").removeClass("fa-minus");
+        $("#section-4-button").children(":first").removeClass("fa-plus");
+        $("#section-4-button").children(":first").addClass("fa-pen");
+        $("#section-4-button").css("background-color", "#524954");
+      }
+
+
+    } 
+    else if ($("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() ==
+    "Any CANCELLATION claim due to COVID-19" ){
+      
+
+      MandatoryFields2 = ['helpdesk_ticket_custom_field_cf_why_did_you_cancel_your_trip_2321673',
+      'helpdesk_ticket_custom_field_cf_when_were_you_initially_aware_that_you_needed_to_cancel_your_trip635242_2321673',
+      'helpdesk_ticket_custom_field_cf_please_enter_the_date_you_asked_your_tour_operatortravel_provider_to_cancel_the_trip_2321673',
+      'helpdesk_ticket_custom_field_cf_what_type_of_trip_did_you_book877716_2321673',
+      'helpdesk_ticket_custom_field_cf_please_confirm_the_name_of_the_trip_providers_and_the_booking_references342856_2321673',
+      'helpdesk_ticket_custom_field_cf_currency_type637939_2321673',
+      'helpdesk_ticket_custom_field_cf_total_trip_cost_the_amount_you_paid_2321673',
+      'helpdesk_ticket_custom_field_cf_total_refund_vouchers_amount_the_amount_you_have_received_back594804_2321673',
+      'helpdesk_ticket_custom_field_cf_do_you_have_any_other_travel_insurance_policy400572_2321673',
+      'helpdesk_ticket_custom_field_cf_who_do_you_bank_with_and_what_type_of_account_do_you_have486839_2321673',
+      'helpdesk_ticket_custom_field_cf_how_did_you_pay_for_your_trip913590_2321673']
+
+      validateMandatoryFields(MandatoryFields2);
+
+      if (validateMandatoryFields(MandatoryFields2) == true){
+        console.log("WE CAN MOVE FORWARD!!!")
+        open_next(4);
+        $("#section-4-button").children(":first").removeClass("fa-minus");
+        $("#section-4-button").children(":first").removeClass("fa-plus");
+        $("#section-4-button").children(":first").addClass("fa-pen");
+        $("#section-4-button").css("background-color", "#524954");
+      }
+
+
+    }
+    else if($("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() ==
+    "Baggage - personal items damaged"){
+      console.log($("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val())
+
+      MandatoryFields3 = ['helpdesk_ticket_custom_field_cf_how_did_the_damage_happen_well_need_as_much_information_as_you_can_give_please_2321673',
+      'helpdesk_ticket_custom_field_cf_was_the_items_with_you_when_it_was_damaged_2321673',
+      'helpdesk_ticket_custom_field_cf_how_many_items_are_you_claiming_for411795_2321673',
+      'helpdesk_ticket_custom_field_cf_who_owns_the_item_2321673',
+      'helpdesk_ticket_custom_field_cf_do_you_have_home_contents_insurance_2321673',
+      'helpdesk_ticket_custom_field_cf_do_you_have_any_other_travel_insurance_policy_2321673',
+      'helpdesk_ticket_custom_field_cf_who_do_you_bank_with_and_what_type_of_account_do_you_have87472_2321673',
+      'helpdesk_ticket_custom_field_cf_how_did_you_pay_for_your_trip396837_2321673']
+
+      validateMandatoryFields(MandatoryFields3);
+
+      if (validateMandatoryFields(MandatoryFields3) == true){
+        console.log("WE CAN MOVE FORWARD!!!")
+        open_next(4);
+        $("#section-4-button").children(":first").removeClass("fa-minus");
+        $("#section-4-button").children(":first").removeClass("fa-plus");
+        $("#section-4-button").children(":first").addClass("fa-pen");
+        $("#section-4-button").css("background-color", "#524954");
+      }
+
+    }
+
+    else if($("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() ==
+    "Baggage - personal items lost or stolen"){
+      console.log($("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val())
+
+      MandatoryFields4 = ['helpdesk_ticket_custom_field_cf_are_you_claiming_for_a_loss_or_theft_2321673',
+      'helpdesk_ticket_custom_field_cf_where_did_the_loss_or_theft_take_place_2321673',
+      'helpdesk_ticket_custom_field_cf_did_you_report_the_loss_or_theft_2321673',
+      'helpdesk_ticket_custom_field_cf_how_many_items_are_you_claiming_for_2321673',
+      'helpdesk_ticket_custom_field_cf_who_owns_the_item86910_2321673',
+      'helpdesk_ticket_custom_field_cf_do_you_have_home_contents_insurance_2321673',
+      'helpdesk_ticket_custom_field_cf_do_you_have_any_other_travel_insurance_policy_2321673',
+      'helpdesk_ticket_custom_field_cf_who_do_you_bank_with_and_what_type_of_account_do_you_have87472_2321673',
+      'helpdesk_ticket_custom_field_cf_how_did_you_pay_for_your_trip396837_2321673']
+
+      validateMandatoryFields(MandatoryFields4)
+
+      if (validateMandatoryFields(MandatoryFields4) == true){
+        console.log("WE CAN MOVE FORWARD!!!")
+        open_next(4);
+        $("#section-4-button").children(":first").removeClass("fa-minus");
+        $("#section-4-button").children(":first").removeClass("fa-plus");
+        $("#section-4-button").children(":first").addClass("fa-pen");
+        $("#section-4-button").css("background-color", "#524954");
+      }
+      
+    }
+    //sus
+    else if($("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() ==
+    "Cancelled trip - (NOT related to COVID-19)"){
+      console.log($("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val())
+
+      MandatoryFields5 = ['helpdesk_ticket_custom_field_cf_who_has_caused_the_cancellation_2321673',
+      'helpdesk_ticket_custom_field_cf_are_you_currently_still_abroad_2321673',
+      'helpdesk_ticket_custom_field_cf_what_type_of_trip_did_you_book137913_2321673',
+      'helpdesk_ticket_custom_field_cf_how_many_people_are_there_on_the_booking_2321673',
+      'helpdesk_ticket_custom_field_cf_please_confirm_the_name_of_the_trip_providers_and_the_booking_references342856_2321673',
+      'helpdesk_ticket_custom_field_cf_currency_type637939_2321673',
+      'helpdesk_ticket_custom_field_cf_total_trip_cost_the_amount_you_paid_2321673',
+      'helpdesk_ticket_custom_field_cf_have_you_received_any_refunds_or_compensation702973_2321673',
+      'helpdesk_ticket_custom_field_cf_please_enter_the_date_you_asked_your_tour_operatortravel_provider_to_cancel_the_trip_2321673',
+      'helpdesk_ticket_custom_field_cf_do_you_have_any_other_travel_insurance_policy400572_2321673',
+      'helpdesk_ticket_custom_field_cf_who_do_you_bank_with_and_what_type_of_account_do_you_have486839_2321673',
+      'helpdesk_ticket_custom_field_cf_how_did_you_pay_for_your_trip913590_2321673']
+
+      validateMandatoryFields(MandatoryFields5)
+
+      if (validateMandatoryFields(MandatoryFields5) == true){
+        console.log("WE CAN MOVE FORWARD!!!")
+        open_next(4);
+        $("#section-4-button").children(":first").removeClass("fa-minus");
+        $("#section-4-button").children(":first").removeClass("fa-plus");
+        $("#section-4-button").children(":first").addClass("fa-pen");
+        $("#section-4-button").css("background-color", "#524954");
+      }
+      
+    }
+
+    else if($("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() ==
+    "Curtailment – returned home early"){
+      console.log($("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val())
+
+      MandatoryFields6 = ['helpdesk_ticket_custom_field_cf_currency_type637939_2321673',
+      'helpdesk_ticket_custom_field_cf_total_refund_vouchers_amount_the_amount_you_have_received_back594804_2321673'
+      ]
+      validateMandatoryFields(MandatoryFields6)
+      if (validateMandatoryFields(MandatoryFields6) == true){
+        console.log("WE CAN MOVE FORWARD!!!")
+        open_next(4);
+        $("#section-4-button").children(":first").removeClass("fa-minus");
+        $("#section-4-button").children(":first").removeClass("fa-plus");
+        $("#section-4-button").children(":first").addClass("fa-pen");
+        $("#section-4-button").css("background-color", "#524954");
+      }
+      
+    }
+
+    else if($("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() ==
+    "Dental expenses whilst abroad"){
+      console.log($("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val())
+
+      MandatoryFields6 = ['helpdesk_ticket_custom_field_cf_currency_type637939_2321673',
+      'helpdesk_ticket_custom_field_cf_amount_paid_in_local_currency527297_2321673'
+      ]
+
+      validateMandatoryFields(MandatoryFields6)
+      if (validateMandatoryFields(MandatoryFields6) == true){
+        console.log("WE CAN MOVE FORWARD!!!")
+        open_next(4);
+        $("#section-4-button").children(":first").removeClass("fa-minus");
+        $("#section-4-button").children(":first").removeClass("fa-plus");
+        $("#section-4-button").children(":first").addClass("fa-pen");
+        $("#section-4-button").css("background-color", "#524954");
+      }
+      
+    }
+
+    else if($("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() ==
+    "Flight or Travel delayed"){
+      console.log($("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val())
+
+      MandatoryFields7 = ['helpdesk_ticket_custom_field_cf_what_transport_was_delayed_2321673',
+      'helpdesk_ticket_custom_field_cf_what_date_were_you_advised_of_the_delay_2321673',
+      'helpdesk_ticket_custom_field_cf_what_was_the_reason_for_the_delay_2321673',
+      'helpdesk_ticket_custom_field_cf_how_many_hours_were_you_delayed_2321673',
+      'helpdesk_ticket_custom_field_cf_on_which_part_of_the_journey_were_you_delayed_2321673'
+      ]
+
+      validateMandatoryFields(MandatoryFields7)
+      if (validateMandatoryFields(MandatoryFields7) == true){
+        console.log("WE CAN MOVE FORWARD!!!")
+        open_next(4);
+        $("#section-4-button").children(":first").removeClass("fa-minus");
+        $("#section-4-button").children(":first").removeClass("fa-plus");
+        $("#section-4-button").children(":first").addClass("fa-pen");
+        $("#section-4-button").css("background-color", "#524954");
+      }
+      
+    }
+
+    else if($("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() ==
+    "Medical expenses abroad & repatriation cost"){
+      console.log($("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val())
+
+      MandatoryFields8 = ['helpdesk_ticket_custom_field_cf_are_you_currently_still_abroad93386_2321673',
+      'helpdesk_ticket_custom_field_cf_who_incurred_medical_expenses_2321673',
+      'helpdesk_ticket_custom_field_cf_when_did_the_symptoms_start437132_2321673',
+      'helpdesk_ticket_custom_field_cf_are_you_claiming_for_an_injury_or_illness644442_2321673',
+      'helpdesk_ticket_custom_field_cf_were_you_admitted_to_a_hospital_as_an_inpatient_overnight_2321673',
+      'helpdesk_ticket_custom_field_cf_please_list_the_expenses_incurred_including_the_type_of_expense_and_the_name_of_the_dentist_or_company_that_provided_this_expense90799_2321673',
+      'helpdesk_ticket_custom_field_cf_currency_type637939_2321673',
+      'helpdesk_ticket_custom_field_cf_amount_paid_in_local_currency527297_2321673',
+      'helpdesk_ticket_custom_field_cf_date_of_payment778903_2321673',
+      'helpdesk_ticket_custom_field_cf_do_any_of_the_costs_relate_to_covid_tests_2321673',
+      'helpdesk_ticket_custom_field_cf_do_any_of_the_costs_relate_to_physiotherapy_or_chiropracter_2321673',
+      'helpdesk_ticket_custom_field_cf_do_any_of_the_costs_relate_to_accommodation555447_2321673',
+      'helpdesk_ticket_custom_field_cf_do_any_of_the_costs_relate_to_travel_not_including_the_ambulance_or_taxi_to_the_hospital_2321673',
+      'helpdesk_ticket_custom_field_cf_do_you_have_any_other_travel_insurance_policy206683_2321673',
+      'helpdesk_ticket_custom_field_cf_do_you_have_private_medical_insurance_2321673',
+      'helpdesk_ticket_custom_field_cf_how_did_you_pay_for_your_trip257666_2321673',
+      'helpdesk_ticket_custom_field_cf_who_do_you_bank_with_and_what_type_of_account_do_you_have584479_2321673'
+      ]
+
+      validateMandatoryFields(MandatoryFields8)
+      if (validateMandatoryFields(MandatoryFields8) == true){
+        console.log("WE CAN MOVE FORWARD!!!")
+        open_next(4);
+        $("#section-4-button").children(":first").removeClass("fa-minus");
+        $("#section-4-button").children(":first").removeClass("fa-plus");
+        $("#section-4-button").children(":first").addClass("fa-pen");
+        $("#section-4-button").css("background-color", "#524954");
+      }
+      
+    }
+
+    else if($("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() ==
+    "Missed flight or departure"){
+      console.log($("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val())
+
+      MandatoryFields9 = ['helpdesk_ticket_custom_field_cf_what_caused_you_to_miss_your_departure_2321673',
+      'helpdesk_ticket_custom_field_cf_do_you_have_a_report_confirming_the_reason_for_the_delay_2321673',
+      'helpdesk_ticket_custom_field_cf_on_which_part_of_the_journey_did_you_miss_your_departure_2321673',
+      'helpdesk_ticket_custom_field_cf_did_you_allow_yourself_sufficient_time_to_reach_your_international_departure_point_2321673',
+      'helpdesk_ticket_custom_field_cf_what_type_of_additional_expenses_are_you_claiming_for_2321673',
+      'helpdesk_ticket_custom_field_cf_name_of_provider_please_list_all_2321673',
+      'helpdesk_ticket_custom_field_cf_currency_type637939_2321673',
+      'helpdesk_ticket_custom_field_cf_amount_paid_in_local_currency_2321673',
+      'helpdesk_ticket_custom_field_cf_total_refund_vouchers_amount_the_amount_you_have_received_back594804_2321673',
+      ]
+
+      validateMandatoryFields(MandatoryFields9)
+
+      if (validateMandatoryFields(MandatoryFields9) == true){
+        console.log("WE CAN MOVE FORWARD!!!")
+        open_next(4);
+        $("#section-4-button").children(":first").removeClass("fa-minus");
+        $("#section-4-button").children(":first").removeClass("fa-plus");
+        $("#section-4-button").children(":first").addClass("fa-pen");
+        $("#section-4-button").css("background-color", "#524954");
+      }
+      
+    }
+
+    else if($("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() ==
+    "Substitute Accommodation - change to accommodation during trip"){
+      console.log($("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val())
+
+      MandatoryFields10 = ['helpdesk_ticket_custom_field_cf_currency_type637939_2321673',
+      'helpdesk_ticket_custom_field_cf_total_refund_vouchers_amount_the_amount_you_have_received_back594804_2321673'
+      ]
+
+      validateMandatoryFields(MandatoryFields10)
+
+      if (validateMandatoryFields(MandatoryFields10) == true){
+        console.log("WE CAN MOVE FORWARD!!!")
+        open_next(4);
+        $("#section-4-button").children(":first").removeClass("fa-minus");
+        $("#section-4-button").children(":first").removeClass("fa-plus");
+        $("#section-4-button").children(":first").addClass("fa-pen");
+        $("#section-4-button").css("background-color", "#524954");
+      }
+      
+    }
+
+    else if($("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() ==
+    "Winter sports - lift pass, equipment or piste closure"){
+      console.log($("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val())
+
+      MandatoryFields11 = ['helpdesk_ticket_custom_field_cf_currency_type637939_2321673'
+      ]
+
+      validateMandatoryFields(MandatoryFields11)
+
+      if (validateMandatoryFields(MandatoryFields11) == true){
+        console.log("WE CAN MOVE FORWARD!!!")
+        open_next(4);
+        $("#section-4-button").children(":first").removeClass("fa-minus");
+        $("#section-4-button").children(":first").removeClass("fa-plus");
+        $("#section-4-button").children(":first").addClass("fa-pen");
+        $("#section-4-button").css("background-color", "#524954");
+      }
+      
+    }
+  });
 
   function add_section_4() {
 
