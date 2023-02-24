@@ -1,4 +1,4 @@
-//collinsion test
+//collinsion live
 jQuery(document).ready(function ($) {
   let code;
   //hide two options for Italy
@@ -156,7 +156,7 @@ jQuery(document).ready(function ($) {
   let InternalPolicyNumber;
   let domainURL;
   // if($("#title").hasClass("VHI")||$("#title").hasClass("EasyJet")){
-  //   domainURL = "claim-proxy.collinsonnis.com";
+  //  domainURL = "claim-proxy.collinsonnis.com";
   // }else {
   domainURL = "claim-proxy-lower.collinsonnis.com";
   // }
@@ -300,7 +300,7 @@ jQuery(document).ready(function ($) {
   //add save and continue button - add section 1
   if ($("#title").hasClass("ColumbusItaly")) {
     $(
-      '<button id="save_and_continue1" class="btn btn-primary for-section-1 save_and_continue" type="button">Trova la politica</button>'
+      '<button id="save_and_continue1" class="btn btn-primary for-section-1 save_and_continue" type="button">Trova la polizza</button>'
     ).insertAfter("#helpdesk_ticket_custom_field_cf_claim_number_2321673");
   } else if ($("#title").hasClass("EasyJet")) {
     $(
@@ -403,6 +403,11 @@ jQuery(document).ready(function ($) {
     ).insertAfter(
       ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper"
     );
+    $("<hr id ='hr4' class='for-section-4'>").insertAfter("#save_draft_4");
+    $("<p class='for-section-4' style='margin-top: 20px;'>Se clicchi 'Salva sinistro' ti invieremo un'e-mail entro 5 minuti per l'attivazione del tuo account, dove potrai continuare con il tuo sinistro</p>"
+    ).insertBefore(
+      '#hr4'
+    );
   } else {
     $(
       '<button id="save_draft_4" class="btn btn-primary for-section-4 " type="button">Save Claim & Exit</button>'
@@ -446,6 +451,8 @@ jQuery(document).ready(function ($) {
       $(
         '<button class="save_and_continue5 btn btn-primary for-section-5 save_and_continue" type="button" >Sezione successiva</button>'
       ).insertAfter(".attachments.for-section-5");
+      $("<p class='for-section-5' style='margin-top: 20px;'>Se clicchi 'Salva sinistro' ti invieremo un'e-mail entro 5 minuti per l'attivazione del tuo account, dove potrai continuare con il tuo sinistro</p>").insertAfter(".save_draft_5.btn.btn-primary.for-section-5:visible");
+      $("p.for-section-5:eq(0)").hide();
     } else {
       jQuery(".attachments.for-section-5").after(
         '<button class="save_draft_5 btn btn-primary for-section-5 " type="button">Save Claim & Exit</button>'
@@ -453,6 +460,8 @@ jQuery(document).ready(function ($) {
       $(
         '<button class="save_and_continue5 btn btn-primary for-section-5 save_and_continue" type="button" >Next Section</button>'
       ).insertAfter(".attachments.for-section-5");
+      $('<p class="for-section-5" style="margin-top: 20px;">If you "Save Claim &amp; Exit", we will send you an activation email within 5 minutes to your portal where you can continue with your claim.</p>').insertAfter(".save_draft_5.btn.btn-primary.for-section-5:visible");
+      $("p.for-section-5:eq(0)").hide();
     }
   } else {
     $(
@@ -468,6 +477,8 @@ jQuery(document).ready(function ($) {
       $(
         '<button class="save_and_continue5 btn btn-primary for-section-5 save_and_continue" type="button" >Sezione successiva</button>'
       ).insertAfter(".form-group.attachments-container.for-section-5");
+      $("<p class='for-section-5' style='margin-top: 20px;'>Se clicchi 'Salva sinistro' ti invieremo un'e-mail entro 5 minuti per l'attivazione del tuo account, dove potrai continuare con il tuo sinistro</p>").insertAfter(".save_draft_5.btn.btn-primary.for-section-5:visible");
+      $("p.for-section-5:eq(0)").hide();
     } else {
       jQuery(".attachments-container.for-section-5").after(
         '<button class="save_draft_5 btn btn-primary for-section-5 " type="button">Save Claim & Exit</button>'
@@ -475,6 +486,8 @@ jQuery(document).ready(function ($) {
       $(
         '<button class="save_and_continue5 btn btn-primary for-section-5 save_and_continue" type="button" >Next Section</button>'
       ).insertAfter(".form-group.attachments-container.for-section-5");
+      $('<p class="for-section-5" style="margin-top: 20px;">If you "Save Claim &amp; Exit", we will send you an activation email within 5 minutes to your portal where you can continue with your claim.</p>').insertAfter(".save_draft_5.btn.btn-primary.for-section-5:visible");
+      $("p.for-section-5:eq(0)").hide();
     }
   }
   $("#mock-doc").remove();
@@ -1335,29 +1348,57 @@ jQuery(document).ready(function ($) {
             $("#save_and_continue1").removeAttr("data-toggle");
             console.log("error 404 -->", result);
           } else if (statusCode == 403) {
+            if ($("#title").hasClass("ColumbusItaly")) {
             console.log("--->", result, statusCode);
             jQuery("#model-error-msg").removeClass("d-none");
             jQuery("#model-error-msg .ins-modal-body-content").text(
-              "Warning Something's not quite right. Please try again and if the problem persists please contact the team using the 'Contact Us' button in the footer."
+              "Attenzione, qualcosa non ha funzionato. Per favore riprova e se il problema persiste, contatta l'ufficio sinistri."
             );
             addErrorMessage(
               "api_call_failed_dob",
-              "Warning Something's not quite right. Please try again and if the problem persists please contact the team using the 'Contact Us' button in the footer."
+              "Attenzione, qualcosa non ha funzionato. Per favore riprova e se il problema persiste, contatta l'ufficio sinistri."
             );
             $("#save_and_continue1").removeAttr("data-target");
             $("#save_and_continue1").removeAttr("data-toggle");
+            } else{
+              console.log("--->", result, statusCode);
+              jQuery("#model-error-msg").removeClass("d-none");
+              jQuery("#model-error-msg .ins-modal-body-content").text(
+              "Warning Something's not quite right. Please try again and if the problem persists please contact the team using the 'Contact Us' button in the footer."
+              );
+              addErrorMessage(
+              "api_call_failed_dob",
+              "Warning Something's not quite right. Please try again and if the problem persists please contact the team using the 'Contact Us' button in the footer."
+              );
+              $("#save_and_continue1").removeAttr("data-target");
+              $("#save_and_continue1").removeAttr("data-toggle");
+            }
           } else if (statusCode == 500) {
-            jQuery("#model-error-msg").removeClass("d-none");
-            jQuery("#model-error-msg .ins-modal-body-content").text(
-              "Warning Something's not quite right. Please try again and if the problem persists please contact the team using the 'Contact Us' button in the footer."
-            );
-            addErrorMessage(
-              "api_call_failed_dob",
-              "Warning Something's not quite right. Please try again and if the problem persists please contact the team using the 'Contact Us' button in the footer."
-            );
-            $("#save_and_continue1").removeAttr("data-target");
-            $("#save_and_continue1").removeAttr("data-toggle");
-            console.log("error 500 -->", result);
+            if ($("#title").hasClass("ColumbusItaly")) {
+              jQuery("#model-error-msg").removeClass("d-none");
+              jQuery("#model-error-msg .ins-modal-body-content").text(
+                "Attenzione, qualcosa non ha funzionato. Per favore riprova e se il problema persiste, contatta l'ufficio sinistri."
+              );
+              addErrorMessage(
+                "api_call_failed_dob",
+                "Attenzione, qualcosa non ha funzionato. Per favore riprova e se il problema persiste, contatta l'ufficio sinistri."
+              );
+              $("#save_and_continue1").removeAttr("data-target");
+              $("#save_and_continue1").removeAttr("data-toggle");
+              console.log("error 500 -->", result);
+            }else{
+              jQuery("#model-error-msg").removeClass("d-none");
+              jQuery("#model-error-msg .ins-modal-body-content").text(
+                "Warning Something's not quite right. Please try again and if the problem persists please contact the team using the 'Contact Us' button in the footer."
+              );
+              addErrorMessage(
+                "api_call_failed_dob",
+                "Warning Something's not quite right. Please try again and if the problem persists please contact the team using the 'Contact Us' button in the footer."
+              );
+              $("#save_and_continue1").removeAttr("data-target");
+              $("#save_and_continue1").removeAttr("data-toggle");
+              console.log("error 500 -->", result);
+            }
           }
         } else {
           let element = ["api_call_failed_dob"];
@@ -1408,31 +1449,72 @@ jQuery(document).ready(function ($) {
             console.log("error", result);
             getJWTToken(fieldId);
           } else if (statusCode == 404) {
-            jQuery("#model-error-msg").removeClass("d-none");
-            jQuery("#model-error-msg .ins-modal-body-content").text(
-              "Something's not quite right. Please try again using the policy number shown on your insurance document."
-            );
-            addErrorMessage(
-              "api_call_failed_postcode",
-              "Something's not quite right. Please try again using the policy number shown on your insurance document."
-            );
-            $("#save_and_continue1").removeAttr("data-target");
-            $("#save_and_continue1").removeAttr("data-toggle");
-            console.log("error 404 -->", result);
+            if ($("#title").hasClass("ColumbusItaly")) {
+              jQuery("#model-error-msg").removeClass("d-none");
+              jQuery("#model-error-msg .ins-modal-body-content").text(
+                "Qualcosa non va. Si prega di riprovare utilizzando il numero di polizza riportato sul documento assicurativo."
+              );
+              addErrorMessage(
+                "api_call_failed_postcode",
+                "Qualcosa non va. Si prega di riprovare utilizzando il numero di polizza riportato sul documento assicurativo."
+              );
+              $("#save_and_continue1").removeAttr("data-target");
+              $("#save_and_continue1").removeAttr("data-toggle");
+              console.log("error 404 -->", result);
+            }else{
+              jQuery("#model-error-msg").removeClass("d-none");
+              jQuery("#model-error-msg .ins-modal-body-content").text(
+                "Something's not quite right. Please try again using the policy number shown on your insurance document."
+              );
+              addErrorMessage(
+                "api_call_failed_postcode",
+                "Something's not quite right. Please try again using the policy number shown on your insurance document."
+              );
+              $("#save_and_continue1").removeAttr("data-target");
+              $("#save_and_continue1").removeAttr("data-toggle");
+              console.log("error 404 -->", result);
+            }
           } else if (statusCode == 403) {
-            console.log("--->", result, statusCode);
+            if ($("#title").hasClass("ColumbusItaly")) {
+              console.log("--->", result, statusCode);
+              jQuery("#model-error-msg").removeClass("d-none");
+              jQuery("#model-error-msg .ins-modal-body-content").text(
+                "Attenzione, qualcosa non ha funzionato. Per favore riprova e se il problema persiste, contatta l'ufficio sinistri."
+              );
+              addErrorMessage(
+                "api_call_failed_postcode",
+                "Attenzione, qualcosa non ha funzionato. Per favore riprova e se il problema persiste, contatta l'ufficio sinistri."
+              );
+              $("#save_and_continue1").removeAttr("data-target");
+              $("#save_and_continue1").removeAttr("data-toggle");
+            }else{
+              console.log("--->", result, statusCode);
+              jQuery("#model-error-msg").removeClass("d-none");
+              jQuery("#model-error-msg .ins-modal-body-content").text(
+                "Warning Something's not quite right. Please try again and if the problem persists please contact the team using the 'Contact Us' button in the footer."
+              );
+              addErrorMessage(
+                "api_call_failed_postcode",
+                "Warning Something's not quite right. Please try again and if the problem persists please contact the team using the 'Contact Us' button in the footer."
+              );
+              $("#save_and_continue1").removeAttr("data-target");
+              $("#save_and_continue1").removeAttr("data-toggle");
+            }
+          } else if (statusCode == 500) {
+            if ($("#title").hasClass("ColumbusItaly")) {
             jQuery("#model-error-msg").removeClass("d-none");
             jQuery("#model-error-msg .ins-modal-body-content").text(
-              "Warning Something's not quite right. Please try again and if the problem persists please contact the team using the 'Contact Us' button in the footer."
+              "Attenzione, qualcosa non ha funzionato. Per favore riprova e se il problema persiste, contatta l'ufficio sinistri."
             );
             addErrorMessage(
-              "api_call_failed_postcode",
-              "Warning Something's not quite right. Please try again and if the problem persists please contact the team using the 'Contact Us' button in the footer."
+              "api_call_failed_dob",
+              "Attenzione, qualcosa non ha funzionato. Per favore riprova e se il problema persiste, contatta l'ufficio sinistri."
             );
             $("#save_and_continue1").removeAttr("data-target");
             $("#save_and_continue1").removeAttr("data-toggle");
-          } else if (statusCode == 500) {
-            jQuery("#model-error-msg").removeClass("d-none");
+            console.log("error 500 -->", result);
+            }else{
+              jQuery("#model-error-msg").removeClass("d-none");
             jQuery("#model-error-msg .ins-modal-body-content").text(
               "Warning Something's not quite right. Please try again and if the problem persists please contact the team using the 'Contact Us' button in the footer."
             );
@@ -1443,6 +1525,7 @@ jQuery(document).ready(function ($) {
             $("#save_and_continue1").removeAttr("data-target");
             $("#save_and_continue1").removeAttr("data-toggle");
             console.log("error 500 -->", result);
+            }
           }
         } else {
           let element = ["api_call_failed_postcode"];
@@ -5796,6 +5879,18 @@ jQuery(document).ready(function ($) {
           if (statusCode == 401) {
             getJWTToken(fieldId);
           } else if (statusCode == 500) {
+            if($('#title').hasClass("ColumbusItaly")){
+              jQuery("#claim-error-msg").removeClass("d-none");
+              jQuery("#claim-error-msg .claim-desc-message").text(
+                "Attenzione, qualcosa non ha funzionato. Per favore riprova e se il problema persiste, contatta l'ufficio sinistri."
+              );
+              console.log("error--->", result);
+              addErrorMessage(
+                "api_call_failed_rc",
+                "Attenzione, qualcosa non ha funzionato. Per favore riprova e se il problema persiste, contatta l'ufficio sinistri."
+              );
+              console.log("Internal server error");
+          }else{
             jQuery("#claim-error-msg").removeClass("d-none");
             jQuery("#claim-error-msg .claim-desc-message").text(
               "Warning Something's not quite right. Please try again and if the problem persists please contact the team using the 'Contact Us' button in the footer."
@@ -5806,29 +5901,56 @@ jQuery(document).ready(function ($) {
               "Warning Something's not quite right. Please try again and if the problem persists please contact the team using the 'Contact Us' button in the footer."
             );
             console.log("Internal server error");
-          } else if (statusCode == 400) {
-            jQuery("#claim-error-msg").removeClass("d-none");
-            jQuery("#claim-error-msg .claim-desc-message").text(
-              "Warning Something's not quite right. Please try again and if the problem persists please contact the team using the 'Contact Us' button in the footer."
-            );
-            addErrorMessage(
-              "api_call_failed_rc",
-              "Warning Something's not quite right. Please try again and if the problem persists please contact the team using the 'Contact Us' button in the footer."
-            );
-            console.log("error--->", result);
-            console.log(
-              "Unable to create claim as per one claim per policy per day rule"
-            );
-          } else {
-            jQuery("#claim-error-msg").removeClass("d-none");
-            jQuery("#claim-error-msg .claim-desc-message").text(
-              "Warning Something's not quite right. Please try again and if the problem persists please contact the team using the 'Contact Us' button in the footer."
-            );
-            addErrorMessage(
-              "api_call_failed_rc",
-              "Warning Something's not quite right. Please try again and if the problem persists please contact the team using the 'Contact Us' button in the footer."
-            );
           }
+          } else if (statusCode == 400) {
+            if($('#title').hasClass("ColumbusItaly")){
+              jQuery("#claim-error-msg").removeClass("d-none");
+              jQuery("#claim-error-msg .claim-desc-message").text(
+                "Attenzione, qualcosa non ha funzionato. Per favore riprova e se il problema persiste, contatta l'ufficio sinistri."
+              );
+              addErrorMessage(
+                "api_call_failed_rc",
+                "Attenzione, qualcosa non ha funzionato. Per favore riprova e se il problema persiste, contatta l'ufficio sinistri."
+              );
+              console.log("error--->", result);
+              console.log(
+                "Unable to create claim as per one claim per policy per day rule"
+              );
+            }else{
+              jQuery("#claim-error-msg").removeClass("d-none");
+              jQuery("#claim-error-msg .claim-desc-message").text(
+                "Warning Something's not quite right. Please try again and if the problem persists please contact the team using the 'Contact Us' button in the footer."
+              );
+              addErrorMessage(
+                "api_call_failed_rc",
+                "Warning Something's not quite right. Please try again and if the problem persists please contact the team using the 'Contact Us' button in the footer."
+              );
+              console.log("error--->", result);
+              console.log(
+                "Unable to create claim as per one claim per policy per day rule"
+              );
+            }
+          } else {
+            if($('#title').hasClass("ColumbusItaly")){
+              jQuery("#claim-error-msg").removeClass("d-none");
+              jQuery("#claim-error-msg .claim-desc-message").text(
+                "Attenzione, qualcosa non ha funzionato. Per favore riprova e se il problema persiste, contatta l'ufficio sinistri."
+              );
+              addErrorMessage(
+                "api_call_failed_rc",
+                "Attenzione, qualcosa non ha funzionato. Per favore riprova e se il problema persiste, contatta l'ufficio sinistri."
+              );
+            }else{
+              jQuery("#claim-error-msg").removeClass("d-none");
+              jQuery("#claim-error-msg .claim-desc-message").text(
+                "Warning Something's not quite right. Please try again and if the problem persists please contact the team using the 'Contact Us' button in the footer."
+              );
+              addErrorMessage(
+                "api_call_failed_rc",
+                "Warning Something's not quite right. Please try again and if the problem persists please contact the team using the 'Contact Us' button in the footer."
+              );
+            }
+        }
         } else {
           let ele = ["api_call_failed_rc"];
           clearError(ele);
@@ -5894,13 +6016,11 @@ jQuery(document).ready(function ($) {
     $("#section-2-button").css("background-color", "#4DC367");
     $("#section-3-button").css("background-color", "#4DC367");
   });
-  //validate mandatory fields____________________________________________________________________________________________________________________
 
   function validateMandatoryFields(list_of_fields){
     move_forward = false;
     red_indexes = []
     clear_index = []
-
     for (let i = 0; i < list_of_fields.length; i++ ){
       if ( $("#"+(list_of_fields[i])).val() == '' ){
         red_indexes.push(i);
@@ -5917,7 +6037,6 @@ jQuery(document).ready(function ($) {
     console.log("length: "+clear_index.length)                                                                                                                                                      
     
     if (red_indexes.length >= 1){
-
       //highlight reds
       red_indexes.forEach((index) => {
         
@@ -5928,7 +6047,7 @@ jQuery(document).ready(function ($) {
         }
       });
   
-      //clear 
+      //clear
       clear_index.forEach((index) => {
           
         if( $("#"+(list_of_fields[index])).hasClass('choices')){
@@ -5936,10 +6055,9 @@ jQuery(document).ready(function ($) {
         }else{
           $("#"+(list_of_fields[index])).css('border','1px solid black');
         }
-      }); 
+      });
     
   } else if (red_indexes.length == 0){
-
     clear_index.forEach((index) => {
           
       if( $("#"+(list_of_fields[index])).hasClass('choices')){
@@ -5948,18 +6066,18 @@ jQuery(document).ready(function ($) {
         $("#"+(list_of_fields[index])).css('border','1px solid black');
       }
     });
-
     move_forward = true;
   }
     
   return move_forward;
-  }
+}
 
-  //_____________________________________________________________________________________________________________________________________________
+
+  //____________________________________________________________________________________________________________________
   $("#save_draft_4").click(function () {
     $(".new-ticket-submit-button").trigger("click");
   });
-
+  
   $("#save_and_continue4").click(function () {
     
     if ($("#section_4_header").length) {
@@ -6498,9 +6616,9 @@ jQuery(document).ready(function ($) {
   var reasonForClaimObj = {
     "Any CANCELLATION claim due to COVID-19": {
       paragraph:
-        "We'll need these important documents to make a decision about your claim:<br>Your trip Booking Invoice showing the cost, your name and departure & return dates.<br>Cancellation Invoice from each company you booked with verifying the cancellation charge.<br>Evidence of a Positive Covid test from the NHS/HSE, Private Testing company or your Doctor. We accept Email, Letter or SMS confirmation but we are unable to accept photographs of a home Lateral flow test on their own.<br>If you need to gather this information, you can come to the Existing Claim section of our site and continue with your claim.<br>",
+        "We'll need these important documents to make a decision about your claim:<br>Your trip Booking Invoice showing the cost, your name and departure & return dates.<br>Cancellation Invoice from each company you booked with verifying the cancellation charge.<br>Evidence of a Positive Covid test from the NHS/HSE, Private Testing company or your Doctor. We accept Email, Letter or SMS confirmation but we are unable to accept photographs of a home Lateral flow test on their own.<br>",
       italian_paragraph:
-        "Per favore carica l'informazione richiesta per il tuo sinistro:<br>Documento attestante il viaggio: può essere la prenotazione del biglietto aereo, una prenotazione, ricevuta albergo o simile.<br>Documento di cancellazione della prenotazione che indichi le somme a tuo carico. Questo per ogni prenotazione.<br>Documenti che evidenzino la necessità di disdetta come la conferma della prenotazione per eventuale test Coronavirus e evidenza di esito positivo. È sufficiente solo la conferma tramite e-mail, non accettiamo la conferma tramite SMS.<br>Se non hai tutte le informazioni, potrai salvare la tua richiesta e riprenderla in un secondo momento utilizzando il pulsante sinistro esistente ed inserendo il numero di rieferimento.",
+        "Per favore carica l'informazione richiesta per il tuo sinistro:<br>Documento attestante il viaggio: può essere la prenotazione del biglietto aereo, una prenotazione, ricevuta albergo o simile.<br>Documento di cancellazione della prenotazione che indichi le somme a tuo carico. Questo per ogni prenotazione.<br>Documenti che evidenzino la necessità di disdetta come la conferma della prenotazione per eventuale test Coronavirus e evidenza di esito positivo. È sufficiente solo la conferma tramite e-mail, non accettiamo la conferma tramite SMS.<br>",
       titles: ["Booking Invoice", "Other Docs"],
       images: [
         "https://ins-multiforms.s3.eu-central-1.amazonaws.com/Document_Icons/Booking+Invoices.png",
@@ -6509,9 +6627,9 @@ jQuery(document).ready(function ($) {
     },
     "Baggage - personal items damaged": {
       paragraph:
-        "We'll need these important documents to make a decision about your claim:<br>Your trip Booking Invoice showing the cost, your name and departure & return dates.<br>Confirmation from a trusted company confirming the cost of repair or that it's beyond economical repair.<br>If you need to gather this information, you can come to the Existing Claim section of our site and continue with your claim.<br>",
+        "We'll need these important documents to make a decision about your claim:<br>Your trip Booking Invoice showing the cost, your name and departure & return dates.<br>Confirmation from a trusted company confirming the cost of repair or that it's beyond economical repair.<br>",
       italian_paragraph:
-        "Per favore carica l'informazione richiesta per il tuo sinistro:<br>Documento attestante il viaggio: può essere la prenotazione del biglietto aereo, una prenotazione, ricevuta albergo o simile.<br>Certificazione, rilasciata da un professionista, che confermi il costo di riparabilità o la non riparabilità del bene.<br>Se non hai tutte le informazioni, potrai salvare la tua richiesta e riprenderla in un secondo momento utilizzando il pulsante sinistro esistente ed inserendo il numero di rieferimento.",
+        "Per favore carica l'informazione richiesta per il tuo sinistro:<br>Documento attestante il viaggio: può essere la prenotazione del biglietto aereo, una prenotazione, ricevuta albergo o simile.<br>Certificazione, rilasciata da un professionista, che confermi il costo di riparabilità o la non riparabilità del bene.<br>",
       titles: ["Booking Invoice", "Report"],
       images: [
         "https://ins-multiforms.s3.eu-central-1.amazonaws.com/Document_Icons/Booking+Invoices.png",
@@ -6520,9 +6638,9 @@ jQuery(document).ready(function ($) {
     },
     "Baggage - personal items lost or stolen": {
       paragraph:
-        "We'll need these important documents to make a decision about your claim:<br>Your trip Booking Invoice showing the cost, your name and departure & return dates.<br>Loss Report confirming the circumstances and the date/time at which you reported to the relevant person.<br>Proof of Ownership for the items being claimed.<br>If you need to gather this information, you can come to the Existing Claim section of our site and continue with your claim.",
+        "We'll need these important documents to make a decision about your claim:<br>Your trip Booking Invoice showing the cost, your name and departure & return dates.<br>Loss Report confirming the circumstances and the date/time at which you reported to the relevant person.<br>Proof of Ownership for the items being claimed.<br>",
       italian_paragraph:
-        "Per favore carica l'informazione richiesta per il tuo sinistro:<br>Documento attestante il viaggio: può essere la prenotazione del biglietto aereo, una prenotazione, ricevuta albergo o simile.<br>Denuncia alle autorità locali che confermi gli eventi da cui è scaturito il sinistro.<br>Scontrino/ricevuta d'acquisto per il bene alla base del sinistro.<br>Se non hai tutte le informazioni, potrai salvare la tua richiesta e riprenderla in un secondo momento utilizzando il pulsante sinistro esistente ed inserendo il numero di rieferimento.",
+        "Per favore carica l'informazione richiesta per il tuo sinistro:<br>Documento attestante il viaggio: può essere la prenotazione del biglietto aereo, una prenotazione, ricevuta albergo o simile.<br>Denuncia alle autorità locali che confermi gli eventi da cui è scaturito il sinistro.<br>Scontrino/ricevuta d'acquisto per il bene alla base del sinistro.<br>",
       titles: ["Booking Invoice", "Report"],
       images: [
         "https://ins-multiforms.s3.eu-central-1.amazonaws.com/Document_Icons/Booking+Invoices.png",
@@ -6531,9 +6649,9 @@ jQuery(document).ready(function ($) {
     },
     "Baggage - suitcase hasn't arrived on time": {
       paragraph:
-        "We'll need these important documents to make a decision about your claim:<br>Your trip Booking Invoice showing the cost, your name and departure & return dates.<br>A PIR (Property Irregularity Report) from your transport provider confirming your luggage was delayed.<br>Receipts for any emergency items you had to buy.<br>If you need to gather this information, you can come to the Existing Claim section of our site and continue with your claim.",
+        "We'll need these important documents to make a decision about your claim:<br>Your trip Booking Invoice showing the cost, your name and departure & return dates.<br>A PIR (Property Irregularity Report) from your transport provider confirming your luggage was delayed.<br>Receipts for any emergency items you had to buy.<br>",
       italian_paragraph:
-        "Per favore carica l'informazione richiesta per il tuo sinistro:<br>Documento attestante il viaggio: può essere la prenotazione del biglietto aereo, una prenotazione, ricevuta albergo o simile.<br>Il rapporto di irregolarità bagaglio rilasciato dal vettore.<br>Scontrino/ricevuta d'acquisto per il bene di prima necessità.<br>Se non hai tutte le informazioni, potrai salvare la tua richiesta e riprenderla in un secondo momento utilizzando il pulsante sinistro esistente ed inserendo il numero di rieferimento.",
+        "Per favore carica l'informazione richiesta per il tuo sinistro:<br>Documento attestante il viaggio: può essere la prenotazione del biglietto aereo, una prenotazione, ricevuta albergo o simile.<br>Il rapporto di irregolarità bagaglio rilasciato dal vettore.<br>Scontrino/ricevuta d'acquisto per il bene di prima necessità.<br>",
       titles: ["Booking Invoice", "Other Docs"],
       images: [
         "https://ins-multiforms.s3.eu-central-1.amazonaws.com/Document_Icons/Booking+Invoices.png",
@@ -6542,9 +6660,9 @@ jQuery(document).ready(function ($) {
     },
     "Cancelled trip - (NOT related to COVID-19)": {
       paragraph:
-        "We'll need these important documents to make a decision about your claim:<br>Your trip Booking Invoice showing the cost, your name and departure & return dates.<br>Cancellation Invoice from each company you booked with verifying the cancellation charge.<br>Documents that show the need to cancel e.g. a Medical Letter or Delay Report.<br>If you need to gather this information, you can come to the Existing Claim section of our site and continue with your claim.",
+        "We'll need these important documents to make a decision about your claim:<br>Your trip Booking Invoice showing the cost, your name and departure & return dates.<br>Cancellation Invoice from each company you booked with verifying the cancellation charge.<br>Documents that show the need to cancel e.g. a Medical Letter or Delay Report.<br>",
       italian_paragraph:
-        "Per favore carica l'informazione richiesta per il tuo sinistro:<br>Documento attestante il viaggio: può essere la prenotazione del biglietto aereo, una prenotazione, ricevuta albergo o simile.<br>Documento di cancellazione della prenotazione che indichi le somme a tuo carico. Questo per ogni prenotazione.<br>Documenti che evidenzino la necessità di disdetta Documentazione che indichi la necessità di cancellare il viaggio es. Documentazione medica.<br>Se non hai tutte le informazioni, potrai salvare la tua richiesta e riprenderla in un secondo momento utilizzando il pulsante sinistro esistente ed inserendo il numero di rieferimento.",
+        "Per favore carica l'informazione richiesta per il tuo sinistro:<br>Documento attestante il viaggio: può essere la prenotazione del biglietto aereo, una prenotazione, ricevuta albergo o simile.<br>Documento di cancellazione della prenotazione che indichi le somme a tuo carico. Questo per ogni prenotazione.<br>Documenti che evidenzino la necessità di disdetta Documentazione che indichi la necessità di cancellare il viaggio es. Documentazione medica.<br>",
       titles: ["Booking Invoice", "Report"],
       images: [
         "https://ins-multiforms.s3.eu-central-1.amazonaws.com/Document_Icons/Booking+Invoices.png",
@@ -6553,9 +6671,9 @@ jQuery(document).ready(function ($) {
     },
     "Curtailment – returned home early": {
       paragraph:
-        "We'll need these important documents to make a decision about your claim:<br>Your trip Booking Invoice showing the cost, your name and departure & return dates. <br>Any other relevant documentation to support your claim.<br>If you need to gather this information, you can come to the Existing Claim section of our site and continue with your claim.",
+        "We'll need these important documents to make a decision about your claim:<br>Your trip Booking Invoice showing the cost, your name and departure & return dates. <br>Any other relevant documentation to support your claim.<br>",
       italian_paragraph:
-        "Per favore carica l'informazione richiesta per il tuo sinistro:<br>Documento attestante il viaggio: può essere la prenotazione del biglietto aereo, una prenotazione, ricevuta albergo o simile.<br>Qualsiasi altro documento che sia rilevante per il tuo sinistro.<br>Se non hai tutte le informazioni, potrai salvare la tua richiesta e riprenderla in un secondo momento utilizzando il pulsante sinistro esistente ed inserendo il numero di rieferimento.",
+        "Per favore carica l'informazione richiesta per il tuo sinistro:<br>Documento attestante il viaggio: può essere la prenotazione del biglietto aereo, una prenotazione, ricevuta albergo o simile.<br>Qualsiasi altro documento che sia rilevante per il tuo sinistro.<br>",
       titles: ["Booking Invoice", "Other Docs"],
       images: [
         "https://ins-multiforms.s3.eu-central-1.amazonaws.com/Document_Icons/Booking+Invoices.png",
@@ -6564,9 +6682,9 @@ jQuery(document).ready(function ($) {
     },
     "Dental expenses whilst abroad": {
       paragraph:
-        "We'll need these important documents to make a decision about your claim:<br>Your trip Booking Invoice showing the cost, your name and departure & return dates.<br>Medical document from your treating dentist or medical facility.<br>Receipts and Invoices relating to the medical expenses you're claiming for.<br>If you need to gather this information, you can come to the Existing Claim section of our site and continue with your claim.",
+        "We'll need these important documents to make a decision about your claim:<br>Your trip Booking Invoice showing the cost, your name and departure & return dates.<br>Medical document from your treating dentist or medical facility.<br>Receipts and Invoices relating to the medical expenses you're claiming for.<br>",
       italian_paragraph:
-        "Per favore carica l'informazione richiesta per il tuo sinistro:<br>Documento attestante il viaggio: può essere la prenotazione del biglietto aereo, una prenotazione, ricevuta albergo o simile.<br>Ricevuta e certificato medico rilasciato dal dentista.<br>Ricevute e fatture relative alle spese mediche che stai richiedendo.<br>Se non hai tutte le informazioni, potrai salvare la tua richiesta e riprenderla in un secondo momento utilizzando il pulsante sinistro esistente ed inserendo il numero di rieferimento.",
+        "Per favore carica l'informazione richiesta per il tuo sinistro:<br>Documento attestante il viaggio: può essere la prenotazione del biglietto aereo, una prenotazione, ricevuta albergo o simile.<br>Ricevuta e certificato medico rilasciato dal dentista.<br>Ricevute e fatture relative alle spese mediche che stai richiedendo.<br>",
       titles: ["Booking Invoice", "Other Docs"],
       images: [
         "https://ins-multiforms.s3.eu-central-1.amazonaws.com/Document_Icons/Booking+Invoices.png",
@@ -6575,9 +6693,9 @@ jQuery(document).ready(function ($) {
     },
     "Flight or Travel delayed": {
       paragraph:
-        "We'll need these important documents to make a decision about your claim:<br>Your trip Booking Invoice showing the cost, your name and departure & return dates. <br>A Delay Report or Evidence from the travel provider which confirms the reason and length of the delay.<br>If you need to gather this information, you can come to the Existing Claim section of our site and continue with your claim.",
+        "We'll need these important documents to make a decision about your claim:<br>Your trip Booking Invoice showing the cost, your name and departure & return dates. <br>A Delay Report or Evidence from the travel provider which confirms the reason and length of the delay.<br>",
       italian_paragraph:
-        "Per favore carica l'informazione richiesta per il tuo sinistro:<br>Documento attestante il viaggio: può essere la prenotazione del biglietto aereo, una prenotazione, ricevuta albergo o simile.<br>Qualsiasi informazione che possa confermare la motivazione e la durata del ritardo di viaggio.<br>Se non hai tutte le informazioni, potrai salvare la tua richiesta e riprenderla in un secondo momento utilizzando il pulsante sinistro esistente ed inserendo il numero di rieferimento.",
+        "Per favore carica l'informazione richiesta per il tuo sinistro:<br>Documento attestante il viaggio: può essere la prenotazione del biglietto aereo, una prenotazione, ricevuta albergo o simile.<br>Qualsiasi informazione che possa confermare la motivazione e la durata del ritardo di viaggio.<br>",
       titles: ["Booking Invoice", "Report"],
       images: [
         "https://ins-multiforms.s3.eu-central-1.amazonaws.com/Document_Icons/Booking+Invoices.png",
@@ -6586,9 +6704,9 @@ jQuery(document).ready(function ($) {
     },
     "Medical expenses abroad & repatriation cost": {
       paragraph:
-        "We'll need these important documents to make a decision about your claim:<br>Your trip Booking Invoice showing the cost, your name and departure & return dates.<br>Medical document from your treating doctor or medical facility.<br>Receipts and Invoices relating to the medical expenses you're claiming for.<br>If you need to gather this information, you can come to the Existing Claim section of our site and continue with your claim.",
+        "We'll need these important documents to make a decision about your claim:<br>Your trip Booking Invoice showing the cost, your name and departure & return dates.<br>Medical document from your treating doctor or medical facility.<br>Receipts and Invoices relating to the medical expenses you're claiming for.<br>",
       italian_paragraph:
-        "Per favore carica l'informazione richiesta per il tuo sinistro:<br>Documento attestante il viaggio: può essere la prenotazione del biglietto aereo, una prenotazione, ricevuta albergo o simile.<br>Ricevuta e certificato medico rilasciato dal dottore.<br>Ricevute e fatture relative alle spese mediche che stai richiedendo.<br>Se non hai tutte le informazioni, potrai salvare la tua richiesta e riprenderla in un secondo momento utilizzando il pulsante sinistro esistente ed inserendo il numero di rieferimento.",
+        "Per favore carica l'informazione richiesta per il tuo sinistro:<br>Documento attestante il viaggio: può essere la prenotazione del biglietto aereo, una prenotazione, ricevuta albergo o simile.<br>Ricevuta e certificato medico rilasciato dal dottore.<br>Ricevute e fatture relative alle spese mediche che stai richiedendo.<br>",
       titles: ["Booking Invoice", "Other Doc", "Other invoice"],
       images: [
         " https://ins-multiforms.s3.eu-central-1.amazonaws.com/Document_Icons/Booking+Invoices.png",
@@ -6598,7 +6716,7 @@ jQuery(document).ready(function ($) {
     },
     "Missed flight or departure": {
       paragraph:
-        "We'll need these important documents to make a decision about your claim:<br>Your trip Booking Invoice showing the cost, your name and departure & return dates.<br>Any other relevant documentation to support your claim.<br>If you need to gather this information, you can come to the Existing Claim section of our site and continue with your claim.",
+        "We'll need these important documents to make a decision about your claim:<br>Your trip Booking Invoice showing the cost, your name and departure & return dates.<br>Any other relevant documentation to support your claim.<br>",
       italian_paragraph: "Pending translation....",
       titles: ["Booking Invoice", "Other Docs"],
       images: [
@@ -6608,7 +6726,7 @@ jQuery(document).ready(function ($) {
     },
     "Substitute Accommodation - change to accommodation during trip": {
       paragraph:
-        "We'll need these important documents to make a decision about your claim:<br>Your trip Booking Invoice showing the cost, your name and departure & return dates.<br>Any other relevant documentation to support your claim.<br>If you need to gather this information, you can come to the Existing Claim section of our site and continue with your claim.",
+        "We'll need these important documents to make a decision about your claim:<br>Your trip Booking Invoice showing the cost, your name and departure & return dates.<br>Any other relevant documentation to support your claim.<br>",
       italian_paragraph: "Pending translation....",
       titles: ["Booking Invoice", "Other Docs"],
       images: [
@@ -6618,9 +6736,9 @@ jQuery(document).ready(function ($) {
     },
     "Winter sports - lift pass, equipment or piste closure": {
       paragraph:
-        "We'll need these important documents to make a decision about your claim:<br>Your trip Booking Invoice showing the cost, your name and departure & return dates.<br>Any other relevant documentation to support your claim.<br>If you need to gather this information, you can come to the Existing Claim section of our site and continue with your claim.",
+        "We'll need these important documents to make a decision about your claim:<br>Your trip Booking Invoice showing the cost, your name and departure & return dates.<br>Any other relevant documentation to support your claim.<br>",
       italian_paragraph:
-        "Per favore carica l'informazione richiesta per il tuo sinistro:<br>Documento attestante il viaggio: può essere la prenotazione del biglietto aereo, una prenotazione, ricevuta albergo o simile.<br>Qualsiasi altro documento che sia rilevante per il tuo sinistro.<br>Se non hai tutte le informazioni, potrai salvare la tua richiesta e riprenderla in un secondo momento utilizzando il pulsante sinistro esistente ed inserendo il numero di rieferimento.",
+        "Per favore carica l'informazione richiesta per il tuo sinistro:<br>Documento attestante il viaggio: può essere la prenotazione del biglietto aereo, una prenotazione, ricevuta albergo o simile.<br>Qualsiasi altro documento che sia rilevante per il tuo sinistro.<br>",
       titles: ["Booking Invoice", "Other Docs"],
       images: [
         "https://ins-multiforms.s3.eu-central-1.amazonaws.com/Document_Icons/Booking+Invoices.png",
@@ -6738,12 +6856,12 @@ jQuery(document).ready(function ($) {
           if ($("#title").hasClass("ColumbusItaly")) {
             addErrorMessage(
               "api_call_failed_filelist",
-              "Formato file non supportato. Formati supportati: test(.gif) ,jpeg,jpg,png,bmp,tiff,tif,pdf,doc,docx,xls,xlsx,txt,odt"
+              "Formato file non supportato. Formati supportati: test(.gif),jpeg,jpg,png,bmp,tiff,tif,pdf,doc,docx,xls,xlsx,txt,odt"
             );
           } else {
             addErrorMessage(
               "api_call_failed_filelist",
-              "Unsupported File Format. Supported formats: test(.gif) ,jpeg,jpg,png,bmp,tiff,tif,pdf,doc,docx,xls,xlsx,txt,odt"
+              "Unsupported File Format. Supported formats: test(.gif),jpeg,jpg,png,bmp,tiff,tif,pdf,doc,docx,xls,xlsx,txt,odt"
             );
           }
         }
@@ -6756,20 +6874,21 @@ jQuery(document).ready(function ($) {
           "File size cannot exceed 4 MB"
         );
       }
-    } else {
+    } 
+    else {
       // open_next(5);
       $(".new-ticket-submit-button").trigger("click");
-      // if ($("#title").hasClass("ColumbusItaly")) {
-      //   addErrorMessage(
-      //     "api_call_failed_filelist",
-      //     "Si prega di caricare il file."
-      //   );
-      //   console.log(" --------- Need to show error message ----------------");
-      // } else {
-      //   addErrorMessage("api_call_failed_filelist", "Please Upload the File.");
-      //   console.log(" --------- Need to show error message ----------------");
-      // }
-    }
+    //   if ($("#title").hasClass("ColumbusItaly")) {
+    //     addErrorMessage(
+    //       "api_call_failed_filelist",
+    //       "Si prega di caricare il file."
+    //     );
+    //     console.log(" --------- Need to show error message ----------------");
+    //   } else {
+    //     addErrorMessage("api_call_failed_filelist", "Please Upload the File.");
+    //     console.log(" --------- Need to show error message ----------------");
+    //   }
+     }
   });
   $(".save_and_continue5").click(function () {
     if (jQuery(".fw-comments-wrapper").length > 0) {
@@ -6860,7 +6979,7 @@ jQuery(document).ready(function ($) {
           console.log("Show Error unsupported File Format ");
           addErrorMessage(
             "api_call_failed_filelist",
-            "Unsupported File Format. Supported formats: test(.gif) ,jpeg,jpg,png,bmp,tiff,tif,pdf,doc,docx,xls,xlsx,txt,odt"
+            "Unsupported File Format. Supported formats: test(.gif),jpeg,jpg,png,bmp,tiff,tif,pdf,doc,docx,xls,xlsx,txt,odt"
           );
         }
       } else {
@@ -6872,7 +6991,8 @@ jQuery(document).ready(function ($) {
           "File size cannot exceed 4 MB"
         );
       }
-    } else {
+    }
+     else {
       open_next(5);
       // if ($("#title").hasClass("ColumbusItaly")) {
       //   addErrorMessage(
@@ -11607,9 +11727,15 @@ jQuery(document).ready(function ($) {
   });
 
   $(".new-ticket-submit-button").click(function () {
-    var summary_div = document.getElementById("collapseSection7");
-    var contents_summary_div = summary_div.innerText;
-    $(".fr-element.fr-view").text(contents_summary_div);
+    var summary_div = document.getElementById("collapseSection7").innerHTML;
+    //add condition to check if information had already been appended, if so, clear description field and add new information
+    if(($(".fr-element.fr-view").length) != 0){
+      $(".fr-element.fr-view").empty();
+      $(".fr-element.fr-view").append(summary_div);
+    }else{
+      $(".fr-element.fr-view").append(summary_div);
+    }
+    
   });
 
   //____________________________________________________SECTION 6 End____________________________________________
