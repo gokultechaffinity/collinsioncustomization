@@ -1574,10 +1574,10 @@ jQuery(document).ready(function ($) {
     let options = "";
     if ($("#title").hasClass("ColumbusItaly")) {
       options +=
-        "<div ' class='form-group'><label class='form-label' id='insured-bold style='display:inline-table;' >Nome dell'assicurato </label>";
+        "<div ' class='form-group'><label class='form-label' id='insured-bold style='display:inline-table;font-weight: 900;' >Nome dell'assicurato </label>";
     } else {
       options +=
-        '<div  class="form-group"><label id="insured-bold" class="form-label" style="display:inline-table;" > Name(s) of the Insured. Please TICK everyone who was involved in the claim! </label>';
+        '<div  class="form-group"><label id="insured-bold" class="form-label" style="display:inline-table;font-weight: 900;" > Name(s) of the Insured. Please TICK everyone who was involved in the claim! </label>';
     }
     policyDetails.forEach(function (element, index) {
       options +=
