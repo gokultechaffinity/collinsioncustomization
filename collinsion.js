@@ -339,7 +339,7 @@ jQuery(document).ready(function ($) {
     ).insertAfter("#helpdesk_ticket_custom_field_cf_mobile_number_2321673");
   } else {
     $(
-      '<button id="save_and_continue2" class="btn btn-primary for-section-2 save_and_continue" type="button" >Next Section</button>'
+      '<button id="save_and_continue2" class="btn btn-primary for-section-2 save_and_continue" type="button" >Continue</button>'
     ).insertAfter("#helpdesk_ticket_custom_field_cf_mobile_number_2321673");
   }
   //____________________________________________________SECTION 3 Start - About Your Trip ____________________________________________
@@ -382,7 +382,7 @@ jQuery(document).ready(function ($) {
     );
   } else {
     $(
-      '<button id="save_and_continue3" class="btn btn-primary for-section-3 save_and_continue" type="button" >Next Section</button>'
+      '<button id="save_and_continue3" class="btn btn-primary for-section-3 save_and_continue" type="button" >Continue</button>'
     ).insertAfter(
       ".form-group.helpdesk_ticket_custom_field_cf_reason_for_claim_2321673.for-section-3"
     );
@@ -410,17 +410,17 @@ jQuery(document).ready(function ($) {
     );
   } else {
     $(
-      '<button id="save_draft_4" class="btn btn-primary for-section-4 " type="button">Save Claim & Exit</button>'
+      '<button id="save_draft_4" class="btn btn-primary for-section-4 " type="button">Pause Claim</button>'
     ).insertAfter(
       ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper"
     );
     $(
-      '<button id="save_and_continue4" class="btn btn-primary for-section-4 save_and_continue" type="button">Next Section</button>'
+      '<button id="save_and_continue4" class="btn btn-primary for-section-4 save_and_continue" type="button">Continue</button>'
     ).insertAfter(
       ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper"
     );
     $("<hr id ='hr4' class='for-section-4'>").insertAfter("#save_draft_4");
-    $('<p class="for-section-4" style="margin-top: 20px;">If you "Save Claim &amp; Exit", we will send you an activation email within 5 minutes to your portal where you can continue with your claim.</p>'
+    $('<p class="for-section-4" style="margin-top: 20px;">If you ‘Pause Claim’, we will send you an activation email within 5 minutes our portal where you can continue with your claim. All of the information you have inputted will be saved.</p>'
     ).insertBefore(
       '#hr4'
     );
@@ -455,12 +455,12 @@ jQuery(document).ready(function ($) {
       $("p.for-section-5:eq(0)").hide();
     } else {
       jQuery(".attachments.for-section-5").after(
-        '<button class="save_draft_5 btn btn-primary for-section-5 " type="button">Save Claim & Exit</button>'
+        '<button class="save_draft_5 btn btn-primary for-section-5 " type="button">Pause Claim</button>'
       );
       $(
-        '<button class="save_and_continue5 btn btn-primary for-section-5 save_and_continue" type="button" >Next Section</button>'
+        '<button class="save_and_continue5 btn btn-primary for-section-5 save_and_continue" type="button" >Continue</button>'
       ).insertAfter(".attachments.for-section-5");
-      $('<p class="for-section-5" style="margin-top: 20px;">If you "Save Claim &amp; Exit", we will send you an activation email within 5 minutes to your portal where you can continue with your claim.</p>').insertAfter(".save_draft_5.btn.btn-primary.for-section-5:visible");
+      $('<p class="for-section-5" style="margin-top: 20px;">If you ‘Pause Claim’, we will send you an activation email within 5 minutes our portal where you can continue with your claim. All of the information you have inputted will be saved.</p>').insertAfter(".save_draft_5.btn.btn-primary.for-section-5:visible");
       $("p.for-section-5:eq(0)").hide();
     }
   } else {
@@ -481,12 +481,12 @@ jQuery(document).ready(function ($) {
       $("p.for-section-5:eq(0)").hide();
     } else {
       jQuery(".attachments-container.for-section-5").after(
-        '<button class="save_draft_5 btn btn-primary for-section-5 " type="button">Save Claim & Exit</button>'
+        '<button class="save_draft_5 btn btn-primary for-section-5 " type="button">Pause Claim</button>'
       );
       $(
-        '<button class="save_and_continue5 btn btn-primary for-section-5 save_and_continue" type="button" >Next Section</button>'
+        '<button class="save_and_continue5 btn btn-primary for-section-5 save_and_continue" type="button" >Continue</button>'
       ).insertAfter(".form-group.attachments-container.for-section-5");
-      $('<p class="for-section-5" style="margin-top: 20px;">If you "Save Claim &amp; Exit", we will send you an activation email within 5 minutes to your portal where you can continue with your claim.</p>').insertAfter(".save_draft_5.btn.btn-primary.for-section-5:visible");
+      $('<p class="for-section-5" style="margin-top: 20px;">If you ‘Pause Claim’, we will send you an activation email within 5 minutes our portal where you can continue with your claim. All of the information you have inputted will be saved.</p>').insertAfter(".save_draft_5.btn.btn-primary.for-section-5:visible");
       $("p.for-section-5:eq(0)").hide();
     }
   }
@@ -551,15 +551,15 @@ jQuery(document).ready(function ($) {
     ).insertAfter(ibanNumber);
   } else if ($("#title").hasClass("VHI")) {
     $(
-      '<button id="save_and_continue6" class="btn btn-primary for-section-6 save_and_continue" type="button" >Next Section</button>'
+      '<button id="save_and_continue6" class="btn btn-primary for-section-6 save_and_continue" type="button" >Continue</button>'
     ).insertAfter(ibanNumber);
   } else if ($("#title").hasClass("EasyJet")) {
     $(
-      '<button id="save_and_continue6" class="btn btn-primary for-section-6 save_and_continue" type="button" >Next Section</button>'
+      '<button id="save_and_continue6" class="btn btn-primary for-section-6 save_and_continue" type="button" >Continue</button>'
     ).insertAfter(SortCodeParent);
   } else if ($("#title").hasClass("CollinsonUK")) {
     $(
-      '<button id="save_and_continue6" class="btn btn-primary for-section-6 save_and_continue" type="button" >Next Section</button>'
+      '<button id="save_and_continue6" class="btn btn-primary for-section-6 save_and_continue" type="button" >Continue</button>'
     ).insertAfter(SortCodeParent);
   }
   //____________________________________________________SECTION 7 Start - Summary Section____________________________________________
