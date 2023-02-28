@@ -625,7 +625,7 @@ jQuery(document).ready(function ($) {
         title +
         "</h5></div>" +
         '<div class="col-md-6" style="float: right;"> ' +
-        '<div id="section-' +
+        '<div id="section-' +-
         number +
         '-button" class="ins-col-test collapsed  col align-self-end"  data-target="#collapseSection' +
         number +
@@ -793,6 +793,10 @@ jQuery(document).ready(function ($) {
       .children(":first")
       .addClass("fa-plus");
     //ENABLE NEXT SECTION +!
+    $("#section-" + (section_number) + "-button").attr(
+      "data-toggle",
+      "collapse"
+    );
     $("#section-" + (section_number + 1) + "-button").attr(
       "data-toggle",
       "collapse"
