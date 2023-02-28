@@ -6016,6 +6016,61 @@ jQuery(document).ready(function ($) {
     $("#section-2-button").css("background-color", "#4DC367");
     $("#section-3-button").css("background-color", "#4DC367");
   });
+
+  function validateMandatoryFields(list_of_fields){
+    move_forward = false;
+    red_indexes = []
+    clear_index = []
+    for (let i = 0; i < list_of_fields.length; i++ ){
+      if ( $("#"+(list_of_fields[i])).val() == '' ){
+        red_indexes.push(i);
+      }else{
+        clear_index.push(i);
+      }
+    }
+    console.log("the following indexes are empty")
+    console.log(red_indexes);
+    console.log("length: "+red_indexes.length)
+    console.log("-------------------------------------------")
+    console.log("TO CLEAR!")
+    console.log(clear_index);
+    console.log("length: "+clear_index.length)                                                                                                                                                      
+    
+    if (red_indexes.length >= 1){
+      //highlight reds
+      red_indexes.forEach((index) => {
+        
+        if( $("#"+(list_of_fields[index])).hasClass('choices')){
+          $("#"+(list_of_fields[index])).parent().parent().css('border','1px solid red');
+        }else{
+          $("#"+(list_of_fields[index])).css('border','1px solid red');
+        }
+      });
+  
+      //clear
+      clear_index.forEach((index) => {
+          
+        if( $("#"+(list_of_fields[index])).hasClass('choices')){
+          $("#"+(list_of_fields[index])).parent().parent().css('border','1px solid black');
+        }else{
+          $("#"+(list_of_fields[index])).css('border','1px solid black');
+        }
+      });
+    
+  } else if (red_indexes.length == 0){
+    clear_index.forEach((index) => {
+          
+      if( $("#"+(list_of_fields[index])).hasClass('choices')){
+        $("#"+(list_of_fields[index])).parent().parent().css('border','1px solid black');
+      }else{
+        $("#"+(list_of_fields[index])).css('border','1px solid black');
+      }
+    });
+    move_forward = true;
+  }
+    
+  return move_forward;
+}
   //____________________________________________________________________________________________________________________
   $("#save_draft_4").click(function () {
     $(".new-ticket-submit-button").trigger("click");
