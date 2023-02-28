@@ -1577,7 +1577,7 @@ jQuery(document).ready(function ($) {
         "<div id='insured-bold' class='form-group'><label class='form-label' style='display:inline-table;' >Nome dell'assicurato </label>";
     } else {
       options +=
-        '<div id="insured-bold" class="form-group"><label class="form-label" style="display:inline-table;" > Name(s) of the Insured. Select everyone who was involved in the claim! </label>';
+        '<div id="insured-bold" class="form-group"><label class="form-label" style="display:inline-table;" > Name(s) of the Insured. Please TICK everyone who was involved in the claim! </label>';
     }
     policyDetails.forEach(function (element, index) {
       options +=
