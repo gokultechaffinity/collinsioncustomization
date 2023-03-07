@@ -12,6 +12,7 @@ jQuery(document).ready(function ($) {
     }
   });
 
+  $('#fw-search-form').hide();
   $("#chat-icon").hide();
   $("#helpdesk_ticket_subject").closest(".form-group").hide();
   $("#helpdesk_ticket_custom_field_cf_mainclientid_2321673")
