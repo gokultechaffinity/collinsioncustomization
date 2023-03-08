@@ -1,4 +1,4 @@
-//collinsion test
+//collinsion live
 jQuery(document).ready(function ($) {
   let code;
   //hide two options for Italy
@@ -12,7 +12,6 @@ jQuery(document).ready(function ($) {
     }
   });
 
-  $('#fw-search-form').hide();
   $("#chat-icon").hide();
   $("#helpdesk_ticket_subject").closest(".form-group").hide();
   $("#helpdesk_ticket_custom_field_cf_mainclientid_2321673")
@@ -157,7 +156,7 @@ jQuery(document).ready(function ($) {
   let InternalPolicyNumber;
   let domainURL;
   // if($("#title").hasClass("VHI")||$("#title").hasClass("EasyJet")){
-  //  domainURL = "claim-proxy.collinsonnis.com";
+    // domainURL = "claim-proxy.collinsonnis.com";
   // }else {
   domainURL = "claim-proxy-lower.collinsonnis.com";
   // }
@@ -340,7 +339,7 @@ jQuery(document).ready(function ($) {
     ).insertAfter("#helpdesk_ticket_custom_field_cf_mobile_number_2321673");
   } else {
     $(
-      '<button id="save_and_continue2" class="btn btn-primary for-section-2 save_and_continue" type="button" >Next Section</button>'
+      '<button id="save_and_continue2" class="btn btn-primary for-section-2 save_and_continue" type="button" >Continue</button>'
     ).insertAfter("#helpdesk_ticket_custom_field_cf_mobile_number_2321673");
   }
   //____________________________________________________SECTION 3 Start - About Your Trip ____________________________________________
@@ -383,7 +382,7 @@ jQuery(document).ready(function ($) {
     );
   } else {
     $(
-      '<button id="save_and_continue3" class="btn btn-primary for-section-3 save_and_continue" type="button" >Next Section</button>'
+      '<button id="save_and_continue3" class="btn btn-primary for-section-3 save_and_continue" type="button" >Continue</button>'
     ).insertAfter(
       ".form-group.helpdesk_ticket_custom_field_cf_reason_for_claim_2321673.for-section-3"
     );
@@ -411,17 +410,17 @@ jQuery(document).ready(function ($) {
     );
   } else {
     $(
-      '<button id="save_draft_4" class="btn btn-primary for-section-4 " type="button">Save Claim & Exit</button>'
+      '<button id="save_draft_4" class="btn btn-primary for-section-4 " type="button">Pause Claim</button>'
     ).insertAfter(
       ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper"
     );
     $(
-      '<button id="save_and_continue4" class="btn btn-primary for-section-4 save_and_continue" type="button">Next Section</button>'
+      '<button id="save_and_continue4" class="btn btn-primary for-section-4 save_and_continue" type="button">Continue</button>'
     ).insertAfter(
       ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper"
     );
     $("<hr id ='hr4' class='for-section-4'>").insertAfter("#save_draft_4");
-    $('<p class="for-section-4" style="margin-top: 20px;">If you "Save Claim &amp; Exit", we will send you an activation email within 5 minutes to your portal where you can continue with your claim.</p>'
+    $('<p class="for-section-4" style="margin-top: 20px;">If you ‘Pause Claim’, we will send you an activation email within 5 minutes our portal where you can continue with your claim. All of the information you have inputted will be saved.</p>'
     ).insertBefore(
       '#hr4'
     );
@@ -456,12 +455,12 @@ jQuery(document).ready(function ($) {
       $("p.for-section-5:eq(0)").hide();
     } else {
       jQuery(".attachments.for-section-5").after(
-        '<button class="save_draft_5 btn btn-primary for-section-5 " type="button">Save Claim & Exit</button>'
+        '<button class="save_draft_5 btn btn-primary for-section-5 " type="button">Pause Claim</button>'
       );
       $(
-        '<button class="save_and_continue5 btn btn-primary for-section-5 save_and_continue" type="button" >Next Section</button>'
+        '<button class="save_and_continue5 btn btn-primary for-section-5 save_and_continue" type="button" >Continue</button>'
       ).insertAfter(".attachments.for-section-5");
-      $('<p class="for-section-5" style="margin-top: 20px;">If you "Save Claim &amp; Exit", we will send you an activation email within 5 minutes to your portal where you can continue with your claim.</p>').insertAfter(".save_draft_5.btn.btn-primary.for-section-5:visible");
+      $('<p class="for-section-5" style="margin-top: 20px;">If you ‘Pause Claim’, we will send you an activation email within 5 minutes our portal where you can continue with your claim. All of the information you have inputted will be saved.</p>').insertAfter(".save_draft_5.btn.btn-primary.for-section-5:visible");
       $("p.for-section-5:eq(0)").hide();
     }
   } else {
@@ -482,12 +481,12 @@ jQuery(document).ready(function ($) {
       $("p.for-section-5:eq(0)").hide();
     } else {
       jQuery(".attachments-container.for-section-5").after(
-        '<button class="save_draft_5 btn btn-primary for-section-5 " type="button">Save Claim & Exit</button>'
+        '<button class="save_draft_5 btn btn-primary for-section-5 " type="button">Pause Claim</button>'
       );
       $(
-        '<button class="save_and_continue5 btn btn-primary for-section-5 save_and_continue" type="button" >Next Section</button>'
+        '<button class="save_and_continue5 btn btn-primary for-section-5 save_and_continue" type="button" >Continue</button>'
       ).insertAfter(".form-group.attachments-container.for-section-5");
-      $('<p class="for-section-5" style="margin-top: 20px;">If you "Save Claim &amp; Exit", we will send you an activation email within 5 minutes to your portal where you can continue with your claim.</p>').insertAfter(".save_draft_5.btn.btn-primary.for-section-5:visible");
+      $('<p class="for-section-5" style="margin-top: 20px;">If you ‘Pause Claim’, we will send you an activation email within 5 minutes our portal where you can continue with your claim. All of the information you have inputted will be saved.</p>').insertAfter(".save_draft_5.btn.btn-primary.for-section-5:visible");
       $("p.for-section-5:eq(0)").hide();
     }
   }
@@ -552,15 +551,15 @@ jQuery(document).ready(function ($) {
     ).insertAfter(ibanNumber);
   } else if ($("#title").hasClass("VHI")) {
     $(
-      '<button id="save_and_continue6" class="btn btn-primary for-section-6 save_and_continue" type="button" >Next Section</button>'
+      '<button id="save_and_continue6" class="btn btn-primary for-section-6 save_and_continue" type="button" >Continue</button>'
     ).insertAfter(ibanNumber);
   } else if ($("#title").hasClass("EasyJet")) {
     $(
-      '<button id="save_and_continue6" class="btn btn-primary for-section-6 save_and_continue" type="button" >Next Section</button>'
+      '<button id="save_and_continue6" class="btn btn-primary for-section-6 save_and_continue" type="button" >Continue</button>'
     ).insertAfter(SortCodeParent);
   } else if ($("#title").hasClass("CollinsonUK")) {
     $(
-      '<button id="save_and_continue6" class="btn btn-primary for-section-6 save_and_continue" type="button" >Next Section</button>'
+      '<button id="save_and_continue6" class="btn btn-primary for-section-6 save_and_continue" type="button" >Continue</button>'
     ).insertAfter(SortCodeParent);
   }
   //____________________________________________________SECTION 7 Start - Summary Section____________________________________________
@@ -824,11 +823,8 @@ jQuery(document).ready(function ($) {
     }
   }
 
-  //BY DEFAULT -  add attribute to section-1-button and section 3&4&5 for testing
+  //BY DEFAULT -  add attribute to section-1-button 
   $("#section-1-button").attr("data-toggle", "collapse");
-  $("#section-3-button").attr("data-toggle", "collapse");
-  $("#section-4-button").attr("data-toggle", "collapse");
-  $("#section-5-button").attr("data-toggle", "collapse");
   //$("#section-7-button").attr("data-toggle", "collapse");
   //open section 1 by default
   $("#section-1-button").click();
@@ -1578,10 +1574,10 @@ jQuery(document).ready(function ($) {
     let options = "";
     if ($("#title").hasClass("ColumbusItaly")) {
       options +=
-        "<div class='form-group'><label class='form-label' style='display:inline-table;' >Nome dell'assicurato </label>";
+        "<div ' class='form-group'><label class='form-label' id='insured-bold' style='display:inline-table;font-weight: 900;' >Nome dell'assicurato </label>";
     } else {
       options +=
-        '<div class="form-group"><label class="form-label" style="display:inline-table;" > Name(s) of the Insured. Select everyone who was involved in the claim! </label>';
+        '<div  class="form-group"><label id="insured-bold" class="form-label" style="display:inline-table;font-weight: 900;" > Name(s) of the Insured. Please TICK everyone who was involved in the claim! </label>';
     }
     policyDetails.forEach(function (element, index) {
       options +=
@@ -5993,10 +5989,10 @@ jQuery(document).ready(function ($) {
   }
   //do modal popup with claims statement
   $("#next").click(function () {
-    $("#ClaimAPIModal").modal("toggle");
+    // $("#ClaimAPIModal").modal("toggle");
 
     //close current, open next
-    open_next(3);
+    // open_next(3);
 
     //remove edit from first three sections
 
@@ -6019,6 +6015,7 @@ jQuery(document).ready(function ($) {
     $("#section-1-button").css("background-color", "#4DC367");
     $("#section-2-button").css("background-color", "#4DC367");
     $("#section-3-button").css("background-color", "#4DC367");
+    $(".new-ticket-submit-button").trigger("click");
   });
 
   function validateMandatoryFields(list_of_fields){
@@ -6075,8 +6072,6 @@ jQuery(document).ready(function ($) {
     
   return move_forward;
 }
-
-
   //____________________________________________________________________________________________________________________
   $("#save_draft_4").click(function () {
     $(".new-ticket-submit-button").trigger("click");
