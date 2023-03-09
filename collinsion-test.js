@@ -13093,7 +13093,7 @@ jQuery(document).ready(function ($) {
     add_section_4();
     add_section_5();
     add_section_6();
-    addDeclaraion();
+    //addDeclaraion();
   }
   // Get the files names and appened into the summary of ticket detail page
 
