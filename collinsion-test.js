@@ -1686,7 +1686,7 @@ jQuery(document).ready(function ($) {
     $("#section-1-button").css("background-color", "#524954");
   });
   
-  let italy_titles = [
+  var italy_titles = [
     "In merito alla tua polizza",
     "Su di te",
     "Riguardo al tuo viaggio",
@@ -1697,7 +1697,7 @@ jQuery(document).ready(function ($) {
   ];
   //include italy
 
-  let titles = [
+  var titles = [
     "Your policy",
     "About you",
     "About your trip",
