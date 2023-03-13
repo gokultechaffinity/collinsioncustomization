@@ -4,6 +4,30 @@ jQuery(document).ready(function ($) {
   //hide two options for Italy
 
   $(document.body).click(function () {
+
+    //VARIABLES
+    //include italy
+  var italy_titles = [
+    "In merito alla tua polizza",
+    "Su di te",
+    "Riguardo al tuo viaggio",
+    "Che cosa è accaduto",
+    "I tuoi documenti",
+    "I tuoi dettagli bancari",
+    "Descrizione del tuo sinistro",
+  ];
+  //include italy
+
+  var titles = [
+    "Your policy",
+    "About you",
+    "About your trip",
+    "Tell us what happened",
+    "Your documents",
+    "Your payment details",
+    "Your claim summary",
+  ];
+
     if ($("#title").hasClass("ColumbusItaly")) {
       $('div[data-value="Missed flight or departure"]').remove();
       $(
@@ -623,27 +647,8 @@ jQuery(document).ready(function ($) {
     $(".invalid-feedback." + ID).addClass("d-block");
     $(".invalid-feedback." + ID).text(errorMessage);
   }
-  //include italy
-  var italy_titles = [
-    "In merito alla tua polizza",
-    "Su di te",
-    "Riguardo al tuo viaggio",
-    "Che cosa è accaduto",
-    "I tuoi documenti",
-    "I tuoi dettagli bancari",
-    "Descrizione del tuo sinistro",
-  ];
-  //include italy
-
-  var titles = [
-    "Your policy",
-    "About you",
-    "About your trip",
-    "Tell us what happened",
-    "Your documents",
-    "Your payment details",
-    "Your claim summary",
-  ];
+ 
+  
   function thisDiv(number, title) {
     $(".for-section-" + number).wrapAll(
       '<div class="collapse order' +
