@@ -1686,7 +1686,7 @@ jQuery(document).ready(function ($) {
     $("#section-1-button").css("background-color", "#524954");
   });
   
-  var italy_titles = [
+  let italy_titles = [
     "In merito alla tua polizza",
     "Su di te",
     "Riguardo al tuo viaggio",
@@ -1697,7 +1697,7 @@ jQuery(document).ready(function ($) {
   ];
   //include italy
 
-  var titles = [
+  let titles = [
     "Your policy",
     "About you",
     "About your trip",
@@ -1706,7 +1706,7 @@ jQuery(document).ready(function ($) {
     "Your payment details",
     "Your claim summary",
   ];
-  
+
   function add_section_1() {
 
     if ($("#title").hasClass("ColumbusItaly")){
