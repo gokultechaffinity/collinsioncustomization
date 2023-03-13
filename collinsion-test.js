@@ -565,6 +565,26 @@ jQuery(document).ready(function ($) {
   //____________________________________________________SECTION 7 Start - Summary Section____________________________________________
   if ($(".edit_helpdesk_ticket").length > 0) {
     $("span.btn.fw-primary-button.new-ticket-dummy").addClass("for-section-7");
+
+    //new 
+    console.log("continue journey entered...")
+    if ($("#title").hasClass("ColumbusItaly")) {
+      $(
+        "<p id='summary_intro'>Ti preghiamo di dedicare un momento a ricontrollare le tue informazioni: l'accuratezza ci aiuta a elaborare rapidamente la tua richiesta</p>"
+      ).insertBefore("#helpdesk_ticket_submit");
+    } else {
+      $(
+        '<p id="summary_intro">Please take a moment to double check your information - accuracy helps us process your claim quickly.</p>'
+      ).insertBefore("span.btn.fw-primary-button.new-ticket-dummy.for-section-7:eq(1)");
+      console.log("added before fake submit")
+    }
+    add_section_1();
+    add_section_2();
+    add_section_3();
+    add_section_4();
+    add_section_5();
+    add_section_6();
+
   } else {
     $("#helpdesk_ticket_form_id").addClass("for-section-7");
     $(".form-group.helpdesk_ticket_email").addClass("for-section-7");
@@ -574,6 +594,27 @@ jQuery(document).ready(function ($) {
     //hide cancel button
     $("a.btn.fw-secondary-button").hide();
   }
+
+  // if ($(".edit_helpdesk_ticket").length > 0) {
+  //   console.log("continue journey entered...")
+  //   if ($("#title").hasClass("ColumbusItaly")) {
+  //     $(
+  //       "<p id='summary_intro'>Ti preghiamo di dedicare un momento a ricontrollare le tue informazioni: l'accuratezza ci aiuta a elaborare rapidamente la tua richiesta</p>"
+  //     ).insertBefore("#helpdesk_ticket_submit");
+  //   } else {
+  //     $(
+  //       '<p id="summary_intro">Please take a moment to double check your information - accuracy helps us process your claim quickly.</p>'
+  //     ).insertBefore("span.btn.fw-primary-button.new-ticket-dummy.for-section-7:eq(1)");
+  //     console.log("added before fake submit")
+  //   }
+  //   add_section_1();
+  //   add_section_2();
+  //   add_section_3();
+  //   add_section_4();
+  //   add_section_5();
+  //   add_section_6();
+  //   //addDeclaraion();
+  // }
 
   //__________________________________________________________________________________
   //cleaner
@@ -13078,26 +13119,26 @@ jQuery(document).ready(function ($) {
       }
     }
   );
-  if ($(".edit_helpdesk_ticket").length > 0) {
-    console.log("continue journey entered...")
-    if ($("#title").hasClass("ColumbusItaly")) {
-      $(
-        "<p id='summary_intro'>Ti preghiamo di dedicare un momento a ricontrollare le tue informazioni: l'accuratezza ci aiuta a elaborare rapidamente la tua richiesta</p>"
-      ).insertBefore("#helpdesk_ticket_submit");
-    } else {
-      $(
-        '<p id="summary_intro">Please take a moment to double check your information - accuracy helps us process your claim quickly.</p>'
-      ).insertBefore("span.btn.fw-primary-button.new-ticket-dummy.for-section-7:eq(1)");
-      console.log("added before fake submit")
-    }
-    add_section_1();
-    add_section_2();
-    add_section_3();
-    add_section_4();
-    add_section_5();
-    add_section_6();
-    //addDeclaraion();
-  }
+  // if ($(".edit_helpdesk_ticket").length > 0) {
+  //   console.log("continue journey entered...")
+  //   if ($("#title").hasClass("ColumbusItaly")) {
+  //     $(
+  //       "<p id='summary_intro'>Ti preghiamo di dedicare un momento a ricontrollare le tue informazioni: l'accuratezza ci aiuta a elaborare rapidamente la tua richiesta</p>"
+  //     ).insertBefore("#helpdesk_ticket_submit");
+  //   } else {
+  //     $(
+  //       '<p id="summary_intro">Please take a moment to double check your information - accuracy helps us process your claim quickly.</p>'
+  //     ).insertBefore("span.btn.fw-primary-button.new-ticket-dummy.for-section-7:eq(1)");
+  //     console.log("added before fake submit")
+  //   }
+  //   add_section_1();
+  //   add_section_2();
+  //   add_section_3();
+  //   add_section_4();
+  //   add_section_5();
+  //   add_section_6();
+  //   //addDeclaraion();
+  // }
   // Get the files names and appened into the summary of ticket detail page
 
   function files_uploaded() {
