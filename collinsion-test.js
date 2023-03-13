@@ -13079,6 +13079,7 @@ jQuery(document).ready(function ($) {
     }
   );
   if ($(".edit_helpdesk_ticket").length > 0) {
+    console.log("continue journey entered...")
     if ($("#title").hasClass("ColumbusItaly")) {
       $(
         "<p id='summary_intro'>Ti preghiamo di dedicare un momento a ricontrollare le tue informazioni: l'accuratezza ci aiuta a elaborare rapidamente la tua richiesta</p>"
@@ -13087,6 +13088,7 @@ jQuery(document).ready(function ($) {
       $(
         '<p id="summary_intro">Please take a moment to double check your information - accuracy helps us process your claim quickly.</p>'
       ).insertBefore(".btn.fw-primary-button.ticket-detail-dummy.for-section-7");
+      console.log("added before fake submit")
     }
     add_section_1();
     add_section_2();
