@@ -13086,7 +13086,7 @@ jQuery(document).ready(function ($) {
     } else {
       $(
         '<p id="summary_intro">Please take a moment to double check your information - accuracy helps us process your claim quickly.</p>'
-      ).insertBefore("#helpdesk_ticket_submit");
+      ).insertBefore(".btn.fw-primary-button.ticket-detail-dummy.for-section-7");
     }
     add_section_1();
     add_section_2();
