@@ -819,6 +819,12 @@ jQuery(document).ready(function ($) {
         $(
           '<p id="summary_intro">Please take a moment to double check your information - accuracy helps us process your claim quickly.</p>'
         ).insertBefore(".form-group.helpdesk_ticket_email.for-section-7");
+
+        //new
+        $(
+          '<p id="summary_intro">Please take a moment to double check your information - accuracy helps us process your claim quickly.</p>'
+        ).insertBefore(".btn.fw-primary-button.new-ticket-dummy.for-section-7");
+        
       }
     }
   }
