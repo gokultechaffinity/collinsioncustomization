@@ -7,26 +7,7 @@ jQuery(document).ready(function ($) {
 
     //VARIABLES
     //include italy
-  var italy_titles = [
-    "In merito alla tua polizza",
-    "Su di te",
-    "Riguardo al tuo viaggio",
-    "Che cosa è accaduto",
-    "I tuoi documenti",
-    "I tuoi dettagli bancari",
-    "Descrizione del tuo sinistro",
-  ];
-  //include italy
-
-  var titles = [
-    "Your policy",
-    "About you",
-    "About your trip",
-    "Tell us what happened",
-    "Your documents",
-    "Your payment details",
-    "Your claim summary",
-  ];
+  
 
     if ($("#title").hasClass("ColumbusItaly")) {
       $('div[data-value="Missed flight or departure"]').remove();
@@ -1704,6 +1685,28 @@ jQuery(document).ready(function ($) {
     $("#section-1-button").children(":first").addClass("fa-pen");
     $("#section-1-button").css("background-color", "#524954");
   });
+  
+  var italy_titles = [
+    "In merito alla tua polizza",
+    "Su di te",
+    "Riguardo al tuo viaggio",
+    "Che cosa è accaduto",
+    "I tuoi documenti",
+    "I tuoi dettagli bancari",
+    "Descrizione del tuo sinistro",
+  ];
+  //include italy
+
+  var titles = [
+    "Your policy",
+    "About you",
+    "About your trip",
+    "Tell us what happened",
+    "Your documents",
+    "Your payment details",
+    "Your claim summary",
+  ];
+  
   function add_section_1() {
 
     if ($("#title").hasClass("ColumbusItaly")){
