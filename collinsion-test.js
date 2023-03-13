@@ -1708,6 +1708,8 @@ jQuery(document).ready(function ($) {
   ];
 
   function add_section_1() {
+    titles;
+    italy_titles;
 
     if ($("#title").hasClass("ColumbusItaly")){
       $("<strong id='section_1_header'>" + italy_titles[0] + "</strong>").insertAfter(
