@@ -589,7 +589,9 @@ jQuery(document).ready(function ($) {
     ).insertAfter(SortCodeParent);
   }
   //____________________________________________________SECTION 7 Start - Summary Section____________________________________________
-  
+  if ($(".edit_helpdesk_ticket").length > 0) {
+    
+  }else{
   $("#helpdesk_ticket_form_id").addClass("for-section-7");
   $(".form-group.helpdesk_ticket_email").addClass("for-section-7");
   $(".btn.fw-primary-button.new-ticket-submit-button").addClass(
@@ -597,7 +599,7 @@ jQuery(document).ready(function ($) {
   );
   //hide cancel button
   $("a.btn.fw-secondary-button").hide();
-  
+  }
 
 
   //__________________________________________________________________________________
