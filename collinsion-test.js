@@ -591,7 +591,7 @@ jQuery(document).ready(function ($) {
   //____________________________________________________SECTION 7 Start - Summary Section____________________________________________
   if ($(".edit_helpdesk_ticket").length > 0) {
     $("span.btn.fw-primary-button.new-ticket-dummy").addClass("for-section-7");
-    $("#overall_div_7").insertAfter(".card.ins-card.order6");
+    
     //new 
     console.log("continue journey entered...")
     if ($("#title").hasClass("ColumbusItaly")) {
@@ -599,6 +599,14 @@ jQuery(document).ready(function ($) {
         "<p id='summary_intro'>Ti preghiamo di dedicare un momento a ricontrollare le tue informazioni: l'accuratezza ci aiuta a elaborare rapidamente la tua richiesta</p>"
       ).insertBefore("#helpdesk_ticket_submit");
     } else {
+      $("#helpdesk_ticket_form_id").addClass("for-section-7");
+      $(".form-group.helpdesk_ticket_email").addClass("for-section-7");
+      //won't be found
+      $(".btn.fw-primary-button.new-ticket-submit-button").addClass(
+        "for-section-7"
+      );
+      //execute this
+      $("span.btn.fw-primary-button.new-ticket-dummy").addClass("for-section-7");
       // $(
       //   '<p id="summary_intro">Please take a moment to double check your information - accuracy helps us process your claim quickly.</p>'
       // ).insertBefore("#collapseSection7");
@@ -665,6 +673,8 @@ jQuery(document).ready(function ($) {
         "</div>"
     ).insertBefore("#collapseSection" + number);
   }
+
+
   //check if Italian Portal for headings
   if ($("#title").hasClass("ColumbusItaly")) {
     for (var i = 0; i < italy_titles.length; ++i) {
