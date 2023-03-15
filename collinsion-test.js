@@ -7168,6 +7168,7 @@ jQuery(document).ready(function ($) {
   //____________________________________________________________________________________________________________________
   //section 6 continue
   $("#save_and_continue6").click(function () {
+    
     if ($("#title").hasClass("VHI") || $("#title").hasClass("ColumbusItaly")) {
       let countryCode;
       if ($("#title").hasClass("VHI")) {
@@ -7281,12 +7282,18 @@ jQuery(document).ready(function ($) {
         }
       }
     }
-
-    $("#section-6-button").css("background-color", "#4DC367");
-    $("#section-6-button").children(":first").removeClass("fa-plus");
-    $("#section-6-button").children(":first").removeClass("fa-minus");
-    $("#section-6-button").children(":first").addClass("fa-check");
-    //$("#section-6-button").removeAttr("data-toggle");
+    if ($(".edit_helpdesk_ticket").length > 0) {
+      $("#section-6-button").css("background-color", "#524954");
+      $("#section-6-button").children(":first").removeClass("fa-plus");
+      $("#section-6-button").children(":first").removeClass("fa-minus");
+      $("#section-6-button").children(":first").addClass("fa-pen");
+    }else{
+      $("#section-6-button").css("background-color", "#4DC367");
+      $("#section-6-button").children(":first").removeClass("fa-plus");
+      $("#section-6-button").children(":first").removeClass("fa-minus");
+      $("#section-6-button").children(":first").addClass("fa-check");
+    }
+    
   });
   function add_section_6() {
     var el_number = $("#collapseSection6")
