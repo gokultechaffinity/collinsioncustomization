@@ -656,8 +656,9 @@ jQuery(document).ready(function ($) {
     }
   }
 
-  //after sections created, check if we are in edit page, then move summar
+  //after sections created, check if we are in edit page, then move summary around, and change button collors
   if ($(".edit_helpdesk_ticket").length > 0) {
+    //essential
     $(".card-body.ins-card:eq(0)").attr("id","collapseSection7");
     $(".card.ins-card.order7").appendTo(".bg-grey.fw-sidebar");
     $(".card-body.ins-card:eq(1)").insertAfter("#summary");
@@ -666,19 +667,19 @@ jQuery(document).ready(function ($) {
     $("#section-1-button").removeAttr("toggle");
     $("#section-1-button").children(":first").removeClass("fa-plus");
     $("#section-1-button").children(":first").addClass("fa-check");
+    $("#section-1-button").children(":first").removeAttr("target");
 
     $("#section-2-button").css("background-color","#4DC367");
     $("#section-2-button").removeAttr("toggle");
     $("#section-2-button").children(":first").removeClass("fa-plus");
     $("#section-2-button").children(":first").addClass("fa-check");
+    $("#section-2-button").children(":first").removeAttr("target");
 
     $("#section-3-button").css("background-color","#4DC367");
     $("#section-3-button").removeAttr("toggle");
     $("#section-3-button").children(":first").removeClass("fa-plus");
     $("#section-3-button").children(":first").addClass("fa-check");
-
-
-
+    $("#section-3-button").children(":first").removeAttr("target");
 
   }
 
