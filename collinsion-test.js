@@ -7288,10 +7288,10 @@ jQuery(document).ready(function ($) {
       $("#section-6-button").children(":first").removeClass("fa-minus");
       $("#section-6-button").children(":first").addClass("fa-pen");
     }else{
-      $("#section-6-button").css("background-color", "#4DC367");
+      $("#section-6-button").css("background-color", "#524954");
       $("#section-6-button").children(":first").removeClass("fa-plus");
       $("#section-6-button").children(":first").removeClass("fa-minus");
-      $("#section-6-button").children(":first").addClass("fa-check");
+      $("#section-6-button").children(":first").addClass("fa-pen");
     }
     
   });
