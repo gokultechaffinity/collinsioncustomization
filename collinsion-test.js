@@ -845,7 +845,14 @@ jQuery(document).ready(function ($) {
   $("#section-1-button").attr("data-toggle", "collapse");
   $("#section-7-button").attr("data-toggle", "collapse");
   //open section 1 by default
-  $("#section-1-button").click();
+  if ($(".edit_helpdesk_ticket").length > 0) {
+    $("#section-4-button").click();
+    $("#section-7-button").click();
+    $("#section-7-button").click();
+  }else{
+    $("#section-1-button").click();
+  }
+  
 
   //________________________________________________________________________________________________________________________________
   //section 1 continue
@@ -13098,28 +13105,7 @@ jQuery(document).ready(function ($) {
       }
     }
   );
-  // if ($(".edit_helpdesk_ticket").length > 0) {
-  //   console.log("continue journey entered...")
-  //   if ($("#title").hasClass("ColumbusItaly")) {
-  //     $(
-  //       "<p id='summary_intro'>Ti preghiamo di dedicare un momento a ricontrollare le tue informazioni: l'accuratezza ci aiuta a elaborare rapidamente la tua richiesta</p>"
-  //     ).insertBefore("#helpdesk_ticket_submit");
-  //   } else {
-  //     $(
-  //       '<p id="summary_intro">Please take a moment to double check your information - accuracy helps us process your claim quickly.</p>'
-  //     ).insertBefore("span.btn.fw-primary-button.new-ticket-dummy.for-section-7:eq(1)");
-  //     console.log("added before fake submit")
-  //   }
-  //   add_section_1();
-  //   add_section_2();
-  //   add_section_3();
-  //   add_section_4();
-  //   add_section_5();
-  //   add_section_6();
-  //   //addDeclaraion();
-  // }
-  // Get the files names and appened into the summary of ticket detail page
-
+  
   function files_uploaded() {
     $("p").remove(".section_5_line");
     $(".fw-comments-wrapper .attachments .fw-attachment-item").each(
