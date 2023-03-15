@@ -1618,7 +1618,7 @@ jQuery(document).ready(function ($) {
         element.ClientId +
         " data-PolicyNumber=" +
         InternalPolicyNumber +
-        "><span>" +
+        "><span class='policyHolder'>" +
         " " +
         element.FirstName +
         " " +
