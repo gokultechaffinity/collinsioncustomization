@@ -824,7 +824,6 @@ jQuery(document).ready(function ($) {
   function summary_section_start() {
     //START SUMMARY SECTION
     if ($("#summary_intro").length) {
-      console.log("WE ALREADY HAVE THE SUMMARY INTRO STARTED!");
 
     } else {
       if ($("#title").hasClass("ColumbusItaly")) {
@@ -832,18 +831,9 @@ jQuery(document).ready(function ($) {
           "<p id='summary_intro'>Ti preghiamo di dedicare un momento a ricontrollare le tue informazioni: l'accuratezza ci aiuta a elaborare rapidamente la tua richiesta</p>"
         ).insertBefore(".form-group.helpdesk_ticket_email.for-section-7");
       } else {
-
-        if ($(".edit_helpdesk_ticket").length > 0) {
-          $(
-            '<p id="summary_intro">Please take a moment to double check your information - accuracy helps us process your claim quickly.</p>'
-          ).insertBefore("span.btn.fw-primary-button.ticket-detail-dummy.for-section-7");
-          
-        }else{
-          $(
-            '<p id="summary_intro">Please take a moment to double check your information - accuracy helps us process your claim quickly.</p>'
-          ).insertBefore(".form-group.helpdesk_ticket_email.for-section-7");
-          
-        } 
+        $(
+          '<p id="summary_intro">Please take a moment to double check your information - accuracy helps us process your claim quickly.</p>'
+        ).insertBefore(".form-group.helpdesk_ticket_email.for-section-7");
       }
     }
   }
