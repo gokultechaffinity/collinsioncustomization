@@ -658,10 +658,7 @@ jQuery(document).ready(function ($) {
 
   //after sections created, check if we are in edit page, then move summary around, and change button colors, add sections
   if ($(".edit_helpdesk_ticket").length > 0) {
-    //essential
-    $(".card-body.ins-card:eq(0)").attr("id","collapseSection7");
-    $(".card.ins-card.order7").appendTo(".bg-grey.fw-sidebar");
-    $(".card-body.ins-card:eq(1)").insertAfter("#summary");
+    
     
     //removes divs causing duplicated lines
     $("div.section_4_line").remove();
@@ -709,6 +706,11 @@ jQuery(document).ready(function ($) {
       add_section_6();
       console.log("add section ---->");
     }
+
+    //essential - move to relevant sections
+    $(".card-body.ins-card:eq(0)").attr("id","collapseSection7");
+    $(".card.ins-card.order7").appendTo(".bg-grey.fw-sidebar");
+    $(".card-body.ins-card:eq(1)").insertAfter("#summary");
 
   }
 
