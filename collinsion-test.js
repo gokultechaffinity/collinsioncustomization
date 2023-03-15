@@ -835,6 +835,8 @@ jQuery(document).ready(function ($) {
   function summary_section_start() {
     //START SUMMARY SECTION
     if ($("#summary_intro").length) {
+      console.log("WE ALREADY HAVE THE SUMMARY INTRO STARTED!");
+      
     } else {
       if ($("#title").hasClass("ColumbusItaly")) {
         $(
