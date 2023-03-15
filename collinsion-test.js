@@ -601,7 +601,7 @@ jQuery(document).ready(function ($) {
     } else {
       $(
         '<p id="summary_intro">Please take a moment to double check your information - accuracy helps us process your claim quickly.</p>'
-      ).insertBefore("span.btn.fw-primary-button.new-ticket-dummy.for-section-7");
+      ).insertBefore("#collapseSection7");
       console.log("added before fake submit")
     }
     add_section_1();
