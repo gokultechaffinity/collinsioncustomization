@@ -662,7 +662,13 @@ jQuery(document).ready(function ($) {
     $(".card-body.ins-card:eq(0)").attr("id","collapseSection7");
     $(".card.ins-card.order7").appendTo(".bg-grey.fw-sidebar");
     $(".card-body.ins-card:eq(1)").insertAfter("#summary");
+    
+    //removes divs causing duplicated lines
+    $("div.section_4_line").remove();
+    $("div.section_5_line").remove();
+    $("div.section_6_line").remove();
 
+    //color change
     $("#section-1-button").css("background-color","#4DC367");
     $("#section-1-button").removeAttr("data-target");
     $("#section-1-button").children(":first").removeClass("fa-plus");
