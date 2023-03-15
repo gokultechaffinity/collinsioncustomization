@@ -687,29 +687,29 @@ jQuery(document).ready(function ($) {
 
     //add sections
 
-    if ($("#section_4_header").length) {
-      console.log("update section ---->");
-      update_section_4();
-    } else {
-      add_section_4();
-      console.log("add section ---->");
-    }
+    // if ($("#section_4_header").length) {
+    //   console.log("update section ---->");
+    //   update_section_4();
+    // } else {
+    //   add_section_4();
+    //   console.log("add section ---->");
+    // }
 
-    if ($("#section_5_header").length) {
-      console.log("update section ---->");
-      update_section_5();
-    } else {
-      add_section_5();
-      console.log("add section ---->");
-    }
+    // if ($("#section_5_header").length) {
+    //   console.log("update section ---->");
+    //   update_section_5();
+    // } else {
+    //   add_section_5();
+    //   console.log("add section ---->");
+    // }
 
-    if ($("#section_6_header").length) {
-      console.log("update section ---->");
-      update_section_6();
-    } else {
-      add_section_6();
-      console.log("add section ---->");
-    }
+    // if ($("#section_6_header").length) {
+    //   console.log("update section ---->");
+    //   update_section_6();
+    // } else {
+    //   add_section_6();
+    //   console.log("add section ---->");
+    // }
 
     
 
