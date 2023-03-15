@@ -2,8 +2,6 @@
 jQuery(document).ready(function ($) {
   let code;
 
-  console.log($("#summary_intro"));
-
   var italy_titles = [
     "In merito alla tua polizza",
     "Su di te",
@@ -836,7 +834,7 @@ jQuery(document).ready(function ($) {
     //START SUMMARY SECTION
     if ($("#summary_intro").length) {
       console.log("WE ALREADY HAVE THE SUMMARY INTRO STARTED!");
-      
+
     } else {
       if ($("#title").hasClass("ColumbusItaly")) {
         $(
@@ -847,7 +845,7 @@ jQuery(document).ready(function ($) {
         if ($(".edit_helpdesk_ticket").length > 0) {
           $(
             '<p id="summary_intro">Please take a moment to double check your information - accuracy helps us process your claim quickly.</p>'
-          ).insertBefore(".btn.fw-primary-button.ticket-detail-dummy.for-section-7");
+          ).insertBefore("span.btn.fw-primary-button.ticket-detail-dummy.for-section-7");
           
         }else{
           $(
