@@ -6893,6 +6893,7 @@ jQuery(document).ready(function ($) {
         if ($("#section_5_header").length) {
           update_section_5();
         } else {
+          add_section_4();
           add_section_5();
         }
         if (!FileExtensionValidateCounter&&!formatValidateCounter) {
@@ -7014,6 +7015,7 @@ jQuery(document).ready(function ($) {
         if ($("#section_5_header").length) {
           update_section_5();
         } else {
+          add_section_4();
           add_section_5();
         }
         console.log("files --->", files);
