@@ -7435,7 +7435,7 @@ jQuery(document).ready(function ($) {
           clearError(ele);
           console.log("--sucesss-");
           bankResult = result;
-          open_next(6);
+          //open_next(6);
         }
       })
       .catch((error) => console.log("error -->", error));
@@ -7502,7 +7502,7 @@ jQuery(document).ready(function ($) {
           clearError(ele);
           bankResult = result;
           console.log("--sucesss-");
-          open_next(6);
+          //open_next(6);
         }
       })
       .catch((error) => console.log("error -->", error));
