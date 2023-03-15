@@ -591,7 +591,7 @@ jQuery(document).ready(function ($) {
   //____________________________________________________SECTION 7 Start - Summary Section____________________________________________
   if ($(".edit_helpdesk_ticket").length > 0) {
 
-    $("span.btn.fw-primary-button.new-ticket-dummy").addClass("for-section-7");
+    $(".card.ins-card.order7").appendTo(".bg-grey.fw-sidebar")
     
     //new 
     console.log("continue journey entered...")
