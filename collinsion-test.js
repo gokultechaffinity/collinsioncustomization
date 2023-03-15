@@ -589,30 +589,15 @@ jQuery(document).ready(function ($) {
     ).insertAfter(SortCodeParent);
   }
   //____________________________________________________SECTION 7 Start - Summary Section____________________________________________
-  if ($(".edit_helpdesk_ticket").length > 0) {
-
-    $(".card.ins-card.order7").appendTo(".bg-grey.fw-sidebar")
-    
-    //new 
-    console.log("continue journey entered...")
-    if ($("#title").hasClass("ColumbusItaly")) {
-      $(
-        "<p id='summary_intro'>Ti preghiamo di dedicare un momento a ricontrollare le tue informazioni: l'accuratezza ci aiuta a elaborare rapidamente la tua richiesta</p>"
-      ).insertBefore("#helpdesk_ticket_submit");
-    } else {
-      
-      
-    }
-
-  } else {
-    $("#helpdesk_ticket_form_id").addClass("for-section-7");
-    $(".form-group.helpdesk_ticket_email").addClass("for-section-7");
-    $(".btn.fw-primary-button.new-ticket-submit-button").addClass(
-      "for-section-7"
-    );
-    //hide cancel button
-    $("a.btn.fw-secondary-button").hide();
-  }
+  
+  $("#helpdesk_ticket_form_id").addClass("for-section-7");
+  $(".form-group.helpdesk_ticket_email").addClass("for-section-7");
+  $(".btn.fw-primary-button.new-ticket-submit-button").addClass(
+    "for-section-7"
+  );
+  //hide cancel button
+  $("a.btn.fw-secondary-button").hide();
+  
 
 
   //__________________________________________________________________________________
@@ -669,6 +654,11 @@ jQuery(document).ready(function ($) {
     for (var i = 0; i < titles.length; ++i) {
       thisDiv(i + 1, titles[i]);
     }
+  }
+
+  if ($(".edit_helpdesk_ticket").length > 0) {
+    console.log("move!")
+    $(".card.ins-card.order7").appendTo(".bg-grey.fw-sidebar");
   }
 
   function checkedfilled(list_of_elements) {
