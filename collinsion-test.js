@@ -604,11 +604,11 @@ jQuery(document).ready(function ($) {
       ).insertBefore("#collapseSection7");
       console.log("added before fake submit")
     }
-    add_section_1();
-    add_section_2();
-    add_section_3();
-    add_section_4();
-    add_section_5();
+    // add_section_1();
+    // add_section_2();
+    // add_section_3();
+    // add_section_4();
+    // add_section_5();
     // add_section_6();
 
   } else {
