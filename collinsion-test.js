@@ -664,10 +664,16 @@ jQuery(document).ready(function ($) {
 
     $("#section-1-button").css("background-color","#4DC367");
     $("#section-1-button").removeAttr("toggle");
+    $("#section-1-button").children(":first").removeClass("fa-plus");
+    $("#section-1-button").children(":first").addClass("fa-check");
+
     $("#section-2-button").css("background-color","#4DC367");
     $("#section-2-button").removeAttr("toggle");
+
     $("#section-3-button").css("background-color","#4DC367");
     $("#section-3-button").removeAttr("toggle");
+
+
 
 
   }
