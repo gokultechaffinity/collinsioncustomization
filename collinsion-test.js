@@ -669,9 +669,13 @@ jQuery(document).ready(function ($) {
 
     $("#section-2-button").css("background-color","#4DC367");
     $("#section-2-button").removeAttr("toggle");
+    $("#section-2-button").children(":first").removeClass("fa-plus");
+    $("#section-2-button").children(":first").addClass("fa-check");
 
     $("#section-3-button").css("background-color","#4DC367");
     $("#section-3-button").removeAttr("toggle");
+    $("#section-3-button").children(":first").removeClass("fa-plus");
+    $("#section-3-button").children(":first").addClass("fa-check");
 
 
 
