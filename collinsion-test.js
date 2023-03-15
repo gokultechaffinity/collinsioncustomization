@@ -2,6 +2,8 @@
 jQuery(document).ready(function ($) {
   let code;
 
+  console.log($("#summary_intro"));
+
   var italy_titles = [
     "In merito alla tua polizza",
     "Su di te",
