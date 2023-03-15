@@ -656,7 +656,7 @@ jQuery(document).ready(function ($) {
     }
   }
 
-  //after sections created, check if we are in edit page, then move summary around, and change button collors
+  //after sections created, check if we are in edit page, then move summary around, and change button colors, add sections
   if ($(".edit_helpdesk_ticket").length > 0) {
     //essential
     $(".card-body.ins-card:eq(0)").attr("id","collapseSection7");
@@ -683,6 +683,32 @@ jQuery(document).ready(function ($) {
     $("#section-3-button").removeAttr("data-target");
     $("#section-3-button").children(":first").removeClass("fa-plus");
     $("#section-3-button").children(":first").addClass("fa-check");
+
+    //add sections
+
+    if ($("#section_4_header").length) {
+      console.log("update section ---->");
+      update_section_4();
+    } else {
+      add_section_4();
+      console.log("add section ---->");
+    }
+
+    if ($("#section_5_header").length) {
+      console.log("update section ---->");
+      update_section_5();
+    } else {
+      add_section_5();
+      console.log("add section ---->");
+    }
+
+    if ($("#section_6_header").length) {
+      console.log("update section ---->");
+      update_section_6();
+    } else {
+      add_section_6();
+      console.log("add section ---->");
+    }
 
   }
 
@@ -7294,29 +7320,7 @@ jQuery(document).ready(function ($) {
       $("#section-6-button").children(":first").removeClass("fa-minus");
       $("#section-6-button").children(":first").addClass("fa-pen");
 
-      if ($("#section_4_header").length) {
-        console.log("update section ---->");
-        update_section_4();
-      } else {
-        add_section_4();
-        console.log("add section ---->");
-      }
-
-      if ($("#section_5_header").length) {
-        console.log("update section ---->");
-        update_section_5();
-      } else {
-        add_section_5();
-        console.log("add section ---->");
-      }
-
-      if ($("#section_6_header").length) {
-        console.log("update section ---->");
-        update_section_6();
-      } else {
-        add_section_6();
-        console.log("add section ---->");
-      }
+      
 
     }else{
       $("#section-6-button").css("background-color", "#524954");
