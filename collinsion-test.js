@@ -661,7 +661,8 @@ jQuery(document).ready(function ($) {
   //after sections created, check if we are in edit page, then move summar
   if ($(".edit_helpdesk_ticket").length > 0) {
     $(".card-body.ins-card:eq(0)").attr("id","collapseSection7");
-    $(".card.ins-card.order7").appendTo(".bg-grey.fw-sidebar"); 
+    $(".card.ins-card.order7").appendTo(".bg-grey.fw-sidebar");
+    $(".card-body.ins-card:eq(1)").insertAfter("#summary");
   }
 
   function checkedfilled(list_of_elements) {
