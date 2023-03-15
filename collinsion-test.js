@@ -589,9 +589,7 @@ jQuery(document).ready(function ($) {
     ).insertAfter(SortCodeParent);
   }
   //____________________________________________________SECTION 7 Start - Summary Section____________________________________________
-  if ($(".edit_helpdesk_ticket").length > 0) {
-    
-  }else{
+  
   $("#helpdesk_ticket_form_id").addClass("for-section-7");
   $(".form-group.helpdesk_ticket_email").addClass("for-section-7");
   $(".btn.fw-primary-button.new-ticket-submit-button").addClass(
@@ -599,7 +597,7 @@ jQuery(document).ready(function ($) {
   );
   //hide cancel button
   $("a.btn.fw-secondary-button").hide();
-  }
+  
 
 
   //__________________________________________________________________________________
@@ -663,6 +661,15 @@ jQuery(document).ready(function ($) {
     $(".card-body.ins-card:eq(0)").attr("id","collapseSection7");
     $(".card.ins-card.order7").appendTo(".bg-grey.fw-sidebar");
     $(".card-body.ins-card:eq(1)").insertAfter("#summary");
+
+    $("#section-1-button").css("background-color","#4DC367");
+    $("#section-1-button").removeAttr("toggle");
+    $("#section-2-button").css("background-color","#4DC367");
+    $("#section-2-button").removeAttr("toggle");
+    $("#section-3-button").css("background-color","#4DC367");
+    $("#section-3-button").removeAttr("toggle");
+
+
   }
 
   function checkedfilled(list_of_elements) {
