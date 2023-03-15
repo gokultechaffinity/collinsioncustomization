@@ -591,7 +591,7 @@ jQuery(document).ready(function ($) {
   //____________________________________________________SECTION 7 Start - Summary Section____________________________________________
   if ($(".edit_helpdesk_ticket").length > 0) {
     $("span.btn.fw-primary-button.new-ticket-dummy").addClass("for-section-7");
-
+    $("#overall_div_7").insertAfter(".card.ins-card.order6");
     //new 
     console.log("continue journey entered...")
     if ($("#title").hasClass("ColumbusItaly")) {
@@ -603,7 +603,7 @@ jQuery(document).ready(function ($) {
       //   '<p id="summary_intro">Please take a moment to double check your information - accuracy helps us process your claim quickly.</p>'
       // ).insertBefore("#collapseSection7");
       // console.log("added before fake submit")
-      $("#overall_div_7").insertAfter(".card.ins-card.order6");
+      
     }
     // add_section_1();
     // add_section_2();
