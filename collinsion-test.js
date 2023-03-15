@@ -7294,13 +7294,6 @@ jQuery(document).ready(function ($) {
       $("#section-6-button").children(":first").removeClass("fa-minus");
       $("#section-6-button").children(":first").addClass("fa-pen");
 
-      add_section_1();
-      add_section_2();
-      add_section_3();
-      add_section_4();
-      add_section_5();
-      add_section_6();
-      
     }else{
       $("#section-6-button").css("background-color", "#524954");
       $("#section-6-button").children(":first").removeClass("fa-plus");
