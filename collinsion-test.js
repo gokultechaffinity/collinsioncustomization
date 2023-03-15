@@ -6943,12 +6943,18 @@ jQuery(document).ready(function ($) {
       } else if ($(".fw-comments-wrapper .fw-attachment-item").length) {
         //Need to add another condition for already had div if div has length then we need to open next section
         open_next(5);
+        $("#section-5-button").children(":first").removeClass("fa-minus");
+        $("#section-5-button").children(":first").removeClass("fa-plus");
+        $("#section-5-button").children(":first").addClass("fa-pen");
+        $("#section-5-button").css("background-color", "#524954");
+
       }
     } else {
       //will excute in create new ticket senario
       fileUploadCallback();
     }
   });
+
   function fileUploadCallback() {
     var elem = document.getElementById("files_list");
     if (elem.files.length) {
