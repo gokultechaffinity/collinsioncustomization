@@ -6893,7 +6893,6 @@ jQuery(document).ready(function ($) {
         if ($("#section_5_header").length) {
           update_section_5();
         } else {
-          add_section_4();
           add_section_5();
         }
         if (!FileExtensionValidateCounter&&!formatValidateCounter) {
@@ -7015,7 +7014,6 @@ jQuery(document).ready(function ($) {
         if ($("#section_5_header").length) {
           update_section_5();
         } else {
-          add_section_4();
           add_section_5();
         }
         console.log("files --->", files);
@@ -7300,6 +7298,13 @@ jQuery(document).ready(function ($) {
       $("#section-6-button").children(":first").removeClass("fa-plus");
       $("#section-6-button").children(":first").removeClass("fa-minus");
       $("#section-6-button").children(":first").addClass("fa-pen");
+
+      add_section_1();
+      add_section_2();
+      add_section_3();
+      add_section_4();
+      add_section_5();
+      add_section_6();
     }
     
   });
