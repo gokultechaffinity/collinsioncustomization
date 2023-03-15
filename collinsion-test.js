@@ -599,10 +599,11 @@ jQuery(document).ready(function ($) {
         "<p id='summary_intro'>Ti preghiamo di dedicare un momento a ricontrollare le tue informazioni: l'accuratezza ci aiuta a elaborare rapidamente la tua richiesta</p>"
       ).insertBefore("#helpdesk_ticket_submit");
     } else {
-      $(
-        '<p id="summary_intro">Please take a moment to double check your information - accuracy helps us process your claim quickly.</p>'
-      ).insertBefore("#collapseSection7");
-      console.log("added before fake submit")
+      // $(
+      //   '<p id="summary_intro">Please take a moment to double check your information - accuracy helps us process your claim quickly.</p>'
+      // ).insertBefore("#collapseSection7");
+      // console.log("added before fake submit")
+      $("#overall_div_7").insertAfter(".card.ins-card.order6");
     }
     // add_section_1();
     // add_section_2();
