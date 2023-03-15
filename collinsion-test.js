@@ -7436,6 +7436,7 @@ jQuery(document).ready(function ($) {
           console.log("--sucesss-");
           bankResult = result;
           //open_next(6);
+          $("#section-6-button").click();
         }
       })
       .catch((error) => console.log("error -->", error));
@@ -7503,6 +7504,7 @@ jQuery(document).ready(function ($) {
           bankResult = result;
           console.log("--sucesss-");
           //open_next(6);
+          $("#section-6-button").click();
         }
       })
       .catch((error) => console.log("error -->", error));
