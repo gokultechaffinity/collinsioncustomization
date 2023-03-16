@@ -713,8 +713,7 @@ jQuery(document).ready(function ($) {
     $(".card.ins-card.order7").appendTo(".bg-grey.fw-sidebar");
     $(".card-body.ins-card:eq(1)").insertAfter("#summary");
 
-    var replace = $(".card-body.ins-card.collapse.show").html().slice(0,-10);
-    document.getElementById("collapseSection7").innerHTML = replace;
+    
 
   }
 
@@ -7350,7 +7349,7 @@ jQuery(document).ready(function ($) {
     }
     
   
-});
+  });
   function add_section_6() {
     var el_number = $("#collapseSection6")
       .children(".card-body.ins-card")
@@ -13207,4 +13206,8 @@ jQuery(document).ready(function ($) {
   if (jQuery(".fw-comments-wrapper").length > 0) {
     files_uploaded();
   }
+
+  var replace = $(".card-body.ins-card.collapse.show").html().slice(0,-10);
+  document.getElementById("collapseSection7").innerHTML = replace;
+
 });
