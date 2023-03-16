@@ -694,8 +694,8 @@ jQuery(document).ready(function ($) {
       console.log("add section ---->");
     }
     $(".card.ins-card.order7").appendTo(".bg-grey.fw-sidebar");
-    // $(".card-body.ins-card:eq(1)").insertAfter("#summary");
-    // $("#collapseSection7").collapse();
+    $(".card-body.ins-card:eq(1)").insertAfter("#summary");
+    $("#collapseSection7").collapse();
   }
 
   function checkedfilled(list_of_elements) {
