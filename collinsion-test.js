@@ -6968,27 +6968,7 @@ jQuery(document).ready(function ($) {
     //   }
      }
   });
-  // $(".save_and_continue5").click(function () {
-  //   //check if we are in continue page
-  //   if (jQuery(".fw-comments-wrapper").length > 0) {
-  //     //will execute in ticket detail page senario
-  //     if (
-  //       $("#new_helpdesk_note#attachments_list.proper-attachments-list").length > 0)  {
-  //       fileUploadCallback();
-  //     } else if ($(".fw-comments-wrapper.fw-attachment-item").length) {
-  //       //Need to add another condition for already had div if div has length then we need to open next section
-  //       open_next(5);
-  //       $("#section-5-button").children(":first").removeClass("fa-minus");
-  //       $("#section-5-button").children(":first").removeClass("fa-plus");
-  //       $("#section-5-button").children(":first").addClass("fa-pen");
-  //       $("#section-5-button").css("background-color", "#524954");
 
-  //     }
-  //   } else {
-  //     //will excute in create new ticket senario
-  //     fileUploadCallback();
-  //   }
-  // });
 
   $(".save_and_continue5").click(function () {
     if (jQuery(".fw-comments-wrapper").length > 0) {
@@ -6997,6 +6977,7 @@ jQuery(document).ready(function ($) {
         $("#new_helpdesk_note #attachments_list .proper-attachments-list")
           .length
       ) {
+        update_section_4();
         fileUploadCallback();
       } else if ($(".fw-comments-wrapper .fw-attachment-item").length) {
         //Need to add another condition for already had div if div has length then we need to open next section
@@ -7007,7 +6988,7 @@ jQuery(document).ready(function ($) {
       fileUploadCallback();
     }
   });
-  
+
   function fileUploadCallback() {
     var elem = document.getElementById("files_list");
     if (elem.files.length) {
