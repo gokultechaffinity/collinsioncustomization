@@ -6476,7 +6476,7 @@ jQuery(document).ready(function ($) {
       add_section_4();
       console.log("add section ----> 4");
     }
-    
+
   });
 
 
@@ -6974,7 +6974,6 @@ jQuery(document).ready(function ($) {
 
 
   $(".save_and_continue5").click(function () {
-    console.log("updating section 4");
 
     if ($("#section_4_header").length) {
       console.log("update section ---->");
@@ -6992,6 +6991,7 @@ jQuery(document).ready(function ($) {
           .length
       ) {
         fileUploadCallback();
+        $(".new-ticket-submit-button").trigger("click");
       } else if ($(".fw-comments-wrapper .fw-attachment-item").length) {
         //Need to add another condition for already had div if div has length then we need to open next section
         open_next(5);
