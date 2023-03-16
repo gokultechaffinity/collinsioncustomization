@@ -6971,7 +6971,10 @@ jQuery(document).ready(function ($) {
 
 
   $(".save_and_continue5").click(function () {
+    console.log("updating section 4");
+    update_section_4();
     if (jQuery(".fw-comments-wrapper").length > 0) {
+      console.log("updating section 4")
       //will execute in ticket detail page senario
       if (
         $("#new_helpdesk_note #attachments_list .proper-attachments-list")
@@ -7039,10 +7042,8 @@ jQuery(document).ready(function ($) {
         let ele = ["api_call_failed_filelist"];
         clearError(ele);
         if ($("#section_5_header").length) {
-          update_section_4();
           update_section_5();
         } else {
-          add_section_4();
           add_section_5();
         }
         console.log("files --->", files);
