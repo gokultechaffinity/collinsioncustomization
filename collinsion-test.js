@@ -900,7 +900,7 @@ jQuery(document).ready(function ($) {
   if ($(".edit_helpdesk_ticket").length > 0) {
 
     $("#section-4-button").click();
-    $("#section-7-button").removeAttr("data-toggle");
+    
   }else{
     $("#section-1-button").click();
   }
@@ -13206,6 +13206,7 @@ jQuery(document).ready(function ($) {
     files_uploaded();
   }
 
+  $("#section-7-button").click();
   // document.getElementById("collapseSection7").innerHTML = document.getElementById("collapseSection7").innerHTML.slice(0,-10);
 
 });
