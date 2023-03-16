@@ -897,11 +897,10 @@ jQuery(document).ready(function ($) {
   $("#section-7-button").attr("data-toggle", "collapse");
   //open section 1 by default
   if ($(".edit_helpdesk_ticket").length > 0) {
-
+    //close section 4
     $("#section-4-button").click();
-    
-    
   }else{
+    //open section 1
     $("#section-1-button").click();
   }
   
@@ -1736,8 +1735,6 @@ jQuery(document).ready(function ($) {
   });
 
   function add_section_1() {
-    titles;
-    italy_titles;
 
     if ($("#title").hasClass("ColumbusItaly")){
       $("<strong id='section_1_header'>" + italy_titles[0] + "</strong>").insertAfter(
