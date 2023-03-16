@@ -899,7 +899,7 @@ jQuery(document).ready(function ($) {
   if ($(".edit_helpdesk_ticket").length > 0) {
 
     $("#section-4-button").click();
-    $("#collapseSection7").collapse();
+    
     
   }else{
     $("#section-1-button").click();
@@ -13206,7 +13206,9 @@ jQuery(document).ready(function ($) {
     files_uploaded();
   }
 
-  
+  if ($(".edit_helpdesk_ticket").length > 0){
+    $("#collapseSection7").collapse();
+  }
   // document.getElementById("collapseSection7").innerHTML = document.getElementById("collapseSection7").innerHTML.slice(0,-10);
 
 });
