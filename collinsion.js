@@ -585,17 +585,13 @@ jQuery(document).ready(function ($) {
     ).insertAfter(SortCodeParent);
   }
   //____________________________________________________SECTION 7 Start - Summary Section____________________________________________
-  if ($(".edit_helpdesk_ticket").length > 0) {
-    $("#helpdesk_ticket_submit").addClass("for-section-7");
-  } else {
-    $("#helpdesk_ticket_form_id").addClass("for-section-7");
-    $(".form-group.helpdesk_ticket_email").addClass("for-section-7");
-    $(".btn.fw-primary-button.new-ticket-submit-button").addClass(
-      "for-section-7"
-    );
-    //hide cancel button
-    $("a.btn.fw-secondary-button").hide();
-  }
+  $("#helpdesk_ticket_form_id").addClass("for-section-7");
+  $(".form-group.helpdesk_ticket_email").addClass("for-section-7");
+  $(".btn.fw-primary-button.new-ticket-submit-button").addClass(
+    "for-section-7"
+  );
+  //hide cancel button
+  $("a.btn.fw-secondary-button").hide();
 
   //__________________________________________________________________________________
   //cleaner
@@ -648,6 +644,58 @@ jQuery(document).ready(function ($) {
     for (var i = 0; i < titles.length; ++i) {
       thisDiv(i + 1, titles[i]);
     }
+  }
+
+  //after sections created, check if we are in edit page, then move summary around, and change button colors, add sections
+  if ($(".edit_helpdesk_ticket").length > 0) {
+    
+    //essential - move to relevant sections
+    $(".card-body.ins-card:eq(0)").attr("id","collapseSection7");
+    
+    
+    //removes divs causing duplicated lines
+    $("div.section_4_line").remove();
+    $("div.section_5_line").remove();
+    $("div.section_6_line").remove();
+    //color change
+    $("#section-1-button").css("background-color","#4DC367");
+    $("#section-1-button").removeAttr("data-target");
+    $("#section-1-button").children(":first").removeClass("fa-plus");
+    $("#section-1-button").children(":first").addClass("fa-check");
+  
+    $("#section-2-button").css("background-color","#4DC367");
+    $("#section-2-button").removeAttr("data-target");
+    $("#section-2-button").children(":first").removeClass("fa-plus");
+    $("#section-2-button").children(":first").addClass("fa-check");
+    $("#section-3-button").css("background-color","#4DC367");
+    $("#section-3-button").removeAttr("data-target");
+    $("#section-3-button").children(":first").removeClass("fa-plus");
+    $("#section-3-button").children(":first").addClass("fa-check");
+    //add sections
+    if ($("#section_4_header").length) {
+      console.log("update section ----> 4");
+      update_section_4();
+    } else {
+      add_section_4();
+      console.log("add section ----> 4");
+    }
+    if ($("#section_5_header").length) {
+      console.log("update section ---->");
+      update_section_5();
+    } else {
+      add_section_5();
+      console.log("add section ---->");
+    }
+    if ($("#section_6_header").length) {
+      console.log("update section ---->");
+      update_section_6();
+    } else {
+      add_section_6();
+      console.log("add section ---->");
+    }
+    $(".card.ins-card.order7").appendTo(".bg-grey.fw-sidebar");
+    $(".card-body.ins-card:eq(1)").insertAfter("#summary");
+    $("#collapseSection7").collapse();
   }
 
   function checkedfilled(list_of_elements) {
@@ -827,9 +875,15 @@ jQuery(document).ready(function ($) {
 
   //BY DEFAULT -  add attribute to section-1-button 
   $("#section-1-button").attr("data-toggle", "collapse");
-  //$("#section-7-button").attr("data-toggle", "collapse");
+  $("#section-7-button").attr("data-toggle", "collapse");
   //open section 1 by default
-  $("#section-1-button").click();
+  if ($(".edit_helpdesk_ticket").length > 0) {
+    //close section 4
+    $("#section-4-button").click();
+  }else{
+    //open section 1
+    $("#section-1-button").click();
+  }
 
   //________________________________________________________________________________________________________________________________
   //section 1 continue
@@ -1579,7 +1633,7 @@ jQuery(document).ready(function ($) {
         "<div ' class='form-group'><label class='form-label' id='insured-bold' style='display:inline-table;font-weight: 900;' >Nome dell'assicurato </label>";
     } else {
       options +=
-        '<div  class="form-group"><label id="insured-bold" class="form-label" style="display:inline-table;font-weight: 900;" > Name(s) of the Insured. Please TICK everyone who was involved in the claim! </label>';
+      '<div  class="form-group"><label id="insured-bold" class="form-label" style="display:inline-table;font-weight: 900;" > Name(s) of the Insured. Please TICK everyone who was involved in the claim! </label><br><label id="selectAClaiment">Please select a claimant</label>';
     }
     policyDetails.forEach(function (element, index) {
       options +=
@@ -1595,7 +1649,7 @@ jQuery(document).ready(function ($) {
         element.ClientId +
         " data-PolicyNumber=" +
         InternalPolicyNumber +
-        "><span>" +
+        "><span class='policyHolder'>" +
         " " +
         element.FirstName +
         " " +
@@ -6080,14 +6134,7 @@ jQuery(document).ready(function ($) {
   
   $("#save_and_continue4").click(function () {
     
-    if ($("#section_4_header").length) {
-      console.log("update section ---->");
-      update_section_4();
-    } else {
-      add_section_4();
-      console.log("add section ---->");
-    }
-
+    
     if (
       $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() ==
       "Baggage - suitcase hasn't arrived on time"
@@ -6396,6 +6443,15 @@ jQuery(document).ready(function ($) {
       }
       
     }
+
+    if ($("#section_4_header").length) {
+      console.log("update section ----> 4");
+      update_section_4();
+    } else {
+      add_section_4();
+      console.log("add section ----> 4");
+    }
+
   });
 
 
@@ -6891,6 +6947,15 @@ jQuery(document).ready(function ($) {
      }
   });
   $(".save_and_continue5").click(function () {
+
+    if ($("#section_4_header").length) {
+      console.log("update section ----> 4");
+      update_section_4();
+    } else {
+      add_section_4();
+      console.log("add section ----> 4");
+    }
+
     if (jQuery(".fw-comments-wrapper").length > 0) {
       //will execute in ticket detail page senario
       if (
@@ -7234,11 +7299,25 @@ jQuery(document).ready(function ($) {
       }
     }
 
-    $("#section-6-button").css("background-color", "#4DC367");
-    $("#section-6-button").children(":first").removeClass("fa-plus");
-    $("#section-6-button").children(":first").removeClass("fa-minus");
-    $("#section-6-button").children(":first").addClass("fa-check");
-    //$("#section-6-button").removeAttr("data-toggle");
+    if ($(".edit_helpdesk_ticket").length > 0) {
+
+      $("#section-6-button").css("background-color", "#524954");
+      $("#section-6-button").children(":first").removeClass("fa-plus");
+      $("#section-6-button").children(":first").removeClass("fa-minus");
+      $("#section-6-button").children(":first").addClass("fa-pen");
+
+      
+
+    }else{
+      $("#section-6-button").css("background-color", "#524954");
+      $("#section-6-button").children(":first").removeClass("fa-plus");
+      $("#section-6-button").children(":first").removeClass("fa-minus");
+      $("#section-6-button").children(":first").addClass("fa-pen");
+
+      
+    }
+
+
   });
   function add_section_6() {
     var el_number = $("#collapseSection6")
@@ -13078,24 +13157,25 @@ jQuery(document).ready(function ($) {
       }
     }
   );
-  if ($(".edit_helpdesk_ticket").length > 0) {
-    if ($("#title").hasClass("ColumbusItaly")) {
-      $(
-        "<p id='summary_intro'>Ti preghiamo di dedicare un momento a ricontrollare le tue informazioni: l'accuratezza ci aiuta a elaborare rapidamente la tua richiesta</p>"
-      ).insertBefore("#helpdesk_ticket_submit");
-    } else {
-      $(
-        '<p id="summary_intro">Please take a moment to double check your information - accuracy helps us process your claim quickly.</p>'
-      ).insertBefore("#helpdesk_ticket_submit");
-    }
-    add_section_1();
-    add_section_2();
-    add_section_3();
-    add_section_4();
-    add_section_5();
-    add_section_6();
-    addDeclaraion();
-  }
+
+  // if ($(".edit_helpdesk_ticket").length > 0) {
+  //   if ($("#title").hasClass("ColumbusItaly")) {
+  //     $(
+  //       "<p id='summary_intro'>Ti preghiamo di dedicare un momento a ricontrollare le tue informazioni: l'accuratezza ci aiuta a elaborare rapidamente la tua richiesta</p>"
+  //     ).insertBefore("#helpdesk_ticket_submit");
+  //   } else {
+  //     $(
+  //       '<p id="summary_intro">Please take a moment to double check your information - accuracy helps us process your claim quickly.</p>'
+  //     ).insertBefore("#helpdesk_ticket_submit");
+  //   }
+  //   add_section_1();
+  //   add_section_2();
+  //   add_section_3();
+  //   add_section_4();
+  //   add_section_5();
+  //   add_section_6();
+  //   addDeclaraion();
+  // }
   // Get the files names and appened into the summary of ticket detail page
 
   function files_uploaded() {
@@ -13113,4 +13193,13 @@ jQuery(document).ready(function ($) {
   if (jQuery(".fw-comments-wrapper").length > 0) {
     files_uploaded();
   }
+
+  if ($(".edit_helpdesk_ticket").length > 0){
+    console.log("Inside Ending");
+
+    $("#section-7-button").click();
+    
+  }
+
+  
 });
