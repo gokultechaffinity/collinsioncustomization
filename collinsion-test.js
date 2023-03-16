@@ -6999,6 +6999,7 @@ jQuery(document).ready(function ($) {
     } else {
       //will excute in create new ticket senario
       fileUploadCallback();
+      $(".new-ticket-submit-button").trigger("click");
     }
   });
 
