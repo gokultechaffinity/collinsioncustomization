@@ -13207,7 +13207,6 @@ jQuery(document).ready(function ($) {
     files_uploaded();
   }
 
-  var replace = jQuery(".card-body.ins-card.collapse.show").html().slice(0,-10);
-  document.getElementById("collapseSection7").innerHTML = replace;
+  document.getElementById("collapseSection7").innerHTML = document.getElementById("collapseSection7").innerHTML.slice(0,-10);
 
 });
