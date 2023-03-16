@@ -650,7 +650,7 @@ jQuery(document).ready(function ($) {
   if ($(".edit_helpdesk_ticket").length > 0) {
     
     //essential - move to relevant sections
-    $(".card-body.ins-card:eq(0)").attr("id","collapseSection7");
+    // $(".card-body.ins-card:eq(0)").attr("id","collapseSection7");
     
     
     //removes divs causing duplicated lines
@@ -693,9 +693,9 @@ jQuery(document).ready(function ($) {
       add_section_6();
       console.log("add section ---->");
     }
-    $(".card.ins-card.order7").appendTo(".bg-grey.fw-sidebar");
-    $(".card-body.ins-card:eq(1)").insertAfter("#summary");
-    $("#collapseSection7").collapse();
+    // $(".card.ins-card.order7").appendTo(".bg-grey.fw-sidebar");
+    // $(".card-body.ins-card:eq(1)").insertAfter("#summary");
+    // $("#collapseSection7").collapse();
   }
 
   function checkedfilled(list_of_elements) {
@@ -13194,12 +13194,6 @@ jQuery(document).ready(function ($) {
     files_uploaded();
   }
 
-  if ($(".edit_helpdesk_ticket").length > 0){
-    console.log("Inside Ending");
 
-    $("#section-7-button").click();
-    
-  }
 
-  
 });
