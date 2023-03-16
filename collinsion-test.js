@@ -660,7 +660,7 @@ jQuery(document).ready(function ($) {
   if ($(".edit_helpdesk_ticket").length > 0) {
     
     //essential - move to relevant sections
-    // $(".card-body.ins-card:eq(0)").attr("id","collapseSection7");
+    $(".card-body.ins-card:eq(0)").attr("id","collapseSection7");
     
     
     //removes divs causing duplicated lines
@@ -710,9 +710,9 @@ jQuery(document).ready(function ($) {
       console.log("add section ---->");
     }
 
-    // $(".card.ins-card.order7").appendTo(".bg-grey.fw-sidebar");
-    // $(".card-body.ins-card:eq(1)").insertAfter("#summary");
-    // $("#collapseSection7").collapse();
+    $(".card.ins-card.order7").appendTo(".bg-grey.fw-sidebar");
+    $(".card-body.ins-card:eq(1)").insertAfter("#summary");
+    $("#collapseSection7").collapse();
 
   }
 
@@ -11838,8 +11838,7 @@ jQuery(document).ready(function ($) {
   });
 
   $(".new-ticket-submit-button").click(function () {
-    
-    var summary_div = document.getElementById("collapseSection7").innerHTML.replace("Submit","");
+    var summary_div = document.getElementById("collapseSection7").innerHTML;
     //add condition to check if information had already been appended, if so, clear description field and add new information
     if(($(".fr-element.fr-view").length) != 0){
       $(".fr-element.fr-view").empty();
@@ -13210,7 +13209,6 @@ jQuery(document).ready(function ($) {
   if ($(".edit_helpdesk_ticket").length > 0){
     console.log("Inside Ending")
     
-    //document.getElementById("collapseSection7").innerHTML =document.getElementById("collapseSection7").innerHTML.replace("Submit\n  \n"," ")
   }
   
 
