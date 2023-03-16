@@ -13209,7 +13209,7 @@ jQuery(document).ready(function ($) {
   if ($(".edit_helpdesk_ticket").length > 0){
     console.log("Inside Ending")
     
-    document.getElementById("collapseSection7").innerHTML =document.getElementById("collapseSection7").innerHTML.replace("Submit\n  \n","")
+    //document.getElementById("collapseSection7").innerHTML =document.getElementById("collapseSection7").innerHTML.replace("Submit\n  \n"," ")
   }
   
 
