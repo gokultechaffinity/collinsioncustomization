@@ -693,7 +693,7 @@ jQuery(document).ready(function ($) {
       add_section_6();
       console.log("add section ---->");
     }
-    // $(".card.ins-card.order7").appendTo(".bg-grey.fw-sidebar");
+    $(".card.ins-card.order7").appendTo(".bg-grey.fw-sidebar");
     // $(".card-body.ins-card:eq(1)").insertAfter("#summary");
     // $("#collapseSection7").collapse();
   }
@@ -13158,25 +13158,7 @@ jQuery(document).ready(function ($) {
     }
   );
 
-  // if ($(".edit_helpdesk_ticket").length > 0) {
-  //   if ($("#title").hasClass("ColumbusItaly")) {
-  //     $(
-  //       "<p id='summary_intro'>Ti preghiamo di dedicare un momento a ricontrollare le tue informazioni: l'accuratezza ci aiuta a elaborare rapidamente la tua richiesta</p>"
-  //     ).insertBefore("#helpdesk_ticket_submit");
-  //   } else {
-  //     $(
-  //       '<p id="summary_intro">Please take a moment to double check your information - accuracy helps us process your claim quickly.</p>'
-  //     ).insertBefore("#helpdesk_ticket_submit");
-  //   }
-  //   add_section_1();
-  //   add_section_2();
-  //   add_section_3();
-  //   add_section_4();
-  //   add_section_5();
-  //   add_section_6();
-  //   addDeclaraion();
-  // }
-  // Get the files names and appened into the summary of ticket detail page
+  
 
   function files_uploaded() {
     $("p").remove(".section_5_line");
