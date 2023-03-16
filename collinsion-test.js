@@ -6977,7 +6977,6 @@ jQuery(document).ready(function ($) {
         $("#new_helpdesk_note #attachments_list .proper-attachments-list")
           .length
       ) {
-        update_section_4();
         fileUploadCallback();
       } else if ($(".fw-comments-wrapper .fw-attachment-item").length) {
         //Need to add another condition for already had div if div has length then we need to open next section
@@ -7040,8 +7039,10 @@ jQuery(document).ready(function ($) {
         let ele = ["api_call_failed_filelist"];
         clearError(ele);
         if ($("#section_5_header").length) {
+          update_section_4();
           update_section_5();
         } else {
+          add_section_4();
           add_section_5();
         }
         console.log("files --->", files);
