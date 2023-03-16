@@ -898,7 +898,7 @@ jQuery(document).ready(function ($) {
   if ($(".edit_helpdesk_ticket").length > 0) {
 
     $("#section-4-button").click();
-    $("#section-7-button").click();
+    // $("#section-7-button").click();
   }else{
     $("#section-1-button").click();
   }
