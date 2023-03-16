@@ -6991,7 +6991,8 @@ jQuery(document).ready(function ($) {
           .length
       ) {
         fileUploadCallback();
-        $(".new-ticket-submit-button").trigger("click");
+        $(".btn.fw-primary-button.ticket-detail-dummy.for-section-7").click();
+        // $(".new-ticket-submit-button").trigger("click");
       } else if ($(".fw-comments-wrapper .fw-attachment-item").length) {
         //Need to add another condition for already had div if div has length then we need to open next section
         open_next(5);
@@ -6999,7 +7000,8 @@ jQuery(document).ready(function ($) {
     } else {
       //will excute in create new ticket senario
       fileUploadCallback();
-      $(".new-ticket-submit-button").trigger("click");
+      $(".btn.fw-primary-button.ticket-detail-dummy.for-section-7").click();
+      // $(".new-ticket-submit-button").trigger("click");
     }
   });
 
