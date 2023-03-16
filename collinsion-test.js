@@ -13204,7 +13204,9 @@ jQuery(document).ready(function ($) {
   }
 
   if ($(".edit_helpdesk_ticket").length > 0){
-    console.log("Inside Ending")
+    console.log("Inside Ending");
+
+    $("#section-7-button").click();
     
   }
   
