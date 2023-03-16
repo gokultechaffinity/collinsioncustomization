@@ -713,6 +713,9 @@ jQuery(document).ready(function ($) {
     $(".card.ins-card.order7").appendTo(".bg-grey.fw-sidebar");
     $(".card-body.ins-card:eq(1)").insertAfter("#summary");
 
+    var replace = $(".card-body.ins-card.collapse.show").html().slice(0,-10);
+    document.getElementById("collapseSection7").innerHTML = replace;
+
   }
 
   function checkedfilled(list_of_elements) {
@@ -6991,8 +6994,6 @@ jQuery(document).ready(function ($) {
           .length
       ) {
         fileUploadCallback();
-        $(".btn.fw-primary-button.ticket-detail-dummy.for-section-7").click();
-        // $(".new-ticket-submit-button").trigger("click");
       } else if ($(".fw-comments-wrapper .fw-attachment-item").length) {
         //Need to add another condition for already had div if div has length then we need to open next section
         open_next(5);
@@ -7000,8 +7001,6 @@ jQuery(document).ready(function ($) {
     } else {
       //will excute in create new ticket senario
       fileUploadCallback();
-      $(".btn.fw-primary-button.ticket-detail-dummy.for-section-7").click();
-      // $(".new-ticket-submit-button").trigger("click");
     }
   });
 
