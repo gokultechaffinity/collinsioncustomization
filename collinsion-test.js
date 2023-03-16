@@ -6158,13 +6158,7 @@ jQuery(document).ready(function ($) {
   
   $("#save_and_continue4").click(function () {
     
-    if ($("#section_4_header").length) {
-      console.log("update section ----> 4");
-      update_section_4();
-    } else {
-      add_section_4();
-      console.log("add section ----> 4");
-    }
+    
 
     if (
       $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() ==
@@ -6474,6 +6468,15 @@ jQuery(document).ready(function ($) {
       }
       
     }
+
+    if ($("#section_4_header").length) {
+      console.log("update section ----> 4");
+      update_section_4();
+    } else {
+      add_section_4();
+      console.log("add section ----> 4");
+    }
+    
   });
 
 
@@ -6980,7 +6983,7 @@ jQuery(document).ready(function ($) {
       add_section_4();
       console.log("add section ---->");
     }
-    
+
     if (jQuery(".fw-comments-wrapper").length > 0) {
       console.log("updating section 4")
       //will execute in ticket detail page senario
