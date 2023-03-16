@@ -712,8 +712,7 @@ jQuery(document).ready(function ($) {
 
     $(".card.ins-card.order7").appendTo(".bg-grey.fw-sidebar");
     $(".card-body.ins-card:eq(1)").insertAfter("#summary");
-
-    
+    $("#collapseSection7").collapse();
 
   }
 
@@ -13206,8 +13205,7 @@ jQuery(document).ready(function ($) {
     files_uploaded();
   }
 
-  $("#section-7-button").click();
-  $("#section-7-button").click();
+  
   // document.getElementById("collapseSection7").innerHTML = document.getElementById("collapseSection7").innerHTML.slice(0,-10);
 
 });
