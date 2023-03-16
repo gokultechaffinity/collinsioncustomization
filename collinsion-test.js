@@ -13207,6 +13207,6 @@ jQuery(document).ready(function ($) {
     files_uploaded();
   }
 
-  document.getElementById("collapseSection7").innerHTML = document.getElementById("collapseSection7").innerHTML.slice(0,-10);
+  // document.getElementById("collapseSection7").innerHTML = document.getElementById("collapseSection7").innerHTML.slice(0,-10);
 
 });
