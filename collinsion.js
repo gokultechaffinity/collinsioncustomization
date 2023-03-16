@@ -7195,7 +7195,7 @@ jQuery(document).ready(function ($) {
 
       payment_list = [
         "helpdesk_ticket_custom_field_cf_name_of_account_holder_2321673",
-        "helpdesk_ticket_custom_field_cf_account_number_2321673",
+        "helpdesk_ticket_custom_field_cf_iban_number_2321673",
       ];
 
       if (checkedfilled(payment_list) == true) {
