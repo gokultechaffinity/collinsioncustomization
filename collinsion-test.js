@@ -660,7 +660,7 @@ jQuery(document).ready(function ($) {
   if ($(".edit_helpdesk_ticket").length > 0) {
     
     //essential - move to relevant sections
-    $(".card-body.ins-card:eq(0)").attr("id","collapseSection7");
+    // $(".card-body.ins-card:eq(0)").attr("id","collapseSection7");
     
     
     //removes divs causing duplicated lines
@@ -710,9 +710,9 @@ jQuery(document).ready(function ($) {
       console.log("add section ---->");
     }
 
-    $(".card.ins-card.order7").appendTo(".bg-grey.fw-sidebar");
-    $(".card-body.ins-card:eq(1)").insertAfter("#summary");
-    $("#collapseSection7").collapse();
+    // $(".card.ins-card.order7").appendTo(".bg-grey.fw-sidebar");
+    // $(".card-body.ins-card:eq(1)").insertAfter("#summary");
+    // $("#collapseSection7").collapse();
 
   }
 
