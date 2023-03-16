@@ -686,29 +686,29 @@ jQuery(document).ready(function ($) {
 
     //add sections
 
-    // if ($("#section_4_header").length) {
-    //   console.log("update section ---->");
-    //   update_section_4();
-    // } else {
-    //   add_section_4();
-    //   console.log("add section ---->");
-    // }
+    if ($("#section_4_header").length) {
+      console.log("update section ----> 4");
+      update_section_4();
+    } else {
+      add_section_4();
+      console.log("add section ----> 4");
+    }
 
-    // if ($("#section_5_header").length) {
-    //   console.log("update section ---->");
-    //   update_section_5();
-    // } else {
-    //   add_section_5();
-    //   console.log("add section ---->");
-    // }
+    if ($("#section_5_header").length) {
+      console.log("update section ---->");
+      update_section_5();
+    } else {
+      add_section_5();
+      console.log("add section ---->");
+    }
 
-    // if ($("#section_6_header").length) {
-    //   console.log("update section ---->");
-    //   update_section_6();
-    // } else {
-    //   add_section_6();
-    //   console.log("add section ---->");
-    // }
+    if ($("#section_6_header").length) {
+      console.log("update section ---->");
+      update_section_6();
+    } else {
+      add_section_6();
+      console.log("add section ---->");
+    }
 
     $(".card.ins-card.order7").appendTo(".bg-grey.fw-sidebar");
     $(".card-body.ins-card:eq(1)").insertAfter("#summary");
@@ -6159,11 +6159,11 @@ jQuery(document).ready(function ($) {
   $("#save_and_continue4").click(function () {
     
     if ($("#section_4_header").length) {
-      console.log("update section ---->");
+      console.log("update section ----> 4");
       update_section_4();
     } else {
       add_section_4();
-      console.log("add section ---->");
+      console.log("add section ----> 4");
     }
 
     if (
@@ -6972,7 +6972,15 @@ jQuery(document).ready(function ($) {
 
   $(".save_and_continue5").click(function () {
     console.log("updating section 4");
-    update_section_4();
+
+    if ($("#section_4_header").length) {
+      console.log("update section ---->");
+      update_section_4();
+    } else {
+      add_section_4();
+      console.log("add section ---->");
+    }
+    
     if (jQuery(".fw-comments-wrapper").length > 0) {
       console.log("updating section 4")
       //will execute in ticket detail page senario
