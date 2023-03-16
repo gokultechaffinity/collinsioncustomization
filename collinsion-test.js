@@ -661,8 +661,7 @@ jQuery(document).ready(function ($) {
     
     //essential - move to relevant sections
     $(".card-body.ins-card:eq(0)").attr("id","collapseSection7");
-    $(".card.ins-card.order7").appendTo(".bg-grey.fw-sidebar");
-    $(".card-body.ins-card:eq(1)").insertAfter("#summary");
+    
     
     //removes divs causing duplicated lines
     $("div.section_4_line").remove();
@@ -711,7 +710,8 @@ jQuery(document).ready(function ($) {
       console.log("add section ---->");
     }
 
-    
+    $(".card.ins-card.order7").appendTo(".bg-grey.fw-sidebar");
+    $(".card-body.ins-card:eq(1)").insertAfter("#summary");
 
   }
 
