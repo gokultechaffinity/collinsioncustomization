@@ -13207,7 +13207,7 @@ jQuery(document).ready(function ($) {
   }
 
   if ($(".edit_helpdesk_ticket").length > 0){
-    $("#collapseSection7").collapse();
+    $("#collapseSection7").collapse("hide");
   }
   // document.getElementById("collapseSection7").innerHTML = document.getElementById("collapseSection7").innerHTML.slice(0,-10);
 
