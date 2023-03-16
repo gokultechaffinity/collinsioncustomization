@@ -13207,6 +13207,7 @@ jQuery(document).ready(function ($) {
   }
 
   $("#section-7-button").click();
+  $("#section-7-button").click();
   // document.getElementById("collapseSection7").innerHTML = document.getElementById("collapseSection7").innerHTML.slice(0,-10);
 
 });
