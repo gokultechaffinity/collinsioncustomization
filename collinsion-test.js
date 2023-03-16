@@ -6972,11 +6972,11 @@ jQuery(document).ready(function ($) {
     if (jQuery(".fw-comments-wrapper").length > 0) {
       //will execute in ticket detail page senario
       if (
-        $("#new_helpdesk_note #attachments_list .proper-attachments-list")
+        $("#new_helpdesk_note#attachments_list.proper-attachments-list")
           .length
       ) {
         fileUploadCallback();
-      } else if ($(".fw-comments-wrapper .fw-attachment-item").length) {
+      } else if ($(".fw-comments-wrapper.fw-attachment-item").length) {
         //Need to add another condition for already had div if div has length then we need to open next section
         open_next(5);
         $("#section-5-button").children(":first").removeClass("fa-minus");
