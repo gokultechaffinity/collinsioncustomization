@@ -693,7 +693,7 @@ jQuery(document).ready(function ($) {
       add_section_6();
       console.log("add section ---->");
     }
-    $(".card.ins-card.order7").appendTo(".bg-grey.fw-sidebar");
+    //$(".card.ins-card.order7").appendTo(".bg-grey.fw-sidebar");
     $(".card-body.ins-card:eq(1)").insertAfter("#summary");
     // $("#collapseSection7").collapse();
   }
