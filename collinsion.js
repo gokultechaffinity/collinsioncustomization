@@ -13182,7 +13182,7 @@ jQuery(document).ready(function ($) {
     $(".card.ins-card.order7").appendTo(".bg-grey.fw-sidebar");
     $("#collapseSection7").appendTo(".bg-grey.fw-sidebar");
     $(".btn.fw-primary-button.new-ticket-dummy.for-section-7").appendTo("#collapseSection7");
-    $(".btn.fw-primary-button.new-ticket-dummy.for-section-7").show()
+    $(".btn.fw-primary-button.new-ticket-dummy.for-section-7").show();
   } 
    
 
