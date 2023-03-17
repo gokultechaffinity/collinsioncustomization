@@ -13179,8 +13179,8 @@ jQuery(document).ready(function ($) {
 
     //essential - move to relevant sections
     $(".card-body.ins-card:eq(0)").attr("id","collapseSection7");
-    $("#collapseSection7").appendTo(".bg-grey.fw-sidebar");
     $(".card.ins-card.order7").appendTo(".bg-grey.fw-sidebar");
+    $("#collapseSection7").appendTo(".bg-grey.fw-sidebar");
     $(".btn.fw-primary-button.new-ticket-dummy.for-section-7").appendTo("#collapseSection7");
   }
    
