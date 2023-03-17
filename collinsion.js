@@ -649,8 +649,6 @@ jQuery(document).ready(function ($) {
   //after sections created, check if we are in edit page, then move summary around, and change button colors, add sections
   if ($(".edit_helpdesk_ticket").length > 0) {
     
-    //essential - move to relevant sections
-    $(".card-body.ins-card:eq(0)").attr("id","collapseSection7");
     
     
     //removes divs causing duplicated lines
@@ -693,8 +691,7 @@ jQuery(document).ready(function ($) {
       add_section_6();
       console.log("add section ---->");
     }
-    $("#collapseSection7").appendTo(".bg-grey.fw-sidebar");
-    $(".card-body.ins-card:eq(1)").insertAfter("#summary");
+    
     // $("#collapseSection7").collapse();
   }
 
@@ -13176,6 +13173,16 @@ jQuery(document).ready(function ($) {
     files_uploaded();
   }
 
+  if ($(".edit_helpdesk_ticket").length > 0){
+    console.log("Inside Ending");
+    console.log("Moving around");
 
+    //essential - move to relevant sections
+  $(".card-body.ins-card:eq(0)").attr("id","collapseSection7");
+  $("#collapseSection7").appendTo(".bg-grey.fw-sidebar");
+  $(".card-body.ins-card:eq(1)").insertAfter("#summary"); 
+    
+  }
+   
 
 });
