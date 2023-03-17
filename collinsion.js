@@ -13178,9 +13178,9 @@ jQuery(document).ready(function ($) {
     console.log("Moving around");
 
     //essential - move to relevant sections
-  $(".card-body.ins-card:eq(0)").attr("id","collapseSection7");
-  $("#collapseSection7").appendTo(".bg-grey.fw-sidebar");
-  $(".card-body.ins-card:eq(1)").insertAfter("#summary"); 
+  // $(".card-body.ins-card:eq(0)").attr("id","collapseSection7");
+  // $("#collapseSection7").appendTo(".bg-grey.fw-sidebar");
+  // $(".card-body.ins-card:eq(1)").insertAfter("#summary"); 
     
   }
    
