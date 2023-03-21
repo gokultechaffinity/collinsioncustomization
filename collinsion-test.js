@@ -6900,6 +6900,7 @@ jQuery(document).ready(function ($) {
       let formatValidateCounter=0;
       for (var i = 0; i < elem.files.length; ++i) {
         fileExtension = elem.files[i].name.split(".").pop();
+        fileExtension=fileExtension.toLowerCase();
         if (fileExtensionArray.includes(fileExtension)) {
           let checkingFile=elem.files[i].name.split(".");
           console.log("file name in save draft flow",elem.files[i].name)
@@ -7027,6 +7028,7 @@ jQuery(document).ready(function ($) {
       let formatValidateCounter=0;
       for (var i = 0; i < elem.files.length; ++i) {
         fileExtension = elem.files[i].name.split(".").pop();
+        fileExtension=fileExtension.toLowerCase();
         if (fileExtensionArray.includes(fileExtension)) {
           let checkingFile=elem.files[i].name.split(".");
           console.log("file name ",elem.files[i].name)
