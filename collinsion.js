@@ -6963,6 +6963,7 @@ jQuery(document).ready(function ($) {
       } else if ($(".fw-comments-wrapper .fw-attachment-item").length) {
         //Need to add another condition for already had div if div has length then we need to open next section
         open_next(5);
+        fileUploadCallback();
       }
     } else {
       //will excute in create new ticket senario
