@@ -13187,7 +13187,6 @@ jQuery(document).ready(function ($) {
     $(".btn.fw-primary-button.new-ticket-dummy.for-section-7").appendTo("#collapseSection7");
     $(".btn.fw-primary-button.new-ticket-dummy.for-section-7").show();
 
-    $(".files-container-dummy").append('<div class="invalid-feedback api_call_failed_filelist">API call failed</div>');
   } 
    
 
