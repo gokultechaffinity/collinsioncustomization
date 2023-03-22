@@ -7442,17 +7442,7 @@ jQuery(document).ready(function ($) {
               );
             }
           } else {
-            if ($("#title").hasClass("ColumbusItaly")) {
-              addErrorMessage(
-                "api_call_failed_banvalidate",
-                "Impossibile elaborare le informazioni sul conto bancario. Si prega di controllare le informazioni inserite e riprovare."
-              );
-            } else {
-              addErrorMessage(
-                "api_call_failed_banvalidate",
-                "Unable to process the bank account information. Please check the information entered and try again."
-              );
-            }
+            
           }
         } else {
           let ele = ["api_call_failed_banvalidate"];
