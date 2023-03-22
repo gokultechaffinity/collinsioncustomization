@@ -94,31 +94,7 @@ jQuery(document).ready(function ($) {
         .append(
           '<div class="invalid-feedback captcha_failed">API call failed</div>'
         );
-
-        //test
-
-        $(
-          "#invalid-feedback helpdesk_ticket_custom_field_cf_reason_for_claim_2321673"
-        )
-          .closest(".form-group")
-          .append(
-            '<div class="invalid-feedback api_call_failed_rc">API call failed</div>'
-          );
-        $("#attachments_list")
-          .closest(".form-group")
-          .append(
-            '<div class="invalid-feedback api_call_failed_filelist">API call failed</div>'
-          );
-        $("#helpdesk_ticket_custom_field_cf_iban_number_2321673")
-          .closest(".form-group")
-          .append(
-            '<div class="invalid-feedback api_call_failed_banvalidate">API call failed</div>'
-          );
-        $("#helpdesk_ticket_custom_field_cf_sort_code659991_2321673")
-          .closest(".form-group")
-          .append(
-            '<div class="invalid-feedback api_call_failed_sortcodevalidate">API call failed</div>'
-          );
+        
     }
   }
 
@@ -6990,7 +6966,6 @@ jQuery(document).ready(function ($) {
       } else if ($(".fw-comments-wrapper .fw-attachment-item").length) {
         //Need to add another condition for already had div if div has length then we need to open next section
         open_next(5);
-        fileUploadCallback();
       }
     } else {
       //will excute in create new ticket senario
