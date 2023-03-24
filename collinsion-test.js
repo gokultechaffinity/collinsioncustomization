@@ -609,39 +609,7 @@ jQuery(document).ready(function ($) {
   }
  
   
-  function thisDiv(number, title) {
-    $(".for-section-" + number).wrapAll(
-      '<div class="collapse order' +
-        number +
-        '" id="collapseSection' +
-        number +
-        '" data-parent="#accordion" aria-labelledby="overall_div_' +
-        number +
-        '"><div class="card-body ins-card">'
-    );
-    $(
-      '<div class="card ins-card order' +
-        number +
-        '">' +
-        '<div id="overall_div_' +
-        number +
-        '" class="card-header ins-div"> ' +
-        '<div class="col-md-6">' +
-        '<h5 class="mb-0 header-text">' +
-        title +
-        "</h5></div>" +
-        '<div class="col-md-6" style="float: right;"> ' +
-        '<div id="section-' +
-        number +
-        '-button" class="ins-col-test collapsed  col align-self-end"  data-target="#collapseSection' +
-        number +
-        '" aria-expanded="false">' +
-        '<span class="plus-sign fas fa-plus"></span>' +
-        "</div>" +
-        "</div>" +
-        "</div>"
-    ).insertBefore("#collapseSection" + number);
-  }
+ 
 
 
   //check if Italian Portal for headings
