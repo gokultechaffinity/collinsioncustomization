@@ -617,8 +617,10 @@ jQuery(document).ready(function ($) {
         number +
         '" data-parent="#accordion" aria-labelledby="overall_div_' +
         number +
-        '"><div class="card-body ins-card">' +  
-        '<div class="card ins-card order' +
+        '"><div class="card-body ins-card">'
+    );
+    $(
+      '<div class="card ins-card order' +
         number +
         '">' +
         '<div id="overall_div_' +
@@ -638,10 +640,7 @@ jQuery(document).ready(function ($) {
         "</div>" +
         "</div>" +
         "</div>"
-    );
-    // $(
-      
-    // ).insertBefore("#collapseSection" + number);
+    ).insertBefore("#collapseSection" + number);
   }
 
 
