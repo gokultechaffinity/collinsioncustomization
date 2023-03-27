@@ -608,7 +608,28 @@ jQuery(document).ready(function ($) {
     $(".invalid-feedback." + ID).text(errorMessage);
   }
  
-  
+  function thisDiv(number, title) {
+		$(".for-section-" + number).wrapAll(
+		'<div id="collapseSection' +number +'" class="collapse order' +number +' wrap_div_'+number+'" data-parent="#accordion" aria-labelledby="overall_div_' +number +'">'
+			+'<div class="card-body">'
+		);
+		$(
+		
+			'<div id="overall_div_' +number +'" class="card-header ins-div wrap_div_'+number+'"> ' +
+					'<div class="col-md-6">' +
+						'<h5 class="mb-0 header-text">' +title +"</h5>"+
+					"</div>" +
+			'	<div class="col-md-6" style="float: right;"> ' +
+					'<div id="section-' +number +'-button" class="ins-col-test collapsed  col align-self-end"  data-target="#collapseSection' +number +'" aria-expanded="false">' +
+						'<span class="plus-sign fas fa-plus"></span>' +
+					"</div>" +
+			"	</div>" +
+			"</div>"
+		).insertBefore("#collapseSection" + number);
+        $(".wrap_div_"+number).wrapAll(
+            '<div class="card ins-card order' +number +'">'
+        )
+	}
  
 
 
