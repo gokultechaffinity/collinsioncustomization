@@ -1801,7 +1801,7 @@ jQuery(document).ready(function ($) {
     ).length;
 
     if (len <= 0) {
-      if ($("#title").hasClass("ColumbusItaly")) {
+      if ("#title".hasClass("ColumbusItaly")) {
         addErrorMessage("check-finder", "Seleziona almeno un cliente");
       } else {
         addErrorMessage("check-finder", "Please select at least one client");
