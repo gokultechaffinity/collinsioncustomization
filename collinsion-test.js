@@ -6907,7 +6907,7 @@ jQuery(document).ready(function ($) {
         return a + b;
       }, 0);
       console.log("sum tottal--->", sum);
-      if (sum <= 4200000) {
+      if (sum <= 5242880) {
         let ele = ["api_call_failed_filelist"];
         clearError(ele);
         if ($("#section_5_header").length) {
@@ -6935,11 +6935,11 @@ jQuery(document).ready(function ($) {
         }
       } else {
         console.log(
-          " --------- Need to show error max file size should not more than 4 MB ----------------"
+          " --------- Need to show error max file size should not more than 5 MB ----------------"
         );
         addErrorMessage(
           "api_call_failed_filelist",
-          "File size cannot exceed 4 MB"
+          "File size cannot exceed 5 MB"
         );
       }
     } 
@@ -7066,11 +7066,11 @@ jQuery(document).ready(function ($) {
         }
       } else {
         console.log(
-          " --------- Need to show error max file size should not more than 4 MB ----------------"
+          " --------- Need to show error max file size should not more than 5 MB ----------------"
         );
         addErrorMessage(
           "api_call_failed_filelist",
-          "File size cannot exceed 4 MB"
+          "File size cannot exceed 5 MB"
         );
       }
     }
