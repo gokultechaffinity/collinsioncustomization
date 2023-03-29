@@ -7036,7 +7036,7 @@ jQuery(document).ready(function ($) {
         return a + b;
       }, 0);
       console.log("sum tottal--->", sum);
-      if (sum <= 4200000) {
+      if (sum <= 5242880) {
         let ele = ["api_call_failed_filelist"];
         clearError(ele);
         if ($("#section_5_header").length) {
