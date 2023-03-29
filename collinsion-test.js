@@ -605,7 +605,7 @@ jQuery(document).ready(function ($) {
   function addErrorMessage(ID, errorMessage) {
     $("+" + ID).addClass("invalid");
     $(".invalid-feedback." + ID).addClass("d-block");
-    $(".invalid-feedback." + ID).text(errorMessage);
+    $(".invalid-feedback." + ID).html(errorMessage);
   }
  
   function thisDiv(number, title) {
@@ -6662,7 +6662,7 @@ jQuery(document).ready(function ($) {
           )
           .children("div:nth-child(" + i + ")")
           .children("label")
-          .text();
+          .text();paragraph
         var value = $("#collapseSection4")
           .children(".card-body.ins-card")
           .children(
