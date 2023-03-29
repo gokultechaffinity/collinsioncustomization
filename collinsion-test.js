@@ -6930,7 +6930,7 @@ jQuery(document).ready(function ($) {
           } else {
             addErrorMessage(
               "api_call_failed_filelist",
-              "<p>WARNING - Unsupported File Format attached. Please remove and try again</p><br><p>We support the following file formats - jpeg, jpg, pnh, bmp, pdf,doc, docx, xls and xlsx.</p>"
+              "<p style='color:red;' >WARNING - Unsupported File Format attached. Please remove and try again</p><br><p style='color:red;'>We support the following file formats - jpeg, jpg, pnh, bmp, pdf,doc, docx, xls and xlsx.</p>"
             );
           }
         }
@@ -7062,7 +7062,7 @@ jQuery(document).ready(function ($) {
           console.log("Show Error unsupported File Format ");
           addErrorMessage(
             "api_call_failed_filelist",
-            "<p>WARNING - Unsupported File Format attached. Please remove and try again</p><br><p>We support the following file formats - jpeg, jpg, pnh, bmp, pdf,doc, docx, xls and xlsx.</p>"
+            "<p style='color:red;' >WARNING - Unsupported File Format attached. Please remove and try again</p><br><p style='color:red;'>We support the following file formats - jpeg, jpg, pnh, bmp, pdf,doc, docx, xls and xlsx.</p>"
           );
         }
       } else {
