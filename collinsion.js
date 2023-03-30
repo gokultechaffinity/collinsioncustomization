@@ -715,15 +715,14 @@ jQuery(document).ready(function ($) {
     booking_date = new Date($("#" + booking_date).val());
     incident_date = new Date($("#" + incident_date).val());
 
-    if (
-      departure_date < return_date &&
-      return_date > departure_date &&
-      booking_date <= departure_date &&
-      incident_date <= return_date
-    ) {
-      result = true;
-    }
-
+    // if (
+    //   //departure_date < return_date &&
+    //   // return_date > departure_date 
+    //   //booking_date <= departure_date &&
+    //   //incident_date <= return_date
+    // ) { result = true;}
+    result = true;
+    
     return result;
   }
   function show_and_hide(
