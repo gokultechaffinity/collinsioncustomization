@@ -6912,7 +6912,7 @@ jQuery(document).ready(function ($) {
           if ($("#title").hasClass("ColumbusItaly")) {
             addErrorMessage(
               "api_call_failed_filelist",
-              "Formato file non supportato. Formati supportati: test(.gif),jpeg,jpg,png,bmp,tiff,tif,pdf,doc,docx,xls,xlsx,txt,odt"
+              "<p style='color:red;' >ATTENZIONE - Formato del file non supportato. Per favore rimuovere e provare di nuovo</p><br><p style='color:red;'>I seguenti formati sono supportati - jpeg, jpg, pnh, bmp, pdf,doc, docx, xls and xlsx.</p>"
             );
           } else {
             addErrorMessage(
@@ -7043,10 +7043,17 @@ jQuery(document).ready(function ($) {
           $("#section-5-button").children(":first").addClass("fa-check");
         } else {
           console.log("Show Error unsupported File Format ");
-          addErrorMessage(
-            "api_call_failed_filelist",
-            "<p style='color:red;' >WARNING - Unsupported File Format attached. Please remove and try again</p><br><p style='color:red;'>We support the following file formats - jpeg, jpg, pnh, bmp, pdf,doc, docx, xls and xlsx.</p>"
-          );
+          if ($("#title").hasClass("ColumbusItaly")) {
+            addErrorMessage(
+              "api_call_failed_filelist",
+              "<p style='color:red;' >ATTENZIONE - Formato del file non supportato. Per favore rimuovere e provare di nuovo</p><br><p style='color:red;'>I seguenti formati sono supportati - jpeg, jpg, pnh, bmp, pdf,doc, docx, xls and xlsx.</p>"
+            );
+          } else {
+            addErrorMessage(
+              "api_call_failed_filelist",
+              "<p style='color:red;' >WARNING - Unsupported File Format attached. Please remove and try again</p><br><p style='color:red;'>We support the following file formats - jpeg, jpg, pnh, bmp, pdf,doc, docx, xls and xlsx.</p>"
+            );
+          }
         }
       } else {
         console.log(
