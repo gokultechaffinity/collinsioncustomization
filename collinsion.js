@@ -601,7 +601,7 @@ jQuery(document).ready(function ($) {
   function addErrorMessage(ID, errorMessage) {
     $("+" + ID).addClass("invalid");
     $(".invalid-feedback." + ID).addClass("d-block");
-    $(".invalid-feedback." + ID).text(errorMessage);
+    $(".invalid-feedback." + ID).html(errorMessage);
   }
  
   function thisDiv(number, title) {
@@ -6917,7 +6917,7 @@ jQuery(document).ready(function ($) {
           } else {
             addErrorMessage(
               "api_call_failed_filelist",
-              "Unsupported File Format. Supported formats: test(.gif),jpeg,jpg,png,bmp,tiff,tif,pdf,doc,docx,xls,xlsx,txt,odt"
+              "<p style='color:red;' >WARNING - Unsupported File Format attached. Please remove and try again</p><br><p style='color:red;'>We support the following file formats - jpeg, jpg, pnh, bmp, pdf,doc, docx, xls and xlsx.</p>"
             );
           }
         }
@@ -7045,7 +7045,7 @@ jQuery(document).ready(function ($) {
           console.log("Show Error unsupported File Format ");
           addErrorMessage(
             "api_call_failed_filelist",
-            "Unsupported File Format. Supported formats: test(.gif),jpeg,jpg,png,bmp,tiff,tif,pdf,doc,docx,xls,xlsx,txt,odt"
+            "<p style='color:red;' >WARNING - Unsupported File Format attached. Please remove and try again</p><br><p style='color:red;'>We support the following file formats - jpeg, jpg, pnh, bmp, pdf,doc, docx, xls and xlsx.</p>"
           );
         }
       } else {
