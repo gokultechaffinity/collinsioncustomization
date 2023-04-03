@@ -1,10 +1,6 @@
 //collinsion live
 jQuery(document).ready(function ($) {
   let code;
-if (jQuery("#notice").text() == '  The note has been added to your ticket.     ') {
-jQuery("#notice").html('The File has uploaded. Please proceed with payment section ');
-open_next(5);
-}
   var italy_titles = [
     "In merito alla tua polizza",
     "Su di te",
