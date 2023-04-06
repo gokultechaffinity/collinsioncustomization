@@ -6928,7 +6928,7 @@ jQuery(document).ready(function ($) {
         );
         addErrorMessage(
           "api_call_failed_filelist",
-          "File size cannot exceed 4 MB"
+          "File size cannot exceed 5 MB"
         );
       }
     } 
@@ -7065,7 +7065,7 @@ jQuery(document).ready(function ($) {
         );
         addErrorMessage(
           "api_call_failed_filelist",
-          "File size cannot exceed 4 MB"
+          "File size cannot exceed 5 MB"
         );
       }
     }
