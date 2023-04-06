@@ -6895,7 +6895,7 @@ jQuery(document).ready(function ($) {
         return a + b;
       }, 0);
       console.log("sum tottal--->", sum);
-      if (sum <= 4200000) {
+      if (sum <= 5242880) {
         let ele = ["api_call_failed_filelist"];
         clearError(ele);
         if ($("#section_5_header").length) {
@@ -6906,7 +6906,8 @@ jQuery(document).ready(function ($) {
         if (!FileExtensionValidateCounter&&!formatValidateCounter) {
           console.log("Make AN API");
           // jQuery("#overlay").removeClass("d-none").addClass("show loader-text");
-          getUploadFiles(elem.files, ".save_draft_5");
+        //   getUploadFiles(elem.files, ".save_draft_5");
+        $(".new-ticket-submit-button").trigger("click");
         } else {
           console.log("Show Error unsupported File Format ");
           if ($("#title").hasClass("ColumbusItaly")) {
@@ -6923,7 +6924,7 @@ jQuery(document).ready(function ($) {
         }
       } else {
         console.log(
-          " --------- Need to show error max file size should not more than 4 MB ----------------"
+          " --------- Need to show error max file size should not more than 5 MB ----------------"
         );
         addErrorMessage(
           "api_call_failed_filelist",
@@ -7020,7 +7021,7 @@ jQuery(document).ready(function ($) {
         return a + b;
       }, 0);
       console.log("sum tottal--->", sum);
-      if (sum <= 4200000) {
+      if (sum <= 5242880) {
         let ele = ["api_call_failed_filelist"];
         clearError(ele);
         if ($("#section_5_header").length) {
@@ -7032,7 +7033,10 @@ jQuery(document).ready(function ($) {
         if (!FileExtensionValidateCounter&&!formatValidateCounter) {
           console.log("Make AN API");
           // jQuery("#overlay").removeClass("d-none").addClass("show loader-text");
-          getUploadFiles(elem.files, ".save_and_continue5");
+        //   getUploadFiles(elem.files, ".save_and_continue5");
+        if (jQuery(".fw-comments-wrapper").length > 0) {
+            $("#new_helpdesk_note #helpdesk_note_submit").trigger("click");
+          } 
           open_next(5);
           $("#section-4-button").css("background-color", "#4DC367");
           $("#section-5-button").css("background-color", "#4DC367");
@@ -7057,7 +7061,7 @@ jQuery(document).ready(function ($) {
         }
       } else {
         console.log(
-          " --------- Need to show error max file size should not more than 4 MB ----------------"
+          " --------- Need to show error max file size should not more than 5 MB ----------------"
         );
         addErrorMessage(
           "api_call_failed_filelist",
