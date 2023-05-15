@@ -4517,8 +4517,8 @@ jQuery(document).ready(function ($) {
     },
     {
       id: "CancellationCoronavirus",
-      name_eng: "Coronavirus",
-      name_ita: "Coronavirus",
+      name_eng: "Abandonment",
+      name_ita: "Abandonment",
     },
   ];
   var CancellationIllnessCondition = MedicalCondition;
