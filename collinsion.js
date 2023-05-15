@@ -4462,17 +4462,17 @@ jQuery(document).ready(function ($) {
   var ReasonForCancellation = [
     {
       id: "Illness",
-      name_eng: "Unforseen illness",
+      name_eng: "Unforeseen illness",
       name_ita: "Malattia imprevista",
     },
     {
       id: "Injury",
-      name_eng: "Unforseen injury",
+      name_eng: "Unforeseen injury",
       name_ita: "Ferita imprevista",
     },
     {
       id: "Death",
-      name_eng: "Unforseen death",
+      name_eng: "Unforeseen death",
       name_ita: "Morte imprevista",
     },
     {
@@ -4508,8 +4508,8 @@ jQuery(document).ready(function ($) {
     },
     {
       id: "CancellationCoronavirus",
-      name_eng: "Coronavirus",
-      name_ita: "Coronavirus",
+      name_eng: "Abandonment",
+      name_ita: "Abandonment",
     },
   ];
   var CancellationIllnessCondition = MedicalCondition;
@@ -12498,7 +12498,7 @@ jQuery(document).ready(function ($) {
             ".form-group.helpdesk_ticket_custom_field_cf_what_medical_condition_has_resulted_in_cancellation748907_2321673",
           ],
           "#helpdesk_ticket_custom_field_cf_are_you_currently_still_abroad_2321673",
-          "Unforseen illness"
+          "Unforeseen illness"
         );
         //when did the symptoms start -past present
         date_past_present(
@@ -12512,7 +12512,7 @@ jQuery(document).ready(function ($) {
             ".form-group.helpdesk_ticket_custom_field_cf_was_someone_else_a_third_party_involved_in_sustaining_the_injury_2321673",
           ],
           "#helpdesk_ticket_custom_field_cf_are_you_currently_still_abroad_2321673",
-          "Unforseen injury"
+          "Unforeseen injury"
         );
         //on what date injury
         date_past_present(
@@ -12529,10 +12529,10 @@ jQuery(document).ready(function ($) {
           if (
             $(
               "#helpdesk_ticket_custom_field_cf_are_you_currently_still_abroad_2321673"
-            ).val() == "Unforseen illness" ||
+            ).val() == "Unforeseen illness" ||
             $(
               "#helpdesk_ticket_custom_field_cf_are_you_currently_still_abroad_2321673"
-            ).val() == "Unforseen injury"
+            ).val() == "Unforeseen injury"
           ) {
             $(
               ".form-group.helpdesk_ticket_custom_field_cf_who_advised_to_cancel_2321673"
@@ -12588,7 +12588,7 @@ jQuery(document).ready(function ($) {
             "#helpdesk_ticket_custom_field_cf_please_confirm_the_cause_of_death_2321673",
           ],
           "#helpdesk_ticket_custom_field_cf_are_you_currently_still_abroad_2321673",
-          "Unforseen death"
+          "Unforeseen death"
         );
         //please confirm date of death
         date_past_present(
@@ -12616,10 +12616,10 @@ jQuery(document).ready(function ($) {
           if (
             $(
               "#helpdesk_ticket_custom_field_cf_are_you_currently_still_abroad_2321673"
-            ).val() == "Unforseen illness" ||
+            ).val() == "Unforeseen illness" ||
             $(
               "#helpdesk_ticket_custom_field_cf_are_you_currently_still_abroad_2321673"
-            ).val() == "Unforseen death"
+            ).val() == "Unforeseen death"
           ) {
             $(
               "label[for='helpdesk_ticket_custom_field_cf_please_confirm_the_date_of_diagnosis_for_this_condition_2321673']"
