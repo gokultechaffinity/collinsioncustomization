@@ -4455,7 +4455,7 @@ jQuery(document).ready(function ($) {
     },
     {
       id: "Other",
-      name_eng: "Other",
+      name_eng: "Someone NOT insured",
       name_ita: "Altro",
     },
   ];
