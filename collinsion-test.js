@@ -4525,12 +4525,12 @@ jQuery(document).ready(function ($) {
   var WhoAdvisedToCancel = [
     {
       id: "GeneralPractitioner",
-      name_eng: "Doctor",
+      name_eng: "Medical professional (Doctor or Nurse)",
       name_ita: "Dottore",
     },
     {
       id: "Hospital",
-      name_eng: "Hospital",
+      name_eng: "Medical facility (Hospital or Physio)",
       name_ita: "Ospedale",
     },
     {
@@ -4540,7 +4540,7 @@ jQuery(document).ready(function ($) {
     },
     {
       id: "None",
-      name_eng: "No treatment",
+      name_eng: "Was not advised to Cancel",
       name_ita: "Nessun Trattamento",
     },
   ];
@@ -12566,14 +12566,14 @@ jQuery(document).ready(function ($) {
           }
         });
         //who advised cancel dependancy
-        show_and_hide(
-          [
-            "label[for='helpdesk_ticket_custom_field_cf_please_give_us_further_details352533_2321673']",
-            "#helpdesk_ticket_custom_field_cf_please_give_us_further_details352533_2321673",
-          ],
-          "#helpdesk_ticket_custom_field_cf_who_advised_to_cancel_2321673",
-          "Other"
-        );
+        // show_and_hide(
+        //   [
+        //     "label[for='helpdesk_ticket_custom_field_cf_please_give_us_further_details352533_2321673']",
+        //     "#helpdesk_ticket_custom_field_cf_please_give_us_further_details352533_2321673",
+        //   ],
+        //   "#helpdesk_ticket_custom_field_cf_who_advised_to_cancel_2321673",
+        //   "Other"
+        // );
         //why did you cancel your trip dependancy 5
         show_and_hide(
           [
