@@ -4472,7 +4472,7 @@ jQuery(document).ready(function ($) {
     },
     {
       id: "Death",
-      name_eng: "Unforeseen death",
+      name_eng: "Death",
       name_ita: "Morte imprevista",
     },
     {
@@ -4503,7 +4503,7 @@ jQuery(document).ready(function ($) {
     },
     {
       id: "Other",
-      name_eng: "Other reason",
+      name_eng: "Other - Select if you're sure it's not listed above",
       name_ita: "Altro",
     },
     {
@@ -12462,7 +12462,7 @@ jQuery(document).ready(function ($) {
             ).val() == "Coronavirus" ||
             $(
               "#helpdesk_ticket_custom_field_cf_are_you_currently_still_abroad_2321673"
-            ).val() == "Other reason" ||
+            ).val() == "Other - Select if you're sure it's not listed above" ||
             $(
               "#helpdesk_ticket_custom_field_cf_are_you_currently_still_abroad_2321673"
             ).val() == "Pregnancy" ||
@@ -12588,7 +12588,7 @@ jQuery(document).ready(function ($) {
             "#helpdesk_ticket_custom_field_cf_please_confirm_the_cause_of_death_2321673",
           ],
           "#helpdesk_ticket_custom_field_cf_are_you_currently_still_abroad_2321673",
-          "Unforeseen death"
+          "Death"
         );
         //please confirm date of death
         date_past_present(
@@ -12619,7 +12619,7 @@ jQuery(document).ready(function ($) {
             ).val() == "Illness" ||
             $(
               "#helpdesk_ticket_custom_field_cf_are_you_currently_still_abroad_2321673"
-            ).val() == "Unforeseen death"
+            ).val() == "Death"
           ) {
             $(
               "label[for='helpdesk_ticket_custom_field_cf_please_confirm_the_date_of_diagnosis_for_this_condition_2321673']"
