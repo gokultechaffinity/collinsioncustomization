@@ -4462,12 +4462,12 @@ jQuery(document).ready(function ($) {
   var ReasonForCancellation = [
     {
       id: "Illness",
-      name_eng: "Unforeseen illness",
+      name_eng: "Illness",
       name_ita: "Malattia imprevista",
     },
     {
       id: "Injury",
-      name_eng: "Unforeseen injury",
+      name_eng: "Injury",
       name_ita: "Ferita imprevista",
     },
     {
@@ -12498,7 +12498,7 @@ jQuery(document).ready(function ($) {
             ".form-group.helpdesk_ticket_custom_field_cf_what_medical_condition_has_resulted_in_cancellation748907_2321673",
           ],
           "#helpdesk_ticket_custom_field_cf_are_you_currently_still_abroad_2321673",
-          "Unforeseen illness"
+          "Illness"
         );
         //when did the symptoms start -past present
         date_past_present(
@@ -12512,7 +12512,7 @@ jQuery(document).ready(function ($) {
             ".form-group.helpdesk_ticket_custom_field_cf_was_someone_else_a_third_party_involved_in_sustaining_the_injury_2321673",
           ],
           "#helpdesk_ticket_custom_field_cf_are_you_currently_still_abroad_2321673",
-          "Unforeseen injury"
+          "Injury"
         );
         //on what date injury
         date_past_present(
@@ -12529,10 +12529,10 @@ jQuery(document).ready(function ($) {
           if (
             $(
               "#helpdesk_ticket_custom_field_cf_are_you_currently_still_abroad_2321673"
-            ).val() == "Unforeseen illness" ||
+            ).val() == "Illness" ||
             $(
               "#helpdesk_ticket_custom_field_cf_are_you_currently_still_abroad_2321673"
-            ).val() == "Unforeseen injury"
+            ).val() == "Injury"
           ) {
             $(
               ".form-group.helpdesk_ticket_custom_field_cf_who_advised_to_cancel_2321673"
@@ -12616,7 +12616,7 @@ jQuery(document).ready(function ($) {
           if (
             $(
               "#helpdesk_ticket_custom_field_cf_are_you_currently_still_abroad_2321673"
-            ).val() == "Unforeseen illness" ||
+            ).val() == "Illness" ||
             $(
               "#helpdesk_ticket_custom_field_cf_are_you_currently_still_abroad_2321673"
             ).val() == "Unforeseen death"
