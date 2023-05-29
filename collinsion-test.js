@@ -5014,27 +5014,28 @@ jQuery(document).ready(function ($) {
   var ReasonForDelay = [
     {
       id: "Other",
-      name_eng: "Other",
+      name_eng: "Other - Select if you're sure it's not listed above",
       name_ita: "Altro",
     },
     {
       id: "AdverseWeather",
-      name_eng: "Adverse Weather",
+      name_eng: "Bad Weather",
       name_ita: "Tempo Climatico avverso",
     },
     {
       id: "Strike",
-      name_eng: "Strike",
+      name_eng: "Strike or Industrial Action",
       name_ita: "Sciopero",
     },
-    {
-      id: "IndustrialAction",
-      name_eng: "Industrial Action",
-      name_ita: "Azione industriale / Azione sindacale",
-    },
+    //Option Removed
+    // {
+    //   id: "IndustrialAction",
+    //   name_eng: "Industrial Action",
+    //   name_ita: "Azione industriale / Azione sindacale",
+    // },
     {
       id: "Mechanical",
-      name_eng: "Mechanical Breakdown",
+      name_eng: "Fault or Mechanical Breakdown of Transport",
       name_ita: "Guasto Meccanico",
     },
     {
@@ -5044,7 +5045,7 @@ jQuery(document).ready(function ($) {
     },
     {
       id: "CrewShortage",
-      name_eng: "Crew Shortage",
+      name_eng: "Crew Shortage - Lack of Transport Staff",
       name_ita: "Crew or Staff shortage",
     },
   ];
@@ -12028,7 +12029,7 @@ jQuery(document).ready(function ($) {
             "#helpdesk_ticket_custom_field_cf_please_give_us_further_details_2321673",
           ],
           "#helpdesk_ticket_custom_field_cf_what_was_the_reason_for_the_delay_2321673",
-          "Other"
+          "Other - Select if you're sure it's not listed above"
         );
         //On which part of the journey were you delayed?
         //hide by default
