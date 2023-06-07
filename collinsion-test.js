@@ -62,6 +62,11 @@ jQuery(document).ready(function ($) {
       '<div class="invalid-feedback api_call_failed_postcode">API call failed</div>'
     );
 
+  $("#next").on("click",function(){
+    $("#save_draft_4").trigger("click");
+  });
+
+
   if ($("#title").hasClass("ColumbusItaly")) {
     if (!$(".edit_helpdesk_ticket").length > 0) {
       $("#helpdesk_ticket_custom_field_cf_policy_email_2321673")
@@ -6142,9 +6147,7 @@ jQuery(document).ready(function ($) {
     $(".new-ticket-submit-button").trigger("click");
   });
 
-  $("#next").on("click",function(){
-    $("#save_draft_4").trigger("click");
-    })
+  
 
   $("#save_and_continue4").click(function () {
     
