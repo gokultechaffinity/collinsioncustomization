@@ -62,9 +62,7 @@ jQuery(document).ready(function ($) {
       '<div class="invalid-feedback api_call_failed_postcode">API call failed</div>'
     );
 
-  $("#next").on("click",function(){
-    $("#save_draft_4").trigger("click");
-  });
+
 
 
   if ($("#title").hasClass("ColumbusItaly")) {
@@ -6086,6 +6084,8 @@ jQuery(document).ready(function ($) {
     $("#section-2-button").css("background-color", "#4DC367");
     $("#section-3-button").css("background-color", "#4DC367");
     // $(".new-ticket-submit-button").trigger("click");
+    $("#save_draft_4").trigger("click");
+
   });
 
   function validateMandatoryFields(list_of_fields){
