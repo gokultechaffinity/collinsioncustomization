@@ -61,6 +61,9 @@ jQuery(document).ready(function ($) {
     .append(
       '<div class="invalid-feedback api_call_failed_postcode">API call failed</div>'
     );
+  $("#next").click(function(){
+    $(".new-ticket-submit-button").trigger("click");
+  })
 
   if ($("#title").hasClass("ColumbusItaly")) {
     if (!$(".edit_helpdesk_ticket").length > 0) {
@@ -6142,9 +6145,7 @@ jQuery(document).ready(function ($) {
     $(".new-ticket-submit-button").trigger("click");
   });
 
-  $("#next").click(function(){
-    $(".new-ticket-submit-button").trigger("click");
-  })
+  
   
   $("#save_and_continue4").click(function () {
     
