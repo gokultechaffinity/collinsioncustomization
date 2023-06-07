@@ -11818,7 +11818,7 @@ jQuery(document).ready(function ($) {
           clearError(ele);
           console.log("--sucesss-");
           $("#helpdesk_ticket_submit").trigger("click");
-          window.location.href = "https://collinsongroup-help.freshdesk.com/support/solutions";
+          window.location.href = "/support/solutions";
         }
       })
       .catch((error) => console.log("error -->", error));
