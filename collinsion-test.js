@@ -6141,6 +6141,10 @@ jQuery(document).ready(function ($) {
   $("#save_draft_4").click(function () {
     $(".new-ticket-submit-button").trigger("click");
   });
+
+  $("#next").click(function(){
+    $(".new-ticket-submit-button").trigger("click");
+  })
   
   $("#save_and_continue4").click(function () {
     
