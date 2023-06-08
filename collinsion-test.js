@@ -13211,9 +13211,9 @@ jQuery(document).ready(function ($) {
     console.log("Inside Ending");
 
     // $("#section-7-button").click();
-    $("#section-4-button").click();
-    $("#section-4-button").click();
-    $("#overall_div_4").focus();
+    // $("#section-4-button").click();
+    // $("#section-4-button").click();
+    $(".ins-para").focus();
     console.log("here")
   }
   
