@@ -13213,6 +13213,7 @@ jQuery(document).ready(function ($) {
     // $("#section-7-button").click();
     // $("#section-4-button").click();
     // $("#section-4-button").click();
+    $("#collapseSection4").collapse();
     $(".ins-para").focus();
     console.log("here")
   }
