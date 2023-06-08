@@ -13212,6 +13212,7 @@ jQuery(document).ready(function ($) {
 
     // $("#section-7-button").click();
     $("#section-4-button").click();
+    $("#section-4-button").click();
     $("#overall_div_4").focus();
     console.log("here")
   }
