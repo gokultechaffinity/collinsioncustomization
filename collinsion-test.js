@@ -11824,7 +11824,24 @@ jQuery(document).ready(function ($) {
           clearError(ele);
           console.log("--sucesss-");
           $("#helpdesk_ticket_submit").trigger("click");
-          window.location.href = "/support/solutions";
+          if ($("#portalClass").hasClass("Test")) {
+            window.location.href = "/support/solutions/articles/101000486447-your-claim-and-next-steps";
+          }
+          else if(($("#portalClass").hasClass("CollinsonUK"))){
+            window.location.href = "/support/solutions/articles/101000486447-your-claim-and-next-steps";
+          }else if(($("#portalClass").hasClass("PostOffice"))){
+            window.location.href = "/support/solutions/articles/101000486448-your-claim-and-next-steps";
+          }else if(($("#portalClass").hasClass("SAGA"))){
+            window.location.href = "/support/solutions/articles/101000486450-your-claim-and-next-steps";
+          }else if(($("#portalClass").hasClass("VHI"))){
+            window.location.href = "/support/solutions/articles/101000486451-your-claim-and-next-steps";
+          }else if(($("#portalClass").hasClass("EasyJet"))){
+            window.location.href = "/support/solutions/articles/101000486447-your-claim-and-next-steps";
+          }else if(($("#portalClass").hasClass("EasyJet"))){
+            window.location.href = "/support/solutions/articles/101000486453-your-claim-and-next-steps";
+          }else if(($("#portalClass").hasClass("ColumbusUK"))){
+            window.location.href = "/support/solutions/articles/101000486455-your-claim-and-next-steps";
+          }
         }
       })
       .catch((error) => console.log("error -->", error));
