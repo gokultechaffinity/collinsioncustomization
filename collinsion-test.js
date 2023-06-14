@@ -6084,8 +6084,8 @@ jQuery(document).ready(function ($) {
     $("#section-2-button").css("background-color", "#4DC367");
     $("#section-3-button").css("background-color", "#4DC367");
     // $(".new-ticket-submit-button").trigger("click");
-    $("#save_draft_4").trigger("click");
-    $("#save_draft_4").trigger("click");
+    // $("#save_draft_4").trigger("click");
+    // $("#save_draft_4").trigger("click");
 
   });
 
