@@ -11839,9 +11839,10 @@ jQuery(document).ready(function ($) {
             window.location.href = "/support/solutions/articles/101000486447-your-claim-and-next-steps";
           }else if(($("#portalClass").hasClass("EasyJet"))){
             window.location.href = "/support/solutions/articles/101000486453-your-claim-and-next-steps";
-          }else if(($("#portalClass").hasClass("ColumbusUK"))){
-            window.location.href = "/support/solutions/articles/101000486455-your-claim-and-next-steps";
-          }
+          // }else if(($("#portalClass").hasClass("ColumbusUK"))){
+          //   window.location.href = "/support/solutions/articles/101000486455-your-claim-and-next-steps";
+          // 
+        }
         }
       })
       .catch((error) => console.log("error -->", error));
