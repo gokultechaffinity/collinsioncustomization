@@ -11826,6 +11826,7 @@ jQuery(document).ready(function ($) {
           $("#helpdesk_ticket_submit").trigger("click");
           if ($("#portalClass").hasClass("Test")) {
             window.location.href = "/support/solutions/articles/101000486447-your-claim-and-next-steps";
+            console.log("Code reached")
           }
           else if(($("#portalClass").hasClass("CollinsonUK"))){
             window.location.href = "/support/solutions/articles/101000486447-your-claim-and-next-steps";
