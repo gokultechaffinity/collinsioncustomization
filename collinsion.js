@@ -6259,8 +6259,7 @@ jQuery(document).ready(function ($) {
       'helpdesk_ticket_custom_field_cf_have_you_received_any_refunds_or_compensation702973_2321673',
       'helpdesk_ticket_custom_field_cf_please_enter_the_date_you_asked_your_tour_operatortravel_provider_to_cancel_the_trip_2321673',
       'helpdesk_ticket_custom_field_cf_do_you_have_any_other_travel_insurance_policy400572_2321673',
-      'helpdesk_ticket_custom_field_cf_who_do_you_bank_with_and_what_type_of_account_do_you_have486839_2321673',
-      'helpdesk_ticket_custom_field_cf_how_did_you_pay_for_your_trip913590_2321673']
+      'helpdesk_ticket_custom_field_cf_who_do_you_bank_with_and_what_type_of_account_do_you_have486839_2321673']
 
       validateMandatoryFields(MandatoryFields5)
 
