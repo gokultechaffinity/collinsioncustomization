@@ -448,10 +448,10 @@ jQuery(document).ready(function ($) {
       ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper"
     );
     $("<hr id ='hr4' class='for-section-4'>").insertAfter("#save_draft_4");
-    // $('<p class="for-section-4" style="margin-top: 20px;">If you ‘Pause Claim’, we will send you an activation email within 5 minutes our portal where you can continue with your claim. All of the information you have inputted will be saved.</p>'
-    // ).insertBefore(
-    //   '#hr4'
-    // );
+    $('<p class="for-section-4" style="margin-top: 20px;">If you ‘Pause Claim’, we will send you an activation email within 5 minutes our portal where you can continue with your claim. All of the information you have inputted will be saved.</p>'
+    ).insertBefore(
+      '#hr4'
+    );
   }
   //____________________________________________________SECTION 5 Start - Your Documents____________________________________________
   //for-section-5 attachment group
