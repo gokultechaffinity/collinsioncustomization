@@ -6179,8 +6179,7 @@ jQuery(document).ready(function ($) {
       'helpdesk_ticket_custom_field_cf_total_trip_cost_the_amount_you_paid_2321673',
       'helpdesk_ticket_custom_field_cf_total_refund_vouchers_amount_the_amount_you_have_received_back594804_2321673',
       'helpdesk_ticket_custom_field_cf_do_you_have_any_other_travel_insurance_policy400572_2321673',
-      'helpdesk_ticket_custom_field_cf_who_do_you_bank_with_and_what_type_of_account_do_you_have486839_2321673',
-      'helpdesk_ticket_custom_field_cf_how_did_you_pay_for_your_trip913590_2321673']
+      'helpdesk_ticket_custom_field_cf_who_do_you_bank_with_and_what_type_of_account_do_you_have486839_2321673']
 
       validateMandatoryFields(MandatoryFields2);
 
