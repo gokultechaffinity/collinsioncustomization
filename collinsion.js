@@ -6355,7 +6355,6 @@ jQuery(document).ready(function ($) {
       'helpdesk_ticket_custom_field_cf_do_any_of_the_costs_relate_to_travel_not_including_the_ambulance_or_taxi_to_the_hospital_2321673',
       'helpdesk_ticket_custom_field_cf_do_you_have_any_other_travel_insurance_policy206683_2321673',
       'helpdesk_ticket_custom_field_cf_do_you_have_private_medical_insurance_2321673',
-      'helpdesk_ticket_custom_field_cf_how_did_you_pay_for_your_trip257666_2321673',
       'helpdesk_ticket_custom_field_cf_who_do_you_bank_with_and_what_type_of_account_do_you_have584479_2321673'
       ]
 
