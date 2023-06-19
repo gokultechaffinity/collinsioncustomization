@@ -448,7 +448,7 @@ jQuery(document).ready(function ($) {
       ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper"
     );
     $("<hr id ='hr4' class='for-section-4'>").insertAfter("#save_draft_4");
-    $('<p class="for-section-4" style="margin-top: 20px;">If you ‘Pause Claim’, we will send you an activation email within 5 minutes our portal where you can continue with your claim. All of the information you have inputted will be saved.</p>'
+    $('<p class="for-section-4" style="margin-top: 20px;">If you pause your claim, all of the information you have given will be saved for you.</p>'
     ).insertBefore(
       '#hr4'
     );
@@ -488,7 +488,7 @@ jQuery(document).ready(function ($) {
       $(
         '<button class="save_and_continue5 btn btn-primary for-section-5 save_and_continue" type="button" >Continue</button>'
       ).insertAfter(".attachments.for-section-5");
-      $('<p class="for-section-5" style="margin-top: 20px;">If you ‘Pause Claim’, we will send you an activation email within 5 minutes our portal where you can continue with your claim. All of the information you have inputted will be saved.</p>').insertAfter(".save_draft_5.btn.btn-primary.for-section-5:visible");
+      $('<p class="for-section-5" style="margin-top: 20px;">If you pause your claim, all of the information you have given will be saved for you.</p>').insertAfter(".save_draft_5.btn.btn-primary.for-section-5:visible");
       $("p.for-section-5:eq(0)").hide();
     }
   } else {
@@ -514,7 +514,7 @@ jQuery(document).ready(function ($) {
       $(
         '<button class="save_and_continue5 btn btn-primary for-section-5 save_and_continue" type="button" >Continue</button>'
       ).insertAfter(".form-group.attachments-container.for-section-5");
-      $('<p class="for-section-5" style="margin-top: 20px;">If you ‘Pause Claim’, we will send you an activation email within 5 minutes our portal where you can continue with your claim. All of the information you have inputted will be saved.</p>').insertAfter(".save_draft_5.btn.btn-primary.for-section-5:visible");
+      $('<p class="for-section-5" style="margin-top: 20px;">If you pause your claim, all of the information you have given will be saved for you.</p>').insertAfter(".save_draft_5.btn.btn-primary.for-section-5:visible");
       $("p.for-section-5:eq(0)").hide();
     }
   }
