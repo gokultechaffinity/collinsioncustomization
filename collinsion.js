@@ -6204,8 +6204,7 @@ jQuery(document).ready(function ($) {
       'helpdesk_ticket_custom_field_cf_who_owns_the_item_2321673',
       'helpdesk_ticket_custom_field_cf_do_you_have_home_contents_insurance_2321673',
       'helpdesk_ticket_custom_field_cf_do_you_have_any_other_travel_insurance_policy_2321673',
-      'helpdesk_ticket_custom_field_cf_who_do_you_bank_with_and_what_type_of_account_do_you_have87472_2321673',
-      'helpdesk_ticket_custom_field_cf_how_did_you_pay_for_your_trip396837_2321673']
+      'helpdesk_ticket_custom_field_cf_who_do_you_bank_with_and_what_type_of_account_do_you_have87472_2321673']
 
       validateMandatoryFields(MandatoryFields3);
 
@@ -6231,8 +6230,7 @@ jQuery(document).ready(function ($) {
       'helpdesk_ticket_custom_field_cf_who_owns_the_item86910_2321673',
       'helpdesk_ticket_custom_field_cf_do_you_have_home_contents_insurance_2321673',
       'helpdesk_ticket_custom_field_cf_do_you_have_any_other_travel_insurance_policy_2321673',
-      'helpdesk_ticket_custom_field_cf_who_do_you_bank_with_and_what_type_of_account_do_you_have87472_2321673',
-      'helpdesk_ticket_custom_field_cf_how_did_you_pay_for_your_trip396837_2321673']
+      'helpdesk_ticket_custom_field_cf_who_do_you_bank_with_and_what_type_of_account_do_you_have87472_2321673']
 
       validateMandatoryFields(MandatoryFields4)
 
