@@ -4422,7 +4422,7 @@ jQuery(document).ready(function ($) {
     },
     {
       id: "InsuredAdult",
-      name_eng: "An Insured Adult",
+      name_eng: "Other Person Named on my insurance",
       name_ita: "Adulto assicurato",
     },
     {
