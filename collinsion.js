@@ -12015,7 +12015,7 @@ jQuery(document).ready(function ($) {
           if (
             $(
               "#helpdesk_ticket_custom_field_cf_on_which_part_of_the_journey_were_you_delayed_2321673"
-            ).val() == "The return journey back home inc connections" ||
+            ).val() == "On the return journey back home" ||
             $(
               "#helpdesk_ticket_custom_field_cf_on_which_part_of_the_journey_were_you_delayed_2321673"
             ).val() == "Connecting journey"
