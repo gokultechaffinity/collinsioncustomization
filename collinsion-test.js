@@ -6058,7 +6058,7 @@ jQuery(document).ready(function ($) {
   //do modal popup with claims statement
   $("#next").click(function () {
     console.log("next click")
-    $("#ClaimAPIModal").modal("toggle");
+    // $("#ClaimAPIModal").modal("toggle");
     $(".new-ticket-submit-button").trigger("click");
     //close current, open next
     //  open_next(3);
