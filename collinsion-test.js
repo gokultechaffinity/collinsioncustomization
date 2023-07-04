@@ -13228,6 +13228,8 @@ jQuery(document).ready(function ($) {
     const element = document.getElementById("section-4-button");
     element.scrollIntoView();
     console.log("here")
+
+    $("#collapseSection7").collapse('hide');
   }
   
 
