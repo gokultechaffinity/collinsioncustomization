@@ -1643,7 +1643,7 @@ jQuery(document).ready(function ($) {
         "<div ' class='form-group'><label class='form-label' id='insured-bold' style='display:inline-table;font-weight: 900;' >Nome dell'assicurato </label>";
     } else {
       options +=
-      '<div  class="form-group"><label id="insured-bold" class="form-label" style="display:inline-table;font-weight: 900;" > Name(s) of the Insured. Please TICK everyone who was involved in the claim! </label><br><label id="selectAClaiment">Please select a claimant</label>';
+      '<div  class="form-group"><label id="insured-bold" class="form-label" style="display:inline-table;font-weight: 900;" > Name(s) of the Insured. Please TICK everyone who was involved in the claim! </label><br><label id="selectAClaiment">Please select a claimant</label>';
     }
     policyDetails.forEach(function (element, index) {
       options +=
@@ -6057,35 +6057,35 @@ jQuery(document).ready(function ($) {
   }
   //do modal popup with claims statement
   $("#next").click(function () {
-    console.log("next click")
-    // $("#ClaimAPIModal").modal("toggle");
-    $(".new-ticket-submit-button").trigger("click");
+    $("#ClaimAPIModal").modal("toggle");
+
     //close current, open next
-    //  open_next(3);
+     open_next(3);
 
     //remove edit from first three sections
 
-    // $("#section-1-button").removeAttr("data-toggle");
-    // $("#section-2-button").removeAttr("data-toggle");
-    // $("#section-3-button").removeAttr("data-toggle");
+    $("#section-1-button").removeAttr("data-toggle");
+    $("#section-2-button").removeAttr("data-toggle");
+    $("#section-3-button").removeAttr("data-toggle");
 
-    // $("#section-1-button").children(":first").removeClass("fa-plus");
-    // $("#section-1-button").children(":first").removeClass("fa-minus");
-    // $("#section-1-button").children(":first").addClass("fa-check");
+    $("#section-1-button").children(":first").removeClass("fa-plus");
+    $("#section-1-button").children(":first").removeClass("fa-minus");
+    $("#section-1-button").children(":first").addClass("fa-check");
 
-    // $("#section-2-button").children(":first").removeClass("fa-plus");
-    // $("#section-2-button").children(":first").removeClass("fa-minus");
-    // $("#section-2-button").children(":first").addClass("fa-check");
+    $("#section-2-button").children(":first").removeClass("fa-plus");
+    $("#section-2-button").children(":first").removeClass("fa-minus");
+    $("#section-2-button").children(":first").addClass("fa-check");
 
-    // $("#section-3-button").children(":first").removeClass("fa-plus");
-    // $("#section-3-button").children(":first").removeClass("fa-minus");
-    // $("#section-3-button").children(":first").addClass("fa-check");
+    $("#section-3-button").children(":first").removeClass("fa-plus");
+    $("#section-3-button").children(":first").removeClass("fa-minus");
+    $("#section-3-button").children(":first").addClass("fa-check");
 
-    // $("#section-1-button").css("background-color", "#4DC367");
-    // $("#section-2-button").css("background-color", "#4DC367");
-    // $("#section-3-button").css("background-color", "#4DC367");
-   
-   
+    $("#section-1-button").css("background-color", "#4DC367");
+    $("#section-2-button").css("background-color", "#4DC367");
+    $("#section-3-button").css("background-color", "#4DC367");
+    // $(".new-ticket-submit-button").trigger("click");
+    // $("#save_draft_4").trigger("click");
+    // $("#save_draft_4").trigger("click");
 
   });
 
