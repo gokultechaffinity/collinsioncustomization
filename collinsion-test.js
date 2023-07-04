@@ -13229,7 +13229,7 @@ jQuery(document).ready(function ($) {
     element.scrollIntoView();
     console.log("here")
 
-    $("#collapseSection7").collapse('hide');
+
   }
   
 
