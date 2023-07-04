@@ -703,7 +703,7 @@ jQuery(document).ready(function ($) {
 
     $(".card.ins-card.order7").appendTo(".bg-grey.fw-sidebar");
     $(".card-body.ins-card:eq(1)").insertAfter("#summary");
-    $("#collapseSection7").collapse();
+    $("#collapseSection7").collapse('hide');
 
   }
 
