@@ -705,8 +705,11 @@ jQuery(document).ready(function ($) {
     $(".card-body.ins-card:eq(1)").insertAfter("#summary");
     $("#collapseSection7").collapse('hide');
 
+    
     $(".card-body:eq(0)").insertBefore("#collapseSection7");
+    $(".card-body:eq(0)").addClass("collapse");
     $(".card-body:eq(0)").addClass("for-section-7");
+    $(".card-body:eq(0)").addClass("wrap_div_7");
 
   }
 
