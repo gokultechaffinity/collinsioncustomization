@@ -709,7 +709,7 @@ jQuery(document).ready(function ($) {
 
     
     $( ".ticket-detail-dummy" ).clone(true).appendTo(".card-body:eq(0)");
-    
+    $(".ticket-detail-dummy").css('display','table');
 
   }
 
