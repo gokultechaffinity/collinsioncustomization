@@ -707,9 +707,7 @@ jQuery(document).ready(function ($) {
 
     
     $(".card-body:eq(0)").insertBefore("#collapseSection7");
-    $(".card-body:eq(0)").addClass("collapse");
-    $(".card-body:eq(0)").addClass("for-section-7");
-    $(".card-body:eq(0)").addClass("wrap_div_7");
+    $(".card-body:eq(0)").wrap("<div id='collpaseSection7' class='order7 wrap_div_7 collapse show' data-parent='#accordion' aria-labelledby='overall_div_7' ></div>")
 
   }
 
