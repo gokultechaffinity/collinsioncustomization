@@ -708,7 +708,7 @@ jQuery(document).ready(function ($) {
     $("#collapseSection7").collapse('hide');
 
     
-    
+    $( ".ticket-detail-dummy" ).clone(true).appendTo(".card-body:eq(0)");
     
 
   }
