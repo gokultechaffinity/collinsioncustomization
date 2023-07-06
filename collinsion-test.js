@@ -7896,8 +7896,25 @@ jQuery(document).ready(function ($) {
           clearError(ele);
           bankResult = result;
           console.log("--sucesss-");
-          //open_next(6);
+          //change colours after summary section fill
+          $("#section-4-button").css("background-color","#4DC367");
+          $("#section-4-button").removeAttr("data-target");
+          $("#section-4-button").children(":first").removeClass("fa-plus");
+          $("#section-4-button").children(":first").addClass("fa-check");
+
+          $("#section-5-button").css("background-color","#4DC367");
+          $("#section-5-button").removeAttr("data-target");
+          $("#section-5-button").children(":first").removeClass("fa-plus");
+          $("#section-5-button").children(":first").addClass("fa-check");
+
           $("#section-6-button").click();
+
+          $("#section-6-button").css("background-color","#4DC367");
+          $("#section-6-button").removeAttr("data-target");
+          $("#section-6-button").children(":first").removeClass("fa-plus");
+          $("#section-6-button").children(":first").addClass("fa-check");
+
+          
         }
       })
       .catch((error) => console.log("error -->", error));
