@@ -833,7 +833,7 @@ jQuery(document).ready(function ($) {
             )
             .children("div:nth-child(" + i + ")")
             .children("label")
-            .text();paragraph
+            .text();
           var value = $("#collapseSection4")
             .children(".card-body")
             .children(
