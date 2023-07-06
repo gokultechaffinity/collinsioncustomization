@@ -7226,12 +7226,18 @@ jQuery(document).ready(function ($) {
   $(".save_and_continue5").click(function () {
 
     if ($("#section_4_header").length) {
-      console.log("update section ---->");
-      update_section_4();
+      if ($(".edit_helpdesk_ticket").length) {
+        console.log("update section cont. ----> 4");
+        update_section_4_continue();
+      }else{
+        console.log("update section ----> 4");
+        update_section_4();
+      } 
     } else {
       add_section_4();
-      console.log("add section ---->");
+      console.log("add section ----> 4");
     }
+  
 
     if (jQuery(".fw-comments-wrapper").length > 0) {
       console.log("updating section 4")
