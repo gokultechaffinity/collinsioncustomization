@@ -751,7 +751,101 @@ jQuery(document).ready(function ($) {
       }
     }
 
+    //section 4 add
+    var number_elements3 = $("#collapseSection4")
+      .children(".card-body")
+      .children(
+        "div.helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
+      )
+      .children(".form-group").length;
 
+    for (let i = 1; i < number_elements3 + 1; i++) {
+      if (
+        $("#collapseSection4")
+          .children(".card-body")
+          .children(
+            ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
+          )
+          .children("div:nth-child(" + i + ")")
+          .children(".choices.form-select").length
+      ) {
+        var label = $("#collapseSection4")
+          .children(".card-body")
+          .children(
+            ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
+          )
+          .children("div:nth-child(" + i + ")")
+          .children("label")
+          .text();
+        var value = $("#collapseSection4")
+          .children(".card-body")
+          .children(
+            ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
+          )
+          .children("div:nth-child(" + i + ")")
+          .children(".choices.form-select")
+          .children(".choices__inner")
+          .children("select")
+          .val();
+        if (value != "") {
+          $(
+            "<p class='section_4_line'>" + label + " : " + value + "</p>"
+          ).insertBefore("#great_line_4");
+        }
+      } else if (
+        $("#collapseSection4")
+          .children(".card-body")
+          .children(
+            ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
+          )
+          .children("div:nth-child(" + i + ")")
+          .children("textarea").length
+      ) {
+        var label = $("#collapseSection4")
+          .children(".card-body")
+          .children(
+            ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
+          )
+          .children("div:nth-child(" + i + ")")
+          .children("label")
+          .text();
+        var value = $("#collapseSection4")
+          .children(".card-body")
+          .children(
+            ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
+          )
+          .children("div:nth-child(" + i + ")")
+          .children("textarea")
+          .val();
+        if (value != "") {
+          $(
+            "<p class='section_4_line'>" + label + " : " + value + "</p>"
+          ).insertBefore("#great_line_4");
+        }
+      } else {
+        var label = $("#collapseSection4")
+          .children(".card-body")
+          .children(
+            ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
+          )
+          .children("div:nth-child(" + i + ")")
+          .children("label")
+          .text();
+        var value = $("#collapseSection4")
+          .children(".card-body")
+          .children(
+            ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
+          )
+          .children("div:nth-child(" + i + ")")
+          .children("input")
+          .val();
+        if (value != "") {
+          $(
+            "<p class='section_4_line'>" + label + " : " + value + "</p>"
+          ).insertBefore("#great_line_4");
+        }
+      }
+    }
 
 
     $(".card.ins-card.order7").appendTo(".bg-grey.fw-sidebar");
