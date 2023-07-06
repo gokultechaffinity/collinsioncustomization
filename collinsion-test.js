@@ -650,6 +650,24 @@ jQuery(document).ready(function ($) {
   //after sections created, check if we are in edit page, then move summary around, and change button colors, add sections
   if ($(".edit_helpdesk_ticket").length > 0) {
     
+    if ($("#title").hasClass("ColumbusItaly")) {
+      insertParagraph(
+        reasonForClaimObj[
+          $(
+            "#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673"
+          ).val()
+        ]["italian_paragraph"]
+      );
+    } else {
+      insertParagraph(
+        reasonForClaimObj[
+          $(
+            "#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673"
+          ).val()
+        ]["paragraph"]
+      );
+    }
+ // }
     
     $(".card-body:eq(0)").wrap("<div id='collapseSection7' class='order7 wrap_div_7 collapse show' data-parent='#accordion' aria-labelledby='overall_div_7' ></div>")
 
