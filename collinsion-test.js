@@ -7569,9 +7569,18 @@ jQuery(document).ready(function ($) {
 
         //add displaying
         if ($("#section_6_header").length) {
-          update_section_6();
+          if($(".edit_helpdesk_ticket").length){
+            update_section_6_continue();
+          }else{
+            update_section_6();
+          }
         } else {
           add_section_6();
+          if($(".edit_helpdesk_ticket").length){
+            add_section_6_continue_continue();
+          }else{
+            add_section_6();
+          }
           //addDeclaraion();
         }
       } else {
@@ -7658,6 +7667,56 @@ jQuery(document).ready(function ($) {
     }
   }
 
+  function add_section_6_continue() {
+    var el_number = $("#collapseSection6")
+      .children(".card-body")
+      .children(".form-group").length;
+
+    if($("#title").hasClass("ColumbusItaly")){
+      $("<strong id='section_6_header'>" + italy_titles[5] + "</strong>").insertAfter(
+        "#great_line_5"
+      );
+      $("<hr class='summary_divider' id='great_line_6'>").insertAfter(
+        "#section_6_header"
+      );
+    }else{ 
+      $("<strong id='section_6_header'>" + titles[5] + "</strong>").insertAfter(
+        "#great_line_5"
+      );
+      $("<hr class='summary_divider' id='great_line_6'>").insertAfter(
+        "#section_6_header"
+      );
+  }
+
+    for (let i = 1; i < el_number + 1; i++) {
+      var label = $("#collapseSection6")
+        .children(".card-body")
+        .children("div:nth-child(" + i + ")")
+        .children("label")
+        .text();
+      var value = $("#collapseSection6")
+        .children(".card-body")
+        .children("div:nth-child(" + i + ")")
+        .children("input")
+        .val();
+      $(
+        "<p class='section_6_line'>" + label + " : " + value + "</p>"
+      ).insertBefore("#great_line_6");
+    }
+
+    if ($("#title").hasClass("ColumbusItaly")) {
+      //summary
+      $(
+        "<strong  id='summary'>Se noti un errore e devi modificarlo, seleziona la sezione pertinente in alto per modificare questi dettagli</strong>"
+      ).insertAfter("#great_line_6");
+    } else {
+      //summary
+      $(
+        "<strong  id='summary'>If you notice a mistake and need to amend this, please select the relevant section above to edit these details</strong>"
+      ).insertAfter("#great_line_6");
+    }
+  }
+
   function update_section_6() {
     var el_number = $("#collapseSection6")
       .children(".card-body.ins-card")
@@ -7679,6 +7738,29 @@ jQuery(document).ready(function ($) {
       ).insertBefore("#great_line_6");
     }
   }
+
+  function update_section_6_continue() {
+    var el_number = $("#collapseSection6")
+      .children(".card-body")
+      .children(".form-group").length;
+    $("p").remove(".section_6_line");
+    for (let i = 1; i < el_number + 1; i++) {
+      var label = $("#collapseSection6")
+        .children(".card-body")
+        .children("div:nth-child(" + i + ")")
+        .children("label")
+        .text();
+      var value = $("#collapseSection6")
+        .children(".card-body")
+        .children("div:nth-child(" + i + ")")
+        .children("input")
+        .val();
+      $(
+        "<p class='section_6_line'>" + label + " : " + value + "</p>"
+      ).insertBefore("#great_line_6");
+    }
+  }
+
 
   function ValidateBankMethodOne(iBanNumber, countryCode, fieldId) {
     let flag = false;
