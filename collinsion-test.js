@@ -677,38 +677,29 @@ jQuery(document).ready(function ($) {
     $("#section-3-button").children(":first").removeClass("fa-plus");
     $("#section-3-button").children(":first").addClass("fa-check");
 
-    //add sections
+    //section 1 add
+    //for loops
+    var number_elements = $("#collapseSection1")
+      .children(".card-body")
+      .children("div").length;
 
-    // if ($("#section_4_header").length) {
-    //   console.log("update section ----> 4");
-    //   update_section_4();
-    // } else {
-    //   add_section_4();
-    //   console.log("add section ----> 4");
-    // }
+    for (let i = 1; i < number_elements + 1; i++) {
+      var label = $("#collapseSection1")
+        .children(".card-body")
+        .children("div:nth-child(" + i + ")")
+        .children("label")
+        .text();
+      var value = $("#collapseSection1")
+        .children(".card-body")
+        .children("div:nth-child(" + i + ")")
+        .children("input")
+        .val();
+      $(
+        "<p class='section_1_line'>" + label + " : " + value + "</p>"
+      ).insertBefore("#great_line_1");
+    }
 
-    // if ($("#section_5_header").length) {
-    //   console.log("update section ---->");
-    //   update_section_5();
-    // } else {
-    //   add_section_5();
-    //   console.log("add section ---->");
-    // }
-
-    // if ($("#section_6_header").length) {
-    //   console.log("update section ---->");
-    //   update_section_6();
-    // } else {
-    //   add_section_6();
-    //   console.log("add section ---->");
-    // }
-
-    update_section_1();
-    update_section_2();
-    update_section_3();
-    update_section_4();
-    update_section_5();
-    update_section_6();
+    
 
     $(".card.ins-card.order7").appendTo(".bg-grey.fw-sidebar");
     $(".card-body.ins-card:eq(1)").insertAfter("#summary");
