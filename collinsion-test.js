@@ -7240,7 +7240,8 @@ jQuery(document).ready(function ($) {
   
 
     if (jQuery(".fw-comments-wrapper").length > 0) {
-      console.log("updating section 4")
+      console.log("update section cont. ----> 4");
+      update_section_4_continue();
       //will execute in ticket detail page senario
       if (
         $("#new_helpdesk_note #attachments_list .proper-attachments-list")
