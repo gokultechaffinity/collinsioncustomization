@@ -701,6 +701,24 @@ jQuery(document).ready(function ($) {
     }
 
     
+    //section 2 add
+    $("#collapseSection2 input").each(function () {
+      if ($(this).hasClass("check-box")) {
+        var label = $(this).closest(".form-group").find("label").text();
+        var value = $(this).val();
+        if ($(this).prop("checked")) {
+          $(
+            "<p class='section_2_line'>" + label + " : " + value + "</p>"
+          ).insertBefore("#great_line_2");
+        }
+      } else {
+        var label = $(this).closest(".form-group").find("label").text();
+        var value = $(this).val();
+        $(
+          "<p class='section_2_line'>" + label + " : " + value + "</p>"
+        ).insertBefore("#great_line_2");
+      }
+    });
 
     $(".card.ins-card.order7").appendTo(".bg-grey.fw-sidebar");
     $(".card-body.ins-card:eq(1)").insertAfter("#summary");
