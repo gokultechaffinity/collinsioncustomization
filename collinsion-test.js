@@ -7238,6 +7238,7 @@ jQuery(document).ready(function ($) {
     if (jQuery(".fw-comments-wrapper").length > 0) {
       console.log("update section cont. ----> 4");
       update_section_4_continue();
+      open_next(5);
       //will execute in ticket detail page senario
       
       if (
@@ -7250,7 +7251,7 @@ jQuery(document).ready(function ($) {
       }
     } else {
       //will excute in create new ticket senario
-      open_next(5);
+      
       fileUploadCallback();
     }
   });
