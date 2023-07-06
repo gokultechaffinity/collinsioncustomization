@@ -678,10 +678,6 @@ jQuery(document).ready(function ($) {
     $("#section-3-button").children(":first").removeClass("fa-plus");
     $("#section-3-button").children(":first").addClass("fa-check");
 
-    //empty sections
-    $(".card-body:eq(0)").empty();
-    
-
     //section 1 add
     //for loops
     var number_elements = $("#collapseSection1")
