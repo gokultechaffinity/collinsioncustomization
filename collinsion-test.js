@@ -702,7 +702,57 @@ jQuery(document).ready(function ($) {
 
     
     //section 2 cleanup
-    $("#great_line_1").closest(".section_2_line").remove();
+    $(".section_2_line:eq(0)").remove();
+
+    //section 3
+    var number_elements2 = $("#collapseSection3")
+      .children(".card-body.ins-card")
+      .children("div").length;
+    for (let i = 1; i < number_elements2 + 1; i++) {
+      if (
+        $("#collapseSection3")
+          .children(".card-body")
+          .children("div:nth-child(" + i + ")")
+          .children(".choices.form-select").length
+      ) {
+        var label_dropdown = $("#collapseSection3")
+          .children(".card-body")
+          .children("div:nth-child(" + i + ")")
+          .children("label")
+          .text();
+        var dropdown_value = $("#collapseSection3")
+          .children(".card-body")
+          .children("div:nth-child(" + i + ")")
+          .children(".choices.form-select")
+          .children(".choices__inner")
+          .children("select")
+          .val();
+        $(
+          "<p class='section_3_line'>" +
+            label_dropdown +
+            " : " +
+            dropdown_value +
+            "</p>"
+        ).insertBefore("#great_line_3");
+      } else {
+        var label = $("#collapseSection3")
+          .children(".card-body")
+          .children("div:nth-child(" + i + ")")
+          .children("label")
+          .text();
+        var value = $("#collapseSection3")
+          .children(".card-body")
+          .children("div:nth-child(" + i + ")")
+          .children("input")
+          .val();
+        $(
+          "<p class='section_3_line'>" + label + " : " + value + "</p>"
+        ).insertBefore("#great_line_3");
+      }
+    }
+
+
+
 
     $(".card.ins-card.order7").appendTo(".bg-grey.fw-sidebar");
     $(".card-body.ins-card:eq(1)").insertAfter("#summary");
