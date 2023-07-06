@@ -703,12 +703,12 @@ jQuery(document).ready(function ($) {
     //   console.log("add section ---->");
     // }
 
-    add_section_1();
-    add_section_2();
-    add_section_3();
-    add_section_4();
-    add_section_5();
-    add_section_6();
+    update_section_1();
+    update_section_2();
+    update_section_3();
+    update_section_4();
+    update_section_5();
+    update_section_6();
 
     $(".card.ins-card.order7").appendTo(".bg-grey.fw-sidebar");
     $(".card-body.ins-card:eq(1)").insertAfter("#summary");
