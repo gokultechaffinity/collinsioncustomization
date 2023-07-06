@@ -7574,7 +7574,6 @@ jQuery(document).ready(function ($) {
             update_section_6();
           }
         } else {
-          add_section_6();
           if($(".edit_helpdesk_ticket").length){
             add_section_6_continue();
           }else{
