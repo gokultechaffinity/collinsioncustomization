@@ -7239,6 +7239,7 @@ jQuery(document).ready(function ($) {
       console.log("update section cont. ----> 4");
       update_section_4_continue();
       open_next(5);
+      add_section_5();
       //will execute in ticket detail page senario
       
       if (
