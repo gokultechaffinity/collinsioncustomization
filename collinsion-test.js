@@ -6711,14 +6711,20 @@ jQuery(document).ready(function ($) {
     }
 
     if ($("#section_4_header").length) {
-      console.log("update section ----> 4");
-      update_section_4();
+      if ($(".edit_helpdesk_ticket").length) {
+        console.log("update section cont. ----> 4");
+        update_section_4_continue();
+      }else{
+        console.log("update section ----> 4");
+        update_section_4();
+      } 
     } else {
       add_section_4();
       console.log("add section ----> 4");
     }
+  }
 
-  });
+  );
 
 
   function add_section_4() {
