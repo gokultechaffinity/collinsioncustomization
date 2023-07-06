@@ -710,9 +710,8 @@ jQuery(document).ready(function ($) {
     
     $( ".ticket-detail-dummy" ).clone(true).appendTo(".card-body:eq(0)");
     $(".ticket-detail-dummy").css('display','table');
-    $("#section-4-button").trigger('click');
-    $("#section-4-button").trigger('click');
-    $("#section-4-button").trigger('click');
+    $("#collapseSection4").collapse('hide');
+    
 
   }
 
@@ -6986,8 +6985,7 @@ jQuery(document).ready(function ($) {
       //will execute in ticket detail page senario
       if (
         $("#new_helpdesk_note #attachments_list .proper-attachments-list")
-          .length
-      ) {
+          .length){
         fileUploadCallback();
       } else if ($(".fw-comments-wrapper .fw-attachment-item").length) {
         //Need to add another condition for already had div if div has length then we need to open next section
