@@ -650,11 +650,11 @@ jQuery(document).ready(function ($) {
   //after sections created, check if we are in edit page, then move summary around, and change button colors, add sections
   if ($(".edit_helpdesk_ticket").length > 0) {
     
-    $(".card-body:eq(0)").empty();
+    
     $(".card-body:eq(0)").wrap("<div id='collapseSection7' class='order7 wrap_div_7 collapse show' data-parent='#accordion' aria-labelledby='overall_div_7' ></div>")
 
     //essential - move to relevant sections
-    
+    $(".card-body.ins-card:eq(0)").attr("id","collapseSection7");
     
     
     //removes divs causing duplicated lines
@@ -677,6 +677,10 @@ jQuery(document).ready(function ($) {
     $("#section-3-button").removeAttr("data-target");
     $("#section-3-button").children(":first").removeClass("fa-plus");
     $("#section-3-button").children(":first").addClass("fa-check");
+
+    //empty sections
+    $(".card-body:eq(0)").empty();
+    
 
     //section 1 add
     //for loops
