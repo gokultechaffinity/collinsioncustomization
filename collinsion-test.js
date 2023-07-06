@@ -706,7 +706,7 @@ jQuery(document).ready(function ($) {
 
     //section 3
     var number_elements2 = $("#collapseSection3")
-      .children(".card-body.ins-card")
+      .children(".card-body")
       .children("div").length;
     for (let i = 1; i < number_elements2 + 1; i++) {
       if (
