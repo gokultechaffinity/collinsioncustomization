@@ -7239,6 +7239,7 @@ jQuery(document).ready(function ($) {
       console.log("update section cont. ----> 4");
       update_section_4_continue();
       //will execute in ticket detail page senario
+      
       if (
         $("#new_helpdesk_note #attachments_list .proper-attachments-list")
           .length){
@@ -7249,6 +7250,7 @@ jQuery(document).ready(function ($) {
       }
     } else {
       //will excute in create new ticket senario
+      open_next(5);
       fileUploadCallback();
     }
   });
