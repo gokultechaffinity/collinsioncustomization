@@ -7226,14 +7226,10 @@ jQuery(document).ready(function ($) {
   $(".save_and_continue5").click(function () {
 
     if ($("#section_4_header").length) {
-      if ($(".edit_helpdesk_ticket").length) {
-        console.log("update section cont. ----> 4");
-        update_section_4_continue();
-      }else{
-        console.log("update section ----> 4");
-        update_section_4();
-      } 
-    } else {
+      console.log("update section ----> 4");
+      update_section_4();
+    } 
+    else{
       add_section_4();
       console.log("add section ----> 4");
     }
