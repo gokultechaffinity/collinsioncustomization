@@ -423,7 +423,7 @@ jQuery(document).ready(function ($) {
   if ($("#title").hasClass("ColumbusItaly")) {
     $(
       '<button id="save_draft_4" class="btn btn-primary for-section-4 " type="button">Salva reclamo ed esci</button>'
-    ).insertAfter(
+    ).insertBefore(
       ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper"
     );
     $(
@@ -439,7 +439,7 @@ jQuery(document).ready(function ($) {
   } else {
     $(
       '<button id="save_draft_4" class="btn btn-primary for-section-4 " type="button">Pause Claim</button>'
-    ).insertAfter(
+    ).insertBefore(
       ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper"
     );
     $(
