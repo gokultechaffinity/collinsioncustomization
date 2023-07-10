@@ -7129,6 +7129,7 @@ jQuery(document).ready(function ($) {
   //____________________________________________________________________________________________________________________
   //section 5 continue
   $(".save_draft_5").click(function () {
+    console.log("save draft 5 clicked");
     var elem = document.getElementById("files_list");
     let fileExtensionArray = [
       "gif",
