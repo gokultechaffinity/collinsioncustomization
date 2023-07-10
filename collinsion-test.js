@@ -429,7 +429,7 @@ jQuery(document).ready(function ($) {
     $(
       '<button id="save_and_continue4" class="btn btn-primary for-section-4 save_and_continue" type="button">Sezione successiva</button>'
     ).insertAfter(
-      "#overall_div_4"
+      ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper"
     );
     $("<hr id ='hr4' class='for-section-4'>").insertAfter("#save_draft_4");
     $("<p class='for-section-4' style='margin-top: 20px;'>Se clicchi 'Salva sinistro' ti invieremo un'e-mail entro 5 minuti per l'attivazione del tuo account, dove potrai continuare con il tuo sinistro</p>"
@@ -445,7 +445,7 @@ jQuery(document).ready(function ($) {
     $(
       '<button id="save_and_continue4" class="btn btn-primary for-section-4 save_and_continue" type="button">Continue</button>'
     ).insertAfter(
-      "#overall_div_4"
+      ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper"
     );
     $("<hr id ='hr4' class='for-section-4'>").insertAfter("#save_draft_4");
     $('<p class="for-section-4" style="margin-top: 20px;">If you pause your claim, all of the information you have given will be saved for you.</p>'
