@@ -7238,7 +7238,13 @@ jQuery(document).ready(function ($) {
       console.log("update section cont. ----> 4");
       update_section_4_continue();
       open_next(5);
-      add_section_5();
+      //change document color
+      $("#section-4-button").children(":first").removeClass("fa-pen");
+      $("#section-5-button").children(":first").removeClass("fa-minus");
+      $("#section-5-button").children(":first").removeClass("fa-plus");
+      $("#section-4-button").children(":first").addClass("fa-check");
+      $("#section-5-button").children(":first").addClass("fa-check");
+      update_section_5();
       //will execute in ticket detail page senario
       
       if (
