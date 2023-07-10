@@ -7244,7 +7244,12 @@ jQuery(document).ready(function ($) {
       $("#section-5-button").children(":first").removeClass("fa-plus");
       $("#section-4-button").children(":first").addClass("fa-check");
       $("#section-5-button").children(":first").addClass("fa-check");
-      update_section_5();
+      if($("#section_5_header").length){
+        update_section_5();
+      }else{
+        add_section_5();
+      }
+      
       //will execute in ticket detail page senario
       
       if (
