@@ -424,7 +424,7 @@ jQuery(document).ready(function ($) {
     $(
       '<button id="save_draft_4" class="btn btn-primary for-section-4 " type="button">Salva reclamo ed esci</button>'
     ).insertAfter(
-      "#overall_div_4"
+      ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper"
     );
     $(
       '<button id="save_and_continue4" class="btn btn-primary for-section-4 save_and_continue" type="button">Sezione successiva</button>'
@@ -440,7 +440,7 @@ jQuery(document).ready(function ($) {
     $(
       '<button id="save_draft_4" class="btn btn-primary for-section-4 " type="button">Pause Claim</button>'
     ).insertAfter(
-      "#overall_div_4"
+      ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper"
     );
     $(
       '<button id="save_and_continue4" class="btn btn-primary for-section-4 save_and_continue" type="button">Continue</button>'
