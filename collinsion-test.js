@@ -7082,12 +7082,20 @@ jQuery(document).ready(function ($) {
       $(para).insertBefore(
         "p.for-section-4"
       );
-      $(para).insertBefore(".form-group.attachments-container.for-section-5");
+      if (jQuery(".fw-comments-wrapper").length > 0) {
+        $(para).insertAfter("#overall_div_5");}
+      else{
+        $(para).insertBefore(".form-group.attachments-container.for-section-5");}
+
     } else {
+      
       $(para).insertBefore(
         "p.for-section-4"
       );
-      $(para).insertBefore(".form-group.attachments-container.for-section-5");
+      if (jQuery(".fw-comments-wrapper").length > 0) {
+        $(para).insertAfter("#overall_div_5");}
+      else{
+        $(para).insertBefore(".form-group.attachments-container.for-section-5");}
     }
   }
 
