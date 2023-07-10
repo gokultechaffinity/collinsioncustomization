@@ -7080,12 +7080,12 @@ jQuery(document).ready(function ($) {
     if ($(".ins-para").length) {
       $(".ins-para").remove();
       $(para).insertBefore(
-        ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
+        "p.for-section-4"
       );
       $(para).insertBefore(".form-group.attachments-container.for-section-5");
     } else {
       $(para).insertBefore(
-        ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
+        "p.for-section-4"
       );
       $(para).insertBefore(".form-group.attachments-container.for-section-5");
     }
