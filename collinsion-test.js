@@ -434,7 +434,7 @@ jQuery(document).ready(function ($) {
     $("<hr id ='hr4' class='for-section-4'>").insertAfter("#save_draft_4");
     $("<p class='for-section-4' style='margin-top: 20px;'>Se clicchi 'Salva sinistro' ti invieremo un'e-mail entro 5 minuti per l'attivazione del tuo account, dove potrai continuare con il tuo sinistro</p>"
     ).insertBefore(
-      '#hr4'
+      '#save_draft_4'
     );
   } else {
     $(
@@ -450,7 +450,7 @@ jQuery(document).ready(function ($) {
     $("<hr id ='hr4' class='for-section-4'>").insertAfter("#save_draft_4");
     $('<p class="for-section-4" style="margin-top: 20px;">If you pause your claim, all of the information you have given will be saved for you.</p>'
     ).insertBefore(
-      '#hr4'
+      '#save_draft_4'
     );
   }
   //____________________________________________________SECTION 5 Start - Your Documents____________________________________________
