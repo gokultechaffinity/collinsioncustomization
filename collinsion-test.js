@@ -7083,7 +7083,7 @@ jQuery(document).ready(function ($) {
         "p.for-section-4"
       );
       if (jQuery(".fw-comments-wrapper").length > 0) {
-        $(para).insertAfter("#overall_div_5");}
+        $(para).insertAfter("#collapseSection5");}
       else{
         $(para).insertBefore(".form-group.attachments-container.for-section-5");}
 
@@ -7093,7 +7093,7 @@ jQuery(document).ready(function ($) {
         "p.for-section-4"
       );
       if (jQuery(".fw-comments-wrapper").length > 0) {
-        $(para).insertAfter("#overall_div_5");}
+        $(para).insertAfter("#collapseSection5");}
       else{
         $(para).insertBefore(".form-group.attachments-container.for-section-5");}
     }
