@@ -498,6 +498,7 @@ jQuery(document).ready(function ($) {
       ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper"
     );
     $(".form-group.attachments-container").addClass("for-section-5");
+    
     if ($("#title").hasClass("ColumbusItaly")) {
       jQuery(".attachments-container.for-section-5").after(
         '<button class="save_draft_5 btn btn-primary for-section-5 " type="button">Salva reclamo ed esci</button>'
@@ -513,7 +514,7 @@ jQuery(document).ready(function ($) {
       );
       $(
         '<button class="save_and_continue5 btn btn-primary for-section-5 save_and_continue" type="button" >Continue</button>'
-      ).insertAfter(".form-group.attachments-container.for-section-5");
+      ).insertBefore(".form-group.attachments-container.for-section-5");
       $('<p class="for-section-5" style="margin-top: 20px;">If you pause your claim, all of the information you have given will be saved for you.</p>').insertAfter(".save_draft_5.btn.btn-primary.for-section-5:visible");
       $("p.for-section-5:eq(0)").hide();
     }
