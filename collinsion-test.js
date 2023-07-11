@@ -7086,7 +7086,7 @@ jQuery(document).ready(function ($) {
       if (jQuery(".fw-comments-wrapper").length > 0) {
         $(para).prependTo("#collapseSection5");}
       else{
-        $(para).insertBefore(".form-group.attachments-container.for-section-5");}
+        $(para).prependTo("#collapseSection5");}
 
     } else {
       
@@ -7096,7 +7096,7 @@ jQuery(document).ready(function ($) {
       if (jQuery(".fw-comments-wrapper").length > 0) {
         $(para).prependTo("#collapseSection5");}
       else{
-        $(para).insertBefore(".save_draft_5");}
+        $(para).prependTo("#collapseSection5");}
     }
   }
 
