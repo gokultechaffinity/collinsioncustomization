@@ -1998,20 +1998,17 @@ jQuery(document).ready(function ($) {
   }
 
     //for loops
-    var number_elements = $("#collapseSection1")
-      .children(".card.ins-card.order1")
+    var number_elements = $(".card.ins-card.order1")
       .children("div").length;
 
     console.log(number_elements);
 
     for (let i = 1; i < number_elements + 1; i++) {
-      var label = $("#collapseSection1")
-        .children(".card.ins-card.order1")
+      var label = $(".card.ins-card.order1")
         .children("div:nth-child(" + i + ")")
         .children("label")
         .text();
-      var value = $("#collapseSection1")
-        .children(".card.ins-card.order1")
+      var value = $(".card.ins-card.order1")
         .children("div:nth-child(" + i + ")")
         .children("input")
         .val();
@@ -2022,19 +2019,21 @@ jQuery(document).ready(function ($) {
   }
 
   function update_section_1() {
+
+    var number_elements = $(".card.ins-card.order1")
+      .children("div").length;
+
+    console.log(number_elements);
     //for loops
-    var number_elements = $("#collapseSection1")
-      .children(".card.ins-card")
+    var number_elements = $(".card.ins-card")
       .children("div").length;
     $("p").remove(".section_1_line");
     for (let i = 1; i < number_elements + 1; i++) {
-      var label = $("#collapseSection1")
-        .children(".card.ins-card.order1")
+      var label = $(".card.ins-card.order1")
         .children("div:nth-child(" + i + ")")
         .children("label")
         .text();
-      var value = $("#collapseSection1")
-        .children(".card.ins-card.order1")
+      var value = $(".card.ins-card.order1")
         .children("div:nth-child(" + i + ")")
         .children("input")
         .val();
