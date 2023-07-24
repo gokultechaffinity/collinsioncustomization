@@ -1999,17 +1999,19 @@ jQuery(document).ready(function ($) {
 
     //for loops
     var number_elements = $("#collapseSection1")
-      .children(".card.ins-card")
+      .children(".card.ins-card.order1")
       .children("div").length;
+
+    console.log(number_elements);
 
     for (let i = 1; i < number_elements + 1; i++) {
       var label = $("#collapseSection1")
-        .children(".card.ins-card")
+        .children(".card.ins-card.order1")
         .children("div:nth-child(" + i + ")")
         .children("label")
         .text();
       var value = $("#collapseSection1")
-        .children(".card.ins-card")
+        .children(".card.ins-card.order1")
         .children("div:nth-child(" + i + ")")
         .children("input")
         .val();
@@ -2027,12 +2029,12 @@ jQuery(document).ready(function ($) {
     $("p").remove(".section_1_line");
     for (let i = 1; i < number_elements + 1; i++) {
       var label = $("#collapseSection1")
-        .children(".card.ins-card")
+        .children(".card.ins-card.order1")
         .children("div:nth-child(" + i + ")")
         .children("label")
         .text();
       var value = $("#collapseSection1")
-        .children(".card.ins-card")
+        .children(".card.ins-card.order1")
         .children("div:nth-child(" + i + ")")
         .children("input")
         .val();
