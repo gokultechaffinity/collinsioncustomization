@@ -1999,17 +1999,17 @@ jQuery(document).ready(function ($) {
 
     //for loops
     var number_elements = $("#collapseSection1")
-      .children(".card-body.ins-card")
+      .children(".card.ins-card")
       .children("div").length;
 
     for (let i = 1; i < number_elements + 1; i++) {
       var label = $("#collapseSection1")
-        .children(".card-body.ins-card")
+        .children(".card.ins-card")
         .children("div:nth-child(" + i + ")")
         .children("label")
         .text();
       var value = $("#collapseSection1")
-        .children(".card-body.ins-card")
+        .children(".card.ins-card")
         .children("div:nth-child(" + i + ")")
         .children("input")
         .val();
@@ -2022,17 +2022,17 @@ jQuery(document).ready(function ($) {
   function update_section_1() {
     //for loops
     var number_elements = $("#collapseSection1")
-      .children(".card-body.ins-card")
+      .children(".card.ins-card")
       .children("div").length;
     $("p").remove(".section_1_line");
     for (let i = 1; i < number_elements + 1; i++) {
       var label = $("#collapseSection1")
-        .children(".card-body.ins-card")
+        .children(".card.ins-card")
         .children("div:nth-child(" + i + ")")
         .children("label")
         .text();
       var value = $("#collapseSection1")
-        .children(".card-body.ins-card")
+        .children(".card.ins-card")
         .children("div:nth-child(" + i + ")")
         .children("input")
         .val();
