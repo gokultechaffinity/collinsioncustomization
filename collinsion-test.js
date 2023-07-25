@@ -6405,7 +6405,13 @@ jQuery(document).ready(function ($) {
   //____________________________________________________________________________________________________________________
   $("#save_draft_4").click(function (event) {
     $("#save_and_continue4").trigger('click');
-    event.preventDefault();
+
+    if(proceedValue == true){
+      $(".new-ticket-submit-button").trigger("click");
+    }else{
+
+    }
+    //event.preventDefault();
     // $(".new-ticket-submit-button").trigger("click"); 
 
   });
@@ -6414,7 +6420,7 @@ jQuery(document).ready(function ($) {
 
   $("#save_and_continue4").click(function () {
     
-    
+    var proceedValue = false;
 
     if (
       $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() ==
@@ -6439,6 +6445,7 @@ jQuery(document).ready(function ($) {
         console.log("WE CAN MOVE FORWARD!!!");
 
         open_next(4);
+        proceedValue = true;
         $("#section-4-button").children(":first").removeClass("fa-minus");
         $("#section-4-button").children(":first").removeClass("fa-plus");
         $("#section-4-button").children(":first").addClass("fa-pen");
@@ -6467,6 +6474,7 @@ jQuery(document).ready(function ($) {
       if (validateMandatoryFields(MandatoryFields2) == true){
         console.log("WE CAN MOVE FORWARD!!!")
         open_next(4);
+        proceedValue = true;
         $("#section-4-button").children(":first").removeClass("fa-minus");
         $("#section-4-button").children(":first").removeClass("fa-plus");
         $("#section-4-button").children(":first").addClass("fa-pen");
@@ -6492,6 +6500,7 @@ jQuery(document).ready(function ($) {
       if (validateMandatoryFields(MandatoryFields3) == true){
         console.log("WE CAN MOVE FORWARD!!!")
         open_next(4);
+        proceedValue = true;
         $("#section-4-button").children(":first").removeClass("fa-minus");
         $("#section-4-button").children(":first").removeClass("fa-plus");
         $("#section-4-button").children(":first").addClass("fa-pen");
@@ -6518,6 +6527,7 @@ jQuery(document).ready(function ($) {
       if (validateMandatoryFields(MandatoryFields4) == true){
         console.log("WE CAN MOVE FORWARD!!!")
         open_next(4);
+        proceedValue = true;
         $("#section-4-button").children(":first").removeClass("fa-minus");
         $("#section-4-button").children(":first").removeClass("fa-plus");
         $("#section-4-button").children(":first").addClass("fa-pen");
@@ -6547,6 +6557,7 @@ jQuery(document).ready(function ($) {
       if (validateMandatoryFields(MandatoryFields5) == true){
         console.log("WE CAN MOVE FORWARD!!!")
         open_next(4);
+        proceedValue = true;
         $("#section-4-button").children(":first").removeClass("fa-minus");
         $("#section-4-button").children(":first").removeClass("fa-plus");
         $("#section-4-button").children(":first").addClass("fa-pen");
@@ -6566,6 +6577,7 @@ jQuery(document).ready(function ($) {
       if (validateMandatoryFields(MandatoryFields6) == true){
         console.log("WE CAN MOVE FORWARD!!!")
         open_next(4);
+        proceedValue = true;
         $("#section-4-button").children(":first").removeClass("fa-minus");
         $("#section-4-button").children(":first").removeClass("fa-plus");
         $("#section-4-button").children(":first").addClass("fa-pen");
@@ -6586,6 +6598,7 @@ jQuery(document).ready(function ($) {
       if (validateMandatoryFields(MandatoryFields6) == true){
         console.log("WE CAN MOVE FORWARD!!!")
         open_next(4);
+        proceedValue = true;
         $("#section-4-button").children(":first").removeClass("fa-minus");
         $("#section-4-button").children(":first").removeClass("fa-plus");
         $("#section-4-button").children(":first").addClass("fa-pen");
@@ -6609,6 +6622,7 @@ jQuery(document).ready(function ($) {
       if (validateMandatoryFields(MandatoryFields7) == true){
         console.log("WE CAN MOVE FORWARD!!!")
         open_next(4);
+        proceedValue = true;
         $("#section-4-button").children(":first").removeClass("fa-minus");
         $("#section-4-button").children(":first").removeClass("fa-plus");
         $("#section-4-button").children(":first").addClass("fa-pen");
@@ -6643,6 +6657,7 @@ jQuery(document).ready(function ($) {
       if (validateMandatoryFields(MandatoryFields8) == true){
         console.log("WE CAN MOVE FORWARD!!!")
         open_next(4);
+        proceedValue = true;
         $("#section-4-button").children(":first").removeClass("fa-minus");
         $("#section-4-button").children(":first").removeClass("fa-plus");
         $("#section-4-button").children(":first").addClass("fa-pen");
@@ -6671,6 +6686,7 @@ jQuery(document).ready(function ($) {
       if (validateMandatoryFields(MandatoryFields9) == true){
         console.log("WE CAN MOVE FORWARD!!!")
         open_next(4);
+        proceedValue = true;
         $("#section-4-button").children(":first").removeClass("fa-minus");
         $("#section-4-button").children(":first").removeClass("fa-plus");
         $("#section-4-button").children(":first").addClass("fa-pen");
@@ -6692,6 +6708,7 @@ jQuery(document).ready(function ($) {
       if (validateMandatoryFields(MandatoryFields10) == true){
         console.log("WE CAN MOVE FORWARD!!!")
         open_next(4);
+        proceedValue = true;
         $("#section-4-button").children(":first").removeClass("fa-minus");
         $("#section-4-button").children(":first").removeClass("fa-plus");
         $("#section-4-button").children(":first").addClass("fa-pen");
@@ -6712,6 +6729,7 @@ jQuery(document).ready(function ($) {
       if (validateMandatoryFields(MandatoryFields11) == true){
         console.log("WE CAN MOVE FORWARD!!!")
         open_next(4);
+        proceedValue = true;
         $("#section-4-button").children(":first").removeClass("fa-minus");
         $("#section-4-button").children(":first").removeClass("fa-plus");
         $("#section-4-button").children(":first").addClass("fa-pen");
@@ -6732,9 +6750,10 @@ jQuery(document).ready(function ($) {
       add_section_4();
       console.log("add section ----> 4");
     }
-  }
+  
+    return proceedValue;
 
-  );
+  });
 
 
   function add_section_4() {
