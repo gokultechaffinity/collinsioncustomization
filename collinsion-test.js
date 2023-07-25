@@ -12247,13 +12247,10 @@ jQuery(document).ready(function ($) {
     if(($(".fr-element.fr-view").length) != 0){
       $(".fr-element.fr-view").empty();
       $(".fr-element.fr-view").append(summary_div);
-      console.log("Saving draft, will redirect");
-      window.location.href = "/support/tickets"
+
 
     }else{
       $(".fr-element.fr-view").append(summary_div);
-      console.log("Saving draft, will redirect");
-      window.location.href = "/support/tickets"
 
     }
     
