@@ -6405,9 +6405,9 @@ jQuery(document).ready(function ($) {
   //____________________________________________________________________________________________________________________
   $("#save_draft_4").click(function (event) {
     
-    CheckMandatoryValues();
+    ;
 
-    if(proceedValue == true){
+    if(CheckMandatoryValues() == true){
       $(".new-ticket-submit-button").trigger("click");
     }else{
 
