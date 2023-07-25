@@ -6473,12 +6473,7 @@ jQuery(document).ready(function ($) {
 
       if (validateMandatoryFields(MandatoryFields2) == true){
         console.log("WE CAN MOVE FORWARD!!!")
-        open_next(4);
         proceedValue = true;
-        $("#section-4-button").children(":first").removeClass("fa-minus");
-        $("#section-4-button").children(":first").removeClass("fa-plus");
-        $("#section-4-button").children(":first").addClass("fa-pen");
-        $("#section-4-button").css("background-color", "#524954");
       }
 
 
@@ -6499,12 +6494,7 @@ jQuery(document).ready(function ($) {
 
       if (validateMandatoryFields(MandatoryFields3) == true){
         console.log("WE CAN MOVE FORWARD!!!")
-        open_next(4);
         proceedValue = true;
-        $("#section-4-button").children(":first").removeClass("fa-minus");
-        $("#section-4-button").children(":first").removeClass("fa-plus");
-        $("#section-4-button").children(":first").addClass("fa-pen");
-        $("#section-4-button").css("background-color", "#524954");
       }
 
     }
@@ -6526,12 +6516,7 @@ jQuery(document).ready(function ($) {
 
       if (validateMandatoryFields(MandatoryFields4) == true){
         console.log("WE CAN MOVE FORWARD!!!")
-        open_next(4);
         proceedValue = true;
-        $("#section-4-button").children(":first").removeClass("fa-minus");
-        $("#section-4-button").children(":first").removeClass("fa-plus");
-        $("#section-4-button").children(":first").addClass("fa-pen");
-        $("#section-4-button").css("background-color", "#524954");
       }
       
     }
@@ -6556,12 +6541,7 @@ jQuery(document).ready(function ($) {
 
       if (validateMandatoryFields(MandatoryFields5) == true){
         console.log("WE CAN MOVE FORWARD!!!")
-        open_next(4);
         proceedValue = true;
-        $("#section-4-button").children(":first").removeClass("fa-minus");
-        $("#section-4-button").children(":first").removeClass("fa-plus");
-        $("#section-4-button").children(":first").addClass("fa-pen");
-        $("#section-4-button").css("background-color", "#524954");
       }
       
     }
@@ -6576,12 +6556,7 @@ jQuery(document).ready(function ($) {
       validateMandatoryFields(MandatoryFields6)
       if (validateMandatoryFields(MandatoryFields6) == true){
         console.log("WE CAN MOVE FORWARD!!!")
-        open_next(4);
         proceedValue = true;
-        $("#section-4-button").children(":first").removeClass("fa-minus");
-        $("#section-4-button").children(":first").removeClass("fa-plus");
-        $("#section-4-button").children(":first").addClass("fa-pen");
-        $("#section-4-button").css("background-color", "#524954");
       }
       
     }
@@ -6597,12 +6572,7 @@ jQuery(document).ready(function ($) {
       validateMandatoryFields(MandatoryFields6)
       if (validateMandatoryFields(MandatoryFields6) == true){
         console.log("WE CAN MOVE FORWARD!!!")
-        open_next(4);
         proceedValue = true;
-        $("#section-4-button").children(":first").removeClass("fa-minus");
-        $("#section-4-button").children(":first").removeClass("fa-plus");
-        $("#section-4-button").children(":first").addClass("fa-pen");
-        $("#section-4-button").css("background-color", "#524954");
       }
       
     }
@@ -6621,12 +6591,7 @@ jQuery(document).ready(function ($) {
       validateMandatoryFields(MandatoryFields7)
       if (validateMandatoryFields(MandatoryFields7) == true){
         console.log("WE CAN MOVE FORWARD!!!")
-        open_next(4);
         proceedValue = true;
-        $("#section-4-button").children(":first").removeClass("fa-minus");
-        $("#section-4-button").children(":first").removeClass("fa-plus");
-        $("#section-4-button").children(":first").addClass("fa-pen");
-        $("#section-4-button").css("background-color", "#524954");
       }
       
     }
@@ -6656,12 +6621,7 @@ jQuery(document).ready(function ($) {
       validateMandatoryFields(MandatoryFields8)
       if (validateMandatoryFields(MandatoryFields8) == true){
         console.log("WE CAN MOVE FORWARD!!!")
-        open_next(4);
         proceedValue = true;
-        $("#section-4-button").children(":first").removeClass("fa-minus");
-        $("#section-4-button").children(":first").removeClass("fa-plus");
-        $("#section-4-button").children(":first").addClass("fa-pen");
-        $("#section-4-button").css("background-color", "#524954");
       }
       
     }
@@ -6685,12 +6645,7 @@ jQuery(document).ready(function ($) {
 
       if (validateMandatoryFields(MandatoryFields9) == true){
         console.log("WE CAN MOVE FORWARD!!!")
-        open_next(4);
         proceedValue = true;
-        $("#section-4-button").children(":first").removeClass("fa-minus");
-        $("#section-4-button").children(":first").removeClass("fa-plus");
-        $("#section-4-button").children(":first").addClass("fa-pen");
-        $("#section-4-button").css("background-color", "#524954");
       }
       
     }
@@ -6707,12 +6662,7 @@ jQuery(document).ready(function ($) {
 
       if (validateMandatoryFields(MandatoryFields10) == true){
         console.log("WE CAN MOVE FORWARD!!!")
-        open_next(4);
         proceedValue = true;
-        $("#section-4-button").children(":first").removeClass("fa-minus");
-        $("#section-4-button").children(":first").removeClass("fa-plus");
-        $("#section-4-button").children(":first").addClass("fa-pen");
-        $("#section-4-button").css("background-color", "#524954");
       }
       
     }
@@ -6728,12 +6678,7 @@ jQuery(document).ready(function ($) {
 
       if (validateMandatoryFields(MandatoryFields11) == true){
         console.log("WE CAN MOVE FORWARD!!!")
-        open_next(4);
         proceedValue = true;
-        $("#section-4-button").children(":first").removeClass("fa-minus");
-        $("#section-4-button").children(":first").removeClass("fa-plus");
-        $("#section-4-button").children(":first").addClass("fa-pen");
-        $("#section-4-button").css("background-color", "#524954");
       }
       
     }
@@ -6768,7 +6713,6 @@ jQuery(document).ready(function ($) {
         console.log("WE CAN MOVE FORWARD!!!");
 
         open_next(4);
-        proceedValue = true;
         $("#section-4-button").children(":first").removeClass("fa-minus");
         $("#section-4-button").children(":first").removeClass("fa-plus");
         $("#section-4-button").children(":first").addClass("fa-pen");
@@ -6797,7 +6741,6 @@ jQuery(document).ready(function ($) {
       if (validateMandatoryFields(MandatoryFields2) == true){
         console.log("WE CAN MOVE FORWARD!!!")
         open_next(4);
-        proceedValue = true;
         $("#section-4-button").children(":first").removeClass("fa-minus");
         $("#section-4-button").children(":first").removeClass("fa-plus");
         $("#section-4-button").children(":first").addClass("fa-pen");
@@ -6823,7 +6766,6 @@ jQuery(document).ready(function ($) {
       if (validateMandatoryFields(MandatoryFields3) == true){
         console.log("WE CAN MOVE FORWARD!!!")
         open_next(4);
-        proceedValue = true;
         $("#section-4-button").children(":first").removeClass("fa-minus");
         $("#section-4-button").children(":first").removeClass("fa-plus");
         $("#section-4-button").children(":first").addClass("fa-pen");
@@ -6850,7 +6792,6 @@ jQuery(document).ready(function ($) {
       if (validateMandatoryFields(MandatoryFields4) == true){
         console.log("WE CAN MOVE FORWARD!!!")
         open_next(4);
-        proceedValue = true;
         $("#section-4-button").children(":first").removeClass("fa-minus");
         $("#section-4-button").children(":first").removeClass("fa-plus");
         $("#section-4-button").children(":first").addClass("fa-pen");
@@ -6880,7 +6821,6 @@ jQuery(document).ready(function ($) {
       if (validateMandatoryFields(MandatoryFields5) == true){
         console.log("WE CAN MOVE FORWARD!!!")
         open_next(4);
-        proceedValue = true;
         $("#section-4-button").children(":first").removeClass("fa-minus");
         $("#section-4-button").children(":first").removeClass("fa-plus");
         $("#section-4-button").children(":first").addClass("fa-pen");
@@ -6900,7 +6840,6 @@ jQuery(document).ready(function ($) {
       if (validateMandatoryFields(MandatoryFields6) == true){
         console.log("WE CAN MOVE FORWARD!!!")
         open_next(4);
-        proceedValue = true;
         $("#section-4-button").children(":first").removeClass("fa-minus");
         $("#section-4-button").children(":first").removeClass("fa-plus");
         $("#section-4-button").children(":first").addClass("fa-pen");
@@ -6921,7 +6860,6 @@ jQuery(document).ready(function ($) {
       if (validateMandatoryFields(MandatoryFields6) == true){
         console.log("WE CAN MOVE FORWARD!!!")
         open_next(4);
-        proceedValue = true;
         $("#section-4-button").children(":first").removeClass("fa-minus");
         $("#section-4-button").children(":first").removeClass("fa-plus");
         $("#section-4-button").children(":first").addClass("fa-pen");
@@ -6945,7 +6883,6 @@ jQuery(document).ready(function ($) {
       if (validateMandatoryFields(MandatoryFields7) == true){
         console.log("WE CAN MOVE FORWARD!!!")
         open_next(4);
-        proceedValue = true;
         $("#section-4-button").children(":first").removeClass("fa-minus");
         $("#section-4-button").children(":first").removeClass("fa-plus");
         $("#section-4-button").children(":first").addClass("fa-pen");
@@ -6980,7 +6917,6 @@ jQuery(document).ready(function ($) {
       if (validateMandatoryFields(MandatoryFields8) == true){
         console.log("WE CAN MOVE FORWARD!!!")
         open_next(4);
-        proceedValue = true;
         $("#section-4-button").children(":first").removeClass("fa-minus");
         $("#section-4-button").children(":first").removeClass("fa-plus");
         $("#section-4-button").children(":first").addClass("fa-pen");
@@ -7009,7 +6945,6 @@ jQuery(document).ready(function ($) {
       if (validateMandatoryFields(MandatoryFields9) == true){
         console.log("WE CAN MOVE FORWARD!!!")
         open_next(4);
-        proceedValue = true;
         $("#section-4-button").children(":first").removeClass("fa-minus");
         $("#section-4-button").children(":first").removeClass("fa-plus");
         $("#section-4-button").children(":first").addClass("fa-pen");
@@ -7031,7 +6966,6 @@ jQuery(document).ready(function ($) {
       if (validateMandatoryFields(MandatoryFields10) == true){
         console.log("WE CAN MOVE FORWARD!!!")
         open_next(4);
-        proceedValue = true;
         $("#section-4-button").children(":first").removeClass("fa-minus");
         $("#section-4-button").children(":first").removeClass("fa-plus");
         $("#section-4-button").children(":first").addClass("fa-pen");
@@ -7052,7 +6986,6 @@ jQuery(document).ready(function ($) {
       if (validateMandatoryFields(MandatoryFields11) == true){
         console.log("WE CAN MOVE FORWARD!!!")
         open_next(4);
-        proceedValue = true;
         $("#section-4-button").children(":first").removeClass("fa-minus");
         $("#section-4-button").children(":first").removeClass("fa-plus");
         $("#section-4-button").children(":first").addClass("fa-pen");
@@ -7073,8 +7006,6 @@ jQuery(document).ready(function ($) {
       add_section_4();
       console.log("add section ----> 4");
     }
-  
-    return proceedValue;
 
   });
 
