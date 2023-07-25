@@ -2003,7 +2003,7 @@ jQuery(document).ready(function ($) {
 
     console.log(number_elements);
 
-    for (let i = 1; i < number_elements + 1; i++) {
+    for (let i = 1; i < number_elements ; i++) {
       var label = $("#collapseSection1")
       .children("div")
       .children("div:nth-child("+i+")")
@@ -2031,7 +2031,7 @@ jQuery(document).ready(function ($) {
 
     $("p").remove(".section_1_line");
     
-    for (let i = 1; i < number_elements + 1; i++) {
+    for (let i = 1; i < number_elements ; i++) {
       var label = $("#collapseSection1")
       .children("div")
       .children("div:nth-child("+i+")")
