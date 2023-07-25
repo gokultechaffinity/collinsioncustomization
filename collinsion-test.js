@@ -6407,8 +6407,7 @@ jQuery(document).ready(function ($) {
     
     if(CheckMandatoryValues() == true){
       console.log("Value True");
-      $(".new-ticket-submit-button").trigger("click");
-      $(".new-ticket-submit-button").trigger("click");
+      $(".new-ticket-dummy").trigger("click");
     }else{
       console.log("Value False");
     }
