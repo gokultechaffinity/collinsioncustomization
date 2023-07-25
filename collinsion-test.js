@@ -7230,7 +7230,9 @@ jQuery(document).ready(function ($) {
     else {
       $(".new-ticket-submit-button").trigger("click");
       
-     }
+    }
+    console.log("Saving draft, will redirect");
+    window.location.href = "/support/tickets"
   });
 
 
