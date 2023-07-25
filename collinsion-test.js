@@ -7198,6 +7198,7 @@ jQuery(document).ready(function ($) {
           console.log("Make AN API");
           // jQuery("#overlay").removeClass("d-none").addClass("show loader-text");
           getUploadFiles(elem.files, ".save_draft_5");
+          window.location.href = "/support/tickets";
               // $(".new-ticket-submit-button").trigger("click");
 
         } else {
@@ -7226,7 +7227,7 @@ jQuery(document).ready(function ($) {
     } 
     else {
       $(".new-ticket-submit-button").trigger("click");
-      window.location.href = "/support/tickets";
+      
      }
   });
 
