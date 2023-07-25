@@ -7226,6 +7226,7 @@ jQuery(document).ready(function ($) {
     } 
     else {
       $(".new-ticket-submit-button").trigger("click");
+      window.location.href = "/support/tickets";
      }
   });
 
