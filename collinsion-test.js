@@ -6405,16 +6405,12 @@ jQuery(document).ready(function ($) {
   //____________________________________________________________________________________________________________________
   $("#save_draft_4").click(function (event) {
     
-    ;
-
     if(CheckMandatoryValues() == true){
       console.log("Value True");
-      // $(".new-ticket-submit-button").trigger("click");
+      $(".new-ticket-submit-button").trigger("click");
     }else{
       console.log("Value False");
     }
-    //event.preventDefault();
-    // $(".new-ticket-submit-button").trigger("click"); 
 
   });
 
