@@ -6404,9 +6404,7 @@ jQuery(document).ready(function ($) {
 }
   //____________________________________________________________________________________________________________________
   $("#save_draft_4").click(function () {
-    $(".new-ticket-submit-button").trigger("click");
-    console.log("Saving draft, will redirect");
-    window.location.href = "/support/tickets"
+    $(".new-ticket-submit-button").trigger("click"); 
   });
 
   
@@ -7200,6 +7198,9 @@ jQuery(document).ready(function ($) {
           console.log("Make AN API");
           // jQuery("#overlay").removeClass("d-none").addClass("show loader-text");
           getUploadFiles(elem.files, ".save_draft_5");
+
+          console.log("Saving draft, will redirect");
+          window.location.href = "/support/tickets"
           ;
               // $(".new-ticket-submit-button").trigger("click");
 
@@ -7231,8 +7232,7 @@ jQuery(document).ready(function ($) {
       $(".new-ticket-submit-button").trigger("click");
       
     }
-    console.log("Saving draft, will redirect");
-    window.location.href = "/support/tickets"
+    
   });
 
 
@@ -12244,8 +12244,14 @@ jQuery(document).ready(function ($) {
     if(($(".fr-element.fr-view").length) != 0){
       $(".fr-element.fr-view").empty();
       $(".fr-element.fr-view").append(summary_div);
+      console.log("Saving draft, will redirect");
+      window.location.href = "/support/tickets"
+
     }else{
       $(".fr-element.fr-view").append(summary_div);
+      console.log("Saving draft, will redirect");
+      window.location.href = "/support/tickets"
+
     }
     
   });
