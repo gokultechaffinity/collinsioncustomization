@@ -2011,7 +2011,7 @@ jQuery(document).ready(function ($) {
       .text();
 
       var value = $("#collapseSection1")
-        .children(".div")
+        .children("div")
         .children("div:nth-child(" + i + ")")
         .children("input")
         .val();
@@ -2039,7 +2039,7 @@ jQuery(document).ready(function ($) {
       .text();
 
       var value = $("#collapseSection1")
-        .children(".div")
+        .children("div")
         .children("div:nth-child(" + i + ")")
         .children("input")
         .val();
