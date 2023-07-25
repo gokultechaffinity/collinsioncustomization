@@ -6408,9 +6408,10 @@ jQuery(document).ready(function ($) {
     ;
 
     if(CheckMandatoryValues() == true){
-      $(".new-ticket-submit-button").trigger("click");
+      console.log("Value True");
+      // $(".new-ticket-submit-button").trigger("click");
     }else{
-
+      console.log("Value False");
     }
     //event.preventDefault();
     // $(".new-ticket-submit-button").trigger("click"); 
