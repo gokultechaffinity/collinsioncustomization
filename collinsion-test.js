@@ -12161,6 +12161,8 @@ jQuery(document).ready(function ($) {
           clearError(ele);
           console.log("--sucesss-");
           $(".new-ticket-submit-button").trigger("click");
+          console.log("Saving draft, will redirect");
+          window.location.href = "/support/tickets";
         }
       })
       .catch((error) => console.log("error -->", error));
