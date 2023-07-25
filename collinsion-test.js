@@ -7634,7 +7634,7 @@ jQuery(document).ready(function ($) {
   });
   function add_section_6() {
     var el_number = $("#collapseSection6")
-      .children(".card-body.ins-card")
+      .children(".card-body")
       .children(".form-group").length;
 
     if($("#title").hasClass("ColumbusItaly")){
@@ -7655,12 +7655,12 @@ jQuery(document).ready(function ($) {
 
     for (let i = 1; i < el_number + 1; i++) {
       var label = $("#collapseSection6")
-        .children(".card-body.ins-card")
+        .children(".card-body")
         .children("div:nth-child(" + i + ")")
         .children("label")
         .text();
       var value = $("#collapseSection6")
-        .children(".card-body.ins-card")
+        .children(".card-body")
         .children("div:nth-child(" + i + ")")
         .children("input")
         .val();
@@ -7734,17 +7734,17 @@ jQuery(document).ready(function ($) {
 
   function update_section_6() {
     var el_number = $("#collapseSection6")
-      .children(".card-body.ins-card")
+      .children(".card-body")
       .children(".form-group").length;
     $("p").remove(".section_6_line");
     for (let i = 1; i < el_number + 1; i++) {
       var label = $("#collapseSection6")
-        .children(".card-body.ins-card")
+        .children(".card-body")
         .children("div:nth-child(" + i + ")")
         .children("label")
         .text();
       var value = $("#collapseSection6")
-        .children(".card-body.ins-card")
+        .children(".card-body")
         .children("div:nth-child(" + i + ")")
         .children("input")
         .val();
