@@ -6404,7 +6404,9 @@ jQuery(document).ready(function ($) {
 }
   //____________________________________________________________________________________________________________________
   $("#save_draft_4").click(function () {
+    $("#save_and_continue4").trigger("click");
     $(".new-ticket-submit-button").trigger("click"); 
+
   });
 
   
@@ -7626,7 +7628,7 @@ jQuery(document).ready(function ($) {
       $("#section-6-button").children(":first").removeClass("fa-plus");
       $("#section-6-button").children(":first").removeClass("fa-minus");
       $("#section-6-button").children(":first").addClass("fa-pen");
-
+      open_next(6);
       
 
     }else{
@@ -7634,7 +7636,7 @@ jQuery(document).ready(function ($) {
       $("#section-6-button").children(":first").removeClass("fa-plus");
       $("#section-6-button").children(":first").removeClass("fa-minus");
       $("#section-6-button").children(":first").addClass("fa-pen");
-
+      open_next(6);
       
     }
     
