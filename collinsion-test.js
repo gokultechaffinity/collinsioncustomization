@@ -7243,9 +7243,11 @@ jQuery(document).ready(function ($) {
     if ($("#section_4_header").length) {
       console.log("update section ----> 4");
       update_section_4();
+      add_section_5();
     } 
     else{
       add_section_4();
+      add_section_5();
       console.log("add section ----> 4");
     }
   
