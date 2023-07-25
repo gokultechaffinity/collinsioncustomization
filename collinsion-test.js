@@ -7121,6 +7121,7 @@ jQuery(document).ready(function ($) {
               ).val()
             ]["italian_paragraph"]
           );
+          $(".ins-para").css('text-align','left');
         } else {
           insertParagraph(
             reasonForClaimObj[
@@ -7129,6 +7130,7 @@ jQuery(document).ready(function ($) {
               ).val()
             ]["paragraph"]
           );
+          $(".ins-para").css('text-align','left');
         }
       }
     }
