@@ -6404,7 +6404,7 @@ jQuery(document).ready(function ($) {
 }
   //____________________________________________________________________________________________________________________
   $("#save_draft_4").click(function () {
-    $("#save_and_continue4").trigger("click");
+    e.preventDefault();
     $(".new-ticket-submit-button").trigger("click"); 
 
   });
