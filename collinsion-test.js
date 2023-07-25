@@ -6753,7 +6753,7 @@ jQuery(document).ready(function ($) {
   }
     //for loops
     var number_elements = $("#collapseSection4")
-      .children(".card-body.ins-card")
+      .children(".card-body")
       .children(
         "div.helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
       )
@@ -6762,7 +6762,7 @@ jQuery(document).ready(function ($) {
     for (let i = 1; i < number_elements + 1; i++) {
       if (
         $("#collapseSection4")
-          .children(".card-body.ins-card")
+          .children(".card-body")
           .children(
             ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
           )
@@ -6770,7 +6770,7 @@ jQuery(document).ready(function ($) {
           .children(".choices.form-select").length
       ) {
         var label = $("#collapseSection4")
-          .children(".card-body.ins-card")
+          .children(".card-body")
           .children(
             ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
           )
@@ -6778,7 +6778,7 @@ jQuery(document).ready(function ($) {
           .children("label")
           .text();
         var value = $("#collapseSection4")
-          .children(".card-body.ins-card")
+          .children(".card-body")
           .children(
             ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
           )
@@ -6794,7 +6794,7 @@ jQuery(document).ready(function ($) {
         }
       } else if (
         $("#collapseSection4")
-          .children(".card-body.ins-card")
+          .children(".card-body")
           .children(
             ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
           )
@@ -6802,7 +6802,7 @@ jQuery(document).ready(function ($) {
           .children("textarea").length
       ) {
         var label = $("#collapseSection4")
-          .children(".card-body.ins-card")
+          .children(".card-body")
           .children(
             ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
           )
@@ -6810,7 +6810,7 @@ jQuery(document).ready(function ($) {
           .children("label")
           .text();
         var value = $("#collapseSection4")
-          .children(".card-body.ins-card")
+          .children(".card-body")
           .children(
             ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
           )
@@ -6824,7 +6824,7 @@ jQuery(document).ready(function ($) {
         }
       } else {
         var label = $("#collapseSection4")
-          .children(".card-body.ins-card")
+          .children(".card-body")
           .children(
             ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
           )
@@ -6832,7 +6832,7 @@ jQuery(document).ready(function ($) {
           .children("label")
           .text();
         var value = $("#collapseSection4")
-          .children(".card-body.ins-card")
+          .children(".card-body")
           .children(
             ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
           )
@@ -6851,7 +6851,7 @@ jQuery(document).ready(function ($) {
   function update_section_4() {
     //for loops
     var number_elements = $("#collapseSection4")
-      .children(".card-body.ins-card")
+      .children(".card-body")
       .children(
         "div.helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
       )
@@ -6861,7 +6861,7 @@ jQuery(document).ready(function ($) {
     for (let i = 1; i < number_elements + 1; i++) {
       if (
         $("#collapseSection4")
-          .children(".card-body.ins-card")
+          .children(".card-body")
           .children(
             ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
           )
@@ -6869,7 +6869,7 @@ jQuery(document).ready(function ($) {
           .children(".choices.form-select").length
       ) {
         var label = $("#collapseSection4")
-          .children(".card-body.ins-card")
+          .children(".card-body")
           .children(
             ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
           )
@@ -6877,7 +6877,7 @@ jQuery(document).ready(function ($) {
           .children("label")
           .text();
         var value = $("#collapseSection4")
-          .children(".card-body.ins-card")
+          .children(".card-body")
           .children(
             ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
           )
@@ -6893,7 +6893,7 @@ jQuery(document).ready(function ($) {
         }
       } else if (
         $("#collapseSection4")
-          .children(".card-body.ins-card")
+          .children(".card-body")
           .children(
             ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
           )
@@ -6901,7 +6901,7 @@ jQuery(document).ready(function ($) {
           .children("textarea").length
       ) {
         var label = $("#collapseSection4")
-          .children(".card-body.ins-card")
+          .children(".card-body")
           .children(
             ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
           )
@@ -6909,7 +6909,7 @@ jQuery(document).ready(function ($) {
           .children("label")
           .text();
         var value = $("#collapseSection4")
-          .children(".card-body.ins-card")
+          .children(".card-body")
           .children(
             ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
           )
@@ -6923,7 +6923,7 @@ jQuery(document).ready(function ($) {
         }
       } else {
         var label = $("#collapseSection4")
-          .children(".card-body.ins-card")
+          .children(".card-body")
           .children(
             ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
           )
@@ -6931,7 +6931,7 @@ jQuery(document).ready(function ($) {
           .children("label")
           .text();paragraph
         var value = $("#collapseSection4")
-          .children(".card-body.ins-card")
+          .children(".card-body")
           .children(
             ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
           )
