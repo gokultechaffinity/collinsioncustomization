@@ -6403,8 +6403,8 @@ jQuery(document).ready(function ($) {
   return move_forward;
 }
   //____________________________________________________________________________________________________________________
-  $("#save_draft_4").click(function () {
-    e.preventDefault();
+  $("#save_draft_4").click(function (event) {
+    event.preventDefault();
     $(".new-ticket-submit-button").trigger("click"); 
 
   });
