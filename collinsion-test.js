@@ -6079,22 +6079,22 @@ jQuery(document).ready(function ($) {
   }
 
     var number_elements = $("#collapseSection3")
-      .children(".card-body.ins-card")
+      .children(".card-body")
       .children("div").length;
     for (let i = 1; i < number_elements + 1; i++) {
       if (
         $("#collapseSection3")
-          .children(".card-body.ins-card")
+          .children(".card-body")
           .children("div:nth-child(" + i + ")")
           .children(".choices.form-select").length
       ) {
         var label_dropdown = $("#collapseSection3")
-          .children(".card-body.ins-card")
+          .children(".card-body")
           .children("div:nth-child(" + i + ")")
           .children("label")
           .text();
         var dropdown_value = $("#collapseSection3")
-          .children(".card-body.ins-card")
+          .children(".card-body")
           .children("div:nth-child(" + i + ")")
           .children(".choices.form-select")
           .children(".choices__inner")
@@ -6109,12 +6109,12 @@ jQuery(document).ready(function ($) {
         ).insertBefore("#great_line_3");
       } else {
         var label = $("#collapseSection3")
-          .children(".card-body.ins-card")
+          .children(".card-body")
           .children("div:nth-child(" + i + ")")
           .children("label")
           .text();
         var value = $("#collapseSection3")
-          .children(".card-body.ins-card")
+          .children(".card-body")
           .children("div:nth-child(" + i + ")")
           .children("input")
           .val();
@@ -6126,23 +6126,23 @@ jQuery(document).ready(function ($) {
   }
   function update_section_3() {
     var number_elements = $("#collapseSection3")
-      .children(".card-body.ins-card")
+      .children(".card-body")
       .children("div").length;
     $("p").remove(".section_3_line");
     for (let i = 1; i < number_elements + 1; i++) {
       if (
         $("#collapseSection3")
-          .children(".card-body.ins-card")
+          .children(".card-body")
           .children("div:nth-child(" + i + ")")
           .children(".choices.form-select").length
       ) {
         var label_dropdown = $("#collapseSection3")
-          .children(".card-body.ins-card")
+          .children(".card-body")
           .children("div:nth-child(" + i + ")")
           .children("label")
           .text();
         var dropdown_value = $("#collapseSection3")
-          .children(".card-body.ins-card")
+          .children(".card-body")
           .children("div:nth-child(" + i + ")")
           .children(".choices.form-select")
           .children(".choices__inner")
@@ -6157,12 +6157,12 @@ jQuery(document).ready(function ($) {
         ).insertBefore("#great_line_3");
       } else {
         var label = $("#collapseSection3")
-          .children(".card-body.ins-card")
+          .children(".card-body")
           .children("div:nth-child(" + i + ")")
           .children("label")
           .text();
         var value = $("#collapseSection3")
-          .children(".card-body.ins-card")
+          .children(".card-body")
           .children("div:nth-child(" + i + ")")
           .children("input")
           .val();
