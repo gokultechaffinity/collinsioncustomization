@@ -7090,7 +7090,7 @@ jQuery(document).ready(function ($) {
     if ($(".ins-para").length) {
       $(".ins-para").remove();
       $(para).insertBefore(
-        "p.for-section-4"
+        "#save_draft_4"
       );
       if (jQuery(".fw-comments-wrapper").length > 0) {
         $(para).prependTo("#collapseSection5");}
@@ -7100,7 +7100,7 @@ jQuery(document).ready(function ($) {
     } else {
       
       $(para).insertBefore(
-        "p.for-section-4"
+        "#save_draft_4"
       );
       if (jQuery(".fw-comments-wrapper").length > 0) {
         $(para).prependTo("#collapseSection5");}
