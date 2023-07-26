@@ -6408,16 +6408,9 @@ jQuery(document).ready(function ($) {
     if(CheckMandatoryValues() == true){
       console.log("Value True");
       //$(".new-ticket-dummy").trigger("click");
-      var summary_div = document.getElementById("collapseSection7").innerHTML;
-      //add condition to check if information had already been appended, if so, clear description field and add new information
-      if(($(".fr-element.fr-view").length) != 0){
-        $(".fr-element.fr-view").empty();
-        $(".fr-element.fr-view").append(summary_div);
-      }else{
-        $(".fr-element.fr-view").append(summary_div);
-      }
-        console.log("Saving draft, will redirect");
-        window.location.href = "/support/tickets"
+      $(".new-ticket-submit-button").trigger("click");
+      console.log("Saving draft, will redirect");
+      window.location.href = "/support/tickets"
     }else{
       console.log("Value False");
     }
@@ -7482,7 +7475,8 @@ jQuery(document).ready(function ($) {
           getUploadFiles(elem.files, ".save_draft_5");
 
           console.log("Saving draft, will redirect");
-          window.location.href = "/support/tickets";
+          window.location.href = "/support/tickets"
+;
 
         } else {
           console.log("Show Error unsupported File Format ");
@@ -7511,15 +7505,7 @@ jQuery(document).ready(function ($) {
     else {
       console.log("empty continue condition here");
       console.log("Saving draft, will redirect");
-      // $(".new-ticket-submit-button").trigger("click");
-      var summary_div = document.getElementById("collapseSection7").innerHTML;
-      //add condition to check if information had already been appended, if so, clear description field and add new information
-      if(($(".fr-element.fr-view").length) != 0){
-        $(".fr-element.fr-view").empty();
-        $(".fr-element.fr-view").append(summary_div);
-      }else{
-        $(".fr-element.fr-view").append(summary_div);
-      }
+      $(".new-ticket-submit-button").trigger("click");
       window.location.href = "/support/tickets"
     }
     
@@ -7779,15 +7765,7 @@ jQuery(document).ready(function ($) {
             $("#new_helpdesk_note #helpdesk_note_submit").trigger("click");
           } else {
             if (fieldId == ".save_draft_5") {
-              // $(".new-ticket-submit-button").trigger("click");
-              var summary_div = document.getElementById("collapseSection7").innerHTML;
-              //add condition to check if information had already been appended, if so, clear description field and add new information
-              if(($(".fr-element.fr-view").length) != 0){
-                $(".fr-element.fr-view").empty();
-                $(".fr-element.fr-view").append(summary_div);
-              }else{
-                $(".fr-element.fr-view").append(summary_div);
-              }
+              $(".new-ticket-submit-button").trigger("click");
             }
           }
         }
@@ -12456,14 +12434,7 @@ jQuery(document).ready(function ($) {
           let ele = ["common_error"];
           clearError(ele);
           console.log("--sucesss-");
-          var summary_div = document.getElementById("collapseSection7").innerHTML;
-          //add condition to check if information had already been appended, if so, clear description field and add new information
-          if(($(".fr-element.fr-view").length) != 0){
-            $(".fr-element.fr-view").empty();
-            $(".fr-element.fr-view").append(summary_div);
-          }else{
-            $(".fr-element.fr-view").append(summary_div);
-          }
+          $(".new-ticket-submit-button").trigger("click");
           console.log("Saving draft, will redirect");
           window.location.href = "/support/tickets";
         }
