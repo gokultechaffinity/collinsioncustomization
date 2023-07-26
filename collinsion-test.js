@@ -7504,8 +7504,10 @@ jQuery(document).ready(function ($) {
       }
     } 
     else {
+      console.log("empty continue condition here");
+      console.log("Saving draft, will redirect");
+      window.location.href = "/support/tickets"
       $(".new-ticket-submit-button").trigger("click");
-      
     }
     
   });
@@ -12522,11 +12524,8 @@ jQuery(document).ready(function ($) {
     if(($(".fr-element.fr-view").length) != 0){
       $(".fr-element.fr-view").empty();
       $(".fr-element.fr-view").append(summary_div);
-
-
     }else{
       $(".fr-element.fr-view").append(summary_div);
-
     }
     
   });
