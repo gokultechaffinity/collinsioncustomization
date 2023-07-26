@@ -6409,8 +6409,6 @@ jQuery(document).ready(function ($) {
       console.log("Value True");
       //$(".new-ticket-dummy").trigger("click");
       $(".new-ticket-submit-button").trigger("click");
-      console.log("Saving draft, will redirect");
-      window.location.href = "/support/tickets"
     }else{
       console.log("Value False");
     }
@@ -7503,10 +7501,7 @@ jQuery(document).ready(function ($) {
       }
     } 
     else {
-      console.log("empty continue condition here");
-      console.log("Saving draft, will redirect");
       $(".new-ticket-submit-button").trigger("click");
-      window.location.href = "/support/tickets"
     }
     
   });
@@ -12435,8 +12430,6 @@ jQuery(document).ready(function ($) {
           clearError(ele);
           console.log("--sucesss-");
           $(".new-ticket-submit-button").trigger("click");
-          console.log("Saving draft, will redirect");
-          window.location.href = "/support/tickets";
         }
       })
       .catch((error) => console.log("error -->", error));
@@ -12524,13 +12517,18 @@ jQuery(document).ready(function ($) {
       $(".fr-element.fr-view").empty();
       $(".fr-element.fr-view").append(summary_div);
       console.log("Saving draft, will redirect");
-      event.preventDefault();
-      window.location.href = "/support/tickets";
+      // event.preventDefault();
+      var window = window.open("/support/tickets", "_blank");
+      window.focus();
+      // window.location.href = "/support/tickets";
+
     }else{
       $(".fr-element.fr-view").append(summary_div);
       console.log("Saving draft, will redirect");
-      event.preventDefault();
-      window.location.href = "/support/tickets";
+      // event.preventDefault();
+      var window = window.open("/support/tickets", "_blank");
+      window.focus();
+    //   window.location.href = "/support/tickets";
     }
     
   });
