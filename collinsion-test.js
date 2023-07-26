@@ -7506,8 +7506,8 @@ jQuery(document).ready(function ($) {
     else {
       console.log("empty continue condition here");
       console.log("Saving draft, will redirect");
-      window.location.href = "/support/tickets"
       $(".new-ticket-submit-button").trigger("click");
+      window.location.href = "/support/tickets"
     }
     
   });
