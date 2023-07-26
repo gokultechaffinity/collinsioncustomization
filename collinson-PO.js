@@ -7410,153 +7410,10 @@ jQuery(document).ready(function ($) {
   );
   
     //____________________________________________________________________________________________________________________
-  //section 5 continue
-  $(".save_draft_5").click(function () {
-    console.log("save draft 5 clicked");
-    var elem = document.getElementById("files_list");
-    let fileExtensionArray = [
-      "gif",
-      "jpeg",
-      "jpg",
-      "png",
-      "bmp",
-      "tiff",
-      "tif",
-      "pdf",
-      "doc",
-      "docx",
-      "xls",
-      "xlsx",
-      "txt",
-      "odt",
-    ];
-    let FileExtensionValidateCounter = 0;
-    let fileExtension;
-    if (elem.files.length) {
-      let ele = ["api_call_failed_filelist"];
-      clearError(ele);
-      var files = [];
-      var fileSize = [];
-      let formatValidateCounter=0;
-      for (var i = 0; i < elem.files.length; ++i) {
-        fileExtension = elem.files[i].name.split(".").pop();
-        fileExtension=fileExtension.toLowerCase();
-        if (fileExtensionArray.includes(fileExtension)) {
-          let checkingFile=elem.files[i].name.split(".");
-          console.log("file name in save draft flow",elem.files[i].name)
-          console.log("checking file name splitted in save draft flow",checkingFile)
-          if(checkingFile.length>2){
-            formatValidateCounter=formatValidateCounter+1;
-          }else{
-            files.push(elem.files[i].name);
-            fileSize.push(elem.files[i].size);
-          }
-        } else {
-          FileExtensionValidateCounter = FileExtensionValidateCounter + 1;
-        }
-      }
-      var sum = fileSize.reduce(function (a, b) {
-        return a + b;
-      }, 0);
-      console.log("sum tottal--->", sum);
-      if (sum <= 5242880) {
-        let ele = ["api_call_failed_filelist"];
-        clearError(ele);
-        if ($("#section_5_header").length) {
-          update_section_5();
-        } else {
-          add_section_5();
-        }
-        if (!FileExtensionValidateCounter&&!formatValidateCounter) {
-          console.log("Make AN API");
-          // jQuery("#overlay").removeClass("d-none").addClass("show loader-text");
-          getUploadFiles(elem.files, ".save_draft_5");
-
-          console.log("Saving draft, will redirect");
-          window.location.href = "/support/tickets"
-;
-
-        } else {
-          console.log("Show Error unsupported File Format ");
-          if ($("#title").hasClass("ColumbusItaly")) {
-            addErrorMessage(
-              "api_call_failed_filelist",
-              "Formato file non supportato. Formati supportati: test(.gif),jpeg,jpg,png,bmp,tiff,tif,pdf,doc,docx,xls,xlsx,txt,odt"
-            );
-          } else {
-            addErrorMessage(
-              "api_call_failed_filelist",
-              "<p style='color:red;' >WARNING - Unsupported File Format attached. Please remove and try again</p><br><p style='color:red;'>We support the following file formats - jpeg, jpg, pnh, bmp, pdf,doc, docx, xls and xlsx.</p>"
-            );
-          }
-        }
-      } else {
-        console.log(
-          " --------- Need to show error max file size should not more than 5 MB ----------------"
-        );
-        addErrorMessage(
-          "api_call_failed_filelist",
-          "File size cannot exceed 5 MB"
-        );
-      }
-    } 
-    else {
-      $(".new-ticket-submit-button").trigger("click");
-    }
-    
-  });
-
-
-  $(".save_and_continue5").click(function () {
-
-    if ($("#section_4_header").length) {
-      console.log("update section ----> 4");
-      update_section_4();
-      add_section_5();
-    } 
-    else{
-      add_section_4();
-      add_section_5();
-      console.log("add section ----> 4");
-    }
-  
-
-    if (jQuery(".fw-comments-wrapper").length > 0) {
-      console.log("update section cont. ----> 4");
-      update_section_4_continue();
-      open_next(5);
-      //change document color
-      $("#section-4-button").children(":first").removeClass("fa-pen");
-      $("#section-5-button").children(":first").removeClass("fa-minus");
-      $("#section-5-button").children(":first").removeClass("fa-plus");
-      $("#section-4-button").children(":first").addClass("fa-check");
-      $("#section-5-button").children(":first").addClass("fa-check");
-      if($("#section_5_header").length){
-        update_section_5();
-      }else{
-        add_section_5();
-      }
-      
-      //will execute in ticket detail page senario
-      
-      if (
-        $("#new_helpdesk_note #attachments_list .proper-attachments-list")
-          .length){
-        fileUploadCallback();
-      } else if ($(".fw-comments-wrapper .fw-attachment-item").length) {
-        //Need to add another condition for already had div if div has length then we need to open next section
-        open_next(5);
-      }
-    } else {
-      //will excute in create new ticket senario
-      
-      fileUploadCallback();
-    }
-  });
-
-  function fileUploadCallback() {
-    var elem = document.getElementById("files_list");
-    if (elem.files.length) {
+    //section 5 continue
+    $(".save_draft_5").click(function () {
+      console.log("save draft 5 clicked");
+      var elem = document.getElementById("files_list");
       let fileExtensionArray = [
         "gif",
         "jpeg",
@@ -7575,6353 +7432,6496 @@ jQuery(document).ready(function ($) {
       ];
       let FileExtensionValidateCounter = 0;
       let fileExtension;
-      let ele = ["api_call_failed_filelist"];
-      clearError(ele);
-      var files = [];
-      var fileSize = [];
-      let formatValidateCounter=0;
-      for (var i = 0; i < elem.files.length; ++i) {
-        fileExtension = elem.files[i].name.split(".").pop();
-        fileExtension=fileExtension.toLowerCase();
-        if (fileExtensionArray.includes(fileExtension)) {
-          let checkingFile=elem.files[i].name.split(".");
-          console.log("file name ",elem.files[i].name)
-          console.log("checking file name splitted ",checkingFile)
-          if(checkingFile.length>2){
-            formatValidateCounter=formatValidateCounter+1;
-          }else{
-            files.push(elem.files[i].name);
-            fileSize.push(elem.files[i].size);
-          }
-        } else {
-          FileExtensionValidateCounter = FileExtensionValidateCounter + 1;
-        }
-      }
-
-      var sum = fileSize.reduce(function (a, b) {
-        return a + b;
-      }, 0);
-      console.log("sum tottal--->", sum);
-      if (sum <= 5242880) {
+      if (elem.files.length) {
         let ele = ["api_call_failed_filelist"];
         clearError(ele);
-        if ($("#section_5_header").length) {
-          update_section_5();
-        } else {
-          add_section_5();
+        var files = [];
+        var fileSize = [];
+        let formatValidateCounter=0;
+        for (var i = 0; i < elem.files.length; ++i) {
+          fileExtension = elem.files[i].name.split(".").pop();
+          fileExtension=fileExtension.toLowerCase();
+          if (fileExtensionArray.includes(fileExtension)) {
+            let checkingFile=elem.files[i].name.split(".");
+            console.log("file name in save draft flow",elem.files[i].name)
+            console.log("checking file name splitted in save draft flow",checkingFile)
+            if(checkingFile.length>2){
+              formatValidateCounter=formatValidateCounter+1;
+            }else{
+              files.push(elem.files[i].name);
+              fileSize.push(elem.files[i].size);
+            }
+          } else {
+            FileExtensionValidateCounter = FileExtensionValidateCounter + 1;
+          }
         }
-        console.log("files --->", files);
-        if (!FileExtensionValidateCounter&&!formatValidateCounter) {
-          console.log("Make AN API");
-          // jQuery("#overlay").removeClass("d-none").addClass("show loader-text");
-          getUploadFiles(elem.files, ".save_and_continue5");
-          // if (jQuery(".fw-comments-wrapper").length > 0) {
-          //   $("#new_helpdesk_note #helpdesk_note_submit").trigger("click");
-          // } 
-          open_next(5);
-          $("#section-4-button").css("background-color", "#4DC367");
-          $("#section-5-button").css("background-color", "#4DC367");
-          $("#section-4-button").children(":first").removeClass("fa-pen");
-          $("#section-5-button").children(":first").removeClass("fa-minus");
-          $("#section-5-button").children(":first").removeClass("fa-plus");
-          $("#section-4-button").children(":first").addClass("fa-check");
-          $("#section-5-button").children(":first").addClass("fa-check");
+        var sum = fileSize.reduce(function (a, b) {
+          return a + b;
+        }, 0);
+        console.log("sum tottal--->", sum);
+        if (sum <= 5242880) {
+          let ele = ["api_call_failed_filelist"];
+          clearError(ele);
+          if ($("#section_5_header").length) {
+            update_section_5();
+          } else {
+            add_section_5();
+          }
+          if (!FileExtensionValidateCounter&&!formatValidateCounter) {
+            console.log("Make AN API");
+            // jQuery("#overlay").removeClass("d-none").addClass("show loader-text");
+            getUploadFiles(elem.files, ".save_draft_5");
+
+            console.log("Saving draft, will redirect");
+            window.location.href = "/support/tickets"
+  ;
+
+          } else {
+            console.log("Show Error unsupported File Format ");
+            if ($("#title").hasClass("ColumbusItaly")) {
+              addErrorMessage(
+                "api_call_failed_filelist",
+                "Formato file non supportato. Formati supportati: test(.gif),jpeg,jpg,png,bmp,tiff,tif,pdf,doc,docx,xls,xlsx,txt,odt"
+              );
+            } else {
+              addErrorMessage(
+                "api_call_failed_filelist",
+                "<p style='color:red;' >WARNING - Unsupported File Format attached. Please remove and try again</p><br><p style='color:red;'>We support the following file formats - jpeg, jpg, pnh, bmp, pdf,doc, docx, xls and xlsx.</p>"
+              );
+            }
+          }
         } else {
-          console.log("Show Error unsupported File Format ");
+          console.log(
+            " --------- Need to show error max file size should not more than 5 MB ----------------"
+          );
           addErrorMessage(
             "api_call_failed_filelist",
-            "<p style='color:red;' >WARNING - Unsupported File Format attached. Please remove and try again</p><br><p style='color:red;'>We support the following file formats - jpeg, jpg, pnh, bmp, pdf,doc, docx, xls and xlsx.</p>"
+            "File size cannot exceed 5 MB"
           );
         }
+      } 
+      else {
+        $(".new-ticket-submit-button").trigger("click");
+      }
+      
+    });
+
+
+    $(".save_and_continue5").click(function () {
+
+      if ($("#section_4_header").length) {
+        console.log("update section ----> 4");
+        update_section_4();
+        add_section_5();
+      } 
+      else{
+        add_section_4();
+        add_section_5();
+        console.log("add section ----> 4");
+      }
+    
+
+      if (jQuery(".fw-comments-wrapper").length > 0) {
+        console.log("update section cont. ----> 4");
+        update_section_4_continue();
+        open_next(5);
+        //change document color
+        $("#section-4-button").children(":first").removeClass("fa-pen");
+        $("#section-5-button").children(":first").removeClass("fa-minus");
+        $("#section-5-button").children(":first").removeClass("fa-plus");
+        $("#section-4-button").children(":first").addClass("fa-check");
+        $("#section-5-button").children(":first").addClass("fa-check");
+        if($("#section_5_header").length){
+          update_section_5();
+        }else{
+          add_section_5();
+        }
+        
+        //will execute in ticket detail page senario
+        
+        if (
+          $("#new_helpdesk_note #attachments_list .proper-attachments-list")
+            .length){
+          fileUploadCallback();
+        } else if ($(".fw-comments-wrapper .fw-attachment-item").length) {
+          //Need to add another condition for already had div if div has length then we need to open next section
+          open_next(5);
+        }
       } else {
-        console.log(
-          " --------- Need to show error max file size should not more than 5 MB ----------------"
+        //will excute in create new ticket senario
+        
+        fileUploadCallback();
+      }
+    });
+
+    function fileUploadCallback() {
+      var elem = document.getElementById("files_list");
+      if (elem.files.length) {
+        let fileExtensionArray = [
+          "gif",
+          "jpeg",
+          "jpg",
+          "png",
+          "bmp",
+          "tiff",
+          "tif",
+          "pdf",
+          "doc",
+          "docx",
+          "xls",
+          "xlsx",
+          "txt",
+          "odt",
+        ];
+        let FileExtensionValidateCounter = 0;
+        let fileExtension;
+        let ele = ["api_call_failed_filelist"];
+        clearError(ele);
+        var files = [];
+        var fileSize = [];
+        let formatValidateCounter=0;
+        for (var i = 0; i < elem.files.length; ++i) {
+          fileExtension = elem.files[i].name.split(".").pop();
+          fileExtension=fileExtension.toLowerCase();
+          if (fileExtensionArray.includes(fileExtension)) {
+            let checkingFile=elem.files[i].name.split(".");
+            console.log("file name ",elem.files[i].name)
+            console.log("checking file name splitted ",checkingFile)
+            if(checkingFile.length>2){
+              formatValidateCounter=formatValidateCounter+1;
+            }else{
+              files.push(elem.files[i].name);
+              fileSize.push(elem.files[i].size);
+            }
+          } else {
+            FileExtensionValidateCounter = FileExtensionValidateCounter + 1;
+          }
+        }
+
+        var sum = fileSize.reduce(function (a, b) {
+          return a + b;
+        }, 0);
+        console.log("sum tottal--->", sum);
+        if (sum <= 5242880) {
+          let ele = ["api_call_failed_filelist"];
+          clearError(ele);
+          if ($("#section_5_header").length) {
+            update_section_5();
+          } else {
+            add_section_5();
+          }
+          console.log("files --->", files);
+          if (!FileExtensionValidateCounter&&!formatValidateCounter) {
+            console.log("Make AN API");
+            // jQuery("#overlay").removeClass("d-none").addClass("show loader-text");
+            getUploadFiles(elem.files, ".save_and_continue5");
+            // if (jQuery(".fw-comments-wrapper").length > 0) {
+            //   $("#new_helpdesk_note #helpdesk_note_submit").trigger("click");
+            // } 
+            open_next(5);
+            $("#section-4-button").css("background-color", "#4DC367");
+            $("#section-5-button").css("background-color", "#4DC367");
+            $("#section-4-button").children(":first").removeClass("fa-pen");
+            $("#section-5-button").children(":first").removeClass("fa-minus");
+            $("#section-5-button").children(":first").removeClass("fa-plus");
+            $("#section-4-button").children(":first").addClass("fa-check");
+            $("#section-5-button").children(":first").addClass("fa-check");
+          } else {
+            console.log("Show Error unsupported File Format ");
+            addErrorMessage(
+              "api_call_failed_filelist",
+              "<p style='color:red;' >WARNING - Unsupported File Format attached. Please remove and try again</p><br><p style='color:red;'>We support the following file formats - jpeg, jpg, pnh, bmp, pdf,doc, docx, xls and xlsx.</p>"
+            );
+          }
+        } else {
+          console.log(
+            " --------- Need to show error max file size should not more than 5 MB ----------------"
+          );
+          addErrorMessage(
+            "api_call_failed_filelist",
+            "File size cannot exceed 5 MB"
+          );
+        }
+      }
+      else {
+        open_next(5);
+        // if ($("#title").hasClass("ColumbusItaly")) {
+        //   addErrorMessage(
+        //     "api_call_failed_filelist",
+        //     "Si prega di caricare il file."
+        //   );
+        //   console.log(" --------- Need to show error message ----------------");
+        // } else {
+        //   addErrorMessage("api_call_failed_filelist", "Please Upload the File.");
+        //   console.log(" --------- Need to show error message ----------------");
+        // }
+      }
+    }
+    function add_section_5() {
+      if($("#title").hasClass("ColumbusItaly")){
+        $("<strong id='section_5_header'>" + italy_titles[4] + "</strong>").insertAfter(
+          "#great_line_4"
         );
-        addErrorMessage(
-          "api_call_failed_filelist",
-          "File size cannot exceed 5 MB"
+        $("<hr class='summary_divider' id='great_line_5'>").insertAfter(
+          "#section_5_header"
+        );
+      }else{
+        $("<strong id='section_5_header'>" + titles[4] + "</strong>").insertAfter(
+          "#great_line_4"
+        );
+        $("<hr class='summary_divider' id='great_line_5'>").insertAfter(
+          "#section_5_header"
+        );
+    }
+      var number_attachments = $("#attachments_list").children().length;
+      console.log(number_attachments);
+      for (let i = 1; i < number_attachments + 1; i++) {
+        var document_name = $("#attachments_list")
+          .children("#attachment_" + i)
+          .children(
+            ".attachment.file-container.file-props-font.d-inline-block.position-relative"
+          )
+          .children(".file-name.position-absolute.overflow-hidden ")
+          .text();
+        $("<p class='section_5_line'>" + document_name + "</p>").insertBefore(
+          "#great_line_5"
         );
       }
     }
-     else {
-      open_next(5);
-      // if ($("#title").hasClass("ColumbusItaly")) {
-      //   addErrorMessage(
-      //     "api_call_failed_filelist",
-      //     "Si prega di caricare il file."
-      //   );
-      //   console.log(" --------- Need to show error message ----------------");
-      // } else {
-      //   addErrorMessage("api_call_failed_filelist", "Please Upload the File.");
-      //   console.log(" --------- Need to show error message ----------------");
-      // }
-    }
-  }
-  function add_section_5() {
-    if($("#title").hasClass("ColumbusItaly")){
-      $("<strong id='section_5_header'>" + italy_titles[4] + "</strong>").insertAfter(
-        "#great_line_4"
-      );
-      $("<hr class='summary_divider' id='great_line_5'>").insertAfter(
-        "#section_5_header"
-      );
-    }else{
-      $("<strong id='section_5_header'>" + titles[4] + "</strong>").insertAfter(
-        "#great_line_4"
-      );
-      $("<hr class='summary_divider' id='great_line_5'>").insertAfter(
-        "#section_5_header"
-      );
-  }
-    var number_attachments = $("#attachments_list").children().length;
-    console.log(number_attachments);
-    for (let i = 1; i < number_attachments + 1; i++) {
-      var document_name = $("#attachments_list")
-        .children("#attachment_" + i)
-        .children(
-          ".attachment.file-container.file-props-font.d-inline-block.position-relative"
-        )
-        .children(".file-name.position-absolute.overflow-hidden ")
-        .text();
-      $("<p class='section_5_line'>" + document_name + "</p>").insertBefore(
-        "#great_line_5"
-      );
-    }
-  }
 
-  function update_section_5() {
-    var number_attachments = $("#attachments_list").children().length;
-    console.log(number_attachments);
-    $("p").remove(".section_5_line");
-    for (let i = 1; i < number_attachments + 1; i++) {
-      var document_name = $("#attachments_list")
-        .children("#attachment_" + i)
-        .children(
-          ".attachment.file-container.file-props-font.d-inline-block.position-relative"
-        )
-        .children(".file-name.position-absolute.overflow-hidden ")
-        .text();
-      $("<p class='section_5_line'>" + document_name + "</p>").insertBefore(
-        "#great_line_5"
-      );
+    function update_section_5() {
+      var number_attachments = $("#attachments_list").children().length;
+      console.log(number_attachments);
+      $("p").remove(".section_5_line");
+      for (let i = 1; i < number_attachments + 1; i++) {
+        var document_name = $("#attachments_list")
+          .children("#attachment_" + i)
+          .children(
+            ".attachment.file-container.file-props-font.d-inline-block.position-relative"
+          )
+          .children(".file-name.position-absolute.overflow-hidden ")
+          .text();
+        $("<p class='section_5_line'>" + document_name + "</p>").insertBefore(
+          "#great_line_5"
+        );
+      }
     }
-  }
-  function getUploadFiles(files, fieldId) {
-    console.log("--->", files);
-    console.log("--->", typeof files);
-    let statusCode;
-    let flag = false;
-    var formdata = new FormData();
-    var myHeaders = new Headers();
-    myHeaders.append("Cache-Control", "no-cache");
-    myHeaders.append("Authorization", AuthorizationKey);
-    if(jQuery(".fw-comments-wrapper").length > 0){
-      let updateClaimIniatedNumber=$("#helpdesk_ticket_custom_field_cf_claim_number_2321673").val();
-      formdata.append("claimNumber",updateClaimIniatedNumber );
-    }else{
-      formdata.append("claimNumber",ClaimInitiatedNumber );
-    }
-    formdata.append("uploadedBy", "Collinson API");
-    formdata.append("source", "OnlineClaims");
-    formdata.append("subject", "Omni Documents");
-    for (let file of files) {
-      console.log("iterate -->", file);
-      formdata.append("attachments[]", file, file.name);
-    }
+    function getUploadFiles(files, fieldId) {
+      console.log("--->", files);
+      console.log("--->", typeof files);
+      let statusCode;
+      let flag = false;
+      var formdata = new FormData();
+      var myHeaders = new Headers();
+      myHeaders.append("Cache-Control", "no-cache");
+      myHeaders.append("Authorization", AuthorizationKey);
+      if(jQuery(".fw-comments-wrapper").length > 0){
+        let updateClaimIniatedNumber=$("#helpdesk_ticket_custom_field_cf_claim_number_2321673").val();
+        formdata.append("claimNumber",updateClaimIniatedNumber );
+      }else{
+        formdata.append("claimNumber",ClaimInitiatedNumber );
+      }
+      formdata.append("uploadedBy", "Collinson API");
+      formdata.append("source", "OnlineClaims");
+      formdata.append("subject", "Omni Documents");
+      for (let file of files) {
+        console.log("iterate -->", file);
+        formdata.append("attachments[]", file, file.name);
+      }
 
-    console.log("form data body --->", formdata);
-    var requestOptions = {
-      method: "POST",
-      headers: myHeaders,
-      body: formdata,
-      redirect: "follow",
-    };
-    console.log("--->", requestOptions);
-    fetch("https://" + domainURL + "/api/claim/uploadFiles", requestOptions)
-      .then((response) => {
-        console.log(response);
-        statusCode = response.status;
-        if (!response.ok) {
-          flag = true;
+      console.log("form data body --->", formdata);
+      var requestOptions = {
+        method: "POST",
+        headers: myHeaders,
+        body: formdata,
+        redirect: "follow",
+      };
+      console.log("--->", requestOptions);
+      fetch("https://" + domainURL + "/api/claim/uploadFiles", requestOptions)
+        .then((response) => {
+          console.log(response);
+          statusCode = response.status;
+          if (!response.ok) {
+            flag = true;
+          }
+          return response.text();
+        })
+        .then(function (result) {
+          console.log("-- details->", result);
+          if (flag) {
+            console.log("-- flag->", flag);
+            if (statusCode == 401) {
+              console.log("unauthorized");
+              getJWTToken(fieldId);
+            }
+          } else {
+            // jQuery("#overlay").addClass("d-none").removeClass("show loader-text");
+            if (jQuery(".fw-comments-wrapper").length > 0) {
+              $("#new_helpdesk_note #helpdesk_note_submit").trigger("click");
+            } else {
+              if (fieldId == ".save_draft_5") {
+                $(".new-ticket-submit-button").trigger("click");
+              }
+            }
+          }
+        })
+        .catch((error) => console.log(error));
+    }
+    //____________________________________________________SECTION 5 End - Your Documents____________________________________________
+    //____________________________________________________________________________________________________________________
+    //section 6 continue
+    $("#save_and_continue6").click(function () {
+      
+      if ($("#title").hasClass("VHI") || $("#title").hasClass("ColumbusItaly")) {
+        let countryCode;
+        if ($("#title").hasClass("VHI")) {
+          countryCode = countryPortal.VHI;
+        } else {
+          countryCode = countryPortal.ColumbusItaly;
         }
-        return response.text();
-      })
-      .then(function (result) {
-        console.log("-- details->", result);
-        if (flag) {
-          console.log("-- flag->", flag);
-          if (statusCode == 401) {
-            console.log("unauthorized");
-            getJWTToken(fieldId);
+
+        payment_list = [
+          "helpdesk_ticket_custom_field_cf_name_of_account_holder_2321673",
+          "helpdesk_ticket_custom_field_cf_account_number_2321673",
+        ];
+
+        if (checkedfilled(payment_list) == true) {
+          //clear errors
+          clearError(payment_list);
+          let accountNumber = $(
+            "#helpdesk_ticket_custom_field_cf_account_number_2321673"
+          ).val();
+          let iBanNumber = $(
+            "#helpdesk_ticket_custom_field_cf_iban_number_2321673"
+          ).val();
+          let sortCode = $(
+            "#helpdesk_ticket_custom_field_cf_sort_code659991_2321673"
+          ).val();
+          console.log(accountNumber, iBanNumber, sortCode, countryCode);
+          if (countryCode == "GB") {
+            ValidateBankMethodTwo(
+              accountNumber,
+              sortCode,
+              countryCode,
+              "#save_and_continue6"
+            );
+          } else {
+            ValidateBankMethodOne(iBanNumber, countryCode, "#save_and_continue6");
+          }
+
+          //add displaying
+          if ($("#section_6_header").length) {
+            update_section_6();
+          } else {
+            add_section_6();
+            //addDeclaraion();
           }
         } else {
-          // jQuery("#overlay").addClass("d-none").removeClass("show loader-text");
-          if (jQuery(".fw-comments-wrapper").length > 0) {
-            $("#new_helpdesk_note #helpdesk_note_submit").trigger("click");
-          } else {
-            if (fieldId == ".save_draft_5") {
-              $(".new-ticket-submit-button").trigger("click");
+          //ERROR Messaging
+          for (var i = 0; i < payment_list.length; i++) {
+            if ($("#title").hasClass("ColumbusItaly")) {
+              addErrorMessage(
+                payment_list[i],
+                "Si prega di compilare tutti i campi."
+              );
+            } else {
+              addErrorMessage(payment_list[i], "Please fill in all fields");
             }
           }
         }
-      })
-      .catch((error) => console.log(error));
-  }
-  //____________________________________________________SECTION 5 End - Your Documents____________________________________________
-  //____________________________________________________________________________________________________________________
-  //section 6 continue
-  $("#save_and_continue6").click(function () {
-    
-    if ($("#title").hasClass("VHI") || $("#title").hasClass("ColumbusItaly")) {
-      let countryCode;
-      if ($("#title").hasClass("VHI")) {
-        countryCode = countryPortal.VHI;
       } else {
-        countryCode = countryPortal.ColumbusItaly;
-      }
+        let countryCode = countryPortal.SagaPostOfficeColumbusUK;
+        payment_list = [
+          "helpdesk_ticket_custom_field_cf_name_of_account_holder_2321673",
+          "helpdesk_ticket_custom_field_cf_account_number_2321673",
+          "helpdesk_ticket_custom_field_cf_sort_code659991_2321673",
+        ];
 
-      payment_list = [
-        "helpdesk_ticket_custom_field_cf_name_of_account_holder_2321673",
-        "helpdesk_ticket_custom_field_cf_account_number_2321673",
-      ];
+        //check filled
+        if (checkedfilled(payment_list) == true) {
+          //clear errors
+          clearError(payment_list);
+          let accountHolder = $(
+            "#helpdesk_ticket_custom_field_cf_name_of_account_holder_2321673"
+          ).val();
+          let accountNumber = $(
+            "#helpdesk_ticket_custom_field_cf_account_number_2321673"
+          ).val();
+          let sortCode = $(
+            "#helpdesk_ticket_custom_field_cf_sort_code659991_2321673"
+          ).val();
 
-      if (checkedfilled(payment_list) == true) {
-        //clear errors
-        clearError(payment_list);
-        let accountNumber = $(
-          "#helpdesk_ticket_custom_field_cf_account_number_2321673"
-        ).val();
-        let iBanNumber = $(
-          "#helpdesk_ticket_custom_field_cf_iban_number_2321673"
-        ).val();
-        let sortCode = $(
-          "#helpdesk_ticket_custom_field_cf_sort_code659991_2321673"
-        ).val();
-        console.log(accountNumber, iBanNumber, sortCode, countryCode);
-        if (countryCode == "GB") {
-          ValidateBankMethodTwo(
-            accountNumber,
-            sortCode,
-            countryCode,
-            "#save_and_continue6"
-          );
-        } else {
-          ValidateBankMethodOne(iBanNumber, countryCode, "#save_and_continue6");
-        }
+          console.log(accountHolder, accountNumber, sortCode);
 
-        //add displaying
-        if ($("#section_6_header").length) {
-          update_section_6();
-        } else {
-          add_section_6();
-          //addDeclaraion();
-        }
-      } else {
-        //ERROR Messaging
-        for (var i = 0; i < payment_list.length; i++) {
-          if ($("#title").hasClass("ColumbusItaly")) {
-            addErrorMessage(
-              payment_list[i],
-              "Si prega di compilare tutti i campi."
+          if (countryCode == "GB") {
+            ValidateBankMethodTwo(
+              accountNumber,
+              sortCode,
+              countryCode,
+              "#save_and_continue6"
             );
           } else {
-            addErrorMessage(payment_list[i], "Please fill in all fields");
+            ValidateBankMethodOne(iBanNumber, countryCode, "#save_and_continue6");
+          }
+
+          //add displaying
+          if ($("#section_6_header").length) {
+            if($(".edit_helpdesk_ticket").length){
+              update_section_6_continue();
+            }else{
+              update_section_6();
+            }
+          } else {
+            if($(".edit_helpdesk_ticket").length){
+              add_section_6_continue();
+            }else{
+              add_section_6();
+            }
+            //addDeclaraion();
+          }
+        } else {
+          //ERROR Messaging
+          for (var i = 0; i < payment_list.length; i++) {
+            if ($("#title").hasClass("ColumbusItaly")) {
+              addErrorMessage(
+                payment_list[i],
+                "Si prega di compilare tutti i campi."
+              );
+            } else {
+              addErrorMessage(payment_list[i], "Please fill in all fields.");
+            }
           }
         }
       }
-    } else {
-      let countryCode = countryPortal.SagaPostOfficeColumbusUK;
-      payment_list = [
-        "helpdesk_ticket_custom_field_cf_name_of_account_holder_2321673",
-        "helpdesk_ticket_custom_field_cf_account_number_2321673",
-        "helpdesk_ticket_custom_field_cf_sort_code659991_2321673",
-      ];
+      if ($(".edit_helpdesk_ticket").length > 0) {
 
-      //check filled
-      if (checkedfilled(payment_list) == true) {
-        //clear errors
-        clearError(payment_list);
-        let accountHolder = $(
+        $("#section-6-button").css("background-color", "#524954");
+        $("#section-6-button").children(":first").removeClass("fa-plus");
+        $("#section-6-button").children(":first").removeClass("fa-minus");
+        $("#section-6-button").children(":first").addClass("fa-pen");
+
+        
+
+      }else{
+        $("#section-6-button").css("background-color", "#524954");
+        $("#section-6-button").children(":first").removeClass("fa-plus");
+        $("#section-6-button").children(":first").removeClass("fa-minus");
+        $("#section-6-button").children(":first").addClass("fa-pen");
+        
+      }
+      
+    
+    });
+    function add_section_6() {
+      var el_number = $("#collapseSection6")
+        .children(".card-body")
+        .children(".form-group").length;
+
+      if($("#title").hasClass("ColumbusItaly")){
+        $("<strong id='section_6_header'>" + italy_titles[5] + "</strong>").insertAfter(
+          "#great_line_5"
+        );
+        $("<hr class='summary_divider' id='great_line_6'>").insertAfter(
+          "#section_6_header"
+        );
+      }else{ 
+        $("<strong id='section_6_header'>" + titles[5] + "</strong>").insertAfter(
+          "#great_line_5"
+        );
+        $("<hr class='summary_divider' id='great_line_6'>").insertAfter(
+          "#section_6_header"
+        );
+    }
+
+      for (let i = 1; i < el_number + 1; i++) {
+        var label = $("#collapseSection6")
+          .children(".card-body")
+          .children("div:nth-child(" + i + ")")
+          .children("label")
+          .text();
+        var value = $("#collapseSection6")
+          .children(".card-body")
+          .children("div:nth-child(" + i + ")")
+          .children("input")
+          .val();
+        $(
+          "<p class='section_6_line'>" + label + " : " + value + "</p>"
+        ).insertBefore("#great_line_6");
+      }
+
+      if ($("#title").hasClass("ColumbusItaly")) {
+        //summary
+        $(
+          "<strong  id='summary'>Se noti un errore e devi modificarlo, seleziona la sezione pertinente in alto per modificare questi dettagli</strong>"
+        ).insertAfter("#great_line_6");
+      } else {
+        //summary
+        $(
+          "<strong  id='summary'>If you notice a mistake and need to amend this, please select the relevant section above to edit these details</strong>"
+        ).insertAfter("#great_line_6");
+      }
+    }
+
+    function add_section_6_continue() {
+      var el_number = $("#collapseSection6")
+        .children(".card-body")
+        .children(".form-group").length;
+
+      if($("#title").hasClass("ColumbusItaly")){
+        $("<strong id='section_6_header'>" + italy_titles[5] + "</strong>").insertAfter(
+          "#great_line_5"
+        );
+        $("<hr class='summary_divider' id='great_line_6'>").insertAfter(
+          "#section_6_header"
+        );
+      }else{ 
+        $("<strong id='section_6_header'>" + titles[5] + "</strong>").insertAfter(
+          "#great_line_5"
+        );
+        $("<hr class='summary_divider' id='great_line_6'>").insertAfter(
+          "#section_6_header"
+        );
+    }
+
+      for (let i = 1; i < el_number + 1; i++) {
+        var label = $("#collapseSection6")
+          .children(".card-body")
+          .children("div:nth-child(" + i + ")")
+          .children("label")
+          .text();
+        var value = $("#collapseSection6")
+          .children(".card-body")
+          .children("div:nth-child(" + i + ")")
+          .children("input")
+          .val();
+        $(
+          "<p class='section_6_line'>" + label + " : " + value + "</p>"
+        ).insertBefore("#great_line_6");
+      }
+
+      if ($("#title").hasClass("ColumbusItaly")) {
+        //summary
+        $(
+          "<strong  id='summary'>Se noti un errore e devi modificarlo, seleziona la sezione pertinente in alto per modificare questi dettagli</strong>"
+        ).insertAfter("#great_line_6");
+      } else {
+        //summary
+        $(
+          "<strong  id='summary'>If you notice a mistake and need to amend this, please select the relevant section above to edit these details</strong>"
+        ).insertAfter("#great_line_6");
+      }
+    }
+
+    function update_section_6() {
+      var el_number = $("#collapseSection6")
+        .children(".card-body")
+        .children(".form-group").length;
+      $("p").remove(".section_6_line");
+      for (let i = 1; i < el_number + 1; i++) {
+        var label = $("#collapseSection6")
+          .children(".card-body")
+          .children("div:nth-child(" + i + ")")
+          .children("label")
+          .text();
+        var value = $("#collapseSection6")
+          .children(".card-body")
+          .children("div:nth-child(" + i + ")")
+          .children("input")
+          .val();
+        $(
+          "<p class='section_6_line'>" + label + " : " + value + "</p>"
+        ).insertBefore("#great_line_6");
+      }
+    }
+
+    function update_section_6_continue() {
+      var el_number = $("#collapseSection6")
+        .children(".card-body")
+        .children(".form-group").length;
+      $("p").remove(".section_6_line");
+      for (let i = 1; i < el_number + 1; i++) {
+        var label = $("#collapseSection6")
+          .children(".card-body")
+          .children("div:nth-child(" + i + ")")
+          .children("label")
+          .text();
+        var value = $("#collapseSection6")
+          .children(".card-body")
+          .children("div:nth-child(" + i + ")")
+          .children("input")
+          .val();
+        $(
+          "<p class='section_6_line'>" + label + " : " + value + "</p>"
+        ).insertBefore("#great_line_6");
+      }
+    }
+
+
+    function ValidateBankMethodOne(iBanNumber, countryCode, fieldId) {
+      let flag = false;
+      let statusCode;
+      var myHeaders = new Headers();
+      myHeaders.append("Cache-Control", "no-cache");
+      myHeaders.append("Authorization", AuthorizationKey);
+      var requestOptions = {
+        method: "GET",
+        headers: myHeaders,
+        redirect: "follow",
+      };
+      fetch(
+        "https://" +
+          domainURL +
+          "/api/bank/validateBankAccount?iBan=" +
+          iBanNumber +
+          "&countryCode=" +
+          countryCode,
+        requestOptions
+      )
+        .then((response) => {
+          console.log("response -->", response);
+          statusCode = response.status;
+          if (!response.ok) {
+            flag = true;
+            return response.text();
+          } else {
+            return response.json();
+          }
+        })
+        .then(function (result) {
+          console.log("--->", result, statusCode);
+          if (flag) {
+            console.log("Please refresh the page ", statusCode, result);
+            if (statusCode == 401) {
+              getJWTToken(fieldId);
+            }
+            if (statusCode == 500) {
+              console.log("Please refresh the page ", statusCode, result);
+              if ($("#title").hasClass("ColumbusItaly")) {
+                addErrorMessage(
+                  "api_call_failed_banvalidate",
+                  "Impossibile elaborare le informazioni sul conto bancario. Si prega di controllare le informazioni inserite e riprovare."
+                );
+              } else {
+                addErrorMessage(
+                  "api_call_failed_banvalidate",
+                  "Unable to process the bank account information. Please check the information entered and try again."
+                );
+              }
+            } else {
+              if ($("#title").hasClass("ColumbusItaly")) {
+                addErrorMessage(
+                  "api_call_failed_banvalidate",
+                  "Impossibile elaborare le informazioni sul conto bancario. Si prega di controllare le informazioni inserite e riprovare."
+                );
+              } else {
+                addErrorMessage(
+                  "api_call_failed_banvalidate",
+                  "Unable to process the bank account information. Please check the information entered and try again."
+                );
+              }
+            }
+          } else {
+            let ele = ["api_call_failed_banvalidate"];
+            clearError(ele);
+            console.log("--sucesss-");
+            bankResult = result;
+            //open_next(6);
+            $("#section-6-button").click();
+          }
+        })
+        .catch((error) => console.log("error -->", error));
+    }
+
+    function ValidateBankMethodTwo(
+      accountNumber,
+      sortCode,
+      countryCode,
+      fieldId
+    ) {
+      let flag = false;
+      let statusCode;
+      var myHeaders = new Headers();
+      myHeaders.append("Cache-Control", "no-cache");
+      myHeaders.append("Authorization", AuthorizationKey);
+      var requestOptions = {
+        method: "GET",
+        headers: myHeaders,
+        redirect: "follow",
+      };
+      fetch(
+        "https://" +
+          domainURL +
+          "/api/bank/validateBankAccount?accountNumber=" +
+          accountNumber +
+          "&sortCode=" +
+          sortCode +
+          "&countryCode=" +
+          countryCode,
+        requestOptions
+      )
+        .then((response) => {
+          console.log("response -->", response);
+          statusCode = response.status;
+          if (!response.ok) {
+            flag = true;
+            return response.text();
+          } else {
+            return response.json();
+          }
+        })
+        .then(function (result) {
+          console.log("--->", result, statusCode);
+          if (flag) {
+            console.log("Please refresh the page ", statusCode, result);
+            if (statusCode == 401) {
+              getJWTToken(fieldId);
+            }
+            if (statusCode == 500) {
+              console.log("Please refresh the page ", statusCode, result);
+              addErrorMessage(
+                "api_call_failed_sortcodevalidate",
+                "Unable to process the bank account information. Please check the information entered and try again."
+              );
+            } else {
+              addErrorMessage(
+                "api_call_failed_sortcodevalidate",
+                "Unable to process the bank account information. Please check the information entered and try again."
+              );
+            }
+          } else {
+            let ele = ["api_call_failed_sortcodevalidate"];
+            clearError(ele);
+            bankResult = result;
+            console.log("--sucesss-");
+            //change colours after summary section fill
+            $("#section-4-button").css("background-color","#4DC367");
+            $("#section-4-button").removeAttr("data-target");
+            $("#section-4-button").children(":first").removeClass("fa-plus");
+            $("#section-4-button").children(":first").addClass("fa-check");
+
+            $("#section-5-button").css("background-color","#4DC367");
+            $("#section-5-button").removeAttr("data-target");
+            $("#section-5-button").children(":first").removeClass("fa-plus");
+            $("#section-5-button").children(":first").addClass("fa-check");
+
+            open_next(6);
+
+            $("#section-6-button").css("background-color","#4DC367");
+            $("#section-6-button").removeAttr("data-target");
+            $("#section-6-button").children(":first").removeClass("fa-plus");
+            $("#section-6-button").children(":first").addClass("fa-check");
+
+            
+          }
+        })
+        .catch((error) => console.log("error -->", error));
+    }
+
+    $(".new-ticket-dummy").click(function () {
+      console.log("submit claim entered ");
+      // let policyNumber = $(
+      //   "#helpdesk_ticket_custom_field_cf_policy_number454080_2321673"
+      // ).val();
+      // claimnumber we can use global stored value
+      console.log("Main ");
+      let body = {
+        internalpolicyNumber: InternalPolicyNumber,
+        ClaimNumber: ClaimInitiatedNumber,
+        FromDate: $(
+          "#helpdesk_ticket_custom_field_cf_your_departure_date_2321673"
+        ).val(),
+        ToDate: $(
+          "#helpdesk_ticket_custom_field_cf_your_return_date_2321673"
+        ).val(),
+        UseContactInformationFromLeadInsured: false,
+        Email: $("#helpdesk_ticket_custom_field_cf_email_address_2321673").val(),
+        HomePhone: $(
+          "#helpdesk_ticket_custom_field_cf_mobile_number_2321673"
+        ).val(),
+        Mobile: $("#helpdesk_ticket_custom_field_cf_mobile_number_2321673").val(),
+        Telephone: $(
+          "#helpdesk_ticket_custom_field_cf_mobile_number_2321673"
+        ).val(),
+      };
+      //otherclients senarios logic
+      var yourArray = [];
+      if ($("input[data-ispolicyholder='true']:checked").length) {
+        body["MainContactClientId"] = $(
+          "input[data-ispolicyholder='true']:checked"
+        ).attr("data-clientId");
+        $("input[name='insured_1']:checked").each(function () {
+          yourArray.push($(this).attr("data-clientid"));
+        });
+        yourArray = yourArray.filter(function (val) {
+          return body["MainContactClientId"].indexOf(val) == -1;
+        });
+        yourArray = yourArray.filter(
+          (val) => !body["MainContactClientId"].includes(val)
+        );
+        body["OtherInsuredClientIds"] = yourArray;
+      } else {
+        $("input[name='insured_1']:checked").each(function (index) {
+          if (index == 0) {
+            body["MainContactClientId"] = $(this).attr("data-clientid");
+          } else {
+            yourArray.push($(this).attr("data-clientid"));
+          }
+        });
+        body["OtherInsuredClientIds"] = yourArray;
+      }
+      console.log(body);
+      //bank details senarios logic
+      console.log(bankResult);
+      console.log(typeof bankResult);
+      if (bankResult) {
+        let bankInfo = bankResult;
+        console.log("response sucessfull");
+        let bankDetails = {};
+        bankDetails["AccountHolder"] = $(
           "#helpdesk_ticket_custom_field_cf_name_of_account_holder_2321673"
         ).val();
-        let accountNumber = $(
-          "#helpdesk_ticket_custom_field_cf_account_number_2321673"
-        ).val();
-        let sortCode = $(
-          "#helpdesk_ticket_custom_field_cf_sort_code659991_2321673"
-        ).val();
-
-        console.log(accountHolder, accountNumber, sortCode);
-
-        if (countryCode == "GB") {
-          ValidateBankMethodTwo(
-            accountNumber,
-            sortCode,
-            countryCode,
-            "#save_and_continue6"
-          );
-        } else {
-          ValidateBankMethodOne(iBanNumber, countryCode, "#save_and_continue6");
-        }
-
-        //add displaying
-        if ($("#section_6_header").length) {
-          if($(".edit_helpdesk_ticket").length){
-            update_section_6_continue();
-          }else{
-            update_section_6();
-          }
-        } else {
-          if($(".edit_helpdesk_ticket").length){
-            add_section_6_continue();
-          }else{
-            add_section_6();
-          }
-          //addDeclaraion();
-        }
+        bankDetails["BankName"] = bankInfo.bankName;
+        bankDetails["IBan"] = bankInfo.iBan;
+        bankDetails["BankAddressLine1"] = bankInfo.bankAddressLine1;
+        bankDetails["BankAddressLine2"] = bankInfo.bankAddressLine2;
+        bankDetails["BankAddressLine3"] = bankInfo.bankAddressLine3;
+        bankDetails["PostCode"] = bankInfo.postCode;
+        bankDetails["City"] = bankInfo.city;
+        bankDetails["Swift"] = bankInfo.swift;
+        bankDetails["AccountNumber"] = bankInfo.accountNumber;
+        bankDetails["SortCode"] = bankInfo.sortCode;
+        bankDetails["CountryCode"] = bankInfo.countryCode;
+        console.log("bank Details -->", bankDetails);
+        body["BankAccountDetails"] = bankDetails;
+        console.log("formed body -->", body);
       } else {
-        //ERROR Messaging
-        for (var i = 0; i < payment_list.length; i++) {
-          if ($("#title").hasClass("ColumbusItaly")) {
-            addErrorMessage(
-              payment_list[i],
-              "Si prega di compilare tutti i campi."
-            );
-          } else {
-            addErrorMessage(payment_list[i], "Please fill in all fields.");
-          }
-        }
+        console.log("Please validate bank details");
       }
-    }
-    if ($(".edit_helpdesk_ticket").length > 0) {
-
-      $("#section-6-button").css("background-color", "#524954");
-      $("#section-6-button").children(":first").removeClass("fa-plus");
-      $("#section-6-button").children(":first").removeClass("fa-minus");
-      $("#section-6-button").children(":first").addClass("fa-pen");
-
-      
-
-    }else{
-      $("#section-6-button").css("background-color", "#524954");
-      $("#section-6-button").children(":first").removeClass("fa-plus");
-      $("#section-6-button").children(":first").removeClass("fa-minus");
-      $("#section-6-button").children(":first").addClass("fa-pen");
-      
-    }
-    
-  
-  });
-  function add_section_6() {
-    var el_number = $("#collapseSection6")
-      .children(".card-body")
-      .children(".form-group").length;
-
-    if($("#title").hasClass("ColumbusItaly")){
-      $("<strong id='section_6_header'>" + italy_titles[5] + "</strong>").insertAfter(
-        "#great_line_5"
+      let reasonClaim = getAKey(
+        "helpdesk_ticket_custom_field_cf_reason_for_claim_2321673",
+        ClaimReason
       );
-      $("<hr class='summary_divider' id='great_line_6'>").insertAfter(
-        "#section_6_header"
-      );
-    }else{ 
-      $("<strong id='section_6_header'>" + titles[5] + "</strong>").insertAfter(
-        "#great_line_5"
-      );
-      $("<hr class='summary_divider' id='great_line_6'>").insertAfter(
-        "#section_6_header"
-      );
-  }
-
-    for (let i = 1; i < el_number + 1; i++) {
-      var label = $("#collapseSection6")
-        .children(".card-body")
-        .children("div:nth-child(" + i + ")")
-        .children("label")
-        .text();
-      var value = $("#collapseSection6")
-        .children(".card-body")
-        .children("div:nth-child(" + i + ")")
-        .children("input")
-        .val();
-      $(
-        "<p class='section_6_line'>" + label + " : " + value + "</p>"
-      ).insertBefore("#great_line_6");
-    }
-
-    if ($("#title").hasClass("ColumbusItaly")) {
-      //summary
-      $(
-        "<strong  id='summary'>Se noti un errore e devi modificarlo, seleziona la sezione pertinente in alto per modificare questi dettagli</strong>"
-      ).insertAfter("#great_line_6");
-    } else {
-      //summary
-      $(
-        "<strong  id='summary'>If you notice a mistake and need to amend this, please select the relevant section above to edit these details</strong>"
-      ).insertAfter("#great_line_6");
-    }
-  }
-
-  function add_section_6_continue() {
-    var el_number = $("#collapseSection6")
-      .children(".card-body")
-      .children(".form-group").length;
-
-    if($("#title").hasClass("ColumbusItaly")){
-      $("<strong id='section_6_header'>" + italy_titles[5] + "</strong>").insertAfter(
-        "#great_line_5"
-      );
-      $("<hr class='summary_divider' id='great_line_6'>").insertAfter(
-        "#section_6_header"
-      );
-    }else{ 
-      $("<strong id='section_6_header'>" + titles[5] + "</strong>").insertAfter(
-        "#great_line_5"
-      );
-      $("<hr class='summary_divider' id='great_line_6'>").insertAfter(
-        "#section_6_header"
-      );
-  }
-
-    for (let i = 1; i < el_number + 1; i++) {
-      var label = $("#collapseSection6")
-        .children(".card-body")
-        .children("div:nth-child(" + i + ")")
-        .children("label")
-        .text();
-      var value = $("#collapseSection6")
-        .children(".card-body")
-        .children("div:nth-child(" + i + ")")
-        .children("input")
-        .val();
-      $(
-        "<p class='section_6_line'>" + label + " : " + value + "</p>"
-      ).insertBefore("#great_line_6");
-    }
-
-    if ($("#title").hasClass("ColumbusItaly")) {
-      //summary
-      $(
-        "<strong  id='summary'>Se noti un errore e devi modificarlo, seleziona la sezione pertinente in alto per modificare questi dettagli</strong>"
-      ).insertAfter("#great_line_6");
-    } else {
-      //summary
-      $(
-        "<strong  id='summary'>If you notice a mistake and need to amend this, please select the relevant section above to edit these details</strong>"
-      ).insertAfter("#great_line_6");
-    }
-  }
-
-  function update_section_6() {
-    var el_number = $("#collapseSection6")
-      .children(".card-body")
-      .children(".form-group").length;
-    $("p").remove(".section_6_line");
-    for (let i = 1; i < el_number + 1; i++) {
-      var label = $("#collapseSection6")
-        .children(".card-body")
-        .children("div:nth-child(" + i + ")")
-        .children("label")
-        .text();
-      var value = $("#collapseSection6")
-        .children(".card-body")
-        .children("div:nth-child(" + i + ")")
-        .children("input")
-        .val();
-      $(
-        "<p class='section_6_line'>" + label + " : " + value + "</p>"
-      ).insertBefore("#great_line_6");
-    }
-  }
-
-  function update_section_6_continue() {
-    var el_number = $("#collapseSection6")
-      .children(".card-body")
-      .children(".form-group").length;
-    $("p").remove(".section_6_line");
-    for (let i = 1; i < el_number + 1; i++) {
-      var label = $("#collapseSection6")
-        .children(".card-body")
-        .children("div:nth-child(" + i + ")")
-        .children("label")
-        .text();
-      var value = $("#collapseSection6")
-        .children(".card-body")
-        .children("div:nth-child(" + i + ")")
-        .children("input")
-        .val();
-      $(
-        "<p class='section_6_line'>" + label + " : " + value + "</p>"
-      ).insertBefore("#great_line_6");
-    }
-  }
-
-
-  function ValidateBankMethodOne(iBanNumber, countryCode, fieldId) {
-    let flag = false;
-    let statusCode;
-    var myHeaders = new Headers();
-    myHeaders.append("Cache-Control", "no-cache");
-    myHeaders.append("Authorization", AuthorizationKey);
-    var requestOptions = {
-      method: "GET",
-      headers: myHeaders,
-      redirect: "follow",
-    };
-    fetch(
-      "https://" +
-        domainURL +
-        "/api/bank/validateBankAccount?iBan=" +
-        iBanNumber +
-        "&countryCode=" +
-        countryCode,
-      requestOptions
-    )
-      .then((response) => {
-        console.log("response -->", response);
-        statusCode = response.status;
-        if (!response.ok) {
-          flag = true;
-          return response.text();
-        } else {
-          return response.json();
-        }
-      })
-      .then(function (result) {
-        console.log("--->", result, statusCode);
-        if (flag) {
-          console.log("Please refresh the page ", statusCode, result);
-          if (statusCode == 401) {
-            getJWTToken(fieldId);
-          }
-          if (statusCode == 500) {
-            console.log("Please refresh the page ", statusCode, result);
-            if ($("#title").hasClass("ColumbusItaly")) {
-              addErrorMessage(
-                "api_call_failed_banvalidate",
-                "Impossibile elaborare le informazioni sul conto bancario. Si prega di controllare le informazioni inserite e riprovare."
-              );
-            } else {
-              addErrorMessage(
-                "api_call_failed_banvalidate",
-                "Unable to process the bank account information. Please check the information entered and try again."
-              );
-            }
-          } else {
-            if ($("#title").hasClass("ColumbusItaly")) {
-              addErrorMessage(
-                "api_call_failed_banvalidate",
-                "Impossibile elaborare le informazioni sul conto bancario. Si prega di controllare le informazioni inserite e riprovare."
-              );
-            } else {
-              addErrorMessage(
-                "api_call_failed_banvalidate",
-                "Unable to process the bank account information. Please check the information entered and try again."
-              );
-            }
-          }
-        } else {
-          let ele = ["api_call_failed_banvalidate"];
-          clearError(ele);
-          console.log("--sucesss-");
-          bankResult = result;
-          //open_next(6);
-          $("#section-6-button").click();
-        }
-      })
-      .catch((error) => console.log("error -->", error));
-  }
-
-  function ValidateBankMethodTwo(
-    accountNumber,
-    sortCode,
-    countryCode,
-    fieldId
-  ) {
-    let flag = false;
-    let statusCode;
-    var myHeaders = new Headers();
-    myHeaders.append("Cache-Control", "no-cache");
-    myHeaders.append("Authorization", AuthorizationKey);
-    var requestOptions = {
-      method: "GET",
-      headers: myHeaders,
-      redirect: "follow",
-    };
-    fetch(
-      "https://" +
-        domainURL +
-        "/api/bank/validateBankAccount?accountNumber=" +
-        accountNumber +
-        "&sortCode=" +
-        sortCode +
-        "&countryCode=" +
-        countryCode,
-      requestOptions
-    )
-      .then((response) => {
-        console.log("response -->", response);
-        statusCode = response.status;
-        if (!response.ok) {
-          flag = true;
-          return response.text();
-        } else {
-          return response.json();
-        }
-      })
-      .then(function (result) {
-        console.log("--->", result, statusCode);
-        if (flag) {
-          console.log("Please refresh the page ", statusCode, result);
-          if (statusCode == 401) {
-            getJWTToken(fieldId);
-          }
-          if (statusCode == 500) {
-            console.log("Please refresh the page ", statusCode, result);
-            addErrorMessage(
-              "api_call_failed_sortcodevalidate",
-              "Unable to process the bank account information. Please check the information entered and try again."
-            );
-          } else {
-            addErrorMessage(
-              "api_call_failed_sortcodevalidate",
-              "Unable to process the bank account information. Please check the information entered and try again."
-            );
-          }
-        } else {
-          let ele = ["api_call_failed_sortcodevalidate"];
-          clearError(ele);
-          bankResult = result;
-          console.log("--sucesss-");
-          //change colours after summary section fill
-          $("#section-4-button").css("background-color","#4DC367");
-          $("#section-4-button").removeAttr("data-target");
-          $("#section-4-button").children(":first").removeClass("fa-plus");
-          $("#section-4-button").children(":first").addClass("fa-check");
-
-          $("#section-5-button").css("background-color","#4DC367");
-          $("#section-5-button").removeAttr("data-target");
-          $("#section-5-button").children(":first").removeClass("fa-plus");
-          $("#section-5-button").children(":first").addClass("fa-check");
-
-          open_next(6);
-
-          $("#section-6-button").css("background-color","#4DC367");
-          $("#section-6-button").removeAttr("data-target");
-          $("#section-6-button").children(":first").removeClass("fa-plus");
-          $("#section-6-button").children(":first").addClass("fa-check");
-
-          
-        }
-      })
-      .catch((error) => console.log("error -->", error));
-  }
-
-  $(".new-ticket-dummy").click(function () {
-    console.log("submit claim entered ");
-    // let policyNumber = $(
-    //   "#helpdesk_ticket_custom_field_cf_policy_number454080_2321673"
-    // ).val();
-    // claimnumber we can use global stored value
-    console.log("Main ");
-    let body = {
-      internalpolicyNumber: InternalPolicyNumber,
-      ClaimNumber: ClaimInitiatedNumber,
-      FromDate: $(
-        "#helpdesk_ticket_custom_field_cf_your_departure_date_2321673"
-      ).val(),
-      ToDate: $(
-        "#helpdesk_ticket_custom_field_cf_your_return_date_2321673"
-      ).val(),
-      UseContactInformationFromLeadInsured: false,
-      Email: $("#helpdesk_ticket_custom_field_cf_email_address_2321673").val(),
-      HomePhone: $(
-        "#helpdesk_ticket_custom_field_cf_mobile_number_2321673"
-      ).val(),
-      Mobile: $("#helpdesk_ticket_custom_field_cf_mobile_number_2321673").val(),
-      Telephone: $(
-        "#helpdesk_ticket_custom_field_cf_mobile_number_2321673"
-      ).val(),
-    };
-    //otherclients senarios logic
-    var yourArray = [];
-    if ($("input[data-ispolicyholder='true']:checked").length) {
-      body["MainContactClientId"] = $(
-        "input[data-ispolicyholder='true']:checked"
-      ).attr("data-clientId");
-      $("input[name='insured_1']:checked").each(function () {
-        yourArray.push($(this).attr("data-clientid"));
-      });
-      yourArray = yourArray.filter(function (val) {
-        return body["MainContactClientId"].indexOf(val) == -1;
-      });
-      yourArray = yourArray.filter(
-        (val) => !body["MainContactClientId"].includes(val)
-      );
-      body["OtherInsuredClientIds"] = yourArray;
-    } else {
-      $("input[name='insured_1']:checked").each(function (index) {
-        if (index == 0) {
-          body["MainContactClientId"] = $(this).attr("data-clientid");
-        } else {
-          yourArray.push($(this).attr("data-clientid"));
-        }
-      });
-      body["OtherInsuredClientIds"] = yourArray;
-    }
-    console.log(body);
-    //bank details senarios logic
-    console.log(bankResult);
-    console.log(typeof bankResult);
-    if (bankResult) {
-      let bankInfo = bankResult;
-      console.log("response sucessfull");
-      let bankDetails = {};
-      bankDetails["AccountHolder"] = $(
-        "#helpdesk_ticket_custom_field_cf_name_of_account_holder_2321673"
-      ).val();
-      bankDetails["BankName"] = bankInfo.bankName;
-      bankDetails["IBan"] = bankInfo.iBan;
-      bankDetails["BankAddressLine1"] = bankInfo.bankAddressLine1;
-      bankDetails["BankAddressLine2"] = bankInfo.bankAddressLine2;
-      bankDetails["BankAddressLine3"] = bankInfo.bankAddressLine3;
-      bankDetails["PostCode"] = bankInfo.postCode;
-      bankDetails["City"] = bankInfo.city;
-      bankDetails["Swift"] = bankInfo.swift;
-      bankDetails["AccountNumber"] = bankInfo.accountNumber;
-      bankDetails["SortCode"] = bankInfo.sortCode;
-      bankDetails["CountryCode"] = bankInfo.countryCode;
-      console.log("bank Details -->", bankDetails);
-      body["BankAccountDetails"] = bankDetails;
-      console.log("formed body -->", body);
-    } else {
-      console.log("Please validate bank details");
-    }
-    let reasonClaim = getAKey(
-      "helpdesk_ticket_custom_field_cf_reason_for_claim_2321673",
-      ClaimReason
-    );
-    let fieldTypeText = "Text";
-    let fieldTypeDate = "Date";
-    let ClaimQaAndAnswers = [];
-    let cxBookingDate = submitClaimBody(
-      "CanxBookingDate",
-      $("#helpdesk_ticket_custom_field_cf_your_booking_date_2321673").val(),
-      fieldTypeDate
-    );
-    ClaimQaAndAnswers.push(cxBookingDate);
-    if (reasonClaim[0].akey == "01_02_Canx") {
-      let coronaDateAware = submitClaimBody(
-        "CoronaDateAware",
-        $(
-          "#helpdesk_ticket_custom_field_cf_when_were_you_initially_aware_that_you_needed_to_cancel_your_trip635242_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(coronaDateAware);
-      let coronaDateCancelled = submitClaimBody(
-        "CoronaDateCancelled",
-        $(
-          "#helpdesk_ticket_custom_field_cf_please_enter_the_date_you_asked_your_tour_operatortravel_provider_to_cancel_the_trip_2321673"
-        ).val(),
+      let fieldTypeText = "Text";
+      let fieldTypeDate = "Date";
+      let ClaimQaAndAnswers = [];
+      let cxBookingDate = submitClaimBody(
+        "CanxBookingDate",
+        $("#helpdesk_ticket_custom_field_cf_your_booking_date_2321673").val(),
         fieldTypeDate
       );
-      ClaimQaAndAnswers.push(coronaDateCancelled);
-      let tripBookingCost = submitClaimBody(
-        "TripBookingCost",
-        $(
-          "#helpdesk_ticket_custom_field_cf_total_trip_cost_the_amount_you_paid_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(tripBookingCost);
-      let tripBookingRefund = submitClaimBody(
-        "TripBookingRefund",
-        $(
-          "#helpdesk_ticket_custom_field_cf_total_refund_vouchers_amount_the_amount_you_have_received_back594804_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(tripBookingRefund);
-      let dualInsuranceName = submitClaimBody(
-        "DualInsuranceName",
-        $(
-          "#helpdesk_ticket_custom_field_cf_name_of_your_policy_provider895583_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(dualInsuranceName);
-      let dualInsuranceNumber = submitClaimBody(
-        "DualInsuranceNumber",
-        $("#helpdesk_ticket_custom_field_cf_policy_number964552_2321673").val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(dualInsuranceNumber);
-      let bankAccountType = submitClaimBody(
-        "BankAccountType",
-        $(
-          "#helpdesk_ticket_custom_field_cf_who_do_you_bank_with_and_what_type_of_account_do_you_have486839_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(bankAccountType);
-      let travelProviderName = submitClaimBody(
-        "TravelProviderName",
-        $(
-          "#helpdesk_ticket_custom_field_cf_please_confirm_the_name_of_the_trip_providers_and_the_booking_references342856_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(travelProviderName);
-      let cancellationBookingNoPeople = submitClaimBody(
-        "CancellationBookingNoPeople",
-        $(
-          "#helpdesk_ticket_custom_field_cf_how_many_people_are_there_on_the_booking166234_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(cancellationBookingNoPeople);
-      let cancellationInsuredNoClaiming = submitClaimBody(
-        "CancellationInsuredNoClaiming",
-        $(
-          "#helpdesk_ticket_custom_field_cf_how_many_people_on_the_booking_are_insured_by_this_policy_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(cancellationInsuredNoClaiming);
-      let coronaReason = getAKey(
-        "helpdesk_ticket_custom_field_cf_why_did_you_cancel_your_trip_2321673",
-        CoronaReason
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          coronaReason[0].qkey,
-          coronaReason[0].akey,
-          fieldTypeText
-        )
-      );
-      let covidTypeOfTrip = getAKey(
-        "helpdesk_ticket_custom_field_cf_what_type_of_trip_did_you_book877716_2321673",
-        COVIDTypeOfTrip
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          covidTypeOfTrip[0].qkey,
-          covidTypeOfTrip[0].akey,
-          fieldTypeText
-        )
-      );
-      let covidTripTransportType = getAKey(
-        "helpdesk_ticket_custom_field_cf_what_type_of_transport_was_included_in_your_booking_2321673",
-        COVIDTripTransportType
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          covidTripTransportType[0].qkey,
-          covidTripTransportType[0].akey,
-          fieldTypeText
-        )
-      );
-      let currencyType = getAKey(
-        "helpdesk_ticket_custom_field_cf_currency_type637939_2321673",
-        CurrencyType
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          currencyType[0].qkey,
-          currencyType[0].akey,
-          fieldTypeText
-        )
-      );
-      let dualInsurance = getAKey(
-        "helpdesk_ticket_custom_field_cf_do_you_have_any_other_travel_insurance_policy400572_2321673",
-        yesNo
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          dualInsurance[0].qkey,
-          dualInsurance[0].akey,
-          fieldTypeText
-        )
-      );
-      let tripPaymentMethod = getAKey(
-        "helpdesk_ticket_custom_field_cf_how_did_you_pay_for_your_trip913590_2321673",
-        TripPaymentMethod
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          tripPaymentMethod[0].qkey,
-          tripPaymentMethod[0].akey,
-          fieldTypeText
-        )
-      );
-      let creditCardType = submitClaimBody(
-        "CreditCardType",
-        $(
-          "#helpdesk_ticket_custom_field_cf_who_is_the_provider_of_your_credit_card224630_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(creditCardType);
-      let DateOfSymptoms = submitClaimBody(
-        "DateOfSymptoms",
-        $(
-          "#helpdesk_ticket_custom_field_cf_when_did_the_symptoms_start939174_2321673"
-        ).val(),
-        fieldTypeDate
-      );
-      ClaimQaAndAnswers.push(DateOfSymptoms);
-      let creditCardAmount = getAKey(
-        "helpdesk_ticket_custom_field_cf_did_you_pay_for_50_or_more_of_the_trip_with_a_credit_card401929_2321673",
-        yesNo
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          creditCardAmount[0].qkey,
-          creditCardAmount[0].akey,
-          fieldTypeText
-        )
-      );
-      let positivePerson = getAKey(
-        "helpdesk_ticket_custom_field_cf_who_has_tested_positive_for_coronavirus_2321673",
-        WhoTestedPositive
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          positivePerson[0].qkey,
-          positivePerson[0].akey,
-          fieldTypeText
-        )
-      );
-      let typeTest = getAKey(
-        "helpdesk_ticket_custom_field_cf_what_type_of_test_was_taken_2321673",
-        WhatTypeOfCovidTest
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(typeTest[0].qkey, typeTest[0].akey, fieldTypeText)
-      );
-      let testEmail = getAKey(
-        "helpdesk_ticket_custom_field_cf_do_you_have_evidence_from_either_the_nhshse_private_testing_company_or_your_doctor_confirming_the_positive_covid_test_email_letter_sms_2321673",
-        yesNo
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(testEmail[0].qkey, testEmail[0].akey, fieldTypeText)
-      );
-      let testResultDate = submitClaimBody(
-        "CoronaTestDate",
-        $(
-          "#helpdesk_ticket_custom_field_cf_when_did_the_test_results_confirming_coronavirus_infection_arrive_2321673"
-        ).val(),
-        fieldTypeDate
-      );
-      ClaimQaAndAnswers.push(testResultDate);
-      body["ClaimAnswers"] = ClaimQaAndAnswers;
-      console.log("submit claim body --->", body);
-    } else if (reasonClaim[0].akey == "01_03_BagDamNonCarr") {
-      let PIRNumberDamage = submitClaimBody(
-        "PIRNumberDamage",
-        $(
-          "#helpdesk_ticket_custom_field_cf_please_enter_the_report_reference_given_by_your_transport_provider_pir_reference_if_applicable_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(PIRNumberDamage);
-      let RepairCost = submitClaimBody(
-        "RepairCost",
-        $(
-          "#helpdesk_ticket_custom_field_cf_total_refund_vouchers_amount_the_amount_you_have_received_back_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(RepairCost);
-      let ItemDescription = submitClaimBody(
-        "ItemDescription",
-        $("#helpdesk_ticket_custom_field_cf_item_description_2321673").val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(ItemDescription);
-      let CreditCardType = submitClaimBody(
-        "CreditCardType",
-        $(
-          "#helpdesk_ticket_custom_field_cf_who_is_the_provider_of_your_credit_card237678_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(CreditCardType);
-      let HomePolicyNumber = submitClaimBody(
-        "HomePolicyNumber",
-        $("#helpdesk_ticket_custom_field_cf_policy_number818860_2321673").val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(HomePolicyNumber);
-      let HomeInsurerName = submitClaimBody(
-        "HomeInsurerName",
-        $(
-          "#helpdesk_ticket_custom_field_cf_name_of_your_policy_provider267746_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(HomeInsurerName);
-      let BankAccountType = submitClaimBody(
-        "BankAccountType",
-        $(
-          "#helpdesk_ticket_custom_field_cf_who_do_you_bank_with_and_what_type_of_account_do_you_have87472_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(BankAccountType);
-      let DualInsuranceNumber = submitClaimBody(
-        "DualInsuranceNumber",
-        $("#helpdesk_ticket_custom_field_cf_policy_number832231_2321673").val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(DualInsuranceNumber);
-      let DualInsuranceName = submitClaimBody(
-        "DualInsuranceName",
-        $(
-          "#helpdesk_ticket_custom_field_cf_name_of_your_policy_provider610133_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(DualInsuranceName);
-      let DamageItemPurchasePrice = submitClaimBody(
-        "DamageItemPurchasePrice",
-        $(
-          "#helpdesk_ticket_custom_field_cf_what_was_its_cost_when_you_bought_it_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(DamageItemPurchasePrice);
-      let BaggageClaimValueDamage = submitClaimBody(
-        "BaggageClaimValueDamage",
-        $(
-          "#helpdesk_ticket_custom_field_cf_whats_the_total_amount_youre_claiming_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(BaggageClaimValueDamage);
-      let BaggageDamageOccur = submitClaimBody(
-        "BaggageDamageOccur",
-        $(
-          "#helpdesk_ticket_custom_field_cf_how_did_the_damage_happen_well_need_as_much_information_as_you_can_give_please_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(BaggageDamageOccur);
-      let BaggageDamageItemDescription = submitClaimBody(
-        "BaggageDamageItemDescription",
-        $(
-          "#helpdesk_ticket_custom_field_cf_please_provide_a_description_the_owner_the_purchase_date_and_purchase_price_of_each_item_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(BaggageDamageItemDescription);
-      let DamageNoReportReason = submitClaimBody(
-        "DamageNoReportReason",
-        $(
-          "#helpdesk_ticket_custom_field_cf_let_us_know_why_you_didnt_report_the_damage_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(DamageNoReportReason);
-      let LossTheftPurchaseDate = submitClaimBody(
-        "LossTheftPurchaseDate",
-        $(
-          "#helpdesk_ticket_custom_field_cf_when_did_you_buy_the_item_2321673"
-        ).val(),
-        fieldTypeDate
-      );
-      ClaimQaAndAnswers.push(LossTheftPurchaseDate);
-      let DamageNumberOfItems = submitClaimBody(
-        "DamageNumberOfItems",
-        $(
-          "#helpdesk_ticket_custom_field_cf_how_many_items_are_you_claiming_for411795_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(DamageNumberOfItems);
-      let DamageOnPerson = getAKey(
-        "helpdesk_ticket_custom_field_cf_was_the_items_with_you_when_it_was_damaged_2321673",
-        yesNo
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          DamageOnPerson[0].qkey,
-          DamageOnPerson[0].akey,
-          fieldTypeText
-        )
-      );
-      let DamageItemRepairable = getAKey(
-        "helpdesk_ticket_custom_field_cf_can_the_item_be_repaired_2321673",
-        yesNo
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          DamageItemRepairable[0].qkey,
-          DamageItemRepairable[0].akey,
-          fieldTypeText
-        )
-      );
-      let DamageRepairEstimate = getAKey(
-        "helpdesk_ticket_custom_field_cf_did_you_get_a_repair_estimate_2321673",
-        yesNo
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          DamageRepairEstimate[0].qkey,
-          DamageRepairEstimate[0].akey,
-          fieldTypeText
-        )
-      );
-      let ItemTypeDamagedItems = getAKey(
-        "helpdesk_ticket_custom_field_cf_item_type_2321673",
-        ItemTypeDamaged
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          ItemTypeDamagedItems[0].qkey,
-          ItemTypeDamagedItems[0].akey,
-          fieldTypeText
-        )
-      );
-      let HomeInsurance = getAKey(
-        "helpdesk_ticket_custom_field_cf_do_you_have_home_contents_insurance_2321673",
-        yesNo
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          HomeInsurance[0].qkey,
-          HomeInsurance[0].akey,
-          fieldTypeText
-        )
-      );
-      let DualInsurance = getAKey(
-        "helpdesk_ticket_custom_field_cf_do_you_have_any_other_travel_insurance_policy_2321673",
-        yesNo
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          DualInsurance[0].qkey,
-          DualInsurance[0].akey,
-          fieldTypeText
-        )
-      );
-      let TripPaymentMethodBaggageDamage = getAKey(
-        "helpdesk_ticket_custom_field_cf_how_did_you_pay_for_your_trip396837_2321673",
-        TripPaymentMethod
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          TripPaymentMethodBaggageDamage[0].qkey,
-          TripPaymentMethodBaggageDamage[0].akey,
-          fieldTypeText
-        )
-      );
-      let CreditCardAmountBaggageDamage = getAKey(
-        "helpdesk_ticket_custom_field_cf_did_you_pay_for_50_or_more_of_the_trip_with_a_credit_card824584_2321673",
-        yesNo
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          CreditCardAmountBaggageDamage[0].qkey,
-          CreditCardAmountBaggageDamage[0].akey,
-          fieldTypeText
-        )
-      );
-      let DamageItemOwnerItems = getAKey(
-        "helpdesk_ticket_custom_field_cf_who_owns_the_item_2321673",
-        DamageItemOwner
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          DamageItemOwnerItems[0].qkey,
-          DamageItemOwnerItems[0].akey,
-          fieldTypeText
-        )
-      );
-      let TransportProviderDamage = getAKey(
-        "helpdesk_ticket_custom_field_cf_was_the_items_with_your_transport_provider_when_damaged_eg_airline_checkedin_luggage_2321673",
-        yesNo
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          TransportProviderDamage[0].qkey,
-          TransportProviderDamage[0].akey,
-          fieldTypeText
-        )
-      );
-      let DamageTransportGadget = getAKey(
-        "helpdesk_ticket_custom_field_cf_is_the_damaged_items_listed_as_valuable_gadgetelectrical_in_your_policy_wording_2321673",
-        yesNo
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          DamageTransportGadget[0].qkey,
-          DamageTransportGadget[0].akey,
-          fieldTypeText
-        )
-      );
-      let DamageReport = getAKey(
-        "helpdesk_ticket_custom_field_cf_did_you_tell_your_transport_provider_about_the_damage_2321673",
-        yesNo
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          DamageReport[0].qkey,
-          DamageReport[0].akey,
-          fieldTypeText
-        )
-      );
-      body["ClaimAnswers"] = ClaimQaAndAnswers;
-      console.log("submit claim body --->", body);
-    } else if (reasonClaim[0].akey == "01_02_BagL") {
-      let reasonClaims = $(
-        "#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673"
-      ).val();
-      let keyValue = $(
-        "#helpdesk_ticket_custom_field_cf_how_many_items_are_you_claiming_for_2321673"
-      ).val();
-      let lossOrStolen = submitClaimBody(reasonClaims, keyValue, "none");
-      ClaimQaAndAnswers.push(lossOrStolen);
-      let PoliceReference = submitClaimBody(
-        "PoliceReference",
-        $(
-          "#helpdesk_ticket_custom_field_cf_police_or_crime_reference_number_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(PoliceReference);
-      let lossTheftWhereItems = getAKey(
-        "helpdesk_ticket_custom_field_cf_are_any_of_the_items_lost_defined_as_a_valuable_gadgetelectrical_as_shown_within_your_policy_wording_2321673",
-        yesNo
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          lossTheftWhereItems[0].qkey,
-          lossTheftWhereItems[0].akey,
-          fieldTypeText
-        )
-      );
-      let transportGadgetItems = getAKey(
-        "helpdesk_ticket_custom_field_cf_are_you_claiming_for_more_than_1_item_2321673",
-        yesNo
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          transportGadgetItems[0].qkey,
-          transportGadgetItems[0].akey,
-          fieldTypeText
-        )
-      );
-      let BaggageLossItemDescription = submitClaimBody(
-        "BaggageLossItemDescription",
-        $(
-          "#helpdesk_ticket_custom_field_cf_please_provide_a_description_the_owner_the_purchase_date_and_purchase_price_of_each_item910226_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(BaggageLossItemDescription);
-      let BaggageClaimValue = submitClaimBody(
-        "BaggageClaimValue",
-        $(
-          "#helpdesk_ticket_custom_field_cf_what_is_the_total_amount_youre_claiming_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(BaggageClaimValue);
-      let DualInsuranceNumber = submitClaimBody(
-        "DualInsuranceNumber",
-        $("#helpdesk_ticket_custom_field_cf_policy_number832231_2321673").val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(DualInsuranceNumber);
-      let BankAccountType = submitClaimBody(
-        "BankAccountType",
-        $(
-          "#helpdesk_ticket_custom_field_cf_who_do_you_bank_with_and_what_type_of_account_do_you_have87472_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(BankAccountType);
-      let DualInsuranceName = submitClaimBody(
-        "DualInsuranceName",
-        $(
-          "#helpdesk_ticket_custom_field_cf_name_of_your_policy_provider610133_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(DualInsuranceName);
-      let ItemDescription = submitClaimBody(
-        "ItemDescription",
-        $(
-          "#helpdesk_ticket_custom_field_cf_item_description369043_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(ItemDescription);
-      let TheftOccur = submitClaimBody(
-        "TheftOccur",
-        $(
-          "#helpdesk_ticket_custom_field_cf_in_your_own_words_tell_us_what_happened994308_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(TheftOccur);
-      let LossOccur = submitClaimBody(
-        "LossOccur",
-        $(
-          "#helpdesk_ticket_custom_field_cf_in_your_own_words_tell_us_what_happened511569_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(LossOccur);
-      let LossTheftNumberOfItems = submitClaimBody(
-        "LossTheftNumberOfItems",
-        $(
-          "#helpdesk_ticket_custom_field_cf_how_many_items_are_you_claiming_for_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(LossTheftNumberOfItems);
-      let LossOrTheftItems = getAKey(
-        "helpdesk_ticket_custom_field_cf_are_you_claiming_for_a_loss_or_theft_2321673",
-        LossOrTheft
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          LossOrTheftItems[0].qkey,
-          LossOrTheftItems[0].akey,
-          fieldTypeText
-        )
-      );
-      let LossTheftWhereItems = getAKey(
-        "helpdesk_ticket_custom_field_cf_where_did_the_loss_or_theft_take_place_2321673",
-        LossTheftWhere
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          LossTheftWhereItems[0].qkey,
-          LossTheftWhereItems[0].akey,
-          fieldTypeText
-        )
-      );
-      let InVehicleAtTimeOfTheft = getAKey(
-        "helpdesk_ticket_custom_field_cf_were_you_in_the_vehicle_at_the_time_of_the_theft_2321673",
-        yesNo
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          InVehicleAtTimeOfTheft[0].qkey,
-          InVehicleAtTimeOfTheft[0].akey,
-          fieldTypeText
-        )
-      );
-      let lossTheftReport = getAKey(
-        "helpdesk_ticket_custom_field_cf_did_you_report_the_loss_or_theft_2321673",
-        yesNo
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          lossTheftReport[0].qkey,
-          lossTheftReport[0].akey,
-          fieldTypeText
-        )
-      );
-      let lossTheftReportedTo = getAKey(
-        "helpdesk_ticket_custom_field_cf_who_did_you_report_it_to_2321673",
-        LossTheftReportedTo
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          lossTheftReportedTo[0].qkey,
-          lossTheftReportedTo[0].akey,
-          fieldTypeText
-        )
-      );
-      let itemType = getAKey(
-        "helpdesk_ticket_custom_field_cf_item_type870706_2321673",
-        ItemType
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(itemType[0].qkey, itemType[0].akey, fieldTypeText)
-      );
-      let ItemOwners = getAKey(
-        "helpdesk_ticket_custom_field_cf_who_owns_the_item86910_2321673",
-        ItemOwner
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(ItemOwners[0].qkey, ItemOwners[0].akey, fieldTypeText)
-      );
-      let HomeInsurance = getAKey(
-        "helpdesk_ticket_custom_field_cf_do_you_have_home_contents_insurance_2321673",
-        yesNo
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          HomeInsurance[0].qkey,
-          HomeInsurance[0].akey,
-          fieldTypeText
-        )
-      );
-      let DualInsurance = getAKey(
-        "helpdesk_ticket_custom_field_cf_do_you_have_any_other_travel_insurance_policy_2321673",
-        yesNo
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          DualInsurance[0].qkey,
-          DualInsurance[0].akey,
-          fieldTypeText
-        )
-      );
-      let TripPaymentMethodDisplay = getAKey(
-        "helpdesk_ticket_custom_field_cf_how_did_you_pay_for_your_trip396837_2321673",
-        TripPaymentMethod
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          TripPaymentMethodDisplay[0].qkey,
-          TripPaymentMethodDisplay[0].akey,
-          fieldTypeText
-        )
-      );
-      let CreditCardAmount = getAKey(
-        "helpdesk_ticket_custom_field_cf_did_you_pay_for_50_or_more_of_the_trip_with_a_credit_card824584_2321673",
-        yesNo
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          CreditCardAmount[0].qkey,
-          CreditCardAmount[0].akey,
-          fieldTypeText
-        )
-      );
-      let NoReportReasonItems = getAKey(
-        "helpdesk_ticket_custom_field_cf_please_confirm_why_you_did_not_report_the_loss_or_theft6975_2321673",
-        NoReportReason
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          NoReportReasonItems[0].qkey,
-          NoReportReasonItems[0].akey,
-          fieldTypeText
-        )
-      );
-      let LossTheftVehicleList = getAKey(
-        "helpdesk_ticket_custom_field_cf_whereabouts_in_the_vehicle_was_the_items_when_stolen_2321673",
-        LossTheftVehicle
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          LossTheftVehicleList[0].qkey,
-          LossTheftVehicleList[0].akey,
-          fieldTypeText
-        )
-      );
-      let LossTheftVehicleForce = getAKey(
-        "helpdesk_ticket_custom_field_cf_was_there_physical_damage_to_the_vehicle_2321673",
-        yesNo
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          LossTheftVehicleForce[0].qkey,
-          LossTheftVehicleForce[0].akey,
-          fieldTypeText
-        )
-      );
-      let LossTheftPurchaseDate = submitClaimBody(
-        "LossTheftPurchaseDate",
-        $(
-          "#helpdesk_ticket_custom_field_cf_when_did_you_purchase_the_item_2321673"
-        ).val(),
-        fieldTypeDate
-      );
-      ClaimQaAndAnswers.push(LossTheftPurchaseDate);
-      let CreditCardType = submitClaimBody(
-        "CreditCardType",
-        $(
-          "#helpdesk_ticket_custom_field_cf_who_is_the_provider_of_your_credit_card237678_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(CreditCardType);
-      let HomePolicyNumber = submitClaimBody(
-        "HomePolicyNumber",
-        $("#helpdesk_ticket_custom_field_cf_policy_number818860_2321673").val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(HomePolicyNumber);
-      let HomeInsurerName = submitClaimBody(
-        "HomeInsurerName",
-        $(
-          "#helpdesk_ticket_custom_field_cf_name_of_your_policy_provider267746_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(HomeInsurerName);
-      let DamageItemPurchasePrice = submitClaimBody(
-        "DamageItemPurchasePrice",
-        $(
-          "#helpdesk_ticket_custom_field_cf_what_was_its_cost_when_you_bought_it_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(DamageItemPurchasePrice);
-      body["ClaimAnswers"] = ClaimQaAndAnswers;
-      console.log("submit claim body --->", body);
-    } else if (reasonClaim[0].akey == "01_02_BagD") {
-      let BaggageDelay = getAKey(
-        "helpdesk_ticket_custom_field_cf_which_part_of_the_journey_did_your_baggage_arrive_late_2321673",
-        BaggageDelayLeg
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          BaggageDelay[0].qkey,
-          BaggageDelay[0].akey,
-          fieldTypeText
-        )
-      );
-      let DelayedBagReturned = getAKey(
-        "helpdesk_ticket_custom_field_cf_has_your_baggage_been_returned_to_you_2321673",
-        yesNo
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          DelayedBagReturned[0].qkey,
-          DelayedBagReturned[0].akey,
-          fieldTypeText
-        )
-      );
-      let TransportationMethodDelay = getAKey(
-        "helpdesk_ticket_custom_field_cf_what_transport_type_was_your_baggage_delayed_on_2321673",
-        TransportationMethodDelayed
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          TransportationMethodDelay[0].qkey,
-          TransportationMethodDelay[0].akey,
-          fieldTypeText
-        )
-      );
-      let DelayReport = getAKey(
-        "helpdesk_ticket_custom_field_cf_did_you_notify_your_transport_provider_about_the_delay_and_get_a_report_pir_2321673",
-        yesNo
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(DelayReport[0].qkey, DelayReport[0].akey, fieldTypeText)
-      );
-      let DelayedBaggageRefund = getAKey(
-        "helpdesk_ticket_custom_field_cf_have_you_received_any_refund_from_your_transport_provider_2321673",
-        yesNo
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          DelayedBaggageRefund[0].qkey,
-          DelayedBaggageRefund[0].akey,
-          fieldTypeText
-        )
-      );
-      let BaggageDelayHours = submitClaimBody(
-        "BaggageDelayHours",
-        $(
-          "#helpdesk_ticket_custom_field_cf_how_many_hours_was_your_baggage_delayed_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(BaggageDelayHours);
-      let PIRNumberDelay = submitClaimBody(
-        "PIRNumberDelay",
-        $(
-          "#helpdesk_ticket_custom_field_cf_enter_the_report_reference_pir_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(PIRNumberDelay);
-      let ItemTypeDelay = submitClaimBody(
-        "ItemTypeDelay",
-        $(
-          "#helpdesk_ticket_custom_field_cf_please_list_all_replacement_items_purchased339565_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(ItemTypeDelay);
-      let DelayPurchaseDate = submitClaimBody(
-        "DelayPurchaseDate",
-        $(
-          "#helpdesk_ticket_custom_field_cf_on_what_date_did_you_purchase_the_replacement_items_2321673"
-        ).val(),
-        fieldTypeDate
-      );
-      ClaimQaAndAnswers.push(DelayPurchaseDate);
-      let DelayJourneyLegOther = submitClaimBody(
-        "DelayJourneyLegOther",
-        $(
-          "#helpdesk_ticket_custom_field_cf_please_give_us_further_details469996_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(DelayJourneyLegOther);
-      let currencyType = getAKey(
-        "helpdesk_ticket_custom_field_cf_currency_type637939_2321673",
-        CurrencyType
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          currencyType[0].qkey,
-          currencyType[0].akey,
-          fieldTypeText
-        )
-      );
-      let DelayItemPurchasePrice = submitClaimBody(
-        "DelayItemPurchasePrice",
-        $(
-          "#helpdesk_ticket_custom_field_cf_amount_paid_in_local_currency527297_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(DelayItemPurchasePrice);
-      let DelayedBaggageRefundAmount = submitClaimBody(
-        "DelayedBaggageRefundAmount",
-        $(
-          "#helpdesk_ticket_custom_field_cf_total_refund_vouchers_amount_the_amount_you_have_received_back594804_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(DelayedBaggageRefundAmount);
-
-      body["ClaimAnswers"] = ClaimQaAndAnswers;
-      console.log("submit claim body --->", body);
-    } else if (reasonClaim[0].akey == "01_03_CxIllClnt") {
-      let dateAdvisedJuryWitness = submitClaimBody(
-        "DateAdvisedJuryWitness",
-        $(
-          "#helpdesk_ticket_custom_field_cf_on_what_date_were_you_advised_of_the_jury_service_or_court_date_2321673"
-        ).val(),
-        fieldTypeDate
-      );
-      ClaimQaAndAnswers.push(dateAdvisedJuryWitness);
-      let checkRefundValue = $(
-        "#helpdesk_ticket_custom_field_cf_have_you_received_any_refunds_or_compensation702973_2321673"
-      ).val();
-      let TripBookingRefund;
-      if (checkRefundValue) {
-        TripBookingRefund = submitClaimBody(
-          "TripBookingRefund",
+      ClaimQaAndAnswers.push(cxBookingDate);
+      if (reasonClaim[0].akey == "01_02_Canx") {
+        let coronaDateAware = submitClaimBody(
+          "CoronaDateAware",
           $(
-            "#helpdesk_ticket_custom_field_cf_have_you_received_any_refunds_or_compensation702973_2321673"
+            "#helpdesk_ticket_custom_field_cf_when_were_you_initially_aware_that_you_needed_to_cancel_your_trip635242_2321673"
           ).val(),
           fieldTypeText
         );
-        ClaimQaAndAnswers.push(TripBookingRefund);
-      } else {
-        TripBookingRefund = submitClaimBody(
-          "TripBookingRefund",
-          "0",
-          fieldTypeText
-        );
-        ClaimQaAndAnswers.push(TripBookingRefund);
-      }
-      let ReasonForCancellationDesc = submitClaimBody(
-        "ReasonForCancellationDesc",
-        $(
-          "#helpdesk_ticket_custom_field_cf_in_your_own_words_please_explain_the_reason_for_cancelling_your_trip_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(ReasonForCancellationDesc);
-      let DateAdvisedOfRedundancy = submitClaimBody(
-        "DateAdvisedOfRedundancy",
-        $(
-          "#helpdesk_ticket_custom_field_cf_on_what_date_were_you_advised_of_the_redundancy_2321673"
-        ).val(),
-        fieldTypeDate
-      );
-      ClaimQaAndAnswers.push(DateAdvisedOfRedundancy);
-      let DateDiagnosis = submitClaimBody(
-        "DateOfDiagnosis",
-        $(
-          "#helpdesk_ticket_custom_field_cf_please_confirm_the_date_of_diagnosis_for_this_condition_2321673"
-        ).val(),
-        fieldTypeDate
-      );
-      ClaimQaAndAnswers.push(DateDiagnosis);
-      let DateOfDeath = submitClaimBody(
-        "DateOfDeath",
-        $(
-          "#helpdesk_ticket_custom_field_cf_please_confirm_the_date_of_death_2321673"
-        ).val(),
-        fieldTypeDate
-      );
-      ClaimQaAndAnswers.push(DateOfDeath);
-
-      let CauseOfDeath = submitClaimBody(
-        "CauseOfDeath",
-        $(
-          "#helpdesk_ticket_custom_field_cf_please_confirm_the_cause_of_death_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(CauseOfDeath);
-
-      let DateOfInjury = submitClaimBody(
-        "DateOfInjury",
-        $(
-          "#helpdesk_ticket_custom_field_cf_on_what_date_did_the_incident_causing_the_injury_happen_2321673"
-        ).val(),
-        fieldTypeDate
-      );
-      ClaimQaAndAnswers.push(DateOfInjury);
-      let WhoAdvisedCancelOther = submitClaimBody(
-        "WhoAdvisedCancelOther",
-        $(
-          "#helpdesk_ticket_custom_field_cf_please_give_us_further_details352533_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(WhoAdvisedCancelOther);
-      let CancellationBookingNoPeople = submitClaimBody(
-        "CancellationBookingNoPeople",
-        $(
-          "#helpdesk_ticket_custom_field_cf_how_many_people_are_there_on_the_booking_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(CancellationBookingNoPeople);
-      let CancellationInsuredNoClaiming = submitClaimBody(
-        "CancellationInsuredNoClaiming",
-        $(
-          "#helpdesk_ticket_custom_field_cf_how_many_people_on_the_booking_are_insured_by_this_policy514961_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(CancellationInsuredNoClaiming);
-
-      let DateOfSymptoms = submitClaimBody(
-        "DateOfSymptoms",
-        $(
-          "#helpdesk_ticket_custom_field_cf_when_did_the_symptoms_start_2321673"
-        ).val(),
-        fieldTypeDate
-      );
-      ClaimQaAndAnswers.push(DateOfSymptoms);
-      let TripProviderInfo = submitClaimBody(
-        "TripProviderInfo",
-        $(
-          "#helpdesk_ticket_custom_field_cf_please_confirm_the_name_of_the_trip_providers_and_the_booking_references342856_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(TripProviderInfo);
-      let tripBookingCost = submitClaimBody(
-        "TripBookingCost",
-        $(
-          "#helpdesk_ticket_custom_field_cf_total_trip_cost_the_amount_you_paid_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(tripBookingCost);
-      let DateCancelled = submitClaimBody(
-        "DateCancelled",
-        $(
-          "#helpdesk_ticket_custom_field_cf_please_enter_the_date_you_asked_your_tour_operatortravel_provider_to_cancel_the_trip_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(DateCancelled);
-      let dualInsurance = getAKey(
-        "helpdesk_ticket_custom_field_cf_do_you_have_any_other_travel_insurance_policy400572_2321673",
-        yesNo
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          dualInsurance[0].qkey,
-          dualInsurance[0].akey,
-          fieldTypeText
-        )
-      );
-      let dualInsuranceName = submitClaimBody(
-        "DualInsuranceName",
-        $(
-          "#helpdesk_ticket_custom_field_cf_name_of_your_policy_provider895583_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(dualInsuranceName);
-      let dualInsuranceNumber = submitClaimBody(
-        "DualInsuranceNumber",
-        $("#helpdesk_ticket_custom_field_cf_policy_number964552_2321673").val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(dualInsuranceNumber);
-      let bankAccountType = submitClaimBody(
-        "BankAccountType",
-        $(
-          "#helpdesk_ticket_custom_field_cf_who_do_you_bank_with_and_what_type_of_account_do_you_have486839_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(bankAccountType);
-      let tripPaymentMethod = getAKey(
-        "helpdesk_ticket_custom_field_cf_how_did_you_pay_for_your_trip913590_2321673",
-        TripPaymentMethod
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          tripPaymentMethod[0].qkey,
-          tripPaymentMethod[0].akey,
-          fieldTypeText
-        )
-      );
-      let creditCardType = submitClaimBody(
-        "CreditCardType",
-        $(
-          "#helpdesk_ticket_custom_field_cf_who_is_the_provider_of_your_credit_card224630_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(creditCardType);
-      let creditCardAmount = getAKey(
-        "helpdesk_ticket_custom_field_cf_did_you_pay_for_50_or_more_of_the_trip_with_a_credit_card401929_2321673",
-        yesNo
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          creditCardAmount[0].qkey,
-          creditCardAmount[0].akey,
-          fieldTypeText
-        )
-      );
-      let Cancellation = getAKey(
-        "helpdesk_ticket_custom_field_cf_who_has_caused_the_cancellation_2321673",
-        CancellationPerson
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          Cancellation[0].qkey,
-          Cancellation[0].akey,
-          fieldTypeText
-        )
-      );
-
-      let ReasonCancellation = getAKey(
-        "helpdesk_ticket_custom_field_cf_are_you_currently_still_abroad_2321673",
-        ReasonForCancellation
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          ReasonCancellation[0].qkey,
-          ReasonCancellation[0].akey,
-          fieldTypeText
-        )
-      );
-
-      let RedundancyPayment = getAKey(
-        "helpdesk_ticket_custom_field_cf_do_you_qualify_for_redundancy_payment_under_current_legislation_2321673",
-        yesNo
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          RedundancyPayment[0].qkey,
-          RedundancyPayment[0].akey,
-          fieldTypeText
-        )
-      );
-
-      let StableAtTimeofBooking = getAKey(
-        "helpdesk_ticket_custom_field_cf_to_the_best_of_your_knowledge_were_you_or_this_person_considered_stable_at_the_time_of_booking_the_trip_2321673",
-        yesNo
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          StableAtTimeofBooking[0].qkey,
-          StableAtTimeofBooking[0].akey,
-          fieldTypeText
-        )
-      );
-
-      let InjuryThirdPartyInvolved = getAKey(
-        "helpdesk_ticket_custom_field_cf_was_someone_else_a_third_party_involved_in_sustaining_the_injury_2321673",
-        yesNo
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          InjuryThirdPartyInvolved[0].qkey,
-          InjuryThirdPartyInvolved[0].akey,
-          fieldTypeText
-        )
-      );
-
-      let WhoAdvisedCancel = getAKey(
-        "helpdesk_ticket_custom_field_cf_who_advised_to_cancel_2321673",
-        WhoAdvisedToCancel
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          WhoAdvisedCancel[0].qkey,
-          WhoAdvisedCancel[0].akey,
-          fieldTypeText
-        )
-      );
-      let CancellationType = getAKey(
-        "helpdesk_ticket_custom_field_cf_what_type_of_trip_did_you_book137913_2321673",
-        CancellationTypeOfTrip
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          CancellationType[0].qkey,
-          CancellationType[0].akey,
-          fieldTypeText
-        )
-      );
-      let CancellationIllness = getAKey(
-        "helpdesk_ticket_custom_field_cf_what_medical_condition_has_resulted_in_cancellation748907_2321673",
-        CancellationIllnessCondition
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          CancellationIllness[0].qkey,
-          CancellationIllness[0].akey,
-          fieldTypeText
-        )
-      );
-      let TripTransport = getAKey(
-        "helpdesk_ticket_custom_field_cf_what_type_of_transport_was_included_in_your_booking146711_2321673",
-        TripTransportType
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          TripTransport[0].qkey,
-          TripTransport[0].akey,
-          fieldTypeText
-        )
-      );
-      let currencyType = getAKey(
-        "helpdesk_ticket_custom_field_cf_currency_type637939_2321673",
-        CurrencyType
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          currencyType[0].qkey,
-          currencyType[0].akey,
-          fieldTypeText
-        )
-      );
-      body["ClaimAnswers"] = ClaimQaAndAnswers;
-      console.log("submit claim body --->", body);
-    } else if (reasonClaim[0].akey == "01_02_Curt") {
-      let CURTAILMENTREFUND = submitClaimBody(
-        "CURTAILMENTREFUND",
-        $(
-          "#helpdesk_ticket_custom_field_cf_total_refund_vouchers_amount_the_amount_you_have_received_back594804_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(CURTAILMENTREFUND);
-      let CURTAILMENT = submitClaimBody(
-        "CURTAILMENTDATEAWARE",
-        $(
-          "#helpdesk_ticket_custom_field_cf_detail_how_you_got_home_and_on_what_date_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(CURTAILMENT);
-      let CURTAILMENTREASONS = getAKey(
-        "helpdesk_ticket_custom_field_cf_why_did_you_shorten_your_trip_2321673",
-        CURTAILMENTREASON
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          CURTAILMENTREASONS[0].qkey,
-          CURTAILMENTREASONS[0].akey,
-          fieldTypeText
-        )
-      );
-      let CURTAILMENTNOTIFICATION = getAKey(
-        "helpdesk_ticket_custom_field_cf_did_you_notify_us_of_the_need_to_curtail_before_making_arrangements_2321673",
-        yesNo
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          CURTAILMENTNOTIFICATION[0].qkey,
-          CURTAILMENTNOTIFICATION[0].akey,
-          fieldTypeText
-        )
-      );
-
-      let currencyType = getAKey(
-        "helpdesk_ticket_custom_field_cf_currency_type637939_2321673",
-        CurrencyType
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          currencyType[0].qkey,
-          currencyType[0].akey,
-          fieldTypeText
-        )
-      );
-      let CURTAILMENTLOSSAMOUNT = submitClaimBody(
-        "SkiPackClaimDetails",
-        $(
-          "#helpdesk_ticket_custom_field_cf_what_is_the_estimated_value_of_your_claim_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(CURTAILMENTLOSSAMOUNT);
-      let CURTAILMENTDESCRIPTION = submitClaimBody(
-        "CURTAILMENTDESCRIPTION",
-        $(
-          "#helpdesk_ticket_custom_field_cf_please_provide_a_detailed_description_of_the_reason_you_curtailed_your_trip272601_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(CURTAILMENTDESCRIPTION);
-      let CURTAILMENTDATE = submitClaimBody(
-        "CURTAILMENTDATEAWARE",
-        $(
-          "#helpdesk_ticket_custom_field_cf_explain_when_you_were_aware_that_you_needed_to_return_home_please_confirm_the_date_2321673"
-        ).val(),
-        fieldTypeDate
-      );
-      ClaimQaAndAnswers.push(CURTAILMENTDATE);
-      let CURTAILMENTNOTIFICATIONREASON = submitClaimBody(
-        "CURTAILMENTNOTIFICATIONREASON",
-        $(
-          "#helpdesk_ticket_custom_field_cf_please_give_a_full_and_detailed_explanation_of_why_you_did_not_contact_to_contact_our_emergency_service582069_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(CURTAILMENTNOTIFICATIONREASON);
-
-      body["ClaimAnswers"] = ClaimQaAndAnswers;
-      console.log("submit claim body --->", body);
-    } else if (reasonClaim[0].akey == "01_02_Dental") {
-      let DentalDate = submitClaimBody(
-        "DentalDate",
-        $(
-          "#helpdesk_ticket_custom_field_cf_when_did_the_symptoms_start939174_2321673"
-        ).val(),
-        fieldTypeDate
-      );
-      ClaimQaAndAnswers.push(DentalDate);
-
-      let DentalDescriptionExpenses = submitClaimBody(
-        "DentalDescriptionExpenses",
-        $(
-          "#helpdesk_ticket_custom_field_cf_please_list_the_expenses_incurred_including_the_type_of_expense_and_the_name_of_the_dentist_or_company_that_provided_this_expense_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(DentalDescriptionExpenses);
-      let DentalPaymentAmount = submitClaimBody(
-        "DentalPaymentAmount",
-        $(
-          "#helpdesk_ticket_custom_field_cf_amount_paid_in_local_currency527297_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(DentalPaymentAmount);
-
-      let MedicalPaymentDate = submitClaimBody(
-        "MedicalPaymentDate",
-        $(
-          "#helpdesk_ticket_custom_field_cf_on_what_date_did_you_pay_the_dental_expenses_2321673"
-        ).val(),
-        fieldTypeDate
-      );
-      ClaimQaAndAnswers.push(MedicalPaymentDate);
-      let DentalExpenses = getAKey(
-        "helpdesk_ticket_custom_field_cf_who_incurred_dental_expenses930485_2321673",
-        WhoDentalExpenses
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          DentalExpenses[0].qkey,
-          DentalExpenses[0].akey,
-          fieldTypeText
-        )
-      );
-      let DTreatment = getAKey(
-        "helpdesk_ticket_custom_field_cf_what_type_of_dental_treatment_did_you_need_2321673",
-        DentalTreatment
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(DTreatment[0].qkey, DTreatment[0].akey, fieldTypeText)
-      );
-      let currencyType = getAKey(
-        "helpdesk_ticket_custom_field_cf_currency_type637939_2321673",
-        CurrencyType
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          currencyType[0].qkey,
-          currencyType[0].akey,
-          fieldTypeText
-        )
-      );
-      body["ClaimAnswers"] = ClaimQaAndAnswers;
-      console.log("submit claim body --->", body);
-    } else if (reasonClaim[0].akey == "01_02_Delay") {
-      let TransportationMethodDelay = getAKey(
-        "helpdesk_ticket_custom_field_cf_what_transport_was_delayed_2321673",
-        TransportationMethod
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          TransportationMethodDelay[0].qkey,
-          TransportationMethodDelay[0].akey,
-          fieldTypeText
-        )
-      );
-      let ReasonDelay = getAKey(
-        "helpdesk_ticket_custom_field_cf_what_was_the_reason_for_the_delay_2321673",
-        ReasonForDelay
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(ReasonDelay[0].qkey, ReasonDelay[0].akey, fieldTypeText)
-      );
-      let WhichJourneyNewAdded = getAKey(
-        "helpdesk_ticket_custom_field_cf_on_which_part_of_the_journey_were_you_delayed_2321673",
-        WhichJourneyNew
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          WhichJourneyNewAdded[0].qkey,
-          WhichJourneyNewAdded[0].akey,
-          fieldTypeText
-        )
-      );
-      let TravelDelayAdditionalCosts = getAKey(
-        "helpdesk_ticket_custom_field_cf_were_there_any_additional_expenses_as_a_result_of_the_delay_2321673",
-        yesNo
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          TravelDelayAdditionalCosts[0].qkey,
-          TravelDelayAdditionalCosts[0].akey,
-          fieldTypeText
-        )
-      );
-      let DelayOver24Hours = getAKey(
-        "helpdesk_ticket_custom_field_cf_were_you_delayed_for_24_hours_or_more923623_2321673",
-        yesNo
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          DelayOver24Hours[0].qkey,
-          DelayOver24Hours[0].akey,
-          fieldTypeText
-        )
-      );
-      let HoursDelayed = submitClaimBody(
-        "HoursDelayed",
-        $(
-          "#helpdesk_ticket_custom_field_cf_how_many_hours_were_you_delayed_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(HoursDelayed);
-      let TravelDelayCostDescription = submitClaimBody(
-        "TravelDelayCostDescription",
-        $(
-          "#helpdesk_ticket_custom_field_cf_please_provide_information_about_the_additional_costs_including_the_travel_provider_booking_reference_and_the_amount_paid_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(TravelDelayCostDescription);
-      let DelayAdvisedDateTime = submitClaimBody(
-        "DelayAdvisedDateTime",
-        $(
-          "#helpdesk_ticket_custom_field_cf_what_date_were_you_advised_of_the_delay_2321673"
-        ).val(),
-        fieldTypeDate
-      );
-      ClaimQaAndAnswers.push(DelayAdvisedDateTime);
-      body["ClaimAnswers"] = ClaimQaAndAnswers;
-      console.log("submit claim body --->", body);
-    } else if (reasonClaim[0].akey == "01_02_Med") {
-      let MedicalCostCOVID = getAKey(
-        "helpdesk_ticket_custom_field_cf_do_any_of_the_costs_relate_to_covid_tests_2321673",
-        yesNo
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          MedicalCostCOVID[0].qkey,
-          MedicalCostCOVID[0].akey,
-          fieldTypeText
-        )
-      );
-      let MedicalCostPhysio = getAKey(
-        "helpdesk_ticket_custom_field_cf_do_any_of_the_costs_relate_to_physiotherapy_or_chiropracter_2321673",
-        yesNo
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          MedicalCostPhysio[0].qkey,
-          MedicalCostPhysio[0].akey,
-          fieldTypeText
-        )
-      );
-      let MedicalExpCondition = getAKey(
-        "helpdesk_ticket_custom_field_cf_what_condition_has_resulted_in_the_medical_expenses_2321673",
-        MedicalExpensesCondition
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          MedicalExpCondition[0].qkey,
-          MedicalExpCondition[0].akey,
-          fieldTypeText
-        )
-      );
-      let MedicalCostAccomm = getAKey(
-        "helpdesk_ticket_custom_field_cf_do_any_of_the_costs_relate_to_accommodation555447_2321673",
-        yesNo
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          MedicalCostAccomm[0].qkey,
-          MedicalCostAccomm[0].akey,
-          fieldTypeText
-        )
-      );
-      let thirdPartyOption = getAKey(
-        "helpdesk_ticket_custom_field_cf_was_someone_else_a_third_party_involved_in_you_sustaining_the_injury_2321673",
-        yesNo
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          thirdPartyOption[0].qkey,
-          thirdPartyOption[0].akey,
-          fieldTypeText
-        )
-      );
-      let MedicalCostTravel = getAKey(
-        "helpdesk_ticket_custom_field_cf_do_any_of_the_costs_relate_to_travel_not_including_the_ambulance_or_taxi_to_the_hospital_2321673",
-        yesNo
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          MedicalCostTravel[0].qkey,
-          MedicalCostTravel[0].akey,
-          fieldTypeText
-        )
-      );
-      let IncidentDate = submitClaimBody(
-        "IncidentDate",
-        $(
-          "#helpdesk_ticket_custom_field_cf_when_did_the_symptoms_start437132_2321673"
-        ).val(),
-        fieldTypeDate
-      );
-      ClaimQaAndAnswers.push(IncidentDate);
-      let NatureIllness = submitClaimBody(
-        "NatureIllness",
-        $(
-          "#helpdesk_ticket_custom_field_cf_please_provide_any_further_information_about_the_condition_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(NatureIllness);
-      let MedicalDateOfDiagnosis = submitClaimBody(
-        "MedicalDateOfDiagnosis",
-        $(
-          "#helpdesk_ticket_custom_field_cf_please_confirm_the_first_date_of_diagnosis_for_this_condition_2321673"
-        ).val(),
-        fieldTypeDate
-      );
-      ClaimQaAndAnswers.push(MedicalDateOfDiagnosis);
-      let ExpenseDescription = submitClaimBody(
-        "ExpenseDescription",
-        $(
-          "#helpdesk_ticket_custom_field_cf_please_list_the_expenses_incurred_including_the_type_of_expense_and_the_name_of_the_dentist_or_company_that_provided_this_expense90799_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(ExpenseDescription);
-      let NatureInjury = submitClaimBody(
-        "NatureInjury",
-        $(
-          "#helpdesk_ticket_custom_field_cf_in_your_own_words_tell_us_what_happened731291_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(NatureInjury);
-      let MedicalPaymentAmount = submitClaimBody(
-        "MedicalPaymentPrice",
-        $(
-          "#helpdesk_ticket_custom_field_cf_amount_paid_in_local_currency527297_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(MedicalPaymentAmount);
-      let MedicalPaymentDate = submitClaimBody(
-        "MedicalPaymentDate",
-        $(
-          "#helpdesk_ticket_custom_field_cf_date_of_payment778903_2321673"
-        ).val(),
-        fieldTypeDate
-      );
-      ClaimQaAndAnswers.push(MedicalPaymentDate);
-      let DualInsuranceName = submitClaimBody(
-        "DualInsuranceName",
-        $(
-          "#helpdesk_ticket_custom_field_cf_name_of_your_policy_provider_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(DualInsuranceName);
-      let DualInsuranceNumber = submitClaimBody(
-        "DualInsuranceNumber",
-        $("#helpdesk_ticket_custom_field_cf_policy_number533894_2321673").val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(DualInsuranceNumber);
-      let PrivateMedicalPolicy = submitClaimBody(
-        "PrivateMedicalPolicy",
-        $(
-          "#helpdesk_ticket_custom_field_cf_name_of_your_policy_provider618179_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(PrivateMedicalPolicy);
-      let PrivateMedicalNumber = submitClaimBody(
-        "PrivateMedicalNumber",
-        $("#helpdesk_ticket_custom_field_cf_policy_number701021_2321673").val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(PrivateMedicalNumber);
-      let BankAccountType = submitClaimBody(
-        "BankAccountType",
-        $(
-          "#helpdesk_ticket_custom_field_cf_who_do_you_bank_with_and_what_type_of_account_do_you_have584479_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(BankAccountType);
-      let CreditCardType = submitClaimBody(
-        "CreditCardType",
-        $(
-          "#helpdesk_ticket_custom_field_cf_who_is_the_provider_of_your_credit_card_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(CreditCardType);
-      let MedicalStillAbroad = getAKey(
-        "helpdesk_ticket_custom_field_cf_are_you_currently_still_abroad93386_2321673",
-        yesNo
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          MedicalStillAbroad[0].qkey,
-          MedicalStillAbroad[0].akey,
-          fieldTypeText
-        )
-      );
-      let MedicalExpenses = getAKey(
-        "helpdesk_ticket_custom_field_cf_who_incurred_medical_expenses_2321673",
-        WhoMedicalExpenses
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          MedicalExpenses[0].qkey,
-          MedicalExpenses[0].akey,
-          fieldTypeText
-        )
-      );
-      let InjuryIllness = getAKey(
-        "helpdesk_ticket_custom_field_cf_are_you_claiming_for_an_injury_or_illness644442_2321673",
-        MedicalInjuryIllness
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          InjuryIllness[0].qkey,
-          InjuryIllness[0].akey,
-          fieldTypeText
-        )
-      );
-      let currencyType = getAKey(
-        "helpdesk_ticket_custom_field_cf_currency_type637939_2321673",
-        CurrencyType
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          currencyType[0].qkey,
-          currencyType[0].akey,
-          fieldTypeText
-        )
-      );
-      let DualInsurance = getAKey(
-        "helpdesk_ticket_custom_field_cf_do_you_have_any_other_travel_insurance_policy206683_2321673",
-        yesNo
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          DualInsurance[0].qkey,
-          DualInsurance[0].akey,
-          fieldTypeText
-        )
-      );
-      let PrivateMedicalInsurance = getAKey(
-        "helpdesk_ticket_custom_field_cf_do_you_have_private_medical_insurance_2321673",
-        yesNo
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          PrivateMedicalInsurance[0].qkey,
-          PrivateMedicalInsurance[0].akey,
-          fieldTypeText
-        )
-      );
-
-      let PaymentMethod = getAKey(
-        "helpdesk_ticket_custom_field_cf_how_did_you_pay_for_your_trip257666_2321673",
-        TripPaymentMethod
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          PaymentMethod[0].qkey,
-          PaymentMethod[0].akey,
-          fieldTypeText
-        )
-      );
-      let CreditCardTransactions = getAKey(
-        "helpdesk_ticket_custom_field_cf_did_you_use_your_credit_card_for_any_transactions_whilst_on_your_trip_2321673",
-        yesNo
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          CreditCardTransactions[0].qkey,
-          CreditCardTransactions[0].akey,
-          fieldTypeText
-        )
-      );
-      let CreditCardAmount = getAKey(
-        "helpdesk_ticket_custom_field_cf_did_you_pay_for_50_or_more_of_the_trip_with_a_credit_card_2321673",
-        yesNo
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          CreditCardAmount[0].qkey,
-          CreditCardAmount[0].akey,
-          fieldTypeText
-        )
-      );
-      body["ClaimAnswers"] = ClaimQaAndAnswers;
-      console.log("submit claim body --->", body);
-    } else if (reasonClaim[0].akey == "01_02_MissedDep") {
-      let MissedDepDelayOther = submitClaimBody(
-        "MissedDepDelayOther",
-        $(
-          "#helpdesk_ticket_custom_field_cf_please_give_us_further_details520238_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(MissedDepDelayOther);
-      let MissedDepTestType = submitClaimBody(
-        "MissedDepTestType",
-        $(
-          "#helpdesk_ticket_custom_field_cf_please_confirm_the_test_type_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(MissedDepTestType);
-      let MissedDepAccomProvider = submitClaimBody(
-        "MissedDepAccomProvider",
-        $(
-          "#helpdesk_ticket_custom_field_cf_name_of_provider_please_list_all_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(MissedDepAccomProvider);
-      let MissedDepAmount = submitClaimBody(
-        "MissedDepAmount",
-        $(
-          "#helpdesk_ticket_custom_field_cf_amount_paid_in_local_currency_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(MissedDepAmount);
-      let MissedRefundAmount = submitClaimBody(
-        "MissedRefundAmount",
-        $(
-          "#helpdesk_ticket_custom_field_cf_total_refund_vouchers_amount_the_amount_you_have_received_back594804_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(MissedRefundAmount);
-      let MissedDeparture = getAKey(
-        "helpdesk_ticket_custom_field_cf_what_caused_you_to_miss_your_departure_2321673",
-        MissedDepartureReason
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          MissedDeparture[0].qkey,
-          MissedDeparture[0].akey,
-          fieldTypeText
-        )
-      );
-      let MissedDepDelay = getAKey(
-        "helpdesk_ticket_custom_field_cf_please_confirm_the_reason_for_delay_2321673",
-        MissedDepDelayReason
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          MissedDepDelay[0].qkey,
-          MissedDepDelay[0].akey,
-          fieldTypeText
-        )
-      );
-      let MissedDepThirdParty = getAKey(
-        "helpdesk_ticket_custom_field_cf_was_someone_else_a_third_party_involved_in_the_accident_2321673",
-        yesNo
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          MissedDepThirdParty[0].qkey,
-          MissedDepThirdParty[0].akey,
-          fieldTypeText
-        )
-      );
-      let MissedDepReasonReport = getAKey(
-        "helpdesk_ticket_custom_field_cf_do_you_have_a_report_confirming_the_reason_for_the_delay_2321673",
-        yesNo
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          MissedDepReasonReport[0].qkey,
-          MissedDepReasonReport[0].akey,
-          fieldTypeText
-        )
-      );
-      let MissedDepJourney = getAKey(
-        "helpdesk_ticket_custom_field_cf_on_which_part_of_the_journey_did_you_miss_your_departure_2321673",
-        MissedDepWhichJourney
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          MissedDepJourney[0].qkey,
-          MissedDepJourney[0].akey,
-          fieldTypeText
-        )
-      );
-      let MissedDepSufficientTime = getAKey(
-        "helpdesk_ticket_custom_field_cf_did_you_allow_yourself_sufficient_time_to_reach_your_international_departure_point_2321673",
-        yesNo
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          MissedDepSufficientTime[0].qkey,
-          MissedDepSufficientTime[0].akey,
-          fieldTypeText
-        )
-      );
-      let MissedDepExpense = getAKey(
-        "helpdesk_ticket_custom_field_cf_what_type_of_additional_expenses_are_you_claiming_for_2321673",
-        MissedDepExpenseType
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          MissedDepExpense[0].qkey,
-          MissedDepExpense[0].akey,
-          fieldTypeText
-        )
-      );
-      let currencyType = getAKey(
-        "helpdesk_ticket_custom_field_cf_currency_type637939_2321673",
-        CurrencyType
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          currencyType[0].qkey,
-          currencyType[0].akey,
-          fieldTypeText
-        )
-      );
-      body["ClaimAnswers"] = ClaimQaAndAnswers;
-      console.log("submit claim body --->", body);
-    } else if (reasonClaim[0].akey == "01_06_OthSubsAcc") {
-      let SubAccomCost = submitClaimBody(
-        "SubAccomCost",
-        $(
-          "#helpdesk_ticket_custom_field_cf_what_is_the_estimated_value_of_your_claim_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(SubAccomCost);
-      let SubAccomRefund = submitClaimBody(
-        "SubAccomRefund",
-        $(
-          "#helpdesk_ticket_custom_field_cf_total_refund_vouchers_amount_the_amount_you_have_received_back594804_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(SubAccomRefund);
-      let SubAccReason = getAKey(
-        "helpdesk_ticket_custom_field_cf_what_caused_you_to_leave_your_original_accommodation_2321673",
-        SubAccomReason
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          SubAccReason[0].qkey,
-          SubAccReason[0].akey,
-          fieldTypeText
-        )
-      );
-      let SubAccTripType = getAKey(
-        "helpdesk_ticket_custom_field_cf_what_type_of_trip_did_you_book_2321673",
-        SubAccomTripType
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          SubAccTripType[0].qkey,
-          SubAccTripType[0].akey,
-          fieldTypeText
-        )
-      );
-      let currencyType = getAKey(
-        "helpdesk_ticket_custom_field_cf_currency_type637939_2321673",
-        CurrencyType
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          currencyType[0].qkey,
-          currencyType[0].akey,
-          fieldTypeText
-        )
-      );
-      let SubAccomDate = submitClaimBody(
-        "SubAccomDate",
-        $(
-          "#helpdesk_ticket_custom_field_cf_on_what_date_did_you_leave_your_original_accommodation_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(SubAccomDate);
-      let SubAccomDescription = submitClaimBody(
-        "SubAccomDescription",
-        $(
-          "#helpdesk_ticket_custom_field_cf_please_provide_a_detailed_description_of_the_reason_you_left_your_accommodation_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(SubAccomDescription);
-      body["ClaimAnswers"] = ClaimQaAndAnswers;
-      console.log("submit claim body --->", body);
-    } else if (reasonClaim[0].akey == "01_02_Winter") {
-      let SkiPckClaimReason = getAKey(
-        "helpdesk_ticket_custom_field_cf_which_winter_sports_item_are_you_claiming_for_2321673",
-        SkiPackClaimReason
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          SkiPckClaimReason[0].qkey,
-          SkiPckClaimReason[0].akey,
-          fieldTypeText
-        )
-      );
-      let SkiPackReport = getAKey(
-        "helpdesk_ticket_custom_field_cf_have_you_obtained_a_report_or_invoices_for_the_items_you_are_claiming_2321673",
-        yesNo
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          SkiPackReport[0].qkey,
-          SkiPackReport[0].akey,
-          fieldTypeText
-        )
-      );
-      let currencyType = getAKey(
-        "helpdesk_ticket_custom_field_cf_currency_type637939_2321673",
-        CurrencyType
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          currencyType[0].qkey,
-          currencyType[0].akey,
-          fieldTypeText
-        )
-      );
-      let SkiPackClaimDetails = submitClaimBody(
-        "SkiPackClaimDetails",
-        $(
-          "#helpdesk_ticket_custom_field_cf_please_provide_a_detailed_description_of_the_reason_youre_making_a_claim_today_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(SkiPackClaimDetails);
-      let ValueSkiEst = submitClaimBody(
-        "ValueSkiEst",
-        $(
-          "#helpdesk_ticket_custom_field_cf_what_is_the_estimated_value_of_your_claim_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(ValueSkiEst);
-
-      body["ClaimAnswers"] = ClaimQaAndAnswers;
-      console.log("submit claim body --->", body);
-    }
-    jQuery(".new-ticket-submit-button")
-      .closest(".card-body")
-      .find(".form-group")
-      .before(
-        '<div class="invalid-feedback common_error">Please fill in all fields</div>'
-      );
-    jQuery("#overlay").removeClass("d-none").addClass("show loader-text");
-    createSubmitClaim(body, ".new-ticket-dummy");
-  });
-  $(".ticket-detail-dummy").click(function () {
-    // let policyNumber = $(
-    //   "#helpdesk_ticket_custom_field_cf_policy_number454080_2321673"
-    // ).val();
-    // claimnumber we can use global stored value
-    console.log("Main ");
-    let body = {
-      internalpolicyNumber: $(
-        "#helpdesk_ticket_custom_field_cf_internalpolicynumber_2321673"
-      ).val(),
-      ClaimNumber: $(
-        "#helpdesk_ticket_custom_field_cf_claim_number_2321673"
-      ).val(),
-      MainContactClientId: $(
-        "#helpdesk_ticket_custom_field_cf_mainclientid_2321673"
-      ).val(),
-      FromDate: $(
-        "#helpdesk_ticket_custom_field_cf_your_departure_date_2321673"
-      ).val(),
-      ToDate: $(
-        "#helpdesk_ticket_custom_field_cf_your_return_date_2321673"
-      ).val(),
-      UseContactInformationFromLeadInsured: false,
-      Email: $("#helpdesk_ticket_custom_field_cf_email_address_2321673").val(),
-      HomePhone: $(
-        "#helpdesk_ticket_custom_field_cf_mobile_number_2321673"
-      ).val(),
-      Mobile: $("#helpdesk_ticket_custom_field_cf_mobile_number_2321673").val(),
-      Telephone: $(
-        "#helpdesk_ticket_custom_field_cf_mobile_number_2321673"
-      ).val(),
-    };
-    //otherclients senarios logic
-    var yourArray = [];
-    let otherClientValue = $(
-      "#helpdesk_ticket_custom_field_cf_otherclientid_2321673"
-    ).val();
-    if (otherClientValue) {
-      console.log("if other client field has value ", otherClientValue);
-      yourArray.push(otherClientValue);
-      console.log("if other client field has yourArray ", yourArray);
-      body["OtherInsuredClientIds"] = yourArray;
-    } else {
-      console.log("if other client field has no value ", otherClientValue);
-      body["OtherInsuredClientIds"] = yourArray;
-    }
-    console.log(body);
-    //bank details senarios logic
-    console.log(bankResult);
-    console.log(typeof bankResult);
-    if (bankResult) {
-      let bankInfo = bankResult;
-      console.log("response sucessfull");
-      let bankDetails = {};
-      bankDetails["AccountHolder"] = $(
-        "#helpdesk_ticket_custom_field_cf_name_of_account_holder_2321673"
-      ).val();
-      bankDetails["BankName"] = bankInfo.bankName;
-      bankDetails["IBan"] = bankInfo.iBan;
-      bankDetails["BankAddressLine1"] = bankInfo.bankAddressLine1;
-      bankDetails["BankAddressLine2"] = bankInfo.bankAddressLine2;
-      bankDetails["BankAddressLine3"] = bankInfo.bankAddressLine3;
-      bankDetails["PostCode"] = bankInfo.postCode;
-      bankDetails["City"] = bankInfo.city;
-      bankDetails["Swift"] = bankInfo.swift;
-      bankDetails["AccountNumber"] = bankInfo.accountNumber;
-      bankDetails["SortCode"] = bankInfo.sortCode;
-      bankDetails["CountryCode"] = bankInfo.countryCode;
-      console.log("bank Details -->", bankDetails);
-      body["BankAccountDetails"] = bankDetails;
-      console.log("formed body -->", body);
-    } else {
-      console.log("Please validate bank details");
-    }
-    let reasonClaim = getAKey(
-      "helpdesk_ticket_custom_field_cf_reason_for_claim_2321673",
-      ClaimReason
-    );
-    let fieldTypeText = "Text";
-    let fieldTypeDate = "Date";
-    let ClaimQaAndAnswers = [];
-    let cxBookingDate = submitClaimBody(
-      "CanxBookingDate",
-      $("#helpdesk_ticket_custom_field_cf_your_booking_date_2321673").val(),
-      fieldTypeDate
-    );
-    ClaimQaAndAnswers.push(cxBookingDate);
-    if (reasonClaim[0].akey == "01_02_Canx") {
-      let coronaDateAware = submitClaimBody(
-        "CoronaDateAware",
-        $(
-          "#helpdesk_ticket_custom_field_cf_when_were_you_initially_aware_that_you_needed_to_cancel_your_trip635242_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(coronaDateAware);
-      let coronaDateCancelled = submitClaimBody(
-        "CoronaDateCancelled",
-        $(
-          "#helpdesk_ticket_custom_field_cf_please_enter_the_date_you_asked_your_tour_operatortravel_provider_to_cancel_the_trip_2321673"
-        ).val(),
-        fieldTypeDate
-      );
-      ClaimQaAndAnswers.push(coronaDateCancelled);
-      let tripBookingCost = submitClaimBody(
-        "TripBookingCost",
-        $(
-          "#helpdesk_ticket_custom_field_cf_total_trip_cost_the_amount_you_paid_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(tripBookingCost);
-      let tripBookingRefund = submitClaimBody(
-        "TripBookingRefund",
-        $(
-          "#helpdesk_ticket_custom_field_cf_total_refund_vouchers_amount_the_amount_you_have_received_back594804_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(tripBookingRefund);
-      let dualInsuranceName = submitClaimBody(
-        "DualInsuranceName",
-        $(
-          "#helpdesk_ticket_custom_field_cf_name_of_your_policy_provider895583_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(dualInsuranceName);
-      let dualInsuranceNumber = submitClaimBody(
-        "DualInsuranceNumber",
-        $("#helpdesk_ticket_custom_field_cf_policy_number964552_2321673").val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(dualInsuranceNumber);
-      let bankAccountType = submitClaimBody(
-        "BankAccountType",
-        $(
-          "#helpdesk_ticket_custom_field_cf_who_do_you_bank_with_and_what_type_of_account_do_you_have486839_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(bankAccountType);
-      let travelProviderName = submitClaimBody(
-        "TravelProviderName",
-        $(
-          "#helpdesk_ticket_custom_field_cf_please_confirm_the_name_of_the_trip_providers_and_the_booking_references342856_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(travelProviderName);
-      let cancellationBookingNoPeople = submitClaimBody(
-        "CancellationBookingNoPeople",
-        $(
-          "#helpdesk_ticket_custom_field_cf_how_many_people_are_there_on_the_booking166234_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(cancellationBookingNoPeople);
-      let cancellationInsuredNoClaiming = submitClaimBody(
-        "CancellationInsuredNoClaiming",
-        $(
-          "#helpdesk_ticket_custom_field_cf_how_many_people_on_the_booking_are_insured_by_this_policy_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(cancellationInsuredNoClaiming);
-      let coronaReason = getAKey(
-        "helpdesk_ticket_custom_field_cf_why_did_you_cancel_your_trip_2321673",
-        CoronaReason
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          coronaReason[0].qkey,
-          coronaReason[0].akey,
-          fieldTypeText
-        )
-      );
-      let covidTypeOfTrip = getAKey(
-        "helpdesk_ticket_custom_field_cf_what_type_of_trip_did_you_book877716_2321673",
-        COVIDTypeOfTrip
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          covidTypeOfTrip[0].qkey,
-          covidTypeOfTrip[0].akey,
-          fieldTypeText
-        )
-      );
-      let covidTripTransportType = getAKey(
-        "helpdesk_ticket_custom_field_cf_what_type_of_transport_was_included_in_your_booking_2321673",
-        COVIDTripTransportType
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          covidTripTransportType[0].qkey,
-          covidTripTransportType[0].akey,
-          fieldTypeText
-        )
-      );
-      let currencyType = getAKey(
-        "helpdesk_ticket_custom_field_cf_currency_type637939_2321673",
-        CurrencyType
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          currencyType[0].qkey,
-          currencyType[0].akey,
-          fieldTypeText
-        )
-      );
-      let dualInsurance = getAKey(
-        "helpdesk_ticket_custom_field_cf_do_you_have_any_other_travel_insurance_policy400572_2321673",
-        yesNo
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          dualInsurance[0].qkey,
-          dualInsurance[0].akey,
-          fieldTypeText
-        )
-      );
-      let tripPaymentMethod = getAKey(
-        "helpdesk_ticket_custom_field_cf_how_did_you_pay_for_your_trip913590_2321673",
-        TripPaymentMethod
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          tripPaymentMethod[0].qkey,
-          tripPaymentMethod[0].akey,
-          fieldTypeText
-        )
-      );
-      let creditCardType = submitClaimBody(
-        "CreditCardType",
-        $(
-          "#helpdesk_ticket_custom_field_cf_who_is_the_provider_of_your_credit_card224630_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(creditCardType);
-      let DateOfSymptoms = submitClaimBody(
-        "DateOfSymptoms",
-        $(
-          "#helpdesk_ticket_custom_field_cf_when_did_the_symptoms_start939174_2321673"
-        ).val(),
-        fieldTypeDate
-      );
-      ClaimQaAndAnswers.push(DateOfSymptoms);
-      let creditCardAmount = getAKey(
-        "helpdesk_ticket_custom_field_cf_did_you_pay_for_50_or_more_of_the_trip_with_a_credit_card401929_2321673",
-        yesNo
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          creditCardAmount[0].qkey,
-          creditCardAmount[0].akey,
-          fieldTypeText
-        )
-      );
-      let positivePerson = getAKey(
-        "helpdesk_ticket_custom_field_cf_who_has_tested_positive_for_coronavirus_2321673",
-        WhoTestedPositive
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          positivePerson[0].qkey,
-          positivePerson[0].akey,
-          fieldTypeText
-        )
-      );
-      let typeTest = getAKey(
-        "helpdesk_ticket_custom_field_cf_what_type_of_test_was_taken_2321673",
-        WhatTypeOfCovidTest
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(typeTest[0].qkey, typeTest[0].akey, fieldTypeText)
-      );
-      let testEmail = getAKey(
-        "helpdesk_ticket_custom_field_cf_do_you_have_evidence_from_either_the_nhshse_private_testing_company_or_your_doctor_confirming_the_positive_covid_test_email_letter_sms_2321673",
-        yesNo
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(testEmail[0].qkey, testEmail[0].akey, fieldTypeText)
-      );
-      let testResultDate = submitClaimBody(
-        "CoronaTestDate",
-        $(
-          "#helpdesk_ticket_custom_field_cf_when_did_the_test_results_confirming_coronavirus_infection_arrive_2321673"
-        ).val(),
-        fieldTypeDate
-      );
-      ClaimQaAndAnswers.push(testResultDate);
-      body["ClaimAnswers"] = ClaimQaAndAnswers;
-      console.log("submit claim body --->", body);
-    } else if (reasonClaim[0].akey == "01_03_BagDamNonCarr") {
-      let PIRNumberDamage = submitClaimBody(
-        "PIRNumberDamage",
-        $(
-          "#helpdesk_ticket_custom_field_cf_please_enter_the_report_reference_given_by_your_transport_provider_pir_reference_if_applicable_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(PIRNumberDamage);
-      let RepairCost = submitClaimBody(
-        "RepairCost",
-        $(
-          "#helpdesk_ticket_custom_field_cf_total_refund_vouchers_amount_the_amount_you_have_received_back_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(RepairCost);
-      let ItemDescription = submitClaimBody(
-        "ItemDescription",
-        $("#helpdesk_ticket_custom_field_cf_item_description_2321673").val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(ItemDescription);
-      let CreditCardType = submitClaimBody(
-        "CreditCardType",
-        $(
-          "#helpdesk_ticket_custom_field_cf_who_is_the_provider_of_your_credit_card237678_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(CreditCardType);
-      let HomePolicyNumber = submitClaimBody(
-        "HomePolicyNumber",
-        $("#helpdesk_ticket_custom_field_cf_policy_number818860_2321673").val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(HomePolicyNumber);
-      let HomeInsurerName = submitClaimBody(
-        "HomeInsurerName",
-        $(
-          "#helpdesk_ticket_custom_field_cf_name_of_your_policy_provider267746_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(HomeInsurerName);
-      let BankAccountType = submitClaimBody(
-        "BankAccountType",
-        $(
-          "#helpdesk_ticket_custom_field_cf_who_do_you_bank_with_and_what_type_of_account_do_you_have87472_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(BankAccountType);
-      let DualInsuranceNumber = submitClaimBody(
-        "DualInsuranceNumber",
-        $("#helpdesk_ticket_custom_field_cf_policy_number832231_2321673").val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(DualInsuranceNumber);
-      let DualInsuranceName = submitClaimBody(
-        "DualInsuranceName",
-        $(
-          "#helpdesk_ticket_custom_field_cf_name_of_your_policy_provider610133_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(DualInsuranceName);
-      let DamageItemPurchasePrice = submitClaimBody(
-        "DamageItemPurchasePrice",
-        $(
-          "#helpdesk_ticket_custom_field_cf_what_was_its_cost_when_you_bought_it_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(DamageItemPurchasePrice);
-      let BaggageClaimValueDamage = submitClaimBody(
-        "BaggageClaimValueDamage",
-        $(
-          "#helpdesk_ticket_custom_field_cf_whats_the_total_amount_youre_claiming_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(BaggageClaimValueDamage);
-      let BaggageDamageOccur = submitClaimBody(
-        "BaggageDamageOccur",
-        $(
-          "#helpdesk_ticket_custom_field_cf_how_did_the_damage_happen_well_need_as_much_information_as_you_can_give_please_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(BaggageDamageOccur);
-      let BaggageDamageItemDescription = submitClaimBody(
-        "BaggageDamageItemDescription",
-        $(
-          "#helpdesk_ticket_custom_field_cf_please_provide_a_description_the_owner_the_purchase_date_and_purchase_price_of_each_item_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(BaggageDamageItemDescription);
-      let DamageNoReportReason = submitClaimBody(
-        "DamageNoReportReason",
-        $(
-          "#helpdesk_ticket_custom_field_cf_let_us_know_why_you_didnt_report_the_damage_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(DamageNoReportReason);
-      let LossTheftPurchaseDate = submitClaimBody(
-        "LossTheftPurchaseDate",
-        $(
-          "#helpdesk_ticket_custom_field_cf_when_did_you_buy_the_item_2321673"
-        ).val(),
-        fieldTypeDate
-      );
-      ClaimQaAndAnswers.push(LossTheftPurchaseDate);
-      let DamageNumberOfItems = submitClaimBody(
-        "DamageNumberOfItems",
-        $(
-          "#helpdesk_ticket_custom_field_cf_how_many_items_are_you_claiming_for411795_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(DamageNumberOfItems);
-      let DamageOnPerson = getAKey(
-        "helpdesk_ticket_custom_field_cf_was_the_items_with_you_when_it_was_damaged_2321673",
-        yesNo
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          DamageOnPerson[0].qkey,
-          DamageOnPerson[0].akey,
-          fieldTypeText
-        )
-      );
-      let DamageItemRepairable = getAKey(
-        "helpdesk_ticket_custom_field_cf_can_the_item_be_repaired_2321673",
-        yesNo
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          DamageItemRepairable[0].qkey,
-          DamageItemRepairable[0].akey,
-          fieldTypeText
-        )
-      );
-      let DamageRepairEstimate = getAKey(
-        "helpdesk_ticket_custom_field_cf_did_you_get_a_repair_estimate_2321673",
-        yesNo
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          DamageRepairEstimate[0].qkey,
-          DamageRepairEstimate[0].akey,
-          fieldTypeText
-        )
-      );
-      let ItemTypeDamagedItems = getAKey(
-        "helpdesk_ticket_custom_field_cf_item_type_2321673",
-        ItemTypeDamaged
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          ItemTypeDamagedItems[0].qkey,
-          ItemTypeDamagedItems[0].akey,
-          fieldTypeText
-        )
-      );
-      let HomeInsurance = getAKey(
-        "helpdesk_ticket_custom_field_cf_do_you_have_home_contents_insurance_2321673",
-        yesNo
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          HomeInsurance[0].qkey,
-          HomeInsurance[0].akey,
-          fieldTypeText
-        )
-      );
-      let DualInsurance = getAKey(
-        "helpdesk_ticket_custom_field_cf_do_you_have_any_other_travel_insurance_policy_2321673",
-        yesNo
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          DualInsurance[0].qkey,
-          DualInsurance[0].akey,
-          fieldTypeText
-        )
-      );
-      let TripPaymentMethodBaggageDamage = getAKey(
-        "helpdesk_ticket_custom_field_cf_how_did_you_pay_for_your_trip396837_2321673",
-        TripPaymentMethod
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          TripPaymentMethodBaggageDamage[0].qkey,
-          TripPaymentMethodBaggageDamage[0].akey,
-          fieldTypeText
-        )
-      );
-      let CreditCardAmountBaggageDamage = getAKey(
-        "helpdesk_ticket_custom_field_cf_did_you_pay_for_50_or_more_of_the_trip_with_a_credit_card824584_2321673",
-        yesNo
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          CreditCardAmountBaggageDamage[0].qkey,
-          CreditCardAmountBaggageDamage[0].akey,
-          fieldTypeText
-        )
-      );
-      let DamageItemOwnerItems = getAKey(
-        "helpdesk_ticket_custom_field_cf_who_owns_the_item_2321673",
-        DamageItemOwner
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          DamageItemOwnerItems[0].qkey,
-          DamageItemOwnerItems[0].akey,
-          fieldTypeText
-        )
-      );
-      let TransportProviderDamage = getAKey(
-        "helpdesk_ticket_custom_field_cf_was_the_items_with_your_transport_provider_when_damaged_eg_airline_checkedin_luggage_2321673",
-        yesNo
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          TransportProviderDamage[0].qkey,
-          TransportProviderDamage[0].akey,
-          fieldTypeText
-        )
-      );
-      let DamageTransportGadget = getAKey(
-        "helpdesk_ticket_custom_field_cf_is_the_damaged_items_listed_as_valuable_gadgetelectrical_in_your_policy_wording_2321673",
-        yesNo
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          DamageTransportGadget[0].qkey,
-          DamageTransportGadget[0].akey,
-          fieldTypeText
-        )
-      );
-      let DamageReport = getAKey(
-        "helpdesk_ticket_custom_field_cf_did_you_tell_your_transport_provider_about_the_damage_2321673",
-        yesNo
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          DamageReport[0].qkey,
-          DamageReport[0].akey,
-          fieldTypeText
-        )
-      );
-      body["ClaimAnswers"] = ClaimQaAndAnswers;
-      console.log("submit claim body --->", body);
-    } else if (reasonClaim[0].akey == "01_02_BagL") {
-      let reasonClaims = $(
-        "#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673"
-      ).val();
-      let keyValue = $(
-        "#helpdesk_ticket_custom_field_cf_how_many_items_are_you_claiming_for_2321673"
-      ).val();
-      let lossOrStolen = submitClaimBody(reasonClaims, keyValue, "none");
-      ClaimQaAndAnswers.push(lossOrStolen);
-      let PoliceReference = submitClaimBody(
-        "PoliceReference",
-        $(
-          "#helpdesk_ticket_custom_field_cf_police_or_crime_reference_number_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(PoliceReference);
-      let BaggageLossItemDescription = submitClaimBody(
-        "BaggageLossItemDescription",
-        $(
-          "#helpdesk_ticket_custom_field_cf_please_provide_a_description_the_owner_the_purchase_date_and_purchase_price_of_each_item910226_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(BaggageLossItemDescription);
-      let BaggageClaimValue = submitClaimBody(
-        "BaggageClaimValue",
-        $(
-          "#helpdesk_ticket_custom_field_cf_what_is_the_total_amount_youre_claiming_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(BaggageClaimValue);
-      let DualInsuranceNumber = submitClaimBody(
-        "DualInsuranceNumber",
-        $("#helpdesk_ticket_custom_field_cf_policy_number832231_2321673").val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(DualInsuranceNumber);
-      let BankAccountType = submitClaimBody(
-        "BankAccountType",
-        $(
-          "#helpdesk_ticket_custom_field_cf_who_do_you_bank_with_and_what_type_of_account_do_you_have87472_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(BankAccountType);
-      let DualInsuranceName = submitClaimBody(
-        "DualInsuranceName",
-        $(
-          "#helpdesk_ticket_custom_field_cf_name_of_your_policy_provider610133_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(DualInsuranceName);
-      let ItemDescription = submitClaimBody(
-        "ItemDescription",
-        $(
-          "#helpdesk_ticket_custom_field_cf_item_description369043_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(ItemDescription);
-      let TheftOccur = submitClaimBody(
-        "TheftOccur",
-        $(
-          "#helpdesk_ticket_custom_field_cf_in_your_own_words_tell_us_what_happened994308_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(TheftOccur);
-      let LossOccur = submitClaimBody(
-        "LossOccur",
-        $(
-          "#helpdesk_ticket_custom_field_cf_in_your_own_words_tell_us_what_happened511569_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(LossOccur);
-      let LossTheftNumberOfItems = submitClaimBody(
-        "LossTheftNumberOfItems",
-        $(
-          "#helpdesk_ticket_custom_field_cf_how_many_items_are_you_claiming_for_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(LossTheftNumberOfItems);
-      let lossTheftWhereItems = getAKey(
-        "helpdesk_ticket_custom_field_cf_are_any_of_the_items_lost_defined_as_a_valuable_gadgetelectrical_as_shown_within_your_policy_wording_2321673",
-        yesNo
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          lossTheftWhereItems[0].qkey,
-          lossTheftWhereItems[0].akey,
-          fieldTypeText
-        )
-      );
-      let transportGadgetItems = getAKey(
-        "helpdesk_ticket_custom_field_cf_are_you_claiming_for_more_than_1_item_2321673",
-        yesNo
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          transportGadgetItems[0].qkey,
-          transportGadgetItems[0].akey,
-          fieldTypeText
-        )
-      );
-      let LossOrTheftItems = getAKey(
-        "helpdesk_ticket_custom_field_cf_are_you_claiming_for_a_loss_or_theft_2321673",
-        LossOrTheft
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          LossOrTheftItems[0].qkey,
-          LossOrTheftItems[0].akey,
-          fieldTypeText
-        )
-      );
-      let LossTheftWhereItems = getAKey(
-        "helpdesk_ticket_custom_field_cf_where_did_the_loss_or_theft_take_place_2321673",
-        LossTheftWhere
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          LossTheftWhereItems[0].qkey,
-          LossTheftWhereItems[0].akey,
-          fieldTypeText
-        )
-      );
-      let InVehicleAtTimeOfTheft = getAKey(
-        "helpdesk_ticket_custom_field_cf_were_you_in_the_vehicle_at_the_time_of_the_theft_2321673",
-        yesNo
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          InVehicleAtTimeOfTheft[0].qkey,
-          InVehicleAtTimeOfTheft[0].akey,
-          fieldTypeText
-        )
-      );
-      let lossTheftReport = getAKey(
-        "helpdesk_ticket_custom_field_cf_did_you_report_the_loss_or_theft_2321673",
-        yesNo
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          lossTheftReport[0].qkey,
-          lossTheftReport[0].akey,
-          fieldTypeText
-        )
-      );
-      let lossTheftReportedTo = getAKey(
-        "helpdesk_ticket_custom_field_cf_who_did_you_report_it_to_2321673",
-        LossTheftReportedTo
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          lossTheftReportedTo[0].qkey,
-          lossTheftReportedTo[0].akey,
-          fieldTypeText
-        )
-      );
-      let itemType = getAKey(
-        "helpdesk_ticket_custom_field_cf_item_type870706_2321673",
-        ItemType
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(itemType[0].qkey, itemType[0].akey, fieldTypeText)
-      );
-      let ItemOwners = getAKey(
-        "helpdesk_ticket_custom_field_cf_who_owns_the_item86910_2321673",
-        ItemOwner
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(ItemOwners[0].qkey, ItemOwners[0].akey, fieldTypeText)
-      );
-      let HomeInsurance = getAKey(
-        "helpdesk_ticket_custom_field_cf_do_you_have_home_contents_insurance_2321673",
-        yesNo
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          HomeInsurance[0].qkey,
-          HomeInsurance[0].akey,
-          fieldTypeText
-        )
-      );
-      let DualInsurance = getAKey(
-        "helpdesk_ticket_custom_field_cf_do_you_have_any_other_travel_insurance_policy_2321673",
-        yesNo
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          DualInsurance[0].qkey,
-          DualInsurance[0].akey,
-          fieldTypeText
-        )
-      );
-      let TripPaymentMethodDisplay = getAKey(
-        "helpdesk_ticket_custom_field_cf_how_did_you_pay_for_your_trip396837_2321673",
-        TripPaymentMethod
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          TripPaymentMethodDisplay[0].qkey,
-          TripPaymentMethodDisplay[0].akey,
-          fieldTypeText
-        )
-      );
-      let CreditCardAmount = getAKey(
-        "helpdesk_ticket_custom_field_cf_did_you_pay_for_50_or_more_of_the_trip_with_a_credit_card824584_2321673",
-        yesNo
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          CreditCardAmount[0].qkey,
-          CreditCardAmount[0].akey,
-          fieldTypeText
-        )
-      );
-      let NoReportReasonItems = getAKey(
-        "helpdesk_ticket_custom_field_cf_please_confirm_why_you_did_not_report_the_loss_or_theft6975_2321673",
-        NoReportReason
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          NoReportReasonItems[0].qkey,
-          NoReportReasonItems[0].akey,
-          fieldTypeText
-        )
-      );
-      let LossTheftVehicleList = getAKey(
-        "helpdesk_ticket_custom_field_cf_whereabouts_in_the_vehicle_was_the_items_when_stolen_2321673",
-        LossTheftVehicle
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          LossTheftVehicleList[0].qkey,
-          LossTheftVehicleList[0].akey,
-          fieldTypeText
-        )
-      );
-      let LossTheftVehicleForce = getAKey(
-        "helpdesk_ticket_custom_field_cf_was_there_physical_damage_to_the_vehicle_2321673",
-        yesNo
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          LossTheftVehicleForce[0].qkey,
-          LossTheftVehicleForce[0].akey,
-          fieldTypeText
-        )
-      );
-      let LossTheftPurchaseDate = submitClaimBody(
-        "LossTheftPurchaseDate",
-        $(
-          "#helpdesk_ticket_custom_field_cf_when_did_you_purchase_the_item_2321673"
-        ).val(),
-        fieldTypeDate
-      );
-      ClaimQaAndAnswers.push(LossTheftPurchaseDate);
-      let CreditCardType = submitClaimBody(
-        "CreditCardType",
-        $(
-          "#helpdesk_ticket_custom_field_cf_who_is_the_provider_of_your_credit_card237678_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(CreditCardType);
-      let HomePolicyNumber = submitClaimBody(
-        "HomePolicyNumber",
-        $("#helpdesk_ticket_custom_field_cf_policy_number818860_2321673").val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(HomePolicyNumber);
-      let HomeInsurerName = submitClaimBody(
-        "HomeInsurerName",
-        $(
-          "#helpdesk_ticket_custom_field_cf_name_of_your_policy_provider267746_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(HomeInsurerName);
-      let DamageItemPurchasePrice = submitClaimBody(
-        "DamageItemPurchasePrice",
-        $(
-          "#helpdesk_ticket_custom_field_cf_what_was_its_cost_when_you_bought_it_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(DamageItemPurchasePrice);
-      body["ClaimAnswers"] = ClaimQaAndAnswers;
-      console.log("submit claim body --->", body);
-    } else if (reasonClaim[0].akey == "01_02_BagD") {
-      let BaggageDelay = getAKey(
-        "helpdesk_ticket_custom_field_cf_which_part_of_the_journey_did_your_baggage_arrive_late_2321673",
-        BaggageDelayLeg
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          BaggageDelay[0].qkey,
-          BaggageDelay[0].akey,
-          fieldTypeText
-        )
-      );
-      let DelayedBagReturned = getAKey(
-        "helpdesk_ticket_custom_field_cf_has_your_baggage_been_returned_to_you_2321673",
-        yesNo
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          DelayedBagReturned[0].qkey,
-          DelayedBagReturned[0].akey,
-          fieldTypeText
-        )
-      );
-      let TransportationMethodDelay = getAKey(
-        "helpdesk_ticket_custom_field_cf_what_transport_type_was_your_baggage_delayed_on_2321673",
-        TransportationMethodDelayed
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          TransportationMethodDelay[0].qkey,
-          TransportationMethodDelay[0].akey,
-          fieldTypeText
-        )
-      );
-      let DelayReport = getAKey(
-        "helpdesk_ticket_custom_field_cf_did_you_notify_your_transport_provider_about_the_delay_and_get_a_report_pir_2321673",
-        yesNo
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(DelayReport[0].qkey, DelayReport[0].akey, fieldTypeText)
-      );
-      let DelayedBaggageRefund = getAKey(
-        "helpdesk_ticket_custom_field_cf_have_you_received_any_refund_from_your_transport_provider_2321673",
-        yesNo
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          DelayedBaggageRefund[0].qkey,
-          DelayedBaggageRefund[0].akey,
-          fieldTypeText
-        )
-      );
-      let BaggageDelayHours = submitClaimBody(
-        "BaggageDelayHours",
-        $(
-          "#helpdesk_ticket_custom_field_cf_how_many_hours_was_your_baggage_delayed_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(BaggageDelayHours);
-      let PIRNumberDelay = submitClaimBody(
-        "PIRNumberDelay",
-        $(
-          "#helpdesk_ticket_custom_field_cf_enter_the_report_reference_pir_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(PIRNumberDelay);
-      let ItemTypeDelay = submitClaimBody(
-        "ItemTypeDelay",
-        $(
-          "#helpdesk_ticket_custom_field_cf_please_list_all_replacement_items_purchased339565_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(ItemTypeDelay);
-      let DelayPurchaseDate = submitClaimBody(
-        "DelayPurchaseDate",
-        $(
-          "#helpdesk_ticket_custom_field_cf_on_what_date_did_you_purchase_the_replacement_items_2321673"
-        ).val(),
-        fieldTypeDate
-      );
-      ClaimQaAndAnswers.push(DelayPurchaseDate);
-      let DelayJourneyLegOther = submitClaimBody(
-        "DelayJourneyLegOther",
-        $(
-          "#helpdesk_ticket_custom_field_cf_please_give_us_further_details469996_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(DelayJourneyLegOther);
-      let currencyType = getAKey(
-        "helpdesk_ticket_custom_field_cf_currency_type637939_2321673",
-        CurrencyType
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          currencyType[0].qkey,
-          currencyType[0].akey,
-          fieldTypeText
-        )
-      );
-      let DelayItemPurchasePrice = submitClaimBody(
-        "DelayItemPurchasePrice",
-        $(
-          "#helpdesk_ticket_custom_field_cf_amount_paid_in_local_currency527297_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(DelayItemPurchasePrice);
-      let DelayedBaggageRefundAmount = submitClaimBody(
-        "DelayedBaggageRefundAmount",
-        $(
-          "#helpdesk_ticket_custom_field_cf_total_refund_vouchers_amount_the_amount_you_have_received_back594804_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(DelayedBaggageRefundAmount);
-
-      body["ClaimAnswers"] = ClaimQaAndAnswers;
-      console.log("submit claim body --->", body);
-    } else if (reasonClaim[0].akey == "01_03_CxIllClnt") {
-      let dateAdvisedJuryWitness = submitClaimBody(
-        "DateAdvisedJuryWitness",
-        $(
-          "#helpdesk_ticket_custom_field_cf_on_what_date_were_you_advised_of_the_jury_service_or_court_date_2321673"
-        ).val(),
-        fieldTypeDate
-      );
-
-      ClaimQaAndAnswers.push(dateAdvisedJuryWitness);
-      let checkRefundValue = $(
-        "#helpdesk_ticket_custom_field_cf_have_you_received_any_refunds_or_compensation702973_2321673"
-      ).val();
-      let TripBookingRefund;
-      if (checkRefundValue) {
-        TripBookingRefund = submitClaimBody(
-          "TripBookingRefund",
+        ClaimQaAndAnswers.push(coronaDateAware);
+        let coronaDateCancelled = submitClaimBody(
+          "CoronaDateCancelled",
           $(
-            "#helpdesk_ticket_custom_field_cf_have_you_received_any_refunds_or_compensation702973_2321673"
+            "#helpdesk_ticket_custom_field_cf_please_enter_the_date_you_asked_your_tour_operatortravel_provider_to_cancel_the_trip_2321673"
+          ).val(),
+          fieldTypeDate
+        );
+        ClaimQaAndAnswers.push(coronaDateCancelled);
+        let tripBookingCost = submitClaimBody(
+          "TripBookingCost",
+          $(
+            "#helpdesk_ticket_custom_field_cf_total_trip_cost_the_amount_you_paid_2321673"
           ).val(),
           fieldTypeText
         );
-        ClaimQaAndAnswers.push(TripBookingRefund);
-      } else {
-        TripBookingRefund = submitClaimBody(
+        ClaimQaAndAnswers.push(tripBookingCost);
+        let tripBookingRefund = submitClaimBody(
           "TripBookingRefund",
-          "0",
+          $(
+            "#helpdesk_ticket_custom_field_cf_total_refund_vouchers_amount_the_amount_you_have_received_back594804_2321673"
+          ).val(),
           fieldTypeText
         );
-        ClaimQaAndAnswers.push(TripBookingRefund);
-      }
-      let ReasonForCancellationDesc = submitClaimBody(
-        "ReasonForCancellationDesc",
-        $(
-          "#helpdesk_ticket_custom_field_cf_in_your_own_words_please_explain_the_reason_for_cancelling_your_trip_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(ReasonForCancellationDesc);
-      let DateAdvisedOfRedundancy = submitClaimBody(
-        "DateAdvisedOfRedundancy",
-        $(
-          "#helpdesk_ticket_custom_field_cf_on_what_date_were_you_advised_of_the_redundancy_2321673"
-        ).val(),
-        fieldTypeDate
-      );
-      ClaimQaAndAnswers.push(DateAdvisedOfRedundancy);
-      let DateDiagnosis = submitClaimBody(
-        "DateOfDiagnosis",
-        $(
-          "#helpdesk_ticket_custom_field_cf_please_confirm_the_date_of_diagnosis_for_this_condition_2321673"
-        ).val(),
-        fieldTypeDate
-      );
-      ClaimQaAndAnswers.push(DateDiagnosis);
-      let DateOfDeath = submitClaimBody(
-        "DateOfDeath",
-        $(
-          "#helpdesk_ticket_custom_field_cf_please_confirm_the_date_of_death_2321673"
-        ).val(),
-        fieldTypeDate
-      );
-      ClaimQaAndAnswers.push(DateOfDeath);
-
-      let CauseOfDeath = submitClaimBody(
-        "CauseOfDeath",
-        $(
-          "#helpdesk_ticket_custom_field_cf_please_confirm_the_cause_of_death_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(CauseOfDeath);
-
-      let DateOfInjury = submitClaimBody(
-        "DateOfInjury",
-        $(
-          "#helpdesk_ticket_custom_field_cf_on_what_date_did_the_incident_causing_the_injury_happen_2321673"
-        ).val(),
-        fieldTypeDate
-      );
-      ClaimQaAndAnswers.push(DateOfInjury);
-      let WhoAdvisedCancelOther = submitClaimBody(
-        "WhoAdvisedCancelOther",
-        $(
-          "#helpdesk_ticket_custom_field_cf_please_give_us_further_details352533_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(WhoAdvisedCancelOther);
-      let CancellationBookingNoPeople = submitClaimBody(
-        "CancellationBookingNoPeople",
-        $(
-          "#helpdesk_ticket_custom_field_cf_how_many_people_are_there_on_the_booking_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(CancellationBookingNoPeople);
-      let CancellationInsuredNoClaiming = submitClaimBody(
-        "CancellationInsuredNoClaiming",
-        $(
-          "#helpdesk_ticket_custom_field_cf_how_many_people_on_the_booking_are_insured_by_this_policy514961_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(CancellationInsuredNoClaiming);
-
-      let DateOfSymptoms = submitClaimBody(
-        "DateOfSymptoms",
-        $(
-          "#helpdesk_ticket_custom_field_cf_when_did_the_symptoms_start_2321673"
-        ).val(),
-        fieldTypeDate
-      );
-      ClaimQaAndAnswers.push(DateOfSymptoms);
-      let TripProviderInfo = submitClaimBody(
-        "TripProviderInfo",
-        $(
-          "#helpdesk_ticket_custom_field_cf_please_confirm_the_name_of_the_trip_providers_and_the_booking_references342856_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(TripProviderInfo);
-      let tripBookingCost = submitClaimBody(
-        "TripBookingCost",
-        $(
-          "#helpdesk_ticket_custom_field_cf_total_trip_cost_the_amount_you_paid_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(tripBookingCost);
-      let DateCancelled = submitClaimBody(
-        "DateCancelled",
-        $(
-          "#helpdesk_ticket_custom_field_cf_please_enter_the_date_you_asked_your_tour_operatortravel_provider_to_cancel_the_trip_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(DateCancelled);
-      let dualInsurance = getAKey(
-        "helpdesk_ticket_custom_field_cf_do_you_have_any_other_travel_insurance_policy400572_2321673",
-        yesNo
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          dualInsurance[0].qkey,
-          dualInsurance[0].akey,
+        ClaimQaAndAnswers.push(tripBookingRefund);
+        let dualInsuranceName = submitClaimBody(
+          "DualInsuranceName",
+          $(
+            "#helpdesk_ticket_custom_field_cf_name_of_your_policy_provider895583_2321673"
+          ).val(),
           fieldTypeText
-        )
-      );
-      let dualInsuranceName = submitClaimBody(
-        "DualInsuranceName",
-        $(
-          "#helpdesk_ticket_custom_field_cf_name_of_your_policy_provider895583_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(dualInsuranceName);
-      let dualInsuranceNumber = submitClaimBody(
-        "DualInsuranceNumber",
-        $("#helpdesk_ticket_custom_field_cf_policy_number964552_2321673").val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(dualInsuranceNumber);
-      let bankAccountType = submitClaimBody(
-        "BankAccountType",
-        $(
-          "#helpdesk_ticket_custom_field_cf_who_do_you_bank_with_and_what_type_of_account_do_you_have486839_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(bankAccountType);
-      let tripPaymentMethod = getAKey(
-        "helpdesk_ticket_custom_field_cf_how_did_you_pay_for_your_trip913590_2321673",
-        TripPaymentMethod
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          tripPaymentMethod[0].qkey,
-          tripPaymentMethod[0].akey,
+        );
+        ClaimQaAndAnswers.push(dualInsuranceName);
+        let dualInsuranceNumber = submitClaimBody(
+          "DualInsuranceNumber",
+          $("#helpdesk_ticket_custom_field_cf_policy_number964552_2321673").val(),
           fieldTypeText
-        )
-      );
-      let creditCardType = submitClaimBody(
-        "CreditCardType",
-        $(
-          "#helpdesk_ticket_custom_field_cf_who_is_the_provider_of_your_credit_card224630_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(creditCardType);
-      let creditCardAmount = getAKey(
-        "helpdesk_ticket_custom_field_cf_did_you_pay_for_50_or_more_of_the_trip_with_a_credit_card401929_2321673",
-        yesNo
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          creditCardAmount[0].qkey,
-          creditCardAmount[0].akey,
+        );
+        ClaimQaAndAnswers.push(dualInsuranceNumber);
+        let bankAccountType = submitClaimBody(
+          "BankAccountType",
+          $(
+            "#helpdesk_ticket_custom_field_cf_who_do_you_bank_with_and_what_type_of_account_do_you_have486839_2321673"
+          ).val(),
           fieldTypeText
-        )
-      );
-      let Cancellation = getAKey(
-        "helpdesk_ticket_custom_field_cf_who_has_caused_the_cancellation_2321673",
-        CancellationPerson
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          Cancellation[0].qkey,
-          Cancellation[0].akey,
+        );
+        ClaimQaAndAnswers.push(bankAccountType);
+        let travelProviderName = submitClaimBody(
+          "TravelProviderName",
+          $(
+            "#helpdesk_ticket_custom_field_cf_please_confirm_the_name_of_the_trip_providers_and_the_booking_references342856_2321673"
+          ).val(),
           fieldTypeText
-        )
-      );
-
-      let ReasonCancellation = getAKey(
-        "helpdesk_ticket_custom_field_cf_are_you_currently_still_abroad_2321673",
-        ReasonForCancellation
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          ReasonCancellation[0].qkey,
-          ReasonCancellation[0].akey,
+        );
+        ClaimQaAndAnswers.push(travelProviderName);
+        let cancellationBookingNoPeople = submitClaimBody(
+          "CancellationBookingNoPeople",
+          $(
+            "#helpdesk_ticket_custom_field_cf_how_many_people_are_there_on_the_booking166234_2321673"
+          ).val(),
           fieldTypeText
-        )
-      );
-
-      let RedundancyPayment = getAKey(
-        "helpdesk_ticket_custom_field_cf_do_you_qualify_for_redundancy_payment_under_current_legislation_2321673",
-        yesNo
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          RedundancyPayment[0].qkey,
-          RedundancyPayment[0].akey,
+        );
+        ClaimQaAndAnswers.push(cancellationBookingNoPeople);
+        let cancellationInsuredNoClaiming = submitClaimBody(
+          "CancellationInsuredNoClaiming",
+          $(
+            "#helpdesk_ticket_custom_field_cf_how_many_people_on_the_booking_are_insured_by_this_policy_2321673"
+          ).val(),
           fieldTypeText
-        )
-      );
-
-      let StableAtTimeofBooking = getAKey(
-        "helpdesk_ticket_custom_field_cf_to_the_best_of_your_knowledge_were_you_or_this_person_considered_stable_at_the_time_of_booking_the_trip_2321673",
-        yesNo
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          StableAtTimeofBooking[0].qkey,
-          StableAtTimeofBooking[0].akey,
+        );
+        ClaimQaAndAnswers.push(cancellationInsuredNoClaiming);
+        let coronaReason = getAKey(
+          "helpdesk_ticket_custom_field_cf_why_did_you_cancel_your_trip_2321673",
+          CoronaReason
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            coronaReason[0].qkey,
+            coronaReason[0].akey,
+            fieldTypeText
+          )
+        );
+        let covidTypeOfTrip = getAKey(
+          "helpdesk_ticket_custom_field_cf_what_type_of_trip_did_you_book877716_2321673",
+          COVIDTypeOfTrip
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            covidTypeOfTrip[0].qkey,
+            covidTypeOfTrip[0].akey,
+            fieldTypeText
+          )
+        );
+        let covidTripTransportType = getAKey(
+          "helpdesk_ticket_custom_field_cf_what_type_of_transport_was_included_in_your_booking_2321673",
+          COVIDTripTransportType
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            covidTripTransportType[0].qkey,
+            covidTripTransportType[0].akey,
+            fieldTypeText
+          )
+        );
+        let currencyType = getAKey(
+          "helpdesk_ticket_custom_field_cf_currency_type637939_2321673",
+          CurrencyType
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            currencyType[0].qkey,
+            currencyType[0].akey,
+            fieldTypeText
+          )
+        );
+        let dualInsurance = getAKey(
+          "helpdesk_ticket_custom_field_cf_do_you_have_any_other_travel_insurance_policy400572_2321673",
+          yesNo
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            dualInsurance[0].qkey,
+            dualInsurance[0].akey,
+            fieldTypeText
+          )
+        );
+        let tripPaymentMethod = getAKey(
+          "helpdesk_ticket_custom_field_cf_how_did_you_pay_for_your_trip913590_2321673",
+          TripPaymentMethod
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            tripPaymentMethod[0].qkey,
+            tripPaymentMethod[0].akey,
+            fieldTypeText
+          )
+        );
+        let creditCardType = submitClaimBody(
+          "CreditCardType",
+          $(
+            "#helpdesk_ticket_custom_field_cf_who_is_the_provider_of_your_credit_card224630_2321673"
+          ).val(),
           fieldTypeText
-        )
-      );
-
-      let InjuryThirdPartyInvolved = getAKey(
-        "helpdesk_ticket_custom_field_cf_was_someone_else_a_third_party_involved_in_sustaining_the_injury_2321673",
-        yesNo
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          InjuryThirdPartyInvolved[0].qkey,
-          InjuryThirdPartyInvolved[0].akey,
+        );
+        ClaimQaAndAnswers.push(creditCardType);
+        let DateOfSymptoms = submitClaimBody(
+          "DateOfSymptoms",
+          $(
+            "#helpdesk_ticket_custom_field_cf_when_did_the_symptoms_start939174_2321673"
+          ).val(),
+          fieldTypeDate
+        );
+        ClaimQaAndAnswers.push(DateOfSymptoms);
+        let creditCardAmount = getAKey(
+          "helpdesk_ticket_custom_field_cf_did_you_pay_for_50_or_more_of_the_trip_with_a_credit_card401929_2321673",
+          yesNo
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            creditCardAmount[0].qkey,
+            creditCardAmount[0].akey,
+            fieldTypeText
+          )
+        );
+        let positivePerson = getAKey(
+          "helpdesk_ticket_custom_field_cf_who_has_tested_positive_for_coronavirus_2321673",
+          WhoTestedPositive
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            positivePerson[0].qkey,
+            positivePerson[0].akey,
+            fieldTypeText
+          )
+        );
+        let typeTest = getAKey(
+          "helpdesk_ticket_custom_field_cf_what_type_of_test_was_taken_2321673",
+          WhatTypeOfCovidTest
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(typeTest[0].qkey, typeTest[0].akey, fieldTypeText)
+        );
+        let testEmail = getAKey(
+          "helpdesk_ticket_custom_field_cf_do_you_have_evidence_from_either_the_nhshse_private_testing_company_or_your_doctor_confirming_the_positive_covid_test_email_letter_sms_2321673",
+          yesNo
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(testEmail[0].qkey, testEmail[0].akey, fieldTypeText)
+        );
+        let testResultDate = submitClaimBody(
+          "CoronaTestDate",
+          $(
+            "#helpdesk_ticket_custom_field_cf_when_did_the_test_results_confirming_coronavirus_infection_arrive_2321673"
+          ).val(),
+          fieldTypeDate
+        );
+        ClaimQaAndAnswers.push(testResultDate);
+        body["ClaimAnswers"] = ClaimQaAndAnswers;
+        console.log("submit claim body --->", body);
+      } else if (reasonClaim[0].akey == "01_03_BagDamNonCarr") {
+        let PIRNumberDamage = submitClaimBody(
+          "PIRNumberDamage",
+          $(
+            "#helpdesk_ticket_custom_field_cf_please_enter_the_report_reference_given_by_your_transport_provider_pir_reference_if_applicable_2321673"
+          ).val(),
           fieldTypeText
-        )
-      );
-
-      let WhoAdvisedCancel = getAKey(
-        "helpdesk_ticket_custom_field_cf_who_advised_to_cancel_2321673",
-        WhoAdvisedToCancel
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          WhoAdvisedCancel[0].qkey,
-          WhoAdvisedCancel[0].akey,
+        );
+        ClaimQaAndAnswers.push(PIRNumberDamage);
+        let RepairCost = submitClaimBody(
+          "RepairCost",
+          $(
+            "#helpdesk_ticket_custom_field_cf_total_refund_vouchers_amount_the_amount_you_have_received_back_2321673"
+          ).val(),
           fieldTypeText
-        )
-      );
-      let CancellationType = getAKey(
-        "helpdesk_ticket_custom_field_cf_what_type_of_trip_did_you_book137913_2321673",
-        CancellationTypeOfTrip
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          CancellationType[0].qkey,
-          CancellationType[0].akey,
+        );
+        ClaimQaAndAnswers.push(RepairCost);
+        let ItemDescription = submitClaimBody(
+          "ItemDescription",
+          $("#helpdesk_ticket_custom_field_cf_item_description_2321673").val(),
           fieldTypeText
-        )
-      );
-      let CancellationIllness = getAKey(
-        "helpdesk_ticket_custom_field_cf_what_medical_condition_has_resulted_in_cancellation748907_2321673",
-        CancellationIllnessCondition
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          CancellationIllness[0].qkey,
-          CancellationIllness[0].akey,
+        );
+        ClaimQaAndAnswers.push(ItemDescription);
+        let CreditCardType = submitClaimBody(
+          "CreditCardType",
+          $(
+            "#helpdesk_ticket_custom_field_cf_who_is_the_provider_of_your_credit_card237678_2321673"
+          ).val(),
           fieldTypeText
-        )
-      );
-      let TripTransport = getAKey(
-        "helpdesk_ticket_custom_field_cf_what_type_of_transport_was_included_in_your_booking146711_2321673",
-        TripTransportType
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          TripTransport[0].qkey,
-          TripTransport[0].akey,
+        );
+        ClaimQaAndAnswers.push(CreditCardType);
+        let HomePolicyNumber = submitClaimBody(
+          "HomePolicyNumber",
+          $("#helpdesk_ticket_custom_field_cf_policy_number818860_2321673").val(),
           fieldTypeText
-        )
-      );
-      let currencyType = getAKey(
-        "helpdesk_ticket_custom_field_cf_currency_type637939_2321673",
-        CurrencyType
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          currencyType[0].qkey,
-          currencyType[0].akey,
+        );
+        ClaimQaAndAnswers.push(HomePolicyNumber);
+        let HomeInsurerName = submitClaimBody(
+          "HomeInsurerName",
+          $(
+            "#helpdesk_ticket_custom_field_cf_name_of_your_policy_provider267746_2321673"
+          ).val(),
           fieldTypeText
-        )
-      );
-      body["ClaimAnswers"] = ClaimQaAndAnswers;
-      console.log("submit claim body --->", body);
-    } else if (reasonClaim[0].akey == "01_02_Curt") {
-      let CURTAILMENTREFUND = submitClaimBody(
-        "CURTAILMENTREFUND",
-        $(
-          "#helpdesk_ticket_custom_field_cf_total_refund_vouchers_amount_the_amount_you_have_received_back594804_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(CURTAILMENTREFUND);
-      let CURTAILMENT = submitClaimBody(
-        "CURTAILMENTDATEAWARE",
-        $(
-          "#helpdesk_ticket_custom_field_cf_detail_how_you_got_home_and_on_what_date_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(CURTAILMENT);
-      let CURTAILMENTREASONS = getAKey(
-        "helpdesk_ticket_custom_field_cf_why_did_you_shorten_your_trip_2321673",
-        CURTAILMENTREASON
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          CURTAILMENTREASONS[0].qkey,
-          CURTAILMENTREASONS[0].akey,
+        );
+        ClaimQaAndAnswers.push(HomeInsurerName);
+        let BankAccountType = submitClaimBody(
+          "BankAccountType",
+          $(
+            "#helpdesk_ticket_custom_field_cf_who_do_you_bank_with_and_what_type_of_account_do_you_have87472_2321673"
+          ).val(),
           fieldTypeText
-        )
-      );
-      let CURTAILMENTNOTIFICATION = getAKey(
-        "helpdesk_ticket_custom_field_cf_did_you_notify_us_of_the_need_to_curtail_before_making_arrangements_2321673",
-        yesNo
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          CURTAILMENTNOTIFICATION[0].qkey,
-          CURTAILMENTNOTIFICATION[0].akey,
+        );
+        ClaimQaAndAnswers.push(BankAccountType);
+        let DualInsuranceNumber = submitClaimBody(
+          "DualInsuranceNumber",
+          $("#helpdesk_ticket_custom_field_cf_policy_number832231_2321673").val(),
           fieldTypeText
-        )
-      );
-
-      let currencyType = getAKey(
-        "helpdesk_ticket_custom_field_cf_currency_type637939_2321673",
-        CurrencyType
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          currencyType[0].qkey,
-          currencyType[0].akey,
+        );
+        ClaimQaAndAnswers.push(DualInsuranceNumber);
+        let DualInsuranceName = submitClaimBody(
+          "DualInsuranceName",
+          $(
+            "#helpdesk_ticket_custom_field_cf_name_of_your_policy_provider610133_2321673"
+          ).val(),
           fieldTypeText
-        )
-      );
-      let CURTAILMENTLOSSAMOUNT = submitClaimBody(
-        "SkiPackClaimDetails",
-        $(
-          "#helpdesk_ticket_custom_field_cf_what_is_the_estimated_value_of_your_claim_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(CURTAILMENTLOSSAMOUNT);
-      let CURTAILMENTDESCRIPTION = submitClaimBody(
-        "CURTAILMENTDESCRIPTION",
-        $(
-          "#helpdesk_ticket_custom_field_cf_please_provide_a_detailed_description_of_the_reason_you_curtailed_your_trip272601_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(CURTAILMENTDESCRIPTION);
-      let CURTAILMENTDATE = submitClaimBody(
-        "CURTAILMENTDATEAWARE",
-        $(
-          "#helpdesk_ticket_custom_field_cf_explain_when_you_were_aware_that_you_needed_to_return_home_please_confirm_the_date_2321673"
-        ).val(),
-        fieldTypeDate
-      );
-      ClaimQaAndAnswers.push(CURTAILMENTDATE);
-      let CURTAILMENTNOTIFICATIONREASON = submitClaimBody(
-        "CURTAILMENTNOTIFICATIONREASON",
-        $(
-          "#helpdesk_ticket_custom_field_cf_please_give_a_full_and_detailed_explanation_of_why_you_did_not_contact_to_contact_our_emergency_service582069_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(CURTAILMENTNOTIFICATIONREASON);
-
-      body["ClaimAnswers"] = ClaimQaAndAnswers;
-      console.log("submit claim body --->", body);
-    } else if (reasonClaim[0].akey == "01_02_Dental") {
-      let DentalDate = submitClaimBody(
-        "DentalDate",
-        $(
-          "#helpdesk_ticket_custom_field_cf_when_did_the_symptoms_start939174_2321673"
-        ).val(),
-        fieldTypeDate
-      );
-      ClaimQaAndAnswers.push(DentalDate);
-
-      let DentalDescriptionExpenses = submitClaimBody(
-        "DentalDescriptionExpenses",
-        $(
-          "#helpdesk_ticket_custom_field_cf_please_list_the_expenses_incurred_including_the_type_of_expense_and_the_name_of_the_dentist_or_company_that_provided_this_expense_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(DentalDescriptionExpenses);
-      let DentalPaymentAmount = submitClaimBody(
-        "DentalPaymentAmount",
-        $(
-          "#helpdesk_ticket_custom_field_cf_amount_paid_in_local_currency527297_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(DentalPaymentAmount);
-
-      let MedicalPaymentDate = submitClaimBody(
-        "MedicalPaymentDate",
-        $(
-          "#helpdesk_ticket_custom_field_cf_on_what_date_did_you_pay_the_dental_expenses_2321673"
-        ).val(),
-        fieldTypeDate
-      );
-      ClaimQaAndAnswers.push(MedicalPaymentDate);
-      let DentalExpenses = getAKey(
-        "helpdesk_ticket_custom_field_cf_who_incurred_dental_expenses930485_2321673",
-        WhoDentalExpenses
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          DentalExpenses[0].qkey,
-          DentalExpenses[0].akey,
+        );
+        ClaimQaAndAnswers.push(DualInsuranceName);
+        let DamageItemPurchasePrice = submitClaimBody(
+          "DamageItemPurchasePrice",
+          $(
+            "#helpdesk_ticket_custom_field_cf_what_was_its_cost_when_you_bought_it_2321673"
+          ).val(),
           fieldTypeText
-        )
-      );
-      let DTreatment = getAKey(
-        "helpdesk_ticket_custom_field_cf_what_type_of_dental_treatment_did_you_need_2321673",
-        DentalTreatment
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(DTreatment[0].qkey, DTreatment[0].akey, fieldTypeText)
-      );
-      let currencyType = getAKey(
-        "helpdesk_ticket_custom_field_cf_currency_type637939_2321673",
-        CurrencyType
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          currencyType[0].qkey,
-          currencyType[0].akey,
+        );
+        ClaimQaAndAnswers.push(DamageItemPurchasePrice);
+        let BaggageClaimValueDamage = submitClaimBody(
+          "BaggageClaimValueDamage",
+          $(
+            "#helpdesk_ticket_custom_field_cf_whats_the_total_amount_youre_claiming_2321673"
+          ).val(),
           fieldTypeText
-        )
-      );
-      body["ClaimAnswers"] = ClaimQaAndAnswers;
-      console.log("submit claim body --->", body);
-    } else if (reasonClaim[0].akey == "01_02_Delay") {
-      let TransportationMethodDelay = getAKey(
-        "helpdesk_ticket_custom_field_cf_what_transport_was_delayed_2321673",
-        TransportationMethod
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          TransportationMethodDelay[0].qkey,
-          TransportationMethodDelay[0].akey,
+        );
+        ClaimQaAndAnswers.push(BaggageClaimValueDamage);
+        let BaggageDamageOccur = submitClaimBody(
+          "BaggageDamageOccur",
+          $(
+            "#helpdesk_ticket_custom_field_cf_how_did_the_damage_happen_well_need_as_much_information_as_you_can_give_please_2321673"
+          ).val(),
           fieldTypeText
-        )
-      );
-      let ReasonDelay = getAKey(
-        "helpdesk_ticket_custom_field_cf_what_was_the_reason_for_the_delay_2321673",
-        ReasonForDelay
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(ReasonDelay[0].qkey, ReasonDelay[0].akey, fieldTypeText)
-      );
-      let WhichJourneyNewAdded = getAKey(
-        "helpdesk_ticket_custom_field_cf_on_which_part_of_the_journey_were_you_delayed_2321673",
-        WhichJourneyNew
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          WhichJourneyNewAdded[0].qkey,
-          WhichJourneyNewAdded[0].akey,
+        );
+        ClaimQaAndAnswers.push(BaggageDamageOccur);
+        let BaggageDamageItemDescription = submitClaimBody(
+          "BaggageDamageItemDescription",
+          $(
+            "#helpdesk_ticket_custom_field_cf_please_provide_a_description_the_owner_the_purchase_date_and_purchase_price_of_each_item_2321673"
+          ).val(),
           fieldTypeText
-        )
-      );
-      let TravelDelayAdditionalCosts = getAKey(
-        "helpdesk_ticket_custom_field_cf_were_there_any_additional_expenses_as_a_result_of_the_delay_2321673",
-        yesNo
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          TravelDelayAdditionalCosts[0].qkey,
-          TravelDelayAdditionalCosts[0].akey,
+        );
+        ClaimQaAndAnswers.push(BaggageDamageItemDescription);
+        let DamageNoReportReason = submitClaimBody(
+          "DamageNoReportReason",
+          $(
+            "#helpdesk_ticket_custom_field_cf_let_us_know_why_you_didnt_report_the_damage_2321673"
+          ).val(),
           fieldTypeText
-        )
-      );
-      let DelayOver24Hours = getAKey(
-        "helpdesk_ticket_custom_field_cf_were_you_delayed_for_24_hours_or_more923623_2321673",
-        yesNo
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          DelayOver24Hours[0].qkey,
-          DelayOver24Hours[0].akey,
+        );
+        ClaimQaAndAnswers.push(DamageNoReportReason);
+        let LossTheftPurchaseDate = submitClaimBody(
+          "LossTheftPurchaseDate",
+          $(
+            "#helpdesk_ticket_custom_field_cf_when_did_you_buy_the_item_2321673"
+          ).val(),
+          fieldTypeDate
+        );
+        ClaimQaAndAnswers.push(LossTheftPurchaseDate);
+        let DamageNumberOfItems = submitClaimBody(
+          "DamageNumberOfItems",
+          $(
+            "#helpdesk_ticket_custom_field_cf_how_many_items_are_you_claiming_for411795_2321673"
+          ).val(),
           fieldTypeText
-        )
-      );
-      let HoursDelayed = submitClaimBody(
-        "HoursDelayed",
-        $(
-          "#helpdesk_ticket_custom_field_cf_how_many_hours_were_you_delayed_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(HoursDelayed);
-      let TravelDelayCostDescription = submitClaimBody(
-        "TravelDelayCostDescription",
-        $(
-          "#helpdesk_ticket_custom_field_cf_please_provide_information_about_the_additional_costs_including_the_travel_provider_booking_reference_and_the_amount_paid_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(TravelDelayCostDescription);
-      let DelayAdvisedDateTime = submitClaimBody(
-        "DelayAdvisedDateTime",
-        $(
-          "#helpdesk_ticket_custom_field_cf_what_date_were_you_advised_of_the_delay_2321673"
-        ).val(),
-        fieldTypeDate
-      );
-      ClaimQaAndAnswers.push(DelayAdvisedDateTime);
-      body["ClaimAnswers"] = ClaimQaAndAnswers;
-      console.log("submit claim body --->", body);
-    } else if (reasonClaim[0].akey == "01_02_Med") {
-      let MedicalCostCOVID = getAKey(
-        "helpdesk_ticket_custom_field_cf_do_any_of_the_costs_relate_to_covid_tests_2321673",
-        yesNo
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          MedicalCostCOVID[0].qkey,
-          MedicalCostCOVID[0].akey,
-          fieldTypeText
-        )
-      );
-      let MedicalCostPhysio = getAKey(
-        "helpdesk_ticket_custom_field_cf_do_any_of_the_costs_relate_to_physiotherapy_or_chiropracter_2321673",
-        yesNo
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          MedicalCostPhysio[0].qkey,
-          MedicalCostPhysio[0].akey,
-          fieldTypeText
-        )
-      );
-      let MedicalExpCondition = getAKey(
-        "helpdesk_ticket_custom_field_cf_what_condition_has_resulted_in_the_medical_expenses_2321673",
-        MedicalExpensesCondition
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          MedicalExpCondition[0].qkey,
-          MedicalExpCondition[0].akey,
-          fieldTypeText
-        )
-      );
-      let MedicalCostAccomm = getAKey(
-        "helpdesk_ticket_custom_field_cf_do_any_of_the_costs_relate_to_accommodation555447_2321673",
-        yesNo
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          MedicalCostAccomm[0].qkey,
-          MedicalCostAccomm[0].akey,
-          fieldTypeText
-        )
-      );
-      let thirdPartyOption = getAKey(
-        "helpdesk_ticket_custom_field_cf_was_someone_else_a_third_party_involved_in_you_sustaining_the_injury_2321673",
-        yesNo
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          thirdPartyOption[0].qkey,
-          thirdPartyOption[0].akey,
-          fieldTypeText
-        )
-      );
-      let MedicalCostTravel = getAKey(
-        "helpdesk_ticket_custom_field_cf_do_any_of_the_costs_relate_to_travel_not_including_the_ambulance_or_taxi_to_the_hospital_2321673",
-        yesNo
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          MedicalCostTravel[0].qkey,
-          MedicalCostTravel[0].akey,
-          fieldTypeText
-        )
-      );
-      let IncidentDate = submitClaimBody(
-        "IncidentDate",
-        $(
-          "#helpdesk_ticket_custom_field_cf_when_did_the_symptoms_start437132_2321673"
-        ).val(),
-        fieldTypeDate
-      );
-      ClaimQaAndAnswers.push(IncidentDate);
-      let NatureIllness = submitClaimBody(
-        "NatureIllness",
-        $(
-          "#helpdesk_ticket_custom_field_cf_please_provide_any_further_information_about_the_condition_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(NatureIllness);
-      let MedicalDateOfDiagnosis = submitClaimBody(
-        "MedicalDateOfDiagnosis",
-        $(
-          "#helpdesk_ticket_custom_field_cf_please_confirm_the_first_date_of_diagnosis_for_this_condition_2321673"
-        ).val(),
-        fieldTypeDate
-      );
-      ClaimQaAndAnswers.push(MedicalDateOfDiagnosis);
-      let ExpenseDescription = submitClaimBody(
-        "ExpenseDescription",
-        $(
-          "#helpdesk_ticket_custom_field_cf_please_list_the_expenses_incurred_including_the_type_of_expense_and_the_name_of_the_dentist_or_company_that_provided_this_expense90799_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(ExpenseDescription);
-      let NatureInjury = submitClaimBody(
-        "NatureInjury",
-        $(
-          "#helpdesk_ticket_custom_field_cf_in_your_own_words_tell_us_what_happened731291_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(NatureInjury);
-      let MedicalPaymentAmount = submitClaimBody(
-        "MedicalPaymentPrice",
-        $(
-          "#helpdesk_ticket_custom_field_cf_amount_paid_in_local_currency527297_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(MedicalPaymentAmount);
-      let MedicalPaymentDate = submitClaimBody(
-        "MedicalPaymentDate",
-        $(
-          "#helpdesk_ticket_custom_field_cf_date_of_payment778903_2321673"
-        ).val(),
-        fieldTypeDate
-      );
-      ClaimQaAndAnswers.push(MedicalPaymentDate);
-      let DualInsuranceName = submitClaimBody(
-        "DualInsuranceName",
-        $(
-          "#helpdesk_ticket_custom_field_cf_name_of_your_policy_provider_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(DualInsuranceName);
-      let DualInsuranceNumber = submitClaimBody(
-        "DualInsuranceNumber",
-        $("#helpdesk_ticket_custom_field_cf_policy_number533894_2321673").val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(DualInsuranceNumber);
-      let PrivateMedicalPolicy = submitClaimBody(
-        "PrivateMedicalPolicy",
-        $(
-          "#helpdesk_ticket_custom_field_cf_name_of_your_policy_provider618179_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(PrivateMedicalPolicy);
-      let PrivateMedicalNumber = submitClaimBody(
-        "PrivateMedicalNumber",
-        $("#helpdesk_ticket_custom_field_cf_policy_number701021_2321673").val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(PrivateMedicalNumber);
-      let BankAccountType = submitClaimBody(
-        "BankAccountType",
-        $(
-          "#helpdesk_ticket_custom_field_cf_who_do_you_bank_with_and_what_type_of_account_do_you_have584479_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(BankAccountType);
-      let CreditCardType = submitClaimBody(
-        "CreditCardType",
-        $(
-          "#helpdesk_ticket_custom_field_cf_who_is_the_provider_of_your_credit_card_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(CreditCardType);
-      let MedicalStillAbroad = getAKey(
-        "helpdesk_ticket_custom_field_cf_are_you_currently_still_abroad93386_2321673",
-        yesNo
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          MedicalStillAbroad[0].qkey,
-          MedicalStillAbroad[0].akey,
-          fieldTypeText
-        )
-      );
-      let MedicalExpenses = getAKey(
-        "helpdesk_ticket_custom_field_cf_who_incurred_medical_expenses_2321673",
-        WhoMedicalExpenses
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          MedicalExpenses[0].qkey,
-          MedicalExpenses[0].akey,
-          fieldTypeText
-        )
-      );
-      let InjuryIllness = getAKey(
-        "helpdesk_ticket_custom_field_cf_are_you_claiming_for_an_injury_or_illness644442_2321673",
-        MedicalInjuryIllness
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          InjuryIllness[0].qkey,
-          InjuryIllness[0].akey,
-          fieldTypeText
-        )
-      );
-      let currencyType = getAKey(
-        "helpdesk_ticket_custom_field_cf_currency_type637939_2321673",
-        CurrencyType
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          currencyType[0].qkey,
-          currencyType[0].akey,
-          fieldTypeText
-        )
-      );
-      let DualInsurance = getAKey(
-        "helpdesk_ticket_custom_field_cf_do_you_have_any_other_travel_insurance_policy206683_2321673",
-        yesNo
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          DualInsurance[0].qkey,
-          DualInsurance[0].akey,
-          fieldTypeText
-        )
-      );
-      let PrivateMedicalInsurance = getAKey(
-        "helpdesk_ticket_custom_field_cf_do_you_have_private_medical_insurance_2321673",
-        yesNo
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          PrivateMedicalInsurance[0].qkey,
-          PrivateMedicalInsurance[0].akey,
-          fieldTypeText
-        )
-      );
-
-      let PaymentMethod = getAKey(
-        "helpdesk_ticket_custom_field_cf_how_did_you_pay_for_your_trip257666_2321673",
-        TripPaymentMethod
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          PaymentMethod[0].qkey,
-          PaymentMethod[0].akey,
-          fieldTypeText
-        )
-      );
-      let CreditCardTransactions = getAKey(
-        "helpdesk_ticket_custom_field_cf_did_you_use_your_credit_card_for_any_transactions_whilst_on_your_trip_2321673",
-        yesNo
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          CreditCardTransactions[0].qkey,
-          CreditCardTransactions[0].akey,
-          fieldTypeText
-        )
-      );
-      let CreditCardAmount = getAKey(
-        "helpdesk_ticket_custom_field_cf_did_you_pay_for_50_or_more_of_the_trip_with_a_credit_card_2321673",
-        yesNo
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          CreditCardAmount[0].qkey,
-          CreditCardAmount[0].akey,
-          fieldTypeText
-        )
-      );
-      body["ClaimAnswers"] = ClaimQaAndAnswers;
-      console.log("submit claim body --->", body);
-    } else if (reasonClaim[0].akey == "01_02_MissedDep") {
-      let MissedDepDelayOther = submitClaimBody(
-        "MissedDepDelayOther",
-        $(
-          "#helpdesk_ticket_custom_field_cf_please_give_us_further_details520238_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(MissedDepDelayOther);
-      let MissedDepTestType = submitClaimBody(
-        "MissedDepTestType",
-        $(
-          "#helpdesk_ticket_custom_field_cf_please_confirm_the_test_type_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(MissedDepTestType);
-      let MissedDepAccomProvider = submitClaimBody(
-        "MissedDepAccomProvider",
-        $(
-          "#helpdesk_ticket_custom_field_cf_name_of_provider_please_list_all_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(MissedDepAccomProvider);
-      let MissedDepAmount = submitClaimBody(
-        "MissedDepAmount",
-        $(
-          "#helpdesk_ticket_custom_field_cf_amount_paid_in_local_currency_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(MissedDepAmount);
-      let MissedRefundAmount = submitClaimBody(
-        "MissedRefundAmount",
-        $(
-          "#helpdesk_ticket_custom_field_cf_total_refund_vouchers_amount_the_amount_you_have_received_back594804_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(MissedRefundAmount);
-      let MissedDeparture = getAKey(
-        "helpdesk_ticket_custom_field_cf_what_caused_you_to_miss_your_departure_2321673",
-        MissedDepartureReason
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          MissedDeparture[0].qkey,
-          MissedDeparture[0].akey,
-          fieldTypeText
-        )
-      );
-      let MissedDepDelay = getAKey(
-        "helpdesk_ticket_custom_field_cf_please_confirm_the_reason_for_delay_2321673",
-        MissedDepDelayReason
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          MissedDepDelay[0].qkey,
-          MissedDepDelay[0].akey,
-          fieldTypeText
-        )
-      );
-      let MissedDepThirdParty = getAKey(
-        "helpdesk_ticket_custom_field_cf_was_someone_else_a_third_party_involved_in_the_accident_2321673",
-        yesNo
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          MissedDepThirdParty[0].qkey,
-          MissedDepThirdParty[0].akey,
-          fieldTypeText
-        )
-      );
-      let MissedDepReasonReport = getAKey(
-        "helpdesk_ticket_custom_field_cf_do_you_have_a_report_confirming_the_reason_for_the_delay_2321673",
-        yesNo
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          MissedDepReasonReport[0].qkey,
-          MissedDepReasonReport[0].akey,
-          fieldTypeText
-        )
-      );
-      let MissedDepJourney = getAKey(
-        "helpdesk_ticket_custom_field_cf_on_which_part_of_the_journey_did_you_miss_your_departure_2321673",
-        MissedDepWhichJourney
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          MissedDepJourney[0].qkey,
-          MissedDepJourney[0].akey,
-          fieldTypeText
-        )
-      );
-      let MissedDepSufficientTime = getAKey(
-        "helpdesk_ticket_custom_field_cf_did_you_allow_yourself_sufficient_time_to_reach_your_international_departure_point_2321673",
-        yesNo
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          MissedDepSufficientTime[0].qkey,
-          MissedDepSufficientTime[0].akey,
-          fieldTypeText
-        )
-      );
-      let MissedDepExpense = getAKey(
-        "helpdesk_ticket_custom_field_cf_what_type_of_additional_expenses_are_you_claiming_for_2321673",
-        MissedDepExpenseType
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          MissedDepExpense[0].qkey,
-          MissedDepExpense[0].akey,
-          fieldTypeText
-        )
-      );
-      let currencyType = getAKey(
-        "helpdesk_ticket_custom_field_cf_currency_type637939_2321673",
-        CurrencyType
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          currencyType[0].qkey,
-          currencyType[0].akey,
-          fieldTypeText
-        )
-      );
-      body["ClaimAnswers"] = ClaimQaAndAnswers;
-      console.log("submit claim body --->", body);
-    } else if (reasonClaim[0].akey == "01_06_OthSubsAcc") {
-      let SubAccomCost = submitClaimBody(
-        "SubAccomCost",
-        $(
-          "#helpdesk_ticket_custom_field_cf_what_is_the_estimated_value_of_your_claim_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(SubAccomCost);
-      let SubAccomRefund = submitClaimBody(
-        "SubAccomRefund",
-        $(
-          "#helpdesk_ticket_custom_field_cf_total_refund_vouchers_amount_the_amount_you_have_received_back594804_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(SubAccomRefund);
-      let SubAccReason = getAKey(
-        "helpdesk_ticket_custom_field_cf_what_caused_you_to_leave_your_original_accommodation_2321673",
-        SubAccomReason
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          SubAccReason[0].qkey,
-          SubAccReason[0].akey,
-          fieldTypeText
-        )
-      );
-      let SubAccTripType = getAKey(
-        "helpdesk_ticket_custom_field_cf_what_type_of_trip_did_you_book_2321673",
-        SubAccomTripType
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          SubAccTripType[0].qkey,
-          SubAccTripType[0].akey,
-          fieldTypeText
-        )
-      );
-      let currencyType = getAKey(
-        "helpdesk_ticket_custom_field_cf_currency_type637939_2321673",
-        CurrencyType
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          currencyType[0].qkey,
-          currencyType[0].akey,
-          fieldTypeText
-        )
-      );
-      let SubAccomDate = submitClaimBody(
-        "SubAccomDate",
-        $(
-          "#helpdesk_ticket_custom_field_cf_on_what_date_did_you_leave_your_original_accommodation_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(SubAccomDate);
-      let SubAccomDescription = submitClaimBody(
-        "SubAccomDescription",
-        $(
-          "#helpdesk_ticket_custom_field_cf_please_provide_a_detailed_description_of_the_reason_you_left_your_accommodation_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(SubAccomDescription);
-      body["ClaimAnswers"] = ClaimQaAndAnswers;
-      console.log("submit claim body --->", body);
-    } else if (reasonClaim[0].akey == "01_02_Winter") {
-      let SkiPckClaimReason = getAKey(
-        "helpdesk_ticket_custom_field_cf_which_winter_sports_item_are_you_claiming_for_2321673",
-        SkiPackClaimReason
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          SkiPckClaimReason[0].qkey,
-          SkiPckClaimReason[0].akey,
-          fieldTypeText
-        )
-      );
-      let SkiPackReport = getAKey(
-        "helpdesk_ticket_custom_field_cf_have_you_obtained_a_report_or_invoices_for_the_items_you_are_claiming_2321673",
-        yesNo
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          SkiPackReport[0].qkey,
-          SkiPackReport[0].akey,
-          fieldTypeText
-        )
-      );
-      let currencyType = getAKey(
-        "helpdesk_ticket_custom_field_cf_currency_type637939_2321673",
-        CurrencyType
-      );
-      ClaimQaAndAnswers.push(
-        submitClaimBody(
-          currencyType[0].qkey,
-          currencyType[0].akey,
-          fieldTypeText
-        )
-      );
-      let SkiPackClaimDetails = submitClaimBody(
-        "SkiPackClaimDetails",
-        $(
-          "#helpdesk_ticket_custom_field_cf_please_provide_a_detailed_description_of_the_reason_youre_making_a_claim_today_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(SkiPackClaimDetails);
-      let ValueSkiEst = submitClaimBody(
-        "ValueSkiEst",
-        $(
-          "#helpdesk_ticket_custom_field_cf_what_is_the_estimated_value_of_your_claim_2321673"
-        ).val(),
-        fieldTypeText
-      );
-      ClaimQaAndAnswers.push(ValueSkiEst);
-
-      body["ClaimAnswers"] = ClaimQaAndAnswers;
-      console.log("submit claim body --->", body);
-    }
-    jQuery("#helpdesk_ticket_submit")
-      .closest(".card-body")
-      .find(".form-group")
-      .before(
-        '<div class="invalid-feedback common_error">Please fill in all fields</div>'
-      );
-    jQuery("#overlay").removeClass("d-none").addClass("show loader-text");
-    updateSubmitClaim(body, ".ticket-detail-dummy");
-  });
-  function submitClaimBody(qkeyValue, akeyValue, fieldType) {
-    console.log("submitClaimBody ---->", akeyValue);
-    let temp = {};
-    if (akeyValue == undefined) {
-      akeyValue = "";
-    }
-    if (fieldType != "Date") {
-      if (qkeyValue == "DamageNumberOfItems" && akeyValue == "1") {
-        let arrayItems = [];
-        let objectItems = {};
-        temp["QuestionKey"] = "DamagedBags";
+        );
+        ClaimQaAndAnswers.push(DamageNumberOfItems);
+        let DamageOnPerson = getAKey(
+          "helpdesk_ticket_custom_field_cf_was_the_items_with_you_when_it_was_damaged_2321673",
+          yesNo
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            DamageOnPerson[0].qkey,
+            DamageOnPerson[0].akey,
+            fieldTypeText
+          )
+        );
+        let DamageItemRepairable = getAKey(
+          "helpdesk_ticket_custom_field_cf_can_the_item_be_repaired_2321673",
+          yesNo
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            DamageItemRepairable[0].qkey,
+            DamageItemRepairable[0].akey,
+            fieldTypeText
+          )
+        );
+        let DamageRepairEstimate = getAKey(
+          "helpdesk_ticket_custom_field_cf_did_you_get_a_repair_estimate_2321673",
+          yesNo
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            DamageRepairEstimate[0].qkey,
+            DamageRepairEstimate[0].akey,
+            fieldTypeText
+          )
+        );
         let ItemTypeDamagedItems = getAKey(
           "helpdesk_ticket_custom_field_cf_item_type_2321673",
           ItemTypeDamaged
         );
-        objectItems["ItemType"] = ItemTypeDamagedItems[0].akey;
-        objectItems["PurchaseDate"] = $(
-          "#helpdesk_ticket_custom_field_cf_when_did_you_buy_the_item_2321673"
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            ItemTypeDamagedItems[0].qkey,
+            ItemTypeDamagedItems[0].akey,
+            fieldTypeText
+          )
+        );
+        let HomeInsurance = getAKey(
+          "helpdesk_ticket_custom_field_cf_do_you_have_home_contents_insurance_2321673",
+          yesNo
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            HomeInsurance[0].qkey,
+            HomeInsurance[0].akey,
+            fieldTypeText
+          )
+        );
+        let DualInsurance = getAKey(
+          "helpdesk_ticket_custom_field_cf_do_you_have_any_other_travel_insurance_policy_2321673",
+          yesNo
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            DualInsurance[0].qkey,
+            DualInsurance[0].akey,
+            fieldTypeText
+          )
+        );
+        let TripPaymentMethodBaggageDamage = getAKey(
+          "helpdesk_ticket_custom_field_cf_how_did_you_pay_for_your_trip396837_2321673",
+          TripPaymentMethod
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            TripPaymentMethodBaggageDamage[0].qkey,
+            TripPaymentMethodBaggageDamage[0].akey,
+            fieldTypeText
+          )
+        );
+        let CreditCardAmountBaggageDamage = getAKey(
+          "helpdesk_ticket_custom_field_cf_did_you_pay_for_50_or_more_of_the_trip_with_a_credit_card824584_2321673",
+          yesNo
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            CreditCardAmountBaggageDamage[0].qkey,
+            CreditCardAmountBaggageDamage[0].akey,
+            fieldTypeText
+          )
+        );
+        let DamageItemOwnerItems = getAKey(
+          "helpdesk_ticket_custom_field_cf_who_owns_the_item_2321673",
+          DamageItemOwner
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            DamageItemOwnerItems[0].qkey,
+            DamageItemOwnerItems[0].akey,
+            fieldTypeText
+          )
+        );
+        let TransportProviderDamage = getAKey(
+          "helpdesk_ticket_custom_field_cf_was_the_items_with_your_transport_provider_when_damaged_eg_airline_checkedin_luggage_2321673",
+          yesNo
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            TransportProviderDamage[0].qkey,
+            TransportProviderDamage[0].akey,
+            fieldTypeText
+          )
+        );
+        let DamageTransportGadget = getAKey(
+          "helpdesk_ticket_custom_field_cf_is_the_damaged_items_listed_as_valuable_gadgetelectrical_in_your_policy_wording_2321673",
+          yesNo
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            DamageTransportGadget[0].qkey,
+            DamageTransportGadget[0].akey,
+            fieldTypeText
+          )
+        );
+        let DamageReport = getAKey(
+          "helpdesk_ticket_custom_field_cf_did_you_tell_your_transport_provider_about_the_damage_2321673",
+          yesNo
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            DamageReport[0].qkey,
+            DamageReport[0].akey,
+            fieldTypeText
+          )
+        );
+        body["ClaimAnswers"] = ClaimQaAndAnswers;
+        console.log("submit claim body --->", body);
+      } else if (reasonClaim[0].akey == "01_02_BagL") {
+        let reasonClaims = $(
+          "#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673"
         ).val();
-        objectItems["purchasePrice"] = $(
-          "#helpdesk_ticket_custom_field_cf_what_was_its_cost_when_you_bought_it_2321673"
-        ).val();
-        objectItems["Currency"] = null;
-        objectItems["repairCost"] = $(
-          "#helpdesk_ticket_custom_field_cf_total_refund_vouchers_amount_the_amount_you_have_received_back_2321673"
-        ).val();
-        arrayItems.push(objectItems);
-        temp["items"] = arrayItems;
-      } else if (
-        qkeyValue == "Baggage - personal items lost or stolen" &&
-        akeyValue == "1" &&
-        fieldType == "none"
-      ) {
-        let itemArray = [];
-        let itemsObject = {};
-        temp["QuestionKey"] = "LostOrStolenBags";
-        temp["AnswerKey"] = $(
+        let keyValue = $(
           "#helpdesk_ticket_custom_field_cf_how_many_items_are_you_claiming_for_2321673"
         ).val();
-        temp["DateTimeAnswer"] = null;
-        temp["BooleanAnswer"] = null;
-        temp["IntegerAnswer"] = null;
-        let itemTypes = getAKey(
+        let lossOrStolen = submitClaimBody(reasonClaims, keyValue, "none");
+        ClaimQaAndAnswers.push(lossOrStolen);
+        let PoliceReference = submitClaimBody(
+          "PoliceReference",
+          $(
+            "#helpdesk_ticket_custom_field_cf_police_or_crime_reference_number_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(PoliceReference);
+        let lossTheftWhereItems = getAKey(
+          "helpdesk_ticket_custom_field_cf_are_any_of_the_items_lost_defined_as_a_valuable_gadgetelectrical_as_shown_within_your_policy_wording_2321673",
+          yesNo
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            lossTheftWhereItems[0].qkey,
+            lossTheftWhereItems[0].akey,
+            fieldTypeText
+          )
+        );
+        let transportGadgetItems = getAKey(
+          "helpdesk_ticket_custom_field_cf_are_you_claiming_for_more_than_1_item_2321673",
+          yesNo
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            transportGadgetItems[0].qkey,
+            transportGadgetItems[0].akey,
+            fieldTypeText
+          )
+        );
+        let BaggageLossItemDescription = submitClaimBody(
+          "BaggageLossItemDescription",
+          $(
+            "#helpdesk_ticket_custom_field_cf_please_provide_a_description_the_owner_the_purchase_date_and_purchase_price_of_each_item910226_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(BaggageLossItemDescription);
+        let BaggageClaimValue = submitClaimBody(
+          "BaggageClaimValue",
+          $(
+            "#helpdesk_ticket_custom_field_cf_what_is_the_total_amount_youre_claiming_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(BaggageClaimValue);
+        let DualInsuranceNumber = submitClaimBody(
+          "DualInsuranceNumber",
+          $("#helpdesk_ticket_custom_field_cf_policy_number832231_2321673").val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(DualInsuranceNumber);
+        let BankAccountType = submitClaimBody(
+          "BankAccountType",
+          $(
+            "#helpdesk_ticket_custom_field_cf_who_do_you_bank_with_and_what_type_of_account_do_you_have87472_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(BankAccountType);
+        let DualInsuranceName = submitClaimBody(
+          "DualInsuranceName",
+          $(
+            "#helpdesk_ticket_custom_field_cf_name_of_your_policy_provider610133_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(DualInsuranceName);
+        let ItemDescription = submitClaimBody(
+          "ItemDescription",
+          $(
+            "#helpdesk_ticket_custom_field_cf_item_description369043_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(ItemDescription);
+        let TheftOccur = submitClaimBody(
+          "TheftOccur",
+          $(
+            "#helpdesk_ticket_custom_field_cf_in_your_own_words_tell_us_what_happened994308_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(TheftOccur);
+        let LossOccur = submitClaimBody(
+          "LossOccur",
+          $(
+            "#helpdesk_ticket_custom_field_cf_in_your_own_words_tell_us_what_happened511569_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(LossOccur);
+        let LossTheftNumberOfItems = submitClaimBody(
+          "LossTheftNumberOfItems",
+          $(
+            "#helpdesk_ticket_custom_field_cf_how_many_items_are_you_claiming_for_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(LossTheftNumberOfItems);
+        let LossOrTheftItems = getAKey(
+          "helpdesk_ticket_custom_field_cf_are_you_claiming_for_a_loss_or_theft_2321673",
+          LossOrTheft
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            LossOrTheftItems[0].qkey,
+            LossOrTheftItems[0].akey,
+            fieldTypeText
+          )
+        );
+        let LossTheftWhereItems = getAKey(
+          "helpdesk_ticket_custom_field_cf_where_did_the_loss_or_theft_take_place_2321673",
+          LossTheftWhere
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            LossTheftWhereItems[0].qkey,
+            LossTheftWhereItems[0].akey,
+            fieldTypeText
+          )
+        );
+        let InVehicleAtTimeOfTheft = getAKey(
+          "helpdesk_ticket_custom_field_cf_were_you_in_the_vehicle_at_the_time_of_the_theft_2321673",
+          yesNo
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            InVehicleAtTimeOfTheft[0].qkey,
+            InVehicleAtTimeOfTheft[0].akey,
+            fieldTypeText
+          )
+        );
+        let lossTheftReport = getAKey(
+          "helpdesk_ticket_custom_field_cf_did_you_report_the_loss_or_theft_2321673",
+          yesNo
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            lossTheftReport[0].qkey,
+            lossTheftReport[0].akey,
+            fieldTypeText
+          )
+        );
+        let lossTheftReportedTo = getAKey(
+          "helpdesk_ticket_custom_field_cf_who_did_you_report_it_to_2321673",
+          LossTheftReportedTo
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            lossTheftReportedTo[0].qkey,
+            lossTheftReportedTo[0].akey,
+            fieldTypeText
+          )
+        );
+        let itemType = getAKey(
           "helpdesk_ticket_custom_field_cf_item_type870706_2321673",
           ItemType
         );
-        itemsObject["ItemType"] = itemTypes[0].akey;
-        itemsObject["PurchaseDate"] = $(
-          "#helpdesk_ticket_custom_field_cf_when_did_you_purchase_the_item_2321673"
+        ClaimQaAndAnswers.push(
+          submitClaimBody(itemType[0].qkey, itemType[0].akey, fieldTypeText)
+        );
+        let ItemOwners = getAKey(
+          "helpdesk_ticket_custom_field_cf_who_owns_the_item86910_2321673",
+          ItemOwner
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(ItemOwners[0].qkey, ItemOwners[0].akey, fieldTypeText)
+        );
+        let HomeInsurance = getAKey(
+          "helpdesk_ticket_custom_field_cf_do_you_have_home_contents_insurance_2321673",
+          yesNo
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            HomeInsurance[0].qkey,
+            HomeInsurance[0].akey,
+            fieldTypeText
+          )
+        );
+        let DualInsurance = getAKey(
+          "helpdesk_ticket_custom_field_cf_do_you_have_any_other_travel_insurance_policy_2321673",
+          yesNo
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            DualInsurance[0].qkey,
+            DualInsurance[0].akey,
+            fieldTypeText
+          )
+        );
+        let TripPaymentMethodDisplay = getAKey(
+          "helpdesk_ticket_custom_field_cf_how_did_you_pay_for_your_trip396837_2321673",
+          TripPaymentMethod
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            TripPaymentMethodDisplay[0].qkey,
+            TripPaymentMethodDisplay[0].akey,
+            fieldTypeText
+          )
+        );
+        let CreditCardAmount = getAKey(
+          "helpdesk_ticket_custom_field_cf_did_you_pay_for_50_or_more_of_the_trip_with_a_credit_card824584_2321673",
+          yesNo
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            CreditCardAmount[0].qkey,
+            CreditCardAmount[0].akey,
+            fieldTypeText
+          )
+        );
+        let NoReportReasonItems = getAKey(
+          "helpdesk_ticket_custom_field_cf_please_confirm_why_you_did_not_report_the_loss_or_theft6975_2321673",
+          NoReportReason
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            NoReportReasonItems[0].qkey,
+            NoReportReasonItems[0].akey,
+            fieldTypeText
+          )
+        );
+        let LossTheftVehicleList = getAKey(
+          "helpdesk_ticket_custom_field_cf_whereabouts_in_the_vehicle_was_the_items_when_stolen_2321673",
+          LossTheftVehicle
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            LossTheftVehicleList[0].qkey,
+            LossTheftVehicleList[0].akey,
+            fieldTypeText
+          )
+        );
+        let LossTheftVehicleForce = getAKey(
+          "helpdesk_ticket_custom_field_cf_was_there_physical_damage_to_the_vehicle_2321673",
+          yesNo
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            LossTheftVehicleForce[0].qkey,
+            LossTheftVehicleForce[0].akey,
+            fieldTypeText
+          )
+        );
+        let LossTheftPurchaseDate = submitClaimBody(
+          "LossTheftPurchaseDate",
+          $(
+            "#helpdesk_ticket_custom_field_cf_when_did_you_purchase_the_item_2321673"
+          ).val(),
+          fieldTypeDate
+        );
+        ClaimQaAndAnswers.push(LossTheftPurchaseDate);
+        let CreditCardType = submitClaimBody(
+          "CreditCardType",
+          $(
+            "#helpdesk_ticket_custom_field_cf_who_is_the_provider_of_your_credit_card237678_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(CreditCardType);
+        let HomePolicyNumber = submitClaimBody(
+          "HomePolicyNumber",
+          $("#helpdesk_ticket_custom_field_cf_policy_number818860_2321673").val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(HomePolicyNumber);
+        let HomeInsurerName = submitClaimBody(
+          "HomeInsurerName",
+          $(
+            "#helpdesk_ticket_custom_field_cf_name_of_your_policy_provider267746_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(HomeInsurerName);
+        let DamageItemPurchasePrice = submitClaimBody(
+          "DamageItemPurchasePrice",
+          $(
+            "#helpdesk_ticket_custom_field_cf_what_was_its_cost_when_you_bought_it_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(DamageItemPurchasePrice);
+        body["ClaimAnswers"] = ClaimQaAndAnswers;
+        console.log("submit claim body --->", body);
+      } else if (reasonClaim[0].akey == "01_02_BagD") {
+        let BaggageDelay = getAKey(
+          "helpdesk_ticket_custom_field_cf_which_part_of_the_journey_did_your_baggage_arrive_late_2321673",
+          BaggageDelayLeg
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            BaggageDelay[0].qkey,
+            BaggageDelay[0].akey,
+            fieldTypeText
+          )
+        );
+        let DelayedBagReturned = getAKey(
+          "helpdesk_ticket_custom_field_cf_has_your_baggage_been_returned_to_you_2321673",
+          yesNo
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            DelayedBagReturned[0].qkey,
+            DelayedBagReturned[0].akey,
+            fieldTypeText
+          )
+        );
+        let TransportationMethodDelay = getAKey(
+          "helpdesk_ticket_custom_field_cf_what_transport_type_was_your_baggage_delayed_on_2321673",
+          TransportationMethodDelayed
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            TransportationMethodDelay[0].qkey,
+            TransportationMethodDelay[0].akey,
+            fieldTypeText
+          )
+        );
+        let DelayReport = getAKey(
+          "helpdesk_ticket_custom_field_cf_did_you_notify_your_transport_provider_about_the_delay_and_get_a_report_pir_2321673",
+          yesNo
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(DelayReport[0].qkey, DelayReport[0].akey, fieldTypeText)
+        );
+        let DelayedBaggageRefund = getAKey(
+          "helpdesk_ticket_custom_field_cf_have_you_received_any_refund_from_your_transport_provider_2321673",
+          yesNo
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            DelayedBaggageRefund[0].qkey,
+            DelayedBaggageRefund[0].akey,
+            fieldTypeText
+          )
+        );
+        let BaggageDelayHours = submitClaimBody(
+          "BaggageDelayHours",
+          $(
+            "#helpdesk_ticket_custom_field_cf_how_many_hours_was_your_baggage_delayed_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(BaggageDelayHours);
+        let PIRNumberDelay = submitClaimBody(
+          "PIRNumberDelay",
+          $(
+            "#helpdesk_ticket_custom_field_cf_enter_the_report_reference_pir_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(PIRNumberDelay);
+        let ItemTypeDelay = submitClaimBody(
+          "ItemTypeDelay",
+          $(
+            "#helpdesk_ticket_custom_field_cf_please_list_all_replacement_items_purchased339565_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(ItemTypeDelay);
+        let DelayPurchaseDate = submitClaimBody(
+          "DelayPurchaseDate",
+          $(
+            "#helpdesk_ticket_custom_field_cf_on_what_date_did_you_purchase_the_replacement_items_2321673"
+          ).val(),
+          fieldTypeDate
+        );
+        ClaimQaAndAnswers.push(DelayPurchaseDate);
+        let DelayJourneyLegOther = submitClaimBody(
+          "DelayJourneyLegOther",
+          $(
+            "#helpdesk_ticket_custom_field_cf_please_give_us_further_details469996_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(DelayJourneyLegOther);
+        let currencyType = getAKey(
+          "helpdesk_ticket_custom_field_cf_currency_type637939_2321673",
+          CurrencyType
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            currencyType[0].qkey,
+            currencyType[0].akey,
+            fieldTypeText
+          )
+        );
+        let DelayItemPurchasePrice = submitClaimBody(
+          "DelayItemPurchasePrice",
+          $(
+            "#helpdesk_ticket_custom_field_cf_amount_paid_in_local_currency527297_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(DelayItemPurchasePrice);
+        let DelayedBaggageRefundAmount = submitClaimBody(
+          "DelayedBaggageRefundAmount",
+          $(
+            "#helpdesk_ticket_custom_field_cf_total_refund_vouchers_amount_the_amount_you_have_received_back594804_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(DelayedBaggageRefundAmount);
+
+        body["ClaimAnswers"] = ClaimQaAndAnswers;
+        console.log("submit claim body --->", body);
+      } else if (reasonClaim[0].akey == "01_03_CxIllClnt") {
+        let dateAdvisedJuryWitness = submitClaimBody(
+          "DateAdvisedJuryWitness",
+          $(
+            "#helpdesk_ticket_custom_field_cf_on_what_date_were_you_advised_of_the_jury_service_or_court_date_2321673"
+          ).val(),
+          fieldTypeDate
+        );
+        ClaimQaAndAnswers.push(dateAdvisedJuryWitness);
+        let checkRefundValue = $(
+          "#helpdesk_ticket_custom_field_cf_have_you_received_any_refunds_or_compensation702973_2321673"
         ).val();
-        itemsObject["purchasePrice"] = $(
-          "#helpdesk_ticket_custom_field_cf_what_was_its_cost_when_you_bought_it_2321673"
+        let TripBookingRefund;
+        if (checkRefundValue) {
+          TripBookingRefund = submitClaimBody(
+            "TripBookingRefund",
+            $(
+              "#helpdesk_ticket_custom_field_cf_have_you_received_any_refunds_or_compensation702973_2321673"
+            ).val(),
+            fieldTypeText
+          );
+          ClaimQaAndAnswers.push(TripBookingRefund);
+        } else {
+          TripBookingRefund = submitClaimBody(
+            "TripBookingRefund",
+            "0",
+            fieldTypeText
+          );
+          ClaimQaAndAnswers.push(TripBookingRefund);
+        }
+        let ReasonForCancellationDesc = submitClaimBody(
+          "ReasonForCancellationDesc",
+          $(
+            "#helpdesk_ticket_custom_field_cf_in_your_own_words_please_explain_the_reason_for_cancelling_your_trip_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(ReasonForCancellationDesc);
+        let DateAdvisedOfRedundancy = submitClaimBody(
+          "DateAdvisedOfRedundancy",
+          $(
+            "#helpdesk_ticket_custom_field_cf_on_what_date_were_you_advised_of_the_redundancy_2321673"
+          ).val(),
+          fieldTypeDate
+        );
+        ClaimQaAndAnswers.push(DateAdvisedOfRedundancy);
+        let DateDiagnosis = submitClaimBody(
+          "DateOfDiagnosis",
+          $(
+            "#helpdesk_ticket_custom_field_cf_please_confirm_the_date_of_diagnosis_for_this_condition_2321673"
+          ).val(),
+          fieldTypeDate
+        );
+        ClaimQaAndAnswers.push(DateDiagnosis);
+        let DateOfDeath = submitClaimBody(
+          "DateOfDeath",
+          $(
+            "#helpdesk_ticket_custom_field_cf_please_confirm_the_date_of_death_2321673"
+          ).val(),
+          fieldTypeDate
+        );
+        ClaimQaAndAnswers.push(DateOfDeath);
+
+        let CauseOfDeath = submitClaimBody(
+          "CauseOfDeath",
+          $(
+            "#helpdesk_ticket_custom_field_cf_please_confirm_the_cause_of_death_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(CauseOfDeath);
+
+        let DateOfInjury = submitClaimBody(
+          "DateOfInjury",
+          $(
+            "#helpdesk_ticket_custom_field_cf_on_what_date_did_the_incident_causing_the_injury_happen_2321673"
+          ).val(),
+          fieldTypeDate
+        );
+        ClaimQaAndAnswers.push(DateOfInjury);
+        let WhoAdvisedCancelOther = submitClaimBody(
+          "WhoAdvisedCancelOther",
+          $(
+            "#helpdesk_ticket_custom_field_cf_please_give_us_further_details352533_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(WhoAdvisedCancelOther);
+        let CancellationBookingNoPeople = submitClaimBody(
+          "CancellationBookingNoPeople",
+          $(
+            "#helpdesk_ticket_custom_field_cf_how_many_people_are_there_on_the_booking_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(CancellationBookingNoPeople);
+        let CancellationInsuredNoClaiming = submitClaimBody(
+          "CancellationInsuredNoClaiming",
+          $(
+            "#helpdesk_ticket_custom_field_cf_how_many_people_on_the_booking_are_insured_by_this_policy514961_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(CancellationInsuredNoClaiming);
+
+        let DateOfSymptoms = submitClaimBody(
+          "DateOfSymptoms",
+          $(
+            "#helpdesk_ticket_custom_field_cf_when_did_the_symptoms_start_2321673"
+          ).val(),
+          fieldTypeDate
+        );
+        ClaimQaAndAnswers.push(DateOfSymptoms);
+        let TripProviderInfo = submitClaimBody(
+          "TripProviderInfo",
+          $(
+            "#helpdesk_ticket_custom_field_cf_please_confirm_the_name_of_the_trip_providers_and_the_booking_references342856_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(TripProviderInfo);
+        let tripBookingCost = submitClaimBody(
+          "TripBookingCost",
+          $(
+            "#helpdesk_ticket_custom_field_cf_total_trip_cost_the_amount_you_paid_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(tripBookingCost);
+        let DateCancelled = submitClaimBody(
+          "DateCancelled",
+          $(
+            "#helpdesk_ticket_custom_field_cf_please_enter_the_date_you_asked_your_tour_operatortravel_provider_to_cancel_the_trip_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(DateCancelled);
+        let dualInsurance = getAKey(
+          "helpdesk_ticket_custom_field_cf_do_you_have_any_other_travel_insurance_policy400572_2321673",
+          yesNo
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            dualInsurance[0].qkey,
+            dualInsurance[0].akey,
+            fieldTypeText
+          )
+        );
+        let dualInsuranceName = submitClaimBody(
+          "DualInsuranceName",
+          $(
+            "#helpdesk_ticket_custom_field_cf_name_of_your_policy_provider895583_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(dualInsuranceName);
+        let dualInsuranceNumber = submitClaimBody(
+          "DualInsuranceNumber",
+          $("#helpdesk_ticket_custom_field_cf_policy_number964552_2321673").val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(dualInsuranceNumber);
+        let bankAccountType = submitClaimBody(
+          "BankAccountType",
+          $(
+            "#helpdesk_ticket_custom_field_cf_who_do_you_bank_with_and_what_type_of_account_do_you_have486839_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(bankAccountType);
+        let tripPaymentMethod = getAKey(
+          "helpdesk_ticket_custom_field_cf_how_did_you_pay_for_your_trip913590_2321673",
+          TripPaymentMethod
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            tripPaymentMethod[0].qkey,
+            tripPaymentMethod[0].akey,
+            fieldTypeText
+          )
+        );
+        let creditCardType = submitClaimBody(
+          "CreditCardType",
+          $(
+            "#helpdesk_ticket_custom_field_cf_who_is_the_provider_of_your_credit_card224630_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(creditCardType);
+        let creditCardAmount = getAKey(
+          "helpdesk_ticket_custom_field_cf_did_you_pay_for_50_or_more_of_the_trip_with_a_credit_card401929_2321673",
+          yesNo
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            creditCardAmount[0].qkey,
+            creditCardAmount[0].akey,
+            fieldTypeText
+          )
+        );
+        let Cancellation = getAKey(
+          "helpdesk_ticket_custom_field_cf_who_has_caused_the_cancellation_2321673",
+          CancellationPerson
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            Cancellation[0].qkey,
+            Cancellation[0].akey,
+            fieldTypeText
+          )
+        );
+
+        let ReasonCancellation = getAKey(
+          "helpdesk_ticket_custom_field_cf_are_you_currently_still_abroad_2321673",
+          ReasonForCancellation
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            ReasonCancellation[0].qkey,
+            ReasonCancellation[0].akey,
+            fieldTypeText
+          )
+        );
+
+        let RedundancyPayment = getAKey(
+          "helpdesk_ticket_custom_field_cf_do_you_qualify_for_redundancy_payment_under_current_legislation_2321673",
+          yesNo
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            RedundancyPayment[0].qkey,
+            RedundancyPayment[0].akey,
+            fieldTypeText
+          )
+        );
+
+        let StableAtTimeofBooking = getAKey(
+          "helpdesk_ticket_custom_field_cf_to_the_best_of_your_knowledge_were_you_or_this_person_considered_stable_at_the_time_of_booking_the_trip_2321673",
+          yesNo
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            StableAtTimeofBooking[0].qkey,
+            StableAtTimeofBooking[0].akey,
+            fieldTypeText
+          )
+        );
+
+        let InjuryThirdPartyInvolved = getAKey(
+          "helpdesk_ticket_custom_field_cf_was_someone_else_a_third_party_involved_in_sustaining_the_injury_2321673",
+          yesNo
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            InjuryThirdPartyInvolved[0].qkey,
+            InjuryThirdPartyInvolved[0].akey,
+            fieldTypeText
+          )
+        );
+
+        let WhoAdvisedCancel = getAKey(
+          "helpdesk_ticket_custom_field_cf_who_advised_to_cancel_2321673",
+          WhoAdvisedToCancel
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            WhoAdvisedCancel[0].qkey,
+            WhoAdvisedCancel[0].akey,
+            fieldTypeText
+          )
+        );
+        let CancellationType = getAKey(
+          "helpdesk_ticket_custom_field_cf_what_type_of_trip_did_you_book137913_2321673",
+          CancellationTypeOfTrip
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            CancellationType[0].qkey,
+            CancellationType[0].akey,
+            fieldTypeText
+          )
+        );
+        let CancellationIllness = getAKey(
+          "helpdesk_ticket_custom_field_cf_what_medical_condition_has_resulted_in_cancellation748907_2321673",
+          CancellationIllnessCondition
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            CancellationIllness[0].qkey,
+            CancellationIllness[0].akey,
+            fieldTypeText
+          )
+        );
+        let TripTransport = getAKey(
+          "helpdesk_ticket_custom_field_cf_what_type_of_transport_was_included_in_your_booking146711_2321673",
+          TripTransportType
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            TripTransport[0].qkey,
+            TripTransport[0].akey,
+            fieldTypeText
+          )
+        );
+        let currencyType = getAKey(
+          "helpdesk_ticket_custom_field_cf_currency_type637939_2321673",
+          CurrencyType
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            currencyType[0].qkey,
+            currencyType[0].akey,
+            fieldTypeText
+          )
+        );
+        body["ClaimAnswers"] = ClaimQaAndAnswers;
+        console.log("submit claim body --->", body);
+      } else if (reasonClaim[0].akey == "01_02_Curt") {
+        let CURTAILMENTREFUND = submitClaimBody(
+          "CURTAILMENTREFUND",
+          $(
+            "#helpdesk_ticket_custom_field_cf_total_refund_vouchers_amount_the_amount_you_have_received_back594804_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(CURTAILMENTREFUND);
+        let CURTAILMENT = submitClaimBody(
+          "CURTAILMENTDATEAWARE",
+          $(
+            "#helpdesk_ticket_custom_field_cf_detail_how_you_got_home_and_on_what_date_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(CURTAILMENT);
+        let CURTAILMENTREASONS = getAKey(
+          "helpdesk_ticket_custom_field_cf_why_did_you_shorten_your_trip_2321673",
+          CURTAILMENTREASON
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            CURTAILMENTREASONS[0].qkey,
+            CURTAILMENTREASONS[0].akey,
+            fieldTypeText
+          )
+        );
+        let CURTAILMENTNOTIFICATION = getAKey(
+          "helpdesk_ticket_custom_field_cf_did_you_notify_us_of_the_need_to_curtail_before_making_arrangements_2321673",
+          yesNo
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            CURTAILMENTNOTIFICATION[0].qkey,
+            CURTAILMENTNOTIFICATION[0].akey,
+            fieldTypeText
+          )
+        );
+
+        let currencyType = getAKey(
+          "helpdesk_ticket_custom_field_cf_currency_type637939_2321673",
+          CurrencyType
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            currencyType[0].qkey,
+            currencyType[0].akey,
+            fieldTypeText
+          )
+        );
+        let CURTAILMENTLOSSAMOUNT = submitClaimBody(
+          "SkiPackClaimDetails",
+          $(
+            "#helpdesk_ticket_custom_field_cf_what_is_the_estimated_value_of_your_claim_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(CURTAILMENTLOSSAMOUNT);
+        let CURTAILMENTDESCRIPTION = submitClaimBody(
+          "CURTAILMENTDESCRIPTION",
+          $(
+            "#helpdesk_ticket_custom_field_cf_please_provide_a_detailed_description_of_the_reason_you_curtailed_your_trip272601_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(CURTAILMENTDESCRIPTION);
+        let CURTAILMENTDATE = submitClaimBody(
+          "CURTAILMENTDATEAWARE",
+          $(
+            "#helpdesk_ticket_custom_field_cf_explain_when_you_were_aware_that_you_needed_to_return_home_please_confirm_the_date_2321673"
+          ).val(),
+          fieldTypeDate
+        );
+        ClaimQaAndAnswers.push(CURTAILMENTDATE);
+        let CURTAILMENTNOTIFICATIONREASON = submitClaimBody(
+          "CURTAILMENTNOTIFICATIONREASON",
+          $(
+            "#helpdesk_ticket_custom_field_cf_please_give_a_full_and_detailed_explanation_of_why_you_did_not_contact_to_contact_our_emergency_service582069_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(CURTAILMENTNOTIFICATIONREASON);
+
+        body["ClaimAnswers"] = ClaimQaAndAnswers;
+        console.log("submit claim body --->", body);
+      } else if (reasonClaim[0].akey == "01_02_Dental") {
+        let DentalDate = submitClaimBody(
+          "DentalDate",
+          $(
+            "#helpdesk_ticket_custom_field_cf_when_did_the_symptoms_start939174_2321673"
+          ).val(),
+          fieldTypeDate
+        );
+        ClaimQaAndAnswers.push(DentalDate);
+
+        let DentalDescriptionExpenses = submitClaimBody(
+          "DentalDescriptionExpenses",
+          $(
+            "#helpdesk_ticket_custom_field_cf_please_list_the_expenses_incurred_including_the_type_of_expense_and_the_name_of_the_dentist_or_company_that_provided_this_expense_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(DentalDescriptionExpenses);
+        let DentalPaymentAmount = submitClaimBody(
+          "DentalPaymentAmount",
+          $(
+            "#helpdesk_ticket_custom_field_cf_amount_paid_in_local_currency527297_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(DentalPaymentAmount);
+
+        let MedicalPaymentDate = submitClaimBody(
+          "MedicalPaymentDate",
+          $(
+            "#helpdesk_ticket_custom_field_cf_on_what_date_did_you_pay_the_dental_expenses_2321673"
+          ).val(),
+          fieldTypeDate
+        );
+        ClaimQaAndAnswers.push(MedicalPaymentDate);
+        let DentalExpenses = getAKey(
+          "helpdesk_ticket_custom_field_cf_who_incurred_dental_expenses930485_2321673",
+          WhoDentalExpenses
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            DentalExpenses[0].qkey,
+            DentalExpenses[0].akey,
+            fieldTypeText
+          )
+        );
+        let DTreatment = getAKey(
+          "helpdesk_ticket_custom_field_cf_what_type_of_dental_treatment_did_you_need_2321673",
+          DentalTreatment
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(DTreatment[0].qkey, DTreatment[0].akey, fieldTypeText)
+        );
+        let currencyType = getAKey(
+          "helpdesk_ticket_custom_field_cf_currency_type637939_2321673",
+          CurrencyType
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            currencyType[0].qkey,
+            currencyType[0].akey,
+            fieldTypeText
+          )
+        );
+        body["ClaimAnswers"] = ClaimQaAndAnswers;
+        console.log("submit claim body --->", body);
+      } else if (reasonClaim[0].akey == "01_02_Delay") {
+        let TransportationMethodDelay = getAKey(
+          "helpdesk_ticket_custom_field_cf_what_transport_was_delayed_2321673",
+          TransportationMethod
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            TransportationMethodDelay[0].qkey,
+            TransportationMethodDelay[0].akey,
+            fieldTypeText
+          )
+        );
+        let ReasonDelay = getAKey(
+          "helpdesk_ticket_custom_field_cf_what_was_the_reason_for_the_delay_2321673",
+          ReasonForDelay
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(ReasonDelay[0].qkey, ReasonDelay[0].akey, fieldTypeText)
+        );
+        let WhichJourneyNewAdded = getAKey(
+          "helpdesk_ticket_custom_field_cf_on_which_part_of_the_journey_were_you_delayed_2321673",
+          WhichJourneyNew
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            WhichJourneyNewAdded[0].qkey,
+            WhichJourneyNewAdded[0].akey,
+            fieldTypeText
+          )
+        );
+        let TravelDelayAdditionalCosts = getAKey(
+          "helpdesk_ticket_custom_field_cf_were_there_any_additional_expenses_as_a_result_of_the_delay_2321673",
+          yesNo
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            TravelDelayAdditionalCosts[0].qkey,
+            TravelDelayAdditionalCosts[0].akey,
+            fieldTypeText
+          )
+        );
+        let DelayOver24Hours = getAKey(
+          "helpdesk_ticket_custom_field_cf_were_you_delayed_for_24_hours_or_more923623_2321673",
+          yesNo
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            DelayOver24Hours[0].qkey,
+            DelayOver24Hours[0].akey,
+            fieldTypeText
+          )
+        );
+        let HoursDelayed = submitClaimBody(
+          "HoursDelayed",
+          $(
+            "#helpdesk_ticket_custom_field_cf_how_many_hours_were_you_delayed_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(HoursDelayed);
+        let TravelDelayCostDescription = submitClaimBody(
+          "TravelDelayCostDescription",
+          $(
+            "#helpdesk_ticket_custom_field_cf_please_provide_information_about_the_additional_costs_including_the_travel_provider_booking_reference_and_the_amount_paid_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(TravelDelayCostDescription);
+        let DelayAdvisedDateTime = submitClaimBody(
+          "DelayAdvisedDateTime",
+          $(
+            "#helpdesk_ticket_custom_field_cf_what_date_were_you_advised_of_the_delay_2321673"
+          ).val(),
+          fieldTypeDate
+        );
+        ClaimQaAndAnswers.push(DelayAdvisedDateTime);
+        body["ClaimAnswers"] = ClaimQaAndAnswers;
+        console.log("submit claim body --->", body);
+      } else if (reasonClaim[0].akey == "01_02_Med") {
+        let MedicalCostCOVID = getAKey(
+          "helpdesk_ticket_custom_field_cf_do_any_of_the_costs_relate_to_covid_tests_2321673",
+          yesNo
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            MedicalCostCOVID[0].qkey,
+            MedicalCostCOVID[0].akey,
+            fieldTypeText
+          )
+        );
+        let MedicalCostPhysio = getAKey(
+          "helpdesk_ticket_custom_field_cf_do_any_of_the_costs_relate_to_physiotherapy_or_chiropracter_2321673",
+          yesNo
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            MedicalCostPhysio[0].qkey,
+            MedicalCostPhysio[0].akey,
+            fieldTypeText
+          )
+        );
+        let MedicalExpCondition = getAKey(
+          "helpdesk_ticket_custom_field_cf_what_condition_has_resulted_in_the_medical_expenses_2321673",
+          MedicalExpensesCondition
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            MedicalExpCondition[0].qkey,
+            MedicalExpCondition[0].akey,
+            fieldTypeText
+          )
+        );
+        let MedicalCostAccomm = getAKey(
+          "helpdesk_ticket_custom_field_cf_do_any_of_the_costs_relate_to_accommodation555447_2321673",
+          yesNo
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            MedicalCostAccomm[0].qkey,
+            MedicalCostAccomm[0].akey,
+            fieldTypeText
+          )
+        );
+        let thirdPartyOption = getAKey(
+          "helpdesk_ticket_custom_field_cf_was_someone_else_a_third_party_involved_in_you_sustaining_the_injury_2321673",
+          yesNo
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            thirdPartyOption[0].qkey,
+            thirdPartyOption[0].akey,
+            fieldTypeText
+          )
+        );
+        let MedicalCostTravel = getAKey(
+          "helpdesk_ticket_custom_field_cf_do_any_of_the_costs_relate_to_travel_not_including_the_ambulance_or_taxi_to_the_hospital_2321673",
+          yesNo
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            MedicalCostTravel[0].qkey,
+            MedicalCostTravel[0].akey,
+            fieldTypeText
+          )
+        );
+        let IncidentDate = submitClaimBody(
+          "IncidentDate",
+          $(
+            "#helpdesk_ticket_custom_field_cf_when_did_the_symptoms_start437132_2321673"
+          ).val(),
+          fieldTypeDate
+        );
+        ClaimQaAndAnswers.push(IncidentDate);
+        let NatureIllness = submitClaimBody(
+          "NatureIllness",
+          $(
+            "#helpdesk_ticket_custom_field_cf_please_provide_any_further_information_about_the_condition_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(NatureIllness);
+        let MedicalDateOfDiagnosis = submitClaimBody(
+          "MedicalDateOfDiagnosis",
+          $(
+            "#helpdesk_ticket_custom_field_cf_please_confirm_the_first_date_of_diagnosis_for_this_condition_2321673"
+          ).val(),
+          fieldTypeDate
+        );
+        ClaimQaAndAnswers.push(MedicalDateOfDiagnosis);
+        let ExpenseDescription = submitClaimBody(
+          "ExpenseDescription",
+          $(
+            "#helpdesk_ticket_custom_field_cf_please_list_the_expenses_incurred_including_the_type_of_expense_and_the_name_of_the_dentist_or_company_that_provided_this_expense90799_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(ExpenseDescription);
+        let NatureInjury = submitClaimBody(
+          "NatureInjury",
+          $(
+            "#helpdesk_ticket_custom_field_cf_in_your_own_words_tell_us_what_happened731291_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(NatureInjury);
+        let MedicalPaymentAmount = submitClaimBody(
+          "MedicalPaymentPrice",
+          $(
+            "#helpdesk_ticket_custom_field_cf_amount_paid_in_local_currency527297_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(MedicalPaymentAmount);
+        let MedicalPaymentDate = submitClaimBody(
+          "MedicalPaymentDate",
+          $(
+            "#helpdesk_ticket_custom_field_cf_date_of_payment778903_2321673"
+          ).val(),
+          fieldTypeDate
+        );
+        ClaimQaAndAnswers.push(MedicalPaymentDate);
+        let DualInsuranceName = submitClaimBody(
+          "DualInsuranceName",
+          $(
+            "#helpdesk_ticket_custom_field_cf_name_of_your_policy_provider_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(DualInsuranceName);
+        let DualInsuranceNumber = submitClaimBody(
+          "DualInsuranceNumber",
+          $("#helpdesk_ticket_custom_field_cf_policy_number533894_2321673").val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(DualInsuranceNumber);
+        let PrivateMedicalPolicy = submitClaimBody(
+          "PrivateMedicalPolicy",
+          $(
+            "#helpdesk_ticket_custom_field_cf_name_of_your_policy_provider618179_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(PrivateMedicalPolicy);
+        let PrivateMedicalNumber = submitClaimBody(
+          "PrivateMedicalNumber",
+          $("#helpdesk_ticket_custom_field_cf_policy_number701021_2321673").val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(PrivateMedicalNumber);
+        let BankAccountType = submitClaimBody(
+          "BankAccountType",
+          $(
+            "#helpdesk_ticket_custom_field_cf_who_do_you_bank_with_and_what_type_of_account_do_you_have584479_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(BankAccountType);
+        let CreditCardType = submitClaimBody(
+          "CreditCardType",
+          $(
+            "#helpdesk_ticket_custom_field_cf_who_is_the_provider_of_your_credit_card_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(CreditCardType);
+        let MedicalStillAbroad = getAKey(
+          "helpdesk_ticket_custom_field_cf_are_you_currently_still_abroad93386_2321673",
+          yesNo
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            MedicalStillAbroad[0].qkey,
+            MedicalStillAbroad[0].akey,
+            fieldTypeText
+          )
+        );
+        let MedicalExpenses = getAKey(
+          "helpdesk_ticket_custom_field_cf_who_incurred_medical_expenses_2321673",
+          WhoMedicalExpenses
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            MedicalExpenses[0].qkey,
+            MedicalExpenses[0].akey,
+            fieldTypeText
+          )
+        );
+        let InjuryIllness = getAKey(
+          "helpdesk_ticket_custom_field_cf_are_you_claiming_for_an_injury_or_illness644442_2321673",
+          MedicalInjuryIllness
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            InjuryIllness[0].qkey,
+            InjuryIllness[0].akey,
+            fieldTypeText
+          )
+        );
+        let currencyType = getAKey(
+          "helpdesk_ticket_custom_field_cf_currency_type637939_2321673",
+          CurrencyType
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            currencyType[0].qkey,
+            currencyType[0].akey,
+            fieldTypeText
+          )
+        );
+        let DualInsurance = getAKey(
+          "helpdesk_ticket_custom_field_cf_do_you_have_any_other_travel_insurance_policy206683_2321673",
+          yesNo
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            DualInsurance[0].qkey,
+            DualInsurance[0].akey,
+            fieldTypeText
+          )
+        );
+        let PrivateMedicalInsurance = getAKey(
+          "helpdesk_ticket_custom_field_cf_do_you_have_private_medical_insurance_2321673",
+          yesNo
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            PrivateMedicalInsurance[0].qkey,
+            PrivateMedicalInsurance[0].akey,
+            fieldTypeText
+          )
+        );
+
+        let PaymentMethod = getAKey(
+          "helpdesk_ticket_custom_field_cf_how_did_you_pay_for_your_trip257666_2321673",
+          TripPaymentMethod
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            PaymentMethod[0].qkey,
+            PaymentMethod[0].akey,
+            fieldTypeText
+          )
+        );
+        let CreditCardTransactions = getAKey(
+          "helpdesk_ticket_custom_field_cf_did_you_use_your_credit_card_for_any_transactions_whilst_on_your_trip_2321673",
+          yesNo
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            CreditCardTransactions[0].qkey,
+            CreditCardTransactions[0].akey,
+            fieldTypeText
+          )
+        );
+        let CreditCardAmount = getAKey(
+          "helpdesk_ticket_custom_field_cf_did_you_pay_for_50_or_more_of_the_trip_with_a_credit_card_2321673",
+          yesNo
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            CreditCardAmount[0].qkey,
+            CreditCardAmount[0].akey,
+            fieldTypeText
+          )
+        );
+        body["ClaimAnswers"] = ClaimQaAndAnswers;
+        console.log("submit claim body --->", body);
+      } else if (reasonClaim[0].akey == "01_02_MissedDep") {
+        let MissedDepDelayOther = submitClaimBody(
+          "MissedDepDelayOther",
+          $(
+            "#helpdesk_ticket_custom_field_cf_please_give_us_further_details520238_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(MissedDepDelayOther);
+        let MissedDepTestType = submitClaimBody(
+          "MissedDepTestType",
+          $(
+            "#helpdesk_ticket_custom_field_cf_please_confirm_the_test_type_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(MissedDepTestType);
+        let MissedDepAccomProvider = submitClaimBody(
+          "MissedDepAccomProvider",
+          $(
+            "#helpdesk_ticket_custom_field_cf_name_of_provider_please_list_all_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(MissedDepAccomProvider);
+        let MissedDepAmount = submitClaimBody(
+          "MissedDepAmount",
+          $(
+            "#helpdesk_ticket_custom_field_cf_amount_paid_in_local_currency_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(MissedDepAmount);
+        let MissedRefundAmount = submitClaimBody(
+          "MissedRefundAmount",
+          $(
+            "#helpdesk_ticket_custom_field_cf_total_refund_vouchers_amount_the_amount_you_have_received_back594804_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(MissedRefundAmount);
+        let MissedDeparture = getAKey(
+          "helpdesk_ticket_custom_field_cf_what_caused_you_to_miss_your_departure_2321673",
+          MissedDepartureReason
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            MissedDeparture[0].qkey,
+            MissedDeparture[0].akey,
+            fieldTypeText
+          )
+        );
+        let MissedDepDelay = getAKey(
+          "helpdesk_ticket_custom_field_cf_please_confirm_the_reason_for_delay_2321673",
+          MissedDepDelayReason
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            MissedDepDelay[0].qkey,
+            MissedDepDelay[0].akey,
+            fieldTypeText
+          )
+        );
+        let MissedDepThirdParty = getAKey(
+          "helpdesk_ticket_custom_field_cf_was_someone_else_a_third_party_involved_in_the_accident_2321673",
+          yesNo
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            MissedDepThirdParty[0].qkey,
+            MissedDepThirdParty[0].akey,
+            fieldTypeText
+          )
+        );
+        let MissedDepReasonReport = getAKey(
+          "helpdesk_ticket_custom_field_cf_do_you_have_a_report_confirming_the_reason_for_the_delay_2321673",
+          yesNo
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            MissedDepReasonReport[0].qkey,
+            MissedDepReasonReport[0].akey,
+            fieldTypeText
+          )
+        );
+        let MissedDepJourney = getAKey(
+          "helpdesk_ticket_custom_field_cf_on_which_part_of_the_journey_did_you_miss_your_departure_2321673",
+          MissedDepWhichJourney
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            MissedDepJourney[0].qkey,
+            MissedDepJourney[0].akey,
+            fieldTypeText
+          )
+        );
+        let MissedDepSufficientTime = getAKey(
+          "helpdesk_ticket_custom_field_cf_did_you_allow_yourself_sufficient_time_to_reach_your_international_departure_point_2321673",
+          yesNo
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            MissedDepSufficientTime[0].qkey,
+            MissedDepSufficientTime[0].akey,
+            fieldTypeText
+          )
+        );
+        let MissedDepExpense = getAKey(
+          "helpdesk_ticket_custom_field_cf_what_type_of_additional_expenses_are_you_claiming_for_2321673",
+          MissedDepExpenseType
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            MissedDepExpense[0].qkey,
+            MissedDepExpense[0].akey,
+            fieldTypeText
+          )
+        );
+        let currencyType = getAKey(
+          "helpdesk_ticket_custom_field_cf_currency_type637939_2321673",
+          CurrencyType
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            currencyType[0].qkey,
+            currencyType[0].akey,
+            fieldTypeText
+          )
+        );
+        body["ClaimAnswers"] = ClaimQaAndAnswers;
+        console.log("submit claim body --->", body);
+      } else if (reasonClaim[0].akey == "01_06_OthSubsAcc") {
+        let SubAccomCost = submitClaimBody(
+          "SubAccomCost",
+          $(
+            "#helpdesk_ticket_custom_field_cf_what_is_the_estimated_value_of_your_claim_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(SubAccomCost);
+        let SubAccomRefund = submitClaimBody(
+          "SubAccomRefund",
+          $(
+            "#helpdesk_ticket_custom_field_cf_total_refund_vouchers_amount_the_amount_you_have_received_back594804_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(SubAccomRefund);
+        let SubAccReason = getAKey(
+          "helpdesk_ticket_custom_field_cf_what_caused_you_to_leave_your_original_accommodation_2321673",
+          SubAccomReason
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            SubAccReason[0].qkey,
+            SubAccReason[0].akey,
+            fieldTypeText
+          )
+        );
+        let SubAccTripType = getAKey(
+          "helpdesk_ticket_custom_field_cf_what_type_of_trip_did_you_book_2321673",
+          SubAccomTripType
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            SubAccTripType[0].qkey,
+            SubAccTripType[0].akey,
+            fieldTypeText
+          )
+        );
+        let currencyType = getAKey(
+          "helpdesk_ticket_custom_field_cf_currency_type637939_2321673",
+          CurrencyType
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            currencyType[0].qkey,
+            currencyType[0].akey,
+            fieldTypeText
+          )
+        );
+        let SubAccomDate = submitClaimBody(
+          "SubAccomDate",
+          $(
+            "#helpdesk_ticket_custom_field_cf_on_what_date_did_you_leave_your_original_accommodation_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(SubAccomDate);
+        let SubAccomDescription = submitClaimBody(
+          "SubAccomDescription",
+          $(
+            "#helpdesk_ticket_custom_field_cf_please_provide_a_detailed_description_of_the_reason_you_left_your_accommodation_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(SubAccomDescription);
+        body["ClaimAnswers"] = ClaimQaAndAnswers;
+        console.log("submit claim body --->", body);
+      } else if (reasonClaim[0].akey == "01_02_Winter") {
+        let SkiPckClaimReason = getAKey(
+          "helpdesk_ticket_custom_field_cf_which_winter_sports_item_are_you_claiming_for_2321673",
+          SkiPackClaimReason
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            SkiPckClaimReason[0].qkey,
+            SkiPckClaimReason[0].akey,
+            fieldTypeText
+          )
+        );
+        let SkiPackReport = getAKey(
+          "helpdesk_ticket_custom_field_cf_have_you_obtained_a_report_or_invoices_for_the_items_you_are_claiming_2321673",
+          yesNo
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            SkiPackReport[0].qkey,
+            SkiPackReport[0].akey,
+            fieldTypeText
+          )
+        );
+        let currencyType = getAKey(
+          "helpdesk_ticket_custom_field_cf_currency_type637939_2321673",
+          CurrencyType
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            currencyType[0].qkey,
+            currencyType[0].akey,
+            fieldTypeText
+          )
+        );
+        let SkiPackClaimDetails = submitClaimBody(
+          "SkiPackClaimDetails",
+          $(
+            "#helpdesk_ticket_custom_field_cf_please_provide_a_detailed_description_of_the_reason_youre_making_a_claim_today_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(SkiPackClaimDetails);
+        let ValueSkiEst = submitClaimBody(
+          "ValueSkiEst",
+          $(
+            "#helpdesk_ticket_custom_field_cf_what_is_the_estimated_value_of_your_claim_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(ValueSkiEst);
+
+        body["ClaimAnswers"] = ClaimQaAndAnswers;
+        console.log("submit claim body --->", body);
+      }
+      jQuery(".new-ticket-submit-button")
+        .closest(".card-body")
+        .find(".form-group")
+        .before(
+          '<div class="invalid-feedback common_error">Please fill in all fields</div>'
+        );
+      jQuery("#overlay").removeClass("d-none").addClass("show loader-text");
+      createSubmitClaim(body, ".new-ticket-dummy");
+    });
+    $(".ticket-detail-dummy").click(function () {
+      // let policyNumber = $(
+      //   "#helpdesk_ticket_custom_field_cf_policy_number454080_2321673"
+      // ).val();
+      // claimnumber we can use global stored value
+      console.log("Main ");
+      let body = {
+        internalpolicyNumber: $(
+          "#helpdesk_ticket_custom_field_cf_internalpolicynumber_2321673"
+        ).val(),
+        ClaimNumber: $(
+          "#helpdesk_ticket_custom_field_cf_claim_number_2321673"
+        ).val(),
+        MainContactClientId: $(
+          "#helpdesk_ticket_custom_field_cf_mainclientid_2321673"
+        ).val(),
+        FromDate: $(
+          "#helpdesk_ticket_custom_field_cf_your_departure_date_2321673"
+        ).val(),
+        ToDate: $(
+          "#helpdesk_ticket_custom_field_cf_your_return_date_2321673"
+        ).val(),
+        UseContactInformationFromLeadInsured: false,
+        Email: $("#helpdesk_ticket_custom_field_cf_email_address_2321673").val(),
+        HomePhone: $(
+          "#helpdesk_ticket_custom_field_cf_mobile_number_2321673"
+        ).val(),
+        Mobile: $("#helpdesk_ticket_custom_field_cf_mobile_number_2321673").val(),
+        Telephone: $(
+          "#helpdesk_ticket_custom_field_cf_mobile_number_2321673"
+        ).val(),
+      };
+      //otherclients senarios logic
+      var yourArray = [];
+      let otherClientValue = $(
+        "#helpdesk_ticket_custom_field_cf_otherclientid_2321673"
+      ).val();
+      if (otherClientValue) {
+        console.log("if other client field has value ", otherClientValue);
+        yourArray.push(otherClientValue);
+        console.log("if other client field has yourArray ", yourArray);
+        body["OtherInsuredClientIds"] = yourArray;
+      } else {
+        console.log("if other client field has no value ", otherClientValue);
+        body["OtherInsuredClientIds"] = yourArray;
+      }
+      console.log(body);
+      //bank details senarios logic
+      console.log(bankResult);
+      console.log(typeof bankResult);
+      if (bankResult) {
+        let bankInfo = bankResult;
+        console.log("response sucessfull");
+        let bankDetails = {};
+        bankDetails["AccountHolder"] = $(
+          "#helpdesk_ticket_custom_field_cf_name_of_account_holder_2321673"
         ).val();
-        itemsObject["Currency"] = null;
-        itemsObject["repairCost"] = 0;
-        itemArray.push(itemsObject);
-        temp["items"] = itemArray;
-      } else if (qkeyValue == "HoursDelayed") {
-        temp["QuestionKey"] = qkeyValue;
-        temp["IntegerAnswer"] = akeyValue;
+        bankDetails["BankName"] = bankInfo.bankName;
+        bankDetails["IBan"] = bankInfo.iBan;
+        bankDetails["BankAddressLine1"] = bankInfo.bankAddressLine1;
+        bankDetails["BankAddressLine2"] = bankInfo.bankAddressLine2;
+        bankDetails["BankAddressLine3"] = bankInfo.bankAddressLine3;
+        bankDetails["PostCode"] = bankInfo.postCode;
+        bankDetails["City"] = bankInfo.city;
+        bankDetails["Swift"] = bankInfo.swift;
+        bankDetails["AccountNumber"] = bankInfo.accountNumber;
+        bankDetails["SortCode"] = bankInfo.sortCode;
+        bankDetails["CountryCode"] = bankInfo.countryCode;
+        console.log("bank Details -->", bankDetails);
+        body["BankAccountDetails"] = bankDetails;
+        console.log("formed body -->", body);
+      } else {
+        console.log("Please validate bank details");
+      }
+      let reasonClaim = getAKey(
+        "helpdesk_ticket_custom_field_cf_reason_for_claim_2321673",
+        ClaimReason
+      );
+      let fieldTypeText = "Text";
+      let fieldTypeDate = "Date";
+      let ClaimQaAndAnswers = [];
+      let cxBookingDate = submitClaimBody(
+        "CanxBookingDate",
+        $("#helpdesk_ticket_custom_field_cf_your_booking_date_2321673").val(),
+        fieldTypeDate
+      );
+      ClaimQaAndAnswers.push(cxBookingDate);
+      if (reasonClaim[0].akey == "01_02_Canx") {
+        let coronaDateAware = submitClaimBody(
+          "CoronaDateAware",
+          $(
+            "#helpdesk_ticket_custom_field_cf_when_were_you_initially_aware_that_you_needed_to_cancel_your_trip635242_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(coronaDateAware);
+        let coronaDateCancelled = submitClaimBody(
+          "CoronaDateCancelled",
+          $(
+            "#helpdesk_ticket_custom_field_cf_please_enter_the_date_you_asked_your_tour_operatortravel_provider_to_cancel_the_trip_2321673"
+          ).val(),
+          fieldTypeDate
+        );
+        ClaimQaAndAnswers.push(coronaDateCancelled);
+        let tripBookingCost = submitClaimBody(
+          "TripBookingCost",
+          $(
+            "#helpdesk_ticket_custom_field_cf_total_trip_cost_the_amount_you_paid_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(tripBookingCost);
+        let tripBookingRefund = submitClaimBody(
+          "TripBookingRefund",
+          $(
+            "#helpdesk_ticket_custom_field_cf_total_refund_vouchers_amount_the_amount_you_have_received_back594804_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(tripBookingRefund);
+        let dualInsuranceName = submitClaimBody(
+          "DualInsuranceName",
+          $(
+            "#helpdesk_ticket_custom_field_cf_name_of_your_policy_provider895583_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(dualInsuranceName);
+        let dualInsuranceNumber = submitClaimBody(
+          "DualInsuranceNumber",
+          $("#helpdesk_ticket_custom_field_cf_policy_number964552_2321673").val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(dualInsuranceNumber);
+        let bankAccountType = submitClaimBody(
+          "BankAccountType",
+          $(
+            "#helpdesk_ticket_custom_field_cf_who_do_you_bank_with_and_what_type_of_account_do_you_have486839_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(bankAccountType);
+        let travelProviderName = submitClaimBody(
+          "TravelProviderName",
+          $(
+            "#helpdesk_ticket_custom_field_cf_please_confirm_the_name_of_the_trip_providers_and_the_booking_references342856_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(travelProviderName);
+        let cancellationBookingNoPeople = submitClaimBody(
+          "CancellationBookingNoPeople",
+          $(
+            "#helpdesk_ticket_custom_field_cf_how_many_people_are_there_on_the_booking166234_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(cancellationBookingNoPeople);
+        let cancellationInsuredNoClaiming = submitClaimBody(
+          "CancellationInsuredNoClaiming",
+          $(
+            "#helpdesk_ticket_custom_field_cf_how_many_people_on_the_booking_are_insured_by_this_policy_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(cancellationInsuredNoClaiming);
+        let coronaReason = getAKey(
+          "helpdesk_ticket_custom_field_cf_why_did_you_cancel_your_trip_2321673",
+          CoronaReason
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            coronaReason[0].qkey,
+            coronaReason[0].akey,
+            fieldTypeText
+          )
+        );
+        let covidTypeOfTrip = getAKey(
+          "helpdesk_ticket_custom_field_cf_what_type_of_trip_did_you_book877716_2321673",
+          COVIDTypeOfTrip
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            covidTypeOfTrip[0].qkey,
+            covidTypeOfTrip[0].akey,
+            fieldTypeText
+          )
+        );
+        let covidTripTransportType = getAKey(
+          "helpdesk_ticket_custom_field_cf_what_type_of_transport_was_included_in_your_booking_2321673",
+          COVIDTripTransportType
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            covidTripTransportType[0].qkey,
+            covidTripTransportType[0].akey,
+            fieldTypeText
+          )
+        );
+        let currencyType = getAKey(
+          "helpdesk_ticket_custom_field_cf_currency_type637939_2321673",
+          CurrencyType
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            currencyType[0].qkey,
+            currencyType[0].akey,
+            fieldTypeText
+          )
+        );
+        let dualInsurance = getAKey(
+          "helpdesk_ticket_custom_field_cf_do_you_have_any_other_travel_insurance_policy400572_2321673",
+          yesNo
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            dualInsurance[0].qkey,
+            dualInsurance[0].akey,
+            fieldTypeText
+          )
+        );
+        let tripPaymentMethod = getAKey(
+          "helpdesk_ticket_custom_field_cf_how_did_you_pay_for_your_trip913590_2321673",
+          TripPaymentMethod
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            tripPaymentMethod[0].qkey,
+            tripPaymentMethod[0].akey,
+            fieldTypeText
+          )
+        );
+        let creditCardType = submitClaimBody(
+          "CreditCardType",
+          $(
+            "#helpdesk_ticket_custom_field_cf_who_is_the_provider_of_your_credit_card224630_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(creditCardType);
+        let DateOfSymptoms = submitClaimBody(
+          "DateOfSymptoms",
+          $(
+            "#helpdesk_ticket_custom_field_cf_when_did_the_symptoms_start939174_2321673"
+          ).val(),
+          fieldTypeDate
+        );
+        ClaimQaAndAnswers.push(DateOfSymptoms);
+        let creditCardAmount = getAKey(
+          "helpdesk_ticket_custom_field_cf_did_you_pay_for_50_or_more_of_the_trip_with_a_credit_card401929_2321673",
+          yesNo
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            creditCardAmount[0].qkey,
+            creditCardAmount[0].akey,
+            fieldTypeText
+          )
+        );
+        let positivePerson = getAKey(
+          "helpdesk_ticket_custom_field_cf_who_has_tested_positive_for_coronavirus_2321673",
+          WhoTestedPositive
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            positivePerson[0].qkey,
+            positivePerson[0].akey,
+            fieldTypeText
+          )
+        );
+        let typeTest = getAKey(
+          "helpdesk_ticket_custom_field_cf_what_type_of_test_was_taken_2321673",
+          WhatTypeOfCovidTest
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(typeTest[0].qkey, typeTest[0].akey, fieldTypeText)
+        );
+        let testEmail = getAKey(
+          "helpdesk_ticket_custom_field_cf_do_you_have_evidence_from_either_the_nhshse_private_testing_company_or_your_doctor_confirming_the_positive_covid_test_email_letter_sms_2321673",
+          yesNo
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(testEmail[0].qkey, testEmail[0].akey, fieldTypeText)
+        );
+        let testResultDate = submitClaimBody(
+          "CoronaTestDate",
+          $(
+            "#helpdesk_ticket_custom_field_cf_when_did_the_test_results_confirming_coronavirus_infection_arrive_2321673"
+          ).val(),
+          fieldTypeDate
+        );
+        ClaimQaAndAnswers.push(testResultDate);
+        body["ClaimAnswers"] = ClaimQaAndAnswers;
+        console.log("submit claim body --->", body);
+      } else if (reasonClaim[0].akey == "01_03_BagDamNonCarr") {
+        let PIRNumberDamage = submitClaimBody(
+          "PIRNumberDamage",
+          $(
+            "#helpdesk_ticket_custom_field_cf_please_enter_the_report_reference_given_by_your_transport_provider_pir_reference_if_applicable_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(PIRNumberDamage);
+        let RepairCost = submitClaimBody(
+          "RepairCost",
+          $(
+            "#helpdesk_ticket_custom_field_cf_total_refund_vouchers_amount_the_amount_you_have_received_back_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(RepairCost);
+        let ItemDescription = submitClaimBody(
+          "ItemDescription",
+          $("#helpdesk_ticket_custom_field_cf_item_description_2321673").val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(ItemDescription);
+        let CreditCardType = submitClaimBody(
+          "CreditCardType",
+          $(
+            "#helpdesk_ticket_custom_field_cf_who_is_the_provider_of_your_credit_card237678_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(CreditCardType);
+        let HomePolicyNumber = submitClaimBody(
+          "HomePolicyNumber",
+          $("#helpdesk_ticket_custom_field_cf_policy_number818860_2321673").val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(HomePolicyNumber);
+        let HomeInsurerName = submitClaimBody(
+          "HomeInsurerName",
+          $(
+            "#helpdesk_ticket_custom_field_cf_name_of_your_policy_provider267746_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(HomeInsurerName);
+        let BankAccountType = submitClaimBody(
+          "BankAccountType",
+          $(
+            "#helpdesk_ticket_custom_field_cf_who_do_you_bank_with_and_what_type_of_account_do_you_have87472_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(BankAccountType);
+        let DualInsuranceNumber = submitClaimBody(
+          "DualInsuranceNumber",
+          $("#helpdesk_ticket_custom_field_cf_policy_number832231_2321673").val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(DualInsuranceNumber);
+        let DualInsuranceName = submitClaimBody(
+          "DualInsuranceName",
+          $(
+            "#helpdesk_ticket_custom_field_cf_name_of_your_policy_provider610133_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(DualInsuranceName);
+        let DamageItemPurchasePrice = submitClaimBody(
+          "DamageItemPurchasePrice",
+          $(
+            "#helpdesk_ticket_custom_field_cf_what_was_its_cost_when_you_bought_it_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(DamageItemPurchasePrice);
+        let BaggageClaimValueDamage = submitClaimBody(
+          "BaggageClaimValueDamage",
+          $(
+            "#helpdesk_ticket_custom_field_cf_whats_the_total_amount_youre_claiming_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(BaggageClaimValueDamage);
+        let BaggageDamageOccur = submitClaimBody(
+          "BaggageDamageOccur",
+          $(
+            "#helpdesk_ticket_custom_field_cf_how_did_the_damage_happen_well_need_as_much_information_as_you_can_give_please_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(BaggageDamageOccur);
+        let BaggageDamageItemDescription = submitClaimBody(
+          "BaggageDamageItemDescription",
+          $(
+            "#helpdesk_ticket_custom_field_cf_please_provide_a_description_the_owner_the_purchase_date_and_purchase_price_of_each_item_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(BaggageDamageItemDescription);
+        let DamageNoReportReason = submitClaimBody(
+          "DamageNoReportReason",
+          $(
+            "#helpdesk_ticket_custom_field_cf_let_us_know_why_you_didnt_report_the_damage_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(DamageNoReportReason);
+        let LossTheftPurchaseDate = submitClaimBody(
+          "LossTheftPurchaseDate",
+          $(
+            "#helpdesk_ticket_custom_field_cf_when_did_you_buy_the_item_2321673"
+          ).val(),
+          fieldTypeDate
+        );
+        ClaimQaAndAnswers.push(LossTheftPurchaseDate);
+        let DamageNumberOfItems = submitClaimBody(
+          "DamageNumberOfItems",
+          $(
+            "#helpdesk_ticket_custom_field_cf_how_many_items_are_you_claiming_for411795_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(DamageNumberOfItems);
+        let DamageOnPerson = getAKey(
+          "helpdesk_ticket_custom_field_cf_was_the_items_with_you_when_it_was_damaged_2321673",
+          yesNo
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            DamageOnPerson[0].qkey,
+            DamageOnPerson[0].akey,
+            fieldTypeText
+          )
+        );
+        let DamageItemRepairable = getAKey(
+          "helpdesk_ticket_custom_field_cf_can_the_item_be_repaired_2321673",
+          yesNo
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            DamageItemRepairable[0].qkey,
+            DamageItemRepairable[0].akey,
+            fieldTypeText
+          )
+        );
+        let DamageRepairEstimate = getAKey(
+          "helpdesk_ticket_custom_field_cf_did_you_get_a_repair_estimate_2321673",
+          yesNo
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            DamageRepairEstimate[0].qkey,
+            DamageRepairEstimate[0].akey,
+            fieldTypeText
+          )
+        );
+        let ItemTypeDamagedItems = getAKey(
+          "helpdesk_ticket_custom_field_cf_item_type_2321673",
+          ItemTypeDamaged
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            ItemTypeDamagedItems[0].qkey,
+            ItemTypeDamagedItems[0].akey,
+            fieldTypeText
+          )
+        );
+        let HomeInsurance = getAKey(
+          "helpdesk_ticket_custom_field_cf_do_you_have_home_contents_insurance_2321673",
+          yesNo
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            HomeInsurance[0].qkey,
+            HomeInsurance[0].akey,
+            fieldTypeText
+          )
+        );
+        let DualInsurance = getAKey(
+          "helpdesk_ticket_custom_field_cf_do_you_have_any_other_travel_insurance_policy_2321673",
+          yesNo
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            DualInsurance[0].qkey,
+            DualInsurance[0].akey,
+            fieldTypeText
+          )
+        );
+        let TripPaymentMethodBaggageDamage = getAKey(
+          "helpdesk_ticket_custom_field_cf_how_did_you_pay_for_your_trip396837_2321673",
+          TripPaymentMethod
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            TripPaymentMethodBaggageDamage[0].qkey,
+            TripPaymentMethodBaggageDamage[0].akey,
+            fieldTypeText
+          )
+        );
+        let CreditCardAmountBaggageDamage = getAKey(
+          "helpdesk_ticket_custom_field_cf_did_you_pay_for_50_or_more_of_the_trip_with_a_credit_card824584_2321673",
+          yesNo
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            CreditCardAmountBaggageDamage[0].qkey,
+            CreditCardAmountBaggageDamage[0].akey,
+            fieldTypeText
+          )
+        );
+        let DamageItemOwnerItems = getAKey(
+          "helpdesk_ticket_custom_field_cf_who_owns_the_item_2321673",
+          DamageItemOwner
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            DamageItemOwnerItems[0].qkey,
+            DamageItemOwnerItems[0].akey,
+            fieldTypeText
+          )
+        );
+        let TransportProviderDamage = getAKey(
+          "helpdesk_ticket_custom_field_cf_was_the_items_with_your_transport_provider_when_damaged_eg_airline_checkedin_luggage_2321673",
+          yesNo
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            TransportProviderDamage[0].qkey,
+            TransportProviderDamage[0].akey,
+            fieldTypeText
+          )
+        );
+        let DamageTransportGadget = getAKey(
+          "helpdesk_ticket_custom_field_cf_is_the_damaged_items_listed_as_valuable_gadgetelectrical_in_your_policy_wording_2321673",
+          yesNo
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            DamageTransportGadget[0].qkey,
+            DamageTransportGadget[0].akey,
+            fieldTypeText
+          )
+        );
+        let DamageReport = getAKey(
+          "helpdesk_ticket_custom_field_cf_did_you_tell_your_transport_provider_about_the_damage_2321673",
+          yesNo
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            DamageReport[0].qkey,
+            DamageReport[0].akey,
+            fieldTypeText
+          )
+        );
+        body["ClaimAnswers"] = ClaimQaAndAnswers;
+        console.log("submit claim body --->", body);
+      } else if (reasonClaim[0].akey == "01_02_BagL") {
+        let reasonClaims = $(
+          "#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673"
+        ).val();
+        let keyValue = $(
+          "#helpdesk_ticket_custom_field_cf_how_many_items_are_you_claiming_for_2321673"
+        ).val();
+        let lossOrStolen = submitClaimBody(reasonClaims, keyValue, "none");
+        ClaimQaAndAnswers.push(lossOrStolen);
+        let PoliceReference = submitClaimBody(
+          "PoliceReference",
+          $(
+            "#helpdesk_ticket_custom_field_cf_police_or_crime_reference_number_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(PoliceReference);
+        let BaggageLossItemDescription = submitClaimBody(
+          "BaggageLossItemDescription",
+          $(
+            "#helpdesk_ticket_custom_field_cf_please_provide_a_description_the_owner_the_purchase_date_and_purchase_price_of_each_item910226_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(BaggageLossItemDescription);
+        let BaggageClaimValue = submitClaimBody(
+          "BaggageClaimValue",
+          $(
+            "#helpdesk_ticket_custom_field_cf_what_is_the_total_amount_youre_claiming_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(BaggageClaimValue);
+        let DualInsuranceNumber = submitClaimBody(
+          "DualInsuranceNumber",
+          $("#helpdesk_ticket_custom_field_cf_policy_number832231_2321673").val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(DualInsuranceNumber);
+        let BankAccountType = submitClaimBody(
+          "BankAccountType",
+          $(
+            "#helpdesk_ticket_custom_field_cf_who_do_you_bank_with_and_what_type_of_account_do_you_have87472_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(BankAccountType);
+        let DualInsuranceName = submitClaimBody(
+          "DualInsuranceName",
+          $(
+            "#helpdesk_ticket_custom_field_cf_name_of_your_policy_provider610133_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(DualInsuranceName);
+        let ItemDescription = submitClaimBody(
+          "ItemDescription",
+          $(
+            "#helpdesk_ticket_custom_field_cf_item_description369043_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(ItemDescription);
+        let TheftOccur = submitClaimBody(
+          "TheftOccur",
+          $(
+            "#helpdesk_ticket_custom_field_cf_in_your_own_words_tell_us_what_happened994308_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(TheftOccur);
+        let LossOccur = submitClaimBody(
+          "LossOccur",
+          $(
+            "#helpdesk_ticket_custom_field_cf_in_your_own_words_tell_us_what_happened511569_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(LossOccur);
+        let LossTheftNumberOfItems = submitClaimBody(
+          "LossTheftNumberOfItems",
+          $(
+            "#helpdesk_ticket_custom_field_cf_how_many_items_are_you_claiming_for_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(LossTheftNumberOfItems);
+        let lossTheftWhereItems = getAKey(
+          "helpdesk_ticket_custom_field_cf_are_any_of_the_items_lost_defined_as_a_valuable_gadgetelectrical_as_shown_within_your_policy_wording_2321673",
+          yesNo
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            lossTheftWhereItems[0].qkey,
+            lossTheftWhereItems[0].akey,
+            fieldTypeText
+          )
+        );
+        let transportGadgetItems = getAKey(
+          "helpdesk_ticket_custom_field_cf_are_you_claiming_for_more_than_1_item_2321673",
+          yesNo
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            transportGadgetItems[0].qkey,
+            transportGadgetItems[0].akey,
+            fieldTypeText
+          )
+        );
+        let LossOrTheftItems = getAKey(
+          "helpdesk_ticket_custom_field_cf_are_you_claiming_for_a_loss_or_theft_2321673",
+          LossOrTheft
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            LossOrTheftItems[0].qkey,
+            LossOrTheftItems[0].akey,
+            fieldTypeText
+          )
+        );
+        let LossTheftWhereItems = getAKey(
+          "helpdesk_ticket_custom_field_cf_where_did_the_loss_or_theft_take_place_2321673",
+          LossTheftWhere
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            LossTheftWhereItems[0].qkey,
+            LossTheftWhereItems[0].akey,
+            fieldTypeText
+          )
+        );
+        let InVehicleAtTimeOfTheft = getAKey(
+          "helpdesk_ticket_custom_field_cf_were_you_in_the_vehicle_at_the_time_of_the_theft_2321673",
+          yesNo
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            InVehicleAtTimeOfTheft[0].qkey,
+            InVehicleAtTimeOfTheft[0].akey,
+            fieldTypeText
+          )
+        );
+        let lossTheftReport = getAKey(
+          "helpdesk_ticket_custom_field_cf_did_you_report_the_loss_or_theft_2321673",
+          yesNo
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            lossTheftReport[0].qkey,
+            lossTheftReport[0].akey,
+            fieldTypeText
+          )
+        );
+        let lossTheftReportedTo = getAKey(
+          "helpdesk_ticket_custom_field_cf_who_did_you_report_it_to_2321673",
+          LossTheftReportedTo
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            lossTheftReportedTo[0].qkey,
+            lossTheftReportedTo[0].akey,
+            fieldTypeText
+          )
+        );
+        let itemType = getAKey(
+          "helpdesk_ticket_custom_field_cf_item_type870706_2321673",
+          ItemType
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(itemType[0].qkey, itemType[0].akey, fieldTypeText)
+        );
+        let ItemOwners = getAKey(
+          "helpdesk_ticket_custom_field_cf_who_owns_the_item86910_2321673",
+          ItemOwner
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(ItemOwners[0].qkey, ItemOwners[0].akey, fieldTypeText)
+        );
+        let HomeInsurance = getAKey(
+          "helpdesk_ticket_custom_field_cf_do_you_have_home_contents_insurance_2321673",
+          yesNo
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            HomeInsurance[0].qkey,
+            HomeInsurance[0].akey,
+            fieldTypeText
+          )
+        );
+        let DualInsurance = getAKey(
+          "helpdesk_ticket_custom_field_cf_do_you_have_any_other_travel_insurance_policy_2321673",
+          yesNo
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            DualInsurance[0].qkey,
+            DualInsurance[0].akey,
+            fieldTypeText
+          )
+        );
+        let TripPaymentMethodDisplay = getAKey(
+          "helpdesk_ticket_custom_field_cf_how_did_you_pay_for_your_trip396837_2321673",
+          TripPaymentMethod
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            TripPaymentMethodDisplay[0].qkey,
+            TripPaymentMethodDisplay[0].akey,
+            fieldTypeText
+          )
+        );
+        let CreditCardAmount = getAKey(
+          "helpdesk_ticket_custom_field_cf_did_you_pay_for_50_or_more_of_the_trip_with_a_credit_card824584_2321673",
+          yesNo
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            CreditCardAmount[0].qkey,
+            CreditCardAmount[0].akey,
+            fieldTypeText
+          )
+        );
+        let NoReportReasonItems = getAKey(
+          "helpdesk_ticket_custom_field_cf_please_confirm_why_you_did_not_report_the_loss_or_theft6975_2321673",
+          NoReportReason
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            NoReportReasonItems[0].qkey,
+            NoReportReasonItems[0].akey,
+            fieldTypeText
+          )
+        );
+        let LossTheftVehicleList = getAKey(
+          "helpdesk_ticket_custom_field_cf_whereabouts_in_the_vehicle_was_the_items_when_stolen_2321673",
+          LossTheftVehicle
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            LossTheftVehicleList[0].qkey,
+            LossTheftVehicleList[0].akey,
+            fieldTypeText
+          )
+        );
+        let LossTheftVehicleForce = getAKey(
+          "helpdesk_ticket_custom_field_cf_was_there_physical_damage_to_the_vehicle_2321673",
+          yesNo
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            LossTheftVehicleForce[0].qkey,
+            LossTheftVehicleForce[0].akey,
+            fieldTypeText
+          )
+        );
+        let LossTheftPurchaseDate = submitClaimBody(
+          "LossTheftPurchaseDate",
+          $(
+            "#helpdesk_ticket_custom_field_cf_when_did_you_purchase_the_item_2321673"
+          ).val(),
+          fieldTypeDate
+        );
+        ClaimQaAndAnswers.push(LossTheftPurchaseDate);
+        let CreditCardType = submitClaimBody(
+          "CreditCardType",
+          $(
+            "#helpdesk_ticket_custom_field_cf_who_is_the_provider_of_your_credit_card237678_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(CreditCardType);
+        let HomePolicyNumber = submitClaimBody(
+          "HomePolicyNumber",
+          $("#helpdesk_ticket_custom_field_cf_policy_number818860_2321673").val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(HomePolicyNumber);
+        let HomeInsurerName = submitClaimBody(
+          "HomeInsurerName",
+          $(
+            "#helpdesk_ticket_custom_field_cf_name_of_your_policy_provider267746_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(HomeInsurerName);
+        let DamageItemPurchasePrice = submitClaimBody(
+          "DamageItemPurchasePrice",
+          $(
+            "#helpdesk_ticket_custom_field_cf_what_was_its_cost_when_you_bought_it_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(DamageItemPurchasePrice);
+        body["ClaimAnswers"] = ClaimQaAndAnswers;
+        console.log("submit claim body --->", body);
+      } else if (reasonClaim[0].akey == "01_02_BagD") {
+        let BaggageDelay = getAKey(
+          "helpdesk_ticket_custom_field_cf_which_part_of_the_journey_did_your_baggage_arrive_late_2321673",
+          BaggageDelayLeg
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            BaggageDelay[0].qkey,
+            BaggageDelay[0].akey,
+            fieldTypeText
+          )
+        );
+        let DelayedBagReturned = getAKey(
+          "helpdesk_ticket_custom_field_cf_has_your_baggage_been_returned_to_you_2321673",
+          yesNo
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            DelayedBagReturned[0].qkey,
+            DelayedBagReturned[0].akey,
+            fieldTypeText
+          )
+        );
+        let TransportationMethodDelay = getAKey(
+          "helpdesk_ticket_custom_field_cf_what_transport_type_was_your_baggage_delayed_on_2321673",
+          TransportationMethodDelayed
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            TransportationMethodDelay[0].qkey,
+            TransportationMethodDelay[0].akey,
+            fieldTypeText
+          )
+        );
+        let DelayReport = getAKey(
+          "helpdesk_ticket_custom_field_cf_did_you_notify_your_transport_provider_about_the_delay_and_get_a_report_pir_2321673",
+          yesNo
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(DelayReport[0].qkey, DelayReport[0].akey, fieldTypeText)
+        );
+        let DelayedBaggageRefund = getAKey(
+          "helpdesk_ticket_custom_field_cf_have_you_received_any_refund_from_your_transport_provider_2321673",
+          yesNo
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            DelayedBaggageRefund[0].qkey,
+            DelayedBaggageRefund[0].akey,
+            fieldTypeText
+          )
+        );
+        let BaggageDelayHours = submitClaimBody(
+          "BaggageDelayHours",
+          $(
+            "#helpdesk_ticket_custom_field_cf_how_many_hours_was_your_baggage_delayed_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(BaggageDelayHours);
+        let PIRNumberDelay = submitClaimBody(
+          "PIRNumberDelay",
+          $(
+            "#helpdesk_ticket_custom_field_cf_enter_the_report_reference_pir_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(PIRNumberDelay);
+        let ItemTypeDelay = submitClaimBody(
+          "ItemTypeDelay",
+          $(
+            "#helpdesk_ticket_custom_field_cf_please_list_all_replacement_items_purchased339565_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(ItemTypeDelay);
+        let DelayPurchaseDate = submitClaimBody(
+          "DelayPurchaseDate",
+          $(
+            "#helpdesk_ticket_custom_field_cf_on_what_date_did_you_purchase_the_replacement_items_2321673"
+          ).val(),
+          fieldTypeDate
+        );
+        ClaimQaAndAnswers.push(DelayPurchaseDate);
+        let DelayJourneyLegOther = submitClaimBody(
+          "DelayJourneyLegOther",
+          $(
+            "#helpdesk_ticket_custom_field_cf_please_give_us_further_details469996_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(DelayJourneyLegOther);
+        let currencyType = getAKey(
+          "helpdesk_ticket_custom_field_cf_currency_type637939_2321673",
+          CurrencyType
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            currencyType[0].qkey,
+            currencyType[0].akey,
+            fieldTypeText
+          )
+        );
+        let DelayItemPurchasePrice = submitClaimBody(
+          "DelayItemPurchasePrice",
+          $(
+            "#helpdesk_ticket_custom_field_cf_amount_paid_in_local_currency527297_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(DelayItemPurchasePrice);
+        let DelayedBaggageRefundAmount = submitClaimBody(
+          "DelayedBaggageRefundAmount",
+          $(
+            "#helpdesk_ticket_custom_field_cf_total_refund_vouchers_amount_the_amount_you_have_received_back594804_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(DelayedBaggageRefundAmount);
+
+        body["ClaimAnswers"] = ClaimQaAndAnswers;
+        console.log("submit claim body --->", body);
+      } else if (reasonClaim[0].akey == "01_03_CxIllClnt") {
+        let dateAdvisedJuryWitness = submitClaimBody(
+          "DateAdvisedJuryWitness",
+          $(
+            "#helpdesk_ticket_custom_field_cf_on_what_date_were_you_advised_of_the_jury_service_or_court_date_2321673"
+          ).val(),
+          fieldTypeDate
+        );
+
+        ClaimQaAndAnswers.push(dateAdvisedJuryWitness);
+        let checkRefundValue = $(
+          "#helpdesk_ticket_custom_field_cf_have_you_received_any_refunds_or_compensation702973_2321673"
+        ).val();
+        let TripBookingRefund;
+        if (checkRefundValue) {
+          TripBookingRefund = submitClaimBody(
+            "TripBookingRefund",
+            $(
+              "#helpdesk_ticket_custom_field_cf_have_you_received_any_refunds_or_compensation702973_2321673"
+            ).val(),
+            fieldTypeText
+          );
+          ClaimQaAndAnswers.push(TripBookingRefund);
+        } else {
+          TripBookingRefund = submitClaimBody(
+            "TripBookingRefund",
+            "0",
+            fieldTypeText
+          );
+          ClaimQaAndAnswers.push(TripBookingRefund);
+        }
+        let ReasonForCancellationDesc = submitClaimBody(
+          "ReasonForCancellationDesc",
+          $(
+            "#helpdesk_ticket_custom_field_cf_in_your_own_words_please_explain_the_reason_for_cancelling_your_trip_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(ReasonForCancellationDesc);
+        let DateAdvisedOfRedundancy = submitClaimBody(
+          "DateAdvisedOfRedundancy",
+          $(
+            "#helpdesk_ticket_custom_field_cf_on_what_date_were_you_advised_of_the_redundancy_2321673"
+          ).val(),
+          fieldTypeDate
+        );
+        ClaimQaAndAnswers.push(DateAdvisedOfRedundancy);
+        let DateDiagnosis = submitClaimBody(
+          "DateOfDiagnosis",
+          $(
+            "#helpdesk_ticket_custom_field_cf_please_confirm_the_date_of_diagnosis_for_this_condition_2321673"
+          ).val(),
+          fieldTypeDate
+        );
+        ClaimQaAndAnswers.push(DateDiagnosis);
+        let DateOfDeath = submitClaimBody(
+          "DateOfDeath",
+          $(
+            "#helpdesk_ticket_custom_field_cf_please_confirm_the_date_of_death_2321673"
+          ).val(),
+          fieldTypeDate
+        );
+        ClaimQaAndAnswers.push(DateOfDeath);
+
+        let CauseOfDeath = submitClaimBody(
+          "CauseOfDeath",
+          $(
+            "#helpdesk_ticket_custom_field_cf_please_confirm_the_cause_of_death_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(CauseOfDeath);
+
+        let DateOfInjury = submitClaimBody(
+          "DateOfInjury",
+          $(
+            "#helpdesk_ticket_custom_field_cf_on_what_date_did_the_incident_causing_the_injury_happen_2321673"
+          ).val(),
+          fieldTypeDate
+        );
+        ClaimQaAndAnswers.push(DateOfInjury);
+        let WhoAdvisedCancelOther = submitClaimBody(
+          "WhoAdvisedCancelOther",
+          $(
+            "#helpdesk_ticket_custom_field_cf_please_give_us_further_details352533_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(WhoAdvisedCancelOther);
+        let CancellationBookingNoPeople = submitClaimBody(
+          "CancellationBookingNoPeople",
+          $(
+            "#helpdesk_ticket_custom_field_cf_how_many_people_are_there_on_the_booking_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(CancellationBookingNoPeople);
+        let CancellationInsuredNoClaiming = submitClaimBody(
+          "CancellationInsuredNoClaiming",
+          $(
+            "#helpdesk_ticket_custom_field_cf_how_many_people_on_the_booking_are_insured_by_this_policy514961_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(CancellationInsuredNoClaiming);
+
+        let DateOfSymptoms = submitClaimBody(
+          "DateOfSymptoms",
+          $(
+            "#helpdesk_ticket_custom_field_cf_when_did_the_symptoms_start_2321673"
+          ).val(),
+          fieldTypeDate
+        );
+        ClaimQaAndAnswers.push(DateOfSymptoms);
+        let TripProviderInfo = submitClaimBody(
+          "TripProviderInfo",
+          $(
+            "#helpdesk_ticket_custom_field_cf_please_confirm_the_name_of_the_trip_providers_and_the_booking_references342856_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(TripProviderInfo);
+        let tripBookingCost = submitClaimBody(
+          "TripBookingCost",
+          $(
+            "#helpdesk_ticket_custom_field_cf_total_trip_cost_the_amount_you_paid_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(tripBookingCost);
+        let DateCancelled = submitClaimBody(
+          "DateCancelled",
+          $(
+            "#helpdesk_ticket_custom_field_cf_please_enter_the_date_you_asked_your_tour_operatortravel_provider_to_cancel_the_trip_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(DateCancelled);
+        let dualInsurance = getAKey(
+          "helpdesk_ticket_custom_field_cf_do_you_have_any_other_travel_insurance_policy400572_2321673",
+          yesNo
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            dualInsurance[0].qkey,
+            dualInsurance[0].akey,
+            fieldTypeText
+          )
+        );
+        let dualInsuranceName = submitClaimBody(
+          "DualInsuranceName",
+          $(
+            "#helpdesk_ticket_custom_field_cf_name_of_your_policy_provider895583_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(dualInsuranceName);
+        let dualInsuranceNumber = submitClaimBody(
+          "DualInsuranceNumber",
+          $("#helpdesk_ticket_custom_field_cf_policy_number964552_2321673").val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(dualInsuranceNumber);
+        let bankAccountType = submitClaimBody(
+          "BankAccountType",
+          $(
+            "#helpdesk_ticket_custom_field_cf_who_do_you_bank_with_and_what_type_of_account_do_you_have486839_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(bankAccountType);
+        let tripPaymentMethod = getAKey(
+          "helpdesk_ticket_custom_field_cf_how_did_you_pay_for_your_trip913590_2321673",
+          TripPaymentMethod
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            tripPaymentMethod[0].qkey,
+            tripPaymentMethod[0].akey,
+            fieldTypeText
+          )
+        );
+        let creditCardType = submitClaimBody(
+          "CreditCardType",
+          $(
+            "#helpdesk_ticket_custom_field_cf_who_is_the_provider_of_your_credit_card224630_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(creditCardType);
+        let creditCardAmount = getAKey(
+          "helpdesk_ticket_custom_field_cf_did_you_pay_for_50_or_more_of_the_trip_with_a_credit_card401929_2321673",
+          yesNo
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            creditCardAmount[0].qkey,
+            creditCardAmount[0].akey,
+            fieldTypeText
+          )
+        );
+        let Cancellation = getAKey(
+          "helpdesk_ticket_custom_field_cf_who_has_caused_the_cancellation_2321673",
+          CancellationPerson
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            Cancellation[0].qkey,
+            Cancellation[0].akey,
+            fieldTypeText
+          )
+        );
+
+        let ReasonCancellation = getAKey(
+          "helpdesk_ticket_custom_field_cf_are_you_currently_still_abroad_2321673",
+          ReasonForCancellation
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            ReasonCancellation[0].qkey,
+            ReasonCancellation[0].akey,
+            fieldTypeText
+          )
+        );
+
+        let RedundancyPayment = getAKey(
+          "helpdesk_ticket_custom_field_cf_do_you_qualify_for_redundancy_payment_under_current_legislation_2321673",
+          yesNo
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            RedundancyPayment[0].qkey,
+            RedundancyPayment[0].akey,
+            fieldTypeText
+          )
+        );
+
+        let StableAtTimeofBooking = getAKey(
+          "helpdesk_ticket_custom_field_cf_to_the_best_of_your_knowledge_were_you_or_this_person_considered_stable_at_the_time_of_booking_the_trip_2321673",
+          yesNo
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            StableAtTimeofBooking[0].qkey,
+            StableAtTimeofBooking[0].akey,
+            fieldTypeText
+          )
+        );
+
+        let InjuryThirdPartyInvolved = getAKey(
+          "helpdesk_ticket_custom_field_cf_was_someone_else_a_third_party_involved_in_sustaining_the_injury_2321673",
+          yesNo
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            InjuryThirdPartyInvolved[0].qkey,
+            InjuryThirdPartyInvolved[0].akey,
+            fieldTypeText
+          )
+        );
+
+        let WhoAdvisedCancel = getAKey(
+          "helpdesk_ticket_custom_field_cf_who_advised_to_cancel_2321673",
+          WhoAdvisedToCancel
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            WhoAdvisedCancel[0].qkey,
+            WhoAdvisedCancel[0].akey,
+            fieldTypeText
+          )
+        );
+        let CancellationType = getAKey(
+          "helpdesk_ticket_custom_field_cf_what_type_of_trip_did_you_book137913_2321673",
+          CancellationTypeOfTrip
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            CancellationType[0].qkey,
+            CancellationType[0].akey,
+            fieldTypeText
+          )
+        );
+        let CancellationIllness = getAKey(
+          "helpdesk_ticket_custom_field_cf_what_medical_condition_has_resulted_in_cancellation748907_2321673",
+          CancellationIllnessCondition
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            CancellationIllness[0].qkey,
+            CancellationIllness[0].akey,
+            fieldTypeText
+          )
+        );
+        let TripTransport = getAKey(
+          "helpdesk_ticket_custom_field_cf_what_type_of_transport_was_included_in_your_booking146711_2321673",
+          TripTransportType
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            TripTransport[0].qkey,
+            TripTransport[0].akey,
+            fieldTypeText
+          )
+        );
+        let currencyType = getAKey(
+          "helpdesk_ticket_custom_field_cf_currency_type637939_2321673",
+          CurrencyType
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            currencyType[0].qkey,
+            currencyType[0].akey,
+            fieldTypeText
+          )
+        );
+        body["ClaimAnswers"] = ClaimQaAndAnswers;
+        console.log("submit claim body --->", body);
+      } else if (reasonClaim[0].akey == "01_02_Curt") {
+        let CURTAILMENTREFUND = submitClaimBody(
+          "CURTAILMENTREFUND",
+          $(
+            "#helpdesk_ticket_custom_field_cf_total_refund_vouchers_amount_the_amount_you_have_received_back594804_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(CURTAILMENTREFUND);
+        let CURTAILMENT = submitClaimBody(
+          "CURTAILMENTDATEAWARE",
+          $(
+            "#helpdesk_ticket_custom_field_cf_detail_how_you_got_home_and_on_what_date_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(CURTAILMENT);
+        let CURTAILMENTREASONS = getAKey(
+          "helpdesk_ticket_custom_field_cf_why_did_you_shorten_your_trip_2321673",
+          CURTAILMENTREASON
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            CURTAILMENTREASONS[0].qkey,
+            CURTAILMENTREASONS[0].akey,
+            fieldTypeText
+          )
+        );
+        let CURTAILMENTNOTIFICATION = getAKey(
+          "helpdesk_ticket_custom_field_cf_did_you_notify_us_of_the_need_to_curtail_before_making_arrangements_2321673",
+          yesNo
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            CURTAILMENTNOTIFICATION[0].qkey,
+            CURTAILMENTNOTIFICATION[0].akey,
+            fieldTypeText
+          )
+        );
+
+        let currencyType = getAKey(
+          "helpdesk_ticket_custom_field_cf_currency_type637939_2321673",
+          CurrencyType
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            currencyType[0].qkey,
+            currencyType[0].akey,
+            fieldTypeText
+          )
+        );
+        let CURTAILMENTLOSSAMOUNT = submitClaimBody(
+          "SkiPackClaimDetails",
+          $(
+            "#helpdesk_ticket_custom_field_cf_what_is_the_estimated_value_of_your_claim_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(CURTAILMENTLOSSAMOUNT);
+        let CURTAILMENTDESCRIPTION = submitClaimBody(
+          "CURTAILMENTDESCRIPTION",
+          $(
+            "#helpdesk_ticket_custom_field_cf_please_provide_a_detailed_description_of_the_reason_you_curtailed_your_trip272601_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(CURTAILMENTDESCRIPTION);
+        let CURTAILMENTDATE = submitClaimBody(
+          "CURTAILMENTDATEAWARE",
+          $(
+            "#helpdesk_ticket_custom_field_cf_explain_when_you_were_aware_that_you_needed_to_return_home_please_confirm_the_date_2321673"
+          ).val(),
+          fieldTypeDate
+        );
+        ClaimQaAndAnswers.push(CURTAILMENTDATE);
+        let CURTAILMENTNOTIFICATIONREASON = submitClaimBody(
+          "CURTAILMENTNOTIFICATIONREASON",
+          $(
+            "#helpdesk_ticket_custom_field_cf_please_give_a_full_and_detailed_explanation_of_why_you_did_not_contact_to_contact_our_emergency_service582069_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(CURTAILMENTNOTIFICATIONREASON);
+
+        body["ClaimAnswers"] = ClaimQaAndAnswers;
+        console.log("submit claim body --->", body);
+      } else if (reasonClaim[0].akey == "01_02_Dental") {
+        let DentalDate = submitClaimBody(
+          "DentalDate",
+          $(
+            "#helpdesk_ticket_custom_field_cf_when_did_the_symptoms_start939174_2321673"
+          ).val(),
+          fieldTypeDate
+        );
+        ClaimQaAndAnswers.push(DentalDate);
+
+        let DentalDescriptionExpenses = submitClaimBody(
+          "DentalDescriptionExpenses",
+          $(
+            "#helpdesk_ticket_custom_field_cf_please_list_the_expenses_incurred_including_the_type_of_expense_and_the_name_of_the_dentist_or_company_that_provided_this_expense_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(DentalDescriptionExpenses);
+        let DentalPaymentAmount = submitClaimBody(
+          "DentalPaymentAmount",
+          $(
+            "#helpdesk_ticket_custom_field_cf_amount_paid_in_local_currency527297_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(DentalPaymentAmount);
+
+        let MedicalPaymentDate = submitClaimBody(
+          "MedicalPaymentDate",
+          $(
+            "#helpdesk_ticket_custom_field_cf_on_what_date_did_you_pay_the_dental_expenses_2321673"
+          ).val(),
+          fieldTypeDate
+        );
+        ClaimQaAndAnswers.push(MedicalPaymentDate);
+        let DentalExpenses = getAKey(
+          "helpdesk_ticket_custom_field_cf_who_incurred_dental_expenses930485_2321673",
+          WhoDentalExpenses
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            DentalExpenses[0].qkey,
+            DentalExpenses[0].akey,
+            fieldTypeText
+          )
+        );
+        let DTreatment = getAKey(
+          "helpdesk_ticket_custom_field_cf_what_type_of_dental_treatment_did_you_need_2321673",
+          DentalTreatment
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(DTreatment[0].qkey, DTreatment[0].akey, fieldTypeText)
+        );
+        let currencyType = getAKey(
+          "helpdesk_ticket_custom_field_cf_currency_type637939_2321673",
+          CurrencyType
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            currencyType[0].qkey,
+            currencyType[0].akey,
+            fieldTypeText
+          )
+        );
+        body["ClaimAnswers"] = ClaimQaAndAnswers;
+        console.log("submit claim body --->", body);
+      } else if (reasonClaim[0].akey == "01_02_Delay") {
+        let TransportationMethodDelay = getAKey(
+          "helpdesk_ticket_custom_field_cf_what_transport_was_delayed_2321673",
+          TransportationMethod
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            TransportationMethodDelay[0].qkey,
+            TransportationMethodDelay[0].akey,
+            fieldTypeText
+          )
+        );
+        let ReasonDelay = getAKey(
+          "helpdesk_ticket_custom_field_cf_what_was_the_reason_for_the_delay_2321673",
+          ReasonForDelay
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(ReasonDelay[0].qkey, ReasonDelay[0].akey, fieldTypeText)
+        );
+        let WhichJourneyNewAdded = getAKey(
+          "helpdesk_ticket_custom_field_cf_on_which_part_of_the_journey_were_you_delayed_2321673",
+          WhichJourneyNew
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            WhichJourneyNewAdded[0].qkey,
+            WhichJourneyNewAdded[0].akey,
+            fieldTypeText
+          )
+        );
+        let TravelDelayAdditionalCosts = getAKey(
+          "helpdesk_ticket_custom_field_cf_were_there_any_additional_expenses_as_a_result_of_the_delay_2321673",
+          yesNo
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            TravelDelayAdditionalCosts[0].qkey,
+            TravelDelayAdditionalCosts[0].akey,
+            fieldTypeText
+          )
+        );
+        let DelayOver24Hours = getAKey(
+          "helpdesk_ticket_custom_field_cf_were_you_delayed_for_24_hours_or_more923623_2321673",
+          yesNo
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            DelayOver24Hours[0].qkey,
+            DelayOver24Hours[0].akey,
+            fieldTypeText
+          )
+        );
+        let HoursDelayed = submitClaimBody(
+          "HoursDelayed",
+          $(
+            "#helpdesk_ticket_custom_field_cf_how_many_hours_were_you_delayed_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(HoursDelayed);
+        let TravelDelayCostDescription = submitClaimBody(
+          "TravelDelayCostDescription",
+          $(
+            "#helpdesk_ticket_custom_field_cf_please_provide_information_about_the_additional_costs_including_the_travel_provider_booking_reference_and_the_amount_paid_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(TravelDelayCostDescription);
+        let DelayAdvisedDateTime = submitClaimBody(
+          "DelayAdvisedDateTime",
+          $(
+            "#helpdesk_ticket_custom_field_cf_what_date_were_you_advised_of_the_delay_2321673"
+          ).val(),
+          fieldTypeDate
+        );
+        ClaimQaAndAnswers.push(DelayAdvisedDateTime);
+        body["ClaimAnswers"] = ClaimQaAndAnswers;
+        console.log("submit claim body --->", body);
+      } else if (reasonClaim[0].akey == "01_02_Med") {
+        let MedicalCostCOVID = getAKey(
+          "helpdesk_ticket_custom_field_cf_do_any_of_the_costs_relate_to_covid_tests_2321673",
+          yesNo
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            MedicalCostCOVID[0].qkey,
+            MedicalCostCOVID[0].akey,
+            fieldTypeText
+          )
+        );
+        let MedicalCostPhysio = getAKey(
+          "helpdesk_ticket_custom_field_cf_do_any_of_the_costs_relate_to_physiotherapy_or_chiropracter_2321673",
+          yesNo
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            MedicalCostPhysio[0].qkey,
+            MedicalCostPhysio[0].akey,
+            fieldTypeText
+          )
+        );
+        let MedicalExpCondition = getAKey(
+          "helpdesk_ticket_custom_field_cf_what_condition_has_resulted_in_the_medical_expenses_2321673",
+          MedicalExpensesCondition
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            MedicalExpCondition[0].qkey,
+            MedicalExpCondition[0].akey,
+            fieldTypeText
+          )
+        );
+        let MedicalCostAccomm = getAKey(
+          "helpdesk_ticket_custom_field_cf_do_any_of_the_costs_relate_to_accommodation555447_2321673",
+          yesNo
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            MedicalCostAccomm[0].qkey,
+            MedicalCostAccomm[0].akey,
+            fieldTypeText
+          )
+        );
+        let thirdPartyOption = getAKey(
+          "helpdesk_ticket_custom_field_cf_was_someone_else_a_third_party_involved_in_you_sustaining_the_injury_2321673",
+          yesNo
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            thirdPartyOption[0].qkey,
+            thirdPartyOption[0].akey,
+            fieldTypeText
+          )
+        );
+        let MedicalCostTravel = getAKey(
+          "helpdesk_ticket_custom_field_cf_do_any_of_the_costs_relate_to_travel_not_including_the_ambulance_or_taxi_to_the_hospital_2321673",
+          yesNo
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            MedicalCostTravel[0].qkey,
+            MedicalCostTravel[0].akey,
+            fieldTypeText
+          )
+        );
+        let IncidentDate = submitClaimBody(
+          "IncidentDate",
+          $(
+            "#helpdesk_ticket_custom_field_cf_when_did_the_symptoms_start437132_2321673"
+          ).val(),
+          fieldTypeDate
+        );
+        ClaimQaAndAnswers.push(IncidentDate);
+        let NatureIllness = submitClaimBody(
+          "NatureIllness",
+          $(
+            "#helpdesk_ticket_custom_field_cf_please_provide_any_further_information_about_the_condition_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(NatureIllness);
+        let MedicalDateOfDiagnosis = submitClaimBody(
+          "MedicalDateOfDiagnosis",
+          $(
+            "#helpdesk_ticket_custom_field_cf_please_confirm_the_first_date_of_diagnosis_for_this_condition_2321673"
+          ).val(),
+          fieldTypeDate
+        );
+        ClaimQaAndAnswers.push(MedicalDateOfDiagnosis);
+        let ExpenseDescription = submitClaimBody(
+          "ExpenseDescription",
+          $(
+            "#helpdesk_ticket_custom_field_cf_please_list_the_expenses_incurred_including_the_type_of_expense_and_the_name_of_the_dentist_or_company_that_provided_this_expense90799_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(ExpenseDescription);
+        let NatureInjury = submitClaimBody(
+          "NatureInjury",
+          $(
+            "#helpdesk_ticket_custom_field_cf_in_your_own_words_tell_us_what_happened731291_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(NatureInjury);
+        let MedicalPaymentAmount = submitClaimBody(
+          "MedicalPaymentPrice",
+          $(
+            "#helpdesk_ticket_custom_field_cf_amount_paid_in_local_currency527297_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(MedicalPaymentAmount);
+        let MedicalPaymentDate = submitClaimBody(
+          "MedicalPaymentDate",
+          $(
+            "#helpdesk_ticket_custom_field_cf_date_of_payment778903_2321673"
+          ).val(),
+          fieldTypeDate
+        );
+        ClaimQaAndAnswers.push(MedicalPaymentDate);
+        let DualInsuranceName = submitClaimBody(
+          "DualInsuranceName",
+          $(
+            "#helpdesk_ticket_custom_field_cf_name_of_your_policy_provider_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(DualInsuranceName);
+        let DualInsuranceNumber = submitClaimBody(
+          "DualInsuranceNumber",
+          $("#helpdesk_ticket_custom_field_cf_policy_number533894_2321673").val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(DualInsuranceNumber);
+        let PrivateMedicalPolicy = submitClaimBody(
+          "PrivateMedicalPolicy",
+          $(
+            "#helpdesk_ticket_custom_field_cf_name_of_your_policy_provider618179_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(PrivateMedicalPolicy);
+        let PrivateMedicalNumber = submitClaimBody(
+          "PrivateMedicalNumber",
+          $("#helpdesk_ticket_custom_field_cf_policy_number701021_2321673").val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(PrivateMedicalNumber);
+        let BankAccountType = submitClaimBody(
+          "BankAccountType",
+          $(
+            "#helpdesk_ticket_custom_field_cf_who_do_you_bank_with_and_what_type_of_account_do_you_have584479_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(BankAccountType);
+        let CreditCardType = submitClaimBody(
+          "CreditCardType",
+          $(
+            "#helpdesk_ticket_custom_field_cf_who_is_the_provider_of_your_credit_card_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(CreditCardType);
+        let MedicalStillAbroad = getAKey(
+          "helpdesk_ticket_custom_field_cf_are_you_currently_still_abroad93386_2321673",
+          yesNo
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            MedicalStillAbroad[0].qkey,
+            MedicalStillAbroad[0].akey,
+            fieldTypeText
+          )
+        );
+        let MedicalExpenses = getAKey(
+          "helpdesk_ticket_custom_field_cf_who_incurred_medical_expenses_2321673",
+          WhoMedicalExpenses
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            MedicalExpenses[0].qkey,
+            MedicalExpenses[0].akey,
+            fieldTypeText
+          )
+        );
+        let InjuryIllness = getAKey(
+          "helpdesk_ticket_custom_field_cf_are_you_claiming_for_an_injury_or_illness644442_2321673",
+          MedicalInjuryIllness
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            InjuryIllness[0].qkey,
+            InjuryIllness[0].akey,
+            fieldTypeText
+          )
+        );
+        let currencyType = getAKey(
+          "helpdesk_ticket_custom_field_cf_currency_type637939_2321673",
+          CurrencyType
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            currencyType[0].qkey,
+            currencyType[0].akey,
+            fieldTypeText
+          )
+        );
+        let DualInsurance = getAKey(
+          "helpdesk_ticket_custom_field_cf_do_you_have_any_other_travel_insurance_policy206683_2321673",
+          yesNo
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            DualInsurance[0].qkey,
+            DualInsurance[0].akey,
+            fieldTypeText
+          )
+        );
+        let PrivateMedicalInsurance = getAKey(
+          "helpdesk_ticket_custom_field_cf_do_you_have_private_medical_insurance_2321673",
+          yesNo
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            PrivateMedicalInsurance[0].qkey,
+            PrivateMedicalInsurance[0].akey,
+            fieldTypeText
+          )
+        );
+
+        let PaymentMethod = getAKey(
+          "helpdesk_ticket_custom_field_cf_how_did_you_pay_for_your_trip257666_2321673",
+          TripPaymentMethod
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            PaymentMethod[0].qkey,
+            PaymentMethod[0].akey,
+            fieldTypeText
+          )
+        );
+        let CreditCardTransactions = getAKey(
+          "helpdesk_ticket_custom_field_cf_did_you_use_your_credit_card_for_any_transactions_whilst_on_your_trip_2321673",
+          yesNo
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            CreditCardTransactions[0].qkey,
+            CreditCardTransactions[0].akey,
+            fieldTypeText
+          )
+        );
+        let CreditCardAmount = getAKey(
+          "helpdesk_ticket_custom_field_cf_did_you_pay_for_50_or_more_of_the_trip_with_a_credit_card_2321673",
+          yesNo
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            CreditCardAmount[0].qkey,
+            CreditCardAmount[0].akey,
+            fieldTypeText
+          )
+        );
+        body["ClaimAnswers"] = ClaimQaAndAnswers;
+        console.log("submit claim body --->", body);
+      } else if (reasonClaim[0].akey == "01_02_MissedDep") {
+        let MissedDepDelayOther = submitClaimBody(
+          "MissedDepDelayOther",
+          $(
+            "#helpdesk_ticket_custom_field_cf_please_give_us_further_details520238_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(MissedDepDelayOther);
+        let MissedDepTestType = submitClaimBody(
+          "MissedDepTestType",
+          $(
+            "#helpdesk_ticket_custom_field_cf_please_confirm_the_test_type_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(MissedDepTestType);
+        let MissedDepAccomProvider = submitClaimBody(
+          "MissedDepAccomProvider",
+          $(
+            "#helpdesk_ticket_custom_field_cf_name_of_provider_please_list_all_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(MissedDepAccomProvider);
+        let MissedDepAmount = submitClaimBody(
+          "MissedDepAmount",
+          $(
+            "#helpdesk_ticket_custom_field_cf_amount_paid_in_local_currency_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(MissedDepAmount);
+        let MissedRefundAmount = submitClaimBody(
+          "MissedRefundAmount",
+          $(
+            "#helpdesk_ticket_custom_field_cf_total_refund_vouchers_amount_the_amount_you_have_received_back594804_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(MissedRefundAmount);
+        let MissedDeparture = getAKey(
+          "helpdesk_ticket_custom_field_cf_what_caused_you_to_miss_your_departure_2321673",
+          MissedDepartureReason
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            MissedDeparture[0].qkey,
+            MissedDeparture[0].akey,
+            fieldTypeText
+          )
+        );
+        let MissedDepDelay = getAKey(
+          "helpdesk_ticket_custom_field_cf_please_confirm_the_reason_for_delay_2321673",
+          MissedDepDelayReason
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            MissedDepDelay[0].qkey,
+            MissedDepDelay[0].akey,
+            fieldTypeText
+          )
+        );
+        let MissedDepThirdParty = getAKey(
+          "helpdesk_ticket_custom_field_cf_was_someone_else_a_third_party_involved_in_the_accident_2321673",
+          yesNo
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            MissedDepThirdParty[0].qkey,
+            MissedDepThirdParty[0].akey,
+            fieldTypeText
+          )
+        );
+        let MissedDepReasonReport = getAKey(
+          "helpdesk_ticket_custom_field_cf_do_you_have_a_report_confirming_the_reason_for_the_delay_2321673",
+          yesNo
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            MissedDepReasonReport[0].qkey,
+            MissedDepReasonReport[0].akey,
+            fieldTypeText
+          )
+        );
+        let MissedDepJourney = getAKey(
+          "helpdesk_ticket_custom_field_cf_on_which_part_of_the_journey_did_you_miss_your_departure_2321673",
+          MissedDepWhichJourney
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            MissedDepJourney[0].qkey,
+            MissedDepJourney[0].akey,
+            fieldTypeText
+          )
+        );
+        let MissedDepSufficientTime = getAKey(
+          "helpdesk_ticket_custom_field_cf_did_you_allow_yourself_sufficient_time_to_reach_your_international_departure_point_2321673",
+          yesNo
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            MissedDepSufficientTime[0].qkey,
+            MissedDepSufficientTime[0].akey,
+            fieldTypeText
+          )
+        );
+        let MissedDepExpense = getAKey(
+          "helpdesk_ticket_custom_field_cf_what_type_of_additional_expenses_are_you_claiming_for_2321673",
+          MissedDepExpenseType
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            MissedDepExpense[0].qkey,
+            MissedDepExpense[0].akey,
+            fieldTypeText
+          )
+        );
+        let currencyType = getAKey(
+          "helpdesk_ticket_custom_field_cf_currency_type637939_2321673",
+          CurrencyType
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            currencyType[0].qkey,
+            currencyType[0].akey,
+            fieldTypeText
+          )
+        );
+        body["ClaimAnswers"] = ClaimQaAndAnswers;
+        console.log("submit claim body --->", body);
+      } else if (reasonClaim[0].akey == "01_06_OthSubsAcc") {
+        let SubAccomCost = submitClaimBody(
+          "SubAccomCost",
+          $(
+            "#helpdesk_ticket_custom_field_cf_what_is_the_estimated_value_of_your_claim_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(SubAccomCost);
+        let SubAccomRefund = submitClaimBody(
+          "SubAccomRefund",
+          $(
+            "#helpdesk_ticket_custom_field_cf_total_refund_vouchers_amount_the_amount_you_have_received_back594804_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(SubAccomRefund);
+        let SubAccReason = getAKey(
+          "helpdesk_ticket_custom_field_cf_what_caused_you_to_leave_your_original_accommodation_2321673",
+          SubAccomReason
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            SubAccReason[0].qkey,
+            SubAccReason[0].akey,
+            fieldTypeText
+          )
+        );
+        let SubAccTripType = getAKey(
+          "helpdesk_ticket_custom_field_cf_what_type_of_trip_did_you_book_2321673",
+          SubAccomTripType
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            SubAccTripType[0].qkey,
+            SubAccTripType[0].akey,
+            fieldTypeText
+          )
+        );
+        let currencyType = getAKey(
+          "helpdesk_ticket_custom_field_cf_currency_type637939_2321673",
+          CurrencyType
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            currencyType[0].qkey,
+            currencyType[0].akey,
+            fieldTypeText
+          )
+        );
+        let SubAccomDate = submitClaimBody(
+          "SubAccomDate",
+          $(
+            "#helpdesk_ticket_custom_field_cf_on_what_date_did_you_leave_your_original_accommodation_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(SubAccomDate);
+        let SubAccomDescription = submitClaimBody(
+          "SubAccomDescription",
+          $(
+            "#helpdesk_ticket_custom_field_cf_please_provide_a_detailed_description_of_the_reason_you_left_your_accommodation_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(SubAccomDescription);
+        body["ClaimAnswers"] = ClaimQaAndAnswers;
+        console.log("submit claim body --->", body);
+      } else if (reasonClaim[0].akey == "01_02_Winter") {
+        let SkiPckClaimReason = getAKey(
+          "helpdesk_ticket_custom_field_cf_which_winter_sports_item_are_you_claiming_for_2321673",
+          SkiPackClaimReason
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            SkiPckClaimReason[0].qkey,
+            SkiPckClaimReason[0].akey,
+            fieldTypeText
+          )
+        );
+        let SkiPackReport = getAKey(
+          "helpdesk_ticket_custom_field_cf_have_you_obtained_a_report_or_invoices_for_the_items_you_are_claiming_2321673",
+          yesNo
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            SkiPackReport[0].qkey,
+            SkiPackReport[0].akey,
+            fieldTypeText
+          )
+        );
+        let currencyType = getAKey(
+          "helpdesk_ticket_custom_field_cf_currency_type637939_2321673",
+          CurrencyType
+        );
+        ClaimQaAndAnswers.push(
+          submitClaimBody(
+            currencyType[0].qkey,
+            currencyType[0].akey,
+            fieldTypeText
+          )
+        );
+        let SkiPackClaimDetails = submitClaimBody(
+          "SkiPackClaimDetails",
+          $(
+            "#helpdesk_ticket_custom_field_cf_please_provide_a_detailed_description_of_the_reason_youre_making_a_claim_today_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(SkiPackClaimDetails);
+        let ValueSkiEst = submitClaimBody(
+          "ValueSkiEst",
+          $(
+            "#helpdesk_ticket_custom_field_cf_what_is_the_estimated_value_of_your_claim_2321673"
+          ).val(),
+          fieldTypeText
+        );
+        ClaimQaAndAnswers.push(ValueSkiEst);
+
+        body["ClaimAnswers"] = ClaimQaAndAnswers;
+        console.log("submit claim body --->", body);
+      }
+      jQuery("#helpdesk_ticket_submit")
+        .closest(".card-body")
+        .find(".form-group")
+        .before(
+          '<div class="invalid-feedback common_error">Please fill in all fields</div>'
+        );
+      jQuery("#overlay").removeClass("d-none").addClass("show loader-text");
+      updateSubmitClaim(body, ".ticket-detail-dummy");
+    });
+    function submitClaimBody(qkeyValue, akeyValue, fieldType) {
+      console.log("submitClaimBody ---->", akeyValue);
+      let temp = {};
+      if (akeyValue == undefined) {
+        akeyValue = "";
+      }
+      if (fieldType != "Date") {
+        if (qkeyValue == "DamageNumberOfItems" && akeyValue == "1") {
+          let arrayItems = [];
+          let objectItems = {};
+          temp["QuestionKey"] = "DamagedBags";
+          let ItemTypeDamagedItems = getAKey(
+            "helpdesk_ticket_custom_field_cf_item_type_2321673",
+            ItemTypeDamaged
+          );
+          objectItems["ItemType"] = ItemTypeDamagedItems[0].akey;
+          objectItems["PurchaseDate"] = $(
+            "#helpdesk_ticket_custom_field_cf_when_did_you_buy_the_item_2321673"
+          ).val();
+          objectItems["purchasePrice"] = $(
+            "#helpdesk_ticket_custom_field_cf_what_was_its_cost_when_you_bought_it_2321673"
+          ).val();
+          objectItems["Currency"] = null;
+          objectItems["repairCost"] = $(
+            "#helpdesk_ticket_custom_field_cf_total_refund_vouchers_amount_the_amount_you_have_received_back_2321673"
+          ).val();
+          arrayItems.push(objectItems);
+          temp["items"] = arrayItems;
+        } else if (
+          qkeyValue == "Baggage - personal items lost or stolen" &&
+          akeyValue == "1" &&
+          fieldType == "none"
+        ) {
+          let itemArray = [];
+          let itemsObject = {};
+          temp["QuestionKey"] = "LostOrStolenBags";
+          temp["AnswerKey"] = $(
+            "#helpdesk_ticket_custom_field_cf_how_many_items_are_you_claiming_for_2321673"
+          ).val();
+          temp["DateTimeAnswer"] = null;
+          temp["BooleanAnswer"] = null;
+          temp["IntegerAnswer"] = null;
+          let itemTypes = getAKey(
+            "helpdesk_ticket_custom_field_cf_item_type870706_2321673",
+            ItemType
+          );
+          itemsObject["ItemType"] = itemTypes[0].akey;
+          itemsObject["PurchaseDate"] = $(
+            "#helpdesk_ticket_custom_field_cf_when_did_you_purchase_the_item_2321673"
+          ).val();
+          itemsObject["purchasePrice"] = $(
+            "#helpdesk_ticket_custom_field_cf_what_was_its_cost_when_you_bought_it_2321673"
+          ).val();
+          itemsObject["Currency"] = null;
+          itemsObject["repairCost"] = 0;
+          itemArray.push(itemsObject);
+          temp["items"] = itemArray;
+        } else if (qkeyValue == "HoursDelayed") {
+          temp["QuestionKey"] = qkeyValue;
+          temp["IntegerAnswer"] = akeyValue;
+        } else {
+          temp["QuestionKey"] = qkeyValue;
+          temp["AnswerKey"] = akeyValue;
+        }
+
+        console.log(temp);
       } else {
         temp["QuestionKey"] = qkeyValue;
-        temp["AnswerKey"] = akeyValue;
+        temp["DateTimeAnswer"] = akeyValue;
       }
-
-      console.log(temp);
-    } else {
-      temp["QuestionKey"] = qkeyValue;
-      temp["DateTimeAnswer"] = akeyValue;
+      return temp;
     }
-    return temp;
-  }
-  function createSubmitClaim(body, fieldId) {
-    let flag = false;
-    let statusCode;
-    var myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-    myHeaders.append("Authorization", AuthorizationKey);
-    var raw = JSON.stringify(body);
-    var requestOptions = {
-      method: "PUT",
-      headers: myHeaders,
-      body: raw,
-      redirect: "follow",
-    };
+    function createSubmitClaim(body, fieldId) {
+      let flag = false;
+      let statusCode;
+      var myHeaders = new Headers();
+      myHeaders.append("Content-Type", "application/json");
+      myHeaders.append("Authorization", AuthorizationKey);
+      var raw = JSON.stringify(body);
+      var requestOptions = {
+        method: "PUT",
+        headers: myHeaders,
+        body: raw,
+        redirect: "follow",
+      };
 
-    fetch("https://" + domainURL + "/api/claim/submission", requestOptions)
-      .then((response) => {
-        console.log("response -->", response);
-        statusCode = response.status;
-        if (!response.ok) {
-          flag = true;
-        }
-        return response.text();
-      })
-      .then(function (result) {
-        console.log("--->", result, statusCode);
-        if (flag) {
-          jQuery("#overlay").addClass("d-none").removeClass("show loader-text");
-          if (statusCode == 401) {
-            getJWTToken(fieldId);
-          } else if (statusCode == 400) {
-            console.log("--field miised getting senario->", result);
-            addErrorMessage("common_error", result);
-          } else if (statusCode == 422) {
-            addErrorMessage("common_error", result);
-          } else if (statusCode == 404) {
-            addErrorMessage("common_error", result);
+      fetch("https://" + domainURL + "/api/claim/submission", requestOptions)
+        .then((response) => {
+          console.log("response -->", response);
+          statusCode = response.status;
+          if (!response.ok) {
+            flag = true;
           }
-        } else {
-          let ele = ["common_error"];
-          clearError(ele);
-          console.log("--sucesss-");
-          // $(".new-ticket-submit-button").trigger("click");
-          $("#helpdesk_ticket_submit").trigger("click");
-          if ($("#portalClass").hasClass("Test")) {
-            window.location.href = "/support/solutions/articles/101000486447-your-claim-and-next-steps";
-            console.log("Code reached")
-          }
-          else if(($("#portalClass").hasClass("CollinsonUK"))){
-            window.location.href = "/support/solutions/articles/101000486447-your-claim-and-next-steps";
-          }else if(($("#portalClass").hasClass("PostOffice"))){
-            window.location.href = "/support/solutions/articles/101000486448-your-claim-and-next-steps";
-          }else if(($("#portalClass").hasClass("SAGA"))){
-            window.location.href = "/support/solutions/articles/101000486450-your-claim-and-next-steps";
-          }else if(($("#portalClass").hasClass("VHI"))){
-            window.location.href = "/support/solutions/articles/101000486451-your-claim-and-next-steps";
-          }else if(($("#portalClass").hasClass("EasyJet"))){
-            window.location.href = "/support/solutions/articles/101000486447-your-claim-and-next-steps";
-          }else if(($("#portalClass").hasClass("EasyJet"))){
-            window.location.href = "/support/solutions/articles/101000486453-your-claim-and-next-steps";
-          // }else if(($("#portalClass").hasClass("ColumbusUK"))){
-          //   window.location.href = "/support/solutions/articles/101000486455-your-claim-and-next-steps";
-          // 
-        }
-        }
-      })
-      .catch((error) => console.log("error -->", error));
-  }
-
-  function updateSubmitClaim(body, fieldId) {
-    let flag = false;
-    let statusCode;
-    var myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-    myHeaders.append("Authorization", AuthorizationKey);
-    var raw = JSON.stringify(body);
-    var requestOptions = {
-      method: "PUT",
-      headers: myHeaders,
-      body: raw,
-      redirect: "follow",
-    };
-
-    fetch("https://" + domainURL + "/api/claim/submission", requestOptions)
-      .then((response) => {
-        console.log("response -->", response);
-        statusCode = response.status;
-        if (!response.ok) {
-          flag = true;
-        }
-        return response.text();
-      })
-      .then(function (result) {
-        console.log("--->", result, statusCode);
-        if (flag) {
-          jQuery("#overlay").addClass("d-none").removeClass("show loader-text");
-          if (statusCode == 401) {
-            getJWTToken(fieldId);
-          } else if (statusCode == 400) {
-            console.log("--field miised getting senario->", result);
-            addErrorMessage("common_error", result);
-          } else if (statusCode == 422) {
-            addErrorMessage("common_error", result);
-          } else if (statusCode == 404) {
-            addErrorMessage("common_error", result);
-          }
-        } else {
-          let ele = ["common_error"];
-          clearError(ele);
-          console.log("--sucesss-");
-          $("#helpdesk_ticket_submit").trigger("click");
-          if ($("#portalClass").hasClass("Test")) {
-            window.location.href = "/support/solutions/articles/101000486447-your-claim-and-next-steps";
-            console.log("Code reached")
-          }
-          else if(($("#portalClass").hasClass("CollinsonUK"))){
-            window.location.href = "/support/solutions/articles/101000486447-your-claim-and-next-steps";
-          }else if(($("#portalClass").hasClass("PostOffice"))){
-            window.location.href = "/support/solutions/articles/101000486448-your-claim-and-next-steps";
-          }else if(($("#portalClass").hasClass("SAGA"))){
-            window.location.href = "/support/solutions/articles/101000486450-your-claim-and-next-steps";
-          }else if(($("#portalClass").hasClass("VHI"))){
-            window.location.href = "/support/solutions/articles/101000486451-your-claim-and-next-steps";
-          }else if(($("#portalClass").hasClass("EasyJet"))){
-            window.location.href = "/support/solutions/articles/101000486447-your-claim-and-next-steps";
-          }else if(($("#portalClass").hasClass("EasyJet"))){
-            window.location.href = "/support/solutions/articles/101000486453-your-claim-and-next-steps";
-          // }else if(($("#portalClass").hasClass("ColumbusUK"))){
-          //   window.location.href = "/support/solutions/articles/101000486455-your-claim-and-next-steps";
-          // 
-        }
-        }
-      })
-      .catch((error) => console.log("error -->", error));
-  }
-  $("#cb2").click(function () {
-    console.log("checkbox changed!");
-    if ($(this).is(":checked")) {
-      console.log("checked");
-    } else {
-      console.log("unchecked");
-    }
-  });
-
-  $(".new-ticket-submit-button").click(function (event) {
-    var summary_div = document.getElementById("collapseSection7").innerHTML;
-    summary_div = summary_div.replace("Please Wait...","");
-    //add condition to check if information had already been appended, if so, clear description field and add new information
-    if(($(".fr-element.fr-view").length) != 0){
-      $(".fr-element.fr-view").empty();
-      $(".fr-element.fr-view").append(summary_div);
-      console.log("Saving draft, will redirect");
-      // event.preventDefault();
-      // var window = window.open("/support/tickets", "_blank");
-      // window.focus();
-      window.location.href = "/support/tickets";
-
-    }else{
-      $(".fr-element.fr-view").append(summary_div);
-      console.log("Saving draft, will redirect");
-      // event.preventDefault();
-      // var window = window.open("/support/tickets", "_blank");
-      // window.focus();
-      window.location.href = "/support/tickets";
-    }
-    
-  });
-
-  //____________________________________________________SECTION 6 End____________________________________________
-
-  //___________________________________REASON LOGIC_____________________________________
-
-  $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").change(
-    function () {
-      //__________________________section 5.12_____________________________
-      if (
-        $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() ==
-        "Baggage - suitcase hasn't arrived on time"
-      ) {
-        var refund_parent = document.getElementById(
-          "helpdesk_ticket_custom_field_cf_total_refund_vouchers_amount_the_amount_you_have_received_back594804_2321673"
-        ).parentElement;
-        //save and coninue for Section 3
-        //$('<button id="save_and_continue4" class="btn btn-primary for-section-4 save_and_continue" type="button" >Save & Continue</button>').insertAfter(refund_parent);
-        //Which part of the journey did your baggage arrive late? -dependancy
-        show_and_hide(
-          [
-            'label[for="helpdesk_ticket_custom_field_cf_please_give_us_further_details469996_2321673"]',
-            "#helpdesk_ticket_custom_field_cf_please_give_us_further_details469996_2321673",
-          ],
-          "#helpdesk_ticket_custom_field_cf_which_part_of_the_journey_did_your_baggage_arrive_late_2321673",
-          "Other"
-        );
-
-        //How many hours was your baggage delayed? -  value cannot be 0
-        cannot_be_zero(
-          "helpdesk_ticket_custom_field_cf_how_many_hours_was_your_baggage_delayed_2321673"
-        );
-
-        //What transport type was your baggage delayed on?? -dependancy
-        show_and_hide(
-          [
-            'label[for="helpdesk_ticket_custom_field_cf_please_give_us_further_details547533_2321673"]',
-            "#helpdesk_ticket_custom_field_cf_please_give_us_further_details547533_2321673",
-          ],
-          "#helpdesk_ticket_custom_field_cf_what_transport_type_was_your_baggage_delayed_on_2321673",
-          "Other"
-        );
-
-        //Did you notify your transport provider about the delay and get a report (PIR)? -dependancy
-        show_and_hide(
-          [
-            'label[for="helpdesk_ticket_custom_field_cf_enter_the_report_reference_pir_2321673"]',
-            "#helpdesk_ticket_custom_field_cf_enter_the_report_reference_pir_2321673",
-          ],
-          "#helpdesk_ticket_custom_field_cf_did_you_notify_your_transport_provider_about_the_delay_and_get_a_report_pir_2321673",
-          "Yes"
-        );
-
-        //Have you received any refund from your transport provider? -dependancy
-        //hide by default first
-        show_and_hide(
-          [
-            'label[for="helpdesk_ticket_custom_field_cf_total_refund_vouchers_amount_the_amount_you_have_received_back594804_2321673"]',
-            "#helpdesk_ticket_custom_field_cf_total_refund_vouchers_amount_the_amount_you_have_received_back594804_2321673",
-          ],
-          "#helpdesk_ticket_custom_field_cf_have_you_received_any_refund_from_your_transport_provider_2321673",
-          "Yes"
-        );
-
-        //On what date did you purchase the replacement item(s)? - date logic
-        $(
-          "#helpdesk_ticket_custom_field_cf_on_what_date_did_you_purchase_the_replacement_items_2321673"
-        ).focusout(function () {
-          replacement_purchase = $(
-            "#helpdesk_ticket_custom_field_cf_on_what_date_did_you_purchase_the_replacement_items_2321673"
-          ).val();
-          replacement_purchase_date = new Date(replacement_purchase);
-          var replacement_purchase_date = new Date(replacement_purchase);
-          var new_today = new Date();
-
-          new_today = new_today.setHours(0,0,0,0);
-          replacement_purchase_date = replacement_purchase_date.setHours(0,0,0,0);
-
-          if (new_today < replacement_purchase_date) {
-            //ERROR MESSAGING
-            addErrorMessage(
-              "helpdesk_ticket_custom_field_cf_on_what_date_did_you_purchase_the_replacement_items_2321673",
-              "Date must be in the past."
-            );
-          } else if (new_today > replacement_purchase_date) {
-            // do nothing
+          return response.text();
+        })
+        .then(function (result) {
+          console.log("--->", result, statusCode);
+          if (flag) {
+            jQuery("#overlay").addClass("d-none").removeClass("show loader-text");
+            if (statusCode == 401) {
+              getJWTToken(fieldId);
+            } else if (statusCode == 400) {
+              console.log("--field miised getting senario->", result);
+              addErrorMessage("common_error", result);
+            } else if (statusCode == 422) {
+              addErrorMessage("common_error", result);
+            } else if (statusCode == 404) {
+              addErrorMessage("common_error", result);
+            }
           } else {
-            //assume equal
-            //ERROR MESSAGING
-            addErrorMessage(
-              "helpdesk_ticket_custom_field_cf_on_what_date_did_you_purchase_the_replacement_items_2321673",
-              "Date must be in the past."
-            );
+            let ele = ["common_error"];
+            clearError(ele);
+            console.log("--sucesss-");
+            // $(".new-ticket-submit-button").trigger("click");
+            $("#helpdesk_ticket_submit").trigger("click");
+            if ($("#portalClass").hasClass("Test")) {
+              window.location.href = "/support/solutions/articles/101000486447-your-claim-and-next-steps";
+              console.log("Code reached")
+            }
+            else if(($("#portalClass").hasClass("CollinsonUK"))){
+              window.location.href = "/support/solutions/articles/101000486447-your-claim-and-next-steps";
+            }else if(($("#portalClass").hasClass("PostOffice"))){
+              window.location.href = "/support/solutions/articles/101000486448-your-claim-and-next-steps";
+            }else if(($("#portalClass").hasClass("SAGA"))){
+              window.location.href = "/support/solutions/articles/101000486450-your-claim-and-next-steps";
+            }else if(($("#portalClass").hasClass("VHI"))){
+              window.location.href = "/support/solutions/articles/101000486451-your-claim-and-next-steps";
+            }else if(($("#portalClass").hasClass("EasyJet"))){
+              window.location.href = "/support/solutions/articles/101000486447-your-claim-and-next-steps";
+            }else if(($("#portalClass").hasClass("EasyJet"))){
+              window.location.href = "/support/solutions/articles/101000486453-your-claim-and-next-steps";
+            // }else if(($("#portalClass").hasClass("ColumbusUK"))){
+            //   window.location.href = "/support/solutions/articles/101000486455-your-claim-and-next-steps";
+            // 
           }
-        });
+          }
+        })
+        .catch((error) => console.log("error -->", error));
+    }
+
+    function updateSubmitClaim(body, fieldId) {
+      let flag = false;
+      let statusCode;
+      var myHeaders = new Headers();
+      myHeaders.append("Content-Type", "application/json");
+      myHeaders.append("Authorization", AuthorizationKey);
+      var raw = JSON.stringify(body);
+      var requestOptions = {
+        method: "PUT",
+        headers: myHeaders,
+        body: raw,
+        redirect: "follow",
+      };
+
+      fetch("https://" + domainURL + "/api/claim/submission", requestOptions)
+        .then((response) => {
+          console.log("response -->", response);
+          statusCode = response.status;
+          if (!response.ok) {
+            flag = true;
+          }
+          return response.text();
+        })
+        .then(function (result) {
+          console.log("--->", result, statusCode);
+          if (flag) {
+            jQuery("#overlay").addClass("d-none").removeClass("show loader-text");
+            if (statusCode == 401) {
+              getJWTToken(fieldId);
+            } else if (statusCode == 400) {
+              console.log("--field miised getting senario->", result);
+              addErrorMessage("common_error", result);
+            } else if (statusCode == 422) {
+              addErrorMessage("common_error", result);
+            } else if (statusCode == 404) {
+              addErrorMessage("common_error", result);
+            }
+          } else {
+            let ele = ["common_error"];
+            clearError(ele);
+            console.log("--sucesss-");
+            $("#helpdesk_ticket_submit").trigger("click");
+            if ($("#portalClass").hasClass("Test")) {
+              window.location.href = "/support/solutions/articles/101000486447-your-claim-and-next-steps";
+              console.log("Code reached")
+            }
+            else if(($("#portalClass").hasClass("CollinsonUK"))){
+              window.location.href = "/support/solutions/articles/101000486447-your-claim-and-next-steps";
+            }else if(($("#portalClass").hasClass("PostOffice"))){
+              window.location.href = "/support/solutions/articles/101000486448-your-claim-and-next-steps";
+            }else if(($("#portalClass").hasClass("SAGA"))){
+              window.location.href = "/support/solutions/articles/101000486450-your-claim-and-next-steps";
+            }else if(($("#portalClass").hasClass("VHI"))){
+              window.location.href = "/support/solutions/articles/101000486451-your-claim-and-next-steps";
+            }else if(($("#portalClass").hasClass("EasyJet"))){
+              window.location.href = "/support/solutions/articles/101000486447-your-claim-and-next-steps";
+            }else if(($("#portalClass").hasClass("EasyJet"))){
+              window.location.href = "/support/solutions/articles/101000486453-your-claim-and-next-steps";
+            // }else if(($("#portalClass").hasClass("ColumbusUK"))){
+            //   window.location.href = "/support/solutions/articles/101000486455-your-claim-and-next-steps";
+            // 
+          }
+          }
+        })
+        .catch((error) => console.log("error -->", error));
+    }
+    $("#cb2").click(function () {
+      console.log("checkbox changed!");
+      if ($(this).is(":checked")) {
+        console.log("checked");
+      } else {
+        console.log("unchecked");
       }
-    }
-  );
-  //__________________________section 5.11_____________________________
-  $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").change(
-    function () {
-      if (
-        $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() ==
-        "Dental expenses whilst abroad"
-      ) {
-        //save and coninue for Section 3
-        var what_date_parent = document.getElementById(
-          "helpdesk_ticket_custom_field_cf_on_what_date_did_you_pay_the_dental_expenses_2321673"
-        ).parentElement;
-        //$('<button id="save_and_continue4" class="btn btn-primary for-section-4 save_and_continue" type="button" >Save & Continue</button>').insertAfter(what_date_parent);
+    });
 
-        //when did the symptoms start date logic
-        date_past_present(
-          "helpdesk_ticket_custom_field_cf_when_did_the_symptoms_start939174_2321673"
-        );
-        //On what date did you pay the dental expenses
-        $(
-          "#helpdesk_ticket_custom_field_cf_on_what_date_did_you_pay_the_dental_expenses_2321673"
-        ).focusout(function () {
-          payment_date_dental = $(
-            "#helpdesk_ticket_custom_field_cf_on_what_date_did_you_pay_the_dental_expenses_2321673"
-          ).val();
+    $(".new-ticket-submit-button").click(function (event) {
+      var summary_div = document.getElementById("collapseSection7").innerHTML;
+      summary_div = summary_div.replace("Please Wait...","");
+      //add condition to check if information had already been appended, if so, clear description field and add new information
+      if(($(".fr-element.fr-view").length) != 0){
+        $(".fr-element.fr-view").empty();
+        $(".fr-element.fr-view").append(summary_div);
+        console.log("Saving draft, will redirect");
+        // event.preventDefault();
+        // var window = window.open("/support/tickets", "_blank");
+        // window.focus();
+        window.location.href = "/support/tickets";
 
-          payment_date_dental = new Date(payment_date_dental);
-
-          var new_today = new Date();
-          
-          payment_date_dental = payment_date_dental.setHours(0,0,0,0);
-          new_today = new_today.setHours(0,0,0,0);
-
-          console.log(new_today);
-          console.log(payment_date_dental);
-
-
-          if (new_today < payment_date_dental) {
-            addErrorMessage(
-              "helpdesk_ticket_custom_field_cf_on_what_date_did_you_pay_the_dental_expenses_2321673",
-              "Date must be in past."
-            );
-          } else if (new_today > payment_date_dental) {
-            // do nothing
-          } else {
-            //assume equal
-            addErrorMessage(
-              "helpdesk_ticket_custom_field_cf_on_what_date_did_you_pay_the_dental_expenses_2321673",
-              "Date must be in past."
-            );
-          }
-        });
-        //What type of dental treatment did you need? - dependancy
-        show_and_hide(
-          [
-            'label[for="helpdesk_ticket_custom_field_cf_please_give_us_further_details_2321673"]',
-            "#helpdesk_ticket_custom_field_cf_please_give_us_further_details_2321673",
-          ],
-          "#helpdesk_ticket_custom_field_cf_what_type_of_dental_treatment_did_you_need_2321673",
-          "Other"
-        );
-        //amount paid in local currency bannot be 0
-        cannot_be_zero(
-          "helpdesk_ticket_custom_field_cf_amount_paid_in_local_currency527297_2321673"
-        );
+      }else{
+        $(".fr-element.fr-view").append(summary_div);
+        console.log("Saving draft, will redirect");
+        // event.preventDefault();
+        // var window = window.open("/support/tickets", "_blank");
+        // window.focus();
+        window.location.href = "/support/tickets";
       }
-    }
-  );
-  //__________________________section 5.10_____________________________
-  //"helpdesk_ticket_custom_field_cf_what_date_were_you_advised_of_the_delay_2321673"
+      
+    });
 
-  $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").change(
-    function () {
-      if (
-        $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() ==
-        "Flight or Travel delayed"
-      ) {
-        //save and coninue for Section 3
-        var booking_ref_parent = document.getElementById(
-          "helpdesk_ticket_custom_field_cf_please_provide_information_about_the_additional_costs_including_the_travel_provider_booking_reference_and_the_amount_paid_2321673"
-        ).parentElement;
-        //$('<button id="save_and_continue4" class="btn btn-primary for-section-4 save_and_continue" type="button" >Save & Continue</button>').insertAfter(booking_ref_parent);
-        //What date were you advised of the delay?
-        date_past_present(
-          "helpdesk_ticket_custom_field_cf_what_date_were_you_advised_of_the_delay_2321673"
-        );
-        //What was the reason for the delay? - dependancy
-        show_and_hide(
-          [
-            'label[for="helpdesk_ticket_custom_field_cf_please_give_us_further_details_2321673"]',
-            "#helpdesk_ticket_custom_field_cf_please_give_us_further_details_2321673",
-          ],
-          "#helpdesk_ticket_custom_field_cf_what_was_the_reason_for_the_delay_2321673",
-          "Other - Select if you're sure it's not listed above"
-        );
-        //On which part of the journey were you delayed?
-        //hide by default
-        $(
-          ".form-group.helpdesk_ticket_custom_field_cf_were_you_delayed_for_24_hours_or_more923623_2321673"
-        ).hide();
-        $(
-          "#helpdesk_ticket_custom_field_cf_on_which_part_of_the_journey_were_you_delayed_2321673"
-        ).change(function () {
-          if (
-            $(
-              "#helpdesk_ticket_custom_field_cf_on_which_part_of_the_journey_were_you_delayed_2321673"
-            ).val() == "On the return journey back home" ||
-            $(
-              "#helpdesk_ticket_custom_field_cf_on_which_part_of_the_journey_were_you_delayed_2321673"
-            ).val() == "Connecting journey"
-          ) {
-            $(
-              ".form-group.helpdesk_ticket_custom_field_cf_were_you_delayed_for_24_hours_or_more923623_2321673"
-            ).show();
-          } else {
-            $(
-              ".form-group.helpdesk_ticket_custom_field_cf_were_you_delayed_for_24_hours_or_more923623_2321673"
-            ).hide();
-          }
-        });
-        //Were there any additional expenses as a result of the delay?
-        show_and_hide(
-          [
-            'label[for="helpdesk_ticket_custom_field_cf_please_provide_information_about_the_additional_costs_including_the_travel_provider_booking_reference_and_the_amount_paid_2321673"]',
-            "#helpdesk_ticket_custom_field_cf_please_provide_information_about_the_additional_costs_including_the_travel_provider_booking_reference_and_the_amount_paid_2321673",
-          ],
-          "#helpdesk_ticket_custom_field_cf_were_there_any_additional_expenses_as_a_result_of_the_delay_2321673",
-          "Yes"
-        );
-        show_and_hide(
-          [
-            ".form-group.helpdesk_ticket_custom_field_cf_were_there_any_additional_expenses_as_a_result_of_the_delay_2321673",
-          ],
-          "#helpdesk_ticket_custom_field_cf_were_you_delayed_for_24_hours_or_more923623_2321673",
-          "Yes"
-        );
-      }
-    }
-  );
-  //_____________________________________________section 5.7 ___________________________________________________
-  $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").change(
-    function () {
-      if (
-        $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() ==
-        "Curtailment – returned home early"
-      ) {
-        //save and continue 3 button
-        var refunds_compensation_parent = document.getElementById(
-          "helpdesk_ticket_custom_field_cf_total_refund_vouchers_amount_the_amount_you_have_received_back594804_2321673"
-        ).parentElement;
-        //$('<button id="save_and_continue4" class="btn btn-primary for-section-4 save_and_continue" type="button" >Save & Continue</button>').insertAfter(refunds_compensation_parent);
-        //Did you notify us of the need to curtail before making arrangements? - dependancy
-        show_and_hide(
-          [
-            'label[for="helpdesk_ticket_custom_field_cf_please_give_a_full_and_detailed_explanation_of_why_you_did_not_contact_to_contact_our_emergency_service582069_2321673"]',
-            "#helpdesk_ticket_custom_field_cf_please_give_a_full_and_detailed_explanation_of_why_you_did_not_contact_to_contact_our_emergency_service582069_2321673",
-          ],
-          "#helpdesk_ticket_custom_field_cf_did_you_notify_us_of_the_need_to_curtail_before_making_arrangements_2321673",
-          "No"
-        );
-      }
-    }
-  );
-  //_____________________________________________section 5.6___________________________________________________
-  $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").change(
-    function () {
-      if (
-        $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() ==
-        "Medical expenses abroad & repatriation cost"
-      ) {
-        //save and continue 3 button
-        //$('<button id="save_and_continue4" class="btn btn-primary for-section-4 save_and_continue" type="button" >Save & Continue</button>').insertAfter(".form-group.helpdesk_ticket_custom_field_cf_did_you_pay_for_50_or_more_of_the_trip_with_a_credit_card_2321673");
-        //When did the symptoms start? - PAST PRESENT
-        date_past_present(
-          "helpdesk_ticket_custom_field_cf_when_did_the_symptoms_start437132_2321673"
-        );
-        //Are you claiming for an injury or illness? - dependacy - illness
-        show_and_hide(
-          [
-            ".form-group.helpdesk_ticket_custom_field_cf_what_condition_has_resulted_in_the_medical_expenses_2321673",
-            "label[for='helpdesk_ticket_custom_field_cf_please_provide_any_further_information_about_the_condition_2321673']",
-            "#helpdesk_ticket_custom_field_cf_please_provide_any_further_information_about_the_condition_2321673",
-          ],
-          "#helpdesk_ticket_custom_field_cf_are_you_claiming_for_an_injury_or_illness644442_2321673",
-          "Illness"
-        );
-        //Are you claiming for an injury or illness? - dependacy
-        show_and_hide(
-          [
-            ".form-group.helpdesk_ticket_custom_field_cf_was_someone_else_a_third_party_involved_in_you_sustaining_the_injury_2321673",
-            "label[for='helpdesk_ticket_custom_field_cf_in_your_own_words_tell_us_what_happened731291_2321673']",
-            "#helpdesk_ticket_custom_field_cf_in_your_own_words_tell_us_what_happened731291_2321673",
-          ],
-          "#helpdesk_ticket_custom_field_cf_are_you_claiming_for_an_injury_or_illness644442_2321673",
-          "Injury"
-        );
-        //Please confirm the first date of diagnosis for this condition? - PAST PRESENT
-        date_past_present(
-          "helpdesk_ticket_custom_field_cf_please_confirm_the_first_date_of_diagnosis_for_this_condition_2321673"
-        );
-        //dependancy covid and illness - diagnosis date
-        //hide by default
-        $(
-          "label[for='helpdesk_ticket_custom_field_cf_please_confirm_the_first_date_of_diagnosis_for_this_condition_2321673']"
-        ).hide();
-        $(
-          "#helpdesk_ticket_custom_field_cf_please_confirm_the_first_date_of_diagnosis_for_this_condition_2321673"
-        ).hide();
+    //____________________________________________________SECTION 6 End____________________________________________
 
-        $(
-          "#helpdesk_ticket_custom_field_cf_are_you_claiming_for_an_injury_or_illness644442_2321673"
-        ).change(function name() {
-          if (
-            $(
-              "#helpdesk_ticket_custom_field_cf_are_you_claiming_for_an_injury_or_illness644442_2321673"
-            ).val() == "Illness" ||
-            $(
-              "#helpdesk_ticket_custom_field_cf_are_you_claiming_for_an_injury_or_illness644442_2321673"
-            ).val() == "Coronavirus (COVID-19)"
-          ) {
-            $(
-              "label[for='helpdesk_ticket_custom_field_cf_please_confirm_the_first_date_of_diagnosis_for_this_condition_2321673']"
-            ).show();
-            $(
-              "#helpdesk_ticket_custom_field_cf_please_confirm_the_first_date_of_diagnosis_for_this_condition_2321673"
-            ).show();
-          } else {
-            $(
-              "label[for='helpdesk_ticket_custom_field_cf_please_confirm_the_first_date_of_diagnosis_for_this_condition_2321673']"
-            ).hide();
-            $(
-              "#helpdesk_ticket_custom_field_cf_please_confirm_the_first_date_of_diagnosis_for_this_condition_2321673"
-            ).hide();
-          }
-        });
-        //Total Amount paid in local currency - cannot be 0
-        cannot_be_zero(
-          "helpdesk_ticket_custom_field_cf_amount_paid_in_local_currency527297_2321673"
-        );
-        //Date of Payment? - date logic
-        $(
-          "#helpdesk_ticket_custom_field_cf_date_of_payment778903_2321673"
-        ).focusout(function () {
-          purchase_date_medical = $(
-            "#helpdesk_ticket_custom_field_cf_date_of_payment778903_2321673"
-          ).val();
+    //___________________________________REASON LOGIC_____________________________________
 
-          purchase_date_medical = new Date(purchase_date_medical);
-          var new_today = new Date();
-
-          purchase_date_medical = purchase_date_medical.setHours(0,0,0,0);
-          new_today = new_today.setHours(0,0,0,0);
-
-          if (new_today < purchase_date_medical) {
-            //ERROR MESSAGING
-            addErrorMessage(
-              "helpdesk_ticket_custom_field_cf_date_of_payment778903_2321673",
-              "Date must be in the past."
-            );
-          } else if (new_today > purchase_date_medical) {
-            //do nothing
-          } else {
-            //assume equal
-            //ERROR MESSAGING
-            addErrorMessage(
-              "helpdesk_ticket_custom_field_cf_date_of_payment778903_2321673",
-              "Date must be in the past."
-            );
-          }
-        });
-        //Travel Insurance Policy - dependancy
-        show_and_hide(
-          [
-            "label[for='helpdesk_ticket_custom_field_cf_name_of_your_policy_provider_2321673']",
-            "#helpdesk_ticket_custom_field_cf_name_of_your_policy_provider_2321673",
-            "label[for='helpdesk_ticket_custom_field_cf_policy_number533894_2321673']",
-            "#helpdesk_ticket_custom_field_cf_policy_number533894_2321673",
-          ],
-          "#helpdesk_ticket_custom_field_cf_do_you_have_any_other_travel_insurance_policy206683_2321673",
-          "Yes"
-        );
-        //Medical Policy - dependancy
-        show_and_hide(
-          [
-            "label[for='helpdesk_ticket_custom_field_cf_name_of_your_policy_provider618179_2321673']",
-            "#helpdesk_ticket_custom_field_cf_name_of_your_policy_provider618179_2321673",
-            "label[for='helpdesk_ticket_custom_field_cf_policy_number701021_2321673']",
-            "#helpdesk_ticket_custom_field_cf_policy_number701021_2321673",
-          ],
-          "#helpdesk_ticket_custom_field_cf_do_you_have_private_medical_insurance_2321673",
-          "Yes"
-        );
-        //How did you pay for your trip?
-        show_and_hide(
-          [
-            ".form-group.helpdesk_ticket_custom_field_cf_did_you_use_your_credit_card_for_any_transactions_whilst_on_your_trip_2321673",
-            "label[for='helpdesk_ticket_custom_field_cf_who_is_the_provider_of_your_credit_card_2321673']",
-            "#helpdesk_ticket_custom_field_cf_who_is_the_provider_of_your_credit_card_2321673",
-            ".form-group.helpdesk_ticket_custom_field_cf_did_you_pay_for_50_or_more_of_the_trip_with_a_credit_card_2321673",
-          ],
-          "#helpdesk_ticket_custom_field_cf_how_did_you_pay_for_your_trip257666_2321673",
-          "Credit Card"
-        );
-      }
-    }
-  );
-  //_____________________________________________section 5.5___________________________________________________
-  $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").change(
-    function () {
-      if (
-        $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() ==
-        "Missed flight or departure"
-      ) {
-        //save_and_continue4
-        var refund_missed = document.getElementById(
-          "helpdesk_ticket_custom_field_cf_total_refund_vouchers_amount_the_amount_you_have_received_back594804_2321673"
-        ).parentElement;
-        //$('<button id="save_and_continue4" class="btn btn-primary for-section-4 save_and_continue" type="button" >Save & Continue</button>').insertAfter(refund_missed);
-
-        //what caused you to miss your departure - dependancy 1
-        show_and_hide(
-          [
-            ".form-group.helpdesk_ticket_custom_field_cf_was_someone_else_a_third_party_involved_in_the_accident_2321673",
-          ],
-          "#helpdesk_ticket_custom_field_cf_what_caused_you_to_miss_your_departure_2321673",
-          "Vehicle you were travelling in was in an accident"
-        );
-        //what caused you to miss your departure - dependancy 2
-        show_and_hide(
-          [
-            "label[for='helpdesk_ticket_custom_field_cf_please_confirm_the_test_type_2321673']",
-            "#helpdesk_ticket_custom_field_cf_please_confirm_the_test_type_2321673",
-          ],
-          "#helpdesk_ticket_custom_field_cf_what_caused_you_to_miss_your_departure_2321673",
-          "Delayed test results"
-        );
-        //what caused you to miss your departure - dependancy 3
-        //hide by default
-        $(
-          ".form-group.helpdesk_ticket_custom_field_cf_please_confirm_the_reason_for_delay_2321673"
-        ).hide();
-
-        $(
-          "#helpdesk_ticket_custom_field_cf_what_caused_you_to_miss_your_departure_2321673"
-        ).change(function () {
-          if (
-            $(
-              "#helpdesk_ticket_custom_field_cf_what_caused_you_to_miss_your_departure_2321673"
-            ).val() == "Public transport delay/cancellation" ||
-            $(
-              "#helpdesk_ticket_custom_field_cf_what_caused_you_to_miss_your_departure_2321673"
-            ).val() == "Delay to a connecting flight"
-          ) {
-            $(
-              ".form-group.helpdesk_ticket_custom_field_cf_please_confirm_the_reason_for_delay_2321673"
-            ).show();
-          } else {
-            $(
-              ".form-group.helpdesk_ticket_custom_field_cf_please_confirm_the_reason_for_delay_2321673"
-            ).hide();
-          }
-        });
-        //hide by default
-        $(
-          "label[for='helpdesk_ticket_custom_field_cf_please_give_us_further_details520238_2321673']"
-        ).hide();
-        $(
-          "#helpdesk_ticket_custom_field_cf_please_give_us_further_details520238_2321673"
-        ).hide();
-        //what caused you to miss your departure - dependancy 4
-        $(
-          "#helpdesk_ticket_custom_field_cf_what_caused_you_to_miss_your_departure_2321673"
-        ).change(function () {
-          if (
-            $(
-              "#helpdesk_ticket_custom_field_cf_what_caused_you_to_miss_your_departure_2321673"
-            ).val() == "Other" ||
-            $(
-              "#helpdesk_ticket_custom_field_cf_what_caused_you_to_miss_your_departure_2321673"
-            ).val() == "Denied boarding" ||
-            $(
-              "#helpdesk_ticket_custom_field_cf_what_caused_you_to_miss_your_departure_2321673"
-            ).val() == "Queues at departure point" ||
-            $(
-              "#helpdesk_ticket_custom_field_cf_what_caused_you_to_miss_your_departure_2321673"
-            ).val() == "Passport/visa/document issue" ||
-            $(
-              "#helpdesk_ticket_custom_field_cf_what_caused_you_to_miss_your_departure_2321673"
-            ).val() == "Failed health screening"
-          ) {
-            $(
-              "label[for='helpdesk_ticket_custom_field_cf_please_give_us_further_details520238_2321673']"
-            ).show();
-            $(
-              "#helpdesk_ticket_custom_field_cf_please_give_us_further_details520238_2321673"
-            ).show();
-          } else {
-            $(
-              "label[for='helpdesk_ticket_custom_field_cf_please_give_us_further_details520238_2321673']"
-            ).hide();
-            $(
-              "#helpdesk_ticket_custom_field_cf_please_give_us_further_details520238_2321673"
-            ).hide();
-          }
-        });
-
-        cannot_be_zero(
-          "helpdesk_ticket_custom_field_cf_amount_paid_in_local_currency_2321673"
-        );
-
-        cant_be_more_than(
-          "helpdesk_ticket_custom_field_cf_total_refund_vouchers_amount_the_amount_you_have_received_back594804_2321673",
-          "helpdesk_ticket_custom_field_cf_amount_paid_in_local_currency_2321673"
-        );
-      }
-    }
-  );
-  //___________________________________section 5.4______________________________________________
-  $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").change(
-    function () {
-      if (
-        $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() ==
-        "Any CANCELLATION claim due to COVID-19"
-      ) {
-        
-        $(
-          ".form-group.helpdesk_ticket_custom_field_cf_what_type_of_transport_was_included_in_your_booking_2321673"
-        ).hide();
-
-        $(
-          "#helpdesk_ticket_custom_field_cf_what_type_of_trip_did_you_book877716_2321673"
-        ).change(function () {
-          if (
-            $(
-              "#helpdesk_ticket_custom_field_cf_what_type_of_trip_did_you_book877716_2321673"
-            ).val() == "Package booking (e.g. flights and accommodation or flights and cruise)" ||
-            $(
-              "#helpdesk_ticket_custom_field_cf_what_type_of_trip_did_you_book877716_2321673"
-            ).val() == "Independent booking (travel and accommodation booked separately)" ||
-            $(
-              "#helpdesk_ticket_custom_field_cf_what_type_of_trip_did_you_book877716_2321673"
-            ).val() == "Travel ONLY (e.g flights or ferry)" 
-          ) {
-            $(
-              ".form-group.helpdesk_ticket_custom_field_cf_what_type_of_transport_was_included_in_your_booking_2321673"
-            ).show();
-          } else {
-            $(
-              ".form-group.helpdesk_ticket_custom_field_cf_what_type_of_transport_was_included_in_your_booking_2321673"
-            ).hide();
-          }
-        });
-
-
-
-        //A POSITIVE Coronavirus test result - dependancy
-        show_and_hide(
-          [
-            ".form-group.helpdesk_ticket_custom_field_cf_who_has_tested_positive_for_coronavirus_2321673",
-            "label[for='helpdesk_ticket_custom_field_cf_when_did_the_symptoms_start939174_2321673']",
-            "#helpdesk_ticket_custom_field_cf_when_did_the_symptoms_start939174_2321673",
-            ".form-group.helpdesk_ticket_custom_field_cf_what_type_of_test_was_taken_2321673",
-            ".form-group.helpdesk_ticket_custom_field_cf_do_you_have_evidence_from_either_the_nhshse_private_testing_company_or_your_doctor_confirming_the_positive_covid_test_email_letter_sms_2321673",
-            "label[for='helpdesk_ticket_custom_field_cf_when_did_the_test_results_confirming_coronavirus_infection_arrive_2321673']",
-            "#helpdesk_ticket_custom_field_cf_when_did_the_test_results_confirming_coronavirus_infection_arrive_2321673",
-          ],
-          "#helpdesk_ticket_custom_field_cf_why_did_you_cancel_your_trip_2321673",
-          "A POSITIVE Coronavirus test result"
-        );
-
-        //When did the test results confirming Coronavirus infection arrive? - PAST PRESENT
-        date_past_present(
-          "helpdesk_ticket_custom_field_cf_when_did_the_test_results_confirming_coronavirus_infection_arrive_2321673"
-        );
-        //When did the symptoms start? - PAST PRESENT
-        date_past_present(
-          "helpdesk_ticket_custom_field_cf_when_did_the_symptoms_start939174_2321673"
-        );
-        //When were you initially aware that you needed to cancel your trip?? - PAST PRESENT
-        date_past_present(
-          "helpdesk_ticket_custom_field_cf_when_were_you_initially_aware_that_you_needed_to_cancel_your_trip635242_2321673"
-        );
-
-        //Please enter the date you asked your tour operator/travel provider to cancel the trip? - PAST PRESENT
-        date_past_present(
-          "helpdesk_ticket_custom_field_cf_please_enter_the_date_you_asked_your_tour_operatortravel_provider_to_cancel_the_trip_2321673"
-        );
-
-        cannot_be_zero(
-          "helpdesk_ticket_custom_field_cf_total_trip_cost_the_amount_you_paid_2321673"
-        );
-
-        cant_be_more_than(
-          "helpdesk_ticket_custom_field_cf_total_refund_vouchers_amount_the_amount_you_have_received_back594804_2321673",
-          "helpdesk_ticket_custom_field_cf_total_trip_cost_the_amount_you_paid_2321673"
-        );
-
-        //Do you have any other Travel Insurance Policy? - dependancy
-        show_and_hide(
-          [
-            "label[for='helpdesk_ticket_custom_field_cf_name_of_your_policy_provider895583_2321673']",
-            "#helpdesk_ticket_custom_field_cf_name_of_your_policy_provider895583_2321673",
-            "label[for='helpdesk_ticket_custom_field_cf_policy_number964552_2321673']",
-            "#helpdesk_ticket_custom_field_cf_policy_number964552_2321673",
-          ],
-          "#helpdesk_ticket_custom_field_cf_do_you_have_any_other_travel_insurance_policy400572_2321673",
-          "Yes"
-        );
-
-        //How did you pay for your trip?
-        show_and_hide(
-          [
-            "label[for='helpdesk_ticket_custom_field_cf_who_is_the_provider_of_your_credit_card224630_2321673']",
-            "#helpdesk_ticket_custom_field_cf_who_is_the_provider_of_your_credit_card224630_2321673",
-            ".form-group.helpdesk_ticket_custom_field_cf_did_you_pay_for_50_or_more_of_the_trip_with_a_credit_card401929_2321673",
-          ],
-          "#helpdesk_ticket_custom_field_cf_how_did_you_pay_for_your_trip913590_2321673",
-          "Credit Card"
-        );
-      }
-    }
-  );
-
-  //___________________________________section 5.3______________________________________________
-  $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").change(
-    function () {
-      if (
-        $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() ==
-        "Cancelled trip - (NOT related to COVID-19)"
-      ) {
-        //save_and_continue4
-        //$('<button id="save_and_continue4" class="btn btn-primary for-section-4 save_and_continue" type="button" >Save & Continue</button>').insertAfter(".form-group.helpdesk_ticket_custom_field_cf_did_you_pay_for_50_or_more_of_the_trip_with_a_credit_card401929_2321673");
-        //Why did you cancel your trip? - dependancy 1
-        //hide by default
-        $(
-          "label[for='helpdesk_ticket_custom_field_cf_in_your_own_words_please_explain_the_reason_for_cancelling_your_trip_2321673']"
-        ).hide();
-        $(
-          "#helpdesk_ticket_custom_field_cf_in_your_own_words_please_explain_the_reason_for_cancelling_your_trip_2321673"
-        ).hide();
-        $(
-          "#helpdesk_ticket_custom_field_cf_are_you_currently_still_abroad_2321673"
-        ).change(function () {
-          if (
-            $(
-              "#helpdesk_ticket_custom_field_cf_are_you_currently_still_abroad_2321673"
-            ).val() == "Coronavirus" ||
-            $(
-              "#helpdesk_ticket_custom_field_cf_are_you_currently_still_abroad_2321673"
-            ).val() == "Other - Select if you're sure it's not listed above" ||
-            $(
-              "#helpdesk_ticket_custom_field_cf_are_you_currently_still_abroad_2321673"
-            ).val() == "Pregnancy" ||
-            $(
-              "#helpdesk_ticket_custom_field_cf_are_you_currently_still_abroad_2321673"
-            ).val() == "Your home or business premises being uninhabitable" ||
-            $(
-              "#helpdesk_ticket_custom_field_cf_are_you_currently_still_abroad_2321673"
-            ).val() ==
-              "Cancellation of leave by emergency services or armed forces"
-          ) {
-            $(
-              "label[for='helpdesk_ticket_custom_field_cf_in_your_own_words_please_explain_the_reason_for_cancelling_your_trip_2321673']"
-            ).show();
-            $(
-              "#helpdesk_ticket_custom_field_cf_in_your_own_words_please_explain_the_reason_for_cancelling_your_trip_2321673"
-            ).show();
-          } else {
-            $(
-              "label[for='helpdesk_ticket_custom_field_cf_in_your_own_words_please_explain_the_reason_for_cancelling_your_trip_2321673']"
-            ).hide();
-            $(
-              "#helpdesk_ticket_custom_field_cf_in_your_own_words_please_explain_the_reason_for_cancelling_your_trip_2321673"
-            ).hide();
-          }
-        });
-
-        //Why did you cancel your trip? - dependancy 2
-        show_and_hide(
-          [
-            "label[for='helpdesk_ticket_custom_field_cf_when_did_the_symptoms_start_2321673']",
-            "#helpdesk_ticket_custom_field_cf_when_did_the_symptoms_start_2321673",
-            ".form-group.helpdesk_ticket_custom_field_cf_what_medical_condition_has_resulted_in_cancellation748907_2321673",
-          ],
-          "#helpdesk_ticket_custom_field_cf_are_you_currently_still_abroad_2321673",
-          "Illness"
-        );
-        //when did the symptoms start -past present
-        date_past_present(
-          "helpdesk_ticket_custom_field_cf_when_did_the_symptoms_start_2321673"
-        );
-        //Why did you cancel your trip? - dependancy 3
-        show_and_hide(
-          [
-            "label[for='helpdesk_ticket_custom_field_cf_on_what_date_did_the_incident_causing_the_injury_happen_2321673']",
-            "#helpdesk_ticket_custom_field_cf_on_what_date_did_the_incident_causing_the_injury_happen_2321673",
-            ".form-group.helpdesk_ticket_custom_field_cf_was_someone_else_a_third_party_involved_in_sustaining_the_injury_2321673",
-          ],
-          "#helpdesk_ticket_custom_field_cf_are_you_currently_still_abroad_2321673",
-          "Injury"
-        );
-        //on what date injury
-        date_past_present(
-          "helpdesk_ticket_custom_field_cf_on_what_date_did_the_incident_causing_the_injury_happen_2321673"
-        );
-        //Why did you cancel your trip? - dependancy 4
-        //hide by default
-        $(
-          ".form-group.helpdesk_ticket_custom_field_cf_who_advised_to_cancel_2321673"
-        ).hide();
-        $(
-          "#helpdesk_ticket_custom_field_cf_are_you_currently_still_abroad_2321673"
-        ).change(function () {
-          if (
-            $(
-              "#helpdesk_ticket_custom_field_cf_are_you_currently_still_abroad_2321673"
-            ).val() == "Illness" ||
-            $(
-              "#helpdesk_ticket_custom_field_cf_are_you_currently_still_abroad_2321673"
-            ).val() == "Injury"
-          ) {
-            $(
-              ".form-group.helpdesk_ticket_custom_field_cf_who_advised_to_cancel_2321673"
-            ).show();
-          } else {
-            $(
-              ".form-group.helpdesk_ticket_custom_field_cf_who_advised_to_cancel_2321673"
-            ).hide();
-          }
-        });
-        //who advised cancel dependancy
-        // show_and_hide(
-        //   [
-        //     "label[for='helpdesk_ticket_custom_field_cf_please_give_us_further_details352533_2321673']",
-        //     "#helpdesk_ticket_custom_field_cf_please_give_us_further_details352533_2321673",
-        //   ],
-        //   "#helpdesk_ticket_custom_field_cf_who_advised_to_cancel_2321673",
-        //   "Other"
-        // );
-        //why did you cancel your trip dependancy 5
-        show_and_hide(
-          [
-            "label[for='helpdesk_ticket_custom_field_cf_on_what_date_were_you_advised_of_the_redundancy_2321673']",
-            "#helpdesk_ticket_custom_field_cf_on_what_date_were_you_advised_of_the_redundancy_2321673",
-            ".form-group.helpdesk_ticket_custom_field_cf_do_you_qualify_for_redundancy_payment_under_current_legislation_2321673",
-          ],
-          "#helpdesk_ticket_custom_field_cf_are_you_currently_still_abroad_2321673",
-          "Redundancy from work"
-        );
-        //on what date were you advised on the redundancy
-        date_past_present(
-          "helpdesk_ticket_custom_field_cf_on_what_date_were_you_advised_of_the_redundancy_2321673"
-        );
-        //why did you cancel your trip dependancy 6
-        show_and_hide(
-          [
-            "label[for='helpdesk_ticket_custom_field_cf_on_what_date_were_you_advised_of_the_jury_service_or_court_date_2321673']",
-            "#helpdesk_ticket_custom_field_cf_on_what_date_were_you_advised_of_the_jury_service_or_court_date_2321673",
-          ],
-          "#helpdesk_ticket_custom_field_cf_are_you_currently_still_abroad_2321673",
-          "Called for jury service or as a witness"
-        );
-        //jury date -past present
-        date_past_present(
-          "helpdesk_ticket_custom_field_cf_on_what_date_were_you_advised_of_the_jury_service_or_court_date_2321673"
-        );
-        //why did you cancel your trip dependancy 7
-        show_and_hide(
-          [
-            "label[for='helpdesk_ticket_custom_field_cf_please_confirm_the_date_of_death_2321673']",
-            "#helpdesk_ticket_custom_field_cf_please_confirm_the_date_of_death_2321673",
-            "label[for='helpdesk_ticket_custom_field_cf_please_confirm_the_cause_of_death_2321673']",
-            "#helpdesk_ticket_custom_field_cf_please_confirm_the_cause_of_death_2321673",
-          ],
-          "#helpdesk_ticket_custom_field_cf_are_you_currently_still_abroad_2321673",
-          "Death"
-        );
-        //please confirm date of death
-        date_past_present(
-          "helpdesk_ticket_custom_field_cf_please_confirm_the_date_of_death_2321673"
-        );
-        //Please confirm the date of diagnosis for this condition
-        date_past_present(
-          "helpdesk_ticket_custom_field_cf_please_confirm_the_date_of_diagnosis_for_this_condition_2321673"
-        );
-
-        //Why did you cancel your trip? - dependancy 8
-        //hide by default
-        $(
-          "label[for='helpdesk_ticket_custom_field_cf_please_confirm_the_date_of_diagnosis_for_this_condition_2321673']"
-        ).hide();
-        $(
-          "#helpdesk_ticket_custom_field_cf_please_confirm_the_date_of_diagnosis_for_this_condition_2321673"
-        ).hide();
-        $(
-          ".form-group.helpdesk_ticket_custom_field_cf_to_the_best_of_your_knowledge_were_you_or_this_person_considered_stable_at_the_time_of_booking_the_trip_2321673"
-        ).hide();
-        $(
-          "#helpdesk_ticket_custom_field_cf_are_you_currently_still_abroad_2321673"
-        ).change(function () {
-          if (
-            $(
-              "#helpdesk_ticket_custom_field_cf_are_you_currently_still_abroad_2321673"
-            ).val() == "Illness" ||
-            $(
-              "#helpdesk_ticket_custom_field_cf_are_you_currently_still_abroad_2321673"
-            ).val() == "Death"
-          ) {
-            $(
-              "label[for='helpdesk_ticket_custom_field_cf_please_confirm_the_date_of_diagnosis_for_this_condition_2321673']"
-            ).show();
-            $(
-              "#helpdesk_ticket_custom_field_cf_please_confirm_the_date_of_diagnosis_for_this_condition_2321673"
-            ).show();
-            $(
-              ".form-group.helpdesk_ticket_custom_field_cf_to_the_best_of_your_knowledge_were_you_or_this_person_considered_stable_at_the_time_of_booking_the_trip_2321673"
-            ).show();
-          } else {
-            $(
-              "label[for='helpdesk_ticket_custom_field_cf_please_confirm_the_date_of_diagnosis_for_this_condition_2321673']"
-            ).hide();
-            $(
-              "#helpdesk_ticket_custom_field_cf_please_confirm_the_date_of_diagnosis_for_this_condition_2321673"
-            ).hide();
-            $(
-              ".form-group.helpdesk_ticket_custom_field_cf_to_the_best_of_your_knowledge_were_you_or_this_person_considered_stable_at_the_time_of_booking_the_trip_2321673"
-            ).hide();
-          }
-        });
-        //What type of trip did you book?
-        //hide by default
-        $(
-          ".form-group.helpdesk_ticket_custom_field_cf_what_type_of_transport_was_included_in_your_booking146711_2321673"
-        ).hide();
-        $(
-          "#helpdesk_ticket_custom_field_cf_what_type_of_trip_did_you_book137913_2321673"
-        ).change(function () {
-          if (
-            $(
-              "#helpdesk_ticket_custom_field_cf_what_type_of_trip_did_you_book137913_2321673"
-            ).val() ==
-              "Package booking (e.g. flights and accommodation or flights and cruise)" ||
-            $(
-              "#helpdesk_ticket_custom_field_cf_what_type_of_trip_did_you_book137913_2321673"
-            ).val() == "Travel ONLY (e.g flights or ferry)" ||
-            $(
-              "#helpdesk_ticket_custom_field_cf_what_type_of_trip_did_you_book137913_2321673"
-            ).val() ==
-              "Independent booking (travel and accommodation booked separately"
-          ) {
-            $(
-              ".form-group.helpdesk_ticket_custom_field_cf_what_type_of_transport_was_included_in_your_booking146711_2321673"
-            ).show();
-          } else {
-            $(
-              ".form-group.helpdesk_ticket_custom_field_cf_what_type_of_transport_was_included_in_your_booking146711_2321673"
-            ).hide();
-          }
-        });
-        //Do you have any other Travel Insurance Policy?
-        show_and_hide(
-          [
-            "label[for='helpdesk_ticket_custom_field_cf_name_of_your_policy_provider895583_2321673']",
-            "#helpdesk_ticket_custom_field_cf_name_of_your_policy_provider895583_2321673",
-            "label[for='helpdesk_ticket_custom_field_cf_policy_number964552_2321673']",
-            "#helpdesk_ticket_custom_field_cf_policy_number964552_2321673",
-          ],
-          "#helpdesk_ticket_custom_field_cf_do_you_have_any_other_travel_insurance_policy400572_2321673",
-          "Yes"
-        );
-        //How did you pay for your trip?
-        show_and_hide(
-          [
-            "label[for='helpdesk_ticket_custom_field_cf_who_is_the_provider_of_your_credit_card224630_2321673']",
-            "#helpdesk_ticket_custom_field_cf_who_is_the_provider_of_your_credit_card224630_2321673",
-            ".form-group.helpdesk_ticket_custom_field_cf_did_you_pay_for_50_or_more_of_the_trip_with_a_credit_card401929_2321673",
-          ],
-          "#helpdesk_ticket_custom_field_cf_how_did_you_pay_for_your_trip913590_2321673",
-          "Credit Card"
-        );
-        //booking cost - cannot be 0
-        cannot_be_zero(
-          "helpdesk_ticket_custom_field_cf_total_trip_cost_the_amount_you_paid_2321673"
-        );
-        //cannot be more than
-        cant_be_more_than(
-          "helpdesk_ticket_custom_field_cf_have_you_received_any_refunds_or_compensation702973_2321673",
-          "helpdesk_ticket_custom_field_cf_total_trip_cost_the_amount_you_paid_2321673"
-        );
-        //Please enter the date you asked your tour operator/travel provider to cancel the trip - PASTPRESENT
-        date_past_present(
-          "helpdesk_ticket_custom_field_cf_please_enter_the_date_you_asked_your_tour_operatortravel_provider_to_cancel_the_trip_2321673"
-        );
-      }
-    }
-  );
-  //___________________________________section 5.2______________________________________________
-  $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").change(
-    function () {
-      if (
-        $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() ==
-        "Baggage - personal items damaged"
-      ) {
-        //hide by default
-        $(
-          "#helpdesk_ticket_custom_field_cf_what_was_its_cost_when_you_bought_it_2321673"
-        ).hide();
-        $(
-          "label[for='helpdesk_ticket_custom_field_cf_what_was_its_cost_when_you_bought_it_2321673']"
-        ).hide();
-        //save_and_continue 4
-        //$('<button id="save_and_continue4" class="btn btn-primary for-section-4 save_and_continue" type="button" >Save & Continue</button>').insertAfter(".form-group.helpdesk_ticket_custom_field_cf_did_you_pay_for_50_or_more_of_the_trip_with_a_credit_card824584_2321673");
-        //Was the item(s) with you when it was damaged? - dependancy
-        show_and_hide(
-          [
-            ".form-group.helpdesk_ticket_custom_field_cf_was_the_items_with_your_transport_provider_when_damaged_eg_airline_checkedin_luggage_2321673",
-          ],
-          "#helpdesk_ticket_custom_field_cf_was_the_items_with_you_when_it_was_damaged_2321673",
-          "No"
-        );
-        //Is the damaged item(s) listed as 'valuable, gadget/electrical' in your policy wording? - dependancy
-        show_and_hide(
-          [
-            ".form-group.helpdesk_ticket_custom_field_cf_is_the_damaged_items_listed_as_valuable_gadgetelectrical_in_your_policy_wording_2321673",
-            ".form-group.helpdesk_ticket_custom_field_cf_did_you_tell_your_transport_provider_about_the_damage_2321673",
-          ],
-          "#helpdesk_ticket_custom_field_cf_was_the_items_with_your_transport_provider_when_damaged_eg_airline_checkedin_luggage_2321673",
-          "Yes"
-        );
-        //Did you tell your transport provider about the damage? - dependancy 1
-        show_and_hide(
-          [
-            "label[for='helpdesk_ticket_custom_field_cf_let_us_know_why_you_didnt_report_the_damage_2321673']",
-            "#helpdesk_ticket_custom_field_cf_let_us_know_why_you_didnt_report_the_damage_2321673",
-          ],
-          "#helpdesk_ticket_custom_field_cf_did_you_tell_your_transport_provider_about_the_damage_2321673",
-          "No"
-        );
-        //Did you tell your transport provider about the damage? - dependancy 1
-        show_and_hide(
-          [
-            "label[for='helpdesk_ticket_custom_field_cf_please_enter_the_report_reference_given_by_your_transport_provider_pir_reference_if_applicable_2321673']",
-            "#helpdesk_ticket_custom_field_cf_please_enter_the_report_reference_given_by_your_transport_provider_pir_reference_if_applicable_2321673",
-          ],
-          "#helpdesk_ticket_custom_field_cf_did_you_tell_your_transport_provider_about_the_damage_2321673",
-          "Yes"
-        );
-        //did you get a repair estimat
-        show_and_hide(
-          [
-            ".form-group.helpdesk_ticket_custom_field_cf_did_you_get_a_repair_estimate_2321673",
-            ".form-group.helpdesk_ticket_custom_field_cf_item_type_2321673",
-            "label[for='helpdesk_ticket_custom_field_cf_item_description_2321673']",
-            "#helpdesk_ticket_custom_field_cf_item_description_2321673",
-            "label[for='helpdesk_ticket_custom_field_cf_when_did_you_buy_the_item_2321673']",
-            "#helpdesk_ticket_custom_field_cf_when_did_you_buy_the_item_2321673",
-            "label[for='helpdesk_ticket_custom_field_cf_amount_paid_in_local_currency_2321673']",
-            "#helpdesk_ticket_custom_field_cf_amount_paid_in_local_currency_2321673",
-            "#helpdesk_ticket_custom_field_cf_what_was_its_cost_when_you_bought_it_2321673",
-            "label[for='helpdesk_ticket_custom_field_cf_what_was_its_cost_when_you_bought_it_2321673']",
-          ],
-          "#helpdesk_ticket_custom_field_cf_how_many_items_are_you_claiming_for411795_2321673",
-          "1"
-        );
-        //did you get a repair estimate - dependacy
-        show_and_hide(
-          [
-            ".form-group.helpdesk_ticket_custom_field_cf_can_the_item_be_repaired_2321673",
-          ],
-          "#helpdesk_ticket_custom_field_cf_did_you_get_a_repair_estimate_2321673",
-          "Yes"
-        );
-        //23456789 dependancy
-        show_and_hide(
-          [
-            "label[for='helpdesk_ticket_custom_field_cf_total_refund_vouchers_amount_the_amount_you_have_received_back_2321673']",
-            "#helpdesk_ticket_custom_field_cf_total_refund_vouchers_amount_the_amount_you_have_received_back_2321673",
-          ],
-          "#helpdesk_ticket_custom_field_cf_can_the_item_be_repaired_2321673",
-          "Yes"
-        );
-        //Do you have Home Contents Insurance?
-        show_and_hide(
-          [
-            "label[for='helpdesk_ticket_custom_field_cf_name_of_your_policy_provider267746_2321673']",
-            "#helpdesk_ticket_custom_field_cf_name_of_your_policy_provider267746_2321673",
-            "label[for='helpdesk_ticket_custom_field_cf_policy_number818860_2321673']",
-            "#helpdesk_ticket_custom_field_cf_policy_number818860_2321673",
-          ],
-          "#helpdesk_ticket_custom_field_cf_do_you_have_home_contents_insurance_2321673",
-          "Yes"
-        );
-        //Do you have any other Travel Insurance Policy?
-        show_and_hide(
-          [
-            "label[for='helpdesk_ticket_custom_field_cf_name_of_your_policy_provider610133_2321673']",
-            "#helpdesk_ticket_custom_field_cf_name_of_your_policy_provider610133_2321673",
-            "label[for='helpdesk_ticket_custom_field_cf_policy_number832231_2321673']",
-            "#helpdesk_ticket_custom_field_cf_policy_number832231_2321673",
-          ],
-          "#helpdesk_ticket_custom_field_cf_do_you_have_any_other_travel_insurance_policy_2321673",
-          "Yes"
-        );
-        //How did you pay for your trip?
-        show_and_hide(
-          [
-            "label[for='helpdesk_ticket_custom_field_cf_who_is_the_provider_of_your_credit_card237678_2321673']",
-            "#helpdesk_ticket_custom_field_cf_who_is_the_provider_of_your_credit_card237678_2321673",
-            ".form-group.helpdesk_ticket_custom_field_cf_did_you_pay_for_50_or_more_of_the_trip_with_a_credit_card824584_2321673",
-          ],
-          "#helpdesk_ticket_custom_field_cf_how_did_you_pay_for_your_trip396837_2321673",
-          "Credit Card"
-        );
-
-        //hide by default
-        $(
-          "label[for='helpdesk_ticket_custom_field_cf_whats_the_total_amount_youre_claiming_2321673']"
-        ).hide();
-        $(
-          "#helpdesk_ticket_custom_field_cf_whats_the_total_amount_youre_claiming_2321673"
-        ).hide();
-        $(
-          "label[for='helpdesk_ticket_custom_field_cf_please_provide_a_description_the_owner_the_purchase_date_and_purchase_price_of_each_item_2321673']"
-        ).hide();
-        $(
-          "#helpdesk_ticket_custom_field_cf_please_provide_a_description_the_owner_the_purchase_date_and_purchase_price_of_each_item_2321673"
-        ).hide();
-
-        $(
-          "#helpdesk_ticket_custom_field_cf_how_many_items_are_you_claiming_for411795_2321673"
-        ).change(function () {
-          if (
-            $(
-              "#helpdesk_ticket_custom_field_cf_how_many_items_are_you_claiming_for411795_2321673"
-            ).val() == "2" ||
-            $(
-              "#helpdesk_ticket_custom_field_cf_how_many_items_are_you_claiming_for411795_2321673"
-            ).val() == "3" ||
-            $(
-              "#helpdesk_ticket_custom_field_cf_how_many_items_are_you_claiming_for411795_2321673"
-            ).val() == "4" ||
-            $(
-              "#helpdesk_ticket_custom_field_cf_how_many_items_are_you_claiming_for411795_2321673"
-            ).val() == "5" ||
-            $(
-              "#helpdesk_ticket_custom_field_cf_how_many_items_are_you_claiming_for411795_2321673"
-            ).val() == "6" ||
-            $(
-              "#helpdesk_ticket_custom_field_cf_how_many_items_are_you_claiming_for411795_2321673"
-            ).val() == "7" ||
-            $(
-              "#helpdesk_ticket_custom_field_cf_how_many_items_are_you_claiming_for411795_2321673"
-            ).val() == "8" ||
-            $(
-              "#helpdesk_ticket_custom_field_cf_how_many_items_are_you_claiming_for411795_2321673"
-            ).val() == "9"
-          ) {
-            $(
-              "label[for='helpdesk_ticket_custom_field_cf_whats_the_total_amount_youre_claiming_2321673']"
-            ).show();
-            $(
-              "#helpdesk_ticket_custom_field_cf_whats_the_total_amount_youre_claiming_2321673"
-            ).show();
-            $(
-              "label[for='helpdesk_ticket_custom_field_cf_please_provide_a_description_the_owner_the_purchase_date_and_purchase_price_of_each_item_2321673']"
-            ).show();
-            $(
-              "#helpdesk_ticket_custom_field_cf_please_provide_a_description_the_owner_the_purchase_date_and_purchase_price_of_each_item_2321673"
-            ).show();
-          } else {
-            $(
-              "label[for='helpdesk_ticket_custom_field_cf_whats_the_total_amount_youre_claiming_2321673']"
-            ).hide();
-            $(
-              "#helpdesk_ticket_custom_field_cf_whats_the_total_amount_youre_claiming_2321673"
-            ).hide();
-            $(
-              "label[for='helpdesk_ticket_custom_field_cf_please_provide_a_description_the_owner_the_purchase_date_and_purchase_price_of_each_item_2321673']"
-            ).hide();
-            $(
-              "#helpdesk_ticket_custom_field_cf_please_provide_a_description_the_owner_the_purchase_date_and_purchase_price_of_each_item_2321673"
-            ).hide();
-          }
-        });
-
-        //when did you buy that item - past present
-        date_past_present(
-          "helpdesk_ticket_custom_field_cf_when_did_you_buy_the_item_2321673"
-        );
-      }
-    }
-  );
-  //___________________________________section 5.1______________________________________________
-  $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").change(
-    function () {
-      if (
-        $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() ==
-        "Baggage - personal items lost or stolen"
-      ) {
-        //hide by default
-        $(
-          ".form-group.helpdesk_ticket_custom_field_cf_item_type870706_2321673"
-        ).hide();
-        // $(
-        //   ".form-group.helpdesk_ticket_custom_field_cf_who_owns_the_item86910_2321673"
-        // ).hide();
-        $(
-          "label[for='helpdesk_ticket_custom_field_cf_what_was_its_cost_when_you_bought_it_2321673']"
-        ).hide();
-        $(
-          "#helpdesk_ticket_custom_field_cf_what_was_its_cost_when_you_bought_it_2321673"
-        ).hide();
-        $(
-          "label[for='helpdesk_ticket_custom_field_cf_item_description369043_2321673']"
-        ).hide();
-        $(
-          "#helpdesk_ticket_custom_field_cf_item_description369043_2321673"
-        ).hide();
-        $(
-          "label[for='helpdesk_ticket_custom_field_cf_when_did_you_purchase_the_item_2321673']"
-        ).hide();
-        $(
-          "#helpdesk_ticket_custom_field_cf_when_did_you_purchase_the_item_2321673"
-        ).hide();
-
-        //theft or loss dependancy 1
-        show_and_hide(
-          [
-            "label[for='helpdesk_ticket_custom_field_cf_in_your_own_words_tell_us_what_happened994308_2321673']",
-            "#helpdesk_ticket_custom_field_cf_in_your_own_words_tell_us_what_happened994308_2321673",
-          ],
-          "#helpdesk_ticket_custom_field_cf_are_you_claiming_for_a_loss_or_theft_2321673",
-          "Theft"
-        );
-        //theft or loss dependancy 2
-        show_and_hide(
-          [
-            "label[for='helpdesk_ticket_custom_field_cf_in_your_own_words_tell_us_what_happened511569_2321673']",
-            "#helpdesk_ticket_custom_field_cf_in_your_own_words_tell_us_what_happened511569_2321673",
-          ],
-          "#helpdesk_ticket_custom_field_cf_are_you_claiming_for_a_loss_or_theft_2321673",
-          "Loss"
-        );
-        //theft or loss dependancy 3
-        show_and_hide(
-          [
-            ".form-group.helpdesk_ticket_custom_field_cf_were_you_in_the_vehicle_at_the_time_of_the_theft_2321673",
-          ],
-          "#helpdesk_ticket_custom_field_cf_where_did_the_loss_or_theft_take_place_2321673",
-          "From your own or a rental vehicle"
-        );
-        //theft or loss dependancy 4
-        show_and_hide(
-          [
-            ".form-group.helpdesk_ticket_custom_field_cf_whereabouts_in_the_vehicle_was_the_items_when_stolen_2321673",
-            ".form-group.helpdesk_ticket_custom_field_cf_was_there_physical_damage_to_the_vehicle_2321673",
-          ],
-          "#helpdesk_ticket_custom_field_cf_were_you_in_the_vehicle_at_the_time_of_the_theft_2321673",
-          "No"
-        );
-        //theft or loss dependancy 5
-        show_and_hide(
-          [
-            ".form-group.helpdesk_ticket_custom_field_cf_are_any_of_the_items_lost_defined_as_a_valuable_gadgetelectrical_as_shown_within_your_policy_wording_2321673",
-          ],
-          "#helpdesk_ticket_custom_field_cf_where_did_the_loss_or_theft_take_place_2321673",
-          "Checked-in luggage (In my suitcase)"
-        );
-        //theft or loss dependancy 6
-        show_and_hide(
-          [
-            ".form-group.helpdesk_ticket_custom_field_cf_are_you_claiming_for_more_than_1_item_2321673",
-          ],
-          "#helpdesk_ticket_custom_field_cf_are_any_of_the_items_lost_defined_as_a_valuable_gadgetelectrical_as_shown_within_your_policy_wording_2321673",
-          "Yes"
-        );
-        //theft and loss dependancy 7
-        show_and_hide(
-          [
-            ".form-group.helpdesk_ticket_custom_field_cf_who_did_you_report_it_to_2321673",
-          ],
-          "#helpdesk_ticket_custom_field_cf_did_you_report_the_loss_or_theft_2321673",
-          "Yes"
-        );
-        //theft and loss dependancy 8
-        show_and_hide(
-          [
-            ".form-group.helpdesk_ticket_custom_field_cf_please_confirm_why_you_did_not_report_the_loss_or_theft6975_2321673",
-          ],
-          "#helpdesk_ticket_custom_field_cf_did_you_report_the_loss_or_theft_2321673",
-          "No"
-        );
-        //theft and loss dependancy 9
-        show_and_hide(
-          [
-            "label[for='helpdesk_ticket_custom_field_cf_please_give_us_further_details341695_2321673']",
-            "#helpdesk_ticket_custom_field_cf_please_give_us_further_details341695_2321673",
-          ],
-          "#helpdesk_ticket_custom_field_cf_who_did_you_report_it_to_2321673",
-          "Other"
-        );
-        //theft and loss dependancy 10
-        show_and_hide(
-          [
-            "label[for='helpdesk_ticket_custom_field_cf_police_or_crime_reference_number_2321673']",
-            "#helpdesk_ticket_custom_field_cf_police_or_crime_reference_number_2321673",
-          ],
-          "#helpdesk_ticket_custom_field_cf_who_did_you_report_it_to_2321673",
-          "Police"
-        );
-        //theft and loss dependancy 11
-        show_and_hide(
-          [
-            ".form-group.helpdesk_ticket_custom_field_cf_have_you_blocked_imei_with_your_provider_2321673",
-            "label[for='helpdesk_ticket_custom_field_cf_imei_number_2321673']",
-            "#helpdesk_ticket_custom_field_cf_imei_number_2321673",
-          ],
-          "#helpdesk_ticket_custom_field_cf_item_type870706_2321673",
-          "Mobile Phone"
-        );
-        //theft and loss dependancy 12
-
-        show_and_hide(
-          [
-            ".form-group.helpdesk_ticket_custom_field_cf_item_type870706_2321673",
-            "label[for='helpdesk_ticket_custom_field_cf_what_was_its_cost_when_you_bought_it_2321673']",
-            "#helpdesk_ticket_custom_field_cf_what_was_its_cost_when_you_bought_it_2321673",
-            "label[for='helpdesk_ticket_custom_field_cf_item_description369043_2321673']",
-            "#helpdesk_ticket_custom_field_cf_item_description369043_2321673",
-            "label[for='helpdesk_ticket_custom_field_cf_when_did_you_purchase_the_item_2321673']",
-            "#helpdesk_ticket_custom_field_cf_when_did_you_purchase_the_item_2321673",
-          ],
-          "#helpdesk_ticket_custom_field_cf_how_many_items_are_you_claiming_for_2321673",
-          "1"
-        );
-        //theft and loss dependancy 12
-        show_and_hide(
-          [
-            "label[for='helpdesk_ticket_custom_field_cf_name_of_your_policy_provider267746_2321673']",
-            "#helpdesk_ticket_custom_field_cf_name_of_your_policy_provider267746_2321673",
-            "label[for='helpdesk_ticket_custom_field_cf_policy_number818860_2321673']",
-            "#helpdesk_ticket_custom_field_cf_policy_number818860_2321673",
-          ],
-          "#helpdesk_ticket_custom_field_cf_do_you_have_home_contents_insurance_2321673",
-          "Yes"
-        );
-        //theft and loss dependancy 13
-        show_and_hide(
-          [
-            "label[for='helpdesk_ticket_custom_field_cf_name_of_your_policy_provider610133_2321673']",
-            "#helpdesk_ticket_custom_field_cf_name_of_your_policy_provider610133_2321673",
-            "label[for='helpdesk_ticket_custom_field_cf_policy_number832231_2321673']",
-            "#helpdesk_ticket_custom_field_cf_policy_number832231_2321673",
-          ],
-          "#helpdesk_ticket_custom_field_cf_do_you_have_any_other_travel_insurance_policy_2321673",
-          "Yes"
-        );
-        //theft and loss dependancy 14
-        show_and_hide(
-          [
-            "label[for='helpdesk_ticket_custom_field_cf_who_is_the_provider_of_your_credit_card237678_2321673']",
-            "#helpdesk_ticket_custom_field_cf_who_is_the_provider_of_your_credit_card237678_2321673",
-            ".form-group.helpdesk_ticket_custom_field_cf_did_you_pay_for_50_or_more_of_the_trip_with_a_credit_card824584_2321673",
-          ],
-          "#helpdesk_ticket_custom_field_cf_how_did_you_pay_for_your_trip396837_2321673",
-          "Credit Card"
-        );
-
-        date_past_present(
-          "helpdesk_ticket_custom_field_cf_when_did_you_purchase_the_item_2321673"
-        );
-        //hide by default
-        $(
-          "label[for='helpdesk_ticket_custom_field_cf_what_is_the_total_amount_youre_claiming_2321673']"
-        ).hide();
-        $(
-          "#helpdesk_ticket_custom_field_cf_what_is_the_total_amount_youre_claiming_2321673"
-        ).hide();
-
-        $(
-          "label[for='helpdesk_ticket_custom_field_cf_please_provide_a_description_the_owner_the_purchase_date_and_purchase_price_of_each_item910226_2321673']"
-        ).hide();
-        $(
-          "#helpdesk_ticket_custom_field_cf_please_provide_a_description_the_owner_the_purchase_date_and_purchase_price_of_each_item910226_2321673"
-        ).hide();
-
-        $(
-          "#helpdesk_ticket_custom_field_cf_how_many_items_are_you_claiming_for_2321673"
-        ).change(function () {
-          if (
-            $(
-              "#helpdesk_ticket_custom_field_cf_how_many_items_are_you_claiming_for_2321673"
-            ).val() == "2" ||
-            $(
-              "#helpdesk_ticket_custom_field_cf_how_many_items_are_you_claiming_for_2321673"
-            ).val() == "3" ||
-            $(
-              "#helpdesk_ticket_custom_field_cf_how_many_items_are_you_claiming_for_2321673"
-            ).val() == "4" ||
-            $(
-              "#helpdesk_ticket_custom_field_cf_how_many_items_are_you_claiming_for_2321673"
-            ).val() == "5" ||
-            $(
-              "#helpdesk_ticket_custom_field_cf_how_many_items_are_you_claiming_for_2321673"
-            ).val() == "6" ||
-            $(
-              "#helpdesk_ticket_custom_field_cf_how_many_items_are_you_claiming_for_2321673"
-            ).val() == "7" ||
-            $(
-              "#helpdesk_ticket_custom_field_cf_how_many_items_are_you_claiming_for_2321673"
-            ).val() == "8" ||
-            $(
-              "#helpdesk_ticket_custom_field_cf_how_many_items_are_you_claiming_for_2321673"
-            ).val() == "9"
-          ) {
-            $(
-              "label[for='helpdesk_ticket_custom_field_cf_what_is_the_total_amount_youre_claiming_2321673']"
-            ).show();
-            $(
-              "#helpdesk_ticket_custom_field_cf_what_is_the_total_amount_youre_claiming_2321673"
-            ).show();
-            $(
-              "label[for='helpdesk_ticket_custom_field_cf_please_provide_a_description_the_owner_the_purchase_date_and_purchase_price_of_each_item910226_2321673']"
-            ).show();
-            $(
-              "#helpdesk_ticket_custom_field_cf_please_provide_a_description_the_owner_the_purchase_date_and_purchase_price_of_each_item910226_2321673"
-            ).show();
-          } else {
-            $(
-              "label[for='helpdesk_ticket_custom_field_cf_what_is_the_total_amount_youre_claiming_2321673']"
-            ).hide();
-            $(
-              "#helpdesk_ticket_custom_field_cf_what_is_the_total_amount_youre_claiming_2321673"
-            ).hide();
-            $(
-              "label[for='helpdesk_ticket_custom_field_cf_please_provide_a_description_the_owner_the_purchase_date_and_purchase_price_of_each_item910226_2321673']"
-            ).hide();
-            $(
-              "#helpdesk_ticket_custom_field_cf_please_provide_a_description_the_owner_the_purchase_date_and_purchase_price_of_each_item910226_2321673"
-            ).hide();
-          }
-        });
-      }
-    }
-  );
-  
-  function files_uploaded() {
-    $("p").remove(".section_5_line");
-    $(".fw-comments-wrapper .attachments .fw-attachment-item").each(
+    $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").change(
       function () {
-        $(
-          "<p class='section_5_line'>" +
-            $(this).find("p").html().split("<br>")[0] +
-            "</p>"
-        ).insertBefore("#great_line_5");
+        //__________________________section 5.12_____________________________
+        if (
+          $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() ==
+          "Baggage - suitcase hasn't arrived on time"
+        ) {
+          var refund_parent = document.getElementById(
+            "helpdesk_ticket_custom_field_cf_total_refund_vouchers_amount_the_amount_you_have_received_back594804_2321673"
+          ).parentElement;
+          //save and coninue for Section 3
+          //$('<button id="save_and_continue4" class="btn btn-primary for-section-4 save_and_continue" type="button" >Save & Continue</button>').insertAfter(refund_parent);
+          //Which part of the journey did your baggage arrive late? -dependancy
+          show_and_hide(
+            [
+              'label[for="helpdesk_ticket_custom_field_cf_please_give_us_further_details469996_2321673"]',
+              "#helpdesk_ticket_custom_field_cf_please_give_us_further_details469996_2321673",
+            ],
+            "#helpdesk_ticket_custom_field_cf_which_part_of_the_journey_did_your_baggage_arrive_late_2321673",
+            "Other"
+          );
+
+          //How many hours was your baggage delayed? -  value cannot be 0
+          cannot_be_zero(
+            "helpdesk_ticket_custom_field_cf_how_many_hours_was_your_baggage_delayed_2321673"
+          );
+
+          //What transport type was your baggage delayed on?? -dependancy
+          show_and_hide(
+            [
+              'label[for="helpdesk_ticket_custom_field_cf_please_give_us_further_details547533_2321673"]',
+              "#helpdesk_ticket_custom_field_cf_please_give_us_further_details547533_2321673",
+            ],
+            "#helpdesk_ticket_custom_field_cf_what_transport_type_was_your_baggage_delayed_on_2321673",
+            "Other"
+          );
+
+          //Did you notify your transport provider about the delay and get a report (PIR)? -dependancy
+          show_and_hide(
+            [
+              'label[for="helpdesk_ticket_custom_field_cf_enter_the_report_reference_pir_2321673"]',
+              "#helpdesk_ticket_custom_field_cf_enter_the_report_reference_pir_2321673",
+            ],
+            "#helpdesk_ticket_custom_field_cf_did_you_notify_your_transport_provider_about_the_delay_and_get_a_report_pir_2321673",
+            "Yes"
+          );
+
+          //Have you received any refund from your transport provider? -dependancy
+          //hide by default first
+          show_and_hide(
+            [
+              'label[for="helpdesk_ticket_custom_field_cf_total_refund_vouchers_amount_the_amount_you_have_received_back594804_2321673"]',
+              "#helpdesk_ticket_custom_field_cf_total_refund_vouchers_amount_the_amount_you_have_received_back594804_2321673",
+            ],
+            "#helpdesk_ticket_custom_field_cf_have_you_received_any_refund_from_your_transport_provider_2321673",
+            "Yes"
+          );
+
+          //On what date did you purchase the replacement item(s)? - date logic
+          $(
+            "#helpdesk_ticket_custom_field_cf_on_what_date_did_you_purchase_the_replacement_items_2321673"
+          ).focusout(function () {
+            replacement_purchase = $(
+              "#helpdesk_ticket_custom_field_cf_on_what_date_did_you_purchase_the_replacement_items_2321673"
+            ).val();
+            replacement_purchase_date = new Date(replacement_purchase);
+            var replacement_purchase_date = new Date(replacement_purchase);
+            var new_today = new Date();
+
+            new_today = new_today.setHours(0,0,0,0);
+            replacement_purchase_date = replacement_purchase_date.setHours(0,0,0,0);
+
+            if (new_today < replacement_purchase_date) {
+              //ERROR MESSAGING
+              addErrorMessage(
+                "helpdesk_ticket_custom_field_cf_on_what_date_did_you_purchase_the_replacement_items_2321673",
+                "Date must be in the past."
+              );
+            } else if (new_today > replacement_purchase_date) {
+              // do nothing
+            } else {
+              //assume equal
+              //ERROR MESSAGING
+              addErrorMessage(
+                "helpdesk_ticket_custom_field_cf_on_what_date_did_you_purchase_the_replacement_items_2321673",
+                "Date must be in the past."
+              );
+            }
+          });
+        }
       }
     );
-  }
-  if (jQuery(".fw-comments-wrapper").length > 0) {
-    files_uploaded();
-  }
+    //__________________________section 5.11_____________________________
+    $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").change(
+      function () {
+        if (
+          $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() ==
+          "Dental expenses whilst abroad"
+        ) {
+          //save and coninue for Section 3
+          var what_date_parent = document.getElementById(
+            "helpdesk_ticket_custom_field_cf_on_what_date_did_you_pay_the_dental_expenses_2321673"
+          ).parentElement;
+          //$('<button id="save_and_continue4" class="btn btn-primary for-section-4 save_and_continue" type="button" >Save & Continue</button>').insertAfter(what_date_parent);
 
-  if ($(".edit_helpdesk_ticket").length > 0){
-    console.log("Inside Ending");
+          //when did the symptoms start date logic
+          date_past_present(
+            "helpdesk_ticket_custom_field_cf_when_did_the_symptoms_start939174_2321673"
+          );
+          //On what date did you pay the dental expenses
+          $(
+            "#helpdesk_ticket_custom_field_cf_on_what_date_did_you_pay_the_dental_expenses_2321673"
+          ).focusout(function () {
+            payment_date_dental = $(
+              "#helpdesk_ticket_custom_field_cf_on_what_date_did_you_pay_the_dental_expenses_2321673"
+            ).val();
 
-    $("#collapseSection4").collapse();
-    const element = document.getElementById("section-4-button");
-    element.scrollIntoView();
-    console.log("here")
+            payment_date_dental = new Date(payment_date_dental);
+
+            var new_today = new Date();
+            
+            payment_date_dental = payment_date_dental.setHours(0,0,0,0);
+            new_today = new_today.setHours(0,0,0,0);
+
+            console.log(new_today);
+            console.log(payment_date_dental);
 
 
-  }
-  
+            if (new_today < payment_date_dental) {
+              addErrorMessage(
+                "helpdesk_ticket_custom_field_cf_on_what_date_did_you_pay_the_dental_expenses_2321673",
+                "Date must be in past."
+              );
+            } else if (new_today > payment_date_dental) {
+              // do nothing
+            } else {
+              //assume equal
+              addErrorMessage(
+                "helpdesk_ticket_custom_field_cf_on_what_date_did_you_pay_the_dental_expenses_2321673",
+                "Date must be in past."
+              );
+            }
+          });
+          //What type of dental treatment did you need? - dependancy
+          show_and_hide(
+            [
+              'label[for="helpdesk_ticket_custom_field_cf_please_give_us_further_details_2321673"]',
+              "#helpdesk_ticket_custom_field_cf_please_give_us_further_details_2321673",
+            ],
+            "#helpdesk_ticket_custom_field_cf_what_type_of_dental_treatment_did_you_need_2321673",
+            "Other"
+          );
+          //amount paid in local currency bannot be 0
+          cannot_be_zero(
+            "helpdesk_ticket_custom_field_cf_amount_paid_in_local_currency527297_2321673"
+          );
+        }
+      }
+    );
+    //__________________________section 5.10_____________________________
+    //"helpdesk_ticket_custom_field_cf_what_date_were_you_advised_of_the_delay_2321673"
 
-});
+    $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").change(
+      function () {
+        if (
+          $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() ==
+          "Flight or Travel delayed"
+        ) {
+          //save and coninue for Section 3
+          var booking_ref_parent = document.getElementById(
+            "helpdesk_ticket_custom_field_cf_please_provide_information_about_the_additional_costs_including_the_travel_provider_booking_reference_and_the_amount_paid_2321673"
+          ).parentElement;
+          //$('<button id="save_and_continue4" class="btn btn-primary for-section-4 save_and_continue" type="button" >Save & Continue</button>').insertAfter(booking_ref_parent);
+          //What date were you advised of the delay?
+          date_past_present(
+            "helpdesk_ticket_custom_field_cf_what_date_were_you_advised_of_the_delay_2321673"
+          );
+          //What was the reason for the delay? - dependancy
+          show_and_hide(
+            [
+              'label[for="helpdesk_ticket_custom_field_cf_please_give_us_further_details_2321673"]',
+              "#helpdesk_ticket_custom_field_cf_please_give_us_further_details_2321673",
+            ],
+            "#helpdesk_ticket_custom_field_cf_what_was_the_reason_for_the_delay_2321673",
+            "Other - Select if you're sure it's not listed above"
+          );
+          //On which part of the journey were you delayed?
+          //hide by default
+          $(
+            ".form-group.helpdesk_ticket_custom_field_cf_were_you_delayed_for_24_hours_or_more923623_2321673"
+          ).hide();
+          $(
+            "#helpdesk_ticket_custom_field_cf_on_which_part_of_the_journey_were_you_delayed_2321673"
+          ).change(function () {
+            if (
+              $(
+                "#helpdesk_ticket_custom_field_cf_on_which_part_of_the_journey_were_you_delayed_2321673"
+              ).val() == "On the return journey back home" ||
+              $(
+                "#helpdesk_ticket_custom_field_cf_on_which_part_of_the_journey_were_you_delayed_2321673"
+              ).val() == "Connecting journey"
+            ) {
+              $(
+                ".form-group.helpdesk_ticket_custom_field_cf_were_you_delayed_for_24_hours_or_more923623_2321673"
+              ).show();
+            } else {
+              $(
+                ".form-group.helpdesk_ticket_custom_field_cf_were_you_delayed_for_24_hours_or_more923623_2321673"
+              ).hide();
+            }
+          });
+          //Were there any additional expenses as a result of the delay?
+          show_and_hide(
+            [
+              'label[for="helpdesk_ticket_custom_field_cf_please_provide_information_about_the_additional_costs_including_the_travel_provider_booking_reference_and_the_amount_paid_2321673"]',
+              "#helpdesk_ticket_custom_field_cf_please_provide_information_about_the_additional_costs_including_the_travel_provider_booking_reference_and_the_amount_paid_2321673",
+            ],
+            "#helpdesk_ticket_custom_field_cf_were_there_any_additional_expenses_as_a_result_of_the_delay_2321673",
+            "Yes"
+          );
+          show_and_hide(
+            [
+              ".form-group.helpdesk_ticket_custom_field_cf_were_there_any_additional_expenses_as_a_result_of_the_delay_2321673",
+            ],
+            "#helpdesk_ticket_custom_field_cf_were_you_delayed_for_24_hours_or_more923623_2321673",
+            "Yes"
+          );
+        }
+      }
+    );
+    //_____________________________________________section 5.7 ___________________________________________________
+    $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").change(
+      function () {
+        if (
+          $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() ==
+          "Curtailment – returned home early"
+        ) {
+          //save and continue 3 button
+          var refunds_compensation_parent = document.getElementById(
+            "helpdesk_ticket_custom_field_cf_total_refund_vouchers_amount_the_amount_you_have_received_back594804_2321673"
+          ).parentElement;
+          //$('<button id="save_and_continue4" class="btn btn-primary for-section-4 save_and_continue" type="button" >Save & Continue</button>').insertAfter(refunds_compensation_parent);
+          //Did you notify us of the need to curtail before making arrangements? - dependancy
+          show_and_hide(
+            [
+              'label[for="helpdesk_ticket_custom_field_cf_please_give_a_full_and_detailed_explanation_of_why_you_did_not_contact_to_contact_our_emergency_service582069_2321673"]',
+              "#helpdesk_ticket_custom_field_cf_please_give_a_full_and_detailed_explanation_of_why_you_did_not_contact_to_contact_our_emergency_service582069_2321673",
+            ],
+            "#helpdesk_ticket_custom_field_cf_did_you_notify_us_of_the_need_to_curtail_before_making_arrangements_2321673",
+            "No"
+          );
+        }
+      }
+    );
+    //_____________________________________________section 5.6___________________________________________________
+    $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").change(
+      function () {
+        if (
+          $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() ==
+          "Medical expenses abroad & repatriation cost"
+        ) {
+          //save and continue 3 button
+          //$('<button id="save_and_continue4" class="btn btn-primary for-section-4 save_and_continue" type="button" >Save & Continue</button>').insertAfter(".form-group.helpdesk_ticket_custom_field_cf_did_you_pay_for_50_or_more_of_the_trip_with_a_credit_card_2321673");
+          //When did the symptoms start? - PAST PRESENT
+          date_past_present(
+            "helpdesk_ticket_custom_field_cf_when_did_the_symptoms_start437132_2321673"
+          );
+          //Are you claiming for an injury or illness? - dependacy - illness
+          show_and_hide(
+            [
+              ".form-group.helpdesk_ticket_custom_field_cf_what_condition_has_resulted_in_the_medical_expenses_2321673",
+              "label[for='helpdesk_ticket_custom_field_cf_please_provide_any_further_information_about_the_condition_2321673']",
+              "#helpdesk_ticket_custom_field_cf_please_provide_any_further_information_about_the_condition_2321673",
+            ],
+            "#helpdesk_ticket_custom_field_cf_are_you_claiming_for_an_injury_or_illness644442_2321673",
+            "Illness"
+          );
+          //Are you claiming for an injury or illness? - dependacy
+          show_and_hide(
+            [
+              ".form-group.helpdesk_ticket_custom_field_cf_was_someone_else_a_third_party_involved_in_you_sustaining_the_injury_2321673",
+              "label[for='helpdesk_ticket_custom_field_cf_in_your_own_words_tell_us_what_happened731291_2321673']",
+              "#helpdesk_ticket_custom_field_cf_in_your_own_words_tell_us_what_happened731291_2321673",
+            ],
+            "#helpdesk_ticket_custom_field_cf_are_you_claiming_for_an_injury_or_illness644442_2321673",
+            "Injury"
+          );
+          //Please confirm the first date of diagnosis for this condition? - PAST PRESENT
+          date_past_present(
+            "helpdesk_ticket_custom_field_cf_please_confirm_the_first_date_of_diagnosis_for_this_condition_2321673"
+          );
+          //dependancy covid and illness - diagnosis date
+          //hide by default
+          $(
+            "label[for='helpdesk_ticket_custom_field_cf_please_confirm_the_first_date_of_diagnosis_for_this_condition_2321673']"
+          ).hide();
+          $(
+            "#helpdesk_ticket_custom_field_cf_please_confirm_the_first_date_of_diagnosis_for_this_condition_2321673"
+          ).hide();
+
+          $(
+            "#helpdesk_ticket_custom_field_cf_are_you_claiming_for_an_injury_or_illness644442_2321673"
+          ).change(function name() {
+            if (
+              $(
+                "#helpdesk_ticket_custom_field_cf_are_you_claiming_for_an_injury_or_illness644442_2321673"
+              ).val() == "Illness" ||
+              $(
+                "#helpdesk_ticket_custom_field_cf_are_you_claiming_for_an_injury_or_illness644442_2321673"
+              ).val() == "Coronavirus (COVID-19)"
+            ) {
+              $(
+                "label[for='helpdesk_ticket_custom_field_cf_please_confirm_the_first_date_of_diagnosis_for_this_condition_2321673']"
+              ).show();
+              $(
+                "#helpdesk_ticket_custom_field_cf_please_confirm_the_first_date_of_diagnosis_for_this_condition_2321673"
+              ).show();
+            } else {
+              $(
+                "label[for='helpdesk_ticket_custom_field_cf_please_confirm_the_first_date_of_diagnosis_for_this_condition_2321673']"
+              ).hide();
+              $(
+                "#helpdesk_ticket_custom_field_cf_please_confirm_the_first_date_of_diagnosis_for_this_condition_2321673"
+              ).hide();
+            }
+          });
+          //Total Amount paid in local currency - cannot be 0
+          cannot_be_zero(
+            "helpdesk_ticket_custom_field_cf_amount_paid_in_local_currency527297_2321673"
+          );
+          //Date of Payment? - date logic
+          $(
+            "#helpdesk_ticket_custom_field_cf_date_of_payment778903_2321673"
+          ).focusout(function () {
+            purchase_date_medical = $(
+              "#helpdesk_ticket_custom_field_cf_date_of_payment778903_2321673"
+            ).val();
+
+            purchase_date_medical = new Date(purchase_date_medical);
+            var new_today = new Date();
+
+            purchase_date_medical = purchase_date_medical.setHours(0,0,0,0);
+            new_today = new_today.setHours(0,0,0,0);
+
+            if (new_today < purchase_date_medical) {
+              //ERROR MESSAGING
+              addErrorMessage(
+                "helpdesk_ticket_custom_field_cf_date_of_payment778903_2321673",
+                "Date must be in the past."
+              );
+            } else if (new_today > purchase_date_medical) {
+              //do nothing
+            } else {
+              //assume equal
+              //ERROR MESSAGING
+              addErrorMessage(
+                "helpdesk_ticket_custom_field_cf_date_of_payment778903_2321673",
+                "Date must be in the past."
+              );
+            }
+          });
+          //Travel Insurance Policy - dependancy
+          show_and_hide(
+            [
+              "label[for='helpdesk_ticket_custom_field_cf_name_of_your_policy_provider_2321673']",
+              "#helpdesk_ticket_custom_field_cf_name_of_your_policy_provider_2321673",
+              "label[for='helpdesk_ticket_custom_field_cf_policy_number533894_2321673']",
+              "#helpdesk_ticket_custom_field_cf_policy_number533894_2321673",
+            ],
+            "#helpdesk_ticket_custom_field_cf_do_you_have_any_other_travel_insurance_policy206683_2321673",
+            "Yes"
+          );
+          //Medical Policy - dependancy
+          show_and_hide(
+            [
+              "label[for='helpdesk_ticket_custom_field_cf_name_of_your_policy_provider618179_2321673']",
+              "#helpdesk_ticket_custom_field_cf_name_of_your_policy_provider618179_2321673",
+              "label[for='helpdesk_ticket_custom_field_cf_policy_number701021_2321673']",
+              "#helpdesk_ticket_custom_field_cf_policy_number701021_2321673",
+            ],
+            "#helpdesk_ticket_custom_field_cf_do_you_have_private_medical_insurance_2321673",
+            "Yes"
+          );
+          //How did you pay for your trip?
+          show_and_hide(
+            [
+              ".form-group.helpdesk_ticket_custom_field_cf_did_you_use_your_credit_card_for_any_transactions_whilst_on_your_trip_2321673",
+              "label[for='helpdesk_ticket_custom_field_cf_who_is_the_provider_of_your_credit_card_2321673']",
+              "#helpdesk_ticket_custom_field_cf_who_is_the_provider_of_your_credit_card_2321673",
+              ".form-group.helpdesk_ticket_custom_field_cf_did_you_pay_for_50_or_more_of_the_trip_with_a_credit_card_2321673",
+            ],
+            "#helpdesk_ticket_custom_field_cf_how_did_you_pay_for_your_trip257666_2321673",
+            "Credit Card"
+          );
+        }
+      }
+    );
+    //_____________________________________________section 5.5___________________________________________________
+    $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").change(
+      function () {
+        if (
+          $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() ==
+          "Missed flight or departure"
+        ) {
+          //save_and_continue4
+          var refund_missed = document.getElementById(
+            "helpdesk_ticket_custom_field_cf_total_refund_vouchers_amount_the_amount_you_have_received_back594804_2321673"
+          ).parentElement;
+          //$('<button id="save_and_continue4" class="btn btn-primary for-section-4 save_and_continue" type="button" >Save & Continue</button>').insertAfter(refund_missed);
+
+          //what caused you to miss your departure - dependancy 1
+          show_and_hide(
+            [
+              ".form-group.helpdesk_ticket_custom_field_cf_was_someone_else_a_third_party_involved_in_the_accident_2321673",
+            ],
+            "#helpdesk_ticket_custom_field_cf_what_caused_you_to_miss_your_departure_2321673",
+            "Vehicle you were travelling in was in an accident"
+          );
+          //what caused you to miss your departure - dependancy 2
+          show_and_hide(
+            [
+              "label[for='helpdesk_ticket_custom_field_cf_please_confirm_the_test_type_2321673']",
+              "#helpdesk_ticket_custom_field_cf_please_confirm_the_test_type_2321673",
+            ],
+            "#helpdesk_ticket_custom_field_cf_what_caused_you_to_miss_your_departure_2321673",
+            "Delayed test results"
+          );
+          //what caused you to miss your departure - dependancy 3
+          //hide by default
+          $(
+            ".form-group.helpdesk_ticket_custom_field_cf_please_confirm_the_reason_for_delay_2321673"
+          ).hide();
+
+          $(
+            "#helpdesk_ticket_custom_field_cf_what_caused_you_to_miss_your_departure_2321673"
+          ).change(function () {
+            if (
+              $(
+                "#helpdesk_ticket_custom_field_cf_what_caused_you_to_miss_your_departure_2321673"
+              ).val() == "Public transport delay/cancellation" ||
+              $(
+                "#helpdesk_ticket_custom_field_cf_what_caused_you_to_miss_your_departure_2321673"
+              ).val() == "Delay to a connecting flight"
+            ) {
+              $(
+                ".form-group.helpdesk_ticket_custom_field_cf_please_confirm_the_reason_for_delay_2321673"
+              ).show();
+            } else {
+              $(
+                ".form-group.helpdesk_ticket_custom_field_cf_please_confirm_the_reason_for_delay_2321673"
+              ).hide();
+            }
+          });
+          //hide by default
+          $(
+            "label[for='helpdesk_ticket_custom_field_cf_please_give_us_further_details520238_2321673']"
+          ).hide();
+          $(
+            "#helpdesk_ticket_custom_field_cf_please_give_us_further_details520238_2321673"
+          ).hide();
+          //what caused you to miss your departure - dependancy 4
+          $(
+            "#helpdesk_ticket_custom_field_cf_what_caused_you_to_miss_your_departure_2321673"
+          ).change(function () {
+            if (
+              $(
+                "#helpdesk_ticket_custom_field_cf_what_caused_you_to_miss_your_departure_2321673"
+              ).val() == "Other" ||
+              $(
+                "#helpdesk_ticket_custom_field_cf_what_caused_you_to_miss_your_departure_2321673"
+              ).val() == "Denied boarding" ||
+              $(
+                "#helpdesk_ticket_custom_field_cf_what_caused_you_to_miss_your_departure_2321673"
+              ).val() == "Queues at departure point" ||
+              $(
+                "#helpdesk_ticket_custom_field_cf_what_caused_you_to_miss_your_departure_2321673"
+              ).val() == "Passport/visa/document issue" ||
+              $(
+                "#helpdesk_ticket_custom_field_cf_what_caused_you_to_miss_your_departure_2321673"
+              ).val() == "Failed health screening"
+            ) {
+              $(
+                "label[for='helpdesk_ticket_custom_field_cf_please_give_us_further_details520238_2321673']"
+              ).show();
+              $(
+                "#helpdesk_ticket_custom_field_cf_please_give_us_further_details520238_2321673"
+              ).show();
+            } else {
+              $(
+                "label[for='helpdesk_ticket_custom_field_cf_please_give_us_further_details520238_2321673']"
+              ).hide();
+              $(
+                "#helpdesk_ticket_custom_field_cf_please_give_us_further_details520238_2321673"
+              ).hide();
+            }
+          });
+
+          cannot_be_zero(
+            "helpdesk_ticket_custom_field_cf_amount_paid_in_local_currency_2321673"
+          );
+
+          cant_be_more_than(
+            "helpdesk_ticket_custom_field_cf_total_refund_vouchers_amount_the_amount_you_have_received_back594804_2321673",
+            "helpdesk_ticket_custom_field_cf_amount_paid_in_local_currency_2321673"
+          );
+        }
+      }
+    );
+    //___________________________________section 5.4______________________________________________
+    $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").change(
+      function () {
+        if (
+          $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() ==
+          "Any CANCELLATION claim due to COVID-19"
+        ) {
+          
+          $(
+            ".form-group.helpdesk_ticket_custom_field_cf_what_type_of_transport_was_included_in_your_booking_2321673"
+          ).hide();
+
+          $(
+            "#helpdesk_ticket_custom_field_cf_what_type_of_trip_did_you_book877716_2321673"
+          ).change(function () {
+            if (
+              $(
+                "#helpdesk_ticket_custom_field_cf_what_type_of_trip_did_you_book877716_2321673"
+              ).val() == "Package booking (e.g. flights and accommodation or flights and cruise)" ||
+              $(
+                "#helpdesk_ticket_custom_field_cf_what_type_of_trip_did_you_book877716_2321673"
+              ).val() == "Independent booking (travel and accommodation booked separately)" ||
+              $(
+                "#helpdesk_ticket_custom_field_cf_what_type_of_trip_did_you_book877716_2321673"
+              ).val() == "Travel ONLY (e.g flights or ferry)" 
+            ) {
+              $(
+                ".form-group.helpdesk_ticket_custom_field_cf_what_type_of_transport_was_included_in_your_booking_2321673"
+              ).show();
+            } else {
+              $(
+                ".form-group.helpdesk_ticket_custom_field_cf_what_type_of_transport_was_included_in_your_booking_2321673"
+              ).hide();
+            }
+          });
+
+
+
+          //A POSITIVE Coronavirus test result - dependancy
+          show_and_hide(
+            [
+              ".form-group.helpdesk_ticket_custom_field_cf_who_has_tested_positive_for_coronavirus_2321673",
+              "label[for='helpdesk_ticket_custom_field_cf_when_did_the_symptoms_start939174_2321673']",
+              "#helpdesk_ticket_custom_field_cf_when_did_the_symptoms_start939174_2321673",
+              ".form-group.helpdesk_ticket_custom_field_cf_what_type_of_test_was_taken_2321673",
+              ".form-group.helpdesk_ticket_custom_field_cf_do_you_have_evidence_from_either_the_nhshse_private_testing_company_or_your_doctor_confirming_the_positive_covid_test_email_letter_sms_2321673",
+              "label[for='helpdesk_ticket_custom_field_cf_when_did_the_test_results_confirming_coronavirus_infection_arrive_2321673']",
+              "#helpdesk_ticket_custom_field_cf_when_did_the_test_results_confirming_coronavirus_infection_arrive_2321673",
+            ],
+            "#helpdesk_ticket_custom_field_cf_why_did_you_cancel_your_trip_2321673",
+            "A POSITIVE Coronavirus test result"
+          );
+
+          //When did the test results confirming Coronavirus infection arrive? - PAST PRESENT
+          date_past_present(
+            "helpdesk_ticket_custom_field_cf_when_did_the_test_results_confirming_coronavirus_infection_arrive_2321673"
+          );
+          //When did the symptoms start? - PAST PRESENT
+          date_past_present(
+            "helpdesk_ticket_custom_field_cf_when_did_the_symptoms_start939174_2321673"
+          );
+          //When were you initially aware that you needed to cancel your trip?? - PAST PRESENT
+          date_past_present(
+            "helpdesk_ticket_custom_field_cf_when_were_you_initially_aware_that_you_needed_to_cancel_your_trip635242_2321673"
+          );
+
+          //Please enter the date you asked your tour operator/travel provider to cancel the trip? - PAST PRESENT
+          date_past_present(
+            "helpdesk_ticket_custom_field_cf_please_enter_the_date_you_asked_your_tour_operatortravel_provider_to_cancel_the_trip_2321673"
+          );
+
+          cannot_be_zero(
+            "helpdesk_ticket_custom_field_cf_total_trip_cost_the_amount_you_paid_2321673"
+          );
+
+          cant_be_more_than(
+            "helpdesk_ticket_custom_field_cf_total_refund_vouchers_amount_the_amount_you_have_received_back594804_2321673",
+            "helpdesk_ticket_custom_field_cf_total_trip_cost_the_amount_you_paid_2321673"
+          );
+
+          //Do you have any other Travel Insurance Policy? - dependancy
+          show_and_hide(
+            [
+              "label[for='helpdesk_ticket_custom_field_cf_name_of_your_policy_provider895583_2321673']",
+              "#helpdesk_ticket_custom_field_cf_name_of_your_policy_provider895583_2321673",
+              "label[for='helpdesk_ticket_custom_field_cf_policy_number964552_2321673']",
+              "#helpdesk_ticket_custom_field_cf_policy_number964552_2321673",
+            ],
+            "#helpdesk_ticket_custom_field_cf_do_you_have_any_other_travel_insurance_policy400572_2321673",
+            "Yes"
+          );
+
+          //How did you pay for your trip?
+          show_and_hide(
+            [
+              "label[for='helpdesk_ticket_custom_field_cf_who_is_the_provider_of_your_credit_card224630_2321673']",
+              "#helpdesk_ticket_custom_field_cf_who_is_the_provider_of_your_credit_card224630_2321673",
+              ".form-group.helpdesk_ticket_custom_field_cf_did_you_pay_for_50_or_more_of_the_trip_with_a_credit_card401929_2321673",
+            ],
+            "#helpdesk_ticket_custom_field_cf_how_did_you_pay_for_your_trip913590_2321673",
+            "Credit Card"
+          );
+        }
+      }
+    );
+
+    //___________________________________section 5.3______________________________________________
+    $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").change(
+      function () {
+        if (
+          $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() ==
+          "Cancelled trip - (NOT related to COVID-19)"
+        ) {
+          //save_and_continue4
+          //$('<button id="save_and_continue4" class="btn btn-primary for-section-4 save_and_continue" type="button" >Save & Continue</button>').insertAfter(".form-group.helpdesk_ticket_custom_field_cf_did_you_pay_for_50_or_more_of_the_trip_with_a_credit_card401929_2321673");
+          //Why did you cancel your trip? - dependancy 1
+          //hide by default
+          $(
+            "label[for='helpdesk_ticket_custom_field_cf_in_your_own_words_please_explain_the_reason_for_cancelling_your_trip_2321673']"
+          ).hide();
+          $(
+            "#helpdesk_ticket_custom_field_cf_in_your_own_words_please_explain_the_reason_for_cancelling_your_trip_2321673"
+          ).hide();
+          $(
+            "#helpdesk_ticket_custom_field_cf_are_you_currently_still_abroad_2321673"
+          ).change(function () {
+            if (
+              $(
+                "#helpdesk_ticket_custom_field_cf_are_you_currently_still_abroad_2321673"
+              ).val() == "Coronavirus" ||
+              $(
+                "#helpdesk_ticket_custom_field_cf_are_you_currently_still_abroad_2321673"
+              ).val() == "Other - Select if you're sure it's not listed above" ||
+              $(
+                "#helpdesk_ticket_custom_field_cf_are_you_currently_still_abroad_2321673"
+              ).val() == "Pregnancy" ||
+              $(
+                "#helpdesk_ticket_custom_field_cf_are_you_currently_still_abroad_2321673"
+              ).val() == "Your home or business premises being uninhabitable" ||
+              $(
+                "#helpdesk_ticket_custom_field_cf_are_you_currently_still_abroad_2321673"
+              ).val() ==
+                "Cancellation of leave by emergency services or armed forces"
+            ) {
+              $(
+                "label[for='helpdesk_ticket_custom_field_cf_in_your_own_words_please_explain_the_reason_for_cancelling_your_trip_2321673']"
+              ).show();
+              $(
+                "#helpdesk_ticket_custom_field_cf_in_your_own_words_please_explain_the_reason_for_cancelling_your_trip_2321673"
+              ).show();
+            } else {
+              $(
+                "label[for='helpdesk_ticket_custom_field_cf_in_your_own_words_please_explain_the_reason_for_cancelling_your_trip_2321673']"
+              ).hide();
+              $(
+                "#helpdesk_ticket_custom_field_cf_in_your_own_words_please_explain_the_reason_for_cancelling_your_trip_2321673"
+              ).hide();
+            }
+          });
+
+          //Why did you cancel your trip? - dependancy 2
+          show_and_hide(
+            [
+              "label[for='helpdesk_ticket_custom_field_cf_when_did_the_symptoms_start_2321673']",
+              "#helpdesk_ticket_custom_field_cf_when_did_the_symptoms_start_2321673",
+              ".form-group.helpdesk_ticket_custom_field_cf_what_medical_condition_has_resulted_in_cancellation748907_2321673",
+            ],
+            "#helpdesk_ticket_custom_field_cf_are_you_currently_still_abroad_2321673",
+            "Illness"
+          );
+          //when did the symptoms start -past present
+          date_past_present(
+            "helpdesk_ticket_custom_field_cf_when_did_the_symptoms_start_2321673"
+          );
+          //Why did you cancel your trip? - dependancy 3
+          show_and_hide(
+            [
+              "label[for='helpdesk_ticket_custom_field_cf_on_what_date_did_the_incident_causing_the_injury_happen_2321673']",
+              "#helpdesk_ticket_custom_field_cf_on_what_date_did_the_incident_causing_the_injury_happen_2321673",
+              ".form-group.helpdesk_ticket_custom_field_cf_was_someone_else_a_third_party_involved_in_sustaining_the_injury_2321673",
+            ],
+            "#helpdesk_ticket_custom_field_cf_are_you_currently_still_abroad_2321673",
+            "Injury"
+          );
+          //on what date injury
+          date_past_present(
+            "helpdesk_ticket_custom_field_cf_on_what_date_did_the_incident_causing_the_injury_happen_2321673"
+          );
+          //Why did you cancel your trip? - dependancy 4
+          //hide by default
+          $(
+            ".form-group.helpdesk_ticket_custom_field_cf_who_advised_to_cancel_2321673"
+          ).hide();
+          $(
+            "#helpdesk_ticket_custom_field_cf_are_you_currently_still_abroad_2321673"
+          ).change(function () {
+            if (
+              $(
+                "#helpdesk_ticket_custom_field_cf_are_you_currently_still_abroad_2321673"
+              ).val() == "Illness" ||
+              $(
+                "#helpdesk_ticket_custom_field_cf_are_you_currently_still_abroad_2321673"
+              ).val() == "Injury"
+            ) {
+              $(
+                ".form-group.helpdesk_ticket_custom_field_cf_who_advised_to_cancel_2321673"
+              ).show();
+            } else {
+              $(
+                ".form-group.helpdesk_ticket_custom_field_cf_who_advised_to_cancel_2321673"
+              ).hide();
+            }
+          });
+          //who advised cancel dependancy
+          // show_and_hide(
+          //   [
+          //     "label[for='helpdesk_ticket_custom_field_cf_please_give_us_further_details352533_2321673']",
+          //     "#helpdesk_ticket_custom_field_cf_please_give_us_further_details352533_2321673",
+          //   ],
+          //   "#helpdesk_ticket_custom_field_cf_who_advised_to_cancel_2321673",
+          //   "Other"
+          // );
+          //why did you cancel your trip dependancy 5
+          show_and_hide(
+            [
+              "label[for='helpdesk_ticket_custom_field_cf_on_what_date_were_you_advised_of_the_redundancy_2321673']",
+              "#helpdesk_ticket_custom_field_cf_on_what_date_were_you_advised_of_the_redundancy_2321673",
+              ".form-group.helpdesk_ticket_custom_field_cf_do_you_qualify_for_redundancy_payment_under_current_legislation_2321673",
+            ],
+            "#helpdesk_ticket_custom_field_cf_are_you_currently_still_abroad_2321673",
+            "Redundancy from work"
+          );
+          //on what date were you advised on the redundancy
+          date_past_present(
+            "helpdesk_ticket_custom_field_cf_on_what_date_were_you_advised_of_the_redundancy_2321673"
+          );
+          //why did you cancel your trip dependancy 6
+          show_and_hide(
+            [
+              "label[for='helpdesk_ticket_custom_field_cf_on_what_date_were_you_advised_of_the_jury_service_or_court_date_2321673']",
+              "#helpdesk_ticket_custom_field_cf_on_what_date_were_you_advised_of_the_jury_service_or_court_date_2321673",
+            ],
+            "#helpdesk_ticket_custom_field_cf_are_you_currently_still_abroad_2321673",
+            "Called for jury service or as a witness"
+          );
+          //jury date -past present
+          date_past_present(
+            "helpdesk_ticket_custom_field_cf_on_what_date_were_you_advised_of_the_jury_service_or_court_date_2321673"
+          );
+          //why did you cancel your trip dependancy 7
+          show_and_hide(
+            [
+              "label[for='helpdesk_ticket_custom_field_cf_please_confirm_the_date_of_death_2321673']",
+              "#helpdesk_ticket_custom_field_cf_please_confirm_the_date_of_death_2321673",
+              "label[for='helpdesk_ticket_custom_field_cf_please_confirm_the_cause_of_death_2321673']",
+              "#helpdesk_ticket_custom_field_cf_please_confirm_the_cause_of_death_2321673",
+            ],
+            "#helpdesk_ticket_custom_field_cf_are_you_currently_still_abroad_2321673",
+            "Death"
+          );
+          //please confirm date of death
+          date_past_present(
+            "helpdesk_ticket_custom_field_cf_please_confirm_the_date_of_death_2321673"
+          );
+          //Please confirm the date of diagnosis for this condition
+          date_past_present(
+            "helpdesk_ticket_custom_field_cf_please_confirm_the_date_of_diagnosis_for_this_condition_2321673"
+          );
+
+          //Why did you cancel your trip? - dependancy 8
+          //hide by default
+          $(
+            "label[for='helpdesk_ticket_custom_field_cf_please_confirm_the_date_of_diagnosis_for_this_condition_2321673']"
+          ).hide();
+          $(
+            "#helpdesk_ticket_custom_field_cf_please_confirm_the_date_of_diagnosis_for_this_condition_2321673"
+          ).hide();
+          $(
+            ".form-group.helpdesk_ticket_custom_field_cf_to_the_best_of_your_knowledge_were_you_or_this_person_considered_stable_at_the_time_of_booking_the_trip_2321673"
+          ).hide();
+          $(
+            "#helpdesk_ticket_custom_field_cf_are_you_currently_still_abroad_2321673"
+          ).change(function () {
+            if (
+              $(
+                "#helpdesk_ticket_custom_field_cf_are_you_currently_still_abroad_2321673"
+              ).val() == "Illness" ||
+              $(
+                "#helpdesk_ticket_custom_field_cf_are_you_currently_still_abroad_2321673"
+              ).val() == "Death"
+            ) {
+              $(
+                "label[for='helpdesk_ticket_custom_field_cf_please_confirm_the_date_of_diagnosis_for_this_condition_2321673']"
+              ).show();
+              $(
+                "#helpdesk_ticket_custom_field_cf_please_confirm_the_date_of_diagnosis_for_this_condition_2321673"
+              ).show();
+              $(
+                ".form-group.helpdesk_ticket_custom_field_cf_to_the_best_of_your_knowledge_were_you_or_this_person_considered_stable_at_the_time_of_booking_the_trip_2321673"
+              ).show();
+            } else {
+              $(
+                "label[for='helpdesk_ticket_custom_field_cf_please_confirm_the_date_of_diagnosis_for_this_condition_2321673']"
+              ).hide();
+              $(
+                "#helpdesk_ticket_custom_field_cf_please_confirm_the_date_of_diagnosis_for_this_condition_2321673"
+              ).hide();
+              $(
+                ".form-group.helpdesk_ticket_custom_field_cf_to_the_best_of_your_knowledge_were_you_or_this_person_considered_stable_at_the_time_of_booking_the_trip_2321673"
+              ).hide();
+            }
+          });
+          //What type of trip did you book?
+          //hide by default
+          $(
+            ".form-group.helpdesk_ticket_custom_field_cf_what_type_of_transport_was_included_in_your_booking146711_2321673"
+          ).hide();
+          $(
+            "#helpdesk_ticket_custom_field_cf_what_type_of_trip_did_you_book137913_2321673"
+          ).change(function () {
+            if (
+              $(
+                "#helpdesk_ticket_custom_field_cf_what_type_of_trip_did_you_book137913_2321673"
+              ).val() ==
+                "Package booking (e.g. flights and accommodation or flights and cruise)" ||
+              $(
+                "#helpdesk_ticket_custom_field_cf_what_type_of_trip_did_you_book137913_2321673"
+              ).val() == "Travel ONLY (e.g flights or ferry)" ||
+              $(
+                "#helpdesk_ticket_custom_field_cf_what_type_of_trip_did_you_book137913_2321673"
+              ).val() ==
+                "Independent booking (travel and accommodation booked separately"
+            ) {
+              $(
+                ".form-group.helpdesk_ticket_custom_field_cf_what_type_of_transport_was_included_in_your_booking146711_2321673"
+              ).show();
+            } else {
+              $(
+                ".form-group.helpdesk_ticket_custom_field_cf_what_type_of_transport_was_included_in_your_booking146711_2321673"
+              ).hide();
+            }
+          });
+          //Do you have any other Travel Insurance Policy?
+          show_and_hide(
+            [
+              "label[for='helpdesk_ticket_custom_field_cf_name_of_your_policy_provider895583_2321673']",
+              "#helpdesk_ticket_custom_field_cf_name_of_your_policy_provider895583_2321673",
+              "label[for='helpdesk_ticket_custom_field_cf_policy_number964552_2321673']",
+              "#helpdesk_ticket_custom_field_cf_policy_number964552_2321673",
+            ],
+            "#helpdesk_ticket_custom_field_cf_do_you_have_any_other_travel_insurance_policy400572_2321673",
+            "Yes"
+          );
+          //How did you pay for your trip?
+          show_and_hide(
+            [
+              "label[for='helpdesk_ticket_custom_field_cf_who_is_the_provider_of_your_credit_card224630_2321673']",
+              "#helpdesk_ticket_custom_field_cf_who_is_the_provider_of_your_credit_card224630_2321673",
+              ".form-group.helpdesk_ticket_custom_field_cf_did_you_pay_for_50_or_more_of_the_trip_with_a_credit_card401929_2321673",
+            ],
+            "#helpdesk_ticket_custom_field_cf_how_did_you_pay_for_your_trip913590_2321673",
+            "Credit Card"
+          );
+          //booking cost - cannot be 0
+          cannot_be_zero(
+            "helpdesk_ticket_custom_field_cf_total_trip_cost_the_amount_you_paid_2321673"
+          );
+          //cannot be more than
+          cant_be_more_than(
+            "helpdesk_ticket_custom_field_cf_have_you_received_any_refunds_or_compensation702973_2321673",
+            "helpdesk_ticket_custom_field_cf_total_trip_cost_the_amount_you_paid_2321673"
+          );
+          //Please enter the date you asked your tour operator/travel provider to cancel the trip - PASTPRESENT
+          date_past_present(
+            "helpdesk_ticket_custom_field_cf_please_enter_the_date_you_asked_your_tour_operatortravel_provider_to_cancel_the_trip_2321673"
+          );
+        }
+      }
+    );
+    //___________________________________section 5.2______________________________________________
+    $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").change(
+      function () {
+        if (
+          $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() ==
+          "Baggage - personal items damaged"
+        ) {
+          //hide by default
+          $(
+            "#helpdesk_ticket_custom_field_cf_what_was_its_cost_when_you_bought_it_2321673"
+          ).hide();
+          $(
+            "label[for='helpdesk_ticket_custom_field_cf_what_was_its_cost_when_you_bought_it_2321673']"
+          ).hide();
+          //save_and_continue 4
+          //$('<button id="save_and_continue4" class="btn btn-primary for-section-4 save_and_continue" type="button" >Save & Continue</button>').insertAfter(".form-group.helpdesk_ticket_custom_field_cf_did_you_pay_for_50_or_more_of_the_trip_with_a_credit_card824584_2321673");
+          //Was the item(s) with you when it was damaged? - dependancy
+          show_and_hide(
+            [
+              ".form-group.helpdesk_ticket_custom_field_cf_was_the_items_with_your_transport_provider_when_damaged_eg_airline_checkedin_luggage_2321673",
+            ],
+            "#helpdesk_ticket_custom_field_cf_was_the_items_with_you_when_it_was_damaged_2321673",
+            "No"
+          );
+          //Is the damaged item(s) listed as 'valuable, gadget/electrical' in your policy wording? - dependancy
+          show_and_hide(
+            [
+              ".form-group.helpdesk_ticket_custom_field_cf_is_the_damaged_items_listed_as_valuable_gadgetelectrical_in_your_policy_wording_2321673",
+              ".form-group.helpdesk_ticket_custom_field_cf_did_you_tell_your_transport_provider_about_the_damage_2321673",
+            ],
+            "#helpdesk_ticket_custom_field_cf_was_the_items_with_your_transport_provider_when_damaged_eg_airline_checkedin_luggage_2321673",
+            "Yes"
+          );
+          //Did you tell your transport provider about the damage? - dependancy 1
+          show_and_hide(
+            [
+              "label[for='helpdesk_ticket_custom_field_cf_let_us_know_why_you_didnt_report_the_damage_2321673']",
+              "#helpdesk_ticket_custom_field_cf_let_us_know_why_you_didnt_report_the_damage_2321673",
+            ],
+            "#helpdesk_ticket_custom_field_cf_did_you_tell_your_transport_provider_about_the_damage_2321673",
+            "No"
+          );
+          //Did you tell your transport provider about the damage? - dependancy 1
+          show_and_hide(
+            [
+              "label[for='helpdesk_ticket_custom_field_cf_please_enter_the_report_reference_given_by_your_transport_provider_pir_reference_if_applicable_2321673']",
+              "#helpdesk_ticket_custom_field_cf_please_enter_the_report_reference_given_by_your_transport_provider_pir_reference_if_applicable_2321673",
+            ],
+            "#helpdesk_ticket_custom_field_cf_did_you_tell_your_transport_provider_about_the_damage_2321673",
+            "Yes"
+          );
+          //did you get a repair estimat
+          show_and_hide(
+            [
+              ".form-group.helpdesk_ticket_custom_field_cf_did_you_get_a_repair_estimate_2321673",
+              ".form-group.helpdesk_ticket_custom_field_cf_item_type_2321673",
+              "label[for='helpdesk_ticket_custom_field_cf_item_description_2321673']",
+              "#helpdesk_ticket_custom_field_cf_item_description_2321673",
+              "label[for='helpdesk_ticket_custom_field_cf_when_did_you_buy_the_item_2321673']",
+              "#helpdesk_ticket_custom_field_cf_when_did_you_buy_the_item_2321673",
+              "label[for='helpdesk_ticket_custom_field_cf_amount_paid_in_local_currency_2321673']",
+              "#helpdesk_ticket_custom_field_cf_amount_paid_in_local_currency_2321673",
+              "#helpdesk_ticket_custom_field_cf_what_was_its_cost_when_you_bought_it_2321673",
+              "label[for='helpdesk_ticket_custom_field_cf_what_was_its_cost_when_you_bought_it_2321673']",
+            ],
+            "#helpdesk_ticket_custom_field_cf_how_many_items_are_you_claiming_for411795_2321673",
+            "1"
+          );
+          //did you get a repair estimate - dependacy
+          show_and_hide(
+            [
+              ".form-group.helpdesk_ticket_custom_field_cf_can_the_item_be_repaired_2321673",
+            ],
+            "#helpdesk_ticket_custom_field_cf_did_you_get_a_repair_estimate_2321673",
+            "Yes"
+          );
+          //23456789 dependancy
+          show_and_hide(
+            [
+              "label[for='helpdesk_ticket_custom_field_cf_total_refund_vouchers_amount_the_amount_you_have_received_back_2321673']",
+              "#helpdesk_ticket_custom_field_cf_total_refund_vouchers_amount_the_amount_you_have_received_back_2321673",
+            ],
+            "#helpdesk_ticket_custom_field_cf_can_the_item_be_repaired_2321673",
+            "Yes"
+          );
+          //Do you have Home Contents Insurance?
+          show_and_hide(
+            [
+              "label[for='helpdesk_ticket_custom_field_cf_name_of_your_policy_provider267746_2321673']",
+              "#helpdesk_ticket_custom_field_cf_name_of_your_policy_provider267746_2321673",
+              "label[for='helpdesk_ticket_custom_field_cf_policy_number818860_2321673']",
+              "#helpdesk_ticket_custom_field_cf_policy_number818860_2321673",
+            ],
+            "#helpdesk_ticket_custom_field_cf_do_you_have_home_contents_insurance_2321673",
+            "Yes"
+          );
+          //Do you have any other Travel Insurance Policy?
+          show_and_hide(
+            [
+              "label[for='helpdesk_ticket_custom_field_cf_name_of_your_policy_provider610133_2321673']",
+              "#helpdesk_ticket_custom_field_cf_name_of_your_policy_provider610133_2321673",
+              "label[for='helpdesk_ticket_custom_field_cf_policy_number832231_2321673']",
+              "#helpdesk_ticket_custom_field_cf_policy_number832231_2321673",
+            ],
+            "#helpdesk_ticket_custom_field_cf_do_you_have_any_other_travel_insurance_policy_2321673",
+            "Yes"
+          );
+          //How did you pay for your trip?
+          show_and_hide(
+            [
+              "label[for='helpdesk_ticket_custom_field_cf_who_is_the_provider_of_your_credit_card237678_2321673']",
+              "#helpdesk_ticket_custom_field_cf_who_is_the_provider_of_your_credit_card237678_2321673",
+              ".form-group.helpdesk_ticket_custom_field_cf_did_you_pay_for_50_or_more_of_the_trip_with_a_credit_card824584_2321673",
+            ],
+            "#helpdesk_ticket_custom_field_cf_how_did_you_pay_for_your_trip396837_2321673",
+            "Credit Card"
+          );
+
+          //hide by default
+          $(
+            "label[for='helpdesk_ticket_custom_field_cf_whats_the_total_amount_youre_claiming_2321673']"
+          ).hide();
+          $(
+            "#helpdesk_ticket_custom_field_cf_whats_the_total_amount_youre_claiming_2321673"
+          ).hide();
+          $(
+            "label[for='helpdesk_ticket_custom_field_cf_please_provide_a_description_the_owner_the_purchase_date_and_purchase_price_of_each_item_2321673']"
+          ).hide();
+          $(
+            "#helpdesk_ticket_custom_field_cf_please_provide_a_description_the_owner_the_purchase_date_and_purchase_price_of_each_item_2321673"
+          ).hide();
+
+          $(
+            "#helpdesk_ticket_custom_field_cf_how_many_items_are_you_claiming_for411795_2321673"
+          ).change(function () {
+            if (
+              $(
+                "#helpdesk_ticket_custom_field_cf_how_many_items_are_you_claiming_for411795_2321673"
+              ).val() == "2" ||
+              $(
+                "#helpdesk_ticket_custom_field_cf_how_many_items_are_you_claiming_for411795_2321673"
+              ).val() == "3" ||
+              $(
+                "#helpdesk_ticket_custom_field_cf_how_many_items_are_you_claiming_for411795_2321673"
+              ).val() == "4" ||
+              $(
+                "#helpdesk_ticket_custom_field_cf_how_many_items_are_you_claiming_for411795_2321673"
+              ).val() == "5" ||
+              $(
+                "#helpdesk_ticket_custom_field_cf_how_many_items_are_you_claiming_for411795_2321673"
+              ).val() == "6" ||
+              $(
+                "#helpdesk_ticket_custom_field_cf_how_many_items_are_you_claiming_for411795_2321673"
+              ).val() == "7" ||
+              $(
+                "#helpdesk_ticket_custom_field_cf_how_many_items_are_you_claiming_for411795_2321673"
+              ).val() == "8" ||
+              $(
+                "#helpdesk_ticket_custom_field_cf_how_many_items_are_you_claiming_for411795_2321673"
+              ).val() == "9"
+            ) {
+              $(
+                "label[for='helpdesk_ticket_custom_field_cf_whats_the_total_amount_youre_claiming_2321673']"
+              ).show();
+              $(
+                "#helpdesk_ticket_custom_field_cf_whats_the_total_amount_youre_claiming_2321673"
+              ).show();
+              $(
+                "label[for='helpdesk_ticket_custom_field_cf_please_provide_a_description_the_owner_the_purchase_date_and_purchase_price_of_each_item_2321673']"
+              ).show();
+              $(
+                "#helpdesk_ticket_custom_field_cf_please_provide_a_description_the_owner_the_purchase_date_and_purchase_price_of_each_item_2321673"
+              ).show();
+            } else {
+              $(
+                "label[for='helpdesk_ticket_custom_field_cf_whats_the_total_amount_youre_claiming_2321673']"
+              ).hide();
+              $(
+                "#helpdesk_ticket_custom_field_cf_whats_the_total_amount_youre_claiming_2321673"
+              ).hide();
+              $(
+                "label[for='helpdesk_ticket_custom_field_cf_please_provide_a_description_the_owner_the_purchase_date_and_purchase_price_of_each_item_2321673']"
+              ).hide();
+              $(
+                "#helpdesk_ticket_custom_field_cf_please_provide_a_description_the_owner_the_purchase_date_and_purchase_price_of_each_item_2321673"
+              ).hide();
+            }
+          });
+
+          //when did you buy that item - past present
+          date_past_present(
+            "helpdesk_ticket_custom_field_cf_when_did_you_buy_the_item_2321673"
+          );
+        }
+      }
+    );
+    //___________________________________section 5.1______________________________________________
+    $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").change(
+      function () {
+        if (
+          $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() ==
+          "Baggage - personal items lost or stolen"
+        ) {
+          //hide by default
+          $(
+            ".form-group.helpdesk_ticket_custom_field_cf_item_type870706_2321673"
+          ).hide();
+          // $(
+          //   ".form-group.helpdesk_ticket_custom_field_cf_who_owns_the_item86910_2321673"
+          // ).hide();
+          $(
+            "label[for='helpdesk_ticket_custom_field_cf_what_was_its_cost_when_you_bought_it_2321673']"
+          ).hide();
+          $(
+            "#helpdesk_ticket_custom_field_cf_what_was_its_cost_when_you_bought_it_2321673"
+          ).hide();
+          $(
+            "label[for='helpdesk_ticket_custom_field_cf_item_description369043_2321673']"
+          ).hide();
+          $(
+            "#helpdesk_ticket_custom_field_cf_item_description369043_2321673"
+          ).hide();
+          $(
+            "label[for='helpdesk_ticket_custom_field_cf_when_did_you_purchase_the_item_2321673']"
+          ).hide();
+          $(
+            "#helpdesk_ticket_custom_field_cf_when_did_you_purchase_the_item_2321673"
+          ).hide();
+
+          //theft or loss dependancy 1
+          show_and_hide(
+            [
+              "label[for='helpdesk_ticket_custom_field_cf_in_your_own_words_tell_us_what_happened994308_2321673']",
+              "#helpdesk_ticket_custom_field_cf_in_your_own_words_tell_us_what_happened994308_2321673",
+            ],
+            "#helpdesk_ticket_custom_field_cf_are_you_claiming_for_a_loss_or_theft_2321673",
+            "Theft"
+          );
+          //theft or loss dependancy 2
+          show_and_hide(
+            [
+              "label[for='helpdesk_ticket_custom_field_cf_in_your_own_words_tell_us_what_happened511569_2321673']",
+              "#helpdesk_ticket_custom_field_cf_in_your_own_words_tell_us_what_happened511569_2321673",
+            ],
+            "#helpdesk_ticket_custom_field_cf_are_you_claiming_for_a_loss_or_theft_2321673",
+            "Loss"
+          );
+          //theft or loss dependancy 3
+          show_and_hide(
+            [
+              ".form-group.helpdesk_ticket_custom_field_cf_were_you_in_the_vehicle_at_the_time_of_the_theft_2321673",
+            ],
+            "#helpdesk_ticket_custom_field_cf_where_did_the_loss_or_theft_take_place_2321673",
+            "From your own or a rental vehicle"
+          );
+          //theft or loss dependancy 4
+          show_and_hide(
+            [
+              ".form-group.helpdesk_ticket_custom_field_cf_whereabouts_in_the_vehicle_was_the_items_when_stolen_2321673",
+              ".form-group.helpdesk_ticket_custom_field_cf_was_there_physical_damage_to_the_vehicle_2321673",
+            ],
+            "#helpdesk_ticket_custom_field_cf_were_you_in_the_vehicle_at_the_time_of_the_theft_2321673",
+            "No"
+          );
+          //theft or loss dependancy 5
+          show_and_hide(
+            [
+              ".form-group.helpdesk_ticket_custom_field_cf_are_any_of_the_items_lost_defined_as_a_valuable_gadgetelectrical_as_shown_within_your_policy_wording_2321673",
+            ],
+            "#helpdesk_ticket_custom_field_cf_where_did_the_loss_or_theft_take_place_2321673",
+            "Checked-in luggage (In my suitcase)"
+          );
+          //theft or loss dependancy 6
+          show_and_hide(
+            [
+              ".form-group.helpdesk_ticket_custom_field_cf_are_you_claiming_for_more_than_1_item_2321673",
+            ],
+            "#helpdesk_ticket_custom_field_cf_are_any_of_the_items_lost_defined_as_a_valuable_gadgetelectrical_as_shown_within_your_policy_wording_2321673",
+            "Yes"
+          );
+          //theft and loss dependancy 7
+          show_and_hide(
+            [
+              ".form-group.helpdesk_ticket_custom_field_cf_who_did_you_report_it_to_2321673",
+            ],
+            "#helpdesk_ticket_custom_field_cf_did_you_report_the_loss_or_theft_2321673",
+            "Yes"
+          );
+          //theft and loss dependancy 8
+          show_and_hide(
+            [
+              ".form-group.helpdesk_ticket_custom_field_cf_please_confirm_why_you_did_not_report_the_loss_or_theft6975_2321673",
+            ],
+            "#helpdesk_ticket_custom_field_cf_did_you_report_the_loss_or_theft_2321673",
+            "No"
+          );
+          //theft and loss dependancy 9
+          show_and_hide(
+            [
+              "label[for='helpdesk_ticket_custom_field_cf_please_give_us_further_details341695_2321673']",
+              "#helpdesk_ticket_custom_field_cf_please_give_us_further_details341695_2321673",
+            ],
+            "#helpdesk_ticket_custom_field_cf_who_did_you_report_it_to_2321673",
+            "Other"
+          );
+          //theft and loss dependancy 10
+          show_and_hide(
+            [
+              "label[for='helpdesk_ticket_custom_field_cf_police_or_crime_reference_number_2321673']",
+              "#helpdesk_ticket_custom_field_cf_police_or_crime_reference_number_2321673",
+            ],
+            "#helpdesk_ticket_custom_field_cf_who_did_you_report_it_to_2321673",
+            "Police"
+          );
+          //theft and loss dependancy 11
+          show_and_hide(
+            [
+              ".form-group.helpdesk_ticket_custom_field_cf_have_you_blocked_imei_with_your_provider_2321673",
+              "label[for='helpdesk_ticket_custom_field_cf_imei_number_2321673']",
+              "#helpdesk_ticket_custom_field_cf_imei_number_2321673",
+            ],
+            "#helpdesk_ticket_custom_field_cf_item_type870706_2321673",
+            "Mobile Phone"
+          );
+          //theft and loss dependancy 12
+
+          show_and_hide(
+            [
+              ".form-group.helpdesk_ticket_custom_field_cf_item_type870706_2321673",
+              "label[for='helpdesk_ticket_custom_field_cf_what_was_its_cost_when_you_bought_it_2321673']",
+              "#helpdesk_ticket_custom_field_cf_what_was_its_cost_when_you_bought_it_2321673",
+              "label[for='helpdesk_ticket_custom_field_cf_item_description369043_2321673']",
+              "#helpdesk_ticket_custom_field_cf_item_description369043_2321673",
+              "label[for='helpdesk_ticket_custom_field_cf_when_did_you_purchase_the_item_2321673']",
+              "#helpdesk_ticket_custom_field_cf_when_did_you_purchase_the_item_2321673",
+            ],
+            "#helpdesk_ticket_custom_field_cf_how_many_items_are_you_claiming_for_2321673",
+            "1"
+          );
+          //theft and loss dependancy 12
+          show_and_hide(
+            [
+              "label[for='helpdesk_ticket_custom_field_cf_name_of_your_policy_provider267746_2321673']",
+              "#helpdesk_ticket_custom_field_cf_name_of_your_policy_provider267746_2321673",
+              "label[for='helpdesk_ticket_custom_field_cf_policy_number818860_2321673']",
+              "#helpdesk_ticket_custom_field_cf_policy_number818860_2321673",
+            ],
+            "#helpdesk_ticket_custom_field_cf_do_you_have_home_contents_insurance_2321673",
+            "Yes"
+          );
+          //theft and loss dependancy 13
+          show_and_hide(
+            [
+              "label[for='helpdesk_ticket_custom_field_cf_name_of_your_policy_provider610133_2321673']",
+              "#helpdesk_ticket_custom_field_cf_name_of_your_policy_provider610133_2321673",
+              "label[for='helpdesk_ticket_custom_field_cf_policy_number832231_2321673']",
+              "#helpdesk_ticket_custom_field_cf_policy_number832231_2321673",
+            ],
+            "#helpdesk_ticket_custom_field_cf_do_you_have_any_other_travel_insurance_policy_2321673",
+            "Yes"
+          );
+          //theft and loss dependancy 14
+          show_and_hide(
+            [
+              "label[for='helpdesk_ticket_custom_field_cf_who_is_the_provider_of_your_credit_card237678_2321673']",
+              "#helpdesk_ticket_custom_field_cf_who_is_the_provider_of_your_credit_card237678_2321673",
+              ".form-group.helpdesk_ticket_custom_field_cf_did_you_pay_for_50_or_more_of_the_trip_with_a_credit_card824584_2321673",
+            ],
+            "#helpdesk_ticket_custom_field_cf_how_did_you_pay_for_your_trip396837_2321673",
+            "Credit Card"
+          );
+
+          date_past_present(
+            "helpdesk_ticket_custom_field_cf_when_did_you_purchase_the_item_2321673"
+          );
+          //hide by default
+          $(
+            "label[for='helpdesk_ticket_custom_field_cf_what_is_the_total_amount_youre_claiming_2321673']"
+          ).hide();
+          $(
+            "#helpdesk_ticket_custom_field_cf_what_is_the_total_amount_youre_claiming_2321673"
+          ).hide();
+
+          $(
+            "label[for='helpdesk_ticket_custom_field_cf_please_provide_a_description_the_owner_the_purchase_date_and_purchase_price_of_each_item910226_2321673']"
+          ).hide();
+          $(
+            "#helpdesk_ticket_custom_field_cf_please_provide_a_description_the_owner_the_purchase_date_and_purchase_price_of_each_item910226_2321673"
+          ).hide();
+
+          $(
+            "#helpdesk_ticket_custom_field_cf_how_many_items_are_you_claiming_for_2321673"
+          ).change(function () {
+            if (
+              $(
+                "#helpdesk_ticket_custom_field_cf_how_many_items_are_you_claiming_for_2321673"
+              ).val() == "2" ||
+              $(
+                "#helpdesk_ticket_custom_field_cf_how_many_items_are_you_claiming_for_2321673"
+              ).val() == "3" ||
+              $(
+                "#helpdesk_ticket_custom_field_cf_how_many_items_are_you_claiming_for_2321673"
+              ).val() == "4" ||
+              $(
+                "#helpdesk_ticket_custom_field_cf_how_many_items_are_you_claiming_for_2321673"
+              ).val() == "5" ||
+              $(
+                "#helpdesk_ticket_custom_field_cf_how_many_items_are_you_claiming_for_2321673"
+              ).val() == "6" ||
+              $(
+                "#helpdesk_ticket_custom_field_cf_how_many_items_are_you_claiming_for_2321673"
+              ).val() == "7" ||
+              $(
+                "#helpdesk_ticket_custom_field_cf_how_many_items_are_you_claiming_for_2321673"
+              ).val() == "8" ||
+              $(
+                "#helpdesk_ticket_custom_field_cf_how_many_items_are_you_claiming_for_2321673"
+              ).val() == "9"
+            ) {
+              $(
+                "label[for='helpdesk_ticket_custom_field_cf_what_is_the_total_amount_youre_claiming_2321673']"
+              ).show();
+              $(
+                "#helpdesk_ticket_custom_field_cf_what_is_the_total_amount_youre_claiming_2321673"
+              ).show();
+              $(
+                "label[for='helpdesk_ticket_custom_field_cf_please_provide_a_description_the_owner_the_purchase_date_and_purchase_price_of_each_item910226_2321673']"
+              ).show();
+              $(
+                "#helpdesk_ticket_custom_field_cf_please_provide_a_description_the_owner_the_purchase_date_and_purchase_price_of_each_item910226_2321673"
+              ).show();
+            } else {
+              $(
+                "label[for='helpdesk_ticket_custom_field_cf_what_is_the_total_amount_youre_claiming_2321673']"
+              ).hide();
+              $(
+                "#helpdesk_ticket_custom_field_cf_what_is_the_total_amount_youre_claiming_2321673"
+              ).hide();
+              $(
+                "label[for='helpdesk_ticket_custom_field_cf_please_provide_a_description_the_owner_the_purchase_date_and_purchase_price_of_each_item910226_2321673']"
+              ).hide();
+              $(
+                "#helpdesk_ticket_custom_field_cf_please_provide_a_description_the_owner_the_purchase_date_and_purchase_price_of_each_item910226_2321673"
+              ).hide();
+            }
+          });
+        }
+      }
+    );
+    
+    function files_uploaded() {
+      $("p").remove(".section_5_line");
+      $(".fw-comments-wrapper .attachments .fw-attachment-item").each(
+        function () {
+          $(
+            "<p class='section_5_line'>" +
+              $(this).find("p").html().split("<br>")[0] +
+              "</p>"
+          ).insertBefore("#great_line_5");
+        }
+      );
+    }
+    if (jQuery(".fw-comments-wrapper").length > 0) {
+      files_uploaded();
+    }
+
+    if ($(".edit_helpdesk_ticket").length > 0){
+      console.log("Inside Ending");
+
+      $("#collapseSection4").collapse();
+      const element = document.getElementById("section-4-button");
+      element.scrollIntoView();
+      console.log("here")
+
+
+    }
+    
+
+  });
