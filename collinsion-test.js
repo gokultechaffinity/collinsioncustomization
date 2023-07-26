@@ -6409,6 +6409,8 @@ jQuery(document).ready(function ($) {
       console.log("Value True");
       //$(".new-ticket-dummy").trigger("click");
       $(".new-ticket-submit-button").trigger("click");
+      console.log("Saving draft, will redirect");
+      window.location.href = "/support/tickets"
     }else{
       console.log("Value False");
     }
