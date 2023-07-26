@@ -12517,18 +12517,20 @@ jQuery(document).ready(function ($) {
     }
   });
 
-  $(".new-ticket-submit-button").click(function () {
+  $(".new-ticket-submit-button").click(function (event) {
     var summary_div = document.getElementById("collapseSection7").innerHTML;
     //add condition to check if information had already been appended, if so, clear description field and add new information
     if(($(".fr-element.fr-view").length) != 0){
       $(".fr-element.fr-view").empty();
       $(".fr-element.fr-view").append(summary_div);
       console.log("Saving draft, will redirect");
-      window.location.href = "/support/tickets"
+      event.preventDefault();
+      window.location.href = "/support/tickets";
     }else{
       $(".fr-element.fr-view").append(summary_div);
       console.log("Saving draft, will redirect");
-      window.location.href = "/support/tickets"
+      event.preventDefault();
+      window.location.href = "/support/tickets";
     }
     
   });
