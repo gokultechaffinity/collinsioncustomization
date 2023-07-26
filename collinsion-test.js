@@ -12512,23 +12512,24 @@ jQuery(document).ready(function ($) {
 
   $(".new-ticket-submit-button").click(function (event) {
     var summary_div = document.getElementById("collapseSection7").innerHTML;
+    summary_div = summary_div.replace("Please Wait...","");
     //add condition to check if information had already been appended, if so, clear description field and add new information
     if(($(".fr-element.fr-view").length) != 0){
       $(".fr-element.fr-view").empty();
       $(".fr-element.fr-view").append(summary_div);
       console.log("Saving draft, will redirect");
       // event.preventDefault();
-      var window = window.open("/support/tickets", "_blank");
-      window.focus();
-      // window.location.href = "/support/tickets";
+      // var window = window.open("/support/tickets", "_blank");
+      // window.focus();
+      window.location.href = "/support/tickets";
 
     }else{
       $(".fr-element.fr-view").append(summary_div);
       console.log("Saving draft, will redirect");
       // event.preventDefault();
-      var window = window.open("/support/tickets", "_blank");
-      window.focus();
-    //   window.location.href = "/support/tickets";
+      // var window = window.open("/support/tickets", "_blank");
+      // window.focus();
+      window.location.href = "/support/tickets";
     }
     
   });
