@@ -635,6 +635,7 @@ jQuery(document).ready(function ($) {
  
   function thisDiv(number, title) {
     console.log("titles[i] ----------635---->",number, title)
+    if(title!="Tell us what happened" ||title!="Your documents" ){
   $(".for-section-" + number).wrapAll(
   '<div id="collapseSection' +number +'" class="collapse order' +number +' wrap_div_'+number+'" data-parent="#accordion" aria-labelledby="overall_div_' +number +'">'
     +'<div class="card-body">'
@@ -655,6 +656,7 @@ jQuery(document).ready(function ($) {
       $(".wrap_div_"+number).wrapAll(
           '<div class="card ins-card order' +number +'">'
       )
+    }
 }
 
 
