@@ -438,21 +438,22 @@ jQuery(document).ready(function ($) {
         '#save_draft_4'
       );
     } else {
-      $(
-        '<button id="save_draft_4" class="btn btn-primary for-section-4 " type="button">Pause</button>'
-      ).insertBefore(
-        ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper"
-      );
-      $(
-        '<button id="save_and_continue4" class="btn btn-primary for-section-4 save_and_continue" type="button">Continue</button>'
-      ).insertAfter(
-        ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper"
-      );
-      $("<hr id ='hr4' class='for-section-4'>").insertAfter("#save_draft_4");
-      $('<p class="for-section-4" style="margin-top: 20px;">If you pause your claim, all of the information you have given will be saved for you.</p>'
-      ).insertBefore(
-        '#save_draft_4'
-      );
+      console.log("code inside the section ----------441---->")
+      // $(
+      //   '<button id="save_draft_4" class="btn btn-primary for-section-4 " type="button">Pause</button>'
+      // ).insertBefore(
+      //   ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper"
+      // );
+      // $(
+      //   '<button id="save_and_continue4" class="btn btn-primary for-section-4 save_and_continue" type="button">Continue</button>'
+      // ).insertAfter(
+      //   ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper"
+      // );
+      // $("<hr id ='hr4' class='for-section-4'>").insertAfter("#save_draft_4");
+      // $('<p class="for-section-4" style="margin-top: 20px;">If you pause your claim, all of the information you have given will be saved for you.</p>'
+      // ).insertBefore(
+      //   '#save_draft_4'
+      // );
     }
 
   }
@@ -485,19 +486,20 @@ jQuery(document).ready(function ($) {
       $("<p class='for-section-5' style='margin-top: 20px;'>Se clicchi 'Salva sinistro' ti invieremo un'e-mail entro 5 minuti per l'attivazione del tuo account, dove potrai continuare con il tuo sinistro</p>").insertAfter(".save_draft_5.btn.btn-primary.for-section-5:visible");
       $("p.for-section-5:eq(0)").hide();
     } else {
-      jQuery(".attachments.for-section-5").after(
-        '<button class="save_draft_5 btn btn-primary for-section-5 " type="button">Pause</button>'
-      );
-      $(
-        '<button class="save_and_continue5 btn btn-primary for-section-5 save_and_continue" type="button" >Continue</button>'
-      ).insertAfter(".attachments.for-section-5");
-      $('<p class="for-section-5" style="margin-top: 20px;">If you pause your claim, all of the information you have given will be saved for you.</p>').insertAfter(".save_draft_5.btn.btn-primary.for-section-5:visible");
-      $("p.for-section-5:eq(0)").hide();
+      console.log("----Insert wrapper ------->else---->489")
+      // jQuery(".attachments.for-section-5").after(
+      //   '<button class="save_draft_5 btn btn-primary for-section-5 " type="button">Pause</button>'
+      // );
+      // $(
+      //   '<button class="save_and_continue5 btn btn-primary for-section-5 save_and_continue" type="button" >Continue</button>'
+      // ).insertAfter(".attachments.for-section-5");
+      // $('<p class="for-section-5" style="margin-top: 20px;">If you pause your claim, all of the information you have given will be saved for you.</p>').insertAfter(".save_draft_5.btn.btn-primary.for-section-5:visible");
+      // $("p.for-section-5:eq(0)").hide();
 
-      $("p.for-section-5:eq(1)").hide();
-      $(".save_draft_5").hide();
-      $("p.for-section-4").hide();
-      $("#save_draft_4").hide();
+      // $("p.for-section-5:eq(1)").hide();
+      // $(".save_draft_5").hide();
+      // $("p.for-section-4").hide();
+      // $("#save_draft_4").hide();
     }
   } else {
     $(
@@ -517,14 +519,15 @@ jQuery(document).ready(function ($) {
       $("<p class='for-section-5' style='margin-top: 20px;'>Se clicchi 'Salva sinistro' ti invieremo un'e-mail entro 5 minuti per l'attivazione del tuo account, dove potrai continuare con il tuo sinistro</p>").insertAfter(".save_draft_5.btn.btn-primary.for-section-5:visible");
       $("p.for-section-5:eq(0)").hide();
     } else {
-      jQuery(".attachments-container.for-section-5").before(
-        '<button class="save_draft_5 btn btn-primary for-section-5 " type="button">Pause</button>'
-      );
-      $(
-        '<button class="save_and_continue5 btn btn-primary for-section-5 save_and_continue" type="button" >Continue</button>'
-      ).insertAfter(".form-group.attachments-container.for-section-5");
-      $('<p class="for-section-5" style="margin-top: 20px;">If you pause your claim, all of the information you have given will be saved for you.</p>').insertAfter(".save_draft_5.btn.btn-primary.for-section-5:visible");
-      $("p.for-section-5:eq(0)").hide();
+      console.log("----Insert wrapper ------->else---->522")
+      // jQuery(".attachments-container.for-section-5").before(
+      //   '<button class="save_draft_5 btn btn-primary for-section-5 " type="button">Pause</button>'
+      // );
+      // $(
+      //   '<button class="save_and_continue5 btn btn-primary for-section-5 save_and_continue" type="button" >Continue</button>'
+      // ).insertAfter(".form-group.attachments-container.for-section-5");
+      // $('<p class="for-section-5" style="margin-top: 20px;">If you pause your claim, all of the information you have given will be saved for you.</p>').insertAfter(".save_draft_5.btn.btn-primary.for-section-5:visible");
+      // $("p.for-section-5:eq(0)").hide();
     }
   }
   $("#mock-doc").remove();
@@ -631,6 +634,7 @@ jQuery(document).ready(function ($) {
   }
  
   function thisDiv(number, title) {
+    console.log("titles[i] ----------635---->",number, title)
   $(".for-section-" + number).wrapAll(
   '<div id="collapseSection' +number +'" class="collapse order' +number +' wrap_div_'+number+'" data-parent="#accordion" aria-labelledby="overall_div_' +number +'">'
     +'<div class="card-body">'
@@ -663,6 +667,7 @@ jQuery(document).ready(function ($) {
   } else {
     //invoke for English portals
     for (var i = 0; i < titles.length; ++i) {
+      console.log("titles[i] ----------668---->",i + 1, titles[i])
       thisDiv(i + 1, titles[i]);
     }
   }
