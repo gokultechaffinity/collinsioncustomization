@@ -438,7 +438,6 @@ jQuery(document).ready(function ($) {
         '#save_draft_4'
       );
     } else {
-      console.log("code inside the section ----------441---->")
       $(
         '<button id="save_draft_4" class="btn btn-primary for-section-4 " type="button">Pause</button>'
       ).insertBefore(
@@ -486,7 +485,6 @@ jQuery(document).ready(function ($) {
       $("<p class='for-section-5' style='margin-top: 20px;'>Se clicchi 'Salva sinistro' ti invieremo un'e-mail entro 5 minuti per l'attivazione del tuo account, dove potrai continuare con il tuo sinistro</p>").insertAfter(".save_draft_5.btn.btn-primary.for-section-5:visible");
       $("p.for-section-5:eq(0)").hide();
     } else {
-      console.log("----Insert wrapper ------->else---->489")
       jQuery(".attachments.for-section-5").after(
         '<button class="save_draft_5 btn btn-primary for-section-5 " type="button">Pause</button>'
       );
@@ -519,7 +517,6 @@ jQuery(document).ready(function ($) {
       $("<p class='for-section-5' style='margin-top: 20px;'>Se clicchi 'Salva sinistro' ti invieremo un'e-mail entro 5 minuti per l'attivazione del tuo account, dove potrai continuare con il tuo sinistro</p>").insertAfter(".save_draft_5.btn.btn-primary.for-section-5:visible");
       $("p.for-section-5:eq(0)").hide();
     } else {
-      console.log("----Insert wrapper ------->else---->522")
       jQuery(".attachments-container.for-section-5").before(
         '<button class="save_draft_5 btn btn-primary for-section-5 " type="button">Pause</button>'
       );
@@ -634,9 +631,6 @@ jQuery(document).ready(function ($) {
   }
  
   function thisDiv(number, title) {
-    console.log("titles[i] ----------635---->",number, typeof title)
-    if(title!="Tell us what happened"||title!= "Your documents" ){
-      console.log("titles[i] ----------639---->", title)
   $(".for-section-" + number).wrapAll(
   '<div id="collapseSection' +number +'" class="collapse order' +number +' wrap_div_'+number+'" data-parent="#accordion" aria-labelledby="overall_div_' +number +'">'
     +'<div class="card-body">'
@@ -657,7 +651,6 @@ jQuery(document).ready(function ($) {
       $(".wrap_div_"+number).wrapAll(
           '<div class="card ins-card order' +number +'">'
       )
-    }
 }
 
 
@@ -670,7 +663,6 @@ jQuery(document).ready(function ($) {
   } else {
     //invoke for English portals
     for (var i = 0; i < titles.length; ++i) {
-      console.log("titles[i] ----------668---->",i + 1, titles[i])
       thisDiv(i + 1, titles[i]);
     }
   }
