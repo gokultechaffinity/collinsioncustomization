@@ -24,9 +24,11 @@ jQuery(document).ready(function ($) {
   //hide two options for Italy
 
   $(document.body).click(function () {
+    
     //VARIABLES
     //include italy
 
+    
     if ($("#title").hasClass("ColumbusItaly")) {
       $('div[data-value="Missed flight or departure"]').remove();
       $(
@@ -59,6 +61,9 @@ jQuery(document).ready(function ($) {
     .append(
       '<div class="invalid-feedback api_call_failed_postcode">API call failed</div>'
     );
+
+
+
 
   if ($("#title").hasClass("ColumbusItaly")) {
     if (!$(".edit_helpdesk_ticket").length > 0) {
@@ -179,14 +184,14 @@ jQuery(document).ready(function ($) {
   let InternalPolicyNumber;
   let domainURL;
   // if($("#title").hasClass("VHI")||$("#title").hasClass("EasyJet")){
-  domainURL = "claim-proxy-lower.collinsonnis.com";
-
+    domainURL = "claim-proxy-lower.collinsonnis.com";
+  
   // getJWTToken();
   // if (!jQuery(".fw-comments-wrapper").length) {
   //   createCaptcha();
   // }
   //replaced with
-  if ($(".fw-main-wrapper.submit_ticket").length) {
+  if ($(".fw-main-wrapper.submit_ticket").length){
     createCaptcha();
   }
   function getJWTToken(fieldId) {
@@ -256,26 +261,27 @@ jQuery(document).ready(function ($) {
   //bank API dependancies - for Columbus Italy and VHI
 
   //____________________________________________________SECTION 1 Start - Your Policy______________________________________________
-  if ($("#new_helpdesk_ticket").length || $(".fw-comments-wrapper").length) {
+  if ($("#new_helpdesk_ticket").length || $(".fw-comments-wrapper").length){
+
     $("#new_helpdesk_ticket").wrapAll('<div id="accordion">');
     //identify Policy Number Parent DIV
-
+  
     //check for portal
     if ($("#title").hasClass("VHI") || $("#title").hasClass("ColumbusItaly")) {
       var PolicyNumberParent = document.getElementById(
         "helpdesk_ticket_custom_field_cf_policy_number454080_2321673"
       ).parentElement;
       PolicyNumberParent.classList.add("for-section-1");
-
+  
       var DOBParent = document.getElementById(
         "helpdesk_ticket_custom_field_cf_date_of_birth_2321673"
       ).parentElement;
       DOBParent.classList.add("for-section-1");
-
+  
       $(".controls.recaptcha-control")
         .closest(".form-group")
         .addClass("for-section-1");
-
+  
       var ClaimNumberParent = document.getElementById(
         "helpdesk_ticket_custom_field_cf_claim_number_2321673"
       ).parentElement;
@@ -285,16 +291,16 @@ jQuery(document).ready(function ($) {
         "helpdesk_ticket_custom_field_cf_policy_number454080_2321673"
       ).parentElement;
       PolicyNumberParent.classList.add("for-section-1");
-
+  
       var PolEmailParent = document.getElementById(
         "helpdesk_ticket_custom_field_cf_policy_email_2321673"
       ).parentElement;
       PolEmailParent.classList.add("for-section-1");
-
+  
       $(".controls.recaptcha-control")
         .closest(".form-group")
         .addClass("for-section-1");
-
+  
       var ClaimNumberParent = document.getElementById(
         "helpdesk_ticket_custom_field_cf_claim_number_2321673"
       ).parentElement;
@@ -304,22 +310,22 @@ jQuery(document).ready(function ($) {
         "helpdesk_ticket_custom_field_cf_policy_number454080_2321673"
       ).parentElement;
       PolicyNumberParent.classList.add("for-section-1");
-
+  
       var DOBParent = document.getElementById(
         "helpdesk_ticket_custom_field_cf_date_of_birth_2321673"
       ).parentElement;
       DOBParent.classList.add("for-section-1");
-
+  
       $(".controls.recaptcha-control")
         .closest(".form-group")
         .addClass("for-section-1");
-
+  
       var ClaimNumberParent = document.getElementById(
         "helpdesk_ticket_custom_field_cf_claim_number_2321673"
       ).parentElement;
       ClaimNumberParent.classList.add("for-section-1");
     }
-
+  
     //add save and continue button - add section 1
     if ($("#title").hasClass("ColumbusItaly")) {
       $(
@@ -338,7 +344,7 @@ jQuery(document).ready(function ($) {
         '<button id="save_and_continue1" class="btn btn-primary for-section-1 save_and_continue" type="button">Find Policy</button>'
       ).insertAfter("#helpdesk_ticket_custom_field_cf_claim_number_2321673");
     }
-
+  
     //____________________________________________________SECTION 2 Start -  About You______________________________________________
     //identify Email Parent DIV
     var EmailParent = document.getElementById(
@@ -410,129 +416,125 @@ jQuery(document).ready(function ($) {
         ".form-group.helpdesk_ticket_custom_field_cf_reason_for_claim_2321673.for-section-3"
       );
     }
-    //____________________________________________________SECTION 4 Start - Your Documents____________________________________________
-    //for-section-5 attachment group
-    //___________________________________new_section 5_______________________________________________________
-    if (jQuery(".fw-comments-wrapper").length > 0) {
-      $(
-        '<div id="mock-doc" class="form-group attachments for-section-4"><span class="d-none"><input id="upload_file" type="file" multiple="false"><input id="files_list" type="file" name="helpdesk_ticket[attachments][][resource]" multiple="false"></span><div class="dropdown"><button class="btn btn-link " type="button" id="attach_btn" data-attach-type="file"><span class="file-upload-btn" tabindex="0"><img data-src="/glyphs/vectors/attachment.svg" loading="lazy" alt="Attachment" class="icon ls-is-cached lazyloaded" src="/glyphs/vectors/attachment.svg">Attachment</span></button><ul class="dropdown-menu" aria-labelledby="attach_btn"><li><a class="dropdown-item" href="#" data-attach-type="file">Attach a file</a></li></ul></div><div id="attachments_list" class="files-container"></div><div><div id="cumulative_error_heading" class="error-heading"></div><div id="cumulative_error_attachments_list" class="files-container"></div></div><div><div id="individual_error_heading" class="error-heading"></div><div id="individual_error_attachments_list" class="files-container"></div></div></div>'
-      ).insertAfter(
-        ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper"
-      );
-      var attachments_html = "";
-      $(".attachments").each(function () {
-        attachments_html += $(this).html();
-      });
-      $(
-        "<div class='attachments small mt-16'>" + attachments_html + "</div>"
-      ).insertAfter(
-        ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper"
-      );
-      $("#portal_ticket_form .attachments").addClass("for-section-4");
-      if ($("#title").hasClass("ColumbusItaly")) {
-        jQuery(".attachments.for-section-4").after(
-          '<button class="save_draft_4 btn btn-primary for-section-4 " type="button">Salva reclamo ed esci</button>'
-        );
-        $(
-          '<button class="save_and_continue4 btn btn-primary for-section-4 save_and_continue" type="button" >Sezione successiva</button>'
-        ).insertAfter(".attachments.for-section-4");
-        $(
-          "<p class='for-section-4' style='margin-top: 20px;'>Se clicchi 'Salva sinistro' ti invieremo un'e-mail entro 5 minuti per l'attivazione del tuo account, dove potrai continuare con il tuo sinistro</p>"
-        ).insertAfter(".save_draft_5.btn.btn-primary.for-section-5:visible");
-        $("p.for-section-4:eq(0)").hide();
-      } else {
-        jQuery(".attachments.for-section-4").after(
-          '<button class="save_draft_4 btn btn-primary for-section-4 " type="button">Pause</button>'
-        );
-        $(
-          '<button class="save_and_continue4 btn btn-primary for-section-4 save_and_continue" type="button" >Continue</button>'
-        ).insertAfter(".attachments.for-section-4");
-        $(
-          '<p class="for-section-4" style="margin-top: 20px;">If you pause your claim, all of the information you have given will be saved for you.</p>'
-        ).insertAfter(".save_draft_5.btn.btn-primary.for-section-5:visible");
-        $("p.for-section-4:eq(0)").hide();
-
-        $("p.for-section-4:eq(1)").hide();
-        $(".save_draft_4").hide();
-        // $("p.for-section-4").hide(); need to change id 5
-        // $("#save_draft_4").hide(); need to change id 5
-      }
-    } else {
-      $(
-        '<div id="mock-doc" class="form-group attachments-container for-section-4"><span class="d-none"><input id="upload_file" type="file" multiple="false"><input id="files_list" type="file" name="helpdesk_ticket[attachments][][resource]" multiple="false"></span><div class="dropdown"><button class="btn btn-link " type="button" id="attach_btn" data-attach-type="file"><span class="file-upload-btn" tabindex="0"><img data-src="/glyphs/vectors/attachment.svg" loading="lazy" alt="Attachment" class="icon ls-is-cached lazyloaded" src="/glyphs/vectors/attachment.svg">Attachment</span></button><ul class="dropdown-menu" aria-labelledby="attach_btn"><li><a class="dropdown-item" href="#" data-attach-type="file">Attach a file</a></li></ul></div><div id="attachments_list" class="files-container"></div><div><div id="cumulative_error_heading" class="error-heading"></div><div id="cumulative_error_attachments_list" class="files-container"></div></div><div><div id="individual_error_heading" class="error-heading"></div><div id="individual_error_attachments_list" class="files-container"></div></div></div>'
-      ).insertAfter(
-        ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper"
-      );
-      $(".form-group.attachments-container").addClass("for-section-4");
-
-      if ($("#title").hasClass("ColumbusItaly")) {
-        jQuery(".attachments-container.for-section-4").after(
-          '<button class="save_draft_4 btn btn-primary for-section-4 " type="button">Salva reclamo ed esci</button>'
-        );
-        $(
-          '<button class="save_and_continue4 btn btn-primary for-section-4 save_and_continue" type="button" >Sezione successiva</button>'
-        ).insertAfter(".form-group.attachments-container.for-section-4");
-        $(
-          "<p class='for-section-4' style='margin-top: 20px;'>Se clicchi 'Salva sinistro' ti invieremo un'e-mail entro 5 minuti per l'attivazione del tuo account, dove potrai continuare con il tuo sinistro</p>"
-        ).insertAfter(".save_draft_5.btn.btn-primary.for-section-5:visible");
-        $("p.for-section-4:eq(0)").hide();
-      } else {
-        jQuery(".attachments-container.for-section-4").before(
-          '<button class="save_draft_4 btn btn-primary for-section-4 " type="button">Pause</button>'
-        );
-        $(
-          '<button class="save_and_continue4 btn btn-primary for-section-4 save_and_continue" type="button" >Continue</button>'
-        ).insertAfter(".form-group.attachments-container.for-section-4");
-        $(
-          '<p class="for-section-4" style="margin-top: 20px;">If you pause your claim, all of the information you have given will be saved for you.</p>'
-        ).insertAfter(".save_draft_5.btn.btn-primary.for-section-5:visible");
-        $("p.for-section-4:eq(0)").hide();
-      }
-    }
-    $("#mock-doc").remove();
-    $(".save_and_continue4").first().hide();
-    $(".save_draft_4").first().hide();
-
-    //____________________________________________________SECTION 5 Start - Tell us what happened____________________________________________
+   
+  //____________________________________________________SECTION 5 Start - Your Documents____________________________________________
+  //for-section-5 attachment group
+  //___________________________________new_section 5_______________________________________________________
+  if (jQuery(".fw-comments-wrapper").length > 0) {
     $(
+      '<div id="mock-doc" class="form-group attachments for-section-5"><span class="d-none"><input id="upload_file" type="file" multiple="false"><input id="files_list" type="file" name="helpdesk_ticket[attachments][][resource]" multiple="false"></span><div class="dropdown"><button class="btn btn-link " type="button" id="attach_btn" data-attach-type="file"><span class="file-upload-btn" tabindex="0"><img data-src="/glyphs/vectors/attachment.svg" loading="lazy" alt="Attachment" class="icon ls-is-cached lazyloaded" src="/glyphs/vectors/attachment.svg">Attachment</span></button><ul class="dropdown-menu" aria-labelledby="attach_btn"><li><a class="dropdown-item" href="#" data-attach-type="file">Attach a file</a></li></ul></div><div id="attachments_list" class="files-container"></div><div><div id="cumulative_error_heading" class="error-heading"></div><div id="cumulative_error_attachments_list" class="files-container"></div></div><div><div id="individual_error_heading" class="error-heading"></div><div id="individual_error_attachments_list" class="files-container"></div></div></div>'
+    ).insertAfter(
       ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper"
-    ).addClass("for-section-5");
+    );
+    var attachments_html = "";
+    $(".attachments").each(function () {
+      attachments_html += $(this).html();
+    });
+    $(
+      "<div class='attachments small mt-16'>" + attachments_html + "</div>"
+    ).insertAfter(
+      ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper"
+    );
+    $("#portal_ticket_form .attachments").addClass("for-section-5");
+    if ($("#title").hasClass("ColumbusItaly")) {
+      jQuery(".attachments.for-section-5").after(
+        '<button class="save_draft_5 btn btn-primary for-section-5 " type="button">Salva reclamo ed esci</button>'
+      );
+      $(
+        '<button class="save_and_continue5 btn btn-primary for-section-5 save_and_continue" type="button" >Sezione successiva</button>'
+      ).insertAfter(".attachments.for-section-5");
+      $("<p class='for-section-5' style='margin-top: 20px;'>Se clicchi 'Salva sinistro' ti invieremo un'e-mail entro 5 minuti per l'attivazione del tuo account, dove potrai continuare con il tuo sinistro</p>").insertAfter(".save_draft_5.btn.btn-primary.for-section-5:visible");
+      $("p.for-section-5:eq(0)").hide();
+    } else {
+      jQuery(".attachments.for-section-5").after(
+        '<button class="save_draft_5 btn btn-primary for-section-5 " type="button">Pause</button>'
+      );
+      $(
+        '<button class="save_and_continue5 btn btn-primary for-section-5 save_and_continue" type="button" >Continue</button>'
+      ).insertAfter(".attachments.for-section-5");
+      $('<p class="for-section-5" style="margin-top: 20px;">If you pause your claim, all of the information you have given will be saved for you.</p>').insertAfter(".save_draft_5.btn.btn-primary.for-section-5:visible");
+      $("p.for-section-5:eq(0)").hide();
+
+      $("p.for-section-5:eq(1)").hide();
+      $(".save_draft_5").hide();
+      $("p.for-section-4").hide();
+      $("#save_draft_4").hide();
+    }
+  } else {
+    $(
+      '<div id="mock-doc" class="form-group attachments-container for-section-5"><span class="d-none"><input id="upload_file" type="file" multiple="false"><input id="files_list" type="file" name="helpdesk_ticket[attachments][][resource]" multiple="false"></span><div class="dropdown"><button class="btn btn-link " type="button" id="attach_btn" data-attach-type="file"><span class="file-upload-btn" tabindex="0"><img data-src="/glyphs/vectors/attachment.svg" loading="lazy" alt="Attachment" class="icon ls-is-cached lazyloaded" src="/glyphs/vectors/attachment.svg">Attachment</span></button><ul class="dropdown-menu" aria-labelledby="attach_btn"><li><a class="dropdown-item" href="#" data-attach-type="file">Attach a file</a></li></ul></div><div id="attachments_list" class="files-container"></div><div><div id="cumulative_error_heading" class="error-heading"></div><div id="cumulative_error_attachments_list" class="files-container"></div></div><div><div id="individual_error_heading" class="error-heading"></div><div id="individual_error_attachments_list" class="files-container"></div></div></div>'
+    ).insertAfter(
+      ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper"
+    );
+    $(".form-group.attachments-container").addClass("for-section-5");
 
     if ($("#title").hasClass("ColumbusItaly")) {
-      $(
-        '<button id="save_draft_5" class="btn btn-primary for-section-5 " type="button">Salva reclamo ed esci</button>'
-      ).insertBefore(
-        ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper"
+      jQuery(".attachments-container.for-section-5").after(
+        '<button class="save_draft_5 btn btn-primary for-section-5 " type="button">Salva reclamo ed esci</button>'
       );
       $(
-        '<button id="save_and_continue5" class="btn btn-primary for-section-5 save_and_continue" type="button">Sezione successiva</button>'
-      ).insertAfter(
-        ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper"
-      );
-      $("<hr id ='hr4' class='for-section-5'>").insertAfter("#save_draft_5");
-      $(
-        "<p class='for-section-5' style='margin-top: 20px;'>Se clicchi 'Salva sinistro' ti invieremo un'e-mail entro 5 minuti per l'attivazione del tuo account, dove potrai continuare con il tuo sinistro</p>"
-      ).insertBefore("#save_draft_5");
+        '<button class="save_and_continue5 btn btn-primary for-section-5 save_and_continue" type="button" >Sezione successiva</button>'
+      ).insertAfter(".form-group.attachments-container.for-section-5");
+      $("<p class='for-section-5' style='margin-top: 20px;'>Se clicchi 'Salva sinistro' ti invieremo un'e-mail entro 5 minuti per l'attivazione del tuo account, dove potrai continuare con il tuo sinistro</p>").insertAfter(".save_draft_5.btn.btn-primary.for-section-5:visible");
+      $("p.for-section-5:eq(0)").hide();
     } else {
-      $(
-        '<button id="save_draft_5" class="btn btn-primary for-section-5 " type="button">Pause</button>'
-      ).insertBefore(
-        ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper"
+      jQuery(".attachments-container.for-section-5").before(
+        '<button class="save_draft_5 btn btn-primary for-section-5 " type="button">Pause</button>'
       );
       $(
-        '<button id="save_and_continue5" class="btn btn-primary for-section-5 save_and_continue" type="button">Continue</button>'
-      ).insertAfter(
-        ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper"
-      );
-      $("<hr id ='hr4' class='for-section-5'>").insertAfter("#save_draft_5");
-      $(
-        '<p class="for-section-5" style="margin-top: 20px;">If you pause your claim, all of the information you have given will be saved for you.</p>'
-      ).insertBefore("#save_draft_5");
+        '<button class="save_and_continue5 btn btn-primary for-section-5 save_and_continue" type="button" >Continue</button>'
+      ).insertAfter(".form-group.attachments-container.for-section-5");
+      $('<p class="for-section-5" style="margin-top: 20px;">If you pause your claim, all of the information you have given will be saved for you.</p>').insertAfter(".save_draft_5.btn.btn-primary.for-section-5:visible");
+      $("p.for-section-5:eq(0)").hide();
     }
   }
+  $("#mock-doc").remove();
+  $(".save_and_continue5").first().hide();
+  $(".save_draft_5").first().hide();
+ //____________________________________________________SECTION 4 Start - Tell us what happened____________________________________________
+ $(
+  ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper"
+).addClass("for-section-4");
+
+if ($("#title").hasClass("ColumbusItaly")) {
+  $(
+    '<button id="save_draft_4" class="btn btn-primary for-section-4 " type="button">Salva reclamo ed esci</button>'
+  ).insertBefore(
+    ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper"
+  );
+  $(
+    '<button id="save_and_continue4" class="btn btn-primary for-section-4 save_and_continue" type="button">Sezione successiva</button>'
+  ).insertAfter(
+    ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper"
+  );
+  $("<hr id ='hr4' class='for-section-4'>").insertAfter("#save_draft_4");
+  $("<p class='for-section-4' style='margin-top: 20px;'>Se clicchi 'Salva sinistro' ti invieremo un'e-mail entro 5 minuti per l'attivazione del tuo account, dove potrai continuare con il tuo sinistro</p>"
+  ).insertBefore(
+    '#save_draft_4'
+  );
+} else {
+  $(
+    '<button id="save_draft_4" class="btn btn-primary for-section-4 " type="button">Pause</button>'
+  ).insertBefore(
+    ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper"
+  );
+  $(
+    '<button id="save_and_continue4" class="btn btn-primary for-section-4 save_and_continue" type="button">Continue</button>'
+  ).insertAfter(
+    ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper"
+  );
+  $("<hr id ='hr4' class='for-section-4'>").insertAfter("#save_draft_4");
+  $('<p class="for-section-4" style="margin-top: 20px;">If you pause your claim, all of the information you have given will be saved for you.</p>'
+  ).insertBefore(
+    '#save_draft_4'
+  );
+}
+
+}
   // addImages();
   //____________________________________________________SECTION 6 Start - payment details____________________________________________
-  if ($("#new_helpdesk_ticket").length || $(".fw-comments-wrapper").length) {
+  if ($("#new_helpdesk_ticket").length || $(".fw-comments-wrapper").length){
+
     var accHolderParent = document.getElementById(
       "helpdesk_ticket_custom_field_cf_name_of_account_holder_2321673"
     ).parentElement;
@@ -550,9 +552,8 @@ jQuery(document).ready(function ($) {
       ).parentElement;
       ibanNumber.classList.add("for-section-6");
       //joint account
-      $(
-        ".form-group.helpdesk_ticket_custom_field_cf_name_of_bank24840_2321673"
-      ).addClass("for-section-6");
+      $(".form-group.helpdesk_ticket_custom_field_cf_name_of_bank24840_2321673").addClass("for-section-6");
+
     } else if ($("#title").hasClass("EasyJet")) {
       //Name of acc holder - put in section 6
       var accHolderParent = document.getElementById(
@@ -569,9 +570,8 @@ jQuery(document).ready(function ($) {
       ).parentElement;
       SortCodeParent.classList.add("for-section-6");
       //joint account
-      $(
-        ".form-group.helpdesk_ticket_custom_field_cf_name_of_bank24840_2321673"
-      ).addClass("for-section-6");
+      $(".form-group.helpdesk_ticket_custom_field_cf_name_of_bank24840_2321673").addClass("for-section-6");
+
     } else if ($("#title").hasClass("CollinsonUK")) {
       //Name of acc holder - put in section 6
       var accHolderParent = document.getElementById(
@@ -588,39 +588,30 @@ jQuery(document).ready(function ($) {
       ).parentElement;
       SortCodeParent.classList.add("for-section-6");
       //joint account
-      $(
-        ".form-group.helpdesk_ticket_custom_field_cf_name_of_bank24840_2321673"
-      ).addClass("for-section-6");
-    }
+      $(".form-group.helpdesk_ticket_custom_field_cf_name_of_bank24840_2321673").addClass("for-section-6");
 
+    }
+  
     //save and continue 6
     if ($("#title").hasClass("ColumbusItaly")) {
       $(
         '<button id="save_and_continue6" class="btn btn-primary for-section-6 save_and_continue" type="button" >Sezione successiva</button>'
-      ).insertAfter(
-        ".form-group.helpdesk_ticket_custom_field_cf_name_of_bank24840_2321673"
-      );
+      ).insertAfter(".form-group.helpdesk_ticket_custom_field_cf_name_of_bank24840_2321673");
     } else if ($("#title").hasClass("VHI")) {
       $(
         '<button id="save_and_continue6" class="btn btn-primary for-section-6 save_and_continue" type="button" >Continue</button>'
-      ).insertAfter(
-        ".form-group.helpdesk_ticket_custom_field_cf_name_of_bank24840_2321673"
-      );
+      ).insertAfter(".form-group.helpdesk_ticket_custom_field_cf_name_of_bank24840_2321673");
     } else if ($("#title").hasClass("EasyJet")) {
       $(
         '<button id="save_and_continue6" class="btn btn-primary for-section-6 save_and_continue" type="button" >Continue</button>'
-      ).insertAfter(
-        ".form-group.helpdesk_ticket_custom_field_cf_name_of_bank24840_2321673"
-      );
+      ).insertAfter(".form-group.helpdesk_ticket_custom_field_cf_name_of_bank24840_2321673");
     } else if ($("#title").hasClass("CollinsonUK")) {
       $(
         '<button id="save_and_continue6" class="btn btn-primary for-section-6 save_and_continue" type="button" >Continue</button>'
-      ).insertAfter(
-        ".form-group.helpdesk_ticket_custom_field_cf_name_of_bank24840_2321673"
-      );
+      ).insertAfter(".form-group.helpdesk_ticket_custom_field_cf_name_of_bank24840_2321673");
     }
     //____________________________________________________SECTION 7 Start - Summary Section____________________________________________
-
+    
     $("#helpdesk_ticket_form_id").addClass("for-section-7");
     $(".form-group.helpdesk_ticket_email").addClass("for-section-7");
     $(".btn.fw-primary-button.new-ticket-submit-button").addClass(
@@ -628,6 +619,7 @@ jQuery(document).ready(function ($) {
     );
     //hide cancel button
     $("a.btn.fw-secondary-button").hide();
+
   }
 
   //__________________________________________________________________________________
@@ -637,46 +629,31 @@ jQuery(document).ready(function ($) {
     $(".invalid-feedback." + ID).addClass("d-block");
     $(".invalid-feedback." + ID).html(errorMessage);
   }
-
+ 
   function thisDiv(number, title) {
-    $(".for-section-" + number).wrapAll(
-      '<div id="collapseSection' +
-        number +
-        '" class="collapse order' +
-        number +
-        " wrap_div_" +
-        number +
-        '" data-parent="#accordion" aria-labelledby="overall_div_' +
-        number +
-        '">' +
-        '<div class="card-body">'
-    );
-    $(
-      '<div id="overall_div_' +
-        number +
-        '" class="card-header ins-div wrap_div_' +
-        number +
-        '"> ' +
+  $(".for-section-" + number).wrapAll(
+  '<div id="collapseSection' +number +'" class="collapse order' +number +' wrap_div_'+number+'" data-parent="#accordion" aria-labelledby="overall_div_' +number +'">'
+    +'<div class="card-body">'
+  );
+  $(
+  
+    '<div id="overall_div_' +number +'" class="card-header ins-div wrap_div_'+number+'"> ' +
         '<div class="col-md-6">' +
-        '<h5 class="mb-0 header-text">' +
-        title +
-        "</h5>" +
+          '<h5 class="mb-0 header-text">' +title +"</h5>"+
         "</div>" +
-        '	<div class="col-md-6" style="float: right;"> ' +
-        '<div id="section-' +
-        number +
-        '-button" class="ins-col-test collapsed  col align-self-end"  data-target="#collapseSection' +
-        number +
-        '" aria-expanded="false">' +
-        '<span class="plus-sign fas fa-plus"></span>' +
+    '	<div class="col-md-6" style="float: right;"> ' +
+        '<div id="section-' +number +'-button" class="ins-col-test collapsed  col align-self-end"  data-target="#collapseSection' +number +'" aria-expanded="false">' +
+          '<span class="plus-sign fas fa-plus"></span>' +
         "</div>" +
-        "	</div>" +
-        "</div>"
-    ).insertBefore("#collapseSection" + number);
-    $(".wrap_div_" + number).wrapAll(
-      '<div class="card ins-card order' + number + '">'
-    );
-  }
+    "	</div>" +
+    "</div>"
+  ).insertBefore("#collapseSection" + number);
+      $(".wrap_div_"+number).wrapAll(
+          '<div class="card ins-card order' +number +'">'
+      )
+}
+
+
 
   //check if Italian Portal for headings
   if ($("#title").hasClass("ColumbusItaly")) {
@@ -692,316 +669,320 @@ jQuery(document).ready(function ($) {
 
   //after sections created, check if we are in edit page, then move summary around, and change button colors, add sections
   if ($(".edit_helpdesk_ticket").length > 0) {
-    $(".card-body:eq(0)").wrap(
-      "<div id='collapseSection7' class='order7 wrap_div_7 collapse show' data-parent='#accordion' aria-labelledby='overall_div_7' ></div>"
-    );
+      
+  $(".card-body:eq(0)").wrap("<div id='collapseSection7' class='order7 wrap_div_7 collapse show' data-parent='#accordion' aria-labelledby='overall_div_7' ></div>")
 
-    //essential - move to relevant sections
-    $(".card-body.ins-card:eq(0)").attr("id", "collapseSection7");
+  //essential - move to relevant sections
+  $(".card-body.ins-card:eq(0)").attr("id","collapseSection7");
+  
+  
+  //removes divs causing duplicated lines
+  $("div.section_4_line").remove();
+  $("div.section_5_line").remove();
+  $("div.section_6_line").remove();
 
-    //removes divs causing duplicated lines
-    $("div.section_4_line").remove();
-    $("div.section_5_line").remove();
-    $("div.section_6_line").remove();
+  //color change
+  $("#section-1-button").css("background-color","#4DC367");
+  //$("#section-1-button").removeAttr("data-target");
+  $("#section-1-button").children(":first").removeClass("fa-plus");
+  $("#section-1-button").children(":first").addClass("fa-check");
 
-    //color change
-    $("#section-1-button").css("background-color", "#4DC367");
-    //$("#section-1-button").removeAttr("data-target");
-    $("#section-1-button").children(":first").removeClass("fa-plus");
-    $("#section-1-button").children(":first").addClass("fa-check");
+  $("#section-2-button").css("background-color","#4DC367");
+  //$("#section-2-button").removeAttr("data-target");
+  $("#section-2-button").children(":first").removeClass("fa-plus");
+  $("#section-2-button").children(":first").addClass("fa-check");
 
-    $("#section-2-button").css("background-color", "#4DC367");
-    //$("#section-2-button").removeAttr("data-target");
-    $("#section-2-button").children(":first").removeClass("fa-plus");
-    $("#section-2-button").children(":first").addClass("fa-check");
+  $("#section-3-button").css("background-color","#4DC367");
+  //$("#section-3-button").removeAttr("data-target");
+  $("#section-3-button").children(":first").removeClass("fa-plus");
+  $("#section-3-button").children(":first").addClass("fa-check");
 
-    $("#section-3-button").css("background-color", "#4DC367");
-    //$("#section-3-button").removeAttr("data-target");
-    $("#section-3-button").children(":first").removeClass("fa-plus");
-    $("#section-3-button").children(":first").addClass("fa-check");
+  //section 1 add
+  //for loops
+  var number_elements = $("#collapseSection1")
+    .children(".card-body")
+    .children("div").length;
 
-    //section 1 add
-    //for loops
-    var number_elements = $("#collapseSection1")
+  for (let i = 1; i < number_elements + 1; i++) {
+    var label = $("#collapseSection1")
       .children(".card-body")
-      .children("div").length;
+      .children("div:nth-child(" + i + ")")
+      .children("label")
+      .text();
+    var value = $("#collapseSection1")
+      .children(".card-body")
+      .children("div:nth-child(" + i + ")")
+      .children("input")
+      .val();
+    $(
+      "<p class='section_1_line'>" + label + " : " + value + "</p>"
+    ).insertBefore("#great_line_1");
+  }
 
-    for (let i = 1; i < number_elements + 1; i++) {
-      var label = $("#collapseSection1")
+  
+  //section 2 cleanup
+  $(".section_2_line:eq(0)").remove();
+
+  //section 3
+  var number_elements2 = $("#collapseSection3")
+    .children(".card-body")
+    .children("div").length;
+  for (let i = 1; i < number_elements2 + 1; i++) {
+    if (
+      $("#collapseSection3")
+        .children(".card-body")
+        .children("div:nth-child(" + i + ")")
+        .children(".choices.form-select").length
+    ) {
+      var label_dropdown = $("#collapseSection3")
         .children(".card-body")
         .children("div:nth-child(" + i + ")")
         .children("label")
         .text();
-      var value = $("#collapseSection1")
+      var dropdown_value = $("#collapseSection3")
+        .children(".card-body")
+        .children("div:nth-child(" + i + ")")
+        .children(".choices.form-select")
+        .children(".choices__inner")
+        .children("select")
+        .val();
+      $(
+        "<p class='section_3_line'>" +
+          label_dropdown +
+          " : " +
+          dropdown_value +
+          "</p>"
+      ).insertBefore("#great_line_3");
+    } else {
+      var label = $("#collapseSection3")
+        .children(".card-body")
+        .children("div:nth-child(" + i + ")")
+        .children("label")
+        .text();
+      var value = $("#collapseSection3")
         .children(".card-body")
         .children("div:nth-child(" + i + ")")
         .children("input")
         .val();
       $(
-        "<p class='section_1_line'>" + label + " : " + value + "</p>"
-      ).insertBefore("#great_line_1");
+        "<p class='section_3_line'>" + label + " : " + value + "</p>"
+      ).insertBefore("#great_line_3");
     }
+  }
 
-    //section 2 cleanup
-    $(".section_2_line:eq(0)").remove();
-
-    //section 3
-    var number_elements2 = $("#collapseSection3")
+  //section 4 add and udpate fucntions and first invocation
+  function update_section_4_continue() {
+    //for loops
+    var number_elements = $("#collapseSection4")
       .children(".card-body")
-      .children("div").length;
-    for (let i = 1; i < number_elements2 + 1; i++) {
+      .children(
+        "div.helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
+      )
+      .children(".form-group").length;
+    $("p").remove(".section_4_line");
+
+    for (let i = 1; i < number_elements + 1; i++) {
       if (
-        $("#collapseSection3")
+        $("#collapseSection4")
           .children(".card-body")
+          .children(
+            ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
+          )
           .children("div:nth-child(" + i + ")")
           .children(".choices.form-select").length
       ) {
-        var label_dropdown = $("#collapseSection3")
+        var label = $("#collapseSection4")
           .children(".card-body")
+          .children(
+            ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
+          )
           .children("div:nth-child(" + i + ")")
           .children("label")
           .text();
-        var dropdown_value = $("#collapseSection3")
+        var value = $("#collapseSection4")
           .children(".card-body")
+          .children(
+            ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
+          )
           .children("div:nth-child(" + i + ")")
           .children(".choices.form-select")
           .children(".choices__inner")
           .children("select")
           .val();
-        $(
-          "<p class='section_3_line'>" +
-            label_dropdown +
-            " : " +
-            dropdown_value +
-            "</p>"
-        ).insertBefore("#great_line_3");
-      } else {
-        var label = $("#collapseSection3")
+        if (value != "") {
+          $(
+            "<p class='section_4_line'>" + label + " : " + value + "</p>"
+          ).insertBefore("#great_line_4");
+        }
+      } else if (
+        $("#collapseSection4")
           .children(".card-body")
+          .children(
+            ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
+          )
+          .children("div:nth-child(" + i + ")")
+          .children("textarea").length
+      ) {
+        var label = $("#collapseSection4")
+          .children(".card-body")
+          .children(
+            ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
+          )
           .children("div:nth-child(" + i + ")")
           .children("label")
           .text();
-        var value = $("#collapseSection3")
+        var value = $("#collapseSection4")
           .children(".card-body")
+          .children(
+            ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
+          )
+          .children("div:nth-child(" + i + ")")
+          .children("textarea")
+          .val();
+        if (value != "") {
+          $(
+            "<p class='section_4_line'>" + label + " : " + value + "</p>"
+          ).insertBefore("#great_line_4");
+        }
+      } else {
+        var label = $("#collapseSection4")
+          .children(".card-body")
+          .children(
+            ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
+          )
+          .children("div:nth-child(" + i + ")")
+          .children("label")
+          .text();
+        var value = $("#collapseSection4")
+          .children(".card-body")
+          .children(
+            ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
+          )
           .children("div:nth-child(" + i + ")")
           .children("input")
           .val();
+        if (value != "") {
+          $(
+            "<p class='section_4_line'>" + label + " : " + value + "</p>"
+          ).insertBefore("#great_line_4");
+        }
+      }
+    }
+  }
+  function add_section_4_continue(){
+  var number_elements3 = $("#collapseSection4")
+    .children(".card-body")
+    .children(
+      "div.helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
+    )
+    .children(".form-group").length;
+
+  for (let i = 1; i < number_elements3 + 1; i++) {
+    if (
+      $("#collapseSection4")
+        .children(".card-body")
+        .children(
+          ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
+        )
+        .children("div:nth-child(" + i + ")")
+        .children(".choices.form-select").length
+    ) {
+      var label = $("#collapseSection4")
+        .children(".card-body")
+        .children(
+          ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
+        )
+        .children("div:nth-child(" + i + ")")
+        .children("label")
+        .text();
+      var value = $("#collapseSection4")
+        .children(".card-body")
+        .children(
+          ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
+        )
+        .children("div:nth-child(" + i + ")")
+        .children(".choices.form-select")
+        .children(".choices__inner")
+        .children("select")
+        .val();
+      if (value != "") {
         $(
-          "<p class='section_3_line'>" + label + " : " + value + "</p>"
-        ).insertBefore("#great_line_3");
+          "<p class='section_4_line'>" + label + " : " + value + "</p>"
+        ).insertBefore("#great_line_4");
       }
-    }
-
-    //section 4 add and udpate fucntions and first invocation
-    function update_section_4_continue() {
-      //for loops
-      var number_elements = $("#collapseSection4")
+    } else if (
+      $("#collapseSection4")
         .children(".card-body")
         .children(
-          "div.helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
+          ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
         )
-        .children(".form-group").length;
-      $("p").remove(".section_4_line");
-
-      for (let i = 1; i < number_elements + 1; i++) {
-        if (
-          $("#collapseSection4")
-            .children(".card-body")
-            .children(
-              ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
-            )
-            .children("div:nth-child(" + i + ")")
-            .children(".choices.form-select").length
-        ) {
-          var label = $("#collapseSection4")
-            .children(".card-body")
-            .children(
-              ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
-            )
-            .children("div:nth-child(" + i + ")")
-            .children("label")
-            .text();
-          var value = $("#collapseSection4")
-            .children(".card-body")
-            .children(
-              ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
-            )
-            .children("div:nth-child(" + i + ")")
-            .children(".choices.form-select")
-            .children(".choices__inner")
-            .children("select")
-            .val();
-          if (value != "") {
-            $(
-              "<p class='section_4_line'>" + label + " : " + value + "</p>"
-            ).insertBefore("#great_line_4");
-          }
-        } else if (
-          $("#collapseSection4")
-            .children(".card-body")
-            .children(
-              ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
-            )
-            .children("div:nth-child(" + i + ")")
-            .children("textarea").length
-        ) {
-          var label = $("#collapseSection4")
-            .children(".card-body")
-            .children(
-              ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
-            )
-            .children("div:nth-child(" + i + ")")
-            .children("label")
-            .text();
-          var value = $("#collapseSection4")
-            .children(".card-body")
-            .children(
-              ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
-            )
-            .children("div:nth-child(" + i + ")")
-            .children("textarea")
-            .val();
-          if (value != "") {
-            $(
-              "<p class='section_4_line'>" + label + " : " + value + "</p>"
-            ).insertBefore("#great_line_4");
-          }
-        } else {
-          var label = $("#collapseSection4")
-            .children(".card-body")
-            .children(
-              ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
-            )
-            .children("div:nth-child(" + i + ")")
-            .children("label")
-            .text();
-          var value = $("#collapseSection4")
-            .children(".card-body")
-            .children(
-              ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
-            )
-            .children("div:nth-child(" + i + ")")
-            .children("input")
-            .val();
-          if (value != "") {
-            $(
-              "<p class='section_4_line'>" + label + " : " + value + "</p>"
-            ).insertBefore("#great_line_4");
-          }
-        }
-      }
-    }
-    function add_section_4_continue() {
-      var number_elements3 = $("#collapseSection4")
+        .children("div:nth-child(" + i + ")")
+        .children("textarea").length
+    ) {
+      var label = $("#collapseSection4")
         .children(".card-body")
         .children(
-          "div.helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
+          ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
         )
-        .children(".form-group").length;
-
-      for (let i = 1; i < number_elements3 + 1; i++) {
-        if (
-          $("#collapseSection4")
-            .children(".card-body")
-            .children(
-              ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
-            )
-            .children("div:nth-child(" + i + ")")
-            .children(".choices.form-select").length
-        ) {
-          var label = $("#collapseSection4")
-            .children(".card-body")
-            .children(
-              ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
-            )
-            .children("div:nth-child(" + i + ")")
-            .children("label")
-            .text();
-          var value = $("#collapseSection4")
-            .children(".card-body")
-            .children(
-              ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
-            )
-            .children("div:nth-child(" + i + ")")
-            .children(".choices.form-select")
-            .children(".choices__inner")
-            .children("select")
-            .val();
-          if (value != "") {
-            $(
-              "<p class='section_4_line'>" + label + " : " + value + "</p>"
-            ).insertBefore("#great_line_4");
-          }
-        } else if (
-          $("#collapseSection4")
-            .children(".card-body")
-            .children(
-              ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
-            )
-            .children("div:nth-child(" + i + ")")
-            .children("textarea").length
-        ) {
-          var label = $("#collapseSection4")
-            .children(".card-body")
-            .children(
-              ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
-            )
-            .children("div:nth-child(" + i + ")")
-            .children("label")
-            .text();
-          var value = $("#collapseSection4")
-            .children(".card-body")
-            .children(
-              ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
-            )
-            .children("div:nth-child(" + i + ")")
-            .children("textarea")
-            .val();
-          if (value != "") {
-            $(
-              "<p class='section_4_line'>" + label + " : " + value + "</p>"
-            ).insertBefore("#great_line_4");
-          }
-        } else {
-          var label = $("#collapseSection4")
-            .children(".card-body")
-            .children(
-              ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
-            )
-            .children("div:nth-child(" + i + ")")
-            .children("label")
-            .text();
-          var value = $("#collapseSection4")
-            .children(".card-body")
-            .children(
-              ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
-            )
-            .children("div:nth-child(" + i + ")")
-            .children("input")
-            .val();
-          if (value != "") {
-            $(
-              "<p class='section_4_line'>" + label + " : " + value + "</p>"
-            ).insertBefore("#great_line_4");
-          }
-        }
+        .children("div:nth-child(" + i + ")")
+        .children("label")
+        .text();
+      var value = $("#collapseSection4")
+        .children(".card-body")
+        .children(
+          ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
+        )
+        .children("div:nth-child(" + i + ")")
+        .children("textarea")
+        .val();
+      if (value != "") {
+        $(
+          "<p class='section_4_line'>" + label + " : " + value + "</p>"
+        ).insertBefore("#great_line_4");
+      }
+    } else {
+      var label = $("#collapseSection4")
+        .children(".card-body")
+        .children(
+          ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
+        )
+        .children("div:nth-child(" + i + ")")
+        .children("label")
+        .text();
+      var value = $("#collapseSection4")
+        .children(".card-body")
+        .children(
+          ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
+        )
+        .children("div:nth-child(" + i + ")")
+        .children("input")
+        .val();
+      if (value != "") {
+        $(
+          "<p class='section_4_line'>" + label + " : " + value + "</p>"
+        ).insertBefore("#great_line_4");
       }
     }
-    add_section_4_continue();
+  }
+  }
+  add_section_4_continue();
 
-    $(".card.ins-card.order7").appendTo(".bg-grey.fw-sidebar");
-    $(".card-body.ins-card:eq(1)").insertAfter("#summary");
-    $("#collapseSection7").collapse("hide");
 
-    $(".ticket-detail-dummy").clone(true).appendTo(".card-body:eq(0)");
-    $(".ticket-detail-dummy").css("display", "table");
-    $("#collapseSection4").collapse("hide");
+  $(".card.ins-card.order7").appendTo(".bg-grey.fw-sidebar");
+  $(".card-body.ins-card:eq(1)").insertAfter("#summary");
+  $("#collapseSection7").collapse('hide');
 
-    $("#section-2-button").attr("data-toggle", "collapse");
-    $("#section-3-button").attr("data-toggle", "collapse");
-    $("#section-4-button").attr("data-toggle", "collapse");
-    $("#section-5-button").attr("data-toggle", "collapse");
-    $("#section-6-button").attr("data-toggle", "collapse");
+  
+  $( ".ticket-detail-dummy" ).clone(true).appendTo(".card-body:eq(0)");
+  $(".ticket-detail-dummy").css('display','table');
+  $("#collapseSection4").collapse('hide');
+  
+  $("#section-2-button").attr("data-toggle", "collapse");
+  $("#section-3-button").attr("data-toggle", "collapse");
+  $("#section-4-button").attr("data-toggle", "collapse");
+  $("#section-5-button").attr("data-toggle", "collapse");
+  $("#section-6-button").attr("data-toggle", "collapse");
+  
   }
 
   function checkedfilled(list_of_elements) {
@@ -1023,12 +1004,12 @@ jQuery(document).ready(function ($) {
 
     // if (
     //   //departure_date < return_date &&
-    //   // return_date > departure_date
+    //   // return_date > departure_date 
     //   //booking_date <= departure_date &&
     //   //incident_date <= return_date
     // ) { result = true;}
     result = true;
-
+    
     return result;
   }
   function show_and_hide(
@@ -1165,6 +1146,7 @@ jQuery(document).ready(function ($) {
   function summary_section_start() {
     //START SUMMARY SECTION
     if ($("#summary_intro").length) {
+
     } else {
       if ($("#title").hasClass("ColumbusItaly")) {
         $(
@@ -1178,17 +1160,18 @@ jQuery(document).ready(function ($) {
     }
   }
 
-  //BY DEFAULT -  add attribute to section-1-button
+  //BY DEFAULT -  add attribute to section-1-button 
   $("#section-1-button").attr("data-toggle", "collapse");
   $("#section-7-button").attr("data-toggle", "collapse");
   //open section 1 by default
   if ($(".edit_helpdesk_ticket").length > 0) {
     //close section 4
     $("#section-4-button").click();
-  } else {
+  }else{
     //open section 1
     $("#section-1-button").click();
   }
+
 
   //________________________________________________________________________________________________________________________________
   //section 1 continue
@@ -1710,26 +1693,26 @@ jQuery(document).ready(function ($) {
             console.log("error 404 -->", result);
           } else if (statusCode == 403) {
             if ($("#title").hasClass("ColumbusItaly")) {
+            console.log("--->", result, statusCode);
+            jQuery("#model-error-msg").removeClass("d-none");
+            jQuery("#model-error-msg .ins-modal-body-content").text(
+              "Attenzione, qualcosa non ha funzionato. Per favore riprova e se il problema persiste, contatta l'ufficio sinistri."
+            );
+            addErrorMessage(
+              "api_call_failed_dob",
+              "Attenzione, qualcosa non ha funzionato. Per favore riprova e se il problema persiste, contatta l'ufficio sinistri."
+            );
+            $("#save_and_continue1").removeAttr("data-target");
+            $("#save_and_continue1").removeAttr("data-toggle");
+            } else{
               console.log("--->", result, statusCode);
               jQuery("#model-error-msg").removeClass("d-none");
               jQuery("#model-error-msg .ins-modal-body-content").text(
-                "Attenzione, qualcosa non ha funzionato. Per favore riprova e se il problema persiste, contatta l'ufficio sinistri."
+              "Warning Something's not quite right. Please try again and if the problem persists please contact the team using the 'Contact Us' button in the footer."
               );
               addErrorMessage(
-                "api_call_failed_dob",
-                "Attenzione, qualcosa non ha funzionato. Per favore riprova e se il problema persiste, contatta l'ufficio sinistri."
-              );
-              $("#save_and_continue1").removeAttr("data-target");
-              $("#save_and_continue1").removeAttr("data-toggle");
-            } else {
-              console.log("--->", result, statusCode);
-              jQuery("#model-error-msg").removeClass("d-none");
-              jQuery("#model-error-msg .ins-modal-body-content").text(
-                "Warning Something's not quite right. Please try again and if the problem persists please contact the team using the 'Contact Us' button in the footer."
-              );
-              addErrorMessage(
-                "api_call_failed_dob",
-                "Warning Something's not quite right. Please try again and if the problem persists please contact the team using the 'Contact Us' button in the footer."
+              "api_call_failed_dob",
+              "Warning Something's not quite right. Please try again and if the problem persists please contact the team using the 'Contact Us' button in the footer."
               );
               $("#save_and_continue1").removeAttr("data-target");
               $("#save_and_continue1").removeAttr("data-toggle");
@@ -1747,7 +1730,7 @@ jQuery(document).ready(function ($) {
               $("#save_and_continue1").removeAttr("data-target");
               $("#save_and_continue1").removeAttr("data-toggle");
               console.log("error 500 -->", result);
-            } else {
+            }else{
               jQuery("#model-error-msg").removeClass("d-none");
               jQuery("#model-error-msg .ins-modal-body-content").text(
                 "Warning Something's not quite right. Please try again and if the problem persists please contact the team using the 'Contact Us' button in the footer."
@@ -1822,7 +1805,7 @@ jQuery(document).ready(function ($) {
               $("#save_and_continue1").removeAttr("data-target");
               $("#save_and_continue1").removeAttr("data-toggle");
               console.log("error 404 -->", result);
-            } else {
+            }else{
               jQuery("#model-error-msg").removeClass("d-none");
               jQuery("#model-error-msg .ins-modal-body-content").text(
                 "Something's not quite right. Please try again using the policy number shown on your insurance document."
@@ -1848,7 +1831,7 @@ jQuery(document).ready(function ($) {
               );
               $("#save_and_continue1").removeAttr("data-target");
               $("#save_and_continue1").removeAttr("data-toggle");
-            } else {
+            }else{
               console.log("--->", result, statusCode);
               jQuery("#model-error-msg").removeClass("d-none");
               jQuery("#model-error-msg .ins-modal-body-content").text(
@@ -1863,29 +1846,29 @@ jQuery(document).ready(function ($) {
             }
           } else if (statusCode == 500) {
             if ($("#title").hasClass("ColumbusItaly")) {
+            jQuery("#model-error-msg").removeClass("d-none");
+            jQuery("#model-error-msg .ins-modal-body-content").text(
+              "Attenzione, qualcosa non ha funzionato. Per favore riprova e se il problema persiste, contatta l'ufficio sinistri."
+            );
+            addErrorMessage(
+              "api_call_failed_dob",
+              "Attenzione, qualcosa non ha funzionato. Per favore riprova e se il problema persiste, contatta l'ufficio sinistri."
+            );
+            $("#save_and_continue1").removeAttr("data-target");
+            $("#save_and_continue1").removeAttr("data-toggle");
+            console.log("error 500 -->", result);
+            }else{
               jQuery("#model-error-msg").removeClass("d-none");
-              jQuery("#model-error-msg .ins-modal-body-content").text(
-                "Attenzione, qualcosa non ha funzionato. Per favore riprova e se il problema persiste, contatta l'ufficio sinistri."
-              );
-              addErrorMessage(
-                "api_call_failed_dob",
-                "Attenzione, qualcosa non ha funzionato. Per favore riprova e se il problema persiste, contatta l'ufficio sinistri."
-              );
-              $("#save_and_continue1").removeAttr("data-target");
-              $("#save_and_continue1").removeAttr("data-toggle");
-              console.log("error 500 -->", result);
-            } else {
-              jQuery("#model-error-msg").removeClass("d-none");
-              jQuery("#model-error-msg .ins-modal-body-content").text(
-                "Warning Something's not quite right. Please try again and if the problem persists please contact the team using the 'Contact Us' button in the footer."
-              );
-              addErrorMessage(
-                "api_call_failed_dob",
-                "Warning Something's not quite right. Please try again and if the problem persists please contact the team using the 'Contact Us' button in the footer."
-              );
-              $("#save_and_continue1").removeAttr("data-target");
-              $("#save_and_continue1").removeAttr("data-toggle");
-              console.log("error 500 -->", result);
+            jQuery("#model-error-msg .ins-modal-body-content").text(
+              "Warning Something's not quite right. Please try again and if the problem persists please contact the team using the 'Contact Us' button in the footer."
+            );
+            addErrorMessage(
+              "api_call_failed_dob",
+              "Warning Something's not quite right. Please try again and if the problem persists please contact the team using the 'Contact Us' button in the footer."
+            );
+            $("#save_and_continue1").removeAttr("data-target");
+            $("#save_and_continue1").removeAttr("data-toggle");
+            console.log("error 500 -->", result);
             }
           }
         } else {
@@ -1938,7 +1921,7 @@ jQuery(document).ready(function ($) {
         "<div ' class='form-group'><label class='form-label' id='insured-bold' style='display:inline-table;font-weight: 900;' >Nome dell'assicurato </label>";
     } else {
       options +=
-        '<div Â class="form-group"><label id="insured-bold" class="form-label" style="display:inline-table;font-weight: 900;" > Name(s) of the Insured. Please TICK everyone who was involved in the claim! </label><br><label id="selectAClaiment">Please select a claimant</label>';
+      '<div Â class="form-group"><label id="insured-bold" class="form-label" style="display:inline-table;font-weight: 900;" > Name(s) of the Insured. Please TICK everyone who was involved in the claim! </label><br><label id="selectAClaiment">Please select a claimant</label>';
     }
     policyDetails.forEach(function (element, index) {
       options +=
@@ -2018,37 +2001,37 @@ jQuery(document).ready(function ($) {
     $("#section-1-button").children(":first").addClass("fa-pen");
     $("#section-1-button").css("background-color", "#524954");
   });
-
+  
   function add_section_1() {
-    if ($("#title").hasClass("ColumbusItaly")) {
-      $(
-        "<strong id='section_1_header'>" + italy_titles[0] + "</strong>"
-      ).insertAfter("#summary_intro");
+
+    if ($("#title").hasClass("ColumbusItaly")){
+      $("<strong id='section_1_header'>" + italy_titles[0] + "</strong>").insertAfter(
+        "#summary_intro"
+      );
       $("<hr class='summary_divider' id='great_line_1'>").insertAfter(
         "#section_1_header"
       );
-    } else {
+    }else{
       $("<strong id='section_1_header'>" + titles[0] + "</strong>").insertAfter(
         "#summary_intro"
       );
       $("<hr class='summary_divider' id='great_line_1'>").insertAfter(
         "#section_1_header"
       );
-    }
+  }
 
     //for loops
     var number_elements = $("#collapseSection1")
-      .children("div")
-      .children("div").length;
+    .children("div").children("div").length;
 
     console.log(number_elements);
 
-    for (let i = 1; i < number_elements; i++) {
+    for (let i = 1; i < number_elements ; i++) {
       var label = $("#collapseSection1")
-        .children("div")
-        .children("div:nth-child(" + i + ")")
-        .children("label")
-        .text();
+      .children("div")
+      .children("div:nth-child("+i+")")
+      .children("label")
+      .text();
 
       var value = $("#collapseSection1")
         .children("div")
@@ -2062,32 +2045,32 @@ jQuery(document).ready(function ($) {
   }
 
   function update_section_1() {
-    var number_elements = $("#collapseSection1")
-      .children("div")
-      .children("div").length;
 
-    console.log(number_elements);
-    //for loops
-
-    $("p").remove(".section_1_line");
-
-    for (let i = 1; i < number_elements; i++) {
-      var label = $("#collapseSection1")
+      var number_elements = $("#collapseSection1")
+      .children("div").children("div").length;
+  
+      console.log(number_elements);
+      //for loops
+  
+      $("p").remove(".section_1_line");
+      
+      for (let i = 1; i < number_elements ; i++) {
+        var label = $("#collapseSection1")
         .children("div")
-        .children("div:nth-child(" + i + ")")
+        .children("div:nth-child("+i+")")
         .children("label")
         .text();
-
-      var value = $("#collapseSection1")
-        .children("div")
-        .children("div:nth-child(" + i + ")")
-        .children("input")
-        .val();
-      $(
-        "<p class='section_1_line'>" + label + " : " + value + "</p>"
-      ).insertBefore("#great_line_1");
+  
+        var value = $("#collapseSection1")
+          .children("div")
+          .children("div:nth-child(" + i + ")")
+          .children("input")
+          .val();
+        $(
+          "<p class='section_1_line'>" + label + " : " + value + "</p>"
+        ).insertBefore("#great_line_1");
+      }
     }
-  }
   //____________________________________________________SECTION 1 End - Your Policy______________________________________________
   //continue section 2
   var emailAddress = "helpdesk_ticket_custom_field_cf_email_address_2321673";
@@ -2217,21 +2200,22 @@ jQuery(document).ready(function ($) {
     }
   });
   function add_section_2() {
-    if ($("#title").hasClass("ColumbusItaly")) {
-      $(
-        "<strong id='section_2_header'>" + italy_titles[1] + "</strong>"
-      ).insertAfter("#great_line_1");
+
+    if($("#title").hasClass("ColumbusItaly")){
+      $("<strong id='section_2_header'>" + italy_titles[1] + "</strong>").insertAfter(
+        "#great_line_1"
+      );
       $("<hr class='summary_divider' id='great_line_2'>").insertAfter(
         "#section_2_header"
       );
-    } else {
+    }else{
       $("<strong id='section_2_header'>" + titles[1] + "</strong>").insertAfter(
         "#great_line_1"
       );
       $("<hr class='summary_divider' id='great_line_2'>").insertAfter(
         "#section_2_header"
       );
-    }
+  }
     //for loops
 
     $("#collapseSection2 input").each(function () {
@@ -6101,14 +6085,14 @@ jQuery(document).ready(function ($) {
     }
   });
   function add_section_3() {
-    if ($("#title").hasClass("ColumbusItaly")) {
-      $(
-        "<strong id='section_3_header'>" + italy_titles[2] + "</strong>"
-      ).insertAfter("#great_line_2");
-      $("<hr class='summary_divider' id='great_line_3'>").insertAfter(
-        "#section_3_header"
-      );
-    } else {
+      if ($("#title").hasClass("ColumbusItaly")){
+        $("<strong id='section_3_header'>" + italy_titles[2] + "</strong>").insertAfter(
+          "#great_line_2"
+        );
+        $("<hr class='summary_divider' id='great_line_3'>").insertAfter(
+          "#section_3_header"
+        );
+      }else{
       $("<strong id='section_3_header'>" + titles[2] + "</strong>").insertAfter(
         "#great_line_2"
       );
@@ -6116,101 +6100,101 @@ jQuery(document).ready(function ($) {
         "#section_3_header"
       );
     }
-
-    var number_elements = $("#collapseSection3")
-      .children(".card-body")
-      .children("div").length;
-    for (let i = 1; i < number_elements + 1; i++) {
-      if (
-        $("#collapseSection3")
-          .children(".card-body")
-          .children("div:nth-child(" + i + ")")
-          .children(".choices.form-select").length
-      ) {
-        var label_dropdown = $("#collapseSection3")
-          .children(".card-body")
-          .children("div:nth-child(" + i + ")")
-          .children("label")
-          .text();
-        var dropdown_value = $("#collapseSection3")
-          .children(".card-body")
-          .children("div:nth-child(" + i + ")")
-          .children(".choices.form-select")
-          .children(".choices__inner")
-          .children("select")
-          .val();
-        $(
-          "<p class='section_3_line'>" +
-            label_dropdown +
-            " : " +
-            dropdown_value +
-            "</p>"
-        ).insertBefore("#great_line_3");
-      } else {
-        var label = $("#collapseSection3")
-          .children(".card-body")
-          .children("div:nth-child(" + i + ")")
-          .children("label")
-          .text();
-        var value = $("#collapseSection3")
-          .children(".card-body")
-          .children("div:nth-child(" + i + ")")
-          .children("input")
-          .val();
-        $(
-          "<p class='section_3_line'>" + label + " : " + value + "</p>"
-        ).insertBefore("#great_line_3");
+  
+      var number_elements = $("#collapseSection3")
+        .children(".card-body")
+        .children("div").length;
+      for (let i = 1; i < number_elements + 1; i++) {
+        if (
+          $("#collapseSection3")
+            .children(".card-body")
+            .children("div:nth-child(" + i + ")")
+            .children(".choices.form-select").length
+        ) {
+          var label_dropdown = $("#collapseSection3")
+            .children(".card-body")
+            .children("div:nth-child(" + i + ")")
+            .children("label")
+            .text();
+          var dropdown_value = $("#collapseSection3")
+            .children(".card-body")
+            .children("div:nth-child(" + i + ")")
+            .children(".choices.form-select")
+            .children(".choices__inner")
+            .children("select")
+            .val();
+          $(
+            "<p class='section_3_line'>" +
+              label_dropdown +
+              " : " +
+              dropdown_value +
+              "</p>"
+          ).insertBefore("#great_line_3");
+        } else {
+          var label = $("#collapseSection3")
+            .children(".card-body")
+            .children("div:nth-child(" + i + ")")
+            .children("label")
+            .text();
+          var value = $("#collapseSection3")
+            .children(".card-body")
+            .children("div:nth-child(" + i + ")")
+            .children("input")
+            .val();
+          $(
+            "<p class='section_3_line'>" + label + " : " + value + "</p>"
+          ).insertBefore("#great_line_3");
+        }
       }
     }
-  }
-  function update_section_3() {
-    var number_elements = $("#collapseSection3")
-      .children(".card-body")
-      .children("div").length;
-    $("p").remove(".section_3_line");
-    for (let i = 1; i < number_elements + 1; i++) {
-      if (
-        $("#collapseSection3")
-          .children(".card-body")
-          .children("div:nth-child(" + i + ")")
-          .children(".choices.form-select").length
-      ) {
-        var label_dropdown = $("#collapseSection3")
-          .children(".card-body")
-          .children("div:nth-child(" + i + ")")
-          .children("label")
-          .text();
-        var dropdown_value = $("#collapseSection3")
-          .children(".card-body")
-          .children("div:nth-child(" + i + ")")
-          .children(".choices.form-select")
-          .children(".choices__inner")
-          .children("select")
-          .val();
-        $(
-          "<p class='section_3_line'>" +
-            label_dropdown +
-            " : " +
-            dropdown_value +
-            "</p>"
-        ).insertBefore("#great_line_3");
-      } else {
-        var label = $("#collapseSection3")
-          .children(".card-body")
-          .children("div:nth-child(" + i + ")")
-          .children("label")
-          .text();
-        var value = $("#collapseSection3")
-          .children(".card-body")
-          .children("div:nth-child(" + i + ")")
-          .children("input")
-          .val();
-        $(
-          "<p class='section_3_line'>" + label + " : " + value + "</p>"
-        ).insertBefore("#great_line_3");
+    function update_section_3() {
+      var number_elements = $("#collapseSection3")
+        .children(".card-body")
+        .children("div").length;
+      $("p").remove(".section_3_line");
+      for (let i = 1; i < number_elements + 1; i++) {
+        if (
+          $("#collapseSection3")
+            .children(".card-body")
+            .children("div:nth-child(" + i + ")")
+            .children(".choices.form-select").length
+        ) {
+          var label_dropdown = $("#collapseSection3")
+            .children(".card-body")
+            .children("div:nth-child(" + i + ")")
+            .children("label")
+            .text();
+          var dropdown_value = $("#collapseSection3")
+            .children(".card-body")
+            .children("div:nth-child(" + i + ")")
+            .children(".choices.form-select")
+            .children(".choices__inner")
+            .children("select")
+            .val();
+          $(
+            "<p class='section_3_line'>" +
+              label_dropdown +
+              " : " +
+              dropdown_value +
+              "</p>"
+          ).insertBefore("#great_line_3");
+        } else {
+          var label = $("#collapseSection3")
+            .children(".card-body")
+            .children("div:nth-child(" + i + ")")
+            .children("label")
+            .text();
+          var value = $("#collapseSection3")
+            .children(".card-body")
+            .children("div:nth-child(" + i + ")")
+            .children("input")
+            .val();
+          $(
+            "<p class='section_3_line'>" + label + " : " + value + "</p>"
+          ).insertBefore("#great_line_3");
+        }
       }
     }
-  }
   function createClaimRequest(claimObject, fieldId, createClaimIds) {
     let flag = false;
     let statusCode;
@@ -6248,7 +6232,7 @@ jQuery(document).ready(function ($) {
           if (statusCode == 401) {
             getJWTToken(fieldId);
           } else if (statusCode == 500) {
-            if ($("#title").hasClass("ColumbusItaly")) {
+            if($('#title').hasClass("ColumbusItaly")){
               jQuery("#claim-error-msg").removeClass("d-none");
               jQuery("#claim-error-msg .claim-desc-message").text(
                 "Attenzione, qualcosa non ha funzionato. Per favore riprova e se il problema persiste, contatta l'ufficio sinistri."
@@ -6259,20 +6243,20 @@ jQuery(document).ready(function ($) {
                 "Attenzione, qualcosa non ha funzionato. Per favore riprova e se il problema persiste, contatta l'ufficio sinistri."
               );
               console.log("Internal server error");
-            } else {
-              jQuery("#claim-error-msg").removeClass("d-none");
-              jQuery("#claim-error-msg .claim-desc-message").text(
-                "Warning Something's not quite right. Please try again and if the problem persists please contact the team using the 'Contact Us' button in the footer."
-              );
-              console.log("error--->", result);
-              addErrorMessage(
-                "api_call_failed_rc",
-                "Warning Something's not quite right. Please try again and if the problem persists please contact the team using the 'Contact Us' button in the footer."
-              );
-              console.log("Internal server error");
-            }
+          }else{
+            jQuery("#claim-error-msg").removeClass("d-none");
+            jQuery("#claim-error-msg .claim-desc-message").text(
+              "Warning Something's not quite right. Please try again and if the problem persists please contact the team using the 'Contact Us' button in the footer."
+            );
+            console.log("error--->", result);
+            addErrorMessage(
+              "api_call_failed_rc",
+              "Warning Something's not quite right. Please try again and if the problem persists please contact the team using the 'Contact Us' button in the footer."
+            );
+            console.log("Internal server error");
+          }
           } else if (statusCode == 400) {
-            if ($("#title").hasClass("ColumbusItaly")) {
+            if($('#title').hasClass("ColumbusItaly")){
               jQuery("#claim-error-msg").removeClass("d-none");
               jQuery("#claim-error-msg .claim-desc-message").text(
                 "Attenzione, qualcosa non ha funzionato. Per favore riprova e se il problema persiste, contatta l'ufficio sinistri."
@@ -6285,7 +6269,7 @@ jQuery(document).ready(function ($) {
               console.log(
                 "Unable to create claim as per one claim per policy per day rule"
               );
-            } else {
+            }else{
               jQuery("#claim-error-msg").removeClass("d-none");
               jQuery("#claim-error-msg .claim-desc-message").text(
                 "Warning Something's not quite right. Please try again and if the problem persists please contact the team using the 'Contact Us' button in the footer."
@@ -6300,7 +6284,7 @@ jQuery(document).ready(function ($) {
               );
             }
           } else {
-            if ($("#title").hasClass("ColumbusItaly")) {
+            if($('#title').hasClass("ColumbusItaly")){
               jQuery("#claim-error-msg").removeClass("d-none");
               jQuery("#claim-error-msg .claim-desc-message").text(
                 "Attenzione, qualcosa non ha funzionato. Per favore riprova e se il problema persiste, contatta l'ufficio sinistri."
@@ -6309,7 +6293,7 @@ jQuery(document).ready(function ($) {
                 "api_call_failed_rc",
                 "Attenzione, qualcosa non ha funzionato. Per favore riprova e se il problema persiste, contatta l'ufficio sinistri."
               );
-            } else {
+            }else{
               jQuery("#claim-error-msg").removeClass("d-none");
               jQuery("#claim-error-msg .claim-desc-message").text(
                 "Warning Something's not quite right. Please try again and if the problem persists please contact the team using the 'Contact Us' button in the footer."
@@ -6319,7 +6303,7 @@ jQuery(document).ready(function ($) {
                 "Warning Something's not quite right. Please try again and if the problem persists please contact the team using the 'Contact Us' button in the footer."
               );
             }
-          }
+        }
         } else {
           let ele = ["api_call_failed_rc"];
           clearError(ele);
@@ -6357,7 +6341,7 @@ jQuery(document).ready(function ($) {
       .catch((error) => console.log("errror -->", error));
   }
   //do modal popup with claims statement
-
+  
   $("#next").click(function () {
     $("#ClaimAPIModal").modal("toggle");
 
@@ -6385,1050 +6369,953 @@ jQuery(document).ready(function ($) {
     $("#section-1-button").css("background-color", "#4DC367");
     $("#section-2-button").css("background-color", "#4DC367");
     $("#section-3-button").css("background-color", "#4DC367");
+
   });
 
-  function validateMandatoryFields(list_of_fields) {
+  function validateMandatoryFields(list_of_fields){
     move_forward = false;
-    red_indexes = [];
-    clear_index = [];
-    for (let i = 0; i < list_of_fields.length; i++) {
-      if ($("#" + list_of_fields[i]).val() == "") {
+    red_indexes = []
+    clear_index = []
+    for (let i = 0; i < list_of_fields.length; i++ ){
+      if ( $("#"+(list_of_fields[i])).val() == '' ){
         red_indexes.push(i);
-      } else {
+      }else{
         clear_index.push(i);
       }
     }
-    console.log("the following indexes are empty");
+    console.log("the following indexes are empty")
     console.log(red_indexes);
-    console.log("length: " + red_indexes.length);
-    console.log("-------------------------------------------");
-    console.log("TO CLEAR!");
+    console.log("length: "+red_indexes.length)
+    console.log("-------------------------------------------")
+    console.log("TO CLEAR!")
     console.log(clear_index);
-    console.log("length: " + clear_index.length);
-
-    if (red_indexes.length >= 1) {
+    console.log("length: "+clear_index.length)                                                                                                                                                      
+    
+    if (red_indexes.length >= 1){
       //highlight reds
       red_indexes.forEach((index) => {
-        if ($("#" + list_of_fields[index]).hasClass("choices")) {
-          $("#" + list_of_fields[index])
-            .parent()
-            .parent()
-            .css("border", "1px solid red");
-        } else {
-          $("#" + list_of_fields[index]).css("border", "1px solid red");
+        
+        if( $("#"+(list_of_fields[index])).hasClass('choices')){
+          $("#"+(list_of_fields[index])).parent().parent().css('border','1px solid red');
+        }else{
+          $("#"+(list_of_fields[index])).css('border','1px solid red');
         }
       });
-
+  
       //clear
       clear_index.forEach((index) => {
-        if ($("#" + list_of_fields[index]).hasClass("choices")) {
-          $("#" + list_of_fields[index])
-            .parent()
-            .parent()
-            .css("border", "1px solid black");
-        } else {
-          $("#" + list_of_fields[index]).css("border", "1px solid black");
+          
+        if( $("#"+(list_of_fields[index])).hasClass('choices')){
+          $("#"+(list_of_fields[index])).parent().parent().css('border','1px solid black');
+        }else{
+          $("#"+(list_of_fields[index])).css('border','1px solid black');
         }
       });
-    } else if (red_indexes.length == 0) {
-      clear_index.forEach((index) => {
-        if ($("#" + list_of_fields[index]).hasClass("choices")) {
-          $("#" + list_of_fields[index])
-            .parent()
-            .parent()
-            .css("border", "1px solid black");
-        } else {
-          $("#" + list_of_fields[index]).css("border", "1px solid black");
-        }
-      });
-      move_forward = true;
+    
+  } else if (red_indexes.length == 0){
+    clear_index.forEach((index) => {
+          
+      if( $("#"+(list_of_fields[index])).hasClass('choices')){
+        $("#"+(list_of_fields[index])).parent().parent().css('border','1px solid black');
+      }else{
+        $("#"+(list_of_fields[index])).css('border','1px solid black');
+      }
+    });
+    move_forward = true;
+  }
+    
+  return move_forward;
+}   //____________________________________________________________________________________________________________________
+$("#save_draft_4").click(function (event) {
+  
+  if(CheckMandatoryValues() == true){
+    console.log("Value True");
+    //$(".new-ticket-dummy").trigger("click");
+    $(".new-ticket-submit-button").trigger("click");
+  }else{
+    console.log("Value False");
+  }
+
+});
+
+
+function CheckMandatoryValues(){
+  var proceedValue = false;
+
+  if (
+    $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() ==
+    "Baggage - suitcase hasn't arrived on time"
+  ){
+    console.log($("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val())
+    //fields to check
+    MandatoryFields1 = ['helpdesk_ticket_custom_field_cf_which_part_of_the_journey_did_your_baggage_arrive_late_2321673',
+    'helpdesk_ticket_custom_field_cf_how_many_hours_was_your_baggage_delayed_2321673',
+    'helpdesk_ticket_custom_field_cf_has_your_baggage_been_returned_to_you_2321673',
+    'helpdesk_ticket_custom_field_cf_what_transport_type_was_your_baggage_delayed_on_2321673',
+    'helpdesk_ticket_custom_field_cf_did_you_notify_your_transport_provider_about_the_delay_and_get_a_report_pir_2321673',
+    'helpdesk_ticket_custom_field_cf_please_list_all_replacement_items_purchased339565_2321673',
+    'helpdesk_ticket_custom_field_cf_on_what_date_did_you_purchase_the_replacement_items_2321673',
+    'helpdesk_ticket_custom_field_cf_currency_type637939_2321673',
+    'helpdesk_ticket_custom_field_cf_amount_paid_in_local_currency527297_2321673',
+    'helpdesk_ticket_custom_field_cf_have_you_received_any_refund_from_your_transport_provider_2321673']
+
+    validateMandatoryFields(MandatoryFields1);
+
+    if (validateMandatoryFields(MandatoryFields1) == true){
+      console.log("WE CAN MOVE FORWARD!!!");
+
+      open_next(4);
+      proceedValue = true;
+      $("#section-4-button").children(":first").removeClass("fa-minus");
+      $("#section-4-button").children(":first").removeClass("fa-plus");
+      $("#section-4-button").children(":first").addClass("fa-pen");
+      $("#section-4-button").css("background-color", "#524954");
     }
 
-    return move_forward;
-  } //____________________________________________________________________________________________________________________
-  $("#save_draft_4").click(function (event) {
-    if (CheckMandatoryValues() == true) {
-      console.log("Value True");
-      //$(".new-ticket-dummy").trigger("click");
-      $(".new-ticket-submit-button").trigger("click");
-    } else {
-      console.log("Value False");
+
+  } 
+  else if ($("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() ==
+  "Any CANCELLATION claim due to COVID-19" ){
+    
+
+    MandatoryFields2 = ['helpdesk_ticket_custom_field_cf_why_did_you_cancel_your_trip_2321673',
+    'helpdesk_ticket_custom_field_cf_when_were_you_initially_aware_that_you_needed_to_cancel_your_trip635242_2321673',
+    'helpdesk_ticket_custom_field_cf_please_enter_the_date_you_asked_your_tour_operatortravel_provider_to_cancel_the_trip_2321673',
+    'helpdesk_ticket_custom_field_cf_what_type_of_trip_did_you_book877716_2321673',
+    'helpdesk_ticket_custom_field_cf_please_confirm_the_name_of_the_trip_providers_and_the_booking_references342856_2321673',
+    'helpdesk_ticket_custom_field_cf_currency_type637939_2321673',
+    'helpdesk_ticket_custom_field_cf_total_trip_cost_the_amount_you_paid_2321673',
+    'helpdesk_ticket_custom_field_cf_total_refund_vouchers_amount_the_amount_you_have_received_back594804_2321673',
+    'helpdesk_ticket_custom_field_cf_do_you_have_any_other_travel_insurance_policy400572_2321673',
+    'helpdesk_ticket_custom_field_cf_who_do_you_bank_with_and_what_type_of_account_do_you_have486839_2321673']
+
+    validateMandatoryFields(MandatoryFields2);
+
+    if (validateMandatoryFields(MandatoryFields2) == true){
+      console.log("WE CAN MOVE FORWARD!!!")
+      proceedValue = true;
     }
-  });
 
-  function CheckMandatoryValues() {
-    var proceedValue = false;
 
-    if (
-      $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() ==
-      "Baggage - suitcase hasn't arrived on time"
-    ) {
-      console.log(
-        $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val()
-      );
-      //fields to check
-      MandatoryFields1 = [
-        "helpdesk_ticket_custom_field_cf_which_part_of_the_journey_did_your_baggage_arrive_late_2321673",
-        "helpdesk_ticket_custom_field_cf_how_many_hours_was_your_baggage_delayed_2321673",
-        "helpdesk_ticket_custom_field_cf_has_your_baggage_been_returned_to_you_2321673",
-        "helpdesk_ticket_custom_field_cf_what_transport_type_was_your_baggage_delayed_on_2321673",
-        "helpdesk_ticket_custom_field_cf_did_you_notify_your_transport_provider_about_the_delay_and_get_a_report_pir_2321673",
-        "helpdesk_ticket_custom_field_cf_please_list_all_replacement_items_purchased339565_2321673",
-        "helpdesk_ticket_custom_field_cf_on_what_date_did_you_purchase_the_replacement_items_2321673",
-        "helpdesk_ticket_custom_field_cf_currency_type637939_2321673",
-        "helpdesk_ticket_custom_field_cf_amount_paid_in_local_currency527297_2321673",
-        "helpdesk_ticket_custom_field_cf_have_you_received_any_refund_from_your_transport_provider_2321673",
-      ];
+  }
+  else if($("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() ==
+  "Baggage - personal items damaged"){
+    console.log($("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val())
 
-      validateMandatoryFields(MandatoryFields1);
+    MandatoryFields3 = ['helpdesk_ticket_custom_field_cf_how_did_the_damage_happen_well_need_as_much_information_as_you_can_give_please_2321673',
+    'helpdesk_ticket_custom_field_cf_was_the_items_with_you_when_it_was_damaged_2321673',
+    'helpdesk_ticket_custom_field_cf_how_many_items_are_you_claiming_for411795_2321673',
+    'helpdesk_ticket_custom_field_cf_who_owns_the_item_2321673',
+    'helpdesk_ticket_custom_field_cf_do_you_have_home_contents_insurance_2321673',
+    'helpdesk_ticket_custom_field_cf_do_you_have_any_other_travel_insurance_policy_2321673',
+    'helpdesk_ticket_custom_field_cf_who_do_you_bank_with_and_what_type_of_account_do_you_have87472_2321673']
 
-      if (validateMandatoryFields(MandatoryFields1) == true) {
-        console.log("WE CAN MOVE FORWARD!!!");
+    validateMandatoryFields(MandatoryFields3);
 
+    if (validateMandatoryFields(MandatoryFields3) == true){
+      console.log("WE CAN MOVE FORWARD!!!")
+      proceedValue = true;
+    }
+
+  }
+
+  else if($("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() ==
+  "Baggage - personal items lost or stolen"){
+    console.log($("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val())
+
+    MandatoryFields4 = ['helpdesk_ticket_custom_field_cf_are_you_claiming_for_a_loss_or_theft_2321673',
+    'helpdesk_ticket_custom_field_cf_where_did_the_loss_or_theft_take_place_2321673',
+    'helpdesk_ticket_custom_field_cf_did_you_report_the_loss_or_theft_2321673',
+    'helpdesk_ticket_custom_field_cf_how_many_items_are_you_claiming_for_2321673',
+    'helpdesk_ticket_custom_field_cf_who_owns_the_item86910_2321673',
+    'helpdesk_ticket_custom_field_cf_do_you_have_home_contents_insurance_2321673',
+    'helpdesk_ticket_custom_field_cf_do_you_have_any_other_travel_insurance_policy_2321673',
+    'helpdesk_ticket_custom_field_cf_who_do_you_bank_with_and_what_type_of_account_do_you_have87472_2321673']
+
+    validateMandatoryFields(MandatoryFields4)
+
+    if (validateMandatoryFields(MandatoryFields4) == true){
+      console.log("WE CAN MOVE FORWARD!!!")
+      proceedValue = true;
+    }
+    
+  }
+  //sus
+  else if($("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() ==
+  "Cancelled trip - (NOT related to COVID-19)"){
+    console.log($("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val())
+
+    MandatoryFields5 = ['helpdesk_ticket_custom_field_cf_who_has_caused_the_cancellation_2321673',
+    'helpdesk_ticket_custom_field_cf_are_you_currently_still_abroad_2321673',
+    'helpdesk_ticket_custom_field_cf_what_type_of_trip_did_you_book137913_2321673',
+    'helpdesk_ticket_custom_field_cf_how_many_people_are_there_on_the_booking_2321673',
+    'helpdesk_ticket_custom_field_cf_please_confirm_the_name_of_the_trip_providers_and_the_booking_references342856_2321673',
+    'helpdesk_ticket_custom_field_cf_currency_type637939_2321673',
+    'helpdesk_ticket_custom_field_cf_total_trip_cost_the_amount_you_paid_2321673',
+    'helpdesk_ticket_custom_field_cf_have_you_received_any_refunds_or_compensation702973_2321673',
+    'helpdesk_ticket_custom_field_cf_please_enter_the_date_you_asked_your_tour_operatortravel_provider_to_cancel_the_trip_2321673',
+    'helpdesk_ticket_custom_field_cf_do_you_have_any_other_travel_insurance_policy400572_2321673',
+    'helpdesk_ticket_custom_field_cf_who_do_you_bank_with_and_what_type_of_account_do_you_have486839_2321673']
+
+    validateMandatoryFields(MandatoryFields5)
+
+    if (validateMandatoryFields(MandatoryFields5) == true){
+      console.log("WE CAN MOVE FORWARD!!!")
+      proceedValue = true;
+    }
+    
+  }
+
+  else if($("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() ==
+  "Curtailment â€“ returned home early"){
+    console.log($("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val())
+
+    MandatoryFields6 = ['helpdesk_ticket_custom_field_cf_currency_type637939_2321673',
+    'helpdesk_ticket_custom_field_cf_total_refund_vouchers_amount_the_amount_you_have_received_back594804_2321673'
+    ]
+    validateMandatoryFields(MandatoryFields6)
+    if (validateMandatoryFields(MandatoryFields6) == true){
+      console.log("WE CAN MOVE FORWARD!!!")
+      proceedValue = true;
+    }
+    
+  }
+
+  else if($("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() ==
+  "Dental expenses whilst abroad"){
+    console.log($("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val())
+
+    MandatoryFields6 = ['helpdesk_ticket_custom_field_cf_currency_type637939_2321673',
+    'helpdesk_ticket_custom_field_cf_amount_paid_in_local_currency527297_2321673'
+    ]
+
+    validateMandatoryFields(MandatoryFields6)
+    if (validateMandatoryFields(MandatoryFields6) == true){
+      console.log("WE CAN MOVE FORWARD!!!")
+      proceedValue = true;
+    }
+    
+  }
+
+  else if($("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() ==
+  "Flight or Travel delayed"){
+    console.log($("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val())
+
+    MandatoryFields7 = ['helpdesk_ticket_custom_field_cf_what_transport_was_delayed_2321673',
+    'helpdesk_ticket_custom_field_cf_what_date_were_you_advised_of_the_delay_2321673',
+    'helpdesk_ticket_custom_field_cf_what_was_the_reason_for_the_delay_2321673',
+    'helpdesk_ticket_custom_field_cf_how_many_hours_were_you_delayed_2321673',
+    'helpdesk_ticket_custom_field_cf_on_which_part_of_the_journey_were_you_delayed_2321673'
+    ]
+
+    validateMandatoryFields(MandatoryFields7)
+    if (validateMandatoryFields(MandatoryFields7) == true){
+      console.log("WE CAN MOVE FORWARD!!!")
+      proceedValue = true;
+    }
+    
+  }
+
+  else if($("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() ==
+  "Medical expenses abroad & repatriation cost"){
+    console.log($("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val())
+
+    MandatoryFields8 = ['helpdesk_ticket_custom_field_cf_are_you_currently_still_abroad93386_2321673',
+    'helpdesk_ticket_custom_field_cf_who_incurred_medical_expenses_2321673',
+    'helpdesk_ticket_custom_field_cf_when_did_the_symptoms_start437132_2321673',
+    'helpdesk_ticket_custom_field_cf_are_you_claiming_for_an_injury_or_illness644442_2321673',
+    'helpdesk_ticket_custom_field_cf_were_you_admitted_to_a_hospital_as_an_inpatient_overnight_2321673',
+    'helpdesk_ticket_custom_field_cf_please_list_the_expenses_incurred_including_the_type_of_expense_and_the_name_of_the_dentist_or_company_that_provided_this_expense90799_2321673',
+    'helpdesk_ticket_custom_field_cf_currency_type637939_2321673',
+    'helpdesk_ticket_custom_field_cf_amount_paid_in_local_currency527297_2321673',
+    'helpdesk_ticket_custom_field_cf_date_of_payment778903_2321673',
+    'helpdesk_ticket_custom_field_cf_do_any_of_the_costs_relate_to_covid_tests_2321673',
+    'helpdesk_ticket_custom_field_cf_do_any_of_the_costs_relate_to_physiotherapy_or_chiropracter_2321673',
+    'helpdesk_ticket_custom_field_cf_do_any_of_the_costs_relate_to_accommodation555447_2321673',
+    'helpdesk_ticket_custom_field_cf_do_any_of_the_costs_relate_to_travel_not_including_the_ambulance_or_taxi_to_the_hospital_2321673',
+    'helpdesk_ticket_custom_field_cf_do_you_have_any_other_travel_insurance_policy206683_2321673',
+    'helpdesk_ticket_custom_field_cf_do_you_have_private_medical_insurance_2321673',
+    'helpdesk_ticket_custom_field_cf_who_do_you_bank_with_and_what_type_of_account_do_you_have584479_2321673'
+    ]
+
+    validateMandatoryFields(MandatoryFields8)
+    if (validateMandatoryFields(MandatoryFields8) == true){
+      console.log("WE CAN MOVE FORWARD!!!")
+      proceedValue = true;
+    }
+    
+  }
+
+  else if($("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() ==
+  "Missed flight or departure"){
+    console.log($("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val())
+
+    MandatoryFields9 = ['helpdesk_ticket_custom_field_cf_what_caused_you_to_miss_your_departure_2321673',
+    'helpdesk_ticket_custom_field_cf_do_you_have_a_report_confirming_the_reason_for_the_delay_2321673',
+    'helpdesk_ticket_custom_field_cf_on_which_part_of_the_journey_did_you_miss_your_departure_2321673',
+    'helpdesk_ticket_custom_field_cf_did_you_allow_yourself_sufficient_time_to_reach_your_international_departure_point_2321673',
+    'helpdesk_ticket_custom_field_cf_what_type_of_additional_expenses_are_you_claiming_for_2321673',
+    'helpdesk_ticket_custom_field_cf_name_of_provider_please_list_all_2321673',
+    'helpdesk_ticket_custom_field_cf_currency_type637939_2321673',
+    'helpdesk_ticket_custom_field_cf_amount_paid_in_local_currency_2321673',
+    'helpdesk_ticket_custom_field_cf_total_refund_vouchers_amount_the_amount_you_have_received_back594804_2321673',
+    ]
+
+    validateMandatoryFields(MandatoryFields9)
+
+    if (validateMandatoryFields(MandatoryFields9) == true){
+      console.log("WE CAN MOVE FORWARD!!!")
+      proceedValue = true;
+    }
+    
+  }
+
+  else if($("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() ==
+  "Substitute Accommodation - change to accommodation during trip"){
+    console.log($("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val())
+
+    MandatoryFields10 = ['helpdesk_ticket_custom_field_cf_currency_type637939_2321673',
+    'helpdesk_ticket_custom_field_cf_total_refund_vouchers_amount_the_amount_you_have_received_back594804_2321673'
+    ]
+
+    validateMandatoryFields(MandatoryFields10)
+
+    if (validateMandatoryFields(MandatoryFields10) == true){
+      console.log("WE CAN MOVE FORWARD!!!")
+      proceedValue = true;
+    }
+    
+  }
+
+  else if($("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() ==
+  "Winter sports - lift pass, equipment or piste closure"){
+    console.log($("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val())
+
+    MandatoryFields11 = ['helpdesk_ticket_custom_field_cf_currency_type637939_2321673'
+    ]
+
+    validateMandatoryFields(MandatoryFields11)
+
+    if (validateMandatoryFields(MandatoryFields11) == true){
+      console.log("WE CAN MOVE FORWARD!!!")
+      proceedValue = true;
+    }
+    
+  }
+
+  return proceedValue;
+
+}
+  
+$("#save_and_continue4").click(function () {
+  
+  
+  if (
+    $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() ==
+    "Baggage - suitcase hasn't arrived on time"
+  ){
+    console.log($("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val())
+    //fields to check
+    MandatoryFields1 = ['helpdesk_ticket_custom_field_cf_which_part_of_the_journey_did_your_baggage_arrive_late_2321673',
+    'helpdesk_ticket_custom_field_cf_how_many_hours_was_your_baggage_delayed_2321673',
+    'helpdesk_ticket_custom_field_cf_has_your_baggage_been_returned_to_you_2321673',
+    'helpdesk_ticket_custom_field_cf_what_transport_type_was_your_baggage_delayed_on_2321673',
+    'helpdesk_ticket_custom_field_cf_did_you_notify_your_transport_provider_about_the_delay_and_get_a_report_pir_2321673',
+    'helpdesk_ticket_custom_field_cf_please_list_all_replacement_items_purchased339565_2321673',
+    'helpdesk_ticket_custom_field_cf_on_what_date_did_you_purchase_the_replacement_items_2321673',
+    'helpdesk_ticket_custom_field_cf_currency_type637939_2321673',
+    'helpdesk_ticket_custom_field_cf_amount_paid_in_local_currency527297_2321673',
+    'helpdesk_ticket_custom_field_cf_have_you_received_any_refund_from_your_transport_provider_2321673']
+
+    validateMandatoryFields(MandatoryFields1);
+
+    if (validateMandatoryFields(MandatoryFields1) == true){
+      if($(".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4").children(".form-group").children(".d-block").length == 0){
+
+      
+        console.log("WE CAN MOVE FORWARD!!!")
         open_next(4);
-        proceedValue = true;
         $("#section-4-button").children(":first").removeClass("fa-minus");
         $("#section-4-button").children(":first").removeClass("fa-plus");
         $("#section-4-button").children(":first").addClass("fa-pen");
         $("#section-4-button").css("background-color", "#524954");
-      }
-    } else if (
-      $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() ==
-      "Any CANCELLATION claim due to COVID-19"
-    ) {
-      MandatoryFields2 = [
-        "helpdesk_ticket_custom_field_cf_why_did_you_cancel_your_trip_2321673",
-        "helpdesk_ticket_custom_field_cf_when_were_you_initially_aware_that_you_needed_to_cancel_your_trip635242_2321673",
-        "helpdesk_ticket_custom_field_cf_please_enter_the_date_you_asked_your_tour_operatortravel_provider_to_cancel_the_trip_2321673",
-        "helpdesk_ticket_custom_field_cf_what_type_of_trip_did_you_book877716_2321673",
-        "helpdesk_ticket_custom_field_cf_please_confirm_the_name_of_the_trip_providers_and_the_booking_references342856_2321673",
-        "helpdesk_ticket_custom_field_cf_currency_type637939_2321673",
-        "helpdesk_ticket_custom_field_cf_total_trip_cost_the_amount_you_paid_2321673",
-        "helpdesk_ticket_custom_field_cf_total_refund_vouchers_amount_the_amount_you_have_received_back594804_2321673",
-        "helpdesk_ticket_custom_field_cf_do_you_have_any_other_travel_insurance_policy400572_2321673",
-        "helpdesk_ticket_custom_field_cf_who_do_you_bank_with_and_what_type_of_account_do_you_have486839_2321673",
-      ];
-
-      validateMandatoryFields(MandatoryFields2);
-
-      if (validateMandatoryFields(MandatoryFields2) == true) {
-        console.log("WE CAN MOVE FORWARD!!!");
-        proceedValue = true;
-      }
-    } else if (
-      $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() ==
-      "Baggage - personal items damaged"
-    ) {
-      console.log(
-        $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val()
-      );
-
-      MandatoryFields3 = [
-        "helpdesk_ticket_custom_field_cf_how_did_the_damage_happen_well_need_as_much_information_as_you_can_give_please_2321673",
-        "helpdesk_ticket_custom_field_cf_was_the_items_with_you_when_it_was_damaged_2321673",
-        "helpdesk_ticket_custom_field_cf_how_many_items_are_you_claiming_for411795_2321673",
-        "helpdesk_ticket_custom_field_cf_who_owns_the_item_2321673",
-        "helpdesk_ticket_custom_field_cf_do_you_have_home_contents_insurance_2321673",
-        "helpdesk_ticket_custom_field_cf_do_you_have_any_other_travel_insurance_policy_2321673",
-        "helpdesk_ticket_custom_field_cf_who_do_you_bank_with_and_what_type_of_account_do_you_have87472_2321673",
-      ];
-
-      validateMandatoryFields(MandatoryFields3);
-
-      if (validateMandatoryFields(MandatoryFields3) == true) {
-        console.log("WE CAN MOVE FORWARD!!!");
-        proceedValue = true;
-      }
-    } else if (
-      $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() ==
-      "Baggage - personal items lost or stolen"
-    ) {
-      console.log(
-        $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val()
-      );
-
-      MandatoryFields4 = [
-        "helpdesk_ticket_custom_field_cf_are_you_claiming_for_a_loss_or_theft_2321673",
-        "helpdesk_ticket_custom_field_cf_where_did_the_loss_or_theft_take_place_2321673",
-        "helpdesk_ticket_custom_field_cf_did_you_report_the_loss_or_theft_2321673",
-        "helpdesk_ticket_custom_field_cf_how_many_items_are_you_claiming_for_2321673",
-        "helpdesk_ticket_custom_field_cf_who_owns_the_item86910_2321673",
-        "helpdesk_ticket_custom_field_cf_do_you_have_home_contents_insurance_2321673",
-        "helpdesk_ticket_custom_field_cf_do_you_have_any_other_travel_insurance_policy_2321673",
-        "helpdesk_ticket_custom_field_cf_who_do_you_bank_with_and_what_type_of_account_do_you_have87472_2321673",
-      ];
-
-      validateMandatoryFields(MandatoryFields4);
-
-      if (validateMandatoryFields(MandatoryFields4) == true) {
-        console.log("WE CAN MOVE FORWARD!!!");
-        proceedValue = true;
-      }
-    }
-    //sus
-    else if (
-      $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() ==
-      "Cancelled trip - (NOT related to COVID-19)"
-    ) {
-      console.log(
-        $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val()
-      );
-
-      MandatoryFields5 = [
-        "helpdesk_ticket_custom_field_cf_who_has_caused_the_cancellation_2321673",
-        "helpdesk_ticket_custom_field_cf_are_you_currently_still_abroad_2321673",
-        "helpdesk_ticket_custom_field_cf_what_type_of_trip_did_you_book137913_2321673",
-        "helpdesk_ticket_custom_field_cf_how_many_people_are_there_on_the_booking_2321673",
-        "helpdesk_ticket_custom_field_cf_please_confirm_the_name_of_the_trip_providers_and_the_booking_references342856_2321673",
-        "helpdesk_ticket_custom_field_cf_currency_type637939_2321673",
-        "helpdesk_ticket_custom_field_cf_total_trip_cost_the_amount_you_paid_2321673",
-        "helpdesk_ticket_custom_field_cf_have_you_received_any_refunds_or_compensation702973_2321673",
-        "helpdesk_ticket_custom_field_cf_please_enter_the_date_you_asked_your_tour_operatortravel_provider_to_cancel_the_trip_2321673",
-        "helpdesk_ticket_custom_field_cf_do_you_have_any_other_travel_insurance_policy400572_2321673",
-        "helpdesk_ticket_custom_field_cf_who_do_you_bank_with_and_what_type_of_account_do_you_have486839_2321673",
-      ];
-
-      validateMandatoryFields(MandatoryFields5);
-
-      if (validateMandatoryFields(MandatoryFields5) == true) {
-        console.log("WE CAN MOVE FORWARD!!!");
-        proceedValue = true;
-      }
-    } else if (
-      $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() ==
-      "Curtailment â€“ returned home early"
-    ) {
-      console.log(
-        $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val()
-      );
-
-      MandatoryFields6 = [
-        "helpdesk_ticket_custom_field_cf_currency_type637939_2321673",
-        "helpdesk_ticket_custom_field_cf_total_refund_vouchers_amount_the_amount_you_have_received_back594804_2321673",
-      ];
-      validateMandatoryFields(MandatoryFields6);
-      if (validateMandatoryFields(MandatoryFields6) == true) {
-        console.log("WE CAN MOVE FORWARD!!!");
-        proceedValue = true;
-      }
-    } else if (
-      $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() ==
-      "Dental expenses whilst abroad"
-    ) {
-      console.log(
-        $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val()
-      );
-
-      MandatoryFields6 = [
-        "helpdesk_ticket_custom_field_cf_currency_type637939_2321673",
-        "helpdesk_ticket_custom_field_cf_amount_paid_in_local_currency527297_2321673",
-      ];
-
-      validateMandatoryFields(MandatoryFields6);
-      if (validateMandatoryFields(MandatoryFields6) == true) {
-        console.log("WE CAN MOVE FORWARD!!!");
-        proceedValue = true;
-      }
-    } else if (
-      $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() ==
-      "Flight or Travel delayed"
-    ) {
-      console.log(
-        $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val()
-      );
-
-      MandatoryFields7 = [
-        "helpdesk_ticket_custom_field_cf_what_transport_was_delayed_2321673",
-        "helpdesk_ticket_custom_field_cf_what_date_were_you_advised_of_the_delay_2321673",
-        "helpdesk_ticket_custom_field_cf_what_was_the_reason_for_the_delay_2321673",
-        "helpdesk_ticket_custom_field_cf_how_many_hours_were_you_delayed_2321673",
-        "helpdesk_ticket_custom_field_cf_on_which_part_of_the_journey_were_you_delayed_2321673",
-      ];
-
-      validateMandatoryFields(MandatoryFields7);
-      if (validateMandatoryFields(MandatoryFields7) == true) {
-        console.log("WE CAN MOVE FORWARD!!!");
-        proceedValue = true;
-      }
-    } else if (
-      $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() ==
-      "Medical expenses abroad & repatriation cost"
-    ) {
-      console.log(
-        $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val()
-      );
-
-      MandatoryFields8 = [
-        "helpdesk_ticket_custom_field_cf_are_you_currently_still_abroad93386_2321673",
-        "helpdesk_ticket_custom_field_cf_who_incurred_medical_expenses_2321673",
-        "helpdesk_ticket_custom_field_cf_when_did_the_symptoms_start437132_2321673",
-        "helpdesk_ticket_custom_field_cf_are_you_claiming_for_an_injury_or_illness644442_2321673",
-        "helpdesk_ticket_custom_field_cf_were_you_admitted_to_a_hospital_as_an_inpatient_overnight_2321673",
-        "helpdesk_ticket_custom_field_cf_please_list_the_expenses_incurred_including_the_type_of_expense_and_the_name_of_the_dentist_or_company_that_provided_this_expense90799_2321673",
-        "helpdesk_ticket_custom_field_cf_currency_type637939_2321673",
-        "helpdesk_ticket_custom_field_cf_amount_paid_in_local_currency527297_2321673",
-        "helpdesk_ticket_custom_field_cf_date_of_payment778903_2321673",
-        "helpdesk_ticket_custom_field_cf_do_any_of_the_costs_relate_to_covid_tests_2321673",
-        "helpdesk_ticket_custom_field_cf_do_any_of_the_costs_relate_to_physiotherapy_or_chiropracter_2321673",
-        "helpdesk_ticket_custom_field_cf_do_any_of_the_costs_relate_to_accommodation555447_2321673",
-        "helpdesk_ticket_custom_field_cf_do_any_of_the_costs_relate_to_travel_not_including_the_ambulance_or_taxi_to_the_hospital_2321673",
-        "helpdesk_ticket_custom_field_cf_do_you_have_any_other_travel_insurance_policy206683_2321673",
-        "helpdesk_ticket_custom_field_cf_do_you_have_private_medical_insurance_2321673",
-        "helpdesk_ticket_custom_field_cf_who_do_you_bank_with_and_what_type_of_account_do_you_have584479_2321673",
-      ];
-
-      validateMandatoryFields(MandatoryFields8);
-      if (validateMandatoryFields(MandatoryFields8) == true) {
-        console.log("WE CAN MOVE FORWARD!!!");
-        proceedValue = true;
-      }
-    } else if (
-      $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() ==
-      "Missed flight or departure"
-    ) {
-      console.log(
-        $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val()
-      );
-
-      MandatoryFields9 = [
-        "helpdesk_ticket_custom_field_cf_what_caused_you_to_miss_your_departure_2321673",
-        "helpdesk_ticket_custom_field_cf_do_you_have_a_report_confirming_the_reason_for_the_delay_2321673",
-        "helpdesk_ticket_custom_field_cf_on_which_part_of_the_journey_did_you_miss_your_departure_2321673",
-        "helpdesk_ticket_custom_field_cf_did_you_allow_yourself_sufficient_time_to_reach_your_international_departure_point_2321673",
-        "helpdesk_ticket_custom_field_cf_what_type_of_additional_expenses_are_you_claiming_for_2321673",
-        "helpdesk_ticket_custom_field_cf_name_of_provider_please_list_all_2321673",
-        "helpdesk_ticket_custom_field_cf_currency_type637939_2321673",
-        "helpdesk_ticket_custom_field_cf_amount_paid_in_local_currency_2321673",
-        "helpdesk_ticket_custom_field_cf_total_refund_vouchers_amount_the_amount_you_have_received_back594804_2321673",
-      ];
-
-      validateMandatoryFields(MandatoryFields9);
-
-      if (validateMandatoryFields(MandatoryFields9) == true) {
-        console.log("WE CAN MOVE FORWARD!!!");
-        proceedValue = true;
-      }
-    } else if (
-      $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() ==
-      "Substitute Accommodation - change to accommodation during trip"
-    ) {
-      console.log(
-        $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val()
-      );
-
-      MandatoryFields10 = [
-        "helpdesk_ticket_custom_field_cf_currency_type637939_2321673",
-        "helpdesk_ticket_custom_field_cf_total_refund_vouchers_amount_the_amount_you_have_received_back594804_2321673",
-      ];
-
-      validateMandatoryFields(MandatoryFields10);
-
-      if (validateMandatoryFields(MandatoryFields10) == true) {
-        console.log("WE CAN MOVE FORWARD!!!");
-        proceedValue = true;
-      }
-    } else if (
-      $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() ==
-      "Winter sports - lift pass, equipment or piste closure"
-    ) {
-      console.log(
-        $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val()
-      );
-
-      MandatoryFields11 = [
-        "helpdesk_ticket_custom_field_cf_currency_type637939_2321673",
-      ];
-
-      validateMandatoryFields(MandatoryFields11);
-
-      if (validateMandatoryFields(MandatoryFields11) == true) {
-        console.log("WE CAN MOVE FORWARD!!!");
-        proceedValue = true;
+      }else{
+        //do nothing
       }
     }
 
-    return proceedValue;
+
+  } 
+  else if ($("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() ==
+  "Any CANCELLATION claim due to COVID-19" ){
+    
+
+    MandatoryFields2 = ['helpdesk_ticket_custom_field_cf_why_did_you_cancel_your_trip_2321673',
+    'helpdesk_ticket_custom_field_cf_when_were_you_initially_aware_that_you_needed_to_cancel_your_trip635242_2321673',
+    'helpdesk_ticket_custom_field_cf_please_enter_the_date_you_asked_your_tour_operatortravel_provider_to_cancel_the_trip_2321673',
+    'helpdesk_ticket_custom_field_cf_what_type_of_trip_did_you_book877716_2321673',
+    'helpdesk_ticket_custom_field_cf_please_confirm_the_name_of_the_trip_providers_and_the_booking_references342856_2321673',
+    'helpdesk_ticket_custom_field_cf_currency_type637939_2321673',
+    'helpdesk_ticket_custom_field_cf_total_trip_cost_the_amount_you_paid_2321673',
+    'helpdesk_ticket_custom_field_cf_total_refund_vouchers_amount_the_amount_you_have_received_back594804_2321673',
+    'helpdesk_ticket_custom_field_cf_do_you_have_any_other_travel_insurance_policy400572_2321673',
+    'helpdesk_ticket_custom_field_cf_who_do_you_bank_with_and_what_type_of_account_do_you_have486839_2321673']
+
+    validateMandatoryFields(MandatoryFields2);
+
+    if (validateMandatoryFields(MandatoryFields2) == true){
+      if($(".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4").children(".form-group").children(".d-block").length == 0){
+
+      
+        console.log("WE CAN MOVE FORWARD!!!")
+        open_next(4);
+        $("#section-4-button").children(":first").removeClass("fa-minus");
+        $("#section-4-button").children(":first").removeClass("fa-plus");
+        $("#section-4-button").children(":first").addClass("fa-pen");
+        $("#section-4-button").css("background-color", "#524954");
+      }else{
+        //do nothing
+      }
+    }
+
+
+  }
+  else if($("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() ==
+  "Baggage - personal items damaged"){
+    console.log($("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val())
+
+    MandatoryFields3 = ['helpdesk_ticket_custom_field_cf_how_did_the_damage_happen_well_need_as_much_information_as_you_can_give_please_2321673',
+    'helpdesk_ticket_custom_field_cf_was_the_items_with_you_when_it_was_damaged_2321673',
+    'helpdesk_ticket_custom_field_cf_how_many_items_are_you_claiming_for411795_2321673',
+    'helpdesk_ticket_custom_field_cf_who_owns_the_item_2321673',
+    'helpdesk_ticket_custom_field_cf_do_you_have_home_contents_insurance_2321673',
+    'helpdesk_ticket_custom_field_cf_do_you_have_any_other_travel_insurance_policy_2321673',
+    'helpdesk_ticket_custom_field_cf_who_do_you_bank_with_and_what_type_of_account_do_you_have87472_2321673']
+
+    validateMandatoryFields(MandatoryFields3);
+
+    if (validateMandatoryFields(MandatoryFields3) == true){
+      if($(".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4").children(".form-group").children(".d-block").length == 0){
+
+      
+        console.log("WE CAN MOVE FORWARD!!!")
+        open_next(4);
+        $("#section-4-button").children(":first").removeClass("fa-minus");
+        $("#section-4-button").children(":first").removeClass("fa-plus");
+        $("#section-4-button").children(":first").addClass("fa-pen");
+        $("#section-4-button").css("background-color", "#524954");
+      }else{
+        //do nothing
+      }
+    }
+
   }
 
-  $("#save_and_continue4").click(function () {
-    if (
-      $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() ==
-      "Baggage - suitcase hasn't arrived on time"
-    ) {
-      console.log(
-        $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val()
-      );
-      //fields to check
-      MandatoryFields1 = [
-        "helpdesk_ticket_custom_field_cf_which_part_of_the_journey_did_your_baggage_arrive_late_2321673",
-        "helpdesk_ticket_custom_field_cf_how_many_hours_was_your_baggage_delayed_2321673",
-        "helpdesk_ticket_custom_field_cf_has_your_baggage_been_returned_to_you_2321673",
-        "helpdesk_ticket_custom_field_cf_what_transport_type_was_your_baggage_delayed_on_2321673",
-        "helpdesk_ticket_custom_field_cf_did_you_notify_your_transport_provider_about_the_delay_and_get_a_report_pir_2321673",
-        "helpdesk_ticket_custom_field_cf_please_list_all_replacement_items_purchased339565_2321673",
-        "helpdesk_ticket_custom_field_cf_on_what_date_did_you_purchase_the_replacement_items_2321673",
-        "helpdesk_ticket_custom_field_cf_currency_type637939_2321673",
-        "helpdesk_ticket_custom_field_cf_amount_paid_in_local_currency527297_2321673",
-        "helpdesk_ticket_custom_field_cf_have_you_received_any_refund_from_your_transport_provider_2321673",
-      ];
+  else if($("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() ==
+  "Baggage - personal items lost or stolen"){
+    console.log($("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val())
 
-      validateMandatoryFields(MandatoryFields1);
+    MandatoryFields4 = ['helpdesk_ticket_custom_field_cf_are_you_claiming_for_a_loss_or_theft_2321673',
+  'helpdesk_ticket_custom_field_cf_where_did_the_loss_or_theft_take_place_2321673',
+  'helpdesk_ticket_custom_field_cf_did_you_report_the_loss_or_theft_2321673',
+  'helpdesk_ticket_custom_field_cf_how_many_items_are_you_claiming_for_2321673',
+  'helpdesk_ticket_custom_field_cf_item_type870706_2321673',
+  'helpdesk_ticket_custom_field_cf_what_was_its_cost_when_you_bought_it_2321673',
+  'helpdesk_ticket_custom_field_cf_when_did_you_purchase_the_item_2321673',
+  'helpdesk_ticket_custom_field_cf_who_owns_the_item86910_2321673',
+  'helpdesk_ticket_custom_field_cf_do_you_have_home_contents_insurance_2321673',
+  'helpdesk_ticket_custom_field_cf_do_you_have_any_other_travel_insurance_policy_2321673',
+  'helpdesk_ticket_custom_field_cf_who_do_you_bank_with_and_what_type_of_account_do_you_have87472_2321673']
 
-      if (validateMandatoryFields(MandatoryFields1) == true) {
-        if (
-          $(
-            ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
-          )
-            .children(".form-group")
-            .children(".d-block").length == 0
-        ) {
-          console.log("WE CAN MOVE FORWARD!!!");
-          open_next(4);
-          $("#section-4-button").children(":first").removeClass("fa-minus");
-          $("#section-4-button").children(":first").removeClass("fa-plus");
-          $("#section-4-button").children(":first").addClass("fa-pen");
-          $("#section-4-button").css("background-color", "#524954");
-        } else {
-          //do nothing
-        }
-      }
-    } else if (
-      $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() ==
-      "Any CANCELLATION claim due to COVID-19"
-    ) {
-      MandatoryFields2 = [
-        "helpdesk_ticket_custom_field_cf_why_did_you_cancel_your_trip_2321673",
-        "helpdesk_ticket_custom_field_cf_when_were_you_initially_aware_that_you_needed_to_cancel_your_trip635242_2321673",
-        "helpdesk_ticket_custom_field_cf_please_enter_the_date_you_asked_your_tour_operatortravel_provider_to_cancel_the_trip_2321673",
-        "helpdesk_ticket_custom_field_cf_what_type_of_trip_did_you_book877716_2321673",
-        "helpdesk_ticket_custom_field_cf_please_confirm_the_name_of_the_trip_providers_and_the_booking_references342856_2321673",
-        "helpdesk_ticket_custom_field_cf_currency_type637939_2321673",
-        "helpdesk_ticket_custom_field_cf_total_trip_cost_the_amount_you_paid_2321673",
-        "helpdesk_ticket_custom_field_cf_total_refund_vouchers_amount_the_amount_you_have_received_back594804_2321673",
-        "helpdesk_ticket_custom_field_cf_do_you_have_any_other_travel_insurance_policy400572_2321673",
-        "helpdesk_ticket_custom_field_cf_who_do_you_bank_with_and_what_type_of_account_do_you_have486839_2321673",
-      ];
+    validateMandatoryFields(MandatoryFields4)
 
-      validateMandatoryFields(MandatoryFields2);
+    if (validateMandatoryFields(MandatoryFields4) == true){
+      if($(".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4").children(".form-group").children(".d-block").length == 0){
 
-      if (validateMandatoryFields(MandatoryFields2) == true) {
-        if (
-          $(
-            ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
-          )
-            .children(".form-group")
-            .children(".d-block").length == 0
-        ) {
-          console.log("WE CAN MOVE FORWARD!!!");
-          open_next(4);
-          $("#section-4-button").children(":first").removeClass("fa-minus");
-          $("#section-4-button").children(":first").removeClass("fa-plus");
-          $("#section-4-button").children(":first").addClass("fa-pen");
-          $("#section-4-button").css("background-color", "#524954");
-        } else {
-          //do nothing
-        }
-      }
-    } else if (
-      $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() ==
-      "Baggage - personal items damaged"
-    ) {
-      console.log(
-        $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val()
-      );
-
-      MandatoryFields3 = [
-        "helpdesk_ticket_custom_field_cf_how_did_the_damage_happen_well_need_as_much_information_as_you_can_give_please_2321673",
-        "helpdesk_ticket_custom_field_cf_was_the_items_with_you_when_it_was_damaged_2321673",
-        "helpdesk_ticket_custom_field_cf_how_many_items_are_you_claiming_for411795_2321673",
-        "helpdesk_ticket_custom_field_cf_who_owns_the_item_2321673",
-        "helpdesk_ticket_custom_field_cf_do_you_have_home_contents_insurance_2321673",
-        "helpdesk_ticket_custom_field_cf_do_you_have_any_other_travel_insurance_policy_2321673",
-        "helpdesk_ticket_custom_field_cf_who_do_you_bank_with_and_what_type_of_account_do_you_have87472_2321673",
-      ];
-
-      validateMandatoryFields(MandatoryFields3);
-
-      if (validateMandatoryFields(MandatoryFields3) == true) {
-        if (
-          $(
-            ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
-          )
-            .children(".form-group")
-            .children(".d-block").length == 0
-        ) {
-          console.log("WE CAN MOVE FORWARD!!!");
-          open_next(4);
-          $("#section-4-button").children(":first").removeClass("fa-minus");
-          $("#section-4-button").children(":first").removeClass("fa-plus");
-          $("#section-4-button").children(":first").addClass("fa-pen");
-          $("#section-4-button").css("background-color", "#524954");
-        } else {
-          //do nothing
-        }
-      }
-    } else if (
-      $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() ==
-      "Baggage - personal items lost or stolen"
-    ) {
-      console.log(
-        $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val()
-      );
-
-      MandatoryFields4 = [
-        "helpdesk_ticket_custom_field_cf_are_you_claiming_for_a_loss_or_theft_2321673",
-        "helpdesk_ticket_custom_field_cf_where_did_the_loss_or_theft_take_place_2321673",
-        "helpdesk_ticket_custom_field_cf_did_you_report_the_loss_or_theft_2321673",
-        "helpdesk_ticket_custom_field_cf_how_many_items_are_you_claiming_for_2321673",
-        "helpdesk_ticket_custom_field_cf_item_type870706_2321673",
-        "helpdesk_ticket_custom_field_cf_what_was_its_cost_when_you_bought_it_2321673",
-        "helpdesk_ticket_custom_field_cf_when_did_you_purchase_the_item_2321673",
-        "helpdesk_ticket_custom_field_cf_who_owns_the_item86910_2321673",
-        "helpdesk_ticket_custom_field_cf_do_you_have_home_contents_insurance_2321673",
-        "helpdesk_ticket_custom_field_cf_do_you_have_any_other_travel_insurance_policy_2321673",
-        "helpdesk_ticket_custom_field_cf_who_do_you_bank_with_and_what_type_of_account_do_you_have87472_2321673",
-      ];
-
-      validateMandatoryFields(MandatoryFields4);
-
-      if (validateMandatoryFields(MandatoryFields4) == true) {
-        if (
-          $(
-            ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
-          )
-            .children(".form-group")
-            .children(".d-block").length == 0
-        ) {
-          console.log("WE CAN MOVE FORWARD!!!");
-          open_next(4);
-          $("#section-4-button").children(":first").removeClass("fa-minus");
-          $("#section-4-button").children(":first").removeClass("fa-plus");
-          $("#section-4-button").children(":first").addClass("fa-pen");
-          $("#section-4-button").css("background-color", "#524954");
-        } else {
-          //do nothing
-        }
+      
+        console.log("WE CAN MOVE FORWARD!!!")
+        open_next(4);
+        $("#section-4-button").children(":first").removeClass("fa-minus");
+        $("#section-4-button").children(":first").removeClass("fa-plus");
+        $("#section-4-button").children(":first").addClass("fa-pen");
+        $("#section-4-button").css("background-color", "#524954");
+      }else{
+        //do nothing
       }
     }
-    //sus
-    else if (
-      $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() ==
-      "Cancelled trip - (NOT related to COVID-19)"
-    ) {
-      console.log(
-        $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val()
-      );
+    
+  }
+  //sus
+  else if($("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() ==
+  "Cancelled trip - (NOT related to COVID-19)"){
+    console.log($("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val())
 
-      MandatoryFields5 = [
-        "helpdesk_ticket_custom_field_cf_who_has_caused_the_cancellation_2321673",
-        "helpdesk_ticket_custom_field_cf_are_you_currently_still_abroad_2321673",
-        "helpdesk_ticket_custom_field_cf_what_type_of_trip_did_you_book137913_2321673",
-        "helpdesk_ticket_custom_field_cf_how_many_people_are_there_on_the_booking_2321673",
-        "helpdesk_ticket_custom_field_cf_please_confirm_the_name_of_the_trip_providers_and_the_booking_references342856_2321673",
-        "helpdesk_ticket_custom_field_cf_currency_type637939_2321673",
-        "helpdesk_ticket_custom_field_cf_total_trip_cost_the_amount_you_paid_2321673",
-        "helpdesk_ticket_custom_field_cf_have_you_received_any_refunds_or_compensation702973_2321673",
-        "helpdesk_ticket_custom_field_cf_please_enter_the_date_you_asked_your_tour_operatortravel_provider_to_cancel_the_trip_2321673",
-        "helpdesk_ticket_custom_field_cf_do_you_have_any_other_travel_insurance_policy400572_2321673",
-        "helpdesk_ticket_custom_field_cf_who_do_you_bank_with_and_what_type_of_account_do_you_have486839_2321673",
-      ];
+    MandatoryFields5 = ['helpdesk_ticket_custom_field_cf_who_has_caused_the_cancellation_2321673',
+    'helpdesk_ticket_custom_field_cf_are_you_currently_still_abroad_2321673',
+    'helpdesk_ticket_custom_field_cf_what_type_of_trip_did_you_book137913_2321673',
+    'helpdesk_ticket_custom_field_cf_how_many_people_are_there_on_the_booking_2321673',
+    'helpdesk_ticket_custom_field_cf_please_confirm_the_name_of_the_trip_providers_and_the_booking_references342856_2321673',
+    'helpdesk_ticket_custom_field_cf_currency_type637939_2321673',
+    'helpdesk_ticket_custom_field_cf_total_trip_cost_the_amount_you_paid_2321673',
+    'helpdesk_ticket_custom_field_cf_have_you_received_any_refunds_or_compensation702973_2321673',
+    'helpdesk_ticket_custom_field_cf_please_enter_the_date_you_asked_your_tour_operatortravel_provider_to_cancel_the_trip_2321673',
+    'helpdesk_ticket_custom_field_cf_do_you_have_any_other_travel_insurance_policy400572_2321673',
+    'helpdesk_ticket_custom_field_cf_who_do_you_bank_with_and_what_type_of_account_do_you_have486839_2321673']
 
-      validateMandatoryFields(MandatoryFields5);
+    validateMandatoryFields(MandatoryFields5)
 
-      if (validateMandatoryFields(MandatoryFields5) == true) {
-        if (
-          $(
-            ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
-          )
-            .children(".form-group")
-            .children(".d-block").length == 0
-        ) {
-          console.log("WE CAN MOVE FORWARD!!!");
-          open_next(4);
-          $("#section-4-button").children(":first").removeClass("fa-minus");
-          $("#section-4-button").children(":first").removeClass("fa-plus");
-          $("#section-4-button").children(":first").addClass("fa-pen");
-          $("#section-4-button").css("background-color", "#524954");
-        } else {
-          //do nothing
-        }
-      }
-    } else if (
-      $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() ==
-      "Curtailment â€“ returned home early"
-    ) {
-      console.log(
-        $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val()
-      );
+    if (validateMandatoryFields(MandatoryFields5) == true){
+      if($(".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4").children(".form-group").children(".d-block").length == 0){
 
-      MandatoryFields6 = [
-        "helpdesk_ticket_custom_field_cf_currency_type637939_2321673",
-        "helpdesk_ticket_custom_field_cf_total_refund_vouchers_amount_the_amount_you_have_received_back594804_2321673",
-      ];
-      validateMandatoryFields(MandatoryFields6);
-      if (validateMandatoryFields(MandatoryFields6) == true) {
-        if (
-          $(
-            ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
-          )
-            .children(".form-group")
-            .children(".d-block").length == 0
-        ) {
-          console.log("WE CAN MOVE FORWARD!!!");
-          open_next(4);
-          $("#section-4-button").children(":first").removeClass("fa-minus");
-          $("#section-4-button").children(":first").removeClass("fa-plus");
-          $("#section-4-button").children(":first").addClass("fa-pen");
-          $("#section-4-button").css("background-color", "#524954");
-        } else {
-          //do nothing
-        }
-      }
-    } else if (
-      $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() ==
-      "Dental expenses whilst abroad"
-    ) {
-      console.log(
-        $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val()
-      );
-
-      MandatoryFields6 = [
-        "helpdesk_ticket_custom_field_cf_currency_type637939_2321673",
-        "helpdesk_ticket_custom_field_cf_amount_paid_in_local_currency527297_2321673",
-      ];
-
-      validateMandatoryFields(MandatoryFields6);
-      if (validateMandatoryFields(MandatoryFields6) == true) {
-        if (
-          $(
-            ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
-          )
-            .children(".form-group")
-            .children(".d-block").length == 0
-        ) {
-          console.log("WE CAN MOVE FORWARD!!!");
-          open_next(4);
-          $("#section-4-button").children(":first").removeClass("fa-minus");
-          $("#section-4-button").children(":first").removeClass("fa-plus");
-          $("#section-4-button").children(":first").addClass("fa-pen");
-          $("#section-4-button").css("background-color", "#524954");
-        } else {
-          //do nothing
-        }
-      }
-    } else if (
-      $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() ==
-      "Flight or Travel delayed"
-    ) {
-      console.log(
-        $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val()
-      );
-
-      MandatoryFields7 = [
-        "helpdesk_ticket_custom_field_cf_what_transport_was_delayed_2321673",
-        "helpdesk_ticket_custom_field_cf_what_date_were_you_advised_of_the_delay_2321673",
-        "helpdesk_ticket_custom_field_cf_what_was_the_reason_for_the_delay_2321673",
-        "helpdesk_ticket_custom_field_cf_how_many_hours_were_you_delayed_2321673",
-        "helpdesk_ticket_custom_field_cf_on_which_part_of_the_journey_were_you_delayed_2321673",
-      ];
-
-      validateMandatoryFields(MandatoryFields7);
-      if (validateMandatoryFields(MandatoryFields7) == true) {
-        if (
-          $(
-            ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
-          )
-            .children(".form-group")
-            .children(".d-block").length == 0
-        ) {
-          console.log("WE CAN MOVE FORWARD!!!");
-          open_next(4);
-          $("#section-4-button").children(":first").removeClass("fa-minus");
-          $("#section-4-button").children(":first").removeClass("fa-plus");
-          $("#section-4-button").children(":first").addClass("fa-pen");
-          $("#section-4-button").css("background-color", "#524954");
-        } else {
-          //do nothing
-        }
-      }
-    } else if (
-      $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() ==
-      "Medical expenses abroad & repatriation cost"
-    ) {
-      console.log(
-        $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val()
-      );
-
-      MandatoryFields8 = [
-        "helpdesk_ticket_custom_field_cf_are_you_currently_still_abroad93386_2321673",
-        "helpdesk_ticket_custom_field_cf_who_incurred_medical_expenses_2321673",
-        "helpdesk_ticket_custom_field_cf_when_did_the_symptoms_start437132_2321673",
-        "helpdesk_ticket_custom_field_cf_are_you_claiming_for_an_injury_or_illness644442_2321673",
-        "helpdesk_ticket_custom_field_cf_were_you_admitted_to_a_hospital_as_an_inpatient_overnight_2321673",
-        "helpdesk_ticket_custom_field_cf_please_list_the_expenses_incurred_including_the_type_of_expense_and_the_name_of_the_dentist_or_company_that_provided_this_expense90799_2321673",
-        "helpdesk_ticket_custom_field_cf_currency_type637939_2321673",
-        "helpdesk_ticket_custom_field_cf_amount_paid_in_local_currency527297_2321673",
-        "helpdesk_ticket_custom_field_cf_date_of_payment778903_2321673",
-        "helpdesk_ticket_custom_field_cf_do_any_of_the_costs_relate_to_covid_tests_2321673",
-        "helpdesk_ticket_custom_field_cf_do_any_of_the_costs_relate_to_physiotherapy_or_chiropracter_2321673",
-        "helpdesk_ticket_custom_field_cf_do_any_of_the_costs_relate_to_accommodation555447_2321673",
-        "helpdesk_ticket_custom_field_cf_do_any_of_the_costs_relate_to_travel_not_including_the_ambulance_or_taxi_to_the_hospital_2321673",
-        "helpdesk_ticket_custom_field_cf_do_you_have_any_other_travel_insurance_policy206683_2321673",
-        "helpdesk_ticket_custom_field_cf_do_you_have_private_medical_insurance_2321673",
-        "helpdesk_ticket_custom_field_cf_who_do_you_bank_with_and_what_type_of_account_do_you_have584479_2321673",
-      ];
-
-      validateMandatoryFields(MandatoryFields8);
-      if (validateMandatoryFields(MandatoryFields8) == true) {
-        if (
-          $(
-            ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
-          )
-            .children(".form-group")
-            .children(".d-block").length == 0
-        ) {
-          console.log("WE CAN MOVE FORWARD!!!");
-          open_next(4);
-          $("#section-4-button").children(":first").removeClass("fa-minus");
-          $("#section-4-button").children(":first").removeClass("fa-plus");
-          $("#section-4-button").children(":first").addClass("fa-pen");
-          $("#section-4-button").css("background-color", "#524954");
-        } else {
-          //do nothing
-        }
-      }
-    } else if (
-      $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() ==
-      "Missed flight or departure"
-    ) {
-      console.log(
-        $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val()
-      );
-
-      MandatoryFields9 = [
-        "helpdesk_ticket_custom_field_cf_what_caused_you_to_miss_your_departure_2321673",
-        "helpdesk_ticket_custom_field_cf_do_you_have_a_report_confirming_the_reason_for_the_delay_2321673",
-        "helpdesk_ticket_custom_field_cf_on_which_part_of_the_journey_did_you_miss_your_departure_2321673",
-        "helpdesk_ticket_custom_field_cf_did_you_allow_yourself_sufficient_time_to_reach_your_international_departure_point_2321673",
-        "helpdesk_ticket_custom_field_cf_what_type_of_additional_expenses_are_you_claiming_for_2321673",
-        "helpdesk_ticket_custom_field_cf_name_of_provider_please_list_all_2321673",
-        "helpdesk_ticket_custom_field_cf_currency_type637939_2321673",
-        "helpdesk_ticket_custom_field_cf_amount_paid_in_local_currency_2321673",
-        "helpdesk_ticket_custom_field_cf_total_refund_vouchers_amount_the_amount_you_have_received_back594804_2321673",
-      ];
-
-      validateMandatoryFields(MandatoryFields9);
-
-      if (validateMandatoryFields(MandatoryFields9) == true) {
-        if (
-          $(
-            ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
-          )
-            .children(".form-group")
-            .children(".d-block").length == 0
-        ) {
-          console.log("WE CAN MOVE FORWARD!!!");
-          open_next(4);
-          $("#section-4-button").children(":first").removeClass("fa-minus");
-          $("#section-4-button").children(":first").removeClass("fa-plus");
-          $("#section-4-button").children(":first").addClass("fa-pen");
-          $("#section-4-button").css("background-color", "#524954");
-        } else {
-          //do nothing
-        }
-      }
-    } else if (
-      $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() ==
-      "Substitute Accommodation - change to accommodation during trip"
-    ) {
-      console.log(
-        $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val()
-      );
-
-      MandatoryFields10 = [
-        "helpdesk_ticket_custom_field_cf_currency_type637939_2321673",
-        "helpdesk_ticket_custom_field_cf_total_refund_vouchers_amount_the_amount_you_have_received_back594804_2321673",
-      ];
-
-      validateMandatoryFields(MandatoryFields10);
-
-      if (validateMandatoryFields(MandatoryFields10) == true) {
-        if (
-          $(
-            ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
-          )
-            .children(".form-group")
-            .children(".d-block").length == 0
-        ) {
-          console.log("WE CAN MOVE FORWARD!!!");
-          open_next(4);
-          $("#section-4-button").children(":first").removeClass("fa-minus");
-          $("#section-4-button").children(":first").removeClass("fa-plus");
-          $("#section-4-button").children(":first").addClass("fa-pen");
-          $("#section-4-button").css("background-color", "#524954");
-        } else {
-          //do nothing
-        }
-      }
-    } else if (
-      $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() ==
-      "Winter sports - lift pass, equipment or piste closure"
-    ) {
-      console.log(
-        $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val()
-      );
-
-      MandatoryFields11 = [
-        "helpdesk_ticket_custom_field_cf_currency_type637939_2321673",
-      ];
-
-      validateMandatoryFields(MandatoryFields11);
-
-      if (validateMandatoryFields(MandatoryFields11) == true) {
-        if (
-          $(
-            ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
-          )
-            .children(".form-group")
-            .children(".d-block").length == 0
-        ) {
-          console.log("WE CAN MOVE FORWARD!!!");
-          open_next(4);
-          $("#section-4-button").children(":first").removeClass("fa-minus");
-          $("#section-4-button").children(":first").removeClass("fa-plus");
-          $("#section-4-button").children(":first").addClass("fa-pen");
-          $("#section-4-button").css("background-color", "#524954");
-        } else {
-          //do nothing
-        }
+      
+        console.log("WE CAN MOVE FORWARD!!!")
+        open_next(4);
+        $("#section-4-button").children(":first").removeClass("fa-minus");
+        $("#section-4-button").children(":first").removeClass("fa-plus");
+        $("#section-4-button").children(":first").addClass("fa-pen");
+        $("#section-4-button").css("background-color", "#524954");
+      }else{
+        //do nothing
       }
     }
+    
+  }
 
-    if ($("#section_4_header").length) {
-      if ($(".edit_helpdesk_ticket").length) {
+  else if($("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() ==
+  "Curtailment â€“ returned home early"){
+    console.log($("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val())
+
+    MandatoryFields6 = ['helpdesk_ticket_custom_field_cf_currency_type637939_2321673',
+    'helpdesk_ticket_custom_field_cf_total_refund_vouchers_amount_the_amount_you_have_received_back594804_2321673'
+    ]
+    validateMandatoryFields(MandatoryFields6)
+    if (validateMandatoryFields(MandatoryFields6) == true){
+      if($(".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4").children(".form-group").children(".d-block").length == 0){
+
+      
+        console.log("WE CAN MOVE FORWARD!!!")
+        open_next(4);
+        $("#section-4-button").children(":first").removeClass("fa-minus");
+        $("#section-4-button").children(":first").removeClass("fa-plus");
+        $("#section-4-button").children(":first").addClass("fa-pen");
+        $("#section-4-button").css("background-color", "#524954");
+      }else{
+        //do nothing
+      }
+    }
+    
+  }
+
+  else if($("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() ==
+  "Dental expenses whilst abroad"){
+    console.log($("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val())
+
+    MandatoryFields6 = ['helpdesk_ticket_custom_field_cf_currency_type637939_2321673',
+    'helpdesk_ticket_custom_field_cf_amount_paid_in_local_currency527297_2321673'
+    ]
+
+    validateMandatoryFields(MandatoryFields6)
+    if (validateMandatoryFields(MandatoryFields6) == true){
+      if($(".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4").children(".form-group").children(".d-block").length == 0){
+
+      
+        console.log("WE CAN MOVE FORWARD!!!")
+        open_next(4);
+        $("#section-4-button").children(":first").removeClass("fa-minus");
+        $("#section-4-button").children(":first").removeClass("fa-plus");
+        $("#section-4-button").children(":first").addClass("fa-pen");
+        $("#section-4-button").css("background-color", "#524954");
+      }else{
+        //do nothing
+      }
+    }
+    
+  }
+
+  else if($("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() ==
+  "Flight or Travel delayed"){
+    console.log($("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val())
+
+    MandatoryFields7 = ['helpdesk_ticket_custom_field_cf_what_transport_was_delayed_2321673',
+    'helpdesk_ticket_custom_field_cf_what_date_were_you_advised_of_the_delay_2321673',
+    'helpdesk_ticket_custom_field_cf_what_was_the_reason_for_the_delay_2321673',
+    'helpdesk_ticket_custom_field_cf_how_many_hours_were_you_delayed_2321673',
+    'helpdesk_ticket_custom_field_cf_on_which_part_of_the_journey_were_you_delayed_2321673'
+    ]
+
+    validateMandatoryFields(MandatoryFields7)
+    if (validateMandatoryFields(MandatoryFields7) == true){
+
+      if($(".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4").children(".form-group").children(".d-block").length == 0){
+
+      
+      console.log("WE CAN MOVE FORWARD!!!")
+      open_next(4);
+      $("#section-4-button").children(":first").removeClass("fa-minus");
+      $("#section-4-button").children(":first").removeClass("fa-plus");
+      $("#section-4-button").children(":first").addClass("fa-pen");
+      $("#section-4-button").css("background-color", "#524954");
+    }else{
+      //do nothing
+    }
+    }
+  }
+
+  else if($("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() ==
+  "Medical expenses abroad & repatriation cost"){
+    console.log($("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val())
+
+    MandatoryFields8 = ['helpdesk_ticket_custom_field_cf_are_you_currently_still_abroad93386_2321673',
+    'helpdesk_ticket_custom_field_cf_who_incurred_medical_expenses_2321673',
+    'helpdesk_ticket_custom_field_cf_when_did_the_symptoms_start437132_2321673',
+    'helpdesk_ticket_custom_field_cf_are_you_claiming_for_an_injury_or_illness644442_2321673',
+    'helpdesk_ticket_custom_field_cf_were_you_admitted_to_a_hospital_as_an_inpatient_overnight_2321673',
+    'helpdesk_ticket_custom_field_cf_please_list_the_expenses_incurred_including_the_type_of_expense_and_the_name_of_the_dentist_or_company_that_provided_this_expense90799_2321673',
+    'helpdesk_ticket_custom_field_cf_currency_type637939_2321673',
+    'helpdesk_ticket_custom_field_cf_amount_paid_in_local_currency527297_2321673',
+    'helpdesk_ticket_custom_field_cf_date_of_payment778903_2321673',
+    'helpdesk_ticket_custom_field_cf_do_any_of_the_costs_relate_to_covid_tests_2321673',
+    'helpdesk_ticket_custom_field_cf_do_any_of_the_costs_relate_to_physiotherapy_or_chiropracter_2321673',
+    'helpdesk_ticket_custom_field_cf_do_any_of_the_costs_relate_to_accommodation555447_2321673',
+    'helpdesk_ticket_custom_field_cf_do_any_of_the_costs_relate_to_travel_not_including_the_ambulance_or_taxi_to_the_hospital_2321673',
+    'helpdesk_ticket_custom_field_cf_do_you_have_any_other_travel_insurance_policy206683_2321673',
+    'helpdesk_ticket_custom_field_cf_do_you_have_private_medical_insurance_2321673',
+    'helpdesk_ticket_custom_field_cf_who_do_you_bank_with_and_what_type_of_account_do_you_have584479_2321673'
+    ]
+
+    validateMandatoryFields(MandatoryFields8)
+    if (validateMandatoryFields(MandatoryFields8) == true){
+      if($(".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4").children(".form-group").children(".d-block").length == 0){
+
+      
+        console.log("WE CAN MOVE FORWARD!!!")
+        open_next(4);
+        $("#section-4-button").children(":first").removeClass("fa-minus");
+        $("#section-4-button").children(":first").removeClass("fa-plus");
+        $("#section-4-button").children(":first").addClass("fa-pen");
+        $("#section-4-button").css("background-color", "#524954");
+      }else{
+        //do nothing
+      }
+    }
+    
+  }
+
+  else if($("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() ==
+  "Missed flight or departure"){
+    console.log($("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val())
+
+    MandatoryFields9 = ['helpdesk_ticket_custom_field_cf_what_caused_you_to_miss_your_departure_2321673',
+    'helpdesk_ticket_custom_field_cf_do_you_have_a_report_confirming_the_reason_for_the_delay_2321673',
+    'helpdesk_ticket_custom_field_cf_on_which_part_of_the_journey_did_you_miss_your_departure_2321673',
+    'helpdesk_ticket_custom_field_cf_did_you_allow_yourself_sufficient_time_to_reach_your_international_departure_point_2321673',
+    'helpdesk_ticket_custom_field_cf_what_type_of_additional_expenses_are_you_claiming_for_2321673',
+    'helpdesk_ticket_custom_field_cf_name_of_provider_please_list_all_2321673',
+    'helpdesk_ticket_custom_field_cf_currency_type637939_2321673',
+    'helpdesk_ticket_custom_field_cf_amount_paid_in_local_currency_2321673',
+    'helpdesk_ticket_custom_field_cf_total_refund_vouchers_amount_the_amount_you_have_received_back594804_2321673',
+    ]
+
+    validateMandatoryFields(MandatoryFields9)
+
+    if (validateMandatoryFields(MandatoryFields9) == true){
+      if($(".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4").children(".form-group").children(".d-block").length == 0){
+
+      
+        console.log("WE CAN MOVE FORWARD!!!")
+        open_next(4);
+        $("#section-4-button").children(":first").removeClass("fa-minus");
+        $("#section-4-button").children(":first").removeClass("fa-plus");
+        $("#section-4-button").children(":first").addClass("fa-pen");
+        $("#section-4-button").css("background-color", "#524954");
+      }else{
+        //do nothing
+      }
+    }
+    
+  }
+
+  else if($("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() ==
+  "Substitute Accommodation - change to accommodation during trip"){
+    console.log($("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val())
+
+    MandatoryFields10 = ['helpdesk_ticket_custom_field_cf_currency_type637939_2321673',
+    'helpdesk_ticket_custom_field_cf_total_refund_vouchers_amount_the_amount_you_have_received_back594804_2321673'
+    ]
+
+    validateMandatoryFields(MandatoryFields10)
+
+    if (validateMandatoryFields(MandatoryFields10) == true){
+      if($(".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4").children(".form-group").children(".d-block").length == 0){
+
+      
+        console.log("WE CAN MOVE FORWARD!!!")
+        open_next(4);
+        $("#section-4-button").children(":first").removeClass("fa-minus");
+        $("#section-4-button").children(":first").removeClass("fa-plus");
+        $("#section-4-button").children(":first").addClass("fa-pen");
+        $("#section-4-button").css("background-color", "#524954");
+      }else{
+        //do nothing
+      }
+    }
+    
+  }
+
+  else if($("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() ==
+  "Winter sports - lift pass, equipment or piste closure"){
+    console.log($("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val())
+
+    MandatoryFields11 = ['helpdesk_ticket_custom_field_cf_currency_type637939_2321673'
+    ]
+
+    validateMandatoryFields(MandatoryFields11)
+
+    if (validateMandatoryFields(MandatoryFields11) == true){
+      if($(".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4").children(".form-group").children(".d-block").length == 0){
+
+      
+        console.log("WE CAN MOVE FORWARD!!!")
+        open_next(4);
+        $("#section-4-button").children(":first").removeClass("fa-minus");
+        $("#section-4-button").children(":first").removeClass("fa-plus");
+        $("#section-4-button").children(":first").addClass("fa-pen");
+        $("#section-4-button").css("background-color", "#524954");
+      }else{
+        //do nothing
+      }
+    }
+    
+  }
+
+  if ($("#section_4_header").length) {
+    if ($(".edit_helpdesk_ticket").length) {
         console.log("update section cont. ----> 4");
         update_section_4_continue();
-      } else {
+    }else{
         console.log("update section ----> 4");
         update_section_4();
-      }
+      } 
     } else {
       add_section_4();
       console.log("add section ----> 4");
     }
-  });
+
+});
+
 
   function add_section_4() {
-    if ($("#title").hasClass("ColumbusItaly")) {
-      $(
-        "<strong id='section_4_header'>" + italy_titles[3] + "</strong>"
-      ).insertAfter("#great_line_3");
-      $("<hr class='summary_divider' id='great_line_4'>").insertAfter(
-        "#section_4_header"
-      );
-    } else {
-      $("<strong id='section_4_header'>" + titles[3] + "</strong>").insertAfter(
-        "#great_line_3"
-      );
-      $("<hr class='summary_divider' id='great_line_4'>").insertAfter(
-        "#section_4_header"
-      );
-    }
-    //for loops
-    var number_elements = $("#collapseSection4")
-      .children(".card-body")
-      .children(
-        "div.helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
-      )
-      .children(".form-group").length;
 
-    for (let i = 1; i < number_elements + 1; i++) {
-      if (
-        $("#collapseSection4")
-          .children(".card-body")
-          .children(
-            ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
-          )
-          .children("div:nth-child(" + i + ")")
-          .children(".choices.form-select").length
-      ) {
-        var label = $("#collapseSection4")
-          .children(".card-body")
-          .children(
-            ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
-          )
-          .children("div:nth-child(" + i + ")")
-          .children("label")
-          .text();
-        var value = $("#collapseSection4")
-          .children(".card-body")
-          .children(
-            ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
-          )
-          .children("div:nth-child(" + i + ")")
-          .children(".choices.form-select")
-          .children(".choices__inner")
-          .children("select")
-          .val();
-        if (value != "") {
-          $(
-            "<p class='section_4_line'>" + label + " : " + value + "</p>"
-          ).insertBefore("#great_line_4");
-        }
-      } else if (
-        $("#collapseSection4")
-          .children(".card-body")
-          .children(
-            ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
-          )
-          .children("div:nth-child(" + i + ")")
-          .children("textarea").length
-      ) {
-        var label = $("#collapseSection4")
-          .children(".card-body")
-          .children(
-            ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
-          )
-          .children("div:nth-child(" + i + ")")
-          .children("label")
-          .text();
-        var value = $("#collapseSection4")
-          .children(".card-body")
-          .children(
-            ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
-          )
-          .children("div:nth-child(" + i + ")")
-          .children("textarea")
-          .val();
-        if (value != "") {
-          $(
-            "<p class='section_4_line'>" + label + " : " + value + "</p>"
-          ).insertBefore("#great_line_4");
-        }
-      } else {
-        var label = $("#collapseSection4")
-          .children(".card-body")
-          .children(
-            ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
-          )
-          .children("div:nth-child(" + i + ")")
-          .children("label")
-          .text();
-        var value = $("#collapseSection4")
-          .children(".card-body")
-          .children(
-            ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
-          )
-          .children("div:nth-child(" + i + ")")
-          .children("input")
-          .val();
-        if (value != "") {
-          $(
-            "<p class='section_4_line'>" + label + " : " + value + "</p>"
-          ).insertBefore("#great_line_4");
-        }
+      if($("#title").hasClass("ColumbusItaly")){
+          $("<strong id='section_4_header'>" + italy_titles[3] + "</strong>").insertAfter(
+          "#great_line_3"
+          );
+          $("<hr class='summary_divider' id='great_line_4'>").insertAfter(
+          "#section_4_header"
+          );
+      }else{
+          $("<strong id='section_4_header'>" + titles[3] + "</strong>").insertAfter(
+          "#great_line_3"
+          );
+          $("<hr class='summary_divider' id='great_line_4'>").insertAfter(
+          "#section_4_header"
+          );
       }
-    }
-  }
+      //for loops
+      var number_elements = $("#collapseSection4")
+          .children(".card-body")
+          .children(
+          "div.helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
+          )
+          .children(".form-group").length;
+
+      for (let i = 1; i < number_elements + 1; i++) {
+          if (
+          $("#collapseSection4")
+              .children(".card-body")
+              .children(
+              ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
+              )
+              .children("div:nth-child(" + i + ")")
+              .children(".choices.form-select").length
+          ) {
+          var label = $("#collapseSection4")
+              .children(".card-body")
+              .children(
+              ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
+              )
+              .children("div:nth-child(" + i + ")")
+              .children("label")
+              .text();
+          var value = $("#collapseSection4")
+              .children(".card-body")
+              .children(
+              ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
+              )
+              .children("div:nth-child(" + i + ")")
+              .children(".choices.form-select")
+              .children(".choices__inner")
+              .children("select")
+              .val();
+          if (value != "") {
+              $(
+              "<p class='section_4_line'>" + label + " : " + value + "</p>"
+              ).insertBefore("#great_line_4");
+          }
+          } else if (
+          $("#collapseSection4")
+              .children(".card-body")
+              .children(
+              ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
+              )
+              .children("div:nth-child(" + i + ")")
+              .children("textarea").length
+          ) {
+          var label = $("#collapseSection4")
+              .children(".card-body")
+              .children(
+              ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
+              )
+              .children("div:nth-child(" + i + ")")
+              .children("label")
+              .text();
+          var value = $("#collapseSection4")
+              .children(".card-body")
+              .children(
+              ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
+              )
+              .children("div:nth-child(" + i + ")")
+              .children("textarea")
+              .val();
+          if (value != "") {
+              $(
+              "<p class='section_4_line'>" + label + " : " + value + "</p>"
+              ).insertBefore("#great_line_4");
+          }
+          } else {
+          var label = $("#collapseSection4")
+              .children(".card-body")
+              .children(
+              ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
+              )
+              .children("div:nth-child(" + i + ")")
+              .children("label")
+              .text();
+          var value = $("#collapseSection4")
+              .children(".card-body")
+              .children(
+              ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
+              )
+              .children("div:nth-child(" + i + ")")
+              .children("input")
+              .val();
+          if (value != "") {
+              $(
+              "<p class='section_4_line'>" + label + " : " + value + "</p>"
+              ).insertBefore("#great_line_4");
+          }
+          }
+      }
+      }
 
   function update_section_4() {
-    //for loops
-    var number_elements = $("#collapseSection4")
-      .children(".card-body")
-      .children(
-        "div.helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
-      )
-      .children(".form-group").length;
-    $("p").remove(".section_4_line");
-
-    for (let i = 1; i < number_elements + 1; i++) {
-      if (
-        $("#collapseSection4")
+      //for loops
+      var number_elements = $("#collapseSection4")
           .children(".card-body")
           .children(
-            ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
+          "div.helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
           )
-          .children("div:nth-child(" + i + ")")
-          .children(".choices.form-select").length
-      ) {
-        var label = $("#collapseSection4")
-          .children(".card-body")
-          .children(
-            ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
-          )
-          .children("div:nth-child(" + i + ")")
-          .children("label")
-          .text();
-        var value = $("#collapseSection4")
-          .children(".card-body")
-          .children(
-            ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
-          )
-          .children("div:nth-child(" + i + ")")
-          .children(".choices.form-select")
-          .children(".choices__inner")
-          .children("select")
-          .val();
-        if (value != "") {
-          $(
-            "<p class='section_4_line'>" + label + " : " + value + "</p>"
-          ).insertBefore("#great_line_4");
-        }
-      } else if (
-        $("#collapseSection4")
-          .children(".card-body")
-          .children(
-            ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
-          )
-          .children("div:nth-child(" + i + ")")
-          .children("textarea").length
-      ) {
-        var label = $("#collapseSection4")
-          .children(".card-body")
-          .children(
-            ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
-          )
-          .children("div:nth-child(" + i + ")")
-          .children("label")
-          .text();
-        var value = $("#collapseSection4")
-          .children(".card-body")
-          .children(
-            ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
-          )
-          .children("div:nth-child(" + i + ")")
-          .children("textarea")
-          .val();
-        if (value != "") {
-          $(
-            "<p class='section_4_line'>" + label + " : " + value + "</p>"
-          ).insertBefore("#great_line_4");
-        }
-      } else {
-        var label = $("#collapseSection4")
-          .children(".card-body")
-          .children(
-            ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
-          )
-          .children("div:nth-child(" + i + ")")
-          .children("label")
-          .text();
-        var value = $("#collapseSection4")
-          .children(".card-body")
-          .children(
-            ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
-          )
-          .children("div:nth-child(" + i + ")")
-          .children("input")
-          .val();
-        if (value != "") {
-          $(
-            "<p class='section_4_line'>" + label + " : " + value + "</p>"
-          ).insertBefore("#great_line_4");
-        }
+          .children(".form-group").length;
+      $("p").remove(".section_4_line");
+  
+      for (let i = 1; i < number_elements + 1; i++) {
+          if (
+          $("#collapseSection4")
+              .children(".card-body")
+              .children(
+              ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
+              )
+              .children("div:nth-child(" + i + ")")
+              .children(".choices.form-select").length
+          ) {
+          var label = $("#collapseSection4")
+              .children(".card-body")
+              .children(
+              ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
+              )
+              .children("div:nth-child(" + i + ")")
+              .children("label")
+              .text();
+          var value = $("#collapseSection4")
+              .children(".card-body")
+              .children(
+              ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
+              )
+              .children("div:nth-child(" + i + ")")
+              .children(".choices.form-select")
+              .children(".choices__inner")
+              .children("select")
+              .val();
+          if (value != "") {
+              $(
+              "<p class='section_4_line'>" + label + " : " + value + "</p>"
+              ).insertBefore("#great_line_4");
+          }
+          } else if (
+          $("#collapseSection4")
+              .children(".card-body")
+              .children(
+              ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
+              )
+              .children("div:nth-child(" + i + ")")
+              .children("textarea").length
+          ) {
+          var label = $("#collapseSection4")
+              .children(".card-body")
+              .children(
+              ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
+              )
+              .children("div:nth-child(" + i + ")")
+              .children("label")
+              .text();
+          var value = $("#collapseSection4")
+              .children(".card-body")
+              .children(
+              ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
+              )
+              .children("div:nth-child(" + i + ")")
+              .children("textarea")
+              .val();
+          if (value != "") {
+              $(
+              "<p class='section_4_line'>" + label + " : " + value + "</p>"
+              ).insertBefore("#great_line_4");
+          }
+          } else {
+          var label = $("#collapseSection4")
+              .children(".card-body")
+              .children(
+              ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
+              )
+              .children("div:nth-child(" + i + ")")
+              .children("label")
+              .text();
+          var value = $("#collapseSection4")
+              .children(".card-body")
+              .children(
+              ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
+              )
+              .children("div:nth-child(" + i + ")")
+              .children("input")
+              .val();
+          if (value != "") {
+              $(
+              "<p class='section_4_line'>" + label + " : " + value + "</p>"
+              ).insertBefore("#great_line_4");
+          }
+          }
       }
-    }
-  }
+      }
   //____________________________________________________SECTION 3 End - About Your Trip____________________________________________
   //_________________________________________________reasonForClaimObj_________________________________________
   var reasonForClaimObj = {
@@ -7574,50 +7461,50 @@ jQuery(document).ready(function ($) {
       //   "#save_draft_4"
       // );
       if (jQuery(".fw-comments-wrapper").length > 0) {
-        $(para).prependTo("#collapseSection5");
-      } else {
-        $(para).prependTo("#collapseSection5");
-      }
+        $(para).prependTo("#collapseSection5");}
+      else{
+        $(para).prependTo("#collapseSection5");}
+
     } else {
+      
       // $(para).insertBefore(
       //   "#save_draft_4"
       // );
       if (jQuery(".fw-comments-wrapper").length > 0) {
-        $(para).prependTo("#collapseSection5");
-      } else {
-        $(para).prependTo("#collapseSection5");
-      }
+        $(para).prependTo("#collapseSection5");}
+      else{
+        $(para).prependTo("#collapseSection5");}
     }
   }
 
-  $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").change(
-    function () {
-      if (
-        $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() !=
-        ""
-      ) {
-        if ($("#title").hasClass("ColumbusItaly")) {
-          insertParagraph(
-            reasonForClaimObj[
-              $(
-                "#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673"
-              ).val()
-            ]["italian_paragraph"]
-          );
-          $(".ins-para").css("text-align", "left");
-        } else {
-          insertParagraph(
-            reasonForClaimObj[
-              $(
-                "#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673"
-              ).val()
-            ]["paragraph"]
-          );
-          $(".ins-para").css("text-align", "left");
-        }
+    $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").change(
+  function () {
+    if (
+      $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() !=
+      ""
+    ) {
+      if ($("#title").hasClass("ColumbusItaly")) {
+        insertParagraph(
+          reasonForClaimObj[
+            $(
+              "#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673"
+            ).val()
+          ]["italian_paragraph"]
+        );
+        $(".ins-para").css('text-align','left');
+      } else {
+        insertParagraph(
+          reasonForClaimObj[
+            $(
+              "#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673"
+            ).val()
+          ]["paragraph"]
+        );
+        $(".ins-para").css('text-align','left');
       }
     }
-  );
+  }
+);
 
   //____________________________________________________________________________________________________________________
   //section 5 continue
@@ -7647,20 +7534,17 @@ jQuery(document).ready(function ($) {
       clearError(ele);
       var files = [];
       var fileSize = [];
-      let formatValidateCounter = 0;
+      let formatValidateCounter=0;
       for (var i = 0; i < elem.files.length; ++i) {
         fileExtension = elem.files[i].name.split(".").pop();
-        fileExtension = fileExtension.toLowerCase();
+        fileExtension=fileExtension.toLowerCase();
         if (fileExtensionArray.includes(fileExtension)) {
-          let checkingFile = elem.files[i].name.split(".");
-          console.log("file name in save draft flow", elem.files[i].name);
-          console.log(
-            "checking file name splitted in save draft flow",
-            checkingFile
-          );
-          if (checkingFile.length > 2) {
-            formatValidateCounter = formatValidateCounter + 1;
-          } else {
+          let checkingFile=elem.files[i].name.split(".");
+          console.log("file name in save draft flow",elem.files[i].name)
+          console.log("checking file name splitted in save draft flow",checkingFile)
+          if(checkingFile.length>2){
+            formatValidateCounter=formatValidateCounter+1;
+          }else{
             files.push(elem.files[i].name);
             fileSize.push(elem.files[i].size);
           }
@@ -7680,13 +7564,15 @@ jQuery(document).ready(function ($) {
         } else {
           add_section_5();
         }
-        if (!FileExtensionValidateCounter && !formatValidateCounter) {
+        if (!FileExtensionValidateCounter&&!formatValidateCounter) {
           console.log("Make AN API");
           // jQuery("#overlay").removeClass("d-none").addClass("show loader-text");
           getUploadFiles(elem.files, ".save_draft_5");
 
           console.log("Saving draft, will redirect");
-          window.location.href = "/support/tickets";
+          window.location.href = "/support/tickets"
+;
+
         } else {
           console.log("Show Error unsupported File Format ");
           if ($("#title").hasClass("ColumbusItaly")) {
@@ -7710,21 +7596,27 @@ jQuery(document).ready(function ($) {
           "File size cannot exceed 5 MB"
         );
       }
-    } else {
+    } 
+    else {
       $(".new-ticket-submit-button").trigger("click");
     }
+    
   });
 
+
   $(".save_and_continue5").click(function () {
+
     if ($("#section_4_header").length) {
       console.log("update section ----> 4");
       update_section_4();
       add_section_5();
-    } else {
+    } 
+    else{
       add_section_4();
       add_section_5();
       console.log("add section ----> 4");
     }
+  
 
     if (jQuery(".fw-comments-wrapper").length > 0) {
       console.log("update section cont. ----> 4");
@@ -7736,18 +7628,17 @@ jQuery(document).ready(function ($) {
       $("#section-5-button").children(":first").removeClass("fa-plus");
       $("#section-4-button").children(":first").addClass("fa-check");
       $("#section-5-button").children(":first").addClass("fa-check");
-      if ($("#section_5_header").length) {
+      if($("#section_5_header").length){
         update_section_5();
-      } else {
+      }else{
         add_section_5();
       }
-
+      
       //will execute in ticket detail page senario
-
+      
       if (
         $("#new_helpdesk_note #attachments_list .proper-attachments-list")
-          .length
-      ) {
+          .length){
         fileUploadCallback();
       } else if ($(".fw-comments-wrapper .fw-attachment-item").length) {
         //Need to add another condition for already had div if div has length then we need to open next section
@@ -7755,7 +7646,7 @@ jQuery(document).ready(function ($) {
       }
     } else {
       //will excute in create new ticket senario
-
+      
       fileUploadCallback();
     }
   });
@@ -7785,17 +7676,17 @@ jQuery(document).ready(function ($) {
       clearError(ele);
       var files = [];
       var fileSize = [];
-      let formatValidateCounter = 0;
+      let formatValidateCounter=0;
       for (var i = 0; i < elem.files.length; ++i) {
         fileExtension = elem.files[i].name.split(".").pop();
-        fileExtension = fileExtension.toLowerCase();
+        fileExtension=fileExtension.toLowerCase();
         if (fileExtensionArray.includes(fileExtension)) {
-          let checkingFile = elem.files[i].name.split(".");
-          console.log("file name ", elem.files[i].name);
-          console.log("checking file name splitted ", checkingFile);
-          if (checkingFile.length > 2) {
-            formatValidateCounter = formatValidateCounter + 1;
-          } else {
+          let checkingFile=elem.files[i].name.split(".");
+          console.log("file name ",elem.files[i].name)
+          console.log("checking file name splitted ",checkingFile)
+          if(checkingFile.length>2){
+            formatValidateCounter=formatValidateCounter+1;
+          }else{
             files.push(elem.files[i].name);
             fileSize.push(elem.files[i].size);
           }
@@ -7817,13 +7708,13 @@ jQuery(document).ready(function ($) {
           add_section_5();
         }
         console.log("files --->", files);
-        if (!FileExtensionValidateCounter && !formatValidateCounter) {
+        if (!FileExtensionValidateCounter&&!formatValidateCounter) {
           console.log("Make AN API");
           // jQuery("#overlay").removeClass("d-none").addClass("show loader-text");
           getUploadFiles(elem.files, ".save_and_continue5");
           // if (jQuery(".fw-comments-wrapper").length > 0) {
           //   $("#new_helpdesk_note #helpdesk_note_submit").trigger("click");
-          // }
+          // } 
           open_next(5);
           $("#section-4-button").css("background-color", "#4DC367");
           $("#section-5-button").css("background-color", "#4DC367");
@@ -7848,7 +7739,8 @@ jQuery(document).ready(function ($) {
           "File size cannot exceed 5 MB"
         );
       }
-    } else {
+    }
+    else {
       open_next(5);
       // if ($("#title").hasClass("ColumbusItaly")) {
       //   addErrorMessage(
@@ -7863,21 +7755,21 @@ jQuery(document).ready(function ($) {
     }
   }
   function add_section_5() {
-    if ($("#title").hasClass("ColumbusItaly")) {
-      $(
-        "<strong id='section_5_header'>" + italy_titles[4] + "</strong>"
-      ).insertAfter("#great_line_4");
+    if($("#title").hasClass("ColumbusItaly")){
+      $("<strong id='section_5_header'>" + italy_titles[4] + "</strong>").insertAfter(
+        "#great_line_4"
+      );
       $("<hr class='summary_divider' id='great_line_5'>").insertAfter(
         "#section_5_header"
       );
-    } else {
+    }else{
       $("<strong id='section_5_header'>" + titles[4] + "</strong>").insertAfter(
         "#great_line_4"
       );
       $("<hr class='summary_divider' id='great_line_5'>").insertAfter(
         "#section_5_header"
       );
-    }
+  }
     var number_attachments = $("#attachments_list").children().length;
     console.log(number_attachments);
     for (let i = 1; i < number_attachments + 1; i++) {
@@ -7920,13 +7812,11 @@ jQuery(document).ready(function ($) {
     var myHeaders = new Headers();
     myHeaders.append("Cache-Control", "no-cache");
     myHeaders.append("Authorization", AuthorizationKey);
-    if (jQuery(".fw-comments-wrapper").length > 0) {
-      let updateClaimIniatedNumber = $(
-        "#helpdesk_ticket_custom_field_cf_claim_number_2321673"
-      ).val();
-      formdata.append("claimNumber", updateClaimIniatedNumber);
-    } else {
-      formdata.append("claimNumber", ClaimInitiatedNumber);
+    if(jQuery(".fw-comments-wrapper").length > 0){
+      let updateClaimIniatedNumber=$("#helpdesk_ticket_custom_field_cf_claim_number_2321673").val();
+      formdata.append("claimNumber",updateClaimIniatedNumber );
+    }else{
+      formdata.append("claimNumber",ClaimInitiatedNumber );
     }
     formdata.append("uploadedBy", "Collinson API");
     formdata.append("source", "OnlineClaims");
@@ -7978,6 +7868,7 @@ jQuery(document).ready(function ($) {
   //____________________________________________________________________________________________________________________
   //section 6 continue
   $("#save_and_continue6").click(function () {
+    
     if ($("#title").hasClass("VHI") || $("#title").hasClass("ColumbusItaly")) {
       let countryCode;
       if ($("#title").hasClass("VHI")) {
@@ -8072,15 +7963,15 @@ jQuery(document).ready(function ($) {
 
         //add displaying
         if ($("#section_6_header").length) {
-          if ($(".edit_helpdesk_ticket").length) {
+          if($(".edit_helpdesk_ticket").length){
             update_section_6_continue();
-          } else {
+          }else{
             update_section_6();
           }
         } else {
-          if ($(".edit_helpdesk_ticket").length) {
+          if($(".edit_helpdesk_ticket").length){
             add_section_6_continue();
-          } else {
+          }else{
             add_section_6();
           }
           //addDeclaraion();
@@ -8100,37 +7991,44 @@ jQuery(document).ready(function ($) {
       }
     }
     if ($(".edit_helpdesk_ticket").length > 0) {
+
       $("#section-6-button").css("background-color", "#524954");
       $("#section-6-button").children(":first").removeClass("fa-plus");
       $("#section-6-button").children(":first").removeClass("fa-minus");
       $("#section-6-button").children(":first").addClass("fa-pen");
-    } else {
+
+      
+
+    }else{
       $("#section-6-button").css("background-color", "#524954");
       $("#section-6-button").children(":first").removeClass("fa-plus");
       $("#section-6-button").children(":first").removeClass("fa-minus");
       $("#section-6-button").children(":first").addClass("fa-pen");
+      
     }
+    
+  
   });
   function add_section_6() {
     var el_number = $("#collapseSection6")
       .children(".card-body")
       .children(".form-group").length;
 
-    if ($("#title").hasClass("ColumbusItaly")) {
-      $(
-        "<strong id='section_6_header'>" + italy_titles[5] + "</strong>"
-      ).insertAfter("#great_line_5");
+    if($("#title").hasClass("ColumbusItaly")){
+      $("<strong id='section_6_header'>" + italy_titles[5] + "</strong>").insertAfter(
+        "#great_line_5"
+      );
       $("<hr class='summary_divider' id='great_line_6'>").insertAfter(
         "#section_6_header"
       );
-    } else {
+    }else{ 
       $("<strong id='section_6_header'>" + titles[5] + "</strong>").insertAfter(
         "#great_line_5"
       );
       $("<hr class='summary_divider' id='great_line_6'>").insertAfter(
         "#section_6_header"
       );
-    }
+  }
 
     for (let i = 1; i < el_number + 1; i++) {
       var label = $("#collapseSection6")
@@ -8166,21 +8064,21 @@ jQuery(document).ready(function ($) {
       .children(".card-body")
       .children(".form-group").length;
 
-    if ($("#title").hasClass("ColumbusItaly")) {
-      $(
-        "<strong id='section_6_header'>" + italy_titles[5] + "</strong>"
-      ).insertAfter("#great_line_5");
+    if($("#title").hasClass("ColumbusItaly")){
+      $("<strong id='section_6_header'>" + italy_titles[5] + "</strong>").insertAfter(
+        "#great_line_5"
+      );
       $("<hr class='summary_divider' id='great_line_6'>").insertAfter(
         "#section_6_header"
       );
-    } else {
+    }else{ 
       $("<strong id='section_6_header'>" + titles[5] + "</strong>").insertAfter(
         "#great_line_5"
       );
       $("<hr class='summary_divider' id='great_line_6'>").insertAfter(
         "#section_6_header"
       );
-    }
+  }
 
     for (let i = 1; i < el_number + 1; i++) {
       var label = $("#collapseSection6")
@@ -8255,6 +8153,7 @@ jQuery(document).ready(function ($) {
     }
   }
 
+
   function ValidateBankMethodOne(iBanNumber, countryCode, fieldId) {
     let flag = false;
     let statusCode;
@@ -8325,19 +8224,19 @@ jQuery(document).ready(function ($) {
           bankResult = result;
           //open_next(6);
           //change colours after summary section fill
-          $("#section-4-button").css("background-color", "#4DC367");
+          $("#section-4-button").css("background-color","#4DC367");
           //$("#section-4-button").removeAttr("data-target");
           $("#section-4-button").children(":first").removeClass("fa-plus");
           $("#section-4-button").children(":first").addClass("fa-check");
 
-          $("#section-5-button").css("background-color", "#4DC367");
+          $("#section-5-button").css("background-color","#4DC367");
           //$("#section-5-button").removeAttr("data-target");
           $("#section-5-button").children(":first").removeClass("fa-plus");
           $("#section-5-button").children(":first").addClass("fa-check");
 
           open_next(6);
 
-          $("#section-6-button").css("background-color", "#4DC367");
+          $("#section-6-button").css("background-color","#4DC367");
           //$("#section-6-button").removeAttr("data-target");
           $("#section-6-button").children(":first").removeClass("fa-plus");
           $("#section-6-button").children(":first").addClass("fa-check");
@@ -8408,22 +8307,24 @@ jQuery(document).ready(function ($) {
           bankResult = result;
           console.log("--sucesss-");
           //change colours after summary section fill
-          $("#section-4-button").css("background-color", "#4DC367");
+          $("#section-4-button").css("background-color","#4DC367");
           //$("#section-4-button").removeAttr("data-target");
           $("#section-4-button").children(":first").removeClass("fa-plus");
           $("#section-4-button").children(":first").addClass("fa-check");
 
-          $("#section-5-button").css("background-color", "#4DC367");
+          $("#section-5-button").css("background-color","#4DC367");
           //$("#section-5-button").removeAttr("data-target");
           $("#section-5-button").children(":first").removeClass("fa-plus");
           $("#section-5-button").children(":first").addClass("fa-check");
 
           open_next(6);
 
-          $("#section-6-button").css("background-color", "#4DC367");
+          $("#section-6-button").css("background-color","#4DC367");
           //$("#section-6-button").removeAttr("data-target");
           $("#section-6-button").children(":first").removeClass("fa-plus");
           $("#section-6-button").children(":first").addClass("fa-check");
+
+          
         }
       })
       .catch((error) => console.log("error -->", error));
@@ -12642,8 +12543,7 @@ jQuery(document).ready(function ($) {
           clearError(ele);
           console.log("--sucesss-");
           $(".new-ticket-submit-button").trigger("click");
-          window.location.href =
-            "/support/solutions/articles/101000486448-your-claim-and-next-steps";
+          window.location.href = "/support/solutions/articles/101000486448-your-claim-and-next-steps";
         }
       })
       .catch((error) => console.log("error -->", error));
@@ -12691,8 +12591,7 @@ jQuery(document).ready(function ($) {
           clearError(ele);
           console.log("--sucesss-");
           $("#helpdesk_ticket_submit").trigger("click");
-          window.location.href =
-            "/support/solutions/articles/101000486448-your-claim-and-next-steps";
+          window.location.href = "/support/solutions/articles/101000486448-your-claim-and-next-steps";
         }
       })
       .catch((error) => console.log("error -->", error));
@@ -12708,16 +12607,20 @@ jQuery(document).ready(function ($) {
 
   $(".new-ticket-submit-button").click(function (event) {
     var summary_div = document.getElementById("collapseSection7").innerHTML;
-    summary_div = summary_div.replace("Please Wait...", "");
+    summary_div = summary_div.replace("Please Wait...","");
     //add condition to check if information had already been appended, if so, clear description field and add new information
-    if ($(".fr-element.fr-view").length != 0) {
+    if(($(".fr-element.fr-view").length) != 0){
       $(".fr-element.fr-view").empty();
       $(".fr-element.fr-view").append(summary_div);
       console.log("Saving draft, will redirect");
-    } else {
+      
+
+    }else{
       $(".fr-element.fr-view").append(summary_div);
       console.log("Saving draft, will redirect");
+
     }
+    
   });
 
   //____________________________________________________SECTION 6 End____________________________________________
@@ -12793,13 +12696,8 @@ jQuery(document).ready(function ($) {
           var replacement_purchase_date = new Date(replacement_purchase);
           var new_today = new Date();
 
-          new_today = new_today.setHours(0, 0, 0, 0);
-          replacement_purchase_date = replacement_purchase_date.setHours(
-            0,
-            0,
-            0,
-            0
-          );
+          new_today = new_today.setHours(0,0,0,0);
+          replacement_purchase_date = replacement_purchase_date.setHours(0,0,0,0);
 
           if (new_today < replacement_purchase_date) {
             //ERROR MESSAGING
@@ -12849,12 +12747,13 @@ jQuery(document).ready(function ($) {
           payment_date_dental = new Date(payment_date_dental);
 
           var new_today = new Date();
-
-          payment_date_dental = payment_date_dental.setHours(0, 0, 0, 0);
-          new_today = new_today.setHours(0, 0, 0, 0);
+          
+          payment_date_dental = payment_date_dental.setHours(0,0,0,0);
+          new_today = new_today.setHours(0,0,0,0);
 
           console.log(new_today);
           console.log(payment_date_dental);
+
 
           if (new_today < payment_date_dental) {
             addErrorMessage(
@@ -13065,8 +12964,8 @@ jQuery(document).ready(function ($) {
           purchase_date_medical = new Date(purchase_date_medical);
           var new_today = new Date();
 
-          purchase_date_medical = purchase_date_medical.setHours(0, 0, 0, 0);
-          new_today = new_today.setHours(0, 0, 0, 0);
+          purchase_date_medical = purchase_date_medical.setHours(0,0,0,0);
+          new_today = new_today.setHours(0,0,0,0);
 
           if (new_today < purchase_date_medical) {
             //ERROR MESSAGING
@@ -13239,6 +13138,7 @@ jQuery(document).ready(function ($) {
         $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").val() ==
         "Any CANCELLATION claim due to COVID-19"
       ) {
+        
         $(
           ".form-group.helpdesk_ticket_custom_field_cf_what_type_of_transport_was_included_in_your_booking_2321673"
         ).hide();
@@ -13249,15 +13149,13 @@ jQuery(document).ready(function ($) {
           if (
             $(
               "#helpdesk_ticket_custom_field_cf_what_type_of_trip_did_you_book877716_2321673"
-            ).val() ==
-              "Package booking (e.g. flights and accommodation or flights and cruise)" ||
+            ).val() == "Package booking (e.g. flights and accommodation or flights and cruise)" ||
             $(
               "#helpdesk_ticket_custom_field_cf_what_type_of_trip_did_you_book877716_2321673"
-            ).val() ==
-              "Independent booking (travel and accommodation booked separately)" ||
+            ).val() == "Independent booking (travel and accommodation booked separately)" ||
             $(
               "#helpdesk_ticket_custom_field_cf_what_type_of_trip_did_you_book877716_2321673"
-            ).val() == "Travel ONLY (e.g flights or ferry)"
+            ).val() == "Travel ONLY (e.g flights or ferry)" 
           ) {
             $(
               ".form-group.helpdesk_ticket_custom_field_cf_what_type_of_transport_was_included_in_your_booking_2321673"
@@ -13268,6 +13166,8 @@ jQuery(document).ready(function ($) {
             ).hide();
           }
         });
+
+
 
         //A POSITIVE Coronavirus test result - dependancy
         show_and_hide(
@@ -14059,7 +13959,7 @@ jQuery(document).ready(function ($) {
       }
     }
   );
-
+  
   function files_uploaded() {
     $("p").remove(".section_5_line");
     $(".fw-comments-wrapper .attachments .fw-attachment-item").each(
@@ -14076,125 +13976,104 @@ jQuery(document).ready(function ($) {
     files_uploaded();
   }
 
-  if ($(".edit_helpdesk_ticket").length > 0) {
+  if ($(".edit_helpdesk_ticket").length > 0){
     console.log("Inside Ending");
 
-    let ticketDetails = function () {
-      (function ($) {
-        // section 1,2,3 fields readonly
-        $(document).ready(function () {
-          $(
-            "#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673"
-          ).trigger("change");
-          $("#collapseSection4 select").trigger("change");
-          $(document).on("click", "#collapseSection5 #attach_btn", function () {
-            $("#new_helpdesk_note #attach_btn").trigger("click");
-          });
-          var updateArray = ["updated", "actualitzat"];
-          var notice = $("#notice").text();
-          for (let i = 0; i < updateArray.length; i++) {
-            if (notice.includes(updateArray[i])) {
-              $(".fw-wrapper-shadow").hide();
-              setTimeout(function () {
-                window.location.href = "/support/home";
-              }, 1000);
-            }
-          }
-          $("body").on(
-            "DOMSubtreeModified",
-            "#new_helpdesk_note #attachments_list",
-            function () {
-              $(".files-container-dummy").remove();
-              var attachments_list = $("#attachments_list").html();
-              $(".attachments .dropdown").before(
-                '<div class="files-container-dummy">' +
-                  attachments_list +
-                  "</div>"
-              );
-            }
-          );
-          $(document).on(
-            "click",
-            "#collapseSection5 .remove-file-icon",
-            function () {
-              $(
-                '#new_helpdesk_note [data-fileid="' +
-                  $(this).attr("data-fileid") +
-                  '"]'
-              ).trigger("click");
-            }
-          );
-          $("#save_and_continue1").hide();
-          $("#save_draft_4").hide();
-          $(".save_draft_5").hide();
-          //13-02-2023
-          $("p.for-section-4").hide();
-          $("p.for-section-5").hide();
-          $(
-            "span.btn.fw-primary-button.new-ticket-dummy.for-section-7:eq(0)"
-          ).hide();
-          //end
-          $("#save_and_continue2").hide();
-          $("#save_and_continue3").hide();
-
-          //$("#save_draft_4").show();
-          $(".ins-para").css("text-align", "left");
-          let claimNames = $(
-            "#helpdesk_ticket_custom_field_cf_claimnames_2321673"
-          ).val();
-          console.log("--------->", claimNames);
-          buildClaimNameUI(claimNames);
-          console.log("enterd into func");
-
-          $(
-            "#collapseSection1 .form-group, #collapseSection2 .form-group, #collapseSection3 .form-group"
-          ).each(function () {
-            if ($(this).find(".form-control").val()) {
-              $(this).addClass("readonly");
-              $(this)
-                .find(".form-control.alt-flatpickr-input")
-                .addClass("readonly");
-              $(this).find(".choices.form-select").addClass("readonly");
-              $(this).find(".form-control").attr("readonly", "readonly");
-            }
-          });
-        });
-      })(jQuery);
-    };
-    function buildClaimNameUI(claimNames) {
-      let claimNamesList = claimNames;
-      let claimNameArray = claimNamesList.split(",");
-      console.log(claimNameArray);
-      let options = "";
-      options +=
-        '<div class="form-group"><label class="form-label"> Name(s) of the Insured</label>';
-
-      claimNameArray.forEach(function (element, index) {
-        console.log(element);
-        options +=
-          '<div class="list-claim"><input type="checkbox" class="check-box" id=' +
-          index +
-          " value=" +
-          "" +
-          element +
-          "" +
-          " disabled checked><span>" +
-          element +
-          "</span></div>";
-      });
-      options += "</div>";
-      $(".list-policy-names").remove();
-      $("#collapseSection2 .card-body").prepend(
-        "<div class='list-policy-names'>" + options + "</div>"
-      );
-      $("#collapseSection2 .list-policy-names .form-group").append(
-        "<div class='invalid-feedback check-finder'></div>"
-      );
+    let ticketDetails = function() {
+      (function( $ ) {
+          // section 1,2,3 fields readonly
+    $(document).ready(function() {
+    $("#helpdesk_ticket_custom_field_cf_reason_for_claim_2321673").trigger("change")
+    $("#collapseSection4 select").trigger("change");
+    $(document).on("click","#collapseSection5 #attach_btn",function() {
+      $("#new_helpdesk_note #attach_btn").trigger("click");
+    });
+    var updateArray=["updated","actualitzat"]
+    var notice=$("#notice").text();
+    for(let i=0;i<updateArray.length;i++){
+    if(notice.includes(updateArray[i])){
+    $(".fw-wrapper-shadow").hide();
+    setTimeout(function(){ window.location.href = "/support/home"}, 1000);
+    }   
     }
-    document.addEventListener("DOMContentLoaded", ticketDetails);
-
+    $("body").on('DOMSubtreeModified', "#new_helpdesk_note #attachments_list", function() {
+      $(".files-container-dummy").remove();
+      var attachments_list = $("#attachments_list").html();
+      $(".attachments .dropdown").before('<div class="files-container-dummy">'+attachments_list+'</div>');
+    });
+    $(document).on("click","#collapseSection5 .remove-file-icon",function() {
+    $('#new_helpdesk_note [data-fileid="'+$(this).attr("data-fileid")+'"]').trigger("click");
+    });
+    $("#save_and_continue1").hide();
+    $("#save_draft_4").hide();
+    $(".save_draft_5").hide(); 
+    //13-02-2023
+    $("p.for-section-4").hide();
+    $("p.for-section-5").hide();
+    $("span.btn.fw-primary-button.new-ticket-dummy.for-section-7:eq(0)").hide();
+    //end  
+    $("#save_and_continue2").hide();
+    $("#save_and_continue3").hide();
+    
+    //$("#save_draft_4").show();
+    $(".ins-para").css('text-align','left');
+    let claimNames=$("#helpdesk_ticket_custom_field_cf_claimnames_2321673").val();
+    console.log("--------->",claimNames)
+    buildClaimNameUI(claimNames)
+    console.log("enterd into func")
+    
+    
+      
+    
+    $("#collapseSection1 .form-group, #collapseSection2 .form-group, #collapseSection3 .form-group").each(function(){
+      if($(this).find(".form-control").val()){
+        $(this).addClass("readonly");
+        $(this).find(".form-control.alt-flatpickr-input").addClass("readonly");
+        $(this).find(".choices.form-select").addClass("readonly");
+        $(this).find(".form-control").attr("readonly","readonly");
+      }
+    });   
+    });
+          
+    
+      })(jQuery)
+    }
+    function buildClaimNameUI(claimNames) {
+    let claimNamesList = claimNames;
+    let claimNameArray = claimNamesList.split(',');
+    console.log(claimNameArray);
+    let options = "";
+    options +=
+      '<div class="form-group"><label class="form-label"> Name(s) of the Insured</label>';
+    
+    claimNameArray.forEach(function(element, index) {
+      console.log(element)
+      options +=
+        '<div class="list-claim"><input type="checkbox" class="check-box" id=' +
+        index +
+        " value=" + "" +
+        element + "" +
+        " disabled checked><span>" +
+        element +
+        "</span></div>";
+    });
+    options += "</div>";
+    $(".list-policy-names").remove();
+    $("#collapseSection2 .card-body").prepend(
+      "<div class='list-policy-names'>" + options + "</div>"
+    );
+    $("#collapseSection2 .list-policy-names .form-group").append(
+      "<div class='invalid-feedback check-finder'></div>"
+    );
+    }
+    document.addEventListener('DOMContentLoaded', ticketDetails);
+    
     $(".card.ins-card.order1").insertBefore(".card.ins-card.order2");
 
     console.log("All actions completed");
+
+
   }
+  
+
 });
