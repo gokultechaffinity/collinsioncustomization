@@ -16,8 +16,8 @@ jQuery(document).ready(function ($) {
     "Your policy",
     "About you",
     "About your trip",
-    "Tell us what happened",
     "Your documents",
+    "Tell us what happened",
     "Your payment details",
     "Your claim summary",
   ];
