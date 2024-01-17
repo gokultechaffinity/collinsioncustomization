@@ -433,7 +433,7 @@ jQuery(document).ready(function ($) {
     } else {
       $(
         '<button id="save_draft_4" class="btn btn-primary for-section-4 " type="button">Pause</button>'
-      ).insertBefore(
+      ).insertAfter(
         ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper"
       );
       $(
