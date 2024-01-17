@@ -780,7 +780,7 @@ jQuery(document).ready(function ($) {
       )
       .children(".form-group").length;
     $("p").remove(".section_4_line");
-
+    console.log("----update_section_4_continue-------->",number_elements)
     for (let i = 1; i < number_elements + 1; i++) {
       if (
         $("#collapseSection4")
@@ -876,7 +876,7 @@ jQuery(document).ready(function ($) {
       "div.helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper.for-section-4"
     )
     .children(".form-group").length;
-
+    console.log("add_section_4_continue------------->",number_elements3)
   for (let i = 1; i < number_elements3 + 1; i++) {
     if (
       $("#collapseSection4")
