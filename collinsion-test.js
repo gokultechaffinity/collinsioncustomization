@@ -6362,7 +6362,7 @@ jQuery(document).ready(function ($) {
     $("#ClaimAPIModal").modal("toggle");
 
     //close current, open next
-    open_next(3);
+    open_next(4);
 
     //remove edit from first three sections
 
