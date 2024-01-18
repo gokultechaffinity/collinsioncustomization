@@ -6783,7 +6783,7 @@ jQuery(document).ready(function ($) {
             .children(".d-block").length == 0
         ) {
           console.log("WE CAN MOVE FORWARD!!!");
-          open_next(4);
+          open_next(5);
           $("#section-4-button").children(":first").removeClass("fa-minus");
           $("#section-4-button").children(":first").removeClass("fa-plus");
           $("#section-4-button").children(":first").addClass("fa-pen");
@@ -6820,7 +6820,7 @@ jQuery(document).ready(function ($) {
             .children(".d-block").length == 0
         ) {
           console.log("WE CAN MOVE FORWARD!!!");
-          open_next(4);
+          open_next(5);
           $("#section-4-button").children(":first").removeClass("fa-minus");
           $("#section-4-button").children(":first").removeClass("fa-plus");
           $("#section-4-button").children(":first").addClass("fa-pen");
@@ -6858,7 +6858,7 @@ jQuery(document).ready(function ($) {
             .children(".d-block").length == 0
         ) {
           console.log("WE CAN MOVE FORWARD!!!");
-          open_next(4);
+          open_next(5);
           $("#section-4-button").children(":first").removeClass("fa-minus");
           $("#section-4-button").children(":first").removeClass("fa-plus");
           $("#section-4-button").children(":first").addClass("fa-pen");
@@ -6900,7 +6900,7 @@ jQuery(document).ready(function ($) {
             .children(".d-block").length == 0
         ) {
           console.log("WE CAN MOVE FORWARD!!!");
-          open_next(4);
+          open_next(5);
           $("#section-4-button").children(":first").removeClass("fa-minus");
           $("#section-4-button").children(":first").removeClass("fa-plus");
           $("#section-4-button").children(":first").addClass("fa-pen");
@@ -6944,7 +6944,7 @@ jQuery(document).ready(function ($) {
             .children(".d-block").length == 0
         ) {
           console.log("WE CAN MOVE FORWARD!!!");
-          open_next(4);
+          open_next(5);
           $("#section-4-button").children(":first").removeClass("fa-minus");
           $("#section-4-button").children(":first").removeClass("fa-plus");
           $("#section-4-button").children(":first").addClass("fa-pen");
@@ -6975,7 +6975,7 @@ jQuery(document).ready(function ($) {
             .children(".d-block").length == 0
         ) {
           console.log("WE CAN MOVE FORWARD!!!");
-          open_next(4);
+          open_next(5);
           $("#section-4-button").children(":first").removeClass("fa-minus");
           $("#section-4-button").children(":first").removeClass("fa-plus");
           $("#section-4-button").children(":first").addClass("fa-pen");
@@ -7007,7 +7007,7 @@ jQuery(document).ready(function ($) {
             .children(".d-block").length == 0
         ) {
           console.log("WE CAN MOVE FORWARD!!!");
-          open_next(4);
+          open_next(5);
           $("#section-4-button").children(":first").removeClass("fa-minus");
           $("#section-4-button").children(":first").removeClass("fa-plus");
           $("#section-4-button").children(":first").addClass("fa-pen");
@@ -7042,7 +7042,7 @@ jQuery(document).ready(function ($) {
             .children(".d-block").length == 0
         ) {
           console.log("WE CAN MOVE FORWARD!!!");
-          open_next(4);
+          open_next(5);
           $("#section-4-button").children(":first").removeClass("fa-minus");
           $("#section-4-button").children(":first").removeClass("fa-plus");
           $("#section-4-button").children(":first").addClass("fa-pen");
@@ -7088,7 +7088,7 @@ jQuery(document).ready(function ($) {
             .children(".d-block").length == 0
         ) {
           console.log("WE CAN MOVE FORWARD!!!");
-          open_next(4);
+          open_next(5);
           $("#section-4-button").children(":first").removeClass("fa-minus");
           $("#section-4-button").children(":first").removeClass("fa-plus");
           $("#section-4-button").children(":first").addClass("fa-pen");
@@ -7128,7 +7128,7 @@ jQuery(document).ready(function ($) {
             .children(".d-block").length == 0
         ) {
           console.log("WE CAN MOVE FORWARD!!!");
-          open_next(4);
+          open_next(5);
           $("#section-4-button").children(":first").removeClass("fa-minus");
           $("#section-4-button").children(":first").removeClass("fa-plus");
           $("#section-4-button").children(":first").addClass("fa-pen");
@@ -7161,7 +7161,7 @@ jQuery(document).ready(function ($) {
             .children(".d-block").length == 0
         ) {
           console.log("WE CAN MOVE FORWARD!!!");
-          open_next(4);
+          open_next(5);
           $("#section-4-button").children(":first").removeClass("fa-minus");
           $("#section-4-button").children(":first").removeClass("fa-plus");
           $("#section-4-button").children(":first").addClass("fa-pen");
@@ -7193,7 +7193,7 @@ jQuery(document).ready(function ($) {
             .children(".d-block").length == 0
         ) {
           console.log("WE CAN MOVE FORWARD!!!");
-          open_next(4);
+          open_next(5);
           $("#section-4-button").children(":first").removeClass("fa-minus");
           $("#section-4-button").children(":first").removeClass("fa-plus");
           $("#section-4-button").children(":first").addClass("fa-pen");
