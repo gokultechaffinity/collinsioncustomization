@@ -7729,7 +7729,7 @@ jQuery(document).ready(function ($) {
     if (jQuery(".fw-comments-wrapper").length > 0) {
       console.log("update section cont. ----> 4");
       update_section_4_continue();
-      open_next(5);
+      open_next(3);
       //change document color
       $("#section-4-button").children(":first").removeClass("fa-pen");
       $("#section-5-button").children(":first").removeClass("fa-minus");
@@ -7751,7 +7751,7 @@ jQuery(document).ready(function ($) {
         fileUploadCallback();
       } else if ($(".fw-comments-wrapper .fw-attachment-item").length) {
         //Need to add another condition for already had div if div has length then we need to open next section
-        open_next(5);
+        open_next(3);
       }
     } else {
       //will excute in create new ticket senario
@@ -7824,7 +7824,7 @@ jQuery(document).ready(function ($) {
           // if (jQuery(".fw-comments-wrapper").length > 0) {
           //   $("#new_helpdesk_note #helpdesk_note_submit").trigger("click");
           // }
-          open_next(5);
+          open_next(3);
           $("#section-4-button").css("background-color", "#4DC367");
           $("#section-5-button").css("background-color", "#4DC367");
           $("#section-4-button").children(":first").removeClass("fa-pen");
