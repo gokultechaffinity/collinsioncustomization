@@ -1138,8 +1138,15 @@ jQuery(document).ready(function ($) {
   });
 
   function open_next(section_number) {
-    //close current, open next
-    $("#collapseSection" + section_number).removeClass("show");
+    //close current, 
+    if(section_number==4){
+      $("#collapseSection3").removeClass("show");
+    }else if (section_number==3){
+    $("#collapseSection5").removeClass("show");
+    }else{
+      $("#collapseSection" + section_number).removeClass("show");
+    }
+   
     //sign swap
     $("#section-" + section_number + "-button")
       .children(":first")
