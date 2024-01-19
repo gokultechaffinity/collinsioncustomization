@@ -7834,12 +7834,12 @@ jQuery(document).ready(function ($) {
           //   $("#new_helpdesk_note #helpdesk_note_submit").trigger("click");
           // }
           open_next(3);
-          $("#section-4-button").css("background-color", "#4DC367");
+          $("#section-3-button").css("background-color", "#4DC367");
           $("#section-5-button").css("background-color", "#4DC367");
-          $("#section-4-button").children(":first").removeClass("fa-pen");
+          $("#section-3-button").children(":first").removeClass("fa-plus");
           $("#section-5-button").children(":first").removeClass("fa-minus");
           $("#section-5-button").children(":first").removeClass("fa-plus");
-          $("#section-4-button").children(":first").addClass("fa-check");
+          $("#section-3-button").children(":first").addClass("fa-check");
           $("#section-5-button").children(":first").addClass("fa-check");
         } else {
           console.log("Show Error unsupported File Format ");
