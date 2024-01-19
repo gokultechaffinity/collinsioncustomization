@@ -6795,6 +6795,7 @@ jQuery(document).ready(function ($) {
           open_next(5);
           $("#section-5-button").children(":first").removeClass("fa-minus");
           $("#section-5-button").children(":first").removeClass("fa-plus");
+          $("#section-4-button").children(":first").removeClass("fa-minus");
           $("#section-4-button").children(":first").addClass("fa-pen");
           $("#section-4-button").css("background-color", "#524954");
         } else {
@@ -6832,6 +6833,7 @@ jQuery(document).ready(function ($) {
           open_next(5);
           $("#section-5-button").children(":first").removeClass("fa-minus");
           $("#section-5-button").children(":first").removeClass("fa-plus");
+          $("#section-4-button").children(":first").removeClass("fa-minus");
           $("#section-4-button").children(":first").addClass("fa-pen");
           $("#section-4-button").css("background-color", "#524954");
         } else {
@@ -6870,6 +6872,7 @@ jQuery(document).ready(function ($) {
           open_next(5);
           $("#section-5-button").children(":first").removeClass("fa-minus");
           $("#section-5-button").children(":first").removeClass("fa-plus");
+          $("#section-4-button").children(":first").removeClass("fa-minus");
           $("#section-4-button").children(":first").addClass("fa-pen");
           $("#section-4-button").css("background-color", "#524954");
         } else {
@@ -6912,6 +6915,7 @@ jQuery(document).ready(function ($) {
           open_next(5);
           $("#section-5-button").children(":first").removeClass("fa-minus");
           $("#section-5-button").children(":first").removeClass("fa-plus");
+          $("#section-4-button").children(":first").removeClass("fa-minus");
           $("#section-4-button").children(":first").addClass("fa-pen");
           $("#section-4-button").css("background-color", "#524954");
         } else {
@@ -6956,6 +6960,7 @@ jQuery(document).ready(function ($) {
           open_next(5);
           $("#section-5-button").children(":first").removeClass("fa-minus");
           $("#section-5-button").children(":first").removeClass("fa-plus");
+          $("#section-4-button").children(":first").removeClass("fa-minus");
           $("#section-4-button").children(":first").addClass("fa-pen");
           $("#section-4-button").css("background-color", "#524954");
         } else {
@@ -6987,6 +6992,7 @@ jQuery(document).ready(function ($) {
           open_next(5);
           $("#section-5-button").children(":first").removeClass("fa-minus");
           $("#section-5-button").children(":first").removeClass("fa-plus");
+          $("#section-4-button").children(":first").removeClass("fa-minus");
           $("#section-4-button").children(":first").addClass("fa-pen");
           $("#section-4-button").css("background-color", "#524954");
         } else {
@@ -7019,6 +7025,7 @@ jQuery(document).ready(function ($) {
           open_next(5);
           $("#section-5-button").children(":first").removeClass("fa-minus");
           $("#section-5-button").children(":first").removeClass("fa-plus");
+          $("#section-4-button").children(":first").removeClass("fa-minus");
           $("#section-4-button").children(":first").addClass("fa-pen");
           $("#section-4-button").css("background-color", "#524954");
         } else {
@@ -7054,6 +7061,7 @@ jQuery(document).ready(function ($) {
           open_next(5);
           $("#section-5-button").children(":first").removeClass("fa-minus");
           $("#section-5-button").children(":first").removeClass("fa-plus");
+          $("#section-4-button").children(":first").removeClass("fa-minus");
           $("#section-4-button").children(":first").addClass("fa-pen");
           $("#section-4-button").css("background-color", "#524954");
         } else {
@@ -7100,6 +7108,7 @@ jQuery(document).ready(function ($) {
           open_next(5);
           $("#section-5-button").children(":first").removeClass("fa-minus");
           $("#section-5-button").children(":first").removeClass("fa-plus");
+          $("#section-4-button").children(":first").removeClass("fa-minus");
           $("#section-4-button").children(":first").addClass("fa-pen");
           $("#section-4-button").css("background-color", "#524954");
         } else {
@@ -7140,6 +7149,7 @@ jQuery(document).ready(function ($) {
           open_next(5);
           $("#section-5-button").children(":first").removeClass("fa-minus");
           $("#section-5-button").children(":first").removeClass("fa-plus");
+          $("#section-4-button").children(":first").removeClass("fa-minus");
           $("#section-4-button").children(":first").addClass("fa-pen");
           $("#section-4-button").css("background-color", "#524954");
         } else {
@@ -7173,6 +7183,7 @@ jQuery(document).ready(function ($) {
           open_next(5);
           $("#section-5-button").children(":first").removeClass("fa-minus");
           $("#section-5-button").children(":first").removeClass("fa-plus");
+          $("#section-4-button").children(":first").removeClass("fa-minus");
           $("#section-4-button").children(":first").addClass("fa-pen");
           $("#section-4-button").css("background-color", "#524954");
         } else {
@@ -7205,6 +7216,7 @@ jQuery(document).ready(function ($) {
           open_next(5);
           $("#section-5-button").children(":first").removeClass("fa-minus");
           $("#section-5-button").children(":first").removeClass("fa-plus");
+          $("#section-4-button").children(":first").removeClass("fa-minus");
           $("#section-4-button").children(":first").addClass("fa-pen");
           $("#section-4-button").css("background-color", "#524954");
         } else {
