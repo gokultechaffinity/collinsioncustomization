@@ -7740,10 +7740,10 @@ jQuery(document).ready(function ($) {
       update_section_4_continue();
       open_next(3);
       //change document color
-      $("#section-4-button").children(":first").removeClass("fa-pen");
+      $("#section-3-button").children(":first").removeClass("fa-pen");
       $("#section-5-button").children(":first").removeClass("fa-minus");
       $("#section-5-button").children(":first").removeClass("fa-plus");
-      $("#section-4-button").children(":first").addClass("fa-check");
+      $("#section-3-button").children(":first").addClass("fa-check");
       $("#section-5-button").children(":first").addClass("fa-check");
       if ($("#section_5_header").length) {
         update_section_5();
