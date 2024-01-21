@@ -432,27 +432,27 @@ jQuery(document).ready(function ($) {
       ).insertBefore("#save_draft_4");
     } else {
       console.log("---------------------inside else tel us what happened");
-      // $(
-      //   '<button id="save_draft_4" class="btn btn-primary for-section-4 " type="button">Pause</button>'
-      // ).insertAfter(
-      //   ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper"
-      // );
-      // $(
-      //   '<button id="save_and_continue4" class="btn btn-primary for-section-4 save_and_continue" type="button">Continue</button>'
-      // ).insertAfter(
-      //   ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper"
-      // );
-      // $("<hr id ='hr4' class='for-section-4'>").insertAfter("#save_draft_4");
-      // $(
-      //   '<p class="for-section-4" style="margin-top: 20px;">If you pause your claim, all of the information you have given will be saved for you.</p>'
-      // ).insertBefore("#save_draft_4");
-        $('<div id="card-section-4">').append(
-          $('<p class="for-section-4" style="margin-top: 20px; margin-bottom: 2rem;">If you pause your claim, all of the information you have given will be saved for you.</p>'),
-          $('<button id="save_draft_4" class="btn btn-primary for-section-4" type="button" style="background-color: rgb(255, 191, 0); margin-left: 0rem; margin-right: 51.25rem; margin-bottom: 2rem;">Pause</button>'),
-          $('<hr id="hr4" class="for-section-4">'),
-          $('<div class="helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper for-section-4"></div>'),
-          $('<button id="save_and_continue4" class="btn btn-primary for-section-4 save_and_continue" type="button">Continue</button>')
-      )
+      $(
+        '<button id="save_draft_4" class="btn btn-primary for-section-4 " type="button">Pause</button>'
+      ).insertBefore(
+        ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper"
+      );
+      $(
+        '<button id="save_and_continue4" class="btn btn-primary for-section-4 save_and_continue" type="button">Continue</button>'
+      ).insertAfter(
+        ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper"
+      );
+      $("<hr id ='hr4' class='for-section-4'>").insertAfter("#save_draft_4");
+      $(
+        '<p class="for-section-4" style="margin-top: 20px;">If you pause your claim, all of the information you have given will be saved for you.</p>'
+      ).insertBefore("#save_draft_4");
+      //   $('<div id="card-section-4">').append(
+      //     $('<p class="for-section-4" style="margin-top: 20px; margin-bottom: 2rem;">If you pause your claim, all of the information you have given will be saved for you.</p>'),
+      //     $('<button id="save_draft_4" class="btn btn-primary for-section-4" type="button" style="background-color: rgb(255, 191, 0); margin-left: 0rem; margin-right: 51.25rem; margin-bottom: 2rem;">Pause</button>'),
+      //     $('<hr id="hr4" class="for-section-4">'),
+      //     $('<div class="helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper for-section-4"></div>'),
+      //     $('<button id="save_and_continue4" class="btn btn-primary for-section-4 save_and_continue" type="button">Continue</button>')
+      // ).insertAfter(".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper");
     }
   }
   //____________________________________________________SECTION 5 Start - Your Documents____________________________________________
