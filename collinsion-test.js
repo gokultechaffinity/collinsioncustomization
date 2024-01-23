@@ -6406,8 +6406,8 @@ jQuery(document).ready(function ($) {
     $("#section-2-button").css("background-color", "#4DC367");
     $("#section-3-button").css("background-color", "#4DC367");
     
-    $("#helpdesk_ticket_submit").trigger("click");
-     window.location.href = "/support/tickets";
+    $(".new-ticket-submit-button").trigger("click");
+    //  window.location.href = "/support/tickets";
   });
 
   function validateMandatoryFields(list_of_fields) {
