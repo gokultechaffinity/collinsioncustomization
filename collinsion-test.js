@@ -7884,7 +7884,7 @@ jQuery(document).ready(function ($) {
         );
       }
     } else {
-      open_next(5);
+      open_next(3);
       // if ($("#title").hasClass("ColumbusItaly")) {
       //   addErrorMessage(
       //     "api_call_failed_filelist",
