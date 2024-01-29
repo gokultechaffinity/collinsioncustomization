@@ -7751,19 +7751,20 @@ jQuery(document).ready(function ($) {
   });
 
   $(".save_and_continue5").click(function () {
-    if ($("#section_4_header").length) {
+    if ($("#section_5_header").length) {
       console.log("update section ----> 4");
-      update_section_4();
-      add_section_5();
+      // update_section_4();
+      //  add_section_5();
+      update_section_5();
     } else {
-      add_section_4();
+      // add_section_4();
       add_section_5();
       console.log("add section ----> 4");
     }
 
     if (jQuery(".fw-comments-wrapper").length > 0) {
       console.log("update section cont. ----> 4");
-      update_section_4_continue();
+      // update_section_4_continue();
       open_next(3);
       //change document color
       $("#section-3-button").children(":first").removeClass("fa-plus");
