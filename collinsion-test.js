@@ -7766,7 +7766,6 @@ jQuery(document).ready(function ($) {
         update_section_4_continue();
         open_next(3);
         //change document color
-        $("#section-5-button").css("background-color", "#4DC367");
         $("#section-3-button").children(":first").removeClass("fa-plus");
         $("#section-5-button").children(":first").removeClass("fa-minus");
         $("#section-5-button").children(":first").removeClass("fa-plus");
@@ -12745,15 +12744,14 @@ jQuery(document).ready(function ($) {
     $(".new-ticket-submit-button").click(function (event) {
       var summary_div = document.getElementById("collapseSection7").innerHTML;
       summary_div = summary_div.replace("Please Wait...", "");
-      console.log("summary ----- div ----->",summary_div)
       //add condition to check if information had already been appended, if so, clear description field and add new information
       if ($(".fr-element.fr-view").length != 0) {
         $(".fr-element.fr-view").empty();
         $(".fr-element.fr-view").append(summary_div);
-        console.log("If Saving draft, will redirect");
+        console.log("Saving draft, will redirect");
       } else {
         $(".fr-element.fr-view").append(summary_div);
-        console.log("Else Saving draft, will redirect");
+        console.log("Saving draft, will redirect");
       }
     });
   
