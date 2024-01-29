@@ -6381,7 +6381,7 @@ jQuery(document).ready(function ($) {
     $("#ClaimAPIModal").modal("toggle");
 
     //close current, open next
-   // closed by me 
+    // closed by me
     open_next(4);
 
     //remove edit from first three sections
@@ -6405,7 +6405,7 @@ jQuery(document).ready(function ($) {
     $("#section-1-button").css("background-color", "#4DC367");
     $("#section-2-button").css("background-color", "#4DC367");
     $("#section-3-button").css("background-color", "#4DC367");
-    
+
     $(".new-ticket-submit-button").trigger("click");
     //  window.location.href = "/support/tickets";
   });
@@ -7885,6 +7885,10 @@ jQuery(document).ready(function ($) {
       }
     } else {
       open_next(3);
+      $("#section-3-button").children(":first").removeClass("fa-plus");
+      $("#section-3-button").children(":first").addClass("fa-check");
+      $("#section-5-button").children(":first").removeClass("fa-minus");
+      $("#section-5-button").children(":first").addClass("fa-plus");
       // if ($("#title").hasClass("ColumbusItaly")) {
       //   addErrorMessage(
       //     "api_call_failed_filelist",
