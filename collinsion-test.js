@@ -7884,6 +7884,7 @@ jQuery(document).ready(function ($) {
         );
       }
     } else {
+      console.log("----entered into else------>");
       open_next(3);
       $("#section-3-button").children(":first").removeClass("fa-plus");
       $("#section-3-button").children(":first").addClass("fa-check");
