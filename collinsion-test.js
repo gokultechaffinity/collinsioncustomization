@@ -1147,11 +1147,7 @@ jQuery(document).ready(function ($) {
     }
   });
 
-  function open_next(section_number,optional) {
-
-  if(optional=="create Ticket"){
-    $(".new-ticket-submit-button").trigger("click");
-  }else{
+  function open_next(section_number) {
     console.log("-------->enterd sect open");
     //close current,
     if (section_number == 4) {
@@ -1184,7 +1180,6 @@ jQuery(document).ready(function ($) {
     $("#section-" + (section_number + 1) + "-button")
       .children(":first")
       .addClass("fa-minus");
-    }
   }
 
   function summary_section_start() {
@@ -6388,7 +6383,7 @@ jQuery(document).ready(function ($) {
 
     //close current, open next
     // closed by me
-    open_next(4,"create Ticket");
+    open_next(4);
 
     //remove edit from first three sections
 
@@ -6412,7 +6407,7 @@ jQuery(document).ready(function ($) {
     $("#section-2-button").css("background-color", "#4DC367");
     $("#section-3-button").css("background-color", "#4DC367");
 
-    // $(".new-ticket-submit-button").trigger("click");
+    $(".new-ticket-submit-button").trigger("click");
     //  window.location.href = "/support/tickets";
   });
 
