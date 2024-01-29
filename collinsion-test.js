@@ -1204,7 +1204,7 @@ jQuery(document).ready(function ($) {
   //open section 1 by default
   if ($(".edit_helpdesk_ticket").length > 0) {
     //close section 4
-    $("#section-4-button").click();
+    $("#section-5-button").click();
   } else {
     //open section 1
     $("#section-1-button").click();
