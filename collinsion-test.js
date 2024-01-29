@@ -6381,14 +6381,13 @@ jQuery(document).ready(function ($) {
     $("#ClaimAPIModal").modal("toggle");
 
     //close current, open next
-   // closed by me 
     open_next(4);
 
     //remove edit from first three sections
 
-    $("#section-1-button").removeAttr("data-toggle");
-    $("#section-2-button").removeAttr("data-toggle");
-    $("#section-3-button").removeAttr("data-toggle");
+    //$("#section-1-button").removeAttr("data-toggle");
+    //$("#section-2-button").removeAttr("data-toggle");
+    //$("#section-3-button").removeAttr("data-toggle");
 
     $("#section-1-button").children(":first").removeClass("fa-plus");
     $("#section-1-button").children(":first").removeClass("fa-minus");
@@ -6405,9 +6404,6 @@ jQuery(document).ready(function ($) {
     $("#section-1-button").css("background-color", "#4DC367");
     $("#section-2-button").css("background-color", "#4DC367");
     $("#section-3-button").css("background-color", "#4DC367");
-    
-    $(".new-ticket-submit-button").trigger("click");
-    //  window.location.href = "/support/tickets";
   });
 
   function validateMandatoryFields(list_of_fields) {
@@ -7884,7 +7880,7 @@ jQuery(document).ready(function ($) {
         );
       }
     } else {
-      open_next(3);
+      open_next(5);
       // if ($("#title").hasClass("ColumbusItaly")) {
       //   addErrorMessage(
       //     "api_call_failed_filelist",
