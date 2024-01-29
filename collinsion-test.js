@@ -6378,7 +6378,7 @@ jQuery(document).ready(function ($) {
     //do modal popup with claims statement
   
     $("#next").click(function () {
-    //   $("#ClaimAPIModal").modal("toggle");
+      $("#ClaimAPIModal").modal("toggle");
   
     //   //close current, open next
     //  // closed by me 
@@ -12747,14 +12747,14 @@ jQuery(document).ready(function ($) {
       summary_div = summary_div.replace("Please Wait...", "");
       console.log("summary ----- div ----->",summary_div)
       //add condition to check if information had already been appended, if so, clear description field and add new information
-    //   if ($(".fr-element.fr-view").length != 0) {
-    //     $(".fr-element.fr-view").empty();
-    //     $(".fr-element.fr-view").append(summary_div);
-    //     console.log("Saving draft, will redirect");
-    //   } else {
-    //     $(".fr-element.fr-view").append(summary_div);
-    //     console.log("Saving draft, will redirect");
-    //   }
+      if ($(".fr-element.fr-view").length != 0) {
+        $(".fr-element.fr-view").empty();
+        $(".fr-element.fr-view").append(summary_div);
+        console.log("Saving draft, will redirect");
+      } else {
+        $(".fr-element.fr-view").append(summary_div);
+        console.log("Saving draft, will redirect");
+      }
     });
   
     //____________________________________________________SECTION 6 End____________________________________________
