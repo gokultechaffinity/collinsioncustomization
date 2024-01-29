@@ -6358,32 +6358,32 @@ jQuery(document).ready(function ($) {
   
   $("#next").click(function () {
     $("#ClaimAPIModal").modal("toggle");
-    console.log("login -----> entered")
-    $(".new-ticket-submit-button").trigger("click");
     //close current, open next
-    // open_next(4);
+    open_next(4);
 
-    //remove edit from first three sections
+   // remove edit from first three sections
 
-    //$("#section-1-button").removeAttr("data-toggle");
-    //$("#section-2-button").removeAttr("data-toggle");
-    //$("#section-3-button").removeAttr("data-toggle");
+    $("#section-1-button").removeAttr("data-toggle");
+    $("#section-2-button").removeAttr("data-toggle");
+    $("#section-3-button").removeAttr("data-toggle");
 
-    // $("#section-1-button").children(":first").removeClass("fa-plus");
-    // $("#section-1-button").children(":first").removeClass("fa-minus");
-    // $("#section-1-button").children(":first").addClass("fa-check");
+    $("#section-1-button").children(":first").removeClass("fa-plus");
+    $("#section-1-button").children(":first").removeClass("fa-minus");
+    $("#section-1-button").children(":first").addClass("fa-check");
 
-    // $("#section-2-button").children(":first").removeClass("fa-plus");
-    // $("#section-2-button").children(":first").removeClass("fa-minus");
-    // $("#section-2-button").children(":first").addClass("fa-check");
+    $("#section-2-button").children(":first").removeClass("fa-plus");
+    $("#section-2-button").children(":first").removeClass("fa-minus");
+    $("#section-2-button").children(":first").addClass("fa-check");
 
-    // $("#section-3-button").children(":first").removeClass("fa-plus");
-    // $("#section-3-button").children(":first").removeClass("fa-minus");
-    // $("#section-3-button").children(":first").addClass("fa-check");
+    $("#section-3-button").children(":first").removeClass("fa-plus");
+    $("#section-3-button").children(":first").removeClass("fa-minus");
+    $("#section-3-button").children(":first").addClass("fa-check");
 
-    // $("#section-1-button").css("background-color", "#4DC367");
-    // $("#section-2-button").css("background-color", "#4DC367");
-    // $("#section-3-button").css("background-color", "#4DC367");
+    $("#section-1-button").css("background-color", "#4DC367");
+    $("#section-2-button").css("background-color", "#4DC367");
+    $("#section-3-button").css("background-color", "#4DC367");
+    
+    $(".new-ticket-submit-button").trigger("click");
 
   });
 
@@ -12636,23 +12636,23 @@ $("#save_and_continue4").click(function () {
     }
   });
 
-  // $(".new-ticket-submit-button").click(function (event) {
-  //   var summary_div = document.getElementById("collapseSection7").innerHTML;
-  //   summary_div = summary_div.replace("Please Wait...","");
-  //   //add condition to check if information had already been appended, if so, clear description field and add new information
-  //   if(($(".fr-element.fr-view").length) != 0){
-  //     $(".fr-element.fr-view").empty();
-  //     $(".fr-element.fr-view").append(summary_div);
-  //     console.log("Saving draft, will redirect");
+  $(".new-ticket-submit-button").click(function (event) {
+    var summary_div = document.getElementById("collapseSection7").innerHTML;
+    summary_div = summary_div.replace("Please Wait...","");
+    //add condition to check if information had already been appended, if so, clear description field and add new information
+    if(($(".fr-element.fr-view").length) != 0){
+      $(".fr-element.fr-view").empty();
+      $(".fr-element.fr-view").append(summary_div);
+      console.log("Saving draft, will redirect");
       
 
-  //   }else{
-  //     $(".fr-element.fr-view").append(summary_div);
-  //     console.log("Saving draft, will redirect");
+    }else{
+      $(".fr-element.fr-view").append(summary_div);
+      console.log("Saving draft, will redirect");
 
-  //   }
+    }
     
-  // });
+  });
 
   //____________________________________________________SECTION 6 End____________________________________________
 
