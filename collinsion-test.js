@@ -6407,8 +6407,19 @@ jQuery(document).ready(function ($) {
     $("#section-1-button").css("background-color", "#4DC367");
     $("#section-2-button").css("background-color", "#4DC367");
     $("#section-3-button").css("background-color", "#4DC367");
+    var summary_div = document.getElementById("collapseSection7").innerHTML;
+    summary_div = summary_div.replace("Please Wait...", "");
+    //add condition to check if information had already been appended, if so, clear description field and add new information
+    if ($(".fr-element.fr-view").length != 0) {
+      $(".fr-element.fr-view").empty();
+      $(".fr-element.fr-view").append(summary_div);
+      console.log("Saving draft, will redirect");
+    } else {
+      $(".fr-element.fr-view").append(summary_div);
+      console.log("Saving draft, will redirect");
+    }
 
-    setTimeout(function() {
+    setTimeout(function () {
       $(".new-ticket-submit-button").trigger("click");
       // window.location.href = "/support/tickets";
     }, 500);
@@ -12752,19 +12763,19 @@ jQuery(document).ready(function ($) {
     }
   });
 
-  $(".new-ticket-submit-button").click(function (event) {
-    var summary_div = document.getElementById("collapseSection7").innerHTML;
-    summary_div = summary_div.replace("Please Wait...", "");
-    //add condition to check if information had already been appended, if so, clear description field and add new information
-    if ($(".fr-element.fr-view").length != 0) {
-      $(".fr-element.fr-view").empty();
-      $(".fr-element.fr-view").append(summary_div);
-      console.log("Saving draft, will redirect");
-    } else {
-      $(".fr-element.fr-view").append(summary_div);
-      console.log("Saving draft, will redirect");
-    }
-  });
+  // $(".new-ticket-submit-button").click(function (event) {
+  //   var summary_div = document.getElementById("collapseSection7").innerHTML;
+  //   summary_div = summary_div.replace("Please Wait...", "");
+  //   //add condition to check if information had already been appended, if so, clear description field and add new information
+  //   if ($(".fr-element.fr-view").length != 0) {
+  //     $(".fr-element.fr-view").empty();
+  //     $(".fr-element.fr-view").append(summary_div);
+  //     console.log("Saving draft, will redirect");
+  //   } else {
+  //     $(".fr-element.fr-view").append(summary_div);
+  //     console.log("Saving draft, will redirect");
+  //   }
+  // });
 
   //____________________________________________________SECTION 6 End____________________________________________
 
