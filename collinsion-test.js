@@ -631,9 +631,10 @@ jQuery(document).ready(function ($) {
 
     $("#helpdesk_ticket_form_id").addClass("for-section-7");
     $(".form-group.helpdesk_ticket_email").addClass("for-section-7");
-    $(".btn.fw-primary-button.new-ticket-submit-button").addClass(
-      "for-section-7"
-    );
+    //Added logic D
+    // $(".btn.fw-primary-button.new-ticket-submit-button").addClass(
+    //   "for-section-7"
+    // );
     //hide cancel button
     $("a.btn.fw-secondary-button").hide();
   }
