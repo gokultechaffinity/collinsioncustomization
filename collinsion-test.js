@@ -7767,6 +7767,8 @@ jQuery(document).ready(function ($) {
       update_section_4_continue();
       open_next(3);
       //change document color
+      $("#section-3-button").css("background-color", "#4DC367");
+      $("#section-5-button").css("background-color", "#4DC367");
       $("#section-3-button").children(":first").removeClass("fa-plus");
       $("#section-5-button").children(":first").removeClass("fa-minus");
       $("#section-5-button").children(":first").removeClass("fa-plus");
