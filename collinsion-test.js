@@ -6379,7 +6379,7 @@ jQuery(document).ready(function ($) {
   //do modal popup with claims statement
 
   $("#next").click(function () {
-    $("#ClaimAPIModal").modal("toggle");
+    // $("#ClaimAPIModal").modal("toggle");
 
     //close current, open next
     // closed by me
@@ -6407,8 +6407,10 @@ jQuery(document).ready(function ($) {
     $("#section-2-button").css("background-color", "#4DC367");
     $("#section-3-button").css("background-color", "#4DC367");
 
-     $(".new-ticket-submit-button").trigger("click");
-    //  window.location.href = "/support/tickets";
+    setTimeout(function() {
+      $(".new-ticket-submit-button").trigger("click");
+      window.location.href = "/support/tickets";
+    }, 500);
   });
 
   function validateMandatoryFields(list_of_fields) {
