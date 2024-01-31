@@ -6409,7 +6409,7 @@ jQuery(document).ready(function ($) {
 
     setTimeout(function() {
       $(".new-ticket-submit-button").trigger("click");
-      window.location.href = "/support/tickets";
+      // window.location.href = "/support/tickets";
     }, 500);
   });
 
