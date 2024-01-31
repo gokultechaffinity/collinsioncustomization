@@ -6387,7 +6387,7 @@ jQuery(document).ready(function ($) {
     open_next(4);
 
     //remove edit from first three sections
-
+jQuery("#collapseSection4 .form-control").removeattr("required")
     $("#section-1-button").removeAttr("data-toggle");
     $("#section-2-button").removeAttr("data-toggle");
     $("#section-3-button").removeAttr("data-toggle");
