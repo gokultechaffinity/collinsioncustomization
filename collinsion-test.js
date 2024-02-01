@@ -6407,9 +6407,10 @@ jQuery(document).ready(function ($) {
     $("#section-1-button").css("background-color", "#4DC367");
     $("#section-2-button").css("background-color", "#4DC367");
     $("#section-3-button").css("background-color", "#4DC367");
-    $(".new-ticket-submit-button").trigger("click");
+
     setTimeout(function () {
-     window.location.href = "/support/tickets";
+      $(".new-ticket-submit-button").trigger("click");
+      // window.location.href = "/support/tickets";
     }, 500);
   });
 
