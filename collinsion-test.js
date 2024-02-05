@@ -7766,7 +7766,7 @@ jQuery(document).ready(function ($) {
     }
 
     if (jQuery(".fw-comments-wrapper").length > 0) {
-      console.log("update section cont. ----> 4");
+      console.log("------ Inside Existing Ticket View -----");
       update_section_4_continue();
       open_next(3);
       //change document color
@@ -7789,6 +7789,7 @@ jQuery(document).ready(function ($) {
         $("#new_helpdesk_note #attachments_list .proper-attachments-list")
           .length
       ) {
+        console.log("Entering into IF ----- inside If")
         fileUploadCallback();
       } else if ($(".fw-comments-wrapper .fw-attachment-item").length) {
         //Need to add another condition for already had div if div has length then we need to open next section
@@ -7796,13 +7797,15 @@ jQuery(document).ready(function ($) {
       }
     } else {
       //will excute in create new ticket senario
-
+      console.log("Entering into Else --------")
       fileUploadCallback();
     }
   });
 
   function fileUploadCallback() {
     var elem = document.getElementById("files_list");
+    console.log("element ----->",element);
+    console.log("element.files ----->",elem.files);
     if (elem.files.length) {
       let fileExtensionArray = [
         "gif",
@@ -7832,8 +7835,6 @@ jQuery(document).ready(function ($) {
         fileExtension = fileExtension.toLowerCase();
         if (fileExtensionArray.includes(fileExtension)) {
           let checkingFile = elem.files[i].name.split(".");
-          console.log("file name ", elem.files[i].name);
-          console.log("checking file name splitted ", checkingFile);
           if (checkingFile.length > 2) {
             formatValidateCounter = formatValidateCounter + 1;
           } else {
@@ -7848,7 +7849,6 @@ jQuery(document).ready(function ($) {
       var sum = fileSize.reduce(function (a, b) {
         return a + b;
       }, 0);
-      console.log("sum tottal--->", sum);
       if (sum <= 5242880) {
         let ele = ["api_call_failed_filelist"];
         clearError(ele);
@@ -7959,7 +7959,6 @@ jQuery(document).ready(function ($) {
   }
   function getUploadFiles(files, fieldId) {
     console.log("--->", files);
-    console.log("--->", typeof files);
     let statusCode;
     let flag = false;
     var formdata = new FormData();
