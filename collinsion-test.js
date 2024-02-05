@@ -7804,7 +7804,7 @@ jQuery(document).ready(function ($) {
 
   function fileUploadCallback() {
     var elem = document.getElementById("files_list");
-    console.log("element ----->",element);
+    console.log("element ----->",elem);
     console.log("element.files ----->",elem.files);
     if (elem.files.length) {
       let fileExtensionArray = [
