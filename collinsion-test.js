@@ -181,7 +181,7 @@ jQuery(document).ready(function ($) {
   // if($("#title").hasClass("VHI")||$("#title").hasClass("EasyJet")){
   domainURL = "claim-proxy-lower.collinsonnis.com";
 
-  // getJWTToken();
+   getJWTToken();
   // if (!jQuery(".fw-comments-wrapper").length) {
   //   createCaptcha();
   // }
