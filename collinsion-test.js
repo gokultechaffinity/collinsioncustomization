@@ -8009,7 +8009,8 @@ jQuery(document).ready(function ($) {
         } else {
           // jQuery("#overlay").addClass("d-none").removeClass("show loader-text");
           if (jQuery(".fw-comments-wrapper").length > 0) {
-            $("#new_helpdesk_note #helpdesk_note_submit").trigger("click");
+            
+            // $("#new_helpdesk_note #helpdesk_note_submit").trigger("click");
           } else {
             if (fieldId == ".save_draft_5") {
               $(".new-ticket-submit-button").trigger("click");
