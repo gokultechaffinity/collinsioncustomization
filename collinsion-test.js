@@ -7755,15 +7755,15 @@ jQuery(document).ready(function ($) {
   });
 
   $(".save_and_continue5").click(function () {
-    if ($("#section_4_header").length) {
-      console.log("update section ----> 4");
-      update_section_4();
-      add_section_5();
-    } else {
-      add_section_4();
-      add_section_5();
-      console.log("add section ----> 4");
-    }
+    // if ($("#section_4_header").length) {
+    //   console.log("update section ----> 4");
+    //   update_section_4();
+    //   add_section_5();
+    // } else {
+    //   add_section_4();
+       add_section_5();
+    //   console.log("add section ----> 4");
+    // }
 
     if (jQuery(".fw-comments-wrapper").length > 0) {
       console.log("------ Inside Existing Ticket View -----");
