@@ -179,14 +179,14 @@ jQuery(document).ready(function ($) {
   let InternalPolicyNumber;
   let domainURL;
   // if($("#title").hasClass("VHI")||$("#title").hasClass("EasyJet")){
-  domainURL = "claim-proxy.collinsonnis.com";
+  domainURL = "claim-proxy-lower.collinsonnis.com";
 
-  getJWTToken();
+   getJWTToken();
   // if (!jQuery(".fw-comments-wrapper").length) {
   //   createCaptcha();
   // }
   //replaced with
-  if ($("#new_helpdesk_ticket").length) {
+  if ($(".fw-main-wrapper.submit_ticket").length) {
     createCaptcha();
   }
   function getJWTToken(fieldId) {
@@ -210,6 +210,7 @@ jQuery(document).ready(function ($) {
         console.log("--Policy details->", flag);
         AuthorizationKey = result.token;
         if (fieldId) {
+          console.log("--field Id->", fieldId);
           $(fieldId).trigger("click");
         }
         if (flag) {
@@ -263,7 +264,7 @@ jQuery(document).ready(function ($) {
     //check for portal
     if ($("#title").hasClass("VHI") || $("#title").hasClass("ColumbusItaly")) {
       var PolicyNumberParent = document.getElementById(
-        "helpdesk_ticket_custom_field_cf_policy_number_post_office_2321673"
+        "helpdesk_ticket_custom_field_cf_policy_number454080_2321673"
       ).parentElement;
       PolicyNumberParent.classList.add("for-section-1");
 
@@ -282,7 +283,7 @@ jQuery(document).ready(function ($) {
       ClaimNumberParent.classList.add("for-section-1");
     } else if ($("#title").hasClass("EasyJet")) {
       var PolicyNumberParent = document.getElementById(
-        "helpdesk_ticket_custom_field_cf_policy_number_post_office_2321673"
+        "helpdesk_ticket_custom_field_cf_policy_number454080_2321673"
       ).parentElement;
       PolicyNumberParent.classList.add("for-section-1");
 
@@ -301,7 +302,7 @@ jQuery(document).ready(function ($) {
       ClaimNumberParent.classList.add("for-section-1");
     } else if ($("#title").hasClass("CollinsonUK")) {
       var PolicyNumberParent = document.getElementById(
-        "helpdesk_ticket_custom_field_cf_policy_number_post_office_2321673"
+        "helpdesk_ticket_custom_field_cf_policy_number454080_2321673"
       ).parentElement;
       PolicyNumberParent.classList.add("for-section-1");
 
@@ -431,7 +432,7 @@ jQuery(document).ready(function ($) {
         "<p class='for-section-4' style='margin-top: 20px;'>Se clicchi 'Salva sinistro' ti invieremo un'e-mail entro 5 minuti per l'attivazione del tuo account, dove potrai continuare con il tuo sinistro</p>"
       ).insertBefore("#save_draft_4");
     } else {
-console.log("--------------entering into else");
+      console.log("---------------------inside else tel us what happened");
       $(
         '<button id="save_draft_4" class="btn btn-primary for-section-4 " type="button">Pause</button>'
       ).insertAfter(
@@ -446,6 +447,13 @@ console.log("--------------entering into else");
       $(
         '<p class="for-section-4" style="margin-top: 20px;">If you pause your claim, all of the information you have given will be saved for you.</p>'
       ).insertBefore("#save_draft_4");
+      //   $('<div id="card-section-4">').append(
+      //     $('<p class="for-section-4" style="margin-top: 20px; margin-bottom: 2rem;">If you pause your claim, all of the information you have given will be saved for you.</p>'),
+      //     $('<button id="save_draft_4" class="btn btn-primary for-section-4" type="button" style="background-color: rgb(255, 191, 0); margin-left: 0rem; margin-right: 51.25rem; margin-bottom: 2rem;">Pause</button>'),
+      //     $('<hr id="hr4" class="for-section-4">'),
+      //     $('<div class="helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper for-section-4"></div>'),
+      //     $('<button id="save_and_continue4" class="btn btn-primary for-section-4 save_and_continue" type="button">Continue</button>')
+      // ).insertAfter(".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper");
     }
   }
   //____________________________________________________SECTION 5 Start - Your Documents____________________________________________
@@ -454,7 +462,7 @@ console.log("--------------entering into else");
   if (jQuery(".fw-comments-wrapper").length > 0) {
     $(
       '<div id="mock-doc" class="form-group attachments for-section-5"><span class="d-none"><input id="upload_file" type="file" multiple="false"><input id="files_list" type="file" name="helpdesk_ticket[attachments][][resource]" multiple="false"></span><div class="dropdown"><button class="btn btn-link " type="button" id="attach_btn" data-attach-type="file"><span class="file-upload-btn" tabindex="0"><img data-src="/glyphs/vectors/attachment.svg" loading="lazy" alt="Attachment" class="icon ls-is-cached lazyloaded" src="/glyphs/vectors/attachment.svg">Attachment</span></button><ul class="dropdown-menu" aria-labelledby="attach_btn"><li><a class="dropdown-item" href="#" data-attach-type="file">Attach a file</a></li></ul></div><div id="attachments_list" class="files-container"></div><div><div id="cumulative_error_heading" class="error-heading"></div><div id="cumulative_error_attachments_list" class="files-container"></div></div><div><div id="individual_error_heading" class="error-heading"></div><div id="individual_error_attachments_list" class="files-container"></div></div></div>'
-    ).insertAfter(
+    ).insertBefore(
       ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper"
     );
     var attachments_html = "";
@@ -498,7 +506,7 @@ console.log("--------------entering into else");
   } else {
     $(
       '<div id="mock-doc" class="form-group attachments-container for-section-5"><span class="d-none"><input id="upload_file" type="file" multiple="false"><input id="files_list" type="file" name="helpdesk_ticket[attachments][][resource]" multiple="false"></span><div class="dropdown"><button class="btn btn-link " type="button" id="attach_btn" data-attach-type="file"><span class="file-upload-btn" tabindex="0"><img data-src="/glyphs/vectors/attachment.svg" loading="lazy" alt="Attachment" class="icon ls-is-cached lazyloaded" src="/glyphs/vectors/attachment.svg">Attachment</span></button><ul class="dropdown-menu" aria-labelledby="attach_btn"><li><a class="dropdown-item" href="#" data-attach-type="file">Attach a file</a></li></ul></div><div id="attachments_list" class="files-container"></div><div><div id="cumulative_error_heading" class="error-heading"></div><div id="cumulative_error_attachments_list" class="files-container"></div></div><div><div id="individual_error_heading" class="error-heading"></div><div id="individual_error_attachments_list" class="files-container"></div></div></div>'
-    ).insertAfter(
+    ).insertBefore(
       ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper"
     );
     $(".form-group.attachments-container").addClass("for-section-5");
@@ -624,9 +632,10 @@ console.log("--------------entering into else");
 
     $("#helpdesk_ticket_form_id").addClass("for-section-7");
     $(".form-group.helpdesk_ticket_email").addClass("for-section-7");
-    $(".btn.fw-primary-button.new-ticket-submit-button").addClass(
-      "for-section-7"
-    );
+    //Added logic D
+    // $(".btn.fw-primary-button.new-ticket-submit-button").addClass(
+    //   "for-section-7"
+    // );
     //hide cancel button
     $("a.btn.fw-secondary-button").hide();
   }
@@ -650,7 +659,9 @@ console.log("--------------entering into else");
         '" data-parent="#accordion" aria-labelledby="overall_div_' +
         number +
         '">' +
-        '<div class="card-body">'
+        '<div class="card-body" id="card-section-' +
+        number +
+        '">'
     );
     $(
       '<div id="overall_div_' +
@@ -1139,6 +1150,7 @@ console.log("--------------entering into else");
   });
 
   function open_next(section_number) {
+    console.log("-------->enterd sect open");
     //close current,
     if (section_number == 4) {
       $("#collapseSection3").removeClass("show");
@@ -1149,6 +1161,7 @@ console.log("--------------entering into else");
     } else {
       $("#collapseSection" + section_number).removeClass("show");
     }
+
     //sign swap
     $("#section-" + section_number + "-button")
       .children(":first")
@@ -1211,7 +1224,7 @@ console.log("--------------entering into else");
       ) {
         if (
           $(
-            "#helpdesk_ticket_custom_field_cf_policy_number_post_office_2321673"
+            "#helpdesk_ticket_custom_field_cf_policy_number454080_2321673"
           ).val() == "" ||
           $("#helpdesk_ticket_custom_field_cf_policy_email_2321673").val() == ""
         ) {
@@ -1219,7 +1232,7 @@ console.log("--------------entering into else");
           // $("#helpdesk_ticket_custom_field_cf_claim_number_2321673").val() == ""
           if ($("#title").hasClass("ColumbusItaly")) {
             addErrorMessage(
-              "helpdesk_ticket_custom_field_cf_policy_number_post_office_2321673",
+              "helpdesk_ticket_custom_field_cf_policy_number454080_2321673",
               "Si prega di compilare tutti i campi"
             );
             addErrorMessage(
@@ -1228,7 +1241,7 @@ console.log("--------------entering into else");
             );
           } else {
             addErrorMessage(
-              "helpdesk_ticket_custom_field_cf_policy_number_post_office_2321673",
+              "helpdesk_ticket_custom_field_cf_policy_number454080_2321673",
               "Please fill in all fields"
             );
             addErrorMessage(
@@ -1244,19 +1257,19 @@ console.log("--------------entering into else");
           var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
           if (
             $(
-              "#helpdesk_ticket_custom_field_cf_policy_number_post_office_2321673"
+              "#helpdesk_ticket_custom_field_cf_policy_number454080_2321673"
             ).val().length < 6
           ) {
             if ($("#title").hasClass("ColumbusItaly")) {
               addErrorMessage(
-                "helpdesk_ticket_custom_field_cf_policy_number_post_office_2321673",
+                "helpdesk_ticket_custom_field_cf_policy_number454080_2321673",
                 "Il numero di polizza deve essere di almeno 6 cifre."
               );
               $("#save_and_continue1").removeAttr("data-target");
               $("#save_and_continue1").removeAttr("data-toggle");
             } else {
               addErrorMessage(
-                "helpdesk_ticket_custom_field_cf_policy_number_post_office_2321673",
+                "helpdesk_ticket_custom_field_cf_policy_number454080_2321673",
                 "Policy Number must be at least 6 digits."
               );
               $("#save_and_continue1").removeAttr("data-target");
@@ -1272,7 +1285,7 @@ console.log("--------------entering into else");
           } else {
             //create variables for invoke
             let policyNumber = $(
-              "#helpdesk_ticket_custom_field_cf_policy_number_post_office_2321673"
+              "#helpdesk_ticket_custom_field_cf_policy_number454080_2321673"
             ).val();
             let policyEmail = $(
               "#helpdesk_ticket_custom_field_cf_policy_email_2321673"
@@ -1298,7 +1311,7 @@ console.log("--------------entering into else");
             $("#save_and_continue1").attr("data-toggle", "modal");
             clearError([
               "helpdesk_ticket_custom_field_cf_policy_email_2321673",
-              "helpdesk_ticket_custom_field_cf_policy_number_post_office_2321673",
+              "helpdesk_ticket_custom_field_cf_policy_number454080_2321673",
               "helpdesk_ticket_custom_field_cf_claim_number_2321673",
             ]);
           }
@@ -1350,14 +1363,14 @@ console.log("--------------entering into else");
       ) {
         if (
           $(
-            "#helpdesk_ticket_custom_field_cf_policy_number_post_office_2321673"
+            "#helpdesk_ticket_custom_field_cf_policy_number454080_2321673"
           ).val() == "" ||
           $("#helpdesk_ticket_custom_field_cf_date_of_birth_2321673").val() ==
             ""
         ) {
           if ($("#title").hasClass("ColumbusItaly")) {
             addErrorMessage(
-              "helpdesk_ticket_custom_field_cf_policy_number_post_office_2321673",
+              "helpdesk_ticket_custom_field_cf_policy_number454080_2321673",
               "Si prega di compilare tutti i campi"
             );
             addErrorMessage(
@@ -1366,7 +1379,7 @@ console.log("--------------entering into else");
             );
           } else {
             addErrorMessage(
-              "helpdesk_ticket_custom_field_cf_policy_number_post_office_2321673",
+              "helpdesk_ticket_custom_field_cf_policy_number454080_2321673",
               "Please fill in all fields"
             );
             addErrorMessage(
@@ -1378,7 +1391,7 @@ console.log("--------------entering into else");
           //check LENGTH OF POLICY NUMBER - 6 DIGITS
           if (
             $(
-              "#helpdesk_ticket_custom_field_cf_policy_number_post_office_2321673"
+              "#helpdesk_ticket_custom_field_cf_policy_number454080_2321673"
             ).val().length >= 6
           ) {
             birthdate = $(
@@ -1401,7 +1414,7 @@ console.log("--------------entering into else");
               $("#save_and_continue1").removeAttr("data-toggle");
             } else if (today > bday) {
               let policyNumber = $(
-                "#helpdesk_ticket_custom_field_cf_policy_number_post_office_2321673"
+                "#helpdesk_ticket_custom_field_cf_policy_number454080_2321673"
               ).val();
               let dateOfBirth = $(
                 "#helpdesk_ticket_custom_field_cf_date_of_birth_2321673"
@@ -1429,7 +1442,7 @@ console.log("--------------entering into else");
 
               clearError([
                 "helpdesk_ticket_custom_field_cf_date_of_birth_2321673",
-                "helpdesk_ticket_custom_field_cf_policy_number_post_office_2321673",
+                "helpdesk_ticket_custom_field_cf_policy_number454080_2321673",
               ]);
             } else {
               if ($("#title").hasClass("ColumbusItaly")) {
@@ -1449,14 +1462,14 @@ console.log("--------------entering into else");
           } else {
             if ($("#title").hasClass("ColumbusItaly")) {
               addErrorMessage(
-                "helpdesk_ticket_custom_field_cf_policy_number_post_office_2321673",
+                "helpdesk_ticket_custom_field_cf_policy_number454080_2321673",
                 "Il numero di polizza deve essere di almeno 6 cifre."
               );
               $("#save_and_continue1").removeAttr("data-target");
               $("#save_and_continue1").removeAttr("data-toggle");
             } else {
               addErrorMessage(
-                "helpdesk_ticket_custom_field_cf_policy_number_post_office_2321673",
+                "helpdesk_ticket_custom_field_cf_policy_number454080_2321673",
                 "Policy Number must be at least 6 digits."
               );
               $("#save_and_continue1").removeAttr("data-target");
@@ -1507,14 +1520,14 @@ console.log("--------------entering into else");
       ) {
         if (
           $(
-            "#helpdesk_ticket_custom_field_cf_policy_number_post_office_2321673"
+            "#helpdesk_ticket_custom_field_cf_policy_number454080_2321673"
           ).val() == "" ||
           $("#helpdesk_ticket_custom_field_cf_date_of_birth_2321673").val() ==
             ""
         ) {
           if ($("#title").hasClass("ColumbusItaly")) {
             addErrorMessage(
-              "helpdesk_ticket_custom_field_cf_policy_number_post_office_2321673",
+              "helpdesk_ticket_custom_field_cf_policy_number454080_2321673",
               "Si prega di compilare tutti i campi"
             );
             addErrorMessage(
@@ -1523,7 +1536,7 @@ console.log("--------------entering into else");
             );
           } else {
             addErrorMessage(
-              "helpdesk_ticket_custom_field_cf_policy_number_post_office_2321673",
+              "helpdesk_ticket_custom_field_cf_policy_number454080_2321673",
               "Please fill in all fields"
             );
             addErrorMessage(
@@ -1535,7 +1548,7 @@ console.log("--------------entering into else");
           //check LENGTH OF POLICY NUMBER - 6 DIGITS
           if (
             $(
-              "#helpdesk_ticket_custom_field_cf_policy_number_post_office_2321673"
+              "#helpdesk_ticket_custom_field_cf_policy_number454080_2321673"
             ).val().length >= 6
           ) {
             birthdate = $(
@@ -1558,7 +1571,7 @@ console.log("--------------entering into else");
               $("#save_and_continue1").removeAttr("data-toggle");
             } else if (today > bday) {
               let policyNumber = $(
-                "#helpdesk_ticket_custom_field_cf_policy_number_post_office_2321673"
+                "#helpdesk_ticket_custom_field_cf_policy_number454080_2321673"
               ).val();
               let dateOfBirth = $(
                 "#helpdesk_ticket_custom_field_cf_date_of_birth_2321673"
@@ -1585,7 +1598,7 @@ console.log("--------------entering into else");
               $("#save_and_continue1").attr("data-toggle", "modal");
               clearError([
                 "helpdesk_ticket_custom_field_cf_date_of_birth_2321673",
-                "helpdesk_ticket_custom_field_cf_policy_number_post_office_2321673",
+                "helpdesk_ticket_custom_field_cf_policy_number454080_2321673",
               ]);
             } else {
               if ($("#title").hasClass("ColumbusItaly")) {
@@ -1605,14 +1618,14 @@ console.log("--------------entering into else");
           } else {
             if ($("#title").hasClass("ColumbusItaly")) {
               addErrorMessage(
-                "helpdesk_ticket_custom_field_cf_policy_number_post_office_2321673",
+                "helpdesk_ticket_custom_field_cf_policy_number454080_2321673",
                 "Il numero di polizza deve essere di almeno 6 cifre."
               );
               $("#save_and_continue1").removeAttr("data-target");
               $("#save_and_continue1").removeAttr("data-toggle");
             } else {
               addErrorMessage(
-                "helpdesk_ticket_custom_field_cf_policy_number_post_office_2321673",
+                "helpdesk_ticket_custom_field_cf_policy_number454080_2321673",
                 "Policy Number must be at least 6 digits."
               );
               $("#save_and_continue1").removeAttr("data-target");
@@ -4829,7 +4842,7 @@ console.log("--------------entering into else");
       name_ita: "Altro",
     },
     {
-      id: "Abandonment",
+      id: "CancellationCoronavirus",
       name_eng: "Abandonment",
       name_ita: "Abandonment",
     },
@@ -6371,15 +6384,15 @@ console.log("--------------entering into else");
     // $("#ClaimAPIModal").modal("toggle");
 
     //close current, open next
+    // closed by me
     open_next(4);
 
     //remove edit from first three sections
-
-    //$("#section-1-button").removeAttr("data-toggle");
-    //$("#section-2-button").removeAttr("data-toggle");
-    //$("#section-3-button").removeAttr("data-toggle");
     jQuery("#collapseSection4 .form-control").removeAttr("required");
-    jQuery("#collapseSection6 .form-control").removeAttr("required");
+    $("#section-1-button").removeAttr("data-toggle");
+    $("#section-2-button").removeAttr("data-toggle");
+    $("#section-3-button").removeAttr("data-toggle");
+
     $("#section-1-button").children(":first").removeClass("fa-plus");
     $("#section-1-button").children(":first").removeClass("fa-minus");
     $("#section-1-button").children(":first").addClass("fa-check");
@@ -6395,8 +6408,10 @@ console.log("--------------entering into else");
     $("#section-1-button").css("background-color", "#4DC367");
     $("#section-2-button").css("background-color", "#4DC367");
     $("#section-3-button").css("background-color", "#4DC367");
+
     setTimeout(function () {
       $(".new-ticket-submit-button").trigger("click");
+      // window.location.href = "/support/tickets";
     }, 500);
   });
 
@@ -7741,6 +7756,7 @@ console.log("--------------entering into else");
   });
 
   $(".save_and_continue5").click(function () {
+    console.log("happening -------->")
     if ($("#section_4_header").length) {
       console.log("update section ----> 4");
       update_section_4();
@@ -7752,7 +7768,7 @@ console.log("--------------entering into else");
     }
 
     if (jQuery(".fw-comments-wrapper").length > 0) {
-      console.log("update section cont. ----> 4");
+      console.log("------ Inside Existing Ticket View -----");
       update_section_4_continue();
       open_next(3);
       //change document color
@@ -7775,6 +7791,7 @@ console.log("--------------entering into else");
         $("#new_helpdesk_note #attachments_list .proper-attachments-list")
           .length
       ) {
+        console.log("Entering into IF ----- inside If")
         fileUploadCallback();
       } else if ($(".fw-comments-wrapper .fw-attachment-item").length) {
         //Need to add another condition for already had div if div has length then we need to open next section
@@ -7782,13 +7799,15 @@ console.log("--------------entering into else");
       }
     } else {
       //will excute in create new ticket senario
-
+      console.log("Entering into Else --------")
       fileUploadCallback();
     }
   });
 
   function fileUploadCallback() {
     var elem = document.getElementById("files_list");
+    console.log("element ----->",elem);
+    console.log("element.files ----->",elem.files);
     if (elem.files.length) {
       let fileExtensionArray = [
         "gif",
@@ -7818,8 +7837,6 @@ console.log("--------------entering into else");
         fileExtension = fileExtension.toLowerCase();
         if (fileExtensionArray.includes(fileExtension)) {
           let checkingFile = elem.files[i].name.split(".");
-          console.log("file name ", elem.files[i].name);
-          console.log("checking file name splitted ", checkingFile);
           if (checkingFile.length > 2) {
             formatValidateCounter = formatValidateCounter + 1;
           } else {
@@ -7834,7 +7851,6 @@ console.log("--------------entering into else");
       var sum = fileSize.reduce(function (a, b) {
         return a + b;
       }, 0);
-      console.log("sum tottal--->", sum);
       if (sum <= 5242880) {
         let ele = ["api_call_failed_filelist"];
         clearError(ele);
@@ -7852,7 +7868,6 @@ console.log("--------------entering into else");
           //   $("#new_helpdesk_note #helpdesk_note_submit").trigger("click");
           // }
           open_next(3);
-          //change document color
           $("#section-3-button").css("background-color", "#4DC367");
           $("#section-5-button").css("background-color", "#4DC367");
           $("#section-3-button").children(":first").removeClass("fa-plus");
@@ -7877,6 +7892,7 @@ console.log("--------------entering into else");
         );
       }
     } else {
+      console.log("----entered into else------>");
       open_next(3);
       $("#section-3-button").children(":first").removeClass("fa-plus");
       $("#section-3-button").children(":first").addClass("fa-check");
@@ -7945,7 +7961,6 @@ console.log("--------------entering into else");
   }
   function getUploadFiles(files, fieldId) {
     console.log("--->", files);
-    console.log("--->", typeof files);
     let statusCode;
     let flag = false;
     var formdata = new FormData();
@@ -7996,7 +8011,7 @@ console.log("--------------entering into else");
         } else {
           // jQuery("#overlay").addClass("d-none").removeClass("show loader-text");
           if (jQuery(".fw-comments-wrapper").length > 0) {
-            $("#new_helpdesk_note #helpdesk_note_submit").trigger("click");
+             $("#new_helpdesk_note #helpdesk_note_submit").trigger("click");
           } else {
             if (fieldId == ".save_draft_5") {
               $(".new-ticket-submit-button").trigger("click");
@@ -8464,7 +8479,7 @@ console.log("--------------entering into else");
   $(".new-ticket-dummy").click(function () {
     console.log("submit claim entered ");
     // let policyNumber = $(
-    //   "#helpdesk_ticket_custom_field_cf_policy_number_post_office_2321673"
+    //   "#helpdesk_ticket_custom_field_cf_policy_number454080_2321673"
     // ).val();
     // claimnumber we can use global stored value
     console.log("Main ");
@@ -10515,7 +10530,7 @@ console.log("--------------entering into else");
   });
   $(".ticket-detail-dummy").click(function () {
     // let policyNumber = $(
-    //   "#helpdesk_ticket_custom_field_cf_policy_number_post_office_2321673"
+    //   "#helpdesk_ticket_custom_field_cf_policy_number454080_2321673"
     // ).val();
     // claimnumber we can use global stored value
     console.log("Main ");
@@ -12675,7 +12690,7 @@ console.log("--------------entering into else");
           console.log("--sucesss-");
           $(".new-ticket-submit-button").trigger("click");
           window.location.href =
-            "/support/solutions/articles/101000486447-your-claim-and-next-steps";
+            "/support/solutions/articles/101000486448-your-claim-and-next-steps";
         }
       })
       .catch((error) => console.log("error -->", error));
@@ -12724,7 +12739,7 @@ console.log("--------------entering into else");
           console.log("--sucesss-");
           $("#helpdesk_ticket_submit").trigger("click");
           window.location.href =
-            "/support/solutions/articles/101000486447-your-claim-and-next-steps";
+            "/support/solutions/articles/101000486448-your-claim-and-next-steps";
         }
       })
       .catch((error) => console.log("error -->", error));
