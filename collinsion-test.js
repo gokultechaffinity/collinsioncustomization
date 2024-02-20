@@ -431,6 +431,7 @@ jQuery(document).ready(function ($) {
         "<p class='for-section-4' style='margin-top: 20px;'>Se clicchi 'Salva sinistro' ti invieremo un'e-mail entro 5 minuti per l'attivazione del tuo account, dove potrai continuare con il tuo sinistro</p>"
       ).insertBefore("#save_draft_4");
     } else {
+console.log("--------------entering into else");
       $(
         '<button id="save_draft_4" class="btn btn-primary for-section-4 " type="button">Pause</button>'
       ).insertAfter(
