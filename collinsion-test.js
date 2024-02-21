@@ -263,7 +263,7 @@ if (tokenIndex !== -1) {
       : portalURL.length;
   const token = portalURL.substring(tokenStart, tokenEnd);
   let body = { token: token };
-  getTokenPolicyDetails(body);
+  getTokenPolicyDetails(body.token);
 } else {
   console.log("URL does not contain token parameter");
 }
@@ -272,8 +272,8 @@ let flag = false;
 let statusCode;
 const myHeaders = new Headers();
 myHeaders.append("Content-Type", "application/json");
-myHeaders.append("Authorization", "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJzZWN1cmUtYXBpIiwiYXVkIjoic2VjdXJlLWFwcCIsInN1YiI6InRlY2hhZmZpbml0eSIsImlhdCI6MTcwODUwNDg3MCwiZXhwIjoxNzA4NTA4NDcwLCJyb2xlIjpbIlJPTEVfVVNFUiJdfQ.7tdykfkhvIirxMgw3rmn0afy2B159AIA-cf0WRErb2cG1dl30Ng86faXGleI5nkWm-eUaoi9D8x0EK7g34tyTQ");
-const raw = "SL6NEQUvEayrgoob9EDPgA==_6PXlYgCCHnlW5uO884NvtJ//G2ijAL0+xLHL+0EEPrs0PAE/RcDZvsxsJInbUPPkOS9E1Rp0kKAIxm9YAIWUSxLFka2jS3t9bN/RJLxG+zeYNjnPY0IBA3bAbZ32xWck/dK6mRAoU6AQ9b+O7WogYXzcbcWhm+2QA+BONt8/VHqbLi+5j3ppdIGTM1pZ0SXGuPTIFFUkbgfGAQzFo0VQre999+PFcnKeGJvSGOIwBgmCik0KfiUZIwVGP9nEqAblM5hxyOBKzEud5qKv1PJ08uhULty8ivGRTCzj3xsDDfAPkAvRnhcfPIlkS7fBgshEtP4/69nYfVAWVf5OT1zf9Qdmv5RD/ZtSznHGm+PE+OkOR6G7kQqC/917b97Aq3E=";
+myHeaders.append("Authorization", AuthorizationKey);
+const raw = bodyobject;
 const requestOptions = {
   method: "POST",
   headers: myHeaders,
