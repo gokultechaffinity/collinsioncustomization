@@ -300,8 +300,9 @@ fetch("https://pintstg.techaffinity.us/collinson-app/api/policy", requestOptions
      } else {
 console.log("Api response---------->",response)
        console.log("Need to prepopulate PolicyDetails inside the sections");
-$("#helpdesk_ticket_custom_field_cf_policy_number454080_2321673").val(response.InternalPolicyNumber)
-buildPolicyUI(response)
+$("#helpdesk_ticket_custom_field_cf_policy_number454080_2321673").val(response.policyNumber)
+$("#helpdesk_ticket_custom_field_cf_date_of_birth_2321673").val(response.dateOfBirth)
+getPolicyDetails(response.policyNumber, response.dateOfBirth)
 open_next(1)
 $("#section-1-button").children(":first").removeClass("fa-plus");
     $("#section-1-button").children(":first").removeClass("fas");
