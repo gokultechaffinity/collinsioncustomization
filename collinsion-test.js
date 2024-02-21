@@ -273,7 +273,7 @@ let statusCode;
 const myHeaders = new Headers();
 console.log("------getTokenPolicyDetails-------->",AuthorizationKey)
 myHeaders.append("Content-Type", "application/json");
-myHeaders.append("Authorization", AuthorizationKey);
+myHeaders.append("Authorization", "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJzZWN1cmUtYXBpIiwiYXVkIjoic2VjdXJlLWFwcCIsInN1YiI6InRlY2hhZmZpbml0eSIsImlhdCI6MTcwODUwOTIyMywiZXhwIjoxNzA4NTEyODIzLCJyb2xlIjpbIlJPTEVfVVNFUiJdfQ.RJHQpBd9jDslAix9kRDTbB4sN7e0A8imxg-OlHKkVFxdms8B_05lNh0xipLJkwEpa8SBaw8oRAvQZc97PGYeXA");
 const raw = bodyobject;
 const requestOptions = {
   method: "POST",
