@@ -271,6 +271,7 @@ function getTokenPolicyDetails(bodyobject) {
 let flag = false;
 let statusCode;
 const myHeaders = new Headers();
+console.log("------getTokenPolicyDetails-------->",AuthorizationKey)
 myHeaders.append("Content-Type", "application/json");
 myHeaders.append("Authorization", AuthorizationKey);
 const raw = bodyobject;
