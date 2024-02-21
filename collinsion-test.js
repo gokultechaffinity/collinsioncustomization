@@ -212,6 +212,21 @@ jQuery(document).ready(function ($) {
         if (fieldId) {
           console.log("--field Id->", fieldId);
           $(fieldId).trigger("click");
+        }else{
+          let portalURL = window.location.href;
+          const tokenIndex = portalURL.indexOf("token=");
+          if (tokenIndex !== -1) {
+            const tokenStart = tokenIndex + "token=".length;
+            const tokenEnd =
+              portalURL.indexOf("&", tokenStart) !== -1
+                ? portalURL.indexOf("&", tokenStart)
+                : portalURL.length;
+            const token = portalURL.substring(tokenStart, tokenEnd);
+            let body = { token: token };
+            getTokenPolicyDetails(body.token);
+          } else {
+            console.log("URL does not contain token parameter");
+          }
         }
         if (flag) {
           console.log("Please refresh the page ", statusCode);
@@ -253,27 +268,15 @@ jQuery(document).ready(function ($) {
   var today = new Date();
 
   $(".form-group.helpdesk_ticket_email").hide();
-  let portalURL = window.location.href;
-const tokenIndex = portalURL.indexOf("token=");
-if (tokenIndex !== -1) {
-  const tokenStart = tokenIndex + "token=".length;
-  const tokenEnd =
-    portalURL.indexOf("&", tokenStart) !== -1
-      ? portalURL.indexOf("&", tokenStart)
-      : portalURL.length;
-  const token = portalURL.substring(tokenStart, tokenEnd);
-  let body = { token: token };
-  getTokenPolicyDetails(body.token);
-} else {
-  console.log("URL does not contain token parameter");
-}
+
 function getTokenPolicyDetails(bodyobject) {
 let flag = false;
 let statusCode;
 const myHeaders = new Headers();
 console.log("------getTokenPolicyDetails-------->",AuthorizationKey)
 myHeaders.append("Content-Type", "application/json");
-myHeaders.append("Authorization", "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJzZWN1cmUtYXBpIiwiYXVkIjoic2VjdXJlLWFwcCIsInN1YiI6InRlY2hhZmZpbml0eSIsImlhdCI6MTcwODUwOTIyMywiZXhwIjoxNzA4NTEyODIzLCJyb2xlIjpbIlJPTEVfVVNFUiJdfQ.RJHQpBd9jDslAix9kRDTbB4sN7e0A8imxg-OlHKkVFxdms8B_05lNh0xipLJkwEpa8SBaw8oRAvQZc97PGYeXA");
+// myHeaders.append("Authorization", "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJzZWN1cmUtYXBpIiwiYXVkIjoic2VjdXJlLWFwcCIsInN1YiI6InRlY2hhZmZpbml0eSIsImlhdCI6MTcwODUwOTIyMywiZXhwIjoxNzA4NTEyODIzLCJyb2xlIjpbIlJPTEVfVVNFUiJdfQ.RJHQpBd9jDslAix9kRDTbB4sN7e0A8imxg-OlHKkVFxdms8B_05lNh0xipLJkwEpa8SBaw8oRAvQZc97PGYeXA");
+myHeaders.append("Authorization", AuthorizationKey);
 const raw = bodyobject;
 const requestOptions = {
   method: "POST",
