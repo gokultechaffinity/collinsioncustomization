@@ -304,7 +304,7 @@ $("#helpdesk_ticket_custom_field_cf_policy_number454080_2321673").val(response.p
 $("#helpdesk_ticket_custom_field_cf_date_of_birth_2321673").val(response.dateOfBirth)
 // getPolicyDetails(response.policyNumber, response.dateOfBirth)
 let policy="0378154300";
-let dob="19/03/1991"
+let dob="1991-03-19"
 getPolicyDetails(policy,dob)
 open_next(1)
 $("#section-1-button").children(":first").removeClass("fa-plus");
