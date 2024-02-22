@@ -284,7 +284,7 @@ const requestOptions = {
   body: raw,
   redirect: "follow"
 };
-fetch("https://"+domainURL+"/api/policy", requestOptions)
+fetch("https://pintstg.techaffinity.us/collinson-app/api/policy", requestOptions)
    .then((response) => {
      statusCode = response.status;
      if (!response.ok) {
