@@ -277,7 +277,7 @@ jQuery(document).ready(function ($) {
     
     // Format the date in "yyyy-mm-dd" format
     var formattedDate = year + '-' + month + '-' + day;
-    
+    console.log("----->",formattedDate)
     return formattedDate;
 }
 function getTokenPolicyDetails(bodyobject) {
@@ -312,6 +312,7 @@ fetch("https://pintstg.techaffinity.us/collinson-app/api/policy", requestOptions
 console.log("Api response---------->",response)
        console.log("Need to prepopulate PolicyDetails inside the sections");
        var convertedDate = convertDateFormat(response.dateOfBirth);
+       console.log("Need to prepopulate PolicyDetails inside the sections",convertedDate);
 $("#helpdesk_ticket_custom_field_cf_policy_number454080_2321673").val(response.policyNumber)
 jQuery("#helpdesk_ticket_custom_field_cf_date_of_birth_2321673").flatpickr().destroy();
 jQuery("#helpdesk_ticket_custom_field_cf_date_of_birth_2321673").val(convertedDate)
