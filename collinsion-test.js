@@ -268,7 +268,18 @@ jQuery(document).ready(function ($) {
   var today = new Date();
 
   $(".form-group.helpdesk_ticket_email").hide();
-
+  function convertDateFormat(dateString) {
+    // Split the date string into day, month, and year
+    var parts = dateString.split('/');
+    var day = parts[0];
+    var month = parts[1];
+    var year = parts[2];
+    
+    // Format the date in "yyyy-mm-dd" format
+    var formattedDate = year + '-' + month + '-' + day;
+    
+    return formattedDate;
+}
 function getTokenPolicyDetails(bodyobject) {
 let flag = false;
 let statusCode;
@@ -300,9 +311,10 @@ fetch("https://pintstg.techaffinity.us/collinson-app/api/policy", requestOptions
      } else {
 console.log("Api response---------->",response)
        console.log("Need to prepopulate PolicyDetails inside the sections");
+       var convertedDate = convertDateFormat(response.dateOfBirth);
 $("#helpdesk_ticket_custom_field_cf_policy_number454080_2321673").val(response.policyNumber)
 jQuery("#helpdesk_ticket_custom_field_cf_date_of_birth_2321673").flatpickr().destroy();
-jQuery("#helpdesk_ticket_custom_field_cf_date_of_birth_2321673").val(response.dateOfBirth)
+jQuery("#helpdesk_ticket_custom_field_cf_date_of_birth_2321673").val(convertedDate)
 // getPolicyDetails(response.policyNumber, response.dateOfBirth)
 // let policy="0378154300";
 // let dob="1991-03-19"
