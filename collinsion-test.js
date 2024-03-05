@@ -304,9 +304,9 @@ $("#helpdesk_ticket_custom_field_cf_policy_number454080_2321673").val(response.p
 jQuery("#helpdesk_ticket_custom_field_cf_date_of_birth_2321673").flatpickr().destroy();
 jQuery("#helpdesk_ticket_custom_field_cf_date_of_birth_2321673").val(response.dateOfBirth)
 // getPolicyDetails(response.policyNumber, response.dateOfBirth)
-let policy="0378154300";
-let dob="1991-03-19"
-getPolicyDetails(policy,dob)
+// let policy="0378154300";
+// let dob="1991-03-19"
+getPolicyDetails(response.policyNumber,response.dateOfBirth)
 open_next(1)
 $("#section-1-button").children(":first").removeClass("fa-plus");
     $("#section-1-button").children(":first").removeClass("fas");
