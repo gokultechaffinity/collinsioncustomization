@@ -1,4 +1,4 @@
- //collinsion live
+//collinsion live
 jQuery(document).ready(function ($) {
   let code;
   var italy_titles = [
@@ -315,7 +315,7 @@ jQuery("#helpdesk_ticket_custom_field_cf_date_of_birth_2321673").val(formattedDa
 // getPolicyDetails(response.policyNumber, response.dateOfBirth)
 // let policy="0378154300";
 // let dob="1991-03-19"
-getPolicyDetails(response.policyNumber,formattedDate)
+getPolicyDetails(response.policyNumber,response.dateOfBirth)
 open_next(1)
 $("#section-1-button").children(":first").removeClass("fa-plus");
     $("#section-1-button").children(":first").removeClass("fas");
