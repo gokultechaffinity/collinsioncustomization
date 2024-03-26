@@ -7902,14 +7902,14 @@ $("#section-1-button").children(":first").removeClass("fa-plus");
         let sortCode = $(
           "#helpdesk_ticket_custom_field_cf_sort_code659991_2321673"
         ).val();
-
-        console.log(accountHolder, accountNumber, sortCode);
+        let accountHolderName=$("#helpdesk_ticket_custom_field_cf_name_of_account_holder_2321673").val();
+        console.log(accountHolder, accountNumber, sortCode,accountHolderName);
 
         if (countryCode == "GB") {
           ValidateBankMethodTwo(
             accountNumber,
             sortCode,
-            countryCode,
+            countryCode,accountHolderName,
             "#save_and_continue6"
           );
         } else {
