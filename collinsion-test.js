@@ -8327,9 +8327,9 @@ $("#section-1-button").children(":first").removeClass("fa-plus");
         "&sortCode=" +
         sortCode +
         "&countryCode=" +
-        countryCode,
-        // "&AccountHolderName=" +
-        // accountHolderName,
+        countryCode+
+        "&AccountHolderName=" +
+        accountHolderName,
       requestOptions
     )
       .then((response) => {
