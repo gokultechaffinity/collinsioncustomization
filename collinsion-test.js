@@ -5,7 +5,7 @@ jQuery(document).ready(function ($) {
     "In merito alla tua polizza",
     "Su di te",
     "Riguardo al tuo viaggio",
-    "Che cosa ÃƒÂ¨ accaduto",
+    "Che cosa ÃƒÆ’Ã‚Â¨ accaduto",
     "I tuoi documenti",
     "I tuoi dettagli bancari",
     "Descrizione del tuo sinistro",
@@ -21,49 +21,20 @@ jQuery(document).ready(function ($) {
     "Your payment details",
     "Your claim summary",
   ];
+  //hide two options for Italy
 
-  var german_titles = [
-    "Ihre Richtlinie",
-    "ÃƒÅ“ber dich",
-    "ÃƒÅ“ber Ihre Reise",
-    "ErzÃƒÂ¤hlen Sie uns, was passiert ist",
-    "Ihre Dokumente",
-    "Ihre Zahlungsdetails",
-    "Ihre Schadenszusammenfassung",
-  ];
+  $(document.body).click(function () {
+    //VARIABLES
+    //include italy
 
-  var french_titles = [
-    "Votre police",
-    "Ãƒâ‚¬ propos de vous",
-    "Ãƒâ‚¬ propos de votre voyage",
-    "Dites-nous ce qui s'est passÃƒÂ©",
-    "Vos documents",
-    "Vos dÃƒÂ©tails de paiement",
-    "Votre rÃƒÂ©sumÃƒÂ© de rÃƒÂ©clamation",
-  ];
+    if ($("#title").hasClass("ColumbusItaly")) {
+      $('div[data-value="Missed flight or departure"]').remove();
+      $(
+        'div[data-value="Substitute Accommodation - change to accommodation during trip"]'
+      ).remove();
+    }
+  });
 
-  var portuguese_titles = [
-    "Sua apÃƒÂ³lice",
-    "Sobre vocÃƒÂª",
-    "Sobre a sua viagem",
-    "Nos conte o que aconteceu",
-    "Seus documentos",
-    "Seus detalhes de pagamento",
-    "Seu resumo de reclamaÃƒÂ§ÃƒÂ£o",
-  ];
-
-  var spanish_titles = [
-    "Tu pÃƒÂ³liza",
-    "Acerca de ti",
-    "Acerca de tu viaje",
-    "CuÃƒÂ©ntanos quÃƒÂ© pasÃƒÂ³",
-    "Tus documentos",
-    "Tus detalles de pago",
-    "Tu resumen de reclamaciÃƒÂ³n",
-  ];
-
-  //existing toolbar hide
-  $("#ticket-toolbar").hide();
   $("#chat-icon").hide();
   $("#helpdesk_ticket_subject").closest(".form-group").hide();
   $("#helpdesk_ticket_custom_field_cf_mainclientid_2321673")
@@ -89,107 +60,42 @@ jQuery(document).ready(function ($) {
       '<div class="invalid-feedback api_call_failed_postcode">API call failed</div>'
     );
 
-  //ITALIAN
-  if (
-    window.location.href ==
-    "https://easyjeteu.freshdesk.com/it/support/tickets/new"
-  ) {
-    $("#helpdesk_ticket_custom_field_cf_policy_email_2321673")
-      .closest(".form-group")
-      .append(
-        '<div id="captcha-section"><label>Inserisci Captcha</label><div id="captcha"></div><input type="text" placeholder="Captcha" id="cpatchaTextBox"/></div>'
-      );
-    $("#helpdesk_ticket_custom_field_cf_date_of_birth_2321673")
-      .closest(".form-group")
-      .append(
-        '<div id="captcha-section"><label>Inserisci Captcha</label><div id="captcha"></div><input type="text" placeholder="Captcha" id="cpatchaTextBox"/></div>'
-      );
-    $("#captcha-section")
-      .closest(".form-group")
-      .append(
-        '<div class="invalid-feedback captcha_failed">API call failed</div>'
-      );
-    //GERMAN
-  } else if (
-    window.location.href ==
-    "https://easyjeteu.freshdesk.com/de/support/tickets/new"
-  ) {
-    $("#helpdesk_ticket_custom_field_cf_policy_email_2321673")
-      .closest(".form-group")
-      .append(
-        '<div id="captcha-section"><label>Geben Sie den Captcha-Code ein</label><div id="captcha"></div><input type="text" placeholder="Captcha" id="cpatchaTextBox"/></div>'
-      );
-    $("#helpdesk_ticket_custom_field_cf_date_of_birth_2321673")
-      .closest(".form-group")
-      .append(
-        '<div id="captcha-section"><label>Geben Sie den Captcha-Code ein</label><div id="captcha"></div><input type="text" placeholder="Captcha" id="cpatchaTextBox"/></div>'
-      );
-    $("#captcha-section")
-      .closest(".form-group")
-      .append(
-        '<div class="invalid-feedback captcha_failed">API call failed</div>'
-      );
-    //PORTUGESE
-  } else if (
-    window.location.href ==
-    "https://easyjeteu.freshdesk.com/pt-PT/support/tickets/new"
-  ) {
-    $("#helpdesk_ticket_custom_field_cf_policy_email_2321673")
-      .closest(".form-group")
-      .append(
-        '<div id="captcha-section"><label>Digite o cÃƒÂ³digo Captcha</label><div id="captcha"></div><input type="text" placeholder="Captcha" id="cpatchaTextBox"/></div>'
-      );
-    $("#helpdesk_ticket_custom_field_cf_date_of_birth_2321673")
-      .closest(".form-group")
-      .append(
-        '<div id="captcha-section"><label>Digite o cÃƒÂ³digo Captcha</label><div id="captcha"></div><input type="text" placeholder="Captcha" id="cpatchaTextBox"/></div>'
-      );
-    $("#captcha-section")
-      .closest(".form-group")
-      .append(
-        '<div class="invalid-feedback captcha_failed">API call failed</div>'
-      );
-    //SPANISH
-  } else if (
-    window.location.href ==
-    "https://easyjeteu.freshdesk.com/es/support/tickets/new"
-  ) {
-    $("#helpdesk_ticket_custom_field_cf_policy_email_2321673")
-      .closest(".form-group")
-      .append(
-        '<div id="captcha-section"><label>Introduzca el cÃƒÂ³digo Captcha</label><div id="captcha"></div><input type="text" placeholder="Captcha" id="cpatchaTextBox"/></div>'
-      );
-    $("#helpdesk_ticket_custom_field_cf_date_of_birth_2321673")
-      .closest(".form-group")
-      .append(
-        '<div id="captcha-section"><label>Introduzca el cÃƒÂ³digo Captcha</label><div id="captcha"></div><input type="text" placeholder="Captcha" id="cpatchaTextBox"/></div>'
-      );
-    $("#captcha-section")
-      .closest(".form-group")
-      .append(
-        '<div class="invalid-feedback captcha_failed">API call failed</div>'
-      );
-  }
-  //FRENCH
-  else if (
-    window.location.href ==
-    "https://easyjeteu.freshdesk.com/fr/support/tickets/new"
-  ) {
-    $("#helpdesk_ticket_custom_field_cf_policy_email_2321673")
-      .closest(".form-group")
-      .append(
-        '<div id="captcha-section"><label>Entrez le code Captcha</label><div id="captcha"></div><input type="text" placeholder="Captcha" id="cpatchaTextBox"/></div>'
-      );
-    $("#helpdesk_ticket_custom_field_cf_date_of_birth_2321673")
-      .closest(".form-group")
-      .append(
-        '<div id="captcha-section"><label>Entrez le code Captcha</label><div id="captcha"></div><input type="text" placeholder="Captcha" id="cpatchaTextBox"/></div>'
-      );
-    $("#captcha-section")
-      .closest(".form-group")
-      .append(
-        '<div class="invalid-feedback captcha_failed">API call failed</div>'
-      );
+  if ($("#title").hasClass("ColumbusItaly")) {
+    if (!$(".edit_helpdesk_ticket").length > 0) {
+      $("#helpdesk_ticket_custom_field_cf_policy_email_2321673")
+        .closest(".form-group")
+        .append(
+          '<div id="captcha-section"><label>Inserisci Captcha</label><div id="captcha"></div><input type="text" placeholder="Captcha" id="cpatchaTextBox"/></div>'
+        );
+      $("#helpdesk_ticket_custom_field_cf_date_of_birth_2321673")
+        .closest(".form-group")
+        .append(
+          '<div id="captcha-section"><label>Inserisci Captcha</label><div id="captcha"></div><input type="text" placeholder="Captcha" id="cpatchaTextBox"/></div>'
+        );
+      $("#captcha-section")
+        .closest(".form-group")
+        .append(
+          '<div class="invalid-feedback captcha_failed">API call failed</div>'
+        );
+    }
+  } else {
+    if (!$(".edit_helpdesk_ticket").length > 0) {
+      $("#helpdesk_ticket_custom_field_cf_policy_email_2321673")
+        .closest(".form-group")
+        .append(
+          '<div id="captcha-section"><label>Enter Captcha</label><div id="captcha"></div><input type="text" placeholder="Captcha" id="cpatchaTextBox"/></div>'
+        );
+      $("#helpdesk_ticket_custom_field_cf_date_of_birth_2321673")
+        .closest(".form-group")
+        .append(
+          '<div id="captcha-section"><label>Enter Captcha</label><div id="captcha"></div><input type="text" placeholder="Captcha" id="cpatchaTextBox"/></div>'
+        );
+      $("#captcha-section")
+        .closest(".form-group")
+        .append(
+          '<div class="invalid-feedback captcha_failed">API call failed</div>'
+        );
+    }
   }
 
   $(
@@ -214,84 +120,26 @@ jQuery(document).ready(function ($) {
     .append(
       '<div class="invalid-feedback api_call_failed_sortcodevalidate">API call failed</div>'
     );
-
-  //ITALIAN
-  if (
-    window.location.href ==
-    "https://easyjeteu.freshdesk.com/it/support/tickets/new"
-  ) {
+  if ($("#title").hasClass("ColumbusItaly")) {
     jQuery(".new-ticket-submit-button")
       .closest(".card-body")
       .find(".form-group")
       .before(
         '<div class="invalid-feedback common_error">Si prega di compilare tutti i campi</div>'
       );
-    //GERMAN
-  } else if (
-    window.location.href ==
-    "https://easyjeteu.freshdesk.com/de/support/tickets/new"
-  ) {
-    jQuery(".new-ticket-submit-button")
-      .closest(".card-body")
-      .find(".form-group")
-      .before(
-        '<div class="invalid-feedback common_error">Bitte fÃƒÂ¼llen Sie alle Felder aus</div>'
-      );
-    //SPANISH
-  } else if (
-    window.location.href ==
-    "https://easyjeteu.freshdesk.com/es/support/tickets/new"
-  ) {
-    jQuery(".new-ticket-submit-button")
-      .closest(".card-body")
-      .find(".form-group")
-      .before(
-        '<div class="invalid-feedback common_error">Por favor, complete todos los campos</div>'
-      );
-    //PORTUGESE
-  } else if (
-    window.location.href ==
-    "https://easyjeteu.freshdesk.com/pt-PT/support/tickets/new"
-  ) {
-    jQuery(".new-ticket-submit-button")
-      .closest(".card-body")
-      .find(".form-group")
-      .before(
-        '<div class="invalid-feedback common_error">Por favor, preencha todos os campos</div>'
-      );
-  }
-  //ENGLISH
-  else if (
-    window.location.href ==
-    "https://easyjeteu.freshdesk.com/en/support/tickets/new"
-  ) {
+  } else {
     jQuery(".new-ticket-submit-button")
       .closest(".card-body")
       .find(".form-group")
       .before(
         '<div class="invalid-feedback common_error">Please fill in all fields</div>'
       );
-  } else if (
-    window.location.href ==
-    "https://easyjeteu.freshdesk.com/fr/support/tickets/new"
-  ) {
-    jQuery(".new-ticket-submit-button")
-      .closest(".card-body")
-      .find(".form-group")
-      .before(
-        '<div class="invalid-feedback common_error">Veuillez remplir tous les champs</div>'
-      );
   }
 
   $("#cancel-claim-model").click(function () {
     jQuery(".modal").trigger("click");
   });
-
-  //translate this as well
-  if (
-    window.location.href ==
-    "https://easyjeteu.freshdesk.com/it/support/tickets/new"
-  ) {
+  if ($("#title").hasClass("ColumbusItaly")) {
     $("button.new-ticket-submit-button")
       .hide()
       .after(
@@ -302,66 +150,7 @@ jQuery(document).ready(function ($) {
       .after(
         '<span class="btn fw-primary-button  ticket-detail-dummy for-section-7">Sottoscrivi</span>'
       );
-  } else if (
-    window.location.href ==
-    "https://easyjeteu.freshdesk.com/de/support/tickets/new"
-  ) {
-    $("button.new-ticket-submit-button")
-      .hide()
-      .after(
-        '<span class="btn fw-primary-button new-ticket-dummy for-section-7">Absenden</span>'
-      );
-    $("button#helpdesk_ticket_submit")
-      .hide()
-      .after(
-        '<span class="btn fw-primary-button  ticket-detail-dummy for-section-7">Absenden</span>'
-      );
-  } else if (
-    window.location.href ==
-    "https://easyjeteu.freshdesk.com/es/support/tickets/new"
-  ) {
-    $("button.new-ticket-submit-button")
-      .hide()
-      .after(
-        '<span class="btn fw-primary-button new-ticket-dummy for-section-7">Enviar</span>'
-      );
-    $("button#helpdesk_ticket_submit")
-      .hide()
-      .after(
-        '<span class="btn fw-primary-button  ticket-detail-dummy for-section-7">Enviar</span>'
-      );
-  } else if (
-    window.location.href ==
-    "https://easyjeteu.freshdesk.com/pt-PT/support/tickets/new"
-  ) {
-    $("button.new-ticket-submit-button")
-      .hide()
-      .after(
-        '<span class="btn fw-primary-button new-ticket-dummy for-section-7">Enviar</span>'
-      );
-    $("button#helpdesk_ticket_submit")
-      .hide()
-      .after(
-        '<span class="btn fw-primary-button  ticket-detail-dummy for-section-7">Enviar</span>'
-      );
-  } else if (
-    window.location.href ==
-    "https://easyjeteu.freshdesk.com/fr/support/tickets/new"
-  ) {
-    $("button.new-ticket-submit-button")
-      .hide()
-      .after(
-        '<span class="btn fw-primary-button new-ticket-dummy for-section-7">Soumettre</span>'
-      );
-    $("button#helpdesk_ticket_submit")
-      .hide()
-      .after(
-        '<span class="btn fw-primary-button  ticket-detail-dummy for-section-7">Soumettre</span>'
-      );
-  } else if (
-    window.location.href ==
-    "https://easyjeteu.freshdesk.com/en/support/tickets/new"
-  ) {
+  } else {
     $("button.new-ticket-submit-button")
       .hide()
       .after(
@@ -391,13 +180,12 @@ jQuery(document).ready(function ($) {
   let domainURL;
   // if($("#title").hasClass("VHI")||$("#title").hasClass("EasyJet")){
   domainURL = "claim-proxy.collinsonnis.com";
-  // }else {
-  // domainURL = "claim-proxy-lower.collinsonnis.com";
-  // }
-  //"claim-proxy-lower.collinsonnis.com";
-  //"claim-sandbox.collinsonnis.com";
-  // let succesStatus = [200, 201, 202, 203, 204, 205, 206, 207, 208, 226];
+
   getJWTToken();
+  // if (!jQuery(".fw-comments-wrapper").length) {
+  //   createCaptcha();
+  // }
+  //replaced with
   if ($("#new_helpdesk_ticket").length) {
     createCaptcha();
   }
@@ -468,78 +256,86 @@ jQuery(document).ready(function ($) {
   //bank API dependancies - for Columbus Italy and VHI
 
   //____________________________________________________SECTION 1 Start - Your Policy______________________________________________
-  //check page
   if ($("#new_helpdesk_ticket").length || $(".fw-comments-wrapper").length) {
     $("#new_helpdesk_ticket").wrapAll('<div id="accordion">');
     //identify Policy Number Parent DIV
 
     //check for portal
-    var PolicyNumberParent = document.getElementById(
-      "helpdesk_ticket_custom_field_cf_policy_number_post_office_2321673"
-    ).parentElement;
-    PolicyNumberParent.classList.add("for-section-1");
+    if ($("#title").hasClass("VHI") || $("#title").hasClass("ColumbusItaly")) {
+      var PolicyNumberParent = document.getElementById(
+        "helpdesk_ticket_custom_field_cf_policy_number_post_office_2321673"
+      ).parentElement;
+      PolicyNumberParent.classList.add("for-section-1");
 
-    var PolEmailParent = document.getElementById(
-      "helpdesk_ticket_custom_field_cf_policy_email_2321673"
-    ).parentElement;
-    PolEmailParent.classList.add("for-section-1");
+      var DOBParent = document.getElementById(
+        "helpdesk_ticket_custom_field_cf_date_of_birth_2321673"
+      ).parentElement;
+      DOBParent.classList.add("for-section-1");
 
-    $(".controls.recaptcha-control")
-      .closest(".form-group")
-      .addClass("for-section-1");
+      $(".controls.recaptcha-control")
+        .closest(".form-group")
+        .addClass("for-section-1");
 
-    var ClaimNumberParent = document.getElementById(
-      "helpdesk_ticket_custom_field_cf_claim_number_2321673"
-    ).parentElement;
-    ClaimNumberParent.classList.add("for-section-1");
+      var ClaimNumberParent = document.getElementById(
+        "helpdesk_ticket_custom_field_cf_claim_number_2321673"
+      ).parentElement;
+      ClaimNumberParent.classList.add("for-section-1");
+    } else if ($("#title").hasClass("EasyJet")) {
+      var PolicyNumberParent = document.getElementById(
+        "helpdesk_ticket_custom_field_cf_policy_number_post_office_2321673"
+      ).parentElement;
+      PolicyNumberParent.classList.add("for-section-1");
 
-    if (
-      window.location.href ==
-      "https://easyjeteu.freshdesk.com/it/support/tickets/new"
-    ) {
-      // Italian
+      var PolEmailParent = document.getElementById(
+        "helpdesk_ticket_custom_field_cf_policy_email_2321673"
+      ).parentElement;
+      PolEmailParent.classList.add("for-section-1");
+
+      $(".controls.recaptcha-control")
+        .closest(".form-group")
+        .addClass("for-section-1");
+
+      var ClaimNumberParent = document.getElementById(
+        "helpdesk_ticket_custom_field_cf_claim_number_2321673"
+      ).parentElement;
+      ClaimNumberParent.classList.add("for-section-1");
+    } else if ($("#title").hasClass("CollinsonUK")) {
+      var PolicyNumberParent = document.getElementById(
+        "helpdesk_ticket_custom_field_cf_policy_number_post_office_2321673"
+      ).parentElement;
+      PolicyNumberParent.classList.add("for-section-1");
+
+      var DOBParent = document.getElementById(
+        "helpdesk_ticket_custom_field_cf_date_of_birth_2321673"
+      ).parentElement;
+      DOBParent.classList.add("for-section-1");
+
+      $(".controls.recaptcha-control")
+        .closest(".form-group")
+        .addClass("for-section-1");
+
+      var ClaimNumberParent = document.getElementById(
+        "helpdesk_ticket_custom_field_cf_claim_number_2321673"
+      ).parentElement;
+      ClaimNumberParent.classList.add("for-section-1");
+    }
+
+    //add save and continue button - add section 1
+    if ($("#title").hasClass("ColumbusItaly")) {
       $(
         '<button id="save_and_continue1" class="btn btn-primary for-section-1 save_and_continue" type="button">Trova la polizza</button>'
       ).insertAfter("#helpdesk_ticket_custom_field_cf_claim_number_2321673");
-    } else if (
-      window.location.href ==
-      "https://easyjeteu.freshdesk.com/de/support/tickets/new"
-    ) {
-      // German
+    } else if ($("#title").hasClass("EasyJet")) {
       $(
-        '<button id="save_and_continue1" class="btn btn-primary for-section-1 save_and_continue" type="button">Finde die Police</button>'
+        '<button id="save_and_continue1" class="btn btn-primary for-section-1 save_and_continue" type="button">Find Policy</button>'
       ).insertAfter("#helpdesk_ticket_custom_field_cf_claim_number_2321673");
-    } else if (
-      window.location.href ==
-      "https://easyjeteu.freshdesk.com/es/support/tickets/new"
-    ) {
-      // Spanish
+    } else if ($("#title").hasClass("CollinsonUK")) {
       $(
-        '<button id="save_and_continue1" class="btn btn-primary for-section-1 save_and_continue" type="button">Encuentra la pÃƒÂ³liza</button>'
+        '<button id="save_and_continue1" class="btn btn-primary for-section-1 save_and_continue" type="button">Find Policy</button>'
       ).insertAfter("#helpdesk_ticket_custom_field_cf_claim_number_2321673");
-    } else if (
-      window.location.href ==
-      "https://easyjeteu.freshdesk.com/pt-PT/support/tickets/new"
-    ) {
-      // Portuguese
+    } else if ($("#title").hasClass("VHI")) {
       $(
-        '<button id="save_and_continue1" class="btn btn-primary for-section-1 save_and_continue" type="button">Encontrar a apÃƒÂ³lice</button>'
-      ).insertAfter("#helpdesk_ticket_custom_field_cf_claim_number_2321673");
-    } else if (
-      window.location.href ==
-      "https://easyjeteu.freshdesk.com/fr/support/tickets/new"
-    ) {
-      // French
-      $(
-        '<button id="save_and_continue1" class="btn btn-primary for-section-1 save_and_continue" type="button">Trouvez la police</button>'
-      ).insertAfter("#helpdesk_ticket_custom_field_cf_claim_number_2321673");
-    } else if (
-      window.location.href ==
-      "https://easyjeteu.freshdesk.com/en/support/tickets/new"
-    ) {
-      // English
-      $(
-        '<button id="save_and_continue1" class="btn btn-primary for-section-1 save_and_continue" type="button">Submit</button>'
+        '<button id="save_and_continue1" class="btn btn-primary for-section-1 save_and_continue" type="button">Find Policy</button>'
       ).insertAfter("#helpdesk_ticket_custom_field_cf_claim_number_2321673");
     }
 
@@ -560,57 +356,15 @@ jQuery(document).ready(function ($) {
     ).parentElement;
     NumberParent.classList.add("for-section-2");
     //save and continue section 2
-
-    if (
-      window.location.href ==
-      "https://easyjeteu.freshdesk.com/it/support/tickets/new"
-    ) {
-      // Italian
+    if ($("#title").hasClass("ColumbusItaly")) {
       $(
         '<button id="save_and_continue2" class="btn btn-primary for-section-2 save_and_continue" type="button" >Sezione successiva</button>'
       ).insertAfter("#helpdesk_ticket_custom_field_cf_mobile_number_2321673");
-    } else if (
-      window.location.href ==
-      "https://easyjeteu.freshdesk.com/de/support/tickets/new"
-    ) {
-      // German
-      $(
-        '<button id="save_and_continue2" class="btn btn-primary for-section-2 save_and_continue" type="button" >NÃƒÂ¤chster Abschnitt</button>'
-      ).insertAfter("#helpdesk_ticket_custom_field_cf_mobile_number_2321673");
-    } else if (
-      window.location.href ==
-      "https://easyjeteu.freshdesk.com/es/support/tickets/new"
-    ) {
-      // Spanish
-      $(
-        '<button id="save_and_continue2" class="btn btn-primary for-section-2 save_and_continue" type="button" >Siguiente secciÃƒÂ³n</button>'
-      ).insertAfter("#helpdesk_ticket_custom_field_cf_mobile_number_2321673");
-    } else if (
-      window.location.href ==
-      "https://easyjeteu.freshdesk.com/pt-PT/support/tickets/new"
-    ) {
-      // Portuguese
-      $(
-        '<button id="save_and_continue2" class="btn btn-primary for-section-2 save_and_continue" type="button" >PrÃƒÂ³xima seÃƒÂ§ÃƒÂ£o</button>'
-      ).insertAfter("#helpdesk_ticket_custom_field_cf_mobile_number_2321673");
-    } else if (
-      window.location.href ==
-      "https://easyjeteu.freshdesk.com/fr/support/tickets/new"
-    ) {
-      // French
-      $(
-        '<button id="save_and_continue2" class="btn btn-primary for-section-2 save_and_continue" type="button" >Section suivante</button>'
-      ).insertAfter("#helpdesk_ticket_custom_field_cf_mobile_number_2321673");
-    } else if (
-      window.location.href ==
-      "https://easyjeteu.freshdesk.com/en/support/tickets/new"
-    ) {
-      // English
+    } else {
       $(
         '<button id="save_and_continue2" class="btn btn-primary for-section-2 save_and_continue" type="button" >Continue</button>'
       ).insertAfter("#helpdesk_ticket_custom_field_cf_mobile_number_2321673");
     }
-
     //____________________________________________________SECTION 3 Start - About Your Trip ____________________________________________
     //Destination
     var DestinationParent = document.getElementById(
@@ -642,135 +396,55 @@ jQuery(document).ready(function ($) {
     $(
       ".form-group.helpdesk_ticket_custom_field_cf_reason_for_claim_2321673"
     ).addClass("for-section-3");
-
     //save and coninue for Section 3
-    if (
-      window.location.href ==
-      "https://easyjeteu.freshdesk.com/it/support/tickets/new"
-    ) {
-      // Italian
+    if ($("#title").hasClass("ColumbusItaly")) {
       $(
         '<button id="save_and_continue3" class="btn btn-primary for-section-3 save_and_continue" type="button" >Sezione successiva</button>'
       ).insertAfter(
         ".form-group.helpdesk_ticket_custom_field_cf_reason_for_claim_2321673.for-section-3"
       );
-    } else if (
-      window.location.href ==
-      "https://easyjeteu.freshdesk.com/de/support/tickets/new"
-    ) {
-      // German
-      $(
-        '<button id="save_and_continue3" class="btn btn-primary for-section-3 save_and_continue" type="button" >NÃƒÂ¤chster Abschnitt</button>'
-      ).insertAfter(
-        ".form-group.helpdesk_ticket_custom_field_cf_reason_for_claim_2321673.for-section-3"
-      );
-    } else if (
-      window.location.href ==
-      "https://easyjeteu.freshdesk.com/es/support/tickets/new"
-    ) {
-      // Spanish
-      $(
-        '<button id="save_and_continue3" class="btn btn-primary for-section-3 save_and_continue" type="button" >Siguiente secciÃƒÂ³n</button>'
-      ).insertAfter(
-        ".form-group.helpdesk_ticket_custom_field_cf_reason_for_claim_2321673.for-section-3"
-      );
-    } else if (
-      window.location.href ==
-      "https://easyjeteu.freshdesk.com/pt-PT/support/tickets/new"
-    ) {
-      // Portuguese
-      $(
-        '<button id="save_and_continue3" class="btn btn-primary for-section-3 save_and_continue" type="button" >PrÃƒÂ³xima seÃƒÂ§ÃƒÂ£o</button>'
-      ).insertAfter(
-        ".form-group.helpdesk_ticket_custom_field_cf_reason_for_claim_2321673.for-section-3"
-      );
-    } else if (
-      window.location.href ==
-      "https://easyjeteu.freshdesk.com/fr/support/tickets/new"
-    ) {
-      // French
-      $(
-        '<button id="save_and_continue3" class="btn btn-primary for-section-3 save_and_continue" type="button" >Section suivante</button>'
-      ).insertAfter(
-        ".form-group.helpdesk_ticket_custom_field_cf_reason_for_claim_2321673.for-section-3"
-      );
-    } else if (
-      window.location.href ==
-      "https://easyjeteu.freshdesk.com/en/support/tickets/new"
-    ) {
-      // English
+    } else {
       $(
         '<button id="save_and_continue3" class="btn btn-primary for-section-3 save_and_continue" type="button" >Continue</button>'
       ).insertAfter(
         ".form-group.helpdesk_ticket_custom_field_cf_reason_for_claim_2321673.for-section-3"
       );
     }
-
     //____________________________________________________SECTION 4 Start - Tell us what happened____________________________________________
     $(
       ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper"
     ).addClass("for-section-4");
 
-    if (
-      window.location.href ==
-      "https://easyjeteu.freshdesk.com/it/support/tickets/new"
-    ) {
-      // Italian
+    if ($("#title").hasClass("ColumbusItaly")) {
+      $(
+        '<button id="save_draft_4" class="btn btn-primary for-section-4 " type="button">Salva reclamo ed esci</button>'
+      ).insertAfter(
+        ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper"
+      );
       $(
         '<button id="save_and_continue4" class="btn btn-primary for-section-4 save_and_continue" type="button">Sezione successiva</button>'
       ).insertAfter(
         ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper"
       );
-    } else if (
-      window.location.href ==
-      "https://easyjeteu.freshdesk.com/de/support/tickets/new"
-    ) {
-      // German
+      $("<hr id ='hr4' class='for-section-4'>").insertAfter("#save_draft_4");
       $(
-        '<button id="save_and_continue4" class="btn btn-primary for-section-4 save_and_continue" type="button">NÃƒÂ¤chster Abschnitt</button>'
+        "<p class='for-section-4' style='margin-top: 20px;'>Se clicchi 'Salva sinistro' ti invieremo un'e-mail entro 5 minuti per l'attivazione del tuo account, dove potrai continuare con il tuo sinistro</p>"
+      ).insertBefore("#save_draft_4");
+    } else {
+      $(
+        '<button id="save_draft_4" class="btn btn-primary for-section-4 " type="button">Pause</button>'
       ).insertAfter(
         ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper"
       );
-    } else if (
-      window.location.href ==
-      "https://easyjeteu.freshdesk.com/es/support/tickets/new"
-    ) {
-      // Spanish
-      $(
-        '<button id="save_and_continue4" class="btn btn-primary for-section-4 save_and_continue" type="button">Siguiente secciÃƒÂ³n</button>'
-      ).insertAfter(
-        ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper"
-      );
-    } else if (
-      window.location.href ==
-      "https://easyjeteu.freshdesk.com/pt-PT/support/tickets/new"
-    ) {
-      // Portuguese
-      $(
-        '<button id="save_and_continue4" class="btn btn-primary for-section-4 save_and_continue" type="button">PrÃƒÂ³xima seÃƒÂ§ÃƒÂ£o</button>'
-      ).insertAfter(
-        ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper"
-      );
-    } else if (
-      window.location.href ==
-      "https://easyjeteu.freshdesk.com/fr/support/tickets/new"
-    ) {
-      // French
-      $(
-        '<button id="save_and_continue4" class="btn btn-primary for-section-4 save_and_continue" type="button">Section suivante</button>'
-      ).insertAfter(
-        ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper"
-      );
-    } else if (
-      window.location.href ==
-      "https://easyjeteu.freshdesk.com/en/support/tickets/new"
-    ) {
-      // English
       $(
         '<button id="save_and_continue4" class="btn btn-primary for-section-4 save_and_continue" type="button">Continue</button>'
       ).insertAfter(
         ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper"
       );
+      $("<hr id ='hr4' class='for-section-4'>").insertAfter("#save_draft_4");
+      $(
+        '<p class="for-section-4" style="margin-top: 20px;">If you pause your claim, all of the information you have given will be saved for you.</p>'
+      ).insertBefore("#save_draft_4");
     }
   }
   //____________________________________________________SECTION 5 Start - Your Documents____________________________________________
@@ -782,68 +456,43 @@ jQuery(document).ready(function ($) {
     ).insertBefore(
       ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper"
     );
-
     var attachments_html = "";
-
     $(".attachments").each(function () {
       attachments_html += $(this).html();
     });
-
     $(
       "<div class='attachments small mt-16'>" + attachments_html + "</div>"
     ).insertAfter(
       ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper"
     );
     $("#portal_ticket_form .attachments").addClass("for-section-5");
-
-    if (
-      window.location.href ==
-      "https://easyjeteu.freshdesk.com/it/support/tickets/new"
-    ) {
-      // Italian
+    if ($("#title").hasClass("ColumbusItaly")) {
+      jQuery(".attachments.for-section-5").after(
+        '<button class="save_draft_5 btn btn-primary for-section-5 " type="button">Salva reclamo ed esci</button>'
+      );
       $(
         '<button class="save_and_continue5 btn btn-primary for-section-5 save_and_continue" type="button" >Sezione successiva</button>'
       ).insertAfter(".attachments.for-section-5");
-    } else if (
-      window.location.href ==
-      "https://easyjeteu.freshdesk.com/de/support/tickets/new"
-    ) {
-      // German
       $(
-        '<button class="save_and_continue5 btn btn-primary for-section-5 save_and_continue" type="button" >NÃƒÂ¤chster Abschnitt</button>'
-      ).insertAfter(".attachments.for-section-5");
-    } else if (
-      window.location.href ==
-      "https://easyjeteu.freshdesk.com/es/support/tickets/new"
-    ) {
-      // Spanish
+        "<p class='for-section-5' style='margin-top: 20px;'>Se clicchi 'Salva sinistro' ti invieremo un'e-mail entro 5 minuti per l'attivazione del tuo account, dove potrai continuare con il tuo sinistro</p>"
+      ).insertAfter(".save_draft_5.btn.btn-primary.for-section-5:visible");
+      $("p.for-section-5:eq(0)").hide();
+    } else {
+      jQuery(".attachments.for-section-5").after(
+        '<button class="save_draft_5 btn btn-primary for-section-5 " type="button">Pause</button>'
+      );
       $(
-        '<button class="save_and_continue5 btn btn-primary for-section-5 save_and_continue" type="button" >Siguiente secciÃƒÂ³n</button>'
+        '<button class="save_and_continue5 btn btn-primary for-section-5 save_and_continue" type="button" >Continue</button>'
       ).insertAfter(".attachments.for-section-5");
-    } else if (
-      window.location.href ==
-      "https://easyjeteu.freshdesk.com/pt-PT/support/tickets/new"
-    ) {
-      // Portuguese
       $(
-        '<button class="save_and_continue5 btn btn-primary for-section-5 save_and_continue" type="button" >PrÃƒÂ³xima seÃƒÂ§ÃƒÂ£o</button>'
-      ).insertAfter(".attachments.for-section-5");
-    } else if (
-      window.location.href ==
-      "https://easyjeteu.freshdesk.com/fr/support/tickets/new"
-    ) {
-      // French
-      $(
-        '<button class="save_and_continue5 btn btn-primary for-section-5 save_and_continue" type="button" >Section suivante</button>'
-      ).insertAfter(".attachments.for-section-5");
-    } else if (
-      window.location.href ==
-      "https://easyjeteu.freshdesk.com/en/support/tickets/new"
-    ) {
-      // English
-      $(
-        '<button class="save_and_continue5 btn btn-primary for-section-5 save_and_continue" type="button" >Next section</button>'
-      ).insertAfter(".attachments.for-section-5");
+        '<p class="for-section-5" style="margin-top: 20px;">If you pause your claim, all of the information you have given will be saved for you.</p>'
+      ).insertAfter(".save_draft_5.btn.btn-primary.for-section-5:visible");
+      $("p.for-section-5:eq(0)").hide();
+
+      $("p.for-section-5:eq(1)").hide();
+      $(".save_draft_5").hide();
+      $("p.for-section-4").hide();
+      $("#save_draft_4").hide();
     }
   } else {
     $(
@@ -851,61 +500,35 @@ jQuery(document).ready(function ($) {
     ).insertBefore(
       ".helpdesk_ticket_custom_field_cf_reason_for_claim_2321673_section_wrapper"
     );
-
     $(".form-group.attachments-container").addClass("for-section-5");
 
-    if (
-      window.location.href ==
-      "https://easyjeteu.freshdesk.com/it/support/tickets/new"
-    ) {
-      // Italian
+    if ($("#title").hasClass("ColumbusItaly")) {
+      jQuery(".attachments-container.for-section-5").after(
+        '<button class="save_draft_5 btn btn-primary for-section-5 " type="button">Salva reclamo ed esci</button>'
+      );
       $(
         '<button class="save_and_continue5 btn btn-primary for-section-5 save_and_continue" type="button" >Sezione successiva</button>'
       ).insertAfter(".form-group.attachments-container.for-section-5");
-    } else if (
-      window.location.href ==
-      "https://easyjeteu.freshdesk.com/de/support/tickets/new"
-    ) {
-      // German
       $(
-        '<button class="save_and_continue5 btn btn-primary for-section-5 save_and_continue" type="button" >Weiter</button>'
-      ).insertAfter(".form-group.attachments-container.for-section-5");
-    } else if (
-      window.location.href ==
-      "https://easyjeteu.freshdesk.com/es/support/tickets/new"
-    ) {
-      // Spanish
-      $(
-        '<button class="save_and_continue5 btn btn-primary for-section-5 save_and_continue" type="button" >Continuar</button>'
-      ).insertAfter(".form-group.attachments-container.for-section-5");
-    } else if (
-      window.location.href ==
-      "https://easyjeteu.freshdesk.com/pt-PT/support/tickets/new"
-    ) {
-      // Portuguese
-      $(
-        '<button class="save_and_continue5 btn btn-primary for-section-5 save_and_continue" type="button" >Continuar</button>'
-      ).insertAfter(".form-group.attachments-container.for-section-5");
-    } else if (
-      window.location.href ==
-      "https://easyjeteu.freshdesk.com/fr/support/tickets/new"
-    ) {
-      // French
-      $(
-        '<button class="save_and_continue5 btn btn-primary for-section-5 save_and_continue" type="button" >Continuer</button>'
-      ).insertAfter(".form-group.attachments-container.for-section-5");
-    } else if (
-      window.location.href ==
-      "https://easyjeteu.freshdesk.com/en/support/tickets/new"
-    ) {
-      // English
+        "<p class='for-section-5' style='margin-top: 20px;'>Se clicchi 'Salva sinistro' ti invieremo un'e-mail entro 5 minuti per l'attivazione del tuo account, dove potrai continuare con il tuo sinistro</p>"
+      ).insertAfter(".save_draft_5.btn.btn-primary.for-section-5:visible");
+      $("p.for-section-5:eq(0)").hide();
+    } else {
+      jQuery(".attachments-container.for-section-5").before(
+        '<button class="save_draft_5 btn btn-primary for-section-5 " type="button">Pause</button>'
+      );
       $(
         '<button class="save_and_continue5 btn btn-primary for-section-5 save_and_continue" type="button" >Continue</button>'
       ).insertAfter(".form-group.attachments-container.for-section-5");
+      $(
+        '<p class="for-section-5" style="margin-top: 20px;">If you pause your claim, all of the information you have given will be saved for you.</p>'
+      ).insertAfter(".save_draft_5.btn.btn-primary.for-section-5:visible");
+      $("p.for-section-5:eq(0)").hide();
     }
   }
   $("#mock-doc").remove();
   $(".save_and_continue5").first().hide();
+  $(".save_draft_5").first().hide();
 
   // addImages();
   //____________________________________________________SECTION 6 Start - payment details____________________________________________
@@ -914,7 +537,6 @@ jQuery(document).ready(function ($) {
       "helpdesk_ticket_custom_field_cf_name_of_account_holder_2321673"
     ).parentElement;
     accHolderParent.classList.add("for-section-6");
-
     //check for portal
     if ($("#title").hasClass("VHI") || $("#title").hasClass("ColumbusItaly")) {
       //Name of acc holder - put in section 6
@@ -929,7 +551,7 @@ jQuery(document).ready(function ($) {
       ibanNumber.classList.add("for-section-6");
       //joint account
       $(
-        ".form-group.helpdesk_ticket_custom_field_cf_conto_cointestato_2321673"
+        ".form-group.helpdesk_ticket_custom_field_cf_name_of_bank24840_2321673"
       ).addClass("for-section-6");
     } else if ($("#title").hasClass("EasyJet")) {
       //Name of acc holder - put in section 6
@@ -972,11 +594,23 @@ jQuery(document).ready(function ($) {
     }
 
     //save and continue 6
-
-    $(
-      '<button id="save_and_continue6" class="btn btn-primary for-section-6 save_and_continue" type="button" >Sezione successiva</button>'
-    ).insertAfter(ibanNumber);
-
+    if ($("#title").hasClass("ColumbusItaly")) {
+      $(
+        '<button id="save_and_continue6" class="btn btn-primary for-section-6 save_and_continue" type="button" >Sezione successiva</button>'
+      ).insertAfter(ibanNumber);
+    } else if ($("#title").hasClass("VHI")) {
+      $(
+        '<button id="save_and_continue6" class="btn btn-primary for-section-6 save_and_continue" type="button" >Continue</button>'
+      ).insertAfter(accHolderParent);
+    } else if ($("#title").hasClass("EasyJet")) {
+      $(
+        '<button id="save_and_continue6" class="btn btn-primary for-section-6 save_and_continue" type="button" >Continue</button>'
+      ).insertAfter(SortCodeParent);
+    } else if ($("#title").hasClass("CollinsonUK")) {
+      $(
+        '<button id="save_and_continue6" class="btn btn-primary for-section-6 save_and_continue" type="button" >Continue</button>'
+      ).insertAfter(SortCodeParent);
+    }
     //____________________________________________________SECTION 7 Start - Summary Section____________________________________________
 
     $("#helpdesk_ticket_form_id").addClass("for-section-7");
@@ -1037,48 +671,14 @@ jQuery(document).ready(function ($) {
   }
 
   //check if Italian Portal for headings
-  if (
-    window.location.href ==
-    "https://easyjeteu.freshdesk.com/it/support/tickets/new"
-  ) {
+  if ($("#title").hasClass("ColumbusItaly")) {
     for (var i = 0; i < italy_titles.length; ++i) {
       thisDiv(i + 1, italy_titles[i]);
     }
-  } else if (
-    window.location.href ==
-    "https://easyjeteu.freshdesk.com/en/support/tickets/new"
-  ) {
+  } else {
     //invoke for English portals
     for (var i = 0; i < titles.length; ++i) {
       thisDiv(i + 1, titles[i]);
-    }
-  } else if (
-    window.location.href ==
-    "https://easyjeteu.freshdesk.com/de/support/tickets/new"
-  ) {
-    for (var i = 0; i < german_titles.length; ++i) {
-      thisDiv(i + 1, german_titles[i]);
-    }
-  } else if (
-    window.location.href ==
-    "https://easyjeteu.freshdesk.com/fr/support/tickets/new"
-  ) {
-    for (var i = 0; i < french_titles.length; ++i) {
-      thisDiv(i + 1, french_titles[i]);
-    }
-  } else if (
-    window.location.href ==
-    "https://easyjeteu.freshdesk.com/es/support/tickets/new"
-  ) {
-    for (var i = 0; i < spanish_titles.length; ++i) {
-      thisDiv(i + 1, spanish_titles[i]);
-    }
-  } else if (
-    window.location.href ==
-    "https://easyjeteu.freshdesk.com/pt-PT/support/tickets/new"
-  ) {
-    for (var i = 0; i < portuguese_titles.length; ++i) {
-      thisDiv(i + 1, portuguese_titles[i]);
     }
   }
 
@@ -1505,7 +1105,7 @@ jQuery(document).ready(function ($) {
   });
 
   function open_next(section_number) {
-    //close current,
+    //close current
     if (section_number == 4) {
       $("#collapseSection3").removeClass("show");
     } else if (section_number == 3) {
@@ -2670,8 +2270,7 @@ jQuery(document).ready(function ($) {
     {
       id: "01_02_BagD",
       name_eng: "Baggage - suitcase hasn't arrived on time",
-      name_ita:
-        "Ritardo del bagaglio allÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢arrivo a destinanzione",
+      name_ita: "Ritardo del bagaglio allÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢arrivo a destinanzione",
     },
     {
       id: "01_03_CxIllClnt",
@@ -6735,7 +6334,7 @@ jQuery(document).ready(function ($) {
   //do modal popup with claims statement
 
   $("#next").click(function () {
-    //$("#ClaimAPIModal").modal("toggle");
+    // $("#ClaimAPIModal").modal("toggle");
 
     //close current, open next
     open_next(4);
@@ -8108,48 +7707,26 @@ jQuery(document).ready(function ($) {
   });
 
   $(".save_and_continue5").click(function () {
-    if ($("#section_4_header").length) {
-      console.log("update section ----> 4");
-      update_section_4();
-      add_section_5();
-    } else {
-      add_section_4();
-      add_section_5();
-      console.log("add section ----> 4");
-    }
+    console.log("happening -------->");
+
+    fileUploadCallback();
 
     if (jQuery(".fw-comments-wrapper").length > 0) {
-      console.log("update section cont. ----> 4");
-      update_section_4_continue();
-      open_next(3);
-      //change document color
-      $("#section-3-button").css("background-color", "#4DC367");
-      $("#section-5-button").css("background-color", "#4DC367");
-      $("#section-3-button").children(":first").removeClass("fa-plus");
-      $("#section-5-button").children(":first").removeClass("fa-minus");
-      $("#section-5-button").children(":first").removeClass("fa-plus");
-      $("#section-3-button").children(":first").addClass("fa-check");
-      $("#section-5-button").children(":first").addClass("fa-check");
-      if ($("#section_5_header").length) {
-        update_section_5();
-      } else {
-        add_section_5();
-      }
+      console.log("------ Inside Existing Ticket View -----");
 
       //will execute in ticket detail page senario
-
       if (
         $("#new_helpdesk_note #attachments_list .proper-attachments-list")
           .length
       ) {
+        console.log("Entering into IF ----- inside If");
         fileUploadCallback();
       } else if ($(".fw-comments-wrapper .fw-attachment-item").length) {
-        //Need to add another condition for already had div if div has length then we need to open next section
-        open_next(3);
+        fileUploadCallback();
       }
     } else {
       //will excute in create new ticket senario
-
+      console.log("Entering into Else --------");
       fileUploadCallback();
     }
   });
@@ -8219,6 +7796,7 @@ jQuery(document).ready(function ($) {
           //   $("#new_helpdesk_note #helpdesk_note_submit").trigger("click");
           // }
           open_next(3);
+          //change document color
           $("#section-3-button").css("background-color", "#4DC367");
           $("#section-5-button").css("background-color", "#4DC367");
           $("#section-3-button").children(":first").removeClass("fa-plus");
@@ -8243,21 +7821,24 @@ jQuery(document).ready(function ($) {
         );
       }
     } else {
+      console.log("----entered into else------>");
+
+      let ele = ["api_call_failed_filelist"];
+      clearError(ele);
+
       open_next(3);
+      if ($("#section_5_header").length) {
+        update_section_5();
+      } else {
+        add_section_5();
+      }
+      $("#section-3-button").css("background-color", "#4DC367");
+      $("#section-5-button").css("background-color", "#4DC367");
       $("#section-3-button").children(":first").removeClass("fa-plus");
-      $("#section-3-button").children(":first").addClass("fa-check");
       $("#section-5-button").children(":first").removeClass("fa-minus");
-      $("#section-5-button").children(":first").addClass("fa-plus");
-      // if ($("#title").hasClass("ColumbusItaly")) {
-      //   addErrorMessage(
-      //     "api_call_failed_filelist",
-      //     "Si prega di caricare il file."
-      //   );
-      //   console.log(" --------- Need to show error message ----------------");
-      // } else {
-      //   addErrorMessage("api_call_failed_filelist", "Please Upload the File.");
-      //   console.log(" --------- Need to show error message ----------------");
-      // }
+      $("#section-5-button").children(":first").removeClass("fa-plus");
+      $("#section-3-button").children(":first").addClass("fa-check");
+      $("#section-5-button").children(":first").addClass("fa-check");
     }
   }
   function add_section_5() {
@@ -8401,16 +7982,15 @@ jQuery(document).ready(function ($) {
         let sortCode = $(
           "#helpdesk_ticket_custom_field_cf_sort_code659991_2321673"
         ).val();
-        // let accountHolderName = $(
-        //   "#helpdesk_ticket_custom_field_cf_name_of_account_holder_2321673"
-        // ).val();
-        console.log(accountNumber, iBanNumber, sortCode, countryCode);
+        let accountHolderName = $(
+          "#helpdesk_ticket_custom_field_cf_name_of_account_holder_2321673"
+        ).val();
+        console.log(accountNumber, iBanNumber, sortCode, countryCode,accountHolderName);
         if (countryCode == "GB") {
           ValidateBankMethodTwo(
             accountNumber,
             sortCode,
-            countryCode,
-            // accountHolderName,
+            countryCode,accountHolderName,
             "#save_and_continue6"
           );
         } else {
@@ -8458,17 +8038,16 @@ jQuery(document).ready(function ($) {
         let sortCode = $(
           "#helpdesk_ticket_custom_field_cf_sort_code659991_2321673"
         ).val();
-        // let accountHolderName = $(
-        //   "#helpdesk_ticket_custom_field_cf_name_of_account_holder_2321673"
-        // ).val();
+        let accountHolderName = $(
+          "#helpdesk_ticket_custom_field_cf_name_of_account_holder_2321673"
+        ).val();
         console.log(accountHolder, accountNumber, sortCode);
 
         if (countryCode == "GB") {
           ValidateBankMethodTwo(
             accountNumber,
             sortCode,
-            countryCode,
-            // accountHolderName,
+            countryCode,accountHolderName,
             "#save_and_continue6"
           );
         } else {
@@ -8707,7 +8286,7 @@ jQuery(document).ready(function ($) {
             } else {
               addErrorMessage(
                 "api_call_failed_banvalidate",
-                "Unable to process the bank account information. Please check the information entered and try again."
+                "We are unable to process the bank account information provided. Please double check all the details and re-submit."
               );
             }
           } else {
@@ -8719,7 +8298,7 @@ jQuery(document).ready(function ($) {
             } else {
               addErrorMessage(
                 "api_call_failed_banvalidate",
-                "Unable to process the bank account information. Please check the information entered and try again."
+                "We are unable to process the bank account information provided. Please double check all the details and re-submit."
               );
             }
           }
@@ -8728,6 +8307,7 @@ jQuery(document).ready(function ($) {
           clearError(ele);
           console.log("--sucesss-");
           bankResult = result;
+          //open_next(6);
           //change colours after summary section fill
           $("#section-4-button").css("background-color", "#4DC367");
           //$("#section-4-button").removeAttr("data-target");
@@ -8754,7 +8334,7 @@ jQuery(document).ready(function ($) {
     accountNumber,
     sortCode,
     countryCode,
-    // accountHolderName,
+    accountHolderName,
     fieldId
   ) {
     let flag = false;
@@ -8775,10 +8355,9 @@ jQuery(document).ready(function ($) {
         "&sortCode=" +
         sortCode +
         "&countryCode=" +
-        countryCode,
-      // +
-      // "&AccountHolderName=" +
-      // accountHolderName,
+        countryCode +
+        "&AccountHolderName=" +
+        accountHolderName,
       requestOptions
     )
       .then((response) => {
@@ -8802,12 +8381,12 @@ jQuery(document).ready(function ($) {
             console.log("Please refresh the page ", statusCode, result);
             addErrorMessage(
               "api_call_failed_sortcodevalidate",
-              "Unable to process the bank account information. Please check the information entered and try again."
+              "We are unable to process the bank account information provided. Please double check all the details and re-submit."
             );
           } else {
             addErrorMessage(
               "api_call_failed_sortcodevalidate",
-              "Unable to process the bank account information. Please check the information entered and try again."
+              "We are unable to process the bank account information provided. Please double check all the details and re-submit."
             );
           }
         } else {
@@ -13051,7 +12630,7 @@ jQuery(document).ready(function ($) {
           console.log("--sucesss-");
           $(".new-ticket-submit-button").trigger("click");
           // window.location.href =
-          //   "https://collinsongroup-support.freshdesk.com/en/support/solutions/articles/101000493011-il-tuo-sinistro-e-i-prossimi-passi";
+          //   "/support/solutions/articles/101000486450-your-claim-and-next-steps";
         }
       })
       .catch((error) => console.log("error -->", error));
@@ -13100,7 +12679,7 @@ jQuery(document).ready(function ($) {
           console.log("--sucesss-");
           $("#helpdesk_ticket_submit").trigger("click");
           // window.location.href =
-          //   "https://collinsongroup-support.freshdesk.com/en/support/solutions/articles/101000493011-il-tuo-sinistro-e-i-prossimi-passi";
+          //   "/support/solutions/articles/101000486450-your-claim-and-next-steps";
         }
       })
       .catch((error) => console.log("error -->", error));
@@ -13142,9 +12721,7 @@ jQuery(document).ready(function ($) {
         var refund_parent = document.getElementById(
           "helpdesk_ticket_custom_field_cf_total_refund_vouchers_amount_the_amount_you_have_received_back594804_2321673"
         ).parentElement;
-        //save and coninue for Section 3
-        //$('<button id="save_and_continue4" class="btn btn-primary for-section-4 save_and_continue" type="button" >Save & Continue</button>').insertAfter(refund_parent);
-        //Which part of the journey did your baggage arrive late? -dependancy
+
         show_and_hide(
           [
             'label[for="helpdesk_ticket_custom_field_cf_please_give_us_further_details469996_2321673"]',
@@ -13989,6 +13566,7 @@ jQuery(document).ready(function ($) {
           "helpdesk_ticket_custom_field_cf_total_trip_cost_the_amount_you_paid_2321673"
         );
         //cannot be more than
+
         //Please enter the date you asked your tour operator/travel provider to cancel the trip - PASTPRESENT
         date_past_present(
           "helpdesk_ticket_custom_field_cf_please_enter_the_date_you_asked_your_tour_operatortravel_provider_to_cancel_the_trip_2321673"
