@@ -7552,6 +7552,11 @@ $("#section-1-button").children(":first").removeClass("fa-plus");
   });
 
   $(".save_and_continue5").click(function () {
+    let submitButtonData=$(".fw-status-badge").text()
+    if(submitButtonData == "We've got your claim!"){
+    console.log("tickets data -------->",$(".fw-status-badge").text())
+        $(".ticket-detail-dummy").hide()
+    }
     console.log("happening -------->")
 
     fileUploadCallback();
@@ -7820,11 +7825,6 @@ $("#section-1-button").children(":first").removeClass("fa-plus");
   //____________________________________________________________________________________________________________________
   //section 6 continue
   $("#save_and_continue6").click(function () {
-    let submitButtonData=$(".fw-status-badge").text()
-    if(submitButtonData == "We've got your claim!"){
-    console.log("tickets data -------->",$(".fw-status-badge").text())
-        $(".ticket-detail-dummy").hide()
-    }
     if ($("#title").hasClass("VHI") || $("#title").hasClass("ColumbusItaly")) {
       let countryCode;
       if ($("#title").hasClass("VHI")) {
