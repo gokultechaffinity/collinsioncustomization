@@ -7957,7 +7957,7 @@ jQuery(document).ready(function ($) {
   //____________________________________________________________________________________________________________________
   //section 6 continue
   $("#save_and_continue6").click(function () {
-    if ($("#title").hasClass("VHI") || $("#title").hasClass("ColumbusItaly")) {
+    if ($("#title").hasClass("VHI") || $("#title").hasClass("ColumbusItaly")) {``
       let countryCode;
       if ($("#title").hasClass("VHI")) {
         countryCode = countryPortal.VHI;
@@ -8325,6 +8325,9 @@ jQuery(document).ready(function ($) {
           //$("#section-6-button").removeAttr("data-target");
           $("#section-6-button").children(":first").removeClass("fa-plus");
           $("#section-6-button").children(":first").addClass("fa-check");
+          if($(".fw-status-badge").text() == "We've got your claim!"){
+            $(".ticket-detail-dummy").hide()
+        }
         }
       })
       .catch((error) => console.log("error -->", error));
@@ -8411,6 +8414,9 @@ jQuery(document).ready(function ($) {
           //$("#section-6-button").removeAttr("data-target");
           $("#section-6-button").children(":first").removeClass("fa-plus");
           $("#section-6-button").children(":first").addClass("fa-check");
+          if($(".fw-status-badge").text() == "We've got your claim!"){
+            $(".ticket-detail-dummy").hide()
+        }
         }
       })
       .catch((error) => console.log("error -->", error));
