@@ -1137,6 +1137,7 @@ jQuery(document).ready(function ($) {
   //section 1 continue
   //on CHANGE OF DATE OF BIRTH - check any of the two inputs is empty, if it is remove attr, else add it
   $(document).on("click","#save_and_continue1",function() {
+    console.log("entered inside click")
     if ($("#title").hasClass("EasyJet")) {
       //checkRecaptcha
       if (
