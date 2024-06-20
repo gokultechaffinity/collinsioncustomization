@@ -1642,7 +1642,7 @@ $("#section-1-button").children(":first").removeClass("fa-plus");
               $("#save_and_continue1").removeAttr("data-toggle");
             } else if (today > bday) {
               let policyNumber = $(
-                "#helpdesk_ticket_custom_field_cf_policy_number454080_2321673"
+                "#helpdesk_ticket_custom_field_cf_policy_number_post_office_2321673"
               ).val();
               let dateOfBirth = $(
                 "#helpdesk_ticket_custom_field_cf_date_of_birth_2321673"
