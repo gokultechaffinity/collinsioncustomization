@@ -60,17 +60,17 @@ jQuery(document).ready(function ($) {
       '<div class="invalid-feedback api_call_failed_postcode">API call failed</div>'
     );
   //New Change Worlnomads
-  $("#helpdesk_ticket_custom_field_cf_account_number694591_2321673")
-    .closest(".form-group")
-    .hide();
-  $("#helpdesk_ticket_custom_field_cf_sort_code659991_2321673")
-    .closest(".form-group")
-    .hide();
-  $(
-    "#helpdesk_ticket_custom_field_cf_what_currency_would_you_like_to_be_paid_in_2321673"
-  )
-    .closest(".form-group")
-    .hide();
+  //   $("#helpdesk_ticket_custom_field_cf_account_number694591_2321673")
+  //     .closest(".form-group")
+  //     .hide();
+  //   $("#helpdesk_ticket_custom_field_cf_sort_code659991_2321673")
+  //     .closest(".form-group")
+  //     .hide();
+  //   $(
+  //     "#helpdesk_ticket_custom_field_cf_what_currency_would_you_like_to_be_paid_in_2321673"
+  //   )
+  //     .closest(".form-group")
+  //     .hide();
 
   if ($("#title").hasClass("ColumbusItaly")) {
     if (!$(".edit_helpdesk_ticket").length > 0) {
@@ -561,7 +561,18 @@ jQuery(document).ready(function ($) {
         "helpdesk_ticket_custom_field_cf_iban_number_2321673"
       ).parentElement;
       ibanNumber.classList.add("for-section-6");
+      var Number = document.getElementById(
+        "helpdesk_ticket_custom_field_cf_account_number694591_2321673"
+      ).parentElement;
+      Number.classList.add("for-section-6");
+      var sortCodes = document.getElementById(
+        "helpdesk_ticket_custom_field_cf_sort_code659991_2321673"
+      ).parentElement;
+      sortCodes.classList.add("for-section-6");
       //joint account
+      $(
+        ".form-group.helpdesk_ticket_custom_field_cf_name_of_bank24840_2321673"
+      ).addClass("for-section-6");
       $(
         ".form-group.helpdesk_ticket_custom_field_cf_name_of_bank24840_2321673"
       ).addClass("for-section-6");
