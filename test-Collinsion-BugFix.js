@@ -6131,58 +6131,71 @@ jQuery(document).ready(function ($) {
           ClaimReason
         );
         claimObject["coverCause"] = claimReason[0].akey;
+        //-------------------#save_and_continue3
         var yourArray = [];
         let createClaimIds = {};
         let nameArray = [];
 
         if ($("input[data-ispolicyholder='true']:checked").length) {
-          createClaimIds["MainContactClientId"] = $(
-            "input[data-ispolicyholder='true']:checked"
-          ).attr("data-clientId");
+          // Main contact setup
+          const $mainContact = $("input[data-ispolicyholder='true']:checked");
+          createClaimIds["MainContactClientId"] =
+            $mainContact.attr("data-clientId");
+          createClaimIds["clientId"] = $mainContact.attr("data-clientId");
+          createClaimIds["internalPolicyNumber"] =
+            $mainContact.attr("data-PolicyNumber");
 
-          createClaimIds["clientId"] = createClaimIds["MainContactClientId"];
-          createClaimIds["internalPolicyNumber"] = $(
-            "input[data-ispolicyholder='true']:checked"
-          ).attr("data-PolicyNumber");
-
+          // Collect other insured client IDs and names
           $("input[name='insured_1']:checked").each(function () {
-            let ids = $(this).attr("data-clientid");
-            if (ids) {
-              yourArray.push(...(ids.includes(",") ? ids.split(",") : [ids]));
+            let rawIds = $(this).attr("data-clientid");
+            if (rawIds) {
+              rawIds
+                .split(",")
+                .map((id) => id.trim())
+                .filter(Boolean)
+                .forEach((id) => {
+                  if (id !== createClaimIds["MainContactClientId"]) {
+                    yourArray.push(id);
+                  }
+                });
             }
 
             nameArray.push($(this).val() + " " + $(this).attr("data-lastname"));
           });
 
-          yourArray = yourArray
-            .filter(Boolean)
-            .filter((val) => val !== createClaimIds["MainContactClientId"])
-            .filter((val, idx, self) => self.indexOf(val) === idx); // remove duplicates
+          // Remove duplicates
+          yourArray = [...new Set(yourArray)];
 
           createClaimIds["OtherInsuredClientIds"] = yourArray;
         } else {
+          // No explicit policyholder selected, first insured becomes main contact
           $("input[name='insured_1']:checked").each(function (index) {
-            let ids = $(this).attr("data-clientid");
-            if (index === 0) {
-              createClaimIds["MainContactClientId"] = ids;
-              createClaimIds["clientId"] = ids;
-              createClaimIds["internalPolicyNumber"] =
-                $(this).attr("data-PolicyNumber");
-
-              nameArray.push(
-                $(this).val() + " " + $(this).attr("data-lastname")
-              );
-            } else {
-              if (ids) {
-                yourArray.push(...(ids.includes(",") ? ids.split(",") : [ids]));
+            let rawIds = $(this).attr("data-clientid");
+            if (rawIds) {
+              if (index === 0) {
+                createClaimIds["MainContactClientId"] = rawIds;
+                createClaimIds["clientId"] = rawIds;
+                createClaimIds["internalPolicyNumber"] =
+                  $(this).attr("data-PolicyNumber");
+                nameArray.push(
+                  $(this).val() + " " + $(this).attr("data-lastname")
+                );
+              } else {
+                rawIds
+                  .split(",")
+                  .map((id) => id.trim())
+                  .filter(Boolean)
+                  .forEach((id) => {
+                    if (id !== createClaimIds["MainContactClientId"]) {
+                      yourArray.push(id);
+                    }
+                  });
               }
             }
           });
 
-          yourArray = yourArray
-            .filter(Boolean)
-            .filter((val) => val !== createClaimIds["MainContactClientId"])
-            .filter((val, idx, self) => self.indexOf(val) === idx); // remove duplicates
+          // Remove duplicates
+          yourArray = [...new Set(yourArray)];
 
           createClaimIds["OtherInsuredClientIds"] = yourArray;
         }
@@ -8442,43 +8455,42 @@ jQuery(document).ready(function ($) {
     var yourArray = [];
 
     if ($("input[data-ispolicyholder='true']:checked").length) {
-      body["MainContactClientId"] = $(
-        "input[data-ispolicyholder='true']:checked"
-      ).attr("data-clientId");
+      const $mainContact = $("input[data-ispolicyholder='true']:checked");
+      const mainId = $mainContact.attr("data-clientId");
+      body["MainContactClientId"] = mainId;
 
       $("input[name='insured_1']:checked").each(function () {
-        let ids = $(this).attr("data-clientid");
-        if (ids) {
-          yourArray.push(...(ids.includes(",") ? ids.split(",") : [ids]));
+        let rawIds = $(this).attr("data-clientid");
+        if (rawIds) {
+          rawIds
+            .split(",")
+            .map((id) => id.trim())
+            .filter((id) => id && id !== mainId)
+            .forEach((id) => yourArray.push(id));
         }
       });
-
-      yourArray = yourArray
-        .filter(Boolean)
-        .filter((val) => val !== body["MainContactClientId"])
-        .filter((val, idx, self) => self.indexOf(val) === idx); // remove duplicates
-
-      body["OtherInsuredClientIds"] = yourArray;
     } else {
       $("input[name='insured_1']:checked").each(function (index) {
-        let ids = $(this).attr("data-clientid");
+        let rawIds = $(this).attr("data-clientid");
 
-        if (index === 0) {
-          body["MainContactClientId"] = ids;
-        } else {
-          if (ids) {
-            yourArray.push(...(ids.includes(",") ? ids.split(",") : [ids]));
+        if (rawIds) {
+          if (index === 0) {
+            body["MainContactClientId"] = rawIds;
+          } else {
+            rawIds
+              .split(",")
+              .map((id) => id.trim())
+              .filter((id) => id && id !== body["MainContactClientId"])
+              .forEach((id) => yourArray.push(id));
           }
         }
       });
-
-      yourArray = yourArray
-        .filter(Boolean)
-        .filter((val) => val !== body["MainContactClientId"])
-        .filter((val, idx, self) => self.indexOf(val) === idx); // remove duplicates
-
-      body["OtherInsuredClientIds"] = yourArray;
     }
+
+    // Remove duplicates
+    yourArray = [...new Set(yourArray)];
+
+    body["OtherInsuredClientIds"] = yourArray;
 
     console.log(body);
     //bank details senarios logic
