@@ -285,7 +285,7 @@ jQuery(document).ready(function ($) {
       redirect: "follow",
     };
     fetch(
-      "https://pintstg.techaffinity.us/collinson-app/api/policy",
+      "https://claim-proxy-lower.collinsonnis.com/collinson-app/api/policy",
       requestOptions
     )
       .then((response) => {
